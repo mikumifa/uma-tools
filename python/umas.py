@@ -105,7 +105,14 @@ class GameDatabase:
                 continue
             name = data["text_CN"]
             if not name:
-                name = "[未实装] " + data["text_TW"]
+                name = data["text_TW"]
+            if not name:
+                name = data["text_JP"]
+
+            if not data["text_CN"]:
+                name = f"[未实装] {name}"
+            if skill_id[0] == "9":
+                name += " (继承)"
             result[skill_id] = [name]
 
         with open(output_path, "w", encoding="utf-8") as f:

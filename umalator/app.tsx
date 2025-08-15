@@ -36,7 +36,6 @@ import './app.css';
 const DEFAULT_COURSE_ID = CC_GLOBAL ? 10606 : 10807;
 const DEFAULT_SAMPLES = 500;
 const DEFAULT_SEED = 2615953739;
-
 function id(x) { return x; }
 
 function binSearch(a: number[], x: number) {
@@ -386,7 +385,7 @@ const baseSkillsToTest = Object.keys(skilldata).filter(id => skilldata[id].rarit
 const enum Mode { Compare, Chart }
 const enum UiStateMsg { SetModeCompare, SetModeChart, SetCurrentIdx0, SetCurrentIdx1, ToggleExpand }
 
-const DEFAULT_UI_STATE = {mode: Mode.Compare, currentIdx: 0, expanded: false};
+const DEFAULT_UI_STATE = {mode: Mode.Chart, currentIdx: 0, expanded: false};
 
 function nextUiState(state: typeof DEFAULT_UI_STATE, msg: UiStateMsg) {
 	switch (msg) {
@@ -406,6 +405,7 @@ function nextUiState(state: typeof DEFAULT_UI_STATE, msg: UiStateMsg) {
 function App(props) {
 	//const [language, setLanguage] = useLanguageSelect();
 	const [skillsOpen, setSkillsOpen] = useState(false);
+	const [ShowUnreleased, setShowUnreleased] = useState(false);
 	const [racedef, setRaceDef] = useState(() => new RaceParams());
 	const [nsamples, setSamples] = useState(DEFAULT_SAMPLES);
 	const [seed, setSeed] = useState(DEFAULT_SEED);
@@ -674,10 +674,35 @@ function App(props) {
 			</div>
 		);
 	} else if (mode == Mode.Chart && tableData.size > 0) {
+	
+		const filteredData = useMemo(() => {
+		return tableData.values()
+			.toArray()
+			.filter(row => {
+					if (!row?.id) {
+					console.warn('Warning: row.id 不存在，已过滤', row);
+					return false;
+					}
+
+					if (!skillnames[row.id]) {
+					console.warn(`Warning: skillnames 中没有找到 id=${row.id}，已过滤`);
+					return false;
+				}
+					const skillName = skillnames[row.id][0];
+					if (!skillName) {
+					console.warn(`Warning: skillnames 中没有找到 id=${row.id} 内容为空，已过滤`);
+					return false;
+					}
+					if (!ShowUnreleased && skillName.startsWith('[未实装]')) {
+					return false;
+					}
+					return true;
+			});
+		}, [tableData]);
 		resultsPane = (
 			<div id="resultsPaneWrapper">
 				<div id="resultsPane" class="mode-chart">
-					<BasinnChart data={tableData.values().toArray()} hidden={uma1.skills}
+					<BasinnChart data={filteredData} hidden={uma1.skills}
 						onSelectionChange={basinnChartSelection}
 						onRunTypeChange={setChartData}
 						onDblClickRow={addSkillFromTable}
@@ -735,6 +760,17 @@ function App(props) {
 							<label for="showhp">耐力消耗显示</label>
 							<input type="checkbox" id="showhp" checked={showHp} onClick={toggleShowHp} />
 						</div>
+					{mode == Mode.Chart && (
+							<div>
+								<label htmlFor="showhp">显示未实装技能</label>
+								<input
+								type="checkbox"
+								id="showUnRelease"
+								checked={ShowUnreleased}
+								onClick={setShowUnreleased} 
+								/>
+							</div>
+							)}
 						{
 							mode == Mode.Compare
 							? <button id="run" onClick={doComparison} tabindex={1}>COMPARE</button>

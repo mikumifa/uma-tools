@@ -51,10 +51,11 @@ function formatBasinn(info) {
 }
 
 function SkillNameCell(props) {
+	const id=props.id
 	return (
-		<div class="chartSkillName">
-			<img src={`/uma-tools/icons/${skillmeta(props.id).iconId}.png`} />
-			<span><Text id={`skillnames.${props.id}`} /></span>
+		<div className="chartSkillName">
+			<img src={`/uma-tools/icons/${skillmeta(id).iconId}.png`} />
+			<span><Text id={`skillnames.${id}`} /></span>
 		</div>
 	);
 }
@@ -83,26 +84,26 @@ export function BasinnChart(props) {
 	}
 
 	const columns = useMemo(() => [{
-		header: () => <span>Skill name</span>,
+		header: () => <span>技能名</span>,
 		accessorKey: 'id',
 		cell: (info) => <SkillNameCell id={info.getValue()} />,
 		sortingFn: (a,b,_) => skillnames[a] < skillnames[b] ? -1 : 1
 	}, {
-		header: headerRenderer(radioGroup, selectedType, 'min', 'Minimum', headerClick),
+		header: headerRenderer(radioGroup, selectedType, 'min', '最小', headerClick),
 		accessorKey: 'min',
 		cell: formatBasinn
 	}, {
-		header: headerRenderer(radioGroup, selectedType, 'max', 'Maximum', headerClick),
+		header: headerRenderer(radioGroup, selectedType, 'max', '最大', headerClick),
 		accessorKey: 'max',
 		cell: formatBasinn,
 		sortDescFirst: true
 	}, {
-		header: headerRenderer(radioGroup, selectedType, 'mean', 'Mean', headerClick),
+		header: headerRenderer(radioGroup, selectedType, 'mean', '平均', headerClick),
 		accessorKey: 'mean',
 		cell: formatBasinn,
 		sortDescFirst: true
 	}, {
-		header: headerRenderer(radioGroup, selectedType, 'median', 'Median', headerClick),
+		header: headerRenderer(radioGroup, selectedType, 'median', '中位', headerClick),
 		accessorKey: 'median',
 		cell: formatBasinn,
 		sortDescFirst: true
