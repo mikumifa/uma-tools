@@ -1,0 +1,83 @@
+.basinnChartWrapper {
+	/*border: 2px solid rgb(224,214,204);*/
+	border: 2px solid rgb(181,174,187);
+	border-radius: 6px;
+	height: 550px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 100%;
+}
+
+.basinnChart {
+	border-collapse: collapse;
+	color: #794016;
+	font-weight: bold;
+	width: 100%;
+}
+
+.basinnChart thead {
+	position: sticky;
+	top: 0;
+}
+
+.basinnChart th {
+	background: linear-gradient(#fff,#e4e0e9);
+	text-align: left;
+	width: 15%;
+}
+
+.basinnChart th:first-child {
+	text-align: center;
+	width: 40%;
+}
+
+.basinnChart .columnHeader {
+	border-bottom: 2px solid rgb(181, 174, 187);
+	margin-left: -18px;
+	padding-right: 30px;
+	width: 100%;
+}
+
+.basinnChart .columnHeader span {
+	cursor: pointer;
+	position: relative;
+}
+
+.basinnChartSortedAsc span::after, .basinnChartSortedDesc span::after {
+	border-bottom: 2px solid #794016;
+	border-right: 2px solid #794016;
+	content: "";
+	display: block;
+	height: 4px;
+	position: absolute;
+	right: -10px;
+	top: calc(50% - 2px);
+	width: 4px;
+}
+
+.basinnChartSortedAsc span::after {
+	transform: rotate(-135deg);
+}
+
+.basinnChartSortedDesc span::after {
+	transform: rotate(45deg);
+}
+
+.basinnChart tr.selected {
+	background: rgb(121, 216, 35);
+}
+
+.basinnChart td {
+	padding-left: 4px;
+}
+
+.chartSkillName {
+	align-items: center;
+	display: flex;
+	gap: 4px;
+}
+
+.chartSkillName > img {
+	cursor: pointer;
+	height: 1.5em;
+}

@@ -1,0 +1,397 @@
+@font-face {
+	font-family: "Inter";
+	src: local("Inter"), url("/uma-tools/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Noto Sans JP";
+	src: local("Noto Sans JP"), url("/uma-tools/fonts/NotoSansJP-VariableFont_wght.ttf") format("truetype");
+}
+
+body {
+	font-family: Inter, "Noto Sans JP", sans-serif;
+}
+
+#app {
+	display: grid;
+	gap: 20px;
+	grid-template-columns: auto 1fr;
+	grid-template-rows: auto 1fr;
+	height: 98vh;
+}
+
+#topPane {
+	display: grid;
+	grid-template-columns: 960px auto;
+	width: fit-content;
+}
+
+#runPane {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 35px;
+}
+
+#seedWrapper {
+	display: flex;
+	width: 177px;
+}
+
+#seed {
+	flex: 1 1 auto;
+	width: 130px;
+}
+
+#run {
+	background: none;
+	border: 1px solid rgb(148, 150, 189);
+	border-radius: 8px;
+	font-size: 1.6em;
+	margin-top: 10px;
+	padding: 24px;
+}
+
+#rtMouseOverBox > text {
+	paint-order: stroke;
+	stroke: #fff;
+	stroke-width: 3px;
+}
+
+#buttonsRow {
+	align-items: center;
+	display: flex;
+	gap: 50px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+	position: relative;
+	width: 960px;
+}
+
+.trackSelect > select {
+	background: none;
+	border: 1px solid rgb(148, 150, 189);
+	border-radius: 0 8px 8px 0;
+	padding: 0.7em;
+}
+
+.trackSelect > select:first-child {
+	border-radius: 8px 0 0 8px;
+	border-right: none;
+}
+
+#buttonsRow > div {
+	display: flex;
+}
+
+#buttonsRowSpace {
+	flex: 1;
+}
+
+.groundSelect {
+	background: inherit;
+	border: none;
+	color: rgb(121, 64, 22);
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: 0;
+	text-align: right;
+}
+
+.weatherSelect {
+	display: flex;
+	margin-left: 5px;
+}
+
+#buttonsRow img {
+	height: 2em;
+}
+
+#buttonsRow img:not(.selected) {
+	filter: grayscale(0.9);
+}
+
+.hasResults .racetrackView > svg text:not(.mouseoverText) {
+	filter: opacity(0.3);
+}
+
+.racetrackView .textbox text {
+	filter: none !important;  /* TODO */
+	font-weight: bold;
+}
+
+#resultsPaneWrapper {
+	display: flex;
+}
+
+#resultsPane {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#resultsPane.mode-chart {
+	width: 980px;
+}
+
+#resultsHelp {
+	color: rgb(121, 64, 22);
+	font-size: 0.7em;
+	margin-top: 0.5em;
+}
+
+#resultsSummary {
+	border-spacing: 15px 0;
+}
+
+#resultsSummary > tfoot th {
+	color: rgb(121, 64, 22);
+	cursor: pointer;
+	font-size: 0.9em;
+}
+
+#resultsSummary > tfoot th.selected {
+	text-decoration: underline;
+}
+
+#resultsSummary > tbody td {
+	background: rgb(248, 248, 248);
+	border: 2px solid rgb(224, 214, 204);
+	border-radius: 100px;
+	color: rgb(121, 64, 22);
+	cursor: pointer;
+	font-size: 2em;
+	font-weight: normal;
+	height: 64px;
+	line-height: 0.8em;
+	padding: 36px 20px 20px 20px;
+	text-align: center;
+	width: 80px;
+}
+
+#resultsSummary .unit-basinn {
+	display: block;
+	font-size: 0.5em;
+}
+
+#infoTables {
+	margin: 0 auto;
+	min-width: 300px;
+}
+
+#infoTables > table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#infoTables tbody {
+	border-bottom: 1px solid rgb(121, 64, 22);
+	display: block;
+	width: 450px;
+}
+
+#infoTables tbody:last-child {
+	border: none;
+	height: 150px;  /* TODO this is a bit arbitrary */
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+/* cant have normal margins on table elements for some reason */
+#infoTables tbody::before, #infoTables tbody::after {
+	content: '';
+	display: block;
+	height: 10px;
+}
+
+#infoTables > table tr {
+	display: table;
+	table-layout: fixed;
+	width: 450px;
+}
+
+#infoTables > table th {
+	color: rgb(121, 64, 22);
+	font-weight: bold;
+	overflow: hidden;
+	text-align: left;
+	text-wrap: nowrap;
+}
+
+#infoTables > table td {
+	font-family: monospace;
+	width: 160px;
+}
+
+#umaPane {
+	grid-row: 1 / 3;
+	width: 700px;  /* needed for when this is a placeholder to consume grid space when uma pane is expanded */
+}
+
+#umaPane > div {
+	display: none;
+	height: 100%;
+}
+
+#umaPane > div.selected {
+	display: block;
+}
+
+#umaPane .horseDef {
+	border-top: none;
+}
+
+#umaPane .horseDefHeader {
+	background: none;
+	display: flex;
+	padding: 0;
+	text-align: left;
+}
+
+.umaTab {
+	background: linear-gradient(white, rgb(228, 227, 234));
+	color: rgb(121,64,22);
+	flex-basis: 0;
+	flex-grow: 1;
+	outline: 2px solid rgb(216, 217, 220);
+	padding: 6px 0 6px 20px;
+}
+
+.umaTab:first-child {
+	border-top-left-radius: 12px;
+}
+
+.umaTab:last-child {
+	border-top-right-radius: 12px;
+}
+
+.umaTab.selected {
+	background: linear-gradient(rgb(153, 219, 68), rgb(112, 190, 18));
+	color: white;
+	outline: 2px solid rgb(170, 221, 154);
+	z-index: 1;
+}
+
+#expandBtn {
+	background: linear-gradient(#99db44,#70be12);
+	border: 2px solid rgb(170,221,154);
+	border-radius: 6px;
+	cursor: default;
+	float: right;
+	height: 34px;
+	margin: 8px 10px 0 0;
+	position: relative;
+	width: 34px;
+}
+
+#expandBtn::after {
+	border-right: 2px solid white;
+	border-top: 2px solid white;
+	content: "";
+	display: block;
+	height: 15px;
+	left: 4px;
+	position: absolute;
+	top: 8px;
+	transform: rotate(45deg);
+	width: 15px;
+}
+
+.selected > #expandBtn {
+	background: linear-gradient(#fff,#e4e3ea);
+	border: 2px solid rgb(216,217,220);
+}
+
+.selected > #expandBtn::after {
+	border-right: 2px solid rgb(121,64,22);
+	border-top: 2px solid rgb(121,64,22);
+}
+
+#umaOverlay {
+	background: white;
+	border: 1px solid rgb(148, 150, 189);
+	border-left: none;
+	border-radius: 0 12px 12px 0;
+	display: flex;
+	gap: 30px;
+	height: calc(100vh - 18px);
+	left: 0;
+	margin-left: 2px;
+	padding: 6px;
+	position: fixed;
+	top: 0;
+}
+
+#closeUmaOverlay {
+	color: rgb(148, 150, 189);
+	cursor: default;
+	font-size: 2em;
+	height: 2em;
+}
+
+#copyUmaButtons {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	justify-content: center;
+}
+
+#copyUmaButtons > div {
+	background: linear-gradient(rgb(255, 255, 255), rgb(228, 224, 233));
+	border: 2px solid rgb(181, 174, 187);
+	border-radius: 8px;
+	height: 60px;
+	line-height: 60px;
+	position: relative;
+	width: 60px;
+}
+
+#copyUmaButtons > div::after {
+	border-top: 2px solid rgb(121, 64, 22);
+	border-right: 2px solid rgb(121, 64, 22);
+	content: '';
+	display: block;
+	height: 30px;
+	position: absolute;
+	width: 30px;
+}
+
+#copyUmaToRight::after {
+	left: 15px;
+	top: 25px;
+	transform: rotate(45deg) translate(-15px,0);
+}
+
+#copyUmaToLeft::after {
+	bottom: 25px;
+	right: 15px;
+	transform: rotate(-135deg) translate(-15px,0);
+}
+
+#swapUmas {
+	color: rgb(121, 64, 22);
+	font-size: 36px;
+	text-align: center;
+}
+
+#swapUmas::after {
+	display: none !important;
+}
+
+.basinnChartPopover {
+	background: white;
+	border: 2px solid rgb(181, 174, 187);
+	border-radius: 6px;
+	display: flex;
+	height: 333px;
+	left: 0;
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	width: 845px;
+}
+
+.basinnChartPopover .expandedSkill {
+	width: 345px;
+}

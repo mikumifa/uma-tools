@@ -1,0 +1,96 @@
+/* app.css */
+#outer {
+  height: 100%;
+  width: 100%;
+}
+#wrapper {
+  margin: auto;
+  width: 450px;
+}
+.rougeboy {
+  height: 250px;
+  margin: 0 75px 20px 125px;
+  width: 250px;
+}
+.grid {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(7, 60px);
+  grid-template-rows: 1.4em repeat(7, 60px);
+}
+.h-red {
+  border-bottom: 4px solid red;
+  grid-column: 2 / 4;
+}
+.h-green {
+  border-bottom: 4px solid green;
+  grid-column: 4 / 6;
+}
+.h-blue {
+  border-bottom: 4px solid blue;
+  grid-column: 6 / 8;
+}
+.square {
+  box-sizing: border-box;
+  font-size: 2em;
+  line-height: 60px;
+  text-align: center;
+}
+.empty {
+  border: 2px solid rgb(211, 214, 218);
+}
+.empty.focused::after {
+  border-bottom: 4px solid black;
+  content: "";
+  display: block;
+  height: 60px;
+  margin: -12px 0 0 3px;
+  width: 50px;
+}
+.green {
+  background: rgb(106, 170, 100);
+  color: white;
+}
+.yellow {
+  background: rgb(201, 180, 88);
+  color: white;
+}
+.blue {
+  background: rgb(89, 151, 201);
+  color: white;
+}
+.header {
+  font-size: 0.7em;
+  font-variant: small-caps;
+}
+.icon {
+  text-align: center;
+}
+.icon > img {
+  height: 40px;
+}
+.icon > span {
+  font-size: 0.6em;
+  display: block;
+}
+.suggestion > img {
+  height: 2em;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.suggestion > span {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.result {
+  margin-left: 105px;
+  margin-top: 1em;
+  width: 320px;
+}
+.result > div:first-child {
+  font-size: 1.6em;
+}
+.result > a {
+  display: block;
+}

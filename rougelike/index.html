@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Rougelike</title>
+		<link rel="stylesheet" href="bundle.css">
+		<style>
+		#howto {
+			border: 2px solid rgb(211, 214, 218);
+			box-sizing: border-box;
+			float: left;
+			font-size: 14px;
+			padding: 8px;
+			width: 300px;
+		}
+		#howto h1 {
+			font-size: 1.2em;
+			font-variant: small-caps;
+			margin: 0;
+		}
+		#howto p {
+			margin: 0;
+		}
+		#howto ul {
+			margin: 6px 0 0 0;
+		}
+		#howto span {
+			color: white;
+			padding: 0 5px;
+		}
+		.howto-blue {
+		  background: rgb(89, 151, 201);
+		}
+		.howto-yellow {
+			background: rgb(201, 180, 88);
+		}
+		.howto-green {
+			background: rgb(106, 170, 100);
+		}
+		</style>
+	</head>
+	<body>
+		<div id="howto">
+			<h1>How to play</h1>
+			<p>
+				Try to guess the hexadecimal color code that matches the color of the red square.
+				<ul>
+					<li>A <span class="howto-blue">blue</span> background means your guess in that component was <strong>too high</strong>.</li>
+					<li>A <span class="howto-yellow">yellow</span> background means your guess in that component was <strong>too low</strong>.</li>
+					<li>A <span class="howto-green">green</span> background means your guess was <strong>correct</strong>.</li>
+				</ul>
+				Note that feedback is for each primary color component, and not the individual digits. If you guess <span class="howto-yellow">2&#8239;0</span> and get <span class="howto-yellow">yellow</span>, it means that "20" is too low, not that "2" and "0" are individually too low (i.e., the correct guess could be <span class="howto-green">2&#8239;1</span>).
+			</p>
+		</div>
+		<div id="app"></div>
+		<script src="bundle.js"></script>
+	</body>
+</html>

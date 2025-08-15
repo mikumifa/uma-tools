@@ -1,0 +1,47 @@
+/* ../components/Language.css */
+.langSelect {
+  background: none;
+  border: 1px solid rgb(148, 150, 189);
+  border-radius: 8px;
+  padding: 0.7em;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+/* ../components/RaceTrack.css */
+.distanceMarker {
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: white;
+  stroke-width: 2px;
+}
+.sectionText {
+  dominant-baseline: central;
+  font-size: 12px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: white;
+  stroke-width: 2px;
+  text-anchor: middle;
+}
+.racetrackName {
+  color: rgb(121, 64, 22);
+  font: 22px bold sans-serif;
+  margin-bottom: 0.3em;
+  text-align: center;
+  text-stroke: 1px rgb(121, 64, 22);
+  -webkit-text-stroke: 1px rgb(121, 64, 22);
+  text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;
+}
+.mouseoverText {
+  font-size: 12px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: white;
+  stroke-width: 2px;
+}

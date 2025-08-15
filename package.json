@@ -1,0 +1,23 @@
+{
+  "name": "uma-tools",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "author": "pecan",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "commander": "^13.1.0",
+    "esbuild": "^0.19.5"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.2",
+    "d3": "^7.9.0",
+    "immutable": "^5.0.3",
+    "immutable-sorted": "^0.2.11",
+    "posthog-js": "^1.257.0",
+    "preact": "^10.18.1",
+    "preact-i18n": "^2.4.0-preactx",
+    "unassert-cli": "github:unassert-js/unassert-cli"
+  }
+}

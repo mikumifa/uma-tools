@@ -1,0 +1,108 @@
+#app {
+  margin: auto;
+  width: 425px;
+}
+
+#umainput {
+  box-sizing: border-box;
+  margin-left: 105px;
+  margin-top: 1em;
+  width: 320px;
+}
+
+#umainput.autocomplete__input--focused {
+  box-shadow: none;
+  outline: none;
+}
+
+#umainput__listbox {
+  margin-left: 105px;
+  width: 320px;
+}
+
+.grid {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 100px repeat(4, 60px);
+  grid-template-rows: 1.2em repeat(10, 60px);
+}
+
+.square {
+  box-sizing: border-box;
+  color: white;
+  font-size: 2em;
+  line-height: 60px;
+  text-align: center;
+}
+
+.empty {
+  border: 2px solid rgb(211, 214, 218);
+}
+
+.green {
+  background: rgb(106, 170, 100);
+}
+
+.yellow {
+  background: rgb(201, 180, 88);
+}
+
+.blue {
+  background: rgb(89, 151, 201);
+}
+
+.header {
+  font-size: 0.7em;
+  font-variant: small-caps;
+}
+
+.icon {
+  text-align: center;
+}
+
+.icon > img {
+  height: 40px;
+}
+
+.icon > span {
+  font-size: 0.6em;
+  display: block;
+}
+
+.suggestion > img {
+  height: 2em;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.suggestion > span {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.result {
+  margin-left: 105px;
+  margin-top: 1em;
+  width: 320px;
+}
+
+.result > div:first-child {
+  font-size: 1.6em;
+}
+
+.result > a {
+  display: block;
+}
+
+#trueanswer > img {
+  height: 2em;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+#trueanswer > span {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
