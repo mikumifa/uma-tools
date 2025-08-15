@@ -23,7 +23,7 @@ const umaAltIds = Object.keys(umas).flatMap(id => Object.keys(umas[id].outfits))
 const umaNamesForSearch = {};
 umaAltIds.forEach(id => {
 	const u = umas[id.slice(0,4)];
-	umaNamesForSearch[id] = (u.outfits[id] + ' ' + u.name[1]).toUpperCase().replace(/\./g, '');
+	umaNamesForSearch[id] = (u.outfits[id] + ' ' + u.name[0]).toUpperCase().replace(/\./g, '');
 });
 
 function searchNames(query) {
@@ -33,8 +33,7 @@ function searchNames(query) {
 
 export function UmaSelector(props) {
 	const randomMob = useMemo(() => `/uma-tools/icons/mob/trained_mob_chr_icon_${8000 + Math.floor(Math.random() * 624)}_000001_01.png`, []);
-	const u = props.value && umas[props.value.slice(0,4)];
-
+	const u = props.value && umas[props.value.slice(0, 4)];
 	const input = useRef(null);
 	const suggestionsContainer = useRef(null);
 	const [open, setOpen] = useState(false);
@@ -42,12 +41,11 @@ export function UmaSelector(props) {
 	function update(q) {
 		return {input: q, suggestions: searchNames(q)};
 	}
-	const [query, search] = useReducer((_,q) => update(q), u && u.name[1], update);
-
+	const [query, search] = useReducer((_,q) => update(q), u && u.name[0], update);
 	function confirm(oid) {
 		setOpen(false);
 		props.select(oid);
-		const uname = umas[oid.slice(0,4)].name[1];
+		const uname = umas[oid.slice(0,4)].name[0];
 		search(uname);
 		setActiveIdx(-1);
 		if (input.current != null) {
@@ -119,7 +117,7 @@ export function UmaSelector(props) {
 						const uid = oid.slice(0,4);
 						return (
 							<li key={oid} data-uma-id={oid} class={`umaSuggestion ${i == activeIdx ? 'selected' : ''}`}>
-								<img src={icons[oid]} /><span>{umas[uid].outfits[oid]} {umas[uid].name[1]}</span>
+								<img src={icons[oid]} /><span>{umas[uid].outfits[oid]} {umas[uid].name[0]}</span>
 							</li>
 						);
 					})}
@@ -185,23 +183,13 @@ export function AptitudeSelect(props){
 }
 
 export function StrategySelect(props) {
-	if (CC_GLOBAL) {
-		return (
-			<select class="horseStrategySelect" value={props.s} tabindex={props.tabindex} onInput={(e) => props.setS(e.currentTarget.value)}>
-				<option value="Nige">Front Runner</option>
-				<option value="Senkou">Pace Chaser</option>
-				<option value="Sasi">Late Surger</option>
-				<option value="Oikomi">End Closer</option>
-			</select>
-		);
-	}
 	return (
 		<select class="horseStrategySelect" value={props.s} tabindex={props.tabindex} onInput={(e) => props.setS(e.currentTarget.value)}>
-			<option value="Nige">逃げ</option>
-			<option value="Senkou">先行</option>
-			<option value="Sasi">差し</option>
-			<option value="Oikomi">追込</option>
-			<option value="Oonige">大逃げ</option>
+			<option value="Nige">领跑</option>
+			<option value="Senkou">前列</option>
+			<option value="Sasi">居中</option>
+			<option value="Oikomi">后追</option>
+			<option value="Oonige">大逃</option>
 		</select>
 	);
 }
@@ -209,7 +197,8 @@ export function StrategySelect(props) {
 const nonUniqueSkills = Object.keys(skills).filter(id => skilldata(id).rarity < 3 || skilldata(id).rarity > 5);
 
 function assertIsSkill(sid: string): asserts sid is keyof typeof skills {
-	console.assert(skilldata(sid) != null);
+	console.assert(skilldata(sid) != null, `skilldata is null for sid: ${sid}`);
+
 }
 
 function uniqueSkillForUma(oid: typeof umaAltIds[number]): keyof typeof skills {
@@ -302,11 +291,11 @@ export function HorseDef(props) {
 			<div class="horseDefHeader">{props.children}</div>
 			<UmaSelector value={umaId} select={setUma} tabindex={tabnext()} />
 			<div class="horseParams">
-				<div class="horseParamHeader"><img src="/uma-tools/icons/status_00.png" /><span>Speed</span></div>
-				<div class="horseParamHeader"><img src="/uma-tools/icons/status_01.png" /><span>Stamina</span></div>
-				<div class="horseParamHeader"><img src="/uma-tools/icons/status_02.png" /><span>Power</span></div>
-				<div class="horseParamHeader"><img src="/uma-tools/icons/status_03.png" /><span>Guts</span></div>
-				<div class="horseParamHeader"><img src="/uma-tools/icons/status_04.png" /><span>{CC_GLOBAL?'Wit':'Wisdom'}</span></div>
+				<div class="horseParamHeader"><img src="/uma-tools/icons/status_00.png" /><span>速度</span></div>
+				<div class="horseParamHeader"><img src="/uma-tools/icons/status_01.png" /><span>耐力</span></div>
+				<div class="horseParamHeader"><img src="/uma-tools/icons/status_02.png" /><span>力量</span></div>
+				<div class="horseParamHeader"><img src="/uma-tools/icons/status_03.png" /><span>根性</span></div>
+				<div class="horseParamHeader"><img src="/uma-tools/icons/status_04.png" /><span>智力</span></div>
 				<Stat value={state.speed} change={setter('speed')} tabindex={tabnext()} />
 				<Stat value={state.stamina} change={setter('stamina')} tabindex={tabnext()} />
 				<Stat value={state.power} change={setter('power')} tabindex={tabnext()} />
@@ -315,19 +304,19 @@ export function HorseDef(props) {
 			</div>
 			<div class="horseAptitudes">
 				<div>
-					<span>Surface aptitude:</span>
+					<span>距离</span>
 					<AptitudeSelect a={state.surfaceAptitude} setA={setter('surfaceAptitude')} tabindex={tabnext()} />
 				</div>
 				<div>
-					<span>Distance aptitude:</span>
+					<span>距离适应性</span>
 					<AptitudeSelect a={state.distanceAptitude} setA={setter('distanceAptitude')} tabindex={tabnext()} />
 				</div>
 				<div>
-					<span>{CC_GLOBAL ? 'Style:' : 'Strategy:'}</span>
+					<span>跑法</span>
 					<StrategySelect s={state.strategy} setS={setter('strategy')} tabindex={tabnext()} />
 				</div>
 				<div>
-					<span>{CC_GLOBAL ? 'Style aptitude:' : 'Strategy aptitude:'}</span>
+					<span>跑法适应性</span>
 					<AptitudeSelect a={state.strategyAptitude} setA={setter('strategyAptitude')} tabindex={tabnext()} />
 				</div>
 			</div>
@@ -337,7 +326,7 @@ export function HorseDef(props) {
 					{skillList}
 					<li key="add">
 						<div class="skill addSkillButton" onClick={openSkillPicker} tabindex={tabnext()}>
-							<span>+</span>Add Skill
+							<span>+</span>添加技能
 						</div>
 					</li>
 				</ul>

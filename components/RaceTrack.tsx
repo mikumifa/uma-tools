@@ -3,17 +3,46 @@ import { useState, useContext, useMemo, useCallback } from 'preact/hooks';
 import { IntlProvider, Text } from 'preact-i18n';
 
 import { CourseData, CourseHelpers, Surface, Orientation } from '../uma-skill-tools/CourseData';
-import { Region, RegionList } from '../uma-skill-tools/Region';
-
 import { useLanguage } from './Language';
-import { TRACKNAMES_ja, TRACKNAMES_en } from '../strings/common';
+import { TRACKNAMES_ja, TRACKNAMES_en,TRACKNAMES_cn } from '../strings/common';
 
-import courses from '../uma-skill-tools/data/course_data.json';
-import tracknames from '../uma-skill-tools/data/tracknames.json';
+import courses from '../umalator-cn/course_data.json';
+import tracknames from '../umalator-cn/tracknames.json';
 
 import './RaceTrack.css';
 
 export const enum RegionDisplayType { Immediate, Regions, Textbox };
+
+const STRINGS_cn = Object.freeze({
+    'racetrack': Object.freeze({
+        'none': '​',
+        'inner': '（内）',
+        'outer': '（外）',
+        'outin': '（外→内）',
+        'orientation': Object.freeze(['', '顺', '逆', '', '直']),
+        'turf': '草',
+        'dirt': '泥',
+        'straight': '直线',
+        'corner': '弯道{{n}}',
+        'uphill': '上坡',
+        'downhill': '下坡',
+        'phase0': '序盘',
+        'phase1': '中盘',
+        'phase2': '终盘',
+        'phase3': '冲刺',
+        'short': Object.freeze({
+            'straight': '直',
+            'corner': '弯{{n}}',
+            'uphill': '上',
+            'downhill': '下'
+        })
+    }),
+    'tracknames': TRACKNAMES_cn,  // 需要你定义 TRACKNAMES_zh 对应赛道名
+    'coursedesc': Object.freeze({  // 与 STRINGS_en 类似，格式化赛道描述
+        'one': '{{distance}}m{{inout}}',
+        'many': '{{surface}}{{distance}}m{{inout}}'
+    })
+});
 
 const STRINGS_ja = Object.freeze({
 	'racetrack': Object.freeze({
@@ -101,7 +130,7 @@ export function TrackSelect(props) {
 	}
 
 	return (
-		<IntlProvider definition={lang == 'ja' ? STRINGS_ja : STRINGS_en}>
+		<IntlProvider definition={STRINGS_cn}>
 			<div class="trackSelect">
 				<select value={trackid} onChange={changeTrack} tabindex={props.tabindex}>
 					{Object.keys(tracknames).map(tid => <option value={tid}><Text id={`tracknames.${tid}`} /></option>)}
@@ -370,7 +399,7 @@ export function RaceTrack(props) {
 	}, [props.regions, course.distance]);
 
 	return (
-		<IntlProvider definition={lang == 'ja' ? STRINGS_ja : STRINGS_en}>
+		<IntlProvider definition={STRINGS_cn}>
 			<div class="racetrackWrapper" style={`width:${props.width + xOffset + xExtra}px`}>
 				{trackNameHeader}
 				<svg version="1.1" width={props.width + xOffset + xExtra} height={props.height + yOffset + yExtra} xmlns="http://www.w3.org/2000/svg" class="racetrackView" data-courseid={props.courseid} onMouseMove={doMouseMove} onMouseLeave={doMouseLeave}>

@@ -94,6 +94,75 @@ export const STRINGS_ja = Object.freeze({
 	})
 });
 
+export const STRINGS_cn = Object.freeze({
+	'skillfilters': Object.freeze({
+		'search': '按技能名或条件搜索',
+		'white': '白',
+		'gold': '金',
+		'pink': '进化',
+		'unique': '专属',
+		'inherit': '继承',
+		'nige': '领跑',
+		'senkou': '前列',
+		'sasi': '居中',
+		'oikomi': '后追',
+		'short': '短距离',
+		'mile': '英里',
+		'medium': '中距离',
+		'long': '长距离',
+		'turf': '草地',
+		'dirt': '泥地',
+		'phase0': '起跑阶段',
+		'phase1': '中盘阶段',
+		'phase2': '终盘阶段',
+		'phase3': '最后冲刺',
+		'finalcorner': '最后弯道',
+		'finalstraight': '最后直线'
+	}),
+	'skilleffecttypes': Object.freeze({
+		'1': '被动（速度）',
+		'2': '被动（耐力）',
+		'3': '被动（力量）',
+		'4': '被动（毅力）',
+		'5': '被动（智力）',
+		'9': '耐力回复',
+		'21': '妨害（速度）',
+		'22': '即时速度',
+		'27': '速度',
+		'28': '横向速度',
+		'31': '加速度',
+		'37': '触发金技',
+	}),
+	'skilldetails': Object.freeze({
+		'accel': '{{n}}m/s²',
+		'basinn': '{{n}}马身',
+		'conditions': '发动条件：',
+		'distance_type': Object.freeze(['', '短距离', '英里', '中距离', '长距离']),
+		'baseduration': '基础持续时间：',
+		'effectiveduration': '有效持续时间（{{distance}}m）：',
+		'durationincrease': '{{n}}×',
+		'effects': '效果：',
+		'grade': Object.freeze({100: 'G1', 200: 'G2', 300: 'G3', 400: 'OP', 700: 'Pre-OP', 800: 'Maiden', 900: '出道赛', 999: '日常赛'}),
+		'ground_condition': Object.freeze(['', '良', '稍重', '重', '不亮']),
+		'ground_type': Object.freeze(['', '草地', '泥地']),
+		'id': 'No.',
+		'meters': '{{n}}m',
+		'motivation': Object.freeze(['', '极差', '不良', '普通', '良好', '绝佳']),
+		'order_rate': 'CM：{{cm}}，LOH：{{loh}}',
+		'preconditions': '前置条件：',
+		'rotation': Object.freeze(['', '顺时针', '逆时针']),
+		'running_style': Object.freeze(['', '领跑', '前列', '居中', '后追']),
+		'season': Object.freeze(['', '早春', '夏', '秋', '冬', '晚春']),
+		'seconds': '{{n}}s',
+		'slope': Object.freeze(['平地', '上坡', '下坡']),
+		'speed': '{{n}}m/s',
+		'time': Object.freeze(['', '早晨', '正午', '傍晚', '夜晚']),
+		'weather': Object.freeze(['', '晴', '多云', '雨', '雪'])
+	})
+});
+
+
+
 export const STRINGS_en = Object.freeze({
 	'skillfilters': Object.freeze({
 		'search': 'Search by skill name or conditions',
@@ -388,7 +457,7 @@ export function ExpandedSkillDetails(props) {
 	const skill = skilldata(props.id);
 	const lang = useLanguage();
 	return (
-		<IntlProvider definition={lang == 'ja' ? STRINGS_ja : STRINGS_en}>
+		<IntlProvider definition={STRINGS_cn}>
 			<div class={`expandedSkill ${classnames[skill.rarity]}`} data-skillid={props.id}>
 				<div class="expandedSkillHeader">
 					<img class="skillIcon" src={`/uma-tools/icons/${skillmeta(props.id).iconId}.png`} />
@@ -603,7 +672,7 @@ export function SkillList(props) {
 	const items = props.ids.map(id => <li key={id} class={visible.has(id) ? '' : 'hidden'}><Skill id={id} selected={selectedMap.get(skillmeta(id).groupId) == id} /></li>);
 
 	return (
-		<IntlProvider definition={lang == 'ja' ? STRINGS_ja : STRINGS_en}>
+		<IntlProvider  definition={STRINGS_cn}>
 			<div class="filterGroups" onClick={updateFilters}>
 				<div data-filter-group="search">
 					<Localizer><input type="text" class="filterSearch" value={searchText} placeholder={<Text id="skillfilters.search" />} onInput={updateFilters} ref={searchInput} /></Localizer>

@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "umas",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "python\\umas.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "skills",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "python\\skills.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}

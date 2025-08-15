@@ -14,7 +14,7 @@ import { ExpandedSkillDetails, STRINGS_en as SKILL_STRINGS_en } from '../compone
 import { RaceTrack, TrackSelect, RegionDisplayType } from '../components/RaceTrack';
 import { HorseState, SkillSet } from '../components/HorseDefTypes';
 import { HorseDef, horseDefTabs } from '../components/HorseDef';
-import { TRACKNAMES_ja, TRACKNAMES_en } from '../strings/common';
+import { TRACKNAMES_ja, TRACKNAMES_en, TRACKNAMES_cn } from '../strings/common';
 
 import { getActivateableSkills, getNullRow, runBasinnChart, BasinnChart } from './BasinnChart';
 
@@ -73,16 +73,6 @@ function TimeOfDaySelect(props) {
 }
 
 function GroundSelect(props) {
-	if (CC_GLOBAL) {
-		return (
-			<select class="groundSelect" value={props.value} onInput={(e) => props.set(+e.currentTarget.value)}>
-				<option value="1">Firm</option>
-				<option value="2">Good</option>
-				<option value="3">Soft</option>
-				<option value="4">Heavy</option>
-			</select>
-		);
-	}
 	return (
 		<select class="groundSelect" value={props.value} onInput={(e) => props.set(+e.currentTarget.value)}>
 			<option value="1">良</option>
@@ -116,8 +106,8 @@ function SeasonSelect(props) {
 	}
 	return (
 		<div class="seasonSelect" onClick={click}>
-			{Array(4 + +!CC_GLOBAL /* global doenst have late spring for some reason */).fill(0).map((_,i) =>
-				<img src={`/uma-tools/icons${CC_GLOBAL?'/global':''}/utx_txt_season_0${i}.png`} title={SKILL_STRINGS_en.skilldetails.season[i+1]}
+			{Array(4 /* global doenst have late spring for some reason */).fill(0).map((_,i) =>
+				<img src={`/uma-tools/icons/utx_txt_season_0${i}.png`} title={SKILL_STRINGS_en.skilldetails.season[i+1]}
 					class={i+1 == props.value ? 'selected' : ''} data-season={i+1} />)}
 		</div>
 	);
@@ -513,7 +503,7 @@ function App(props) {
 		setUma2(uma1);
 	}
 
-	const strings = {skillnames: {}, tracknames: TRACKNAMES_en};
+	const strings = {skillnames: {}, tracknames: TRACKNAMES_cn,};
 	const langid = +(props.lang == 'en');
 	Object.keys(skillnames).forEach(id => strings.skillnames[id] = skillnames[id][langid]);
 
@@ -617,10 +607,10 @@ function App(props) {
 						<tfoot>
 							<tr>
 								{Object.entries({
-									minrun: ['Minimum', 'Set chart display to the run with minimum bashin difference'],
-									maxrun: ['Maximum', 'Set chart display to the run with maximum bashin difference'],
-									meanrun: ['Mean', 'Set chart display to a run representative of the mean bashin difference'],
-									medianrun: ['Median', 'Set chart display to a run representative of the median bashin difference']
+									minrun: ['最小', '最小差异'],
+									maxrun: ['最大', '最大差异'],
+									meanrun: ['平均', '平均差异'],
+									medianrun: ['中位', '差异的中位数']
 								}).map(([k,label]) =>
 									<th scope="col" class={displaying == k ? 'selected' : ''} title={label[1]} onClick={() => setChartData(k)}>{label[0]}</th>
 								)}
@@ -635,16 +625,25 @@ function App(props) {
 							</tr>
 						</tbody>
 					</table>
-					<div id="resultsHelp">Negative numbers mean <strong style="color:#2a77c5">Umamusume 1</strong> is faster, positive numbers mean <strong style="color:#c52a2a">Umamusume 2</strong> is faster.</div>
+					<div id="resultsHelp">负数意味着 <strong style="color:#2a77c5">Umamusume 1</strong> 更快, 正数意味着 <strong style="color:#c52a2a">Umamusume 2</strong> 更快</div>
 					<Histogram width={500} height={333} data={results} />
 				</div>
 				<div id="infoTables">
 					<table>
 						<caption style="color:#2a77c5">Umamusume 1</caption>
 						<tbody>
-							<tr><th>Time to finish</th><td>{chartData.t[0][chartData.t[0].length-1].toFixed(4) + ' s'}</td></tr>
-							<tr><th>Start delay</th><td>{chartData.sdly[0].toFixed(4) + ' s'}</td></tr>
-							<tr><th>Top speed</th><td>{chartData.v[0].reduce((a,b) => Math.max(a,b), 0).toFixed(2) + ' m/s'}</td></tr>
+						<tr>
+						<th>完成时间</th>
+						<td>{chartData.t[0][chartData.t[0].length-1].toFixed(4) + ' 秒'}</td>
+						</tr>
+						<tr>
+						<th>起跑延迟</th>
+						<td>{chartData.sdly[0].toFixed(4) + ' 秒'}</td>
+						</tr>
+						<tr>
+						<th>最高速度</th>
+						<td>{chartData.v[0].reduce((a,b) => Math.max(a,b), 0).toFixed(2) + ' 米/秒'}</td>
+						</tr>
 						</tbody>
 						{chartData.sk[0].size > 0 &&
 							<tbody>
@@ -658,9 +657,9 @@ function App(props) {
 					<table>
 						<caption style="color:#c52a2a">Umamusume 2</caption>
 						<tbody>
-							<tr><th>Time to finish</th><td>{chartData.t[1][chartData.t[1].length-1].toFixed(4) + ' s'}</td></tr>
-							<tr><th>Start delay</th><td>{chartData.sdly[1].toFixed(4) + ' s'}</td></tr>
-							<tr><th>Top speed</th><td>{chartData.v[1].reduce((a,b) => Math.max(a,b), 0).toFixed(2) + ' m/s'}</td></tr>
+							<tr><th>完成时间</th><td>{chartData.t[1][chartData.t[1].length-1].toFixed(4) + ' s'}</td></tr>
+							<tr><th>起跑延迟</th><td>{chartData.sdly[1].toFixed(4) + ' s'}</td></tr>
+							<tr><th>最高速度</th><td>{chartData.v[1].reduce((a,b) => Math.max(a,b), 0).toFixed(2) + ' m/s'}</td></tr>
 						</tbody>
 						{chartData.sk[1].size > 0 &&
 							<tbody>
@@ -711,29 +710,29 @@ function App(props) {
 					</RaceTrack>
 					<div id="runPane">
 						<fieldset>
-							<legend>Mode:</legend>
+							<legend>模式:</legend>
 							<div>
 								<input type="radio" id="mode-compare" name="mode" value="compare" checked={mode == Mode.Compare} onClick={() => updateUiState(UiStateMsg.SetModeCompare)} />
-								<label for="mode-compare">Compare</label>
+								<label for="mode-compare">对比</label>
 							</div>
 							<div>
 								<input type="radio" id="mode-chart" name="mode" value="chart" checked={mode == Mode.Chart} onClick={() => updateUiState(UiStateMsg.SetModeChart)} />
-								<label for="mode-chart">Skill chart</label>
+								<label for="mode-chart">身距图</label>
 							</div>
 						</fieldset>
-						<label for="nsamples">Samples:</label>
+						<label for="nsamples">样本数:</label>
 						<input type="number" id="nsamples" min="1" max="10000" value={nsamples} onInput={(e) => setSamples(+e.currentTarget.value)} />
-						<label for="seed">Seed:</label>
+						<label for="seed">随机种子:</label>
 						<div id="seedWrapper">
 							<input type="number" id="seed" value={seed} onInput={(e) => setSeed(+e.currentTarget.value)} />
 							<button title="Randomize seed" onClick={() => setSeed(Math.floor(Math.random() * (-1 >>> 0)) >>> 0)}>🎲</button>
 						</div>
 						<div>
-							<label for="poskeep">Simulate pos keep</label>
+							<label for="poskeep">模拟位置意识</label>
 							<input type="checkbox" id="poskeep" checked={usePosKeep} onClick={togglePosKeep} />
 						</div>
 						<div>
-							<label for="showhp">Show HP consumption</label>
+							<label for="showhp">耐力消耗显示</label>
 							<input type="checkbox" id="showhp" checked={showHp} onClick={toggleShowHp} />
 						</div>
 						{

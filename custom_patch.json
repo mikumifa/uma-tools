@@ -1,0 +1,376 @@
+{
+    "100231": {
+        "alternatives": [
+            {
+                "baseDuration": 50000,
+                "condition": "is_finalcorner==1&corner!=0&change_order_onetime<0&order<=4",
+                "effects": [
+                    {
+                        "modifier": 3500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 5
+    },
+    "900231": {
+        "alternatives": [
+            {
+                "baseDuration": 50000,
+                "condition": "is_finalcorner==1&corner!=0&change_order_onetime<0&order<=4",
+                "effects": [
+                    {
+                        "modifier": 1500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 1
+    },
+    "100331": {
+        "alternatives": [
+            {
+                "baseDuration": 50000,
+                "condition": "is_finalcorner==1&corner==0&distance_diff_top>=5&order_rate<80",
+                "effects": [
+                    {
+                        "modifier": 3500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            },
+            {
+                "baseDuration": 50000,
+                "condition": "is_finalcorner==1&corner==0&distance_diff_top>=5&order_rate>=80",
+                "effects": [
+                    {
+                        "modifier": 4500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 5
+    },
+    "900331": {
+        "alternatives": [
+            {
+                "baseDuration": 30000,
+                "condition": "is_finalcorner==1&corner==0&distance_diff_top>=5&order_rate<80",
+                "effects": [
+                    {
+                        "modifier": 1500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            },
+            {
+                "baseDuration": 30000,
+                "condition": "is_finalcorner==1&corner==0&distance_diff_top>=5&order_rate>=80",
+                "effects": [
+                    {
+                        "modifier": 2500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 1
+    },
+    "110241": {
+        "alternatives": [
+            {
+                "baseDuration": 50000,
+                "condition": "is_finalcorner==1&corner!=0&order_rate<=40&change_order_onetime<0",
+                "effects": [
+                    {
+                        "modifier": 3500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            },
+            {
+                "baseDuration": 40000,
+                "condition": "s_finalcorner==1&corner!=0&order_rate>=50&order_rate<=80&change_order_onetime<0",
+                "effects": [
+                    {
+                        "modifier": 4000,
+                        "target": 1,
+                        "type": 31
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 5
+    },
+    "910241": {
+        "alternatives": [
+            {
+                "baseDuration": 30000,
+                "condition": "is_finalcorner==1&corner!=0&order_rate<=40&change_order_onetime<0",
+                "effects": [
+                    {
+                        "modifier": 1500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            },
+            {
+                "baseDuration": 24000,
+                "condition": "s_finalcorner==1&corner!=0&order_rate>=50&order_rate<=80&change_order_onetime<0",
+                "effects": [
+                    {
+                        "modifier": 2000,
+                        "target": 1,
+                        "type": 31
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 1
+    },
+    "100161": {
+        "alternatives": [
+            {
+                "baseDuration": 50000,
+                "condition": "is_finalcorner==1&order>=2&order_rate<=75&is_behind_in==1&change_order_onetime<0",
+                "effects": [
+                    {
+                        "modifier": 3500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 5
+    },
+    "900161": {
+        "alternatives": [
+            {
+                "baseDuration": 30000,
+                "condition": "is_finalcorner==1&order>=2&order_rate<=75&is_behind_in==1&change_order_onetime<0",
+                "effects": [
+                    {
+                        "modifier": 1500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 1
+    },
+    "100261": {
+        "alternatives": [
+            {
+                "baseDuration": 50000,
+                "condition": "is_badstart==0&temptation_count==0&order<=3&is_finalcorner==1&corner==0",
+                "effects": [
+                    {
+                        "modifier": 3500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 5
+    },
+    "900261": {
+        "alternatives": [
+            {
+                "baseDuration": 30000,
+                "condition": "is_badstart==0&temptation_count==0&order<=3&is_finalcorner==1&corner==0",
+                "effects": [
+                    {
+                        "modifier": 1500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 1
+    },
+    "100281": {
+        "alternatives": [
+            {
+                "baseDuration": 50000,
+                "condition": "distance_rate>=45&distance_rate<=60&order>=3&order_rate<=50&hp_per<=70",
+                "effects": [
+                    {
+                        "modifier": 2500,
+                        "target": 1,
+                        "type": 27
+                    },
+                    {
+                        "modifier": 3000,
+                        "target": 1,
+                        "type": 31
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 5
+    },
+    "900281": {
+        "alternatives": [
+            {
+                "baseDuration": 30000,
+                "condition": "distance_rate>=45&distance_rate<=60&order>=3&order_rate<=50&hp_per<=70",
+                "effects": [
+                    {
+                        "modifier": 500,
+                        "target": 1,
+                        "type": 27
+                    },
+                    {
+                        "modifier": 1000,
+                        "target": 1,
+                        "type": 31
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 1
+    },
+    "100371": {
+        "alternatives": [
+            {
+                "baseDuration": 50000,
+                "condition": "is_badstart==0&temptation_count==0&order>=3&is_finalcorner==1&corner==0",
+                "effects": [
+                    {
+                        "modifier": 3500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 5
+    },
+    "900371": {
+        "alternatives": [
+            {
+                "baseDuration": 30000,
+                "condition": "is_badstart==0&temptation_count==0&order>=3&is_finalcorner==1&corner==0",
+                "effects": [
+                    {
+                        "modifier": 1500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 1
+    },
+    "100011": {
+        "alternatives": [
+            {
+                "baseDuration": 50000,
+                "condition": "phase>=2&order>=2&order_rate<=50&change_order_onetime<0",
+                "effects": [
+                    {
+                        "modifier": 3500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 5
+    },
+    "900011": {
+        "alternatives": [
+            {
+                "baseDuration": 30000,
+                "condition": "phase>=2&order>=2&order_rate<=50&change_order_onetime<0",
+                "effects": [
+                    {
+                        "modifier": 1500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 1
+    },
+    "110301": {
+        "alternatives": [
+            {
+                "baseDuration": 0,
+                "condition": "phase==1 &distance_rate>=50 &order>=2 &order_rate<=50 &overtake_target_time>=1",
+                "effects": [
+                    {
+                        "modifier": 550,
+                        "target": 1,
+                        "type": 9
+                    },
+                    {
+                        "modifier": -50,
+                        "target": 9,
+                        "type": 9
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 5
+    },
+    "910301": {
+        "alternatives": [
+            {
+                "baseDuration": 0,
+                "condition": "phase==1 &distance_rate>=50 &order>=2 &order_rate<=50 &overtake_target_time>=1",
+                "effects": [
+                    {
+                        "modifier": 150,
+                        "target": 1,
+                        "type": 9
+                    },
+                    {
+                        "modifier": -25,
+                        "target": 9,
+                        "type": 9
+                    }
+                ],
+                "precondition": ""
+            }
+        ],
+        "rarity": 1
+    }
+}

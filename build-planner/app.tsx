@@ -72,4 +72,4 @@ function App(props) {
 	);
 }
 
-render(<App lang="ja" />, document.getElementById('app'));
+render(<App lang="zh-CN" />, document.getElementById('app'));

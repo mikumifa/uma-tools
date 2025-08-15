@@ -72,10 +72,9 @@
 	display: flex;
 	flex: 1;
 	overflow: hidden;
-	text-stroke: 1px rgb(121,64,22);
 	-webkit-text-stroke: 1px rgb(121,64,22);
-	text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
 	text-wrap: nowrap;
+	font-family: "Microsoft YaHei", "PingFang SC", "SimSun", "Noto Sans SC", sans-serif;
 }
 
 .skillIcon {
@@ -177,7 +176,6 @@
 }
 
 .skillConditions {
-	font-family: monospace;
 	margin: 0 0 0.5em 0.5em;
 }
 

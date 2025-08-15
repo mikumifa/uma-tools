@@ -4,13 +4,7 @@
             {
                 "baseDuration": 50000,
                 "condition": "phase>=2&order>=2&order_rate<=50&change_order_onetime<0",
-                "effects": [
-                    {
-                        "modifier": 3500,
-                        "target": 1,
-                        "type": 27
-                    }
-                ],
+                "effects": [],
                 "precondition": ""
             }
         ],
@@ -388,6 +382,18 @@
                 "condition": "is_finalcorner==1&order>=2&order_rate<=75&is_behind_in==1&change_order_onetime<0",
                 "effects": [
                     {
+                        "modifier": 4500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": "phase==1&blocked_side_continuetime>=2"
+            },
+            {
+                "baseDuration": 50000,
+                "condition": "is_finalcorner==1&order>=2&order_rate<=75&is_behind_in==1&change_order_onetime<0",
+                "effects": [
+                    {
                         "modifier": 3500,
                         "target": 1,
                         "type": 27
@@ -604,7 +610,19 @@
         "alternatives": [
             {
                 "baseDuration": 50000,
-                "condition": "is_finalcorner==1&corner!=0&change_order_onetime<0&order<=4",
+                "condition": "phase>=2&is_finalcorner==1&order<=4&temptation_count==0",
+                "effects": [
+                    {
+                        "modifier": 4500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            },
+            {
+                "baseDuration": 50000,
+                "condition": "phase>=2&is_finalcorner==1&order<=4",
                 "effects": [
                     {
                         "modifier": 3500,
@@ -665,7 +683,19 @@
         "alternatives": [
             {
                 "baseDuration": 50000,
-                "condition": "is_badstart==0&temptation_count==0&order<=3&is_finalcorner==1&corner==0",
+                "condition": "is_badstart==0&order<=3&is_last_straight==1&order_rate_in20_continue==1",
+                "effects": [
+                    {
+                        "modifier": 4500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            },
+            {
+                "baseDuration": 50000,
+                "condition": "is_badstart==0&order<=3&is_last_straight==1",
                 "effects": [
                     {
                         "modifier": 3500,
@@ -699,17 +729,24 @@
         "alternatives": [
             {
                 "baseDuration": 50000,
-                "condition": "distance_rate>=45&distance_rate<=60&order>=3&order_rate<=50&hp_per<=70",
+                "condition": "distance_rate>=45&distance_rate<=60&order>=2&order_rate<=50&is_overtake==1&distance_type==1",
+                "effects": [
+                    {
+                        "modifier": 2500,
+                        "target": 1,
+                        "type": 22
+                    }
+                ],
+                "precondition": ""
+            },
+            {
+                "baseDuration": 50000,
+                "condition": "distance_rate>=45&distance_rate<=60&order>=2&order_rate<=50&is_overtake==1",
                 "effects": [
                     {
                         "modifier": 2500,
                         "target": 1,
                         "type": 27
-                    },
-                    {
-                        "modifier": 3000,
-                        "target": 1,
-                        "type": 31
                     }
                 ],
                 "precondition": ""
@@ -961,13 +998,13 @@
                 "precondition": ""
             }
         ],
-        "rarity": 5
+        "rarity": 4
     },
     "100331": {
         "alternatives": [
             {
                 "baseDuration": 50000,
-                "condition": "is_finalcorner==1&corner==0&distance_diff_top>=5&order_rate<80",
+                "condition": "is_last_straight==1&distance_diff_top>=5&order_rate<80",
                 "effects": [
                     {
                         "modifier": 3500,
@@ -979,7 +1016,7 @@
             },
             {
                 "baseDuration": 50000,
-                "condition": "is_finalcorner==1&corner==0&distance_diff_top>=5&order_rate>=80",
+                "condition": "is_last_straight==1&distance_diff_top>=5&order_rate>=80",
                 "effects": [
                     {
                         "modifier": 4500,
@@ -1052,7 +1089,19 @@
         "alternatives": [
             {
                 "baseDuration": 50000,
-                "condition": "is_badstart==0&temptation_count==0&order>=3&is_finalcorner==1&corner==0",
+                "condition": "temptation_count==0&order>=3&is_last_straight==1&order_rate_in80_continue==1&order_rate_out40_continue==1",
+                "effects": [
+                    {
+                        "modifier": 4500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            },
+            {
+                "baseDuration": 50000,
+                "condition": "temptation_count==0&order>=3&is_last_straight==1",
                 "effects": [
                     {
                         "modifier": 3500,
@@ -13123,7 +13172,7 @@
         "alternatives": [
             {
                 "baseDuration": 50000,
-                "condition": "is_finalcorner==1&corner!=0&order_rate<=40&change_order_onetime<0",
+                "condition": "is_finalcorner==1&order_rate<=40&change_order_onetime<0",
                 "effects": [
                     {
                         "modifier": 3500,
@@ -13135,7 +13184,7 @@
             },
             {
                 "baseDuration": 40000,
-                "condition": "s_finalcorner==1&corner!=0&order_rate>=50&order_rate<=80&change_order_onetime<0",
+                "condition": "is_finalcorner==1&order_rate>=50&order_rate<=80&change_order_onetime<0",
                 "effects": [
                     {
                         "modifier": 4000,
@@ -30440,13 +30489,7 @@
             {
                 "baseDuration": 30000,
                 "condition": "phase>=2&order>=2&order_rate<=50&change_order_onetime<0",
-                "effects": [
-                    {
-                        "modifier": 1500,
-                        "target": 1,
-                        "type": 27
-                    }
-                ],
+                "effects": [],
                 "precondition": ""
             }
         ],
@@ -30707,6 +30750,18 @@
                 "condition": "is_finalcorner==1&order>=2&order_rate<=75&is_behind_in==1&change_order_onetime<0",
                 "effects": [
                     {
+                        "modifier": 2500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": "phase==1&blocked_side_continuetime>=2"
+            },
+            {
+                "baseDuration": 30000,
+                "condition": "is_finalcorner==1&order>=2&order_rate<=75&is_behind_in==1&change_order_onetime<0",
+                "effects": [
+                    {
                         "modifier": 1500,
                         "target": 1,
                         "type": 27
@@ -30827,8 +30882,20 @@
     "900231": {
         "alternatives": [
             {
-                "baseDuration": 50000,
-                "condition": "is_finalcorner==1&corner!=0&change_order_onetime<0&order<=4",
+                "baseDuration": 30000,
+                "condition": "phase>=2&is_finalcorner==1&order<=4&temptation_count==0",
+                "effects": [
+                    {
+                        "modifier": 2500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            },
+            {
+                "baseDuration": 30000,
+                "condition": "phase>=2&is_finalcorner==1&order<=4",
                 "effects": [
                     {
                         "modifier": 1500,
@@ -30889,7 +30956,19 @@
         "alternatives": [
             {
                 "baseDuration": 30000,
-                "condition": "is_badstart==0&temptation_count==0&order<=3&is_finalcorner==1&corner==0",
+                "condition": "is_badstart==0&order<=3&is_last_straight==1&order_rate_in20_continue==1",
+                "effects": [
+                    {
+                        "modifier": 2500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            },
+            {
+                "baseDuration": 30000,
+                "condition": "is_badstart==0&order<=3&is_last_straight==1",
                 "effects": [
                     {
                         "modifier": 1500,
@@ -30923,17 +31002,24 @@
         "alternatives": [
             {
                 "baseDuration": 30000,
-                "condition": "distance_rate>=45&distance_rate<=60&order>=3&order_rate<=50&hp_per<=70",
+                "condition": "distance_rate>=45&distance_rate<=60&order>=2&order_rate<=50&is_overtake==1&distance_type==1",
+                "effects": [
+                    {
+                        "modifier": 500,
+                        "target": 1,
+                        "type": 22
+                    }
+                ],
+                "precondition": ""
+            },
+            {
+                "baseDuration": 30000,
+                "condition": "distance_rate>=45&distance_rate<=60&order>=2&order_rate<=50&is_overtake==1",
                 "effects": [
                     {
                         "modifier": 500,
                         "target": 1,
                         "type": 27
-                    },
-                    {
-                        "modifier": 1000,
-                        "target": 1,
-                        "type": 31
                     }
                 ],
                 "precondition": ""
@@ -31025,7 +31111,7 @@
         "alternatives": [
             {
                 "baseDuration": 30000,
-                "condition": "is_finalcorner==1&corner==0&distance_diff_top>=5&order_rate<80",
+                "condition": "is_last_straight==1&distance_diff_top>=5&order_rate<80",
                 "effects": [
                     {
                         "modifier": 1500,
@@ -31037,7 +31123,7 @@
             },
             {
                 "baseDuration": 30000,
-                "condition": "is_finalcorner==1&corner==0&distance_diff_top>=5&order_rate>=80",
+                "condition": "is_last_straight==1&distance_diff_top>=5&order_rate>=80",
                 "effects": [
                     {
                         "modifier": 2500,
@@ -31110,7 +31196,19 @@
         "alternatives": [
             {
                 "baseDuration": 30000,
-                "condition": "is_badstart==0&temptation_count==0&order>=3&is_finalcorner==1&corner==0",
+                "condition": "temptation_count==0&order>=3&is_last_straight==1&order_rate_in80_continue==1&order_rate_out40_continue==1",
+                "effects": [
+                    {
+                        "modifier": 2500,
+                        "target": 1,
+                        "type": 27
+                    }
+                ],
+                "precondition": ""
+            },
+            {
+                "baseDuration": 30000,
+                "condition": "temptation_count==0&order>=3&is_last_straight==1",
                 "effects": [
                     {
                         "modifier": 1500,
@@ -33563,7 +33661,7 @@
         "alternatives": [
             {
                 "baseDuration": 30000,
-                "condition": "is_finalcorner==1&corner!=0&order_rate<=40&change_order_onetime<0",
+                "condition": "is_finalcorner==1&order_rate<=40&change_order_onetime<0",
                 "effects": [
                     {
                         "modifier": 1500,
@@ -33575,7 +33673,7 @@
             },
             {
                 "baseDuration": 24000,
-                "condition": "s_finalcorner==1&corner!=0&order_rate>=50&order_rate<=80&change_order_onetime<0",
+                "condition": "is_finalcorner==1&order_rate>=50&order_rate<=80&change_order_onetime<0",
                 "effects": [
                     {
                         "modifier": 2000,
