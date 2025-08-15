@@ -47,7 +47,11 @@ export function getNullRow(skillid: string) {
 }
 
 function formatBasinn(info) {
-	return info.getValue().toFixed(2).replace('-0.00', '0.00') + ' L';
+    const value = info.getValue();
+    if (typeof value !== 'number' || isNaN(value)) {
+        return '0.00 L'; // 或者其他你希望的默认值
+    }
+    return value.toFixed(2).replace('-0.00', '0.00') + ' L';
 }
 
 function SkillNameCell(props) {
