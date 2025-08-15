@@ -17,6 +17,13 @@
             "request": "launch",
             "program": "python\\skills.py",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "slope.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "python\\slope.py",
+            "console": "integratedTerminal"
         }
     ]
 }
