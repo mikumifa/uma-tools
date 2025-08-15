@@ -700,8 +700,8 @@ function App(props) {
             return {
                 ...row,
 				mean: Number.isNaN(row.mean) ? 0 : row.mean,
-                min: Number.isNaN(row.min) ? 0 : row.mean,
-                max: Number.isNaN(row.max) ? 0 : row.mean,
+                min: Number.isNaN(row.min) ? 0 : row.min,
+                max: Number.isNaN(row.max) ? 0 : row.max,
                 median: Number.isNaN(row.mean) ? 0 : row.median
 				
             };
