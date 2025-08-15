@@ -674,7 +674,6 @@ function App(props) {
 			</div>
 		);
 	} else if (mode == Mode.Chart && tableData.size > 0) {
-	
 		const filteredData = useMemo(() => {
 		return tableData.values()
 			.toArray()
@@ -697,8 +696,18 @@ function App(props) {
 					return false;
 					}
 					return true;
-			});
+			}) .map(row => {
+            return {
+                ...row,
+				mean: Number.isNaN(row.mean) ? 0 : row.mean,
+                min: Number.isNaN(row.min) ? 0 : row.mean,
+                max: Number.isNaN(row.max) ? 0 : row.mean,
+                median: Number.isNaN(row.mean) ? 0 : row.median
+				
+            };
+        });;
 		}, [tableData]);
+		console.log(filteredData)
 		resultsPane = (
 			<div id="resultsPaneWrapper">
 				<div id="resultsPane" class="mode-chart">

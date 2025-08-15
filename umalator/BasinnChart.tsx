@@ -100,7 +100,6 @@ export function BasinnChart(props) {
 		header: headerRenderer(radioGroup, selectedType, 'max', '最大', headerClick),
 		accessorKey: 'max',
 		cell: formatBasinn,
-		sortDescFirst: true
 	}, {
 		header: headerRenderer(radioGroup, selectedType, 'mean', '平均', headerClick),
 		accessorKey: 'mean',
@@ -110,7 +109,6 @@ export function BasinnChart(props) {
 		header: headerRenderer(radioGroup, selectedType, 'median', '中位', headerClick),
 		accessorKey: 'median',
 		cell: formatBasinn,
-		sortDescFirst: true
 	}], [selectedType]);
 
 	const [sorting, setSorting] = useState<SortingState>([{id: 'mean', desc: true}]);

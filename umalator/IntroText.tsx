@@ -126,7 +126,11 @@ export function IntroText(props) {
 				</section>
 			</details>
 			<footer id="sourcelinks">
-				Source code: <a href="https://github.com/alpha123/uma-skill-tools">simulator</a>, <a href="https://github.com/alpha123/uma-tools">UI</a>
+				本项目为国服版本，基于原作者项目 fork 改造：
+				<a href="https://github.com/alpha123/uma-skill-tools">simulator</a>、 
+				<a href="https://github.com/alpha123/uma-tools">UI</a>
+				<br/>
+				GitHub 仓库链接：<a href="https://github.com/mikumifa/uma-tools">UI</a>
 			</footer>
 		</div>
 	);
