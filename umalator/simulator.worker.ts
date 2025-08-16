@@ -53,21 +53,28 @@ function run1Round(nsamples: number, skills: string[], course: CourseData, raced
 }
 
 function runChart({skills, course, racedef, uma, options}) {
-	const uma_ = new HorseState(uma).set('skills', SkillSet(uma.skills));
-	let results = run1Round(5, skills, course, racedef, uma_, options);
-	postMessage({type: 'chart', results});
-	skills = skills.filter(id => results.get(id).max > 0.1);
-	let update = run1Round(20, skills, course, racedef, uma_, options);
-	mergeResultSets(results, update);
-	postMessage({type: 'chart', results});
-	skills = skills.filter(id => Math.abs(results.get(id).max - results.get(id).min) > 0.1);
-	update = run1Round(50, skills, course, racedef, uma_, options);
-	mergeResultSets(results, update);
-	postMessage({type: 'chart', results});
-	update = run1Round(200, skills, course, racedef, uma_, options);
-	mergeResultSets(results, update);
-	postMessage({type: 'chart', results});
+    const uma_ = new HorseState(uma).set('skills', SkillSet(uma.skills));
+    let results = run1Round(5, skills, course, racedef, uma_, options);
+    postMessage({type: 'progress', stage: '初始计算', percent: 10});
+    
+    skills = skills.filter(id => results.get(id).max > 0.1);
+    let update = run1Round(20, skills, course, racedef, uma_, options);
+    mergeResultSets(results, update);
+    postMessage({type: 'progress', stage: '二轮计算', percent: 30});
+    
+    skills = skills.filter(id => Math.abs(results.get(id).max - results.get(id).min) > 0.1);
+    update = run1Round(50, skills, course, racedef, uma_, options);
+    mergeResultSets(results, update);
+    postMessage({type: 'progress', stage: '三轮计算', percent: 60});
+    
+    update = run1Round(200, skills, course, racedef, uma_, options);
+    mergeResultSets(results, update);
+    postMessage({type: 'progress', stage: '最终计算', percent: 90});
+    
+    postMessage({type: 'chart', results}); // 最终结果
+    postMessage({type: 'progress', stage: '完成', percent: 100});
 }
+
 
 function runCompare({nsamples, course, racedef, uma1, uma2, options}) {
 	const uma1_ = new HorseState(uma1).set('skills', SkillSet(uma1.skills));

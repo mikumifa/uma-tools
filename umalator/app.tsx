@@ -405,6 +405,8 @@ function nextUiState(state: typeof DEFAULT_UI_STATE, msg: UiStateMsg) {
 function App(props) {
 	//const [language, setLanguage] = useLanguageSelect();
 	const [skillsOpen, setSkillsOpen] = useState(false);
+	const [status, setStatus] = useState("等待操作...");
+	const workerProgress = useRef({ w1: 0, w2: 0 }); 
 	const [ShowUnreleased, setShowUnreleased] = useState(false);
 	const [racedef, setRaceDef] = useState(() => new RaceParams());
 	const [nsamples, setSamples] = useState(DEFAULT_SAMPLES);
@@ -522,20 +524,42 @@ function App(props) {
 		});
 	}
 
-	function doBasinnChart() {
-		postEvent('doBasinnChart', {});
-		const params = racedefToParams(racedef, uma1.strategy);
-		const skills = getActivateableSkills(baseSkillsToTest.filter(s => !uma1.skills.has(s) && (s[0] != '9' || !uma1.skills.has('1' + s.slice(1)))), uma1, course, params);
-		const filler = new Map();
-		skills.forEach(id => filler.set(id, getNullRow(id)));
-		const uma = uma1.toJS();
-		const skills1 = skills.slice(0,Math.floor(skills.length/2));
-		const skills2 = skills.slice(Math.floor(skills.length/2));
-		updateTableData('reset');
-		updateTableData(filler);
-		worker1.postMessage({msg: 'chart', data: {skills: skills1, course, racedef: params, uma, options: {seed, usePosKeep}}});
-		worker2.postMessage({msg: 'chart', data: {skills: skills2, course, racedef: params, uma, options: {seed, usePosKeep}}});
-	}
+function doBasinnChart() {
+    postEvent('doBasinnChart', {});
+    const params = racedefToParams(racedef, uma1.strategy);
+    const skills = getActivateableSkills(
+        baseSkillsToTest.filter(s => !uma1.skills.has(s) && (s[0] !== '9' || !uma1.skills.has('1' + s.slice(1)))),
+        uma1, course, params
+    );
+    const filler = new Map();
+    skills.forEach(id => filler.set(id, getNullRow(id)));
+
+    const uma = uma1.toJS();
+    const skills1 = skills.slice(0, Math.floor(skills.length / 2));
+    const skills2 = skills.slice(Math.floor(skills.length / 2));
+    updateTableData('reset');
+    updateTableData(filler);
+	worker1.onmessage = (e) => {
+		const data = e.data;
+		if (data.type === 'progress') {
+			workerProgress.current.w1 = data.percent;
+			const minProgress = Math.min(workerProgress.current.w1, workerProgress.current.w2);
+			setStatus(`当前计算进度：${minProgress}%`);
+		}
+	};
+
+	worker2.onmessage = (e) => {
+		const data = e.data;
+		if (data.type === 'progress') {
+			workerProgress.current.w2 = data.percent;
+			const minProgress = Math.min(workerProgress.current.w1, workerProgress.current.w2);
+			setStatus(`当前计算进度：${minProgress}%`);
+		}
+};
+    worker1.postMessage({msg: 'chart', data: {skills: skills1, course, racedef: params, uma, options: {seed, usePosKeep}}});
+    worker2.postMessage({msg: 'chart', data: {skills: skills2, course, racedef: params, uma, options: {seed, usePosKeep}}});
+}
+
 
 	function basinnChartSelection(skillId) {
 		const r = tableData.get(skillId);
@@ -707,7 +731,6 @@ function App(props) {
             };
         });;
 		}, [tableData]);
-		console.log(filteredData)
 		resultsPane = (
 			<div id="resultsPaneWrapper">
 				<div id="resultsPane" class="mode-chart">
@@ -754,8 +777,13 @@ function App(props) {
 								<label for="mode-chart">身距图</label>
 							</div>
 						</fieldset>
-						<label for="nsamples">样本数:</label>
+						{mode == Mode.Compare && (
+							<div>
+							<label for="nsamples">样本数:</label>
 						<input type="number" id="nsamples" min="1" max="10000" value={nsamples} onInput={(e) => setSamples(+e.currentTarget.value)} />
+							</div>
+							)}
+			
 						<label for="seed">随机种子:</label>
 						<div id="seedWrapper">
 							<input type="number" id="seed" value={seed} onInput={(e) => setSeed(+e.currentTarget.value)} />
@@ -778,6 +806,7 @@ function App(props) {
 								checked={ShowUnreleased}
 								onClick={setShowUnreleased} 
 								/>
+								<div id="status">{status}</div>
 							</div>
 							)}
 						{
