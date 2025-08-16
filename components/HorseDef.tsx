@@ -304,7 +304,7 @@ export function HorseDef(props) {
 			</div>
 			<div class="horseAptitudes">
 				<div>
-					<span>距离</span>
+					<span>场地适应性</span>
 					<AptitudeSelect a={state.surfaceAptitude} setA={setter('surfaceAptitude')} tabindex={tabnext()} />
 				</div>
 				<div>
@@ -312,7 +312,7 @@ export function HorseDef(props) {
 					<AptitudeSelect a={state.distanceAptitude} setA={setter('distanceAptitude')} tabindex={tabnext()} />
 				</div>
 				<div>
-					<span>跑法</span>
+					<span>跑法选择</span>
 					<StrategySelect s={state.strategy} setS={setter('strategy')} tabindex={tabnext()} />
 				</div>
 				<div>
