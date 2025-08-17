@@ -535,21 +535,28 @@ const groups_filters = Object.freeze({
 	'location': ['phase0', 'phase1', 'phase2', 'phase3', 'finalcorner', 'finalstraight']
 });
 
+function normalize(text: string): string {
+    return text.replace(/[A-Za-z]/g, c => c.toUpperCase());
+}
+
 function textSearch(id: string, searchText: string, searchConditions: boolean) {
-	const needle = searchText.toUpperCase();
-	if (skillnames[id.split('-')[0]].some(s => s.toUpperCase().indexOf(needle) > -1)) {
-		return 1;
-	} else if (searchConditions) {
-		let op = null;
-		try {
-			op = C(searchText);
-		} catch (_) {
-			return 0;
-		}
-		return parsedConditions[id].some(alt => Matcher.treeMatch(op, alt)) ? 2 : 0;
-	} else {
-		return 0;
+	const needle = normalize(searchText.trim());
+	if (!skillnames[id.split('-')[0]]) {
+		return 0
 	}
+	if (skillnames[id.split('-')[0]].some(s => normalize(s).indexOf(needle) > -1)) {
+        return 1;
+    } else if (searchConditions) {
+        let op = null;
+        try {
+            op = C(searchText);
+        } catch (_) {
+            return 0;
+		}
+        return parsedConditions[id].some(alt => Matcher.treeMatch(op, alt)) ? 2 : 0;
+    } else {
+        return 0;
+    }
 }
 
 export function SkillList(props) {
@@ -643,7 +650,7 @@ export function SkillList(props) {
 			if (allowConditionSearch && passesTextSearch == 1) {  // name matches
 				allowConditionSearch = false;
 			}
-			const pass = passesTextSearch && Object.keys(groups_filters).every(group => {
+			const pass = passesTextSearch&& Object.keys(groups_filters).every(group => {
 				const check = groups_filters[group].filter(f => active[group][f]);
 				if (check.length == 0) return true;
 				if (group == 'rarity') return check.some(f => matchRarity(id, f));
@@ -668,7 +675,6 @@ export function SkillList(props) {
 	function IconFilterButton(props) {
 		return <button data-filter={props.type} class={`iconFilterButton ${active[props.group][props.type] ? 'active': ''}`} style={`background-image:url(/uma-tools/icons/${props.type}1.png)`}></button>
 	}
-
 	const items = props.ids.map(id => <li key={id} class={visible.has(id) ? '' : 'hidden'}><Skill id={id} selected={selectedMap.get(skillmeta(id).groupId) == id} /></li>);
 
 	return (

@@ -560,7 +560,6 @@ function doBasinnChart() {
     worker2.postMessage({msg: 'chart', data: {skills: skills2, course, racedef: params, uma, options: {seed, usePosKeep}}});
 }
 
-
 	function basinnChartSelection(skillId) {
 		const r = tableData.get(skillId);
 		if (r.runData != null) setResults(r);
