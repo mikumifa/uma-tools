@@ -37,7 +37,8 @@ export function runComparison(nsamples: number, course: CourseData, racedef: Rac
 		compare.addSkill(id.split('-')[0], Perspective.Self);
 		standard.addSkill(id.split('-')[0], Perspective.Other);
 	});
-	if (!CC_GLOBAL) {
+	if (false) {
+		//当前国服没有
 		standard.withAsiwotameru().withStaminaSyoubu();
 		compare.withAsiwotameru().withStaminaSyoubu();
 	}
