@@ -221,7 +221,7 @@ class RaceParams extends Record({
 
 const ORDER_RANGE_FOR_STRATEGY = Object.freeze({
 	'Nige': [1,1],
-	'Senkou': [2,4],
+	'Senkou': [1,4],
 	'Sasi': [5,9],
 	'Oikomi': [5,9],
 	'Oonige': [1,1]

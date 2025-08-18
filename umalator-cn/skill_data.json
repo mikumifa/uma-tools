@@ -30827,7 +30827,7 @@
     "900231": {
         "alternatives": [
             {
-                "baseDuration": 50000,
+                "baseDuration": 30000,
                 "condition": "is_finalcorner==1&corner!=0&change_order_onetime<0&order<=4",
                 "effects": [
                     {

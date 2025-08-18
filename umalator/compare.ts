@@ -5,6 +5,8 @@ import { RaceSolverBuilder, Perspective } from '../uma-skill-tools/RaceSolverBui
 
 import { HorseState } from '../components/HorseDefTypes';
 
+
+
 export function runComparison(nsamples: number, course: CourseData, racedef: RaceParameters, uma1: HorseState, uma2: HorseState, options) {
 	const standard = new RaceSolverBuilder(nsamples)
 		.seed(options.seed)
