@@ -540,11 +540,17 @@ function normalize(text: string): string {
 }
 
 function textSearch(id: string, searchText: string, searchConditions: boolean) {
-	const needle = normalize(searchText.trim());
-	if (!skillnames[id.split('-')[0]]) {
-		return 0
-	}
-	if (skillnames[id.split('-')[0]].some(s => normalize(s).indexOf(needle) > -1)) {
+    const needle = normalize(searchText.trim());
+    const baseId = id.split('-')[0];
+
+    if (!skillnames[baseId]) {
+        return 0;
+    }
+    if (/^\d+$/.test(searchText.trim())) {
+        return skillnames[baseId].some(s => normalize(s).indexOf(needle) > -1) ? 1 : 0;
+    }
+
+    if (skillnames[baseId].some(s => normalize(s).indexOf(needle) > -1)) {
         return 1;
     } else if (searchConditions) {
         let op = null;
@@ -552,7 +558,7 @@ function textSearch(id: string, searchText: string, searchConditions: boolean) {
             op = C(searchText);
         } catch (_) {
             return 0;
-		}
+        }
         return parsedConditions[id].some(alt => Matcher.treeMatch(op, alt)) ? 2 : 0;
     } else {
         return 0;
