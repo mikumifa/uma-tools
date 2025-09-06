@@ -9,9 +9,17 @@ function skillmeta(id: string) {
 }
 
 function skillComparator(a, b) {
-	const x = skillmeta(a).order, y = skillmeta(b).order;
-	return +(y < x) - +(x < y) || +(b < a) - +(a < b);
+        const xMeta = skillmeta(a) || {};
+        const yMeta = skillmeta(b) || {};
+
+        // 如果没有 order，就认为是 +Infinity，排到最后
+        const x = (xMeta.order !== undefined) ? xMeta.order : Infinity;
+        const y = (yMeta.order !== undefined) ? yMeta.order : Infinity;
+
+        // 先按 order 排，再按 id 排
+        return +(y < x) - +(x < y) || +(b < a) - +(a < b);
 }
+
 
 export function SkillSet(iterable): SortedSet<keyof typeof skills> {
 	return SortedSet(iterable, skillComparator);
