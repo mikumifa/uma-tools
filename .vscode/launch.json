@@ -24,6 +24,13 @@
             "request": "launch",
             "program": "python\\slope.py",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "old_course_convert.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "python\\old_course_convert.py",
+            "console": "integratedTerminal"
         }
     ]
 }

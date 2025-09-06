@@ -681,7 +681,19 @@ export function SkillList(props) {
 	function IconFilterButton(props) {
 		return <button data-filter={props.type} class={`iconFilterButton ${active[props.group][props.type] ? 'active': ''}`} style={`background-image:url(/uma-tools/icons/${props.type}1.png)`}></button>
 	}
-	const items = props.ids.map(id => <li key={id} class={visible.has(id) ? '' : 'hidden'}><Skill id={id} selected={selectedMap.get(skillmeta(id).groupId) == id} /></li>);
+	const items = props.ids
+	.filter(id => skillmeta(id)?.groupId) // 只保留有 groupId 的
+	.map(id => (
+		<li
+		key={id}
+		class={visible.has(id) ? '' : 'hidden'}
+		>
+		<Skill
+			id={id}
+			selected={selectedMap.get(skillmeta(id).groupId) === id}
+		/>
+		</li>
+	));
 
 	return (
 		<IntlProvider  definition={STRINGS_cn}>
