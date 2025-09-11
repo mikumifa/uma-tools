@@ -121,18 +121,20 @@ class GameDatabase:
 
 # 🧪 示例用法
 if __name__ == "__main__":
-    url = "https://wiki.biligame.com/umamusume/%E6%A8%A1%E5%9D%97:%E7%BF%BB%E8%AF%91%E6%95%B0%E6%8D%AE%E5%BA%93"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
-        "Accept-Language": "zh-CN,zh;q=0.9",
-    }
-    response = requests.get(url, headers=headers)
-    soup = BeautifulSoup(response.text, "html.parser")
+    using_new_web_data = False
+    if using_new_web_data:
+        url = "https://wiki.biligame.com/umamusume/%E6%A8%A1%E5%9D%97:%E7%BF%BB%E8%AF%91%E6%95%B0%E6%8D%AE%E5%BA%93"
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+            "Accept-Language": "zh-CN,zh;q=0.9",
+        }
+        response = requests.get(url, headers=headers)
+        soup = BeautifulSoup(response.text, "html.parser")
 
-    pre = soup.find("pre", class_="mw-code mw-script", dir="ltr")
-    text_copy = pre.get_text()
-    with open("python/name.lua", "w", encoding="utf-8") as f:
-        f.write(text_copy)
+        pre = soup.find("pre", class_="mw-code mw-script", dir="ltr")
+        text_copy = pre.get_text()
+        with open("python/name.lua", "w", encoding="utf-8") as f:
+            f.write(text_copy)
     db = GameDatabase("python/name.lua", "name.json")
     db.create_umas_json(output_path="umalator-cn/umas.json")
     db.create_skill_names_json(output_path="umalator-cn/skillnames.json")

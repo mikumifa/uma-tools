@@ -75,7 +75,7 @@ export const STRINGS_ja = Object.freeze({
 		'effectiveduration': '効果時間（{{distance}}m）',
 		'durationincrease': '{{n}}倍',
 		'effects': '効果',
-		'grade': Object.freeze({100: 'G1', 200: 'G2', 300: 'G3', 400: 'OP', 700: 'Pre-OP', 800: 'Maiden', 900: 'デビュー', 999: '毎日'}),
+		'grade': Object.freeze({ 100: 'G1', 200: 'G2', 300: 'G3', 400: 'OP', 700: 'Pre-OP', 800: 'Maiden', 900: 'デビュー', 999: '毎日' }),
 		'ground_condition': Object.freeze(['', '良', '稍重', '重', '不良']),
 		'ground_type': Object.freeze(['', '芝', 'ダート']),
 		'id': 'ID: ',
@@ -142,7 +142,7 @@ export const STRINGS_cn = Object.freeze({
 		'effectiveduration': '有效持续时间（{{distance}}m）：',
 		'durationincrease': '{{n}}×',
 		'effects': '效果：',
-		'grade': Object.freeze({100: 'G1', 200: 'G2', 300: 'G3', 400: 'OP', 700: 'Pre-OP', 800: 'Maiden', 900: '出道赛', 999: '日常赛'}),
+		'grade': Object.freeze({ 100: 'G1', 200: 'G2', 300: 'G3', 400: 'OP', 700: 'Pre-OP', 800: 'Maiden', 900: '出道赛', 999: '日常赛' }),
 		'ground_condition': Object.freeze(['', '良', '稍重', '重', '不亮']),
 		'ground_type': Object.freeze(['', '草地', '泥地']),
 		'id': 'No.',
@@ -212,7 +212,7 @@ export const STRINGS_en = Object.freeze({
 		'effectiveduration': 'Effective duration ({{distance}}m):',
 		'durationincrease': '{{n}}×',
 		'effects': 'Effects:',
-		'grade': Object.freeze({100: 'G1', 200: 'G2', 300: 'G3', 400: 'OP', 700: 'Pre-OP', 800: 'Maiden', 900: 'Debut', 999: 'Daily races'}),
+		'grade': Object.freeze({ 100: 'G1', 200: 'G2', 300: 'G3', 400: 'OP', 700: 'Pre-OP', 800: 'Maiden', 900: 'Debut', 999: 'Daily races' }),
 		'ground_condition': Object.freeze(['', 'Good', 'Yielding', 'Soft', 'Heavy']),
 		'ground_type': Object.freeze(['', 'Turf', 'Dirt']),
 		'id': 'ID: ',
@@ -262,18 +262,18 @@ Object.keys(skills).forEach(id => {
 function matchRarity(id, testRarity) {
 	const r = skilldata(id).rarity;
 	switch (testRarity) {
-	case 'white':
-		return r == SkillRarity.White && id[0] != '9';
-	case 'gold':
-		return r == SkillRarity.Gold;
-	case 'pink':
-		return r == SkillRarity.Evolution;
-	case 'unique':
-		return r > SkillRarity.Gold && r < SkillRarity.Evolution;
-	case 'inherit':
-		return id[0] == '9';
-	default:
-		return true;
+		case 'white':
+			return r == SkillRarity.White && id[0] != '9';
+		case 'gold':
+			return r == SkillRarity.Gold;
+		case 'pink':
+			return r == SkillRarity.Evolution;
+		case 'unique':
+			return r > SkillRarity.Gold && r < SkillRarity.Evolution;
+		case 'inherit':
+			return id[0] == '9';
+		default:
+			return true;
 	}
 }
 
@@ -282,7 +282,7 @@ const classnames = Object.freeze(['', 'skill-white', 'skill-gold', 'skill-unique
 export function Skill(props) {
 	return (
 		<div class={`skill ${classnames[skilldata(props.id).rarity]} ${props.selected ? 'selected' : ''}`} data-skillid={props.id}>
-			<img class="skillIcon" src={`/uma-tools/icons/${skillmeta(props.id).iconId}.png`} /> 
+			<img class="skillIcon" src={`/uma-tools/icons/${skillmeta(props.id).iconId}.png`} />
 			<span class="skillName"><Text id={`skillnames.${props.id.split('-')[0]}`} /></span>
 			{props.dismissable && <span class="skillDismiss">✕</span>}
 		</div>
@@ -295,7 +295,7 @@ interface ConditionFormatter {
 }
 
 function fmtSeconds(arg: number) {
-	return <Text id="skilldetails.seconds" plural={arg} fields={{n: arg}} />;
+	return <Text id="skilldetails.seconds" plural={arg} fields={{ n: arg }} />;
 }
 
 function fmtPercent(arg: number) {
@@ -303,7 +303,7 @@ function fmtPercent(arg: number) {
 }
 
 function fmtMeters(arg: number) {
-	return <Text id="skilldetails.meters" plural={arg} fields={{n: arg}} />;
+	return <Text id="skilldetails.meters" plural={arg} fields={{ n: arg }} />;
 }
 
 function fmtString(strId: string) {
@@ -315,10 +315,10 @@ function fmtString(strId: string) {
 const conditionFormatters = new Proxy({
 	accumulatetime: fmtSeconds,
 	bashin_diff_behind(arg: number) {
-		return <Localizer><Tooltip title={<Text id="skilldetails.meters" plural={arg * 2.5} fields={{n: arg * 2.5}} />}><Text id="skilldetails.basinn" plural={arg} fields={{n: arg}} /></Tooltip></Localizer>;
+		return <Localizer><Tooltip title={<Text id="skilldetails.meters" plural={arg * 2.5} fields={{ n: arg * 2.5 }} />}><Text id="skilldetails.basinn" plural={arg} fields={{ n: arg }} /></Tooltip></Localizer>;
 	},
 	bashin_diff_infront(arg: number) {
-		return <Localizer><Tooltip title={<Text id="skilldetails.meters" plural={arg * 2.5} fields={{n: arg * 2.5}} />}><Text id="skilldetails.basinn" plural={arg} fields={{n: arg}} /></Tooltip></Localizer>;
+		return <Localizer><Tooltip title={<Text id="skilldetails.meters" plural={arg * 2.5} fields={{ n: arg * 2.5 }} />}><Text id="skilldetails.basinn" plural={arg} fields={{ n: arg }} /></Tooltip></Localizer>;
 	},
 	behind_near_lane_time: fmtSeconds,
 	behind_near_lane_time_set1: fmtSeconds,
@@ -328,10 +328,10 @@ const conditionFormatters = new Proxy({
 	course_distance: fmtMeters,
 	distance_diff_rate: fmtPercent,
 	distance_diff_top(arg: number) {
-		return <Localizer><Tooltip title={<Text id="skilldetails.basinn" plural={arg / 2.5} fields={{n: arg / 2.5}} />}><Text id="skilldetails.meters" plural={arg} fields={{n: arg}} /></Tooltip></Localizer>;
+		return <Localizer><Tooltip title={<Text id="skilldetails.basinn" plural={arg / 2.5} fields={{ n: arg / 2.5 }} />}><Text id="skilldetails.meters" plural={arg} fields={{ n: arg }} /></Tooltip></Localizer>;
 	},
 	distance_diff_top_float(arg: number) {
-		return <Localizer><Tooltip title={<Text id="skilldetails.basinn" plural={arg / 25} fields={{n: arg / 25}} />}><Text id="skilldetails.meters" plural={arg} fields={{n: (arg / 10).toFixed(1)}} /></Tooltip></Localizer>;
+		return <Localizer><Tooltip title={<Text id="skilldetails.basinn" plural={arg / 25} fields={{ n: arg / 25 }} />}><Text id="skilldetails.meters" plural={arg} fields={{ n: (arg / 10).toFixed(1) }} /></Tooltip></Localizer>;
 	},
 	distance_rate: fmtPercent,
 	distance_rate_after_random: fmtPercent,
@@ -343,7 +343,7 @@ const conditionFormatters = new Proxy({
 	infront_near_lane_time: fmtSeconds,
 	motivation: fmtString('motivation'),
 	order_rate(arg: number) {
-		return <Localizer><Tooltip title={<Text id="skilldetails.order_rate" fields={{cm: Math.round(arg / 100 * 9), loh: Math.round(arg / 100 * 12)}} />}>{arg}</Tooltip></Localizer>;
+		return <Localizer><Tooltip title={<Text id="skilldetails.order_rate" fields={{ cm: Math.round(arg / 100 * 9), loh: Math.round(arg / 100 * 12) }} />}>{arg}</Tooltip></Localizer>;
 	},
 	overtake_target_no_order_up_time: fmtSeconds,
 	overtake_target_time: fmtSeconds,
@@ -361,14 +361,14 @@ const conditionFormatters = new Proxy({
 }, {
 	get(o: object, prop: string) {
 		if (o.hasOwnProperty(prop)) {
-			return {name: prop, formatArg: o[prop]};
+			return { name: prop, formatArg: o[prop] };
 		}
 		return {
 			name: prop,
 			formatArg(arg: number) {
 				return arg.toString();
 			}
-		}; 
+		};
 	}
 });
 
@@ -377,8 +377,8 @@ interface OpFormatter {
 }
 
 class AndFormatter {
-	constructor(readonly left: OpFormatter, readonly right: OpFormatter) {}
-	
+	constructor(readonly left: OpFormatter, readonly right: OpFormatter) { }
+
 	format() {
 		return (
 			<Fragment>
@@ -391,8 +391,8 @@ class AndFormatter {
 }
 
 class OrFormatter {
-	constructor(readonly left: OpFormatter, readonly right: OpFormatter) {}
-	
+	constructor(readonly left: OpFormatter, readonly right: OpFormatter) { }
+
 	format() {
 		return (
 			<Fragment>
@@ -406,8 +406,8 @@ class OrFormatter {
 
 function CmpFormatter(op: string) {
 	return class {
-		constructor(readonly cond: ConditionFormatter, readonly arg: number) {}
-		
+		constructor(readonly cond: ConditionFormatter, readonly arg: number) { }
+
 		format() {
 			return (
 				<div class="condition">
@@ -418,7 +418,7 @@ function CmpFormatter(op: string) {
 	};
 }
 
-const FormatParser = getParser<ConditionFormatter,OpFormatter>(conditionFormatters, {
+const FormatParser = getParser<ConditionFormatter, OpFormatter>(conditionFormatters, {
 	and: AndFormatter,
 	or: OrFormatter,
 	eq: CmpFormatter('=='),
@@ -436,7 +436,7 @@ function forceSign(n: number) {
 const formatStat = forceSign;
 
 function formatSpeed(n: number) {
-	return <Text id="skilldetails.speed" plural={n} fields={{n: forceSign(n)}} />;
+	return <Text id="skilldetails.speed" plural={n} fields={{ n: forceSign(n) }} />;
 }
 
 const formatEffect = Object.freeze({
@@ -446,11 +446,11 @@ const formatEffect = Object.freeze({
 	4: formatStat,
 	5: formatStat,
 	9: n => `${(n * 100).toFixed(1)}%`,
-	21: formatSpeed, 
+	21: formatSpeed,
 	22: formatSpeed,
 	27: formatSpeed,
-	31: n => <Text id="skilldetails.accel" plural={n} fields={{n: forceSign(n)}} />,
-	42: n => <Text id="skilldetails.durationincrease" plural={n} fields={{n}} />
+	31: n => <Text id="skilldetails.accel" plural={n} fields={{ n: forceSign(n) }} />,
+	42: n => <Text id="skilldetails.durationincrease" plural={n} fields={{ n }} />
 });
 
 export function ExpandedSkillDetails(props) {
@@ -490,11 +490,11 @@ export function ExpandedSkillDetails(props) {
 									</div>
 								)}
 							</div>
-							{alt.baseDuration > 0 && <span class="skillDuration"><Text id="skilldetails.baseduration" />{' '}<Text id="skilldetails.seconds" fields={{n: alt.baseDuration / 10000}} /></span>}
+							{alt.baseDuration > 0 && <span class="skillDuration"><Text id="skilldetails.baseduration" />{' '}<Text id="skilldetails.seconds" fields={{ n: alt.baseDuration / 10000 }} /></span>}
 							{props.distanceFactor && alt.baseDuration > 0 &&
 								<span class="skillDuration">
-									<Text id="skilldetails.effectiveduration" fields={{distance: props.distanceFactor}} />{' '}
-									<Text id="skilldetails.seconds" fields={{n: +(alt.baseDuration / 10000 * (props.distanceFactor / 1000)).toFixed(2)}} />
+									<Text id="skilldetails.effectiveduration" fields={{ distance: props.distanceFactor }} />{' '}
+									<Text id="skilldetails.seconds" fields={{ n: +(alt.baseDuration / 10000 * (props.distanceFactor / 1000)).toFixed(2) }} />
 								</span>
 							}
 						</div>
@@ -536,33 +536,33 @@ const groups_filters = Object.freeze({
 });
 
 function normalize(text: string): string {
-    return text.replace(/[A-Za-z]/g, c => c.toUpperCase());
+	return text.replace(/[A-Za-z]/g, c => c.toUpperCase());
 }
 
 function textSearch(id: string, searchText: string, searchConditions: boolean) {
-    const needle = normalize(searchText.trim());
-    const baseId = id.split('-')[0];
+	const needle = normalize(searchText.trim());
+	const baseId = id.split('-')[0];
 
-    if (!skillnames[baseId]) {
-        return 0;
-    }
-    if (/^\d+$/.test(searchText.trim())) {
-        return skillnames[baseId].some(s => normalize(s).indexOf(needle) > -1) ? 1 : 0;
-    }
+	if (!skillnames[baseId]) {
+		return 0;
+	}
+	if (/^\d+$/.test(searchText.trim())) {
+		return skillnames[baseId].some(s => normalize(s).indexOf(needle) > -1) ? 1 : 0;
+	}
 
-    if (skillnames[baseId].some(s => normalize(s).indexOf(needle) > -1)) {
-        return 1;
-    } else if (searchConditions) {
-        let op = null;
-        try {
-            op = C(searchText);
-        } catch (_) {
-            return 0;
-        }
-        return parsedConditions[id].some(alt => Matcher.treeMatch(op, alt)) ? 2 : 0;
-    } else {
-        return 0;
-    }
+	if (skillnames[baseId].some(s => normalize(s).indexOf(needle) > -1)) {
+		return 1;
+	} else if (searchConditions) {
+		let op = null;
+		try {
+			op = C(searchText);
+		} catch (_) {
+			return 0;
+		}
+		return parsedConditions[id].some(alt => Matcher.treeMatch(op, alt)) ? 2 : 0;
+	} else {
+		return 0;
+	}
 }
 
 export function SkillList(props) {
@@ -656,11 +656,18 @@ export function SkillList(props) {
 			if (allowConditionSearch && passesTextSearch == 1) {  // name matches
 				allowConditionSearch = false;
 			}
-			const pass = passesTextSearch&& Object.keys(groups_filters).every(group => {
+			const pass = passesTextSearch && Object.keys(groups_filters).every(group => {
 				const check = groups_filters[group].filter(f => active[group][f]);
 				if (check.length == 0) return true;
 				if (group == 'rarity') return check.some(f => matchRarity(id, f));
-				else if (group == 'icontype') return check.some(f => iconIdPrefixes[f].some(p => skillmeta(id).iconId.startsWith(p)));
+				else if (group == 'icontype') {
+					return check.some(f =>
+						iconIdPrefixes[f].some(p => {
+							const meta = skillmeta(id);
+							return meta?.iconId?.startsWith(p) || false;
+						})
+					);
+				}
 				return check.some(f => filterOps[f].some(op => parsedConditions[id].some(alt => Matcher.treeMatch(op, alt))));
 			});
 			if (pass) {
@@ -671,32 +678,32 @@ export function SkillList(props) {
 	}
 
 	function FilterGroup(props) {
-		return <div data-filter-group={props.group}>{props.children.map(c => cloneElement(c, {group: props.group}))}</div>;
+		return <div data-filter-group={props.group}>{props.children.map(c => cloneElement(c, { group: props.group }))}</div>;
 	}
 
 	function FilterButton(props) {
 		return <button data-filter={props.filter} class={`filterButton ${active[props.group][props.filter] ? 'active' : ''}`}><Text id={`skillfilters.${props.filter}`} /></button>
 	}
-	
+
 	function IconFilterButton(props) {
-		return <button data-filter={props.type} class={`iconFilterButton ${active[props.group][props.type] ? 'active': ''}`} style={`background-image:url(/uma-tools/icons/${props.type}1.png)`}></button>
+		return <button data-filter={props.type} class={`iconFilterButton ${active[props.group][props.type] ? 'active' : ''}`} style={`background-image:url(/uma-tools/icons/${props.type}1.png)`}></button>
 	}
 	const items = props.ids
-	.filter(id => skillmeta(id)?.groupId) // 只保留有 groupId 的
-	.map(id => (
-		<li
-		key={id}
-		class={visible.has(id) ? '' : 'hidden'}
-		>
-		<Skill
-			id={id}
-			selected={selectedMap.get(skillmeta(id).groupId) === id}
-		/>
-		</li>
-	));
+		.filter(id => skillmeta(id)?.groupId) // 只保留有 groupId 的
+		.map(id => (
+			<li
+				key={id}
+				class={visible.has(id) ? '' : 'hidden'}
+			>
+				<Skill
+					id={id}
+					selected={selectedMap.get(skillmeta(id).groupId) === id}
+				/>
+			</li>
+		));
 
 	return (
-		<IntlProvider  definition={STRINGS_cn}>
+		<IntlProvider definition={STRINGS_cn}>
 			<div class="filterGroups" onClick={updateFilters}>
 				<div data-filter-group="search">
 					<Localizer><input type="text" class="filterSearch" value={searchText} placeholder={<Text id="skillfilters.search" />} onInput={updateFilters} ref={searchInput} /></Localizer>
