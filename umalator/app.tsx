@@ -796,7 +796,7 @@ function doBasinnChart() {
 							<label for="showhp">耐力消耗显示</label>
 							<input type="checkbox" id="showhp" checked={showHp} onClick={toggleShowHp} />
 						</div>
-					{mode == Mode.Chart && (
+					{/* {mode == Mode.Chart && (
 							<div>
 								<label htmlFor="showhp">显示未实装技能</label>
 								<input
@@ -807,7 +807,7 @@ function doBasinnChart() {
 								/>
 								<div id="status">{status}</div>
 							</div>
-							)}
+							)} */}
 						{
 							mode == Mode.Compare
 							? <button id="run" onClick={doComparison} tabindex={1}>COMPARE</button>
