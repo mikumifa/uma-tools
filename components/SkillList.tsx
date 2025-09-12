@@ -256,7 +256,14 @@ const filterOps = Object.freeze({
 
 const parsedConditions = {};
 Object.keys(skills).forEach(id => {
-	parsedConditions[id] = skilldata(id).alternatives.map(ef => Parser.parse(Parser.tokenize(ef.condition)));
+    parsedConditions[id] = skilldata(id).alternatives.map(ef => {
+        try {
+            return Parser.parse(Parser.tokenize(ef.condition));
+        } catch (err) {
+            console.warn(`解析条件失败 [id=${id}, condition="${ef.condition}"]:`, err);
+            return null; // 出错时返回 null，避免程序崩溃
+        }
+    });
 });
 
 function matchRarity(id, testRarity) {

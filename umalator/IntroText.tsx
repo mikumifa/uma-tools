@@ -131,6 +131,8 @@ export function IntroText(props) {
 				<a href="https://github.com/alpha123/uma-tools">UI</a>
 				<br/>
 				GitHub 仓库链接：<a href="https://github.com/mikumifa/uma-tools">UI</a>
+				<br/>
+				巅峰杯所有技能已经适配
 			</footer>
 		</div>
 	);

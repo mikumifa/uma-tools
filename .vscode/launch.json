@@ -31,6 +31,13 @@
             "request": "launch",
             "program": "python\\old_course_convert.py",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "main.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "python\\main.py",
+            "console": "integratedTerminal"
         }
     ]
 }
