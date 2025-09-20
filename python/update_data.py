@@ -3,14 +3,14 @@
 # 功能：整合原来一堆 perl 脚本，对 master.mdb 导出 skill/skill_meta/skillnames/uma info 等 JSON 文件
 # 使用：python update_master.py [master.mdb] [--run-node]
 
-import os
-import sys
-import sqlite3
-import json
-import shutil
-from pathlib import Path
-import subprocess
 import argparse
+import json
+import os
+import shutil
+import sqlite3
+import subprocess
+import sys
+from pathlib import Path
 
 # ==== 配置 / 辅助函数 =====================================================
 
@@ -184,7 +184,7 @@ SELECT id, rarity,
         sid = int(sid)
         rarity = int(rarity) if rarity is not None else 0
 
-        def patch_modifier(sid_local, val):
+        def patch_modifier(sid_local, val, ability_type):
             if val is None:
                 return val
             try:
@@ -193,6 +193,10 @@ SELECT id, rarity,
                 v = val
             if sid_local in scenario_skills:
                 try:
+                    if sid_local == 210061 and (
+                        ability_type == 31 or ability_type == 9
+                    ):
+                        return v
                     return v * 1.2
                 except Exception:
                     return v
@@ -209,6 +213,7 @@ SELECT id, rarity,
                         float_ability_value_1_1
                         if float_ability_value_1_1 is not None
                         else 0,
+                        ability_type_1_1,
                     ),
                     "target": target_type_1_1,
                 }
@@ -222,6 +227,7 @@ SELECT id, rarity,
                         float_ability_value_1_2
                         if float_ability_value_1_2 is not None
                         else 0,
+                        ability_type_1_2,
                     ),
                     "target": target_type_1_2,
                 }
@@ -235,6 +241,7 @@ SELECT id, rarity,
                         float_ability_value_1_3
                         if float_ability_value_1_3 is not None
                         else 0,
+                        ability_type_1_3,
                     ),
                     "target": target_type_1_3,
                 }
@@ -266,6 +273,7 @@ SELECT id, rarity,
                             float_ability_value_2_1
                             if float_ability_value_2_1 is not None
                             else 0,
+                            ability_type_2_1,
                         ),
                         "target": target_type_2_1,
                     }
@@ -279,6 +287,7 @@ SELECT id, rarity,
                             float_ability_value_2_2
                             if float_ability_value_2_2 is not None
                             else 0,
+                            ability_type_2_2,
                         ),
                         "target": target_type_2_2,
                     }
@@ -292,6 +301,7 @@ SELECT id, rarity,
                             float_ability_value_2_3
                             if float_ability_value_2_3 is not None
                             else 0,
+                            ability_type_2_3,
                         ),
                         "target": target_type_2_3,
                     }

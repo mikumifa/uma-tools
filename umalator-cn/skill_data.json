@@ -9152,12 +9152,12 @@
             "type": 27
           },
           {
-            "modifier": 3600.0,
+            "modifier": 3000.0,
             "target": 1,
             "type": 31
           },
           {
-            "modifier": 420.0,
+            "modifier": 350.0,
             "target": 1,
             "type": 9
           }
