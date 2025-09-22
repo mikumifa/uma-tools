@@ -1,9 +1,10 @@
-import sqlite3
-import csv
-from collections import defaultdict
-from tabulate import tabulate
-from pathlib import Path
 import argparse
+import csv
+import sqlite3
+from collections import defaultdict
+from pathlib import Path
+
+from tabulate import tabulate
 
 
 def get_story_event_stats(db_path: Path, output_csv: Path):
@@ -108,7 +109,7 @@ def main():
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("story_event_stats.csv"),
+        default=Path("results/story_event_stats.csv"),
         help="输出 CSV 文件路径",
     )
     args = parser.parse_args()
