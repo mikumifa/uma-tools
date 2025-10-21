@@ -4,7 +4,7 @@ import { IntlProvider, Text } from 'preact-i18n';
 
 import { CourseData, CourseHelpers, Surface, Orientation } from '../uma-skill-tools/CourseData';
 import { useLanguage } from './Language';
-import { TRACKNAMES_ja, TRACKNAMES_en,TRACKNAMES_cn } from '../strings/common';
+import { TRACKNAMES_ja, TRACKNAMES_en, TRACKNAMES_cn } from '../strings/common';
 
 import courses from '../umalator-cn/course_data.json';
 import tracknames from '../umalator-cn/tracknames.json';
@@ -14,34 +14,34 @@ import './RaceTrack.css';
 export const enum RegionDisplayType { Immediate, Regions, Textbox };
 
 const STRINGS_cn = Object.freeze({
-    'racetrack': Object.freeze({
-        'none': '​',
-        'inner': '（内）',
-        'outer': '（外）',
-        'outin': '（外→内）',
-        'orientation': Object.freeze(['', '顺', '逆', '', '直']),
-        'turf': '草',
-        'dirt': '泥',
-        'straight': '直线',
-        'corner': '弯道{{n}}',
-        'uphill': '上坡',
-        'downhill': '下坡',
-        'phase0': '序盘',
-        'phase1': '中盘',
-        'phase2': '终盘',
-        'phase3': '冲刺',
-        'short': Object.freeze({
-            'straight': '直',
-            'corner': '弯{{n}}',
-            'uphill': '上',
-            'downhill': '下'
-        })
-    }),
-    'tracknames': TRACKNAMES_cn,  // 需要你定义 TRACKNAMES_zh 对应赛道名
-    'coursedesc': Object.freeze({  // 与 STRINGS_en 类似，格式化赛道描述
-        'one': '{{distance}}m{{inout}}',
-        'many': '{{surface}}{{distance}}m{{inout}}'
-    })
+	'racetrack': Object.freeze({
+		'none': '​',
+		'inner': '（内）',
+		'outer': '（外）',
+		'outin': '（外→内）',
+		'orientation': Object.freeze(['', '顺', '逆', '', '直']),
+		'turf': '草',
+		'dirt': '泥',
+		'straight': '直线',
+		'corner': '弯道{{n}}',
+		'uphill': '上坡',
+		'downhill': '下坡',
+		'phase0': '序盘',
+		'phase1': '中盘',
+		'phase2': '终盘',
+		'phase3': '冲刺',
+		'short': Object.freeze({
+			'straight': '直',
+			'corner': '弯{{n}}',
+			'uphill': '上',
+			'downhill': '下'
+		})
+	}),
+	'tracknames': TRACKNAMES_cn,  // 需要你定义 TRACKNAMES_zh 对应赛道名
+	'coursedesc': Object.freeze({  // 与 STRINGS_en 类似，格式化赛道描述
+		'one': '{{distance}}m{{inout}}',
+		'many': '{{surface}}{{distance}}m{{inout}}'
+	})
 });
 
 const STRINGS_ja = Object.freeze({
@@ -100,7 +100,7 @@ const STRINGS_en = Object.freeze({
 	'coursedesc': Object.freeze({  // 1 = turf 2 = dirt
 		'one': '{{distance}}m{{inout}}',
 		'many': '{{surface}} {{distance}}m{{inout}}'
-	}) 
+	})
 });
 
 const inoutKey = Object.freeze(['', 'none', 'inner', 'outer', 'outin']);
@@ -122,7 +122,7 @@ export function TrackSelect(props) {
 	const lang = useLanguage();
 	let [trackid, setTrackid] = useState(courses[props.courseid].raceTrackId);
 	const changeCourse = useCallback((e) => props.setCourseid(+e.target.value), [props.setCourseid]);
-	
+
 	function changeTrack(e) {
 		const newTrackId = +e.target.value;
 		setTrackid(newTrackId);
@@ -212,36 +212,36 @@ export function RaceTrack(props) {
 				'surface': <Text id={course.surface == Surface.Turf ? 'racetrack.turf' : 'racetrack.dirt'} />
 			}} />{' '}<Text id={`racetrack.orientation.${course.turn}`} />
 		</div>
-	, [props.courseid]);
+		, [props.courseid]);
 
 	const almostEverything = useMemo(function () {
 		const flatLevel = 50;
-		const [_, highestPoint, lowestPoint] = course.slopes.reduce((x,s) => {
-			const [last,highest,lowest] = x;
+		const [_, highestPoint, lowestPoint] = course.slopes.reduce((x, s) => {
+			const [last, highest, lowest] = x;
 			const us = last + s.slope / 10000 * s.length;
 			if (us > highest) {
-				return [us,us,lowest];
+				return [us, us, lowest];
 			} else if (us < lowest) {
-				return [us,highest,us];
+				return [us, highest, us];
 			} else {
-				return [us,highest,lowest];
+				return [us, highest, lowest];
 			}
-		}, [0,1,0]);
+		}, [0, 1, 0]);
 		const range = highestPoint - (lowestPoint + highestPoint > -30 ? 0 : lowestPoint);
 		const full = course.slopes.slice();
 		let lastEnd = 0;
-		course.slopes.forEach((s,i) => {
+		course.slopes.forEach((s, i) => {
 			if (s.start != lastEnd) {
-				full.push({start: lastEnd, length: s.start - lastEnd, slope: 0});
+				full.push({ start: lastEnd, length: s.start - lastEnd, slope: 0 });
 			}
 			lastEnd = s.start + s.length;
 		});
 		if (lastEnd < course.distance) {
-			full.push({start: lastEnd, length: course.distance - lastEnd, slope: 0});
+			full.push({ start: lastEnd, length: course.distance - lastEnd, slope: 0 });
 		}
-		full.sort((a,b) => a.start - b.start);
+		full.sort((a, b) => a.start - b.start);
 		const slopeEndHeights = [50];
-		const slopes = full.reduce((elems,s,i) => {
+		const slopes = full.reduce((elems, s, i) => {
 			const lastEndHeight = slopeEndHeights[slopeEndHeights.length - 1];
 			const thisEndHeight = lastEndHeight - (s.slope / 10000 * s.length) / range * 40;
 			slopeEndHeights.push(thisEndHeight);
@@ -257,11 +257,11 @@ export function RaceTrack(props) {
 			return elems;
 		}, []);
 
-		const sections = course.straights.concat(course.corners.map(c => ({start: c.start, end: c.start + c.length}))).sort((a,b) => a.start - b.start);
+		const sections = course.straights.concat(course.corners.map(c => ({ start: c.start, end: c.start + c.length }))).sort((a, b) => a.start - b.start);
 
-		const phase1Start = Math.round(CourseHelpers.phaseStart(course.distance,1))
-		    , phase2Start = Math.round(CourseHelpers.phaseStart(course.distance,2))
-		    , phase3Start = Math.round(CourseHelpers.phaseStart(course.distance,3));
+		const phase1Start = Math.round(CourseHelpers.phaseStart(course.distance, 1))
+			, phase2Start = Math.round(CourseHelpers.phaseStart(course.distance, 2))
+			, phase3Start = Math.round(CourseHelpers.phaseStart(course.distance, 3));
 		let upi = 0, downi = 0;
 		return (
 			<Fragment>
@@ -278,12 +278,12 @@ export function RaceTrack(props) {
 						<SectionText id={s.slope > 0 ? "uphill" : "downhill"} w={s.length / course.distance} />
 					</svg>
 				)}
-				{course.slopes.map((s,i) => {
+				{course.slopes.map((s, i) => {
 					const nodes = [];
 					let markedStart = false;
-					if (s.start != 0 && (i == 0 || s.start != course.slopes[i-1].start + course.slopes[i-1].length)) {
+					if (s.start != 0 && (i == 0 || s.start != course.slopes[i - 1].start + course.slopes[i - 1].length)) {
 						markedStart = true;
-						nodes.push(<DistanceMarker d={s.start} x={s.start / course.distance * 100} y={42} up={i > 0 && s.start - (course.slopes[i-1].start + course.slopes[i-1].length) < course.distance * 0.05} />);
+						nodes.push(<DistanceMarker d={s.start} x={s.start / course.distance * 100} y={42} up={i > 0 && s.start - (course.slopes[i - 1].start + course.slopes[i - 1].length) < course.distance * 0.05} />);
 					}
 					if (s.start + s.length != course.distance) {
 						nodes.push(<DistanceMarker d={s.start + s.length} x={(s.start + s.length) / course.distance * 100} y={42} up={markedStart && s.length < course.distance * 0.05} />);
@@ -294,26 +294,26 @@ export function RaceTrack(props) {
 					<rect x="0" y="0" height="90%" width="100%" fill="rgb(232,232,232)" />
 					<rect x="0" y="90%" height="10%" width="100%" fill="rgb(139,139,139)" />
 				</svg>
-				{course.straights.map((s,i) =>
+				{course.straights.map((s, i) =>
 					<svg class="straight" x={`${s.start / course.distance * 100}%`} y="46%" width={`${(s.end - s.start) / course.distance * 100}%`} height="18%">
 						<rect x="0" y="0" height="90%" width="100%" fill={i % 2 == 0 ? "rgb(209,235,255)" : "rgb(185,224,255)"} />
 						<rect x="0" y="90%" height="10%" width="100%" fill={i % 2 == 0 ? "rgb(23,154,255)" : "rgb(9,146,254)"} />
 						<SectionText id="straight" w={(s.end - s.start) / course.distance * 100} />
 					</svg>
 				)}
-				{course.corners.map((c,i) =>
+				{course.corners.map((c, i) =>
 					<svg class="corner" x={`${c.start / course.distance * 100}%`} y="46%" width={`${c.length / course.distance * 100}%`} height="18%">
 						<rect x="0" y="0" height="90%" width="100%" fill={i % 2 == 0 ? "rgb(255,216,185)" : "rgb(254,228,209)"} />
 						<rect x="0" y="90%" height="10%" width="100%" fill={i % 2 == 0 ? "rgb(254,117,9)" : "rgb(250,121,27)"} />
-						<SectionText id="corner" w={c.length / course.distance} fields={{n: 4 - (course.corners.length - i - 1) % 4}} />
+						<SectionText id="corner" w={c.length / course.distance} fields={{ n: 4 - (course.corners.length - i - 1) % 4 }} />
 					</svg>
 				)}
-				{sections.map((s,i) => {
+				{sections.map((s, i) => {
 					const nodes = [];
 					let markedStart = false;
-					if (s.start != 0 && (i == 0 || s.start != sections[i-1].end)) {
+					if (s.start != 0 && (i == 0 || s.start != sections[i - 1].end)) {
 						markedStart = true;
-						nodes.push(<DistanceMarker d={s.start} x={s.start / course.distance * 100} y={60} up={i > 0 && s.start - sections[i-1].end < course.distance * 0.05} />);
+						nodes.push(<DistanceMarker d={s.start} x={s.start / course.distance * 100} y={60} up={i > 0 && s.start - sections[i - 1].end < course.distance * 0.05} />);
 					}
 					if (s.end != course.distance) {
 						nodes.push(<DistanceMarker d={s.end} x={s.end / course.distance * 100} y={60} up={markedStart && s.end - s.start < course.distance * 0.05} />);
@@ -344,15 +344,15 @@ export function RaceTrack(props) {
 				<DistanceMarker d={phase2Start} x="66.67" y={78} />
 				<DistanceMarker d={phase3Start} x="83.33" y={78} />
 				<rect x="0" y="82%" height="18%" width="100%" fill="rgb(228,235,240)" />
-				{Array.from({length: 25}, (_,i) => i).map(i => <line x1={`${i / 24 * 100}%`} y1="96%" x2={`${i / 24 * 100}%`} y2="100%" stroke="rgb(107,145,173)" stroke-width={i == 0 || i == 24 ? "4" : "2"} />)}
-				{Array.from({length: 24}, (_,i) => i + 1).map(i => <text x={`${(1/48 + (i-1)/24) * 100}%`} y="91%" font-size="10px" text-anchor="middle" dominant-baseline="central" fill="rgb(107,145,173)">{i}</text>)}
+				{Array.from({ length: 25 }, (_, i) => i).map(i => <line x1={`${i / 24 * 100}%`} y1="96%" x2={`${i / 24 * 100}%`} y2="100%" stroke="rgb(107,145,173)" stroke-width={i == 0 || i == 24 ? "4" : "2"} />)}
+				{Array.from({ length: 24 }, (_, i) => i + 1).map(i => <text x={`${(1 / 48 + (i - 1) / 24) * 100}%`} y="91%" font-size="10px" text-anchor="middle" dominant-baseline="central" fill="rgb(107,145,173)">{i}</text>)}
 				<rect x="0" y="98.2%" height="1.8%" width="100%" fill="rgb(107,145,173)" />
 			</Fragment>
 		);
 	}, [props.courseid]);
 
 	const regions = useMemo(function () {
-		return props.regions.reduce((state,desc) => {
+		return props.regions.reduce((state, desc) => {
 			if (desc.type == RegionDisplayType.Immediate && desc.regions.length > 0) {
 				let x = desc.regions[0].start / course.distance * 100;
 				while (state.seen.has(x)) {
@@ -368,7 +368,7 @@ export function RaceTrack(props) {
 					while (i < 10) {
 						if (state.rungs[i].some(b =>
 							(r.start >= b.start && r.start < b.end) || (r.end > b.start && r.end <= b.end)
-								|| (b.start >= r.start && b.start < r.end) || (b.end > r.start && b.end <= r.end)
+							|| (b.start >= r.start && b.start < r.end) || (b.end > r.start && b.end <= r.end)
 						)) {
 							++i;
 						} else {
@@ -378,7 +378,7 @@ export function RaceTrack(props) {
 					state.rungs[i].push(r);
 					const y = 90 - 10 * i;
 					return (
-						<svg class="textbox" x={x+'%'} y={y+'%'} width={w+'%'} height="10%">
+						<svg class="textbox" x={x + '%'} y={y + '%'} width={w + '%'} height="10%">
 							<rect x="0" y="0" width="100%" height="100%" fill={desc.color.fill} stroke={desc.color.stroke} />
 							<text x="0" y="50%" font-size="12px" dominant-baseline="central">{desc.text}</text>
 						</svg>
@@ -395,14 +395,14 @@ export function RaceTrack(props) {
 				);
 			}
 			return state;
-		}, {seen: new Set(), rungs: Array(10).fill(0).map(_ => []), elem: []}).elem;
+		}, { seen: new Set(), rungs: Array(10).fill(0).map(_ => []), elem: [] }).elem;
 	}, [props.regions, course.distance]);
 
 	return (
 		<IntlProvider definition={STRINGS_cn}>
-			<div class="racetrackWrapper" style={`width:${props.width + xOffset + xExtra}px`}>
+			<div class="racetrackWrapper" style={`width: 100%`}>
 				{trackNameHeader}
-				<svg version="1.1" width={props.width + xOffset + xExtra} height={props.height + yOffset + yExtra} xmlns="http://www.w3.org/2000/svg" class="racetrackView" data-courseid={props.courseid} onMouseMove={doMouseMove} onMouseLeave={doMouseLeave}>
+				<svg version="1.1" width="100%" height={props.height + yOffset + yExtra} xmlns="http://www.w3.org/2000/svg" class="racetrackView" data-courseid={props.courseid} onMouseMove={doMouseMove} onMouseLeave={doMouseLeave}>
 					<svg x={props.xOffset} y={props.yOffset} width={props.width} height={props.height}>
 						{almostEverything}
 						{regions}

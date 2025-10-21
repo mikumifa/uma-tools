@@ -43,19 +43,19 @@ export function getActivateableSkills(skills: string[], horse: HorseState, cours
 }
 
 export function getNullRow(skillid: string) {
-	return {id: skillid, min: 0, max: 0, mean: 0, median: 0, results: [], runData: null};
+	return { id: skillid, min: 0, max: 0, mean: 0, median: 0, results: [], runData: null };
 }
 
 function formatBasinn(info) {
-    const value = info.getValue();
-    if (typeof value !== 'number' || isNaN(value)) {
-        return '0.00 L'; // 或者其他你希望的默认值
-    }
-    return value.toFixed(2).replace('-0.00', '0.00') + ' L';
+	const value = info.getValue();
+	if (typeof value !== 'number' || isNaN(value)) {
+		return '0.00 L'; // 或者其他你希望的默认值
+	}
+	return value.toFixed(2).replace('-0.00', '0.00') + ' L';
 }
 
 function SkillNameCell(props) {
-	const id=props.id
+	const id = props.id
 	return (
 		<div className="chartSkillName">
 			<img src={`/uma-tools/icons/${skillmeta(id).iconId}.png`} />
@@ -91,7 +91,7 @@ export function BasinnChart(props) {
 		header: () => <span>技能名</span>,
 		accessorKey: 'id',
 		cell: (info) => <SkillNameCell id={info.getValue()} />,
-		sortingFn: (a,b,_) => skillnames[a] < skillnames[b] ? -1 : 1
+		sortingFn: (a, b, _) => skillnames[a] < skillnames[b] ? -1 : 1
 	}, {
 		header: headerRenderer(radioGroup, selectedType, 'min', '最小', headerClick),
 		accessorKey: 'min',
@@ -111,16 +111,16 @@ export function BasinnChart(props) {
 		cell: formatBasinn,
 	}], [selectedType]);
 
-	const [sorting, setSorting] = useState<SortingState>([{id: 'mean', desc: true}]);
+	const [sorting, setSorting] = useState<SortingState>([{ id: 'mean', desc: true }]);
 
 	const table = useTable({
-		_features: tableFeatures({rowSortingFeature}),
-		_rowModels: {sortedRowModel: createSortedRowModel(sortFns)},
+		_features: tableFeatures({ rowSortingFeature }),
+		_rowModels: { sortedRowModel: createSortedRowModel(sortFns) },
 		columns,
 		data: props.data,
 		onSortingChange: setSorting,
 		enableSortingRemoval: false,
-		state: {sorting}
+		state: { sorting }
 	});
 
 	function handleClick(e) {

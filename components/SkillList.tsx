@@ -256,14 +256,14 @@ const filterOps = Object.freeze({
 
 const parsedConditions = {};
 Object.keys(skills).forEach(id => {
-    parsedConditions[id] = skilldata(id).alternatives.map(ef => {
-        try {
-            return Parser.parse(Parser.tokenize(ef.condition));
-        } catch (err) {
-            console.warn(`解析条件失败 [id=${id}, condition="${ef.condition}"]:`, err);
-            return null; // 出错时返回 null，避免程序崩溃
-        }
-    });
+	parsedConditions[id] = skilldata(id).alternatives.map(ef => {
+		try {
+			return Parser.parse(Parser.tokenize(ef.condition));
+		} catch (err) {
+			console.warn(`解析条件失败 [id=${id}, condition="${ef.condition}"]:`, err);
+			return null; // 出错时返回 null，避免程序崩溃
+		}
+	});
 });
 
 function matchRarity(id, testRarity) {
@@ -710,47 +710,49 @@ export function SkillList(props) {
 		));
 
 	return (
-		<IntlProvider definition={STRINGS_cn}>
-			<div class="filterGroups" onClick={updateFilters}>
-				<div data-filter-group="search">
-					<Localizer><input type="text" class="filterSearch" value={searchText} placeholder={<Text id="skillfilters.search" />} onInput={updateFilters} ref={searchInput} /></Localizer>
+		<div class="chooseSkill">
+			<IntlProvider definition={STRINGS_cn}>
+				<div class="filterGroups" onClick={updateFilters}>
+					<div data-filter-group="search">
+						<Localizer><input type="text" class="filterSearch" value={searchText} placeholder={<Text id="skillfilters.search" />} onInput={updateFilters} ref={searchInput} /></Localizer>
+					</div>
+					<FilterGroup group="rarity">
+						<FilterButton filter="white" />
+						<FilterButton filter="gold" />
+						<FilterButton filter="pink" />
+						<FilterButton filter="unique" />
+						<FilterButton filter="inherit" />
+					</FilterGroup>
+					<FilterGroup group="icontype">
+						{groups_filters['icontype'].map(t => <IconFilterButton type={t} />)}
+					</FilterGroup>
+					<FilterGroup group="strategy">
+						<FilterButton filter="nige" />
+						<FilterButton filter="senkou" />
+						<FilterButton filter="sasi" />
+						<FilterButton filter="oikomi" />
+					</FilterGroup>
+					<FilterGroup group="distance">
+						<FilterButton filter="short" />
+						<FilterButton filter="mile" />
+						<FilterButton filter="medium" />
+						<FilterButton filter="long" />
+					</FilterGroup>
+					<FilterGroup group="surface">
+						<FilterButton filter="turf" />
+						<FilterButton filter="dirt" />
+					</FilterGroup>
+					<FilterGroup group="location">
+						<FilterButton filter="phase0" />
+						<FilterButton filter="phase1" />
+						<FilterButton filter="phase2" />
+						<FilterButton filter="phase3" />
+						<FilterButton filter="finalcorner" />
+						<FilterButton filter="finalstraight" />
+					</FilterGroup>
 				</div>
-				<FilterGroup group="rarity">
-					<FilterButton filter="white" />
-					<FilterButton filter="gold" />
-					<FilterButton filter="pink" />
-					<FilterButton filter="unique" />
-					<FilterButton filter="inherit" />
-				</FilterGroup>
-				<FilterGroup group="icontype">
-					{groups_filters['icontype'].map(t => <IconFilterButton type={t} />)}
-				</FilterGroup>
-				<FilterGroup group="strategy">
-					<FilterButton filter="nige" />
-					<FilterButton filter="senkou" />
-					<FilterButton filter="sasi" />
-					<FilterButton filter="oikomi" />
-				</FilterGroup>
-				<FilterGroup group="distance">
-					<FilterButton filter="short" />
-					<FilterButton filter="mile" />
-					<FilterButton filter="medium" />
-					<FilterButton filter="long" />
-				</FilterGroup>
-				<FilterGroup group="surface">
-					<FilterButton filter="turf" />
-					<FilterButton filter="dirt" />
-				</FilterGroup>
-				<FilterGroup group="location">
-					<FilterButton filter="phase0" />
-					<FilterButton filter="phase1" />
-					<FilterButton filter="phase2" />
-					<FilterButton filter="phase3" />
-					<FilterButton filter="finalcorner" />
-					<FilterButton filter="finalstraight" />
-				</FilterGroup>
-			</div>
-			<ul class="skillList" onClick={toggleSelected}>{items}</ul>
-		</IntlProvider>
+				<ul class="skillList" onClick={toggleSelected}>{items}</ul>
+			</IntlProvider></div>
+
 	);
 }

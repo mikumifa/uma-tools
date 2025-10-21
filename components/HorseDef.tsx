@@ -14,6 +14,7 @@ import './HorseDef.css';
 import umas from '../umas.json';
 import icons from '../icons.json';
 import skills from '../uma-skill-tools/data/skill_data.json';
+import { createPortal } from 'preact/compat';
 
 function skilldata(id: string) {
 	return skills[id.split('-')[0]];
@@ -22,7 +23,7 @@ function skilldata(id: string) {
 const umaAltIds = Object.keys(umas).flatMap(id => Object.keys(umas[id].outfits));
 const umaNamesForSearch = {};
 umaAltIds.forEach(id => {
-	const u = umas[id.slice(0,4)];
+	const u = umas[id.slice(0, 4)];
 	umaNamesForSearch[id] = (u.outfits[id] + ' ' + u.name[0]).toUpperCase().replace(/\./g, '');
 });
 
@@ -39,13 +40,13 @@ export function UmaSelector(props) {
 	const [open, setOpen] = useState(false);
 	const [activeIdx, setActiveIdx] = useState(-1);
 	function update(q) {
-		return {input: q, suggestions: searchNames(q)};
+		return { input: q, suggestions: searchNames(q) };
 	}
-	const [query, search] = useReducer((_,q) => update(q), u && u.name[0], update);
+	const [query, search] = useReducer((_, q) => update(q), u && u.name[0], update);
 	function confirm(oid) {
 		setOpen(false);
 		props.select(oid);
-		const uname = umas[oid.slice(0,4)].name[0];
+		const uname = umas[oid.slice(0, 4)].name[0];
 		search(uname);
 		setActiveIdx(-1);
 		if (input.current != null) {
@@ -114,7 +115,7 @@ export function UmaSelector(props) {
 				<input type="text" class="umaSelectInput" value={query.input} tabindex={props.tabindex} onInput={handleInput} onKeyDown={handleKeyDown} onFocus={() => setOpen(true)} onBlur={handleBlur} ref={input} />
 				<ul class={`umaSuggestions ${open ? 'open' : ''}`} onMouseDown={handleClick} ref={suggestionsContainer}>
 					{query.suggestions.map((oid, i) => {
-						const uid = oid.slice(0,4);
+						const uid = oid.slice(0, 4);
 						return (
 							<li key={oid} data-uma-id={oid} class={`umaSuggestion ${i == activeIdx ? 'selected' : ''}`}>
 								<img src={icons[oid]} /><span>{umas[uid].outfits[oid]} {umas[uid].name[0]}</span>
@@ -153,13 +154,13 @@ export function Stat(props) {
 	);
 }
 
-const APTITUDES = Object.freeze(['S','A','B','C','D','E','F','G']);
+const APTITUDES = Object.freeze(['S', 'A', 'B', 'C', 'D', 'E', 'F', 'G']);
 export function AptitudeIcon(props) {
 	const idx = 7 - APTITUDES.indexOf(props.a);
 	return <img src={`/uma-tools/icons/utx_ico_statusrank_${(100 + idx).toString().slice(1)}.png`} />;
 }
 
-export function AptitudeSelect(props){
+export function AptitudeSelect(props) {
 	const [open, setOpen] = useState(false);
 	function setAptitude(e) {
 		e.stopPropagation();
@@ -214,7 +215,7 @@ export function horseDefTabs() {
 }
 
 export function HorseDef(props) {
-	const {state, setState} = props;
+	const { state, setState } = props;
 	const [skillPickerOpen, setSkillPickerOpen] = useState(false);
 	const [expanded, setExpanded] = useState(() => ImmSet());
 
@@ -273,19 +274,6 @@ export function HorseDef(props) {
 		);
 	}, [expanded]);
 
-	const skillList = useMemo(function () {
-		const u = uniqueSkillForUma(umaId);
-		return Array.from(state.skills).map(id =>
-			expanded.has(id)
-				? <li key={id} class="horseExpandedSkill">
-					  <ExpandedSkillDetails id={id} distanceFactor={props.courseDistance} dismissable={id != u} />
-				  </li>
-				: <li key={id} style="">
-					  <Skill id={id} selected={false} dismissable={id != u} />
-				  </li>
-		);
-	}, [state.skills, umaId, expanded, props.courseDistance]);
-
 	return (
 		<div class="horseDef">
 			<div class="horseDefHeader">{props.children}</div>
@@ -322,18 +310,28 @@ export function HorseDef(props) {
 			</div>
 			<div class="horseSkillHeader">Skills</div>
 			<div class="horseSkillListWrapper" onClick={handleSkillClick}>
-				<ul class="horseSkillList">
-					{skillList}
+				<ul class="horseSkillList animate-skilllist">
+					{Array.from(state.skills).map(id => {
+						const u = uniqueSkillForUma(umaId);
+						return (
+							<li key={id} class="skill-item fade-in">
+								{expanded.has(id)
+									? <ExpandedSkillDetails id={id} distanceFactor={props.courseDistance} dismissable={id != u} />
+									: <Skill id={id} selected={false} dismissable={id != u} />}
+							</li>
+						)
+					})}
 					<li key="add">
 						<div class="skill addSkillButton" onClick={openSkillPicker} tabindex={tabnext()}>
 							<span>+</span>添加技能
 						</div>
 					</li>
 				</ul>
+
 			</div>
 			<div class={`horseSkillPickerOverlay ${skillPickerOpen ? "open" : ""}`} onClick={setSkillPickerOpen.bind(null, false)} />
 			<div class={`horseSkillPickerWrapper ${skillPickerOpen ? "open" : ""}`}>
-				<SkillList ids={selectableSkills} selected={new Set(state.skills)} setSelected={setSkillsAndClose} isOpen={skillPickerOpen} />
+				{skillPickerOpen && createPortal(<SkillList ids={selectableSkills} selected={new Set(state.skills)} setSelected={setSkillsAndClose} isOpen={skillPickerOpen} />, document.body)}
 			</div>
 		</div>
 	);

@@ -1,21 +1,42 @@
 #introtext {
 	font-size: 14px;
-	height: 500px;
-	margin-left: 80px;
-	overflow: auto;
-	padding-right: 20px;
-	width: 950px;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.65);
+	padding: 1.5em 0 0.5em;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	margin-top: 3em;
+	line-height: 1.6;
 }
 
-#introtext > details > summary {
-	font-size: 1.4em;
+/* details 与 summary */
+#introtext>details>summary {
+	font-size: 1.2em;
+	font-weight: 600;
+	cursor: pointer;
+	color: var(--uma-green, rgb(97, 174, 22));
+	margin-bottom: 0.4em;
 }
 
 #introtext h2 {
 	font-size: 1.05em;
 	font-weight: bold;
+	margin-top: 1em;
 }
 
 #sourcelinks {
 	font-size: 0.85em;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.5);
+	margin-top: 0.5em;
+}
+
+/* hover 效果 */
+#sourcelinks a {
+	color: var(--uma-green, rgb(97, 174, 22));
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+#sourcelinks a:hover {
+	color: rgb(61, 125, 209);
 }

@@ -64,9 +64,9 @@ function TimeOfDaySelect(props) {
 	// + 2 because for some reason the icons are 00-02 (noon/evening/night) but the enum values are 1-4 (morning(?) noon evening night)
 	return (
 		<div class="timeofdaySelect" onClick={click}>
-			{Array(3).fill(0).map((_,i) =>
-				<img src={`/uma-tools/icons/utx_ico_timezone_0${i}.png`} title={SKILL_STRINGS_en.skilldetails.time[i+2]}
-					class={i+2 == props.value ? 'selected' : ''} data-timeofday={i+2} />)}
+			{Array(3).fill(0).map((_, i) =>
+				<img src={`/uma-tools/icons/utx_ico_timezone_0${i}.png`} title={SKILL_STRINGS_en.skilldetails.time[i + 2]}
+					class={i + 2 == props.value ? 'selected' : ''} data-timeofday={i + 2} />)}
 		</div>
 	);
 }
@@ -90,9 +90,9 @@ function WeatherSelect(props) {
 	}
 	return (
 		<div class="weatherSelect" onClick={click}>
-			{Array(4).fill(0).map((_,i) =>
-				<img src={`/uma-tools/icons/utx_ico_weather_0${i}.png`} title={SKILL_STRINGS_en.skilldetails.weather[i+1]}
-					class={i+1 == props.value ? 'selected' : ''} data-weather={i+1} />)}
+			{Array(4).fill(0).map((_, i) =>
+				<img src={`/uma-tools/icons/utx_ico_weather_0${i}.png`} title={SKILL_STRINGS_en.skilldetails.weather[i + 1]}
+					class={i + 1 == props.value ? 'selected' : ''} data-weather={i + 1} />)}
 		</div>
 	);
 }
@@ -105,27 +105,27 @@ function SeasonSelect(props) {
 	}
 	return (
 		<div class="seasonSelect" onClick={click}>
-			{Array(4 /* global doenst have late spring for some reason */).fill(0).map((_,i) =>
-				<img src={`/uma-tools/icons/utx_txt_season_0${i}.png`} title={SKILL_STRINGS_en.skilldetails.season[i+1]}
-					class={i+1 == props.value ? 'selected' : ''} data-season={i+1} />)}
+			{Array(4 /* global doenst have late spring for some reason */).fill(0).map((_, i) =>
+				<img src={`/uma-tools/icons/utx_txt_season_0${i}.png`} title={SKILL_STRINGS_en.skilldetails.season[i + 1]}
+					class={i + 1 == props.value ? 'selected' : ''} data-season={i + 1} />)}
 		</div>
 	);
 }
 
 function Histogram(props) {
-	const {data, width, height} = props;
+	const { data, width, height } = props;
 	const axes = useRef(null);
 	const xH = 20;
 	const yW = 40;
 
 	const x = d3.scaleLinear().domain(
-		data[0] == 0 && data[data.length-1] == 0
-			? [-1,1]
-			: [Math.min(0,Math.floor(data[0])),Math.ceil(data[data.length-1])]
-	).range([yW,width-yW]);
+		data[0] == 0 && data[data.length - 1] == 0
+			? [-1, 1]
+			: [Math.min(0, Math.floor(data[0])), Math.ceil(data[data.length - 1])]
+	).range([yW, width - yW]);
 	const bucketize = d3.bin().value(id).domain(x.domain()).thresholds(x.ticks(30));
 	const buckets = bucketize(data);
-	const y = d3.scaleLinear().domain([0,d3.max(buckets, b => b.length)]).range([height-xH,xH]);
+	const y = d3.scaleLinear().domain([0, d3.max(buckets, b => b.length)]).range([height - xH, xH]);
 
 	useEffect(function () {
 		const g = d3.select(axes.current);
@@ -134,7 +134,7 @@ function Histogram(props) {
 		g.append('g').attr('transform', `translate(${yW},0)`).call(d3.axisLeft(y));
 	}, [data, width, height]);
 
-	const rects = buckets.map((b,i) =>
+	const rects = buckets.map((b, i) =>
 		<rect key={i} fill="#2a77c5" stroke="black" x={x(b.x0)} y={y(b.length)} width={x(b.x1) - x(b.x0)} height={height - xH - y(b.length)} />
 	);
 	return (
@@ -154,7 +154,7 @@ function BasinnChartPopover(props) {
 		computePosition(anchor, popover.current, {
 			placement: 'bottom-start',
 			middleware: [flip()]
-		}).then(({x,y}) => {
+		}).then(({ x, y }) => {
 			popover.current.style.transform = `translate(${x}px,${y}px)`;
 			popover.current.style.visibility = 'visible';
 		});
@@ -171,30 +171,30 @@ function BasinnChartPopover(props) {
 function VelocityLines(props) {
 	const axes = useRef(null);
 	const data = props.data;
-	const x = d3.scaleLinear().domain([0,props.courseDistance]).range([0,props.width]);
-	const y = data && d3.scaleLinear().domain([0,d3.max(data.v, v => d3.max(v))]).range([props.height,0]);
-	const hpY = data && d3.scaleLinear().domain([0,d3.max(data.hp, hp => d3.max(hp))]).range([props.height,0]);
+	const x = d3.scaleLinear().domain([0, props.courseDistance]).range([0, props.width]);
+	const y = data && d3.scaleLinear().domain([0, d3.max(data.v, v => d3.max(v))]).range([props.height, 0]);
+	const hpY = data && d3.scaleLinear().domain([0, d3.max(data.hp, hp => d3.max(hp))]).range([props.height, 0]);
 	useEffect(function () {
 		if (axes.current == null) return;
 		const g = d3.select(axes.current);
 		g.selectAll('*').remove();
-		g.append('g').attr('transform', `translate(${props.xOffset},${props.height+5})`).call(d3.axisBottom(x));
+		g.append('g').attr('transform', `translate(${props.xOffset},${props.height + 5})`).call(d3.axisBottom(x));
 		if (data) {
 			g.append('g').attr('transform', `translate(${props.xOffset},4)`).call(d3.axisLeft(y));
 		}
 	}, [props.data, props.courseDistance, props.width, props.height]);
-	const colors = ['#2a77c5', '#c52a2a'];
-	const hpColors = ['#688aab', '#ab6868'];
+	const colors = ['#3d7dd1', '#ff6fba'];
+	const hpColors = ['#7aa8e7', '#ff9ed0'];
 	return (
 		<Fragment>
 			<g transform={`translate(${props.xOffset},5)`}>
-				{data && data.v.map((v,i) =>
+				{data && data.v.map((v, i) =>
 					<path fill="none" stroke={colors[i]} stroke-width="2.5" d={
-						d3.line().x(j => x(data.p[i][j])).y(j => y(v[j]))(data.p[i].map((_,j) => j))
+						d3.line().x(j => x(data.p[i][j])).y(j => y(v[j]))(data.p[i].map((_, j) => j))
 					} />
-				).concat(props.showHp ? data.hp.map((hp,i) =>
+				).concat(props.showHp ? data.hp.map((hp, i) =>
 					<path fill="none" stroke={hpColors[i]} stroke-width="2.5" d={
-						d3.line().x(j => x(data.p[i][j])).y(j => hpY(hp[j]))(data.p[i].map((_,j) => j))
+						d3.line().x(j => x(data.p[i][j])).y(j => hpY(hp[j]))(data.p[i].map((_, j) => j))
 					} />
 				) : [])}
 			</g>
@@ -217,17 +217,17 @@ class RaceParams extends Record({
 	season: Season.Spring,
 	time: Time.Midday,
 	grade: Grade.G1
-}) {}
+}) { }
 
 const ORDER_RANGE_FOR_STRATEGY = Object.freeze({
-	'Nige': [1,1],
-	'Senkou': [1,4],
-	'Sasi': [5,9],
-	'Oikomi': [5,9],
-	'Oonige': [1,1]
+	'Nige': [1, 1],
+	'Senkou': [1, 4],
+	'Sasi': [5, 9],
+	'Oikomi': [5, 9],
+	'Oonige': [1, 1]
 });
 
-function racedefToParams({mood, ground, weather, season, time, grade}: RaceParams, includeOrder?: string): RaceParameters {
+function racedefToParams({ mood, ground, weather, season, time, grade }: RaceParams, includeOrder?: string): RaceParameters {
 	return {
 		mood, groundCondition: ground, weather, season, time, grade,
 		popularity: 1,
@@ -311,8 +311,8 @@ async function deserialize(hash) {
 	}
 }
 
-const EMPTY_RESULTS_STATE = {courseId: DEFAULT_COURSE_ID, results: [], runData: null, chartData: null, displaying: ''};
-function updateResultsState(state: typeof EMPTY_RESULTS_STATE, o: number | string | {results: any, runData: any}) {
+const EMPTY_RESULTS_STATE = { courseId: DEFAULT_COURSE_ID, results: [], runData: null, chartData: null, displaying: '' };
+function updateResultsState(state: typeof EMPTY_RESULTS_STATE, o: number | string | { results: any, runData: any }) {
 	if (typeof o == 'number') {
 		return {
 			courseId: o,
@@ -322,7 +322,7 @@ function updateResultsState(state: typeof EMPTY_RESULTS_STATE, o: number | strin
 			displaying: ''
 		};
 	} else if (typeof o == 'string') {
-		postEvent('setChartData', {display: o});
+		postEvent('setChartData', { display: o });
 		return {
 			courseId: state.courseId,
 			results: state.results,
@@ -344,10 +344,10 @@ function updateResultsState(state: typeof EMPTY_RESULTS_STATE, o: number | strin
 const enum EventType { CM, LOH }
 
 const presets = [
-	{type: EventType.CM, date: '2025-09', courseId: 10807, season: Season.Autumn, ground: GroundCondition.Good, weather: Weather.Sunny, Time: Time.Midday},
-	{type: EventType.LOH, date: '2025-08', courseId: 10105, season: Season.Summer, Time: Time.Midday},
-	{type: EventType.CM, date: '2025-07-25', courseId: 10906, ground: GroundCondition.Yielding, weather: Weather.Cloudy, season: Season.Summer, time: Time.Midday},
-	{type: EventType.CM, date: '2025-06-21', courseId: 10606, ground: GroundCondition.Good, weather: Weather.Sunny, season: Season.Spring, time: Time.Midday}
+	{ type: EventType.CM, date: '2025-09', courseId: 10807, season: Season.Autumn, ground: GroundCondition.Good, weather: Weather.Sunny, Time: Time.Midday },
+	{ type: EventType.LOH, date: '2025-08', courseId: 10105, season: Season.Summer, Time: Time.Midday },
+	{ type: EventType.CM, date: '2025-07-25', courseId: 10906, ground: GroundCondition.Yielding, weather: Weather.Cloudy, season: Season.Summer, time: Time.Midday },
+	{ type: EventType.CM, date: '2025-06-21', courseId: 10606, ground: GroundCondition.Good, weather: Weather.Sunny, season: Season.Spring, time: Time.Midday }
 ]
 	.map(def => ({
 		type: def.type,
@@ -362,43 +362,47 @@ const presets = [
 			grade: Grade.G1
 		})
 	}))
-	.sort((a,b) => +b.date - +a.date);
+	.sort((a, b) => +b.date - +a.date);
 
 function RacePresets(props) {
 	const id = useId();
 	if (CC_GLOBAL) {
-		return <Fragment></Fragment>;
+		return null;
 	}
 	return (
-		<Fragment>
+		<div class="presetSelect">
 			<label for={id}>Preset:</label>
 			<select id={id} onChange={e => { const i = +e.currentTarget.value; i > -1 && props.set(presets[i].courseId, presets[i].racedef); }}>
 				<option value="-1"></option>
-				{presets.map((p,i) => <option value={i}>{p.date.getFullYear() + '-' + (100 + p.date.getUTCMonth() + 1).toString().slice(-2) + (p.type == EventType.CM ? ' CM' : ' LOH')}</option>)}
+				{presets.map((p, i) => <option value={i}>{p.date.getFullYear() + '-' + (100 + p.date.getUTCMonth() + 1).toString().slice(-2) + (p.type == EventType.CM ? ' CM' : ' LOH')}</option>)}
 			</select>
-		</Fragment>
+		</div>
 	);
 }
 
 const baseSkillsToTest = Object.keys(skilldata).filter(id => skilldata[id].rarity < 3);
 
 const enum Mode { Compare, Chart }
-const enum UiStateMsg { SetModeCompare, SetModeChart, SetCurrentIdx0, SetCurrentIdx1, ToggleExpand }
+const enum UiStateMsg { SetModeCompare, SetModeChart, SetCurrentIdx0, SetCurrentIdx1, ToggleExpand, OpenOverlay, CloseOverlay }
 
-const DEFAULT_UI_STATE = {mode: Mode.Chart, currentIdx: 0, expanded: false};
+const DEFAULT_UI_STATE = { mode: Mode.Chart, currentIdx: 0, expanded: false };
 
 function nextUiState(state: typeof DEFAULT_UI_STATE, msg: UiStateMsg) {
 	switch (msg) {
 		case UiStateMsg.SetModeCompare:
-			return {...state, mode: Mode.Compare};
+			return { ...state, mode: Mode.Compare };
 		case UiStateMsg.SetModeChart:
-			return {...state, mode: Mode.Chart, currentIdx: 0, expanded: false};
+			return { ...state, mode: Mode.Chart, currentIdx: 0, expanded: false };
 		case UiStateMsg.SetCurrentIdx0:
-			return {...state, currentIdx: 0};
+			return { ...state, currentIdx: 0 };
 		case UiStateMsg.SetCurrentIdx1:
-			return {...state, currentIdx: 1};
+			return { ...state, currentIdx: 1 };
 		case UiStateMsg.ToggleExpand:
-			return {...state, expanded: !state.expanded};
+			return { ...state, expanded: !state.expanded };
+		case UiStateMsg.OpenOverlay:
+			return { ...state, expanded: true };
+		case UiStateMsg.CloseOverlay:
+			return { ...state, expanded: false };
 	}
 }
 
@@ -406,25 +410,70 @@ function App(props) {
 	//const [language, setLanguage] = useLanguageSelect();
 	const [skillsOpen, setSkillsOpen] = useState(false);
 	const [status, setStatus] = useState("等待操作...");
-	const workerProgress = useRef({ w1: 0, w2: 0 }); 
+	const workerProgress = useRef({ w1: 0, w2: 0 });
 	const [ShowUnreleased, setShowUnreleased] = useState(false);
+	const [viewportWidth, setViewportWidth] = useState(() =>
+		typeof window === 'undefined' ? 1540 : window.innerWidth
+	);
+
+	useEffect(() => {
+		if (typeof window === 'undefined') return;
+		const handleResize = () => setViewportWidth(window.innerWidth);
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
+
+	const isMobile = viewportWidth <= 900;
+
+	const trackWidth = useMemo(() => {
+		const maxWidth = 1700; // 桌面最大可拉宽
+		const padding = isMobile ? 24 : viewportWidth * 0.05; // 保留 5% 边距
+		return Math.max(300, Math.min(maxWidth, viewportWidth - padding));
+	}, [viewportWidth, isMobile]);
+
+	const trackHeight = useMemo(
+		() => (isMobile ? Math.round(trackWidth * 0.72) : Math.round(trackWidth * 0.28)),
+		[trackWidth, isMobile]
+	);
+
+	const velocityHeight = useMemo(
+		() => (isMobile ? Math.round(trackHeight * 1.1) : Math.round(trackHeight * 1.05)),
+		[trackHeight, isMobile]
+	);
+
+	const trackWidthStyle = useMemo(
+		() => ({ '--track-width': `${trackWidth}px` } as any),
+		[trackWidth]
+	);
+
+	const histogramWidth = useMemo(
+		() => Math.min(600, Math.max(280, trackWidth - (isMobile ? 40 : 100))),
+		[trackWidth, isMobile]
+	);
+
+	const histogramHeight = useMemo(
+		() => (isMobile ? Math.round(histogramWidth * 0.7) : Math.round(histogramWidth * 0.55)),
+		[histogramWidth, isMobile]
+	);
+
 	const [racedef, setRaceDef] = useState(() => new RaceParams());
 	const [nsamples, setSamples] = useState(DEFAULT_SAMPLES);
 	const [seed, setSeed] = useState(DEFAULT_SEED);
-	const [usePosKeep, togglePosKeep] = useReducer((b,_) => !b, true);
-	const [showHp, toggleShowHp] = useReducer((b,_) => !b, false);
-	const [{courseId, results, runData, chartData, displaying}, setSimState] = useReducer(updateResultsState, EMPTY_RESULTS_STATE);
+	const [usePosKeep, togglePosKeep] = useReducer((b, _) => !b, true);
+	const [showHp, toggleShowHp] = useReducer((b, _) => !b, false);
+	const [showRunPane, setShowRunPane] = useState(true);
+	const [{ courseId, results, runData, chartData, displaying }, setSimState] = useReducer(updateResultsState, EMPTY_RESULTS_STATE);
 	const setCourseId = setSimState;
 	const setResults = setSimState;
 	const setChartData = setSimState;
 
-	const [tableData, updateTableData] = useReducer((data,newData) => {
+	const [tableData, updateTableData] = useReducer((data, newData) => {
 		const merged = new Map();
 		if (newData == 'reset') {
 			return merged;
 		}
-		data.forEach((v,k) => merged.set(k,v));
-		newData.forEach((v,k) => merged.set(k,v));
+		data.forEach((v, k) => merged.set(k, v));
+		newData.forEach((v, k) => merged.set(k, v));
 		return merged;
 	}, new Map());
 
@@ -439,17 +488,34 @@ function App(props) {
 	const [uma1, setUma1] = useState(() => new HorseState());
 	const [uma2, setUma2] = useState(() => new HorseState());
 
-	const [{mode, currentIdx, expanded}, updateUiState] = useReducer(nextUiState, DEFAULT_UI_STATE);
+	const [{ mode, currentIdx, expanded }, updateUiState] = useReducer(nextUiState, DEFAULT_UI_STATE);
 	function toggleExpand(e: Event) {
 		e.stopPropagation();
-		postEvent('toggleExpand', {expand: !expanded});
-		updateUiState(UiStateMsg.ToggleExpand);
+		const next = !expanded;
+		postEvent('toggleExpand', { expand: next });
+		updateUiState(next ? UiStateMsg.OpenOverlay : UiStateMsg.CloseOverlay);
 	}
+	function openUmaOverlay() {
+		if (!expanded) {
+			postEvent('toggleExpand', { expand: true });
+			updateUiState(UiStateMsg.OpenOverlay);
+		} else {
+			postEvent('toggleExpand', { expand: false });
+			updateUiState(UiStateMsg.CloseOverlay);
 
-	const [worker1, worker2] = [1,2].map(_ => useMemo(() => {
+		}
+	}
+	useEffect(() => {
+		if (!expanded || typeof window === 'undefined') return;
+		const overlay = document.getElementById('umaOverlay') as HTMLElement | null;
+		overlay && overlay.focus();
+	}, [expanded]);
+	const topPaneClass = [chartData ? 'hasResults' : '', isMobile ? 'mobileLayout' : 'desktopLayout', showRunPane ? '' : 'runPaneHidden'].filter(Boolean).join(' ');
+
+	const [worker1, worker2] = [1, 2].map(_ => useMemo(() => {
 		const w = new Worker('./simulator.worker.js');
 		w.addEventListener('message', function (e) {
-			const {type, results} = e.data;
+			const { type, results } = e.data;
 			switch (type) {
 				case 'compare':
 					setResults(results);
@@ -490,22 +556,22 @@ function App(props) {
 	}
 
 	function copyUmaToRight() {
-		postEvent('copyUma', {direction: 'to-right'});
+		postEvent('copyUma', { direction: 'to-right' });
 		setUma2(uma1);
 	}
 
 	function copyUmaToLeft() {
-		postEvent('copyUma', {direction: 'to-left'});
+		postEvent('copyUma', { direction: 'to-left' });
 		setUma1(uma2);
 	}
 
 	function swapUmas() {
-		postEvent('copyUma', {direction: 'swap'});
+		postEvent('copyUma', { direction: 'swap' });
 		setUma1(uma2);
 		setUma2(uma1);
 	}
 
-	const strings = {skillnames: {}, tracknames: TRACKNAMES_cn,};
+	const strings = { skillnames: {}, tracknames: TRACKNAMES_cn, };
 	const langid = +(props.lang == 'en');
 	Object.keys(skillnames).forEach(id => strings.skillnames[id] = skillnames[id][langid]);
 
@@ -519,46 +585,46 @@ function App(props) {
 				racedef: racedefToParams(racedef),
 				uma1: uma1.toJS(),
 				uma2: uma2.toJS(),
-				options: {seed, usePosKeep}
+				options: { seed, usePosKeep }
 			}
 		});
 	}
 
-function doBasinnChart() {
-    postEvent('doBasinnChart', {});
-    const params = racedefToParams(racedef, uma1.strategy);
-    const skills = getActivateableSkills(
-        baseSkillsToTest.filter(s => !uma1.skills.has(s) && (s[0] !== '9' || !uma1.skills.has('1' + s.slice(1)))),
-        uma1, course, params
-    );
-    const filler = new Map();
-    skills.forEach(id => filler.set(id, getNullRow(id)));
+	function doBasinnChart() {
+		postEvent('doBasinnChart', {});
+		const params = racedefToParams(racedef, uma1.strategy);
+		const skills = getActivateableSkills(
+			baseSkillsToTest.filter(s => !uma1.skills.has(s) && (s[0] !== '9' || !uma1.skills.has('1' + s.slice(1)))),
+			uma1, course, params
+		);
+		const filler = new Map();
+		skills.forEach(id => filler.set(id, getNullRow(id)));
 
-    const uma = uma1.toJS();
-    const skills1 = skills.slice(0, Math.floor(skills.length / 2));
-    const skills2 = skills.slice(Math.floor(skills.length / 2));
-    updateTableData('reset');
-    updateTableData(filler);
-	worker1.onmessage = (e) => {
-		const data = e.data;
-		if (data.type === 'progress') {
-			workerProgress.current.w1 = data.percent;
-			const minProgress = Math.min(workerProgress.current.w1, workerProgress.current.w2);
-			setStatus(`当前计算进度：${minProgress}%`);
-		}
-	};
+		const uma = uma1.toJS();
+		const skills1 = skills.slice(0, Math.floor(skills.length / 2));
+		const skills2 = skills.slice(Math.floor(skills.length / 2));
+		updateTableData('reset');
+		updateTableData(filler);
+		worker1.onmessage = (e) => {
+			const data = e.data;
+			if (data.type === 'progress') {
+				workerProgress.current.w1 = data.percent;
+				const minProgress = Math.min(workerProgress.current.w1, workerProgress.current.w2);
+				setStatus(`当前计算进度：${minProgress}%`);
+			}
+		};
 
-	worker2.onmessage = (e) => {
-		const data = e.data;
-		if (data.type === 'progress') {
-			workerProgress.current.w2 = data.percent;
-			const minProgress = Math.min(workerProgress.current.w1, workerProgress.current.w2);
-			setStatus(`当前计算进度：${minProgress}%`);
-		}
-};
-    worker1.postMessage({msg: 'chart', data: {skills: skills1, course, racedef: params, uma, options: {seed, usePosKeep}}});
-    worker2.postMessage({msg: 'chart', data: {skills: skills2, course, racedef: params, uma, options: {seed, usePosKeep}}});
-}
+		worker2.onmessage = (e) => {
+			const data = e.data;
+			if (data.type === 'progress') {
+				workerProgress.current.w2 = data.percent;
+				const minProgress = Math.min(workerProgress.current.w1, workerProgress.current.w2);
+				setStatus(`当前计算进度：${minProgress}%`);
+			}
+		};
+		worker1.postMessage({ msg: 'chart', data: { skills: skills1, course, racedef: params, uma, options: { seed, usePosKeep } } });
+		worker2.postMessage({ msg: 'chart', data: { skills: skills2, course, racedef: params, uma, options: { seed, usePosKeep } } });
+	}
 
 	function basinnChartSelection(skillId) {
 		const r = tableData.get(skillId);
@@ -566,12 +632,12 @@ function doBasinnChart() {
 	}
 
 	function addSkillFromTable(skillId) {
-		postEvent('addSkillFromTable', {skillId});
+		postEvent('addSkillFromTable', { skillId });
 		setUma1(uma1.set('skills', uma1.skills.add(skillId)));
 	}
 
 	function showPopover(skillId) {
-		postEvent('showPopover', {skillId});
+		postEvent('showPopover', { skillId });
 		setPopoverSkill(skillId);
 	}
 
@@ -595,37 +661,30 @@ function doBasinnChart() {
 	}
 
 	const mid = Math.floor(results.length / 2);
-	const median = results.length % 2 == 0 ? (results[mid-1] + results[mid]) / 2 : results[mid];
-	const mean = results.reduce((a,b) => a+b, 0) / results.length;
+	const median = results.length % 2 == 0 ? (results[mid - 1] + results[mid]) / 2 : results[mid];
+	const mean = results.reduce((a, b) => a + b, 0) / results.length;
 
 	const colors = [
-		{stroke: 'rgb(42, 119, 197)', fill: 'rgba(42, 119, 197, 0.7)'},
-		{stroke: 'rgb(197, 42, 42)', fill: 'rgba(197, 42, 42, 0.7)'}
+		{ stroke: '#3d7dd1', fill: 'rgba(61, 125, 209, 0.7)' },
+		{ stroke: '#ff6fba', fill: 'rgba(255, 111, 186, 0.7)' }
 	];
-	const skillActivations = chartData == null ? [] : chartData.sk.flatMap((a,i) => {
+	const skillActivations = chartData == null ? [] : chartData.sk.flatMap((a, i) => {
 		return a.keys().flatMap(id => {
 			if (NO_SHOW.indexOf(skillmeta(id).iconId) > -1) return [];
 			else return a.get(id).map(ar => ({
 				type: RegionDisplayType.Textbox,
 				color: colors[i],
 				text: skillnames[id][0],
-				regions: [{start: ar[0], end: ar[1]}]
+				regions: [{ start: ar[0], end: ar[1] }]
 			}));
 		}).toArray();
 	});
 
-	const umaTabs = (
-		<Fragment>
-			<div class={`umaTab ${currentIdx == 0 ? 'selected' : ''}`} onClick={() => updateUiState(UiStateMsg.SetCurrentIdx0)}>Umamusume 1</div>
-			{mode == Mode.Compare && <div class={`umaTab ${currentIdx == 1 ? 'selected' : ''}`} onClick={() => updateUiState(UiStateMsg.SetCurrentIdx1)}>Umamusume 2<div id="expandBtn" title="Expand panel" onClick={toggleExpand} /></div>}
-		</Fragment>
-	);
-
 	let resultsPane;
 	if (mode == Mode.Compare && results.length > 0) {
 		resultsPane = (
-			<div id="resultsPaneWrapper">
-				<div id="resultsPane" class="mode-compare">
+			<div id="resultsPaneWrapper" style={trackWidthStyle}>
+				<div id="resultsPane" class="mode-compare" style={trackWidthStyle}>
 					<table id="resultsSummary">
 						<tfoot>
 							<tr>
@@ -634,43 +693,43 @@ function doBasinnChart() {
 									maxrun: ['最大', '最大差异'],
 									meanrun: ['平均', '平均差异'],
 									medianrun: ['中位', '差异的中位数']
-								}).map(([k,label]) =>
+								}).map(([k, label]) =>
 									<th scope="col" class={displaying == k ? 'selected' : ''} title={label[1]} onClick={() => setChartData(k)}>{label[0]}</th>
 								)}
 							</tr>
 						</tfoot>
 						<tbody>
 							<tr>
-								<td onClick={() => setChartData('minrun')}>{results[0].toFixed(2)}<span class="unit-basinn">{CC_GLOBAL?'lengths':'バ身'}</span></td>
-								<td onClick={() => setChartData('maxrun')}>{results[results.length-1].toFixed(2)}<span class="unit-basinn">{CC_GLOBAL?'lengths':'バ身'}</span></td>
-								<td onClick={() => setChartData('meanrun')}>{mean.toFixed(2)}<span class="unit-basinn">{CC_GLOBAL?'lengths':'バ身'}</span></td>
-								<td onClick={() => setChartData('medianrun')}>{median.toFixed(2)}<span class="unit-basinn">{CC_GLOBAL?'lengths':'バ身'}</span></td>
+								<td onClick={() => setChartData('minrun')}>{results[0].toFixed(2)}<span class="unit-basinn">{CC_GLOBAL ? 'lengths' : 'バ身'}</span></td>
+								<td onClick={() => setChartData('maxrun')}>{results[results.length - 1].toFixed(2)}<span class="unit-basinn">{CC_GLOBAL ? 'lengths' : 'バ身'}</span></td>
+								<td onClick={() => setChartData('meanrun')}>{mean.toFixed(2)}<span class="unit-basinn">{CC_GLOBAL ? 'lengths' : 'バ身'}</span></td>
+								<td onClick={() => setChartData('medianrun')}>{median.toFixed(2)}<span class="unit-basinn">{CC_GLOBAL ? 'lengths' : 'バ身'}</span></td>
 							</tr>
 						</tbody>
 					</table>
-					<div id="resultsHelp">负数意味着 <strong style="color:#2a77c5">Umamusume 1</strong> 更快, 正数意味着 <strong style="color:#c52a2a">Umamusume 2</strong> 更快</div>
-					<Histogram width={500} height={333} data={results} />
+					<div id="resultsHelp">负数意味着 <strong style="color:var(--uma-blue)">Umamusume 1</strong> 更快, 正数意味着 <strong style="color:var(--uma-pink)">Umamusume 2</strong> 更快</div>
+					<Histogram width={histogramWidth} height={histogramHeight} data={results} />
 				</div>
 				<div id="infoTables">
 					<table>
-						<caption style="color:#2a77c5">Umamusume 1</caption>
+						<caption style="color:var(--uma-blue)">Umamusume 1</caption>
 						<tbody>
-						<tr>
-						<th>完成时间</th>
-						<td>{chartData.t[0][chartData.t[0].length-1].toFixed(4) + ' 秒'}</td>
-						</tr>
-						<tr>
-						<th>起跑延迟</th>
-						<td>{chartData.sdly[0].toFixed(4) + ' 秒'}</td>
-						</tr>
-						<tr>
-						<th>最高速度</th>
-						<td>{chartData.v[0].reduce((a,b) => Math.max(a,b), 0).toFixed(2) + ' 米/秒'}</td>
-						</tr>
+							<tr>
+								<th>完成时间</th>
+								<td>{chartData.t[0][chartData.t[0].length - 1].toFixed(4) + ' 秒'}</td>
+							</tr>
+							<tr>
+								<th>起跑延迟</th>
+								<td>{chartData.sdly[0].toFixed(4) + ' 秒'}</td>
+							</tr>
+							<tr>
+								<th>最高速度</th>
+								<td>{chartData.v[0].reduce((a, b) => Math.max(a, b), 0).toFixed(2) + ' 米/秒'}</td>
+							</tr>
 						</tbody>
 						{chartData.sk[0].size > 0 &&
 							<tbody>
-								{chartData.sk[0].entries().map(([id,ars]) => ars.flatMap(pos =>
+								{chartData.sk[0].entries().map(([id, ars]) => ars.flatMap(pos =>
 									<tr>
 										<th>{skillnames[id][0]}</th>
 										<td>{`${pos[0].toFixed(2)} m – ${pos[1].toFixed(2)} m`}</td>
@@ -678,15 +737,15 @@ function doBasinnChart() {
 							</tbody>}
 					</table>
 					<table>
-						<caption style="color:#c52a2a">Umamusume 2</caption>
+						<caption style="color:var(--uma-pink)">Umamusume 2</caption>
 						<tbody>
-							<tr><th>完成时间</th><td>{chartData.t[1][chartData.t[1].length-1].toFixed(4) + ' s'}</td></tr>
+							<tr><th>完成时间</th><td>{chartData.t[1][chartData.t[1].length - 1].toFixed(4) + ' s'}</td></tr>
 							<tr><th>起跑延迟</th><td>{chartData.sdly[1].toFixed(4) + ' s'}</td></tr>
-							<tr><th>最高速度</th><td>{chartData.v[1].reduce((a,b) => Math.max(a,b), 0).toFixed(2) + ' m/s'}</td></tr>
+							<tr><th>最高速度</th><td>{chartData.v[1].reduce((a, b) => Math.max(a, b), 0).toFixed(2) + ' m/s'}</td></tr>
 						</tbody>
 						{chartData.sk[1].size > 0 &&
 							<tbody>
-								{chartData.sk[1].entries().map(([id,ars]) => ars.flatMap(pos =>
+								{chartData.sk[1].entries().map(([id, ars]) => ars.flatMap(pos =>
 									<tr>
 										<th>{skillnames[id][0]}</th>
 										<td>{`${pos[0].toFixed(2)} m – ${pos[1].toFixed(2)} m`}</td>
@@ -698,54 +757,46 @@ function doBasinnChart() {
 		);
 	} else if (mode == Mode.Chart && tableData.size > 0) {
 		const filteredData = useMemo(() => {
-		return tableData.values()
-			.toArray()
-			.filter(row => {
+			return tableData.values()
+				.toArray()
+				.filter(row => {
 					if (!row?.id) {
-					console.warn('Warning: row.id 不存在，已过滤', row);
-					return false;
+						console.warn('Warning: row.id 不存在，已过滤', row);
+						return false;
 					}
 
 					if (!skillnames[row.id]) {
-					console.warn(`Warning: skillnames 中没有找到 id=${row.id}，已过滤`);
-					return false;
-				}
+						console.warn(`Warning: skillnames 中没有找到 id=${row.id}，已过滤`);
+						return false;
+					}
 					const skillName = skillnames[row.id][0];
 					if (!skillName) {
-					console.warn(`Warning: skillnames 中没有找到 id=${row.id} 内容为空，已过滤`);
-					return false;
+						console.warn(`Warning: skillnames 中没有找到 id=${row.id} 内容为空，已过滤`);
+						return false;
 					}
 					if (!ShowUnreleased && skillName.startsWith('[未实装]')) {
-					return false;
+						return false;
 					}
 					return true;
-			}) .map(row => {
-            return {
-                ...row,
-				mean: Number.isNaN(row.mean) ? 0 : row.mean,
-                min: Number.isNaN(row.min) ? 0 : row.min,
-                max: Number.isNaN(row.max) ? 0 : row.max,
-                median: Number.isNaN(row.mean) ? 0 : row.median
-				
-            };
-        });;
+				}).map(row => {
+					return {
+						...row,
+						mean: Number.isNaN(row.mean) ? 0 : row.mean,
+						min: Number.isNaN(row.min) ? 0 : row.min,
+						max: Number.isNaN(row.max) ? 0 : row.max,
+						median: Number.isNaN(row.mean) ? 0 : row.median
+
+					};
+				});;
 		}, [tableData]);
 		resultsPane = (
-			<div id="resultsPaneWrapper">
-				<div id="resultsPane" class="mode-chart">
+			<div id="resultsPaneWrapper" style={trackWidthStyle}>
+				<div id="resultsPane" class="mode-chart" style={trackWidthStyle}>
 					<BasinnChart data={filteredData} hidden={uma1.skills}
 						onSelectionChange={basinnChartSelection}
 						onRunTypeChange={setChartData}
 						onDblClickRow={addSkillFromTable}
 						onInfoClick={showPopover} />
-				</div>
-			</div>
-		);
-	} else if (CC_GLOBAL) {
-		resultsPane = (
-			<div id="resultsPaneWrapper">
-				<div id="resultsPane">
-					<IntroText />
 				</div>
 			</div>
 		);
@@ -755,16 +806,51 @@ function doBasinnChart() {
 
 	return (
 		<Language.Provider value={props.lang}>
+
 			<IntlProvider definition={strings}>
-				<div id="topPane" class={chartData ? 'hasResults' : ''}>
-					<RaceTrack courseid={courseId} width={960} height={240} xOffset={20} yOffset={15} yExtra={20} mouseMove={rtMouseMove} mouseLeave={rtMouseLeave} regions={skillActivations}>
-						<VelocityLines data={chartData} courseDistance={course.distance} width={960} height={250} xOffset={20} showHp={showHp} />
+				<div
+					id="topPane"
+					class={topPaneClass}
+					data-mobile={isMobile ? 'true' : 'false'}
+					style={trackWidthStyle}
+				>
+					<RaceTrack courseid={courseId} width={trackWidth} height={trackHeight} xOffset={0} yOffset={15} yExtra={40} mouseMove={rtMouseMove} mouseLeave={rtMouseLeave} regions={skillActivations}>
+						<VelocityLines data={chartData} courseDistance={course.distance} width={trackWidth} height={velocityHeight} xOffset={0} showHp={showHp} />
 						<g id="rtMouseOverBox" style="display:none">
-							<text id="rtV1" x="25" y="10" fill="#2a77c5" font-size="10px"></text>
-							<text id="rtV2" x="25" y="20" fill="#c52a2a" font-size="10px"></text>
+							<text id="rtV1" x="25" y="10" fill="var(--uma-blue)" font-size="10px"></text>
+							<text id="rtV2" x="25" y="20" fill="var(--uma-pink)" font-size="10px"></text>
 						</g>
+
 					</RaceTrack>
-					<div id="runPane">
+					<div id="buttonsRow" data-mobile={isMobile ? 'true' : 'false'} style={trackWidthStyle}>
+						<TrackSelect key={courseId} courseid={courseId} setCourseid={setCourseId} tabindex={2} />
+						<div id="buttonsRowSpace" />
+						<TimeOfDaySelect value={racedef.time} set={racesetter('time')} />
+						<div>
+							<GroundSelect value={racedef.ground} set={racesetter('ground')} />
+							<WeatherSelect value={racedef.weather} set={racesetter('weather')} />
+						</div>
+						<SeasonSelect value={racedef.season} set={racesetter('season')} />
+						<div class="panelToggleRow">
+							<button type="button" class="panelToggle runPaneToggle" onClick={() => setShowRunPane(!showRunPane)} aria-expanded="false">
+								模拟
+							</button>
+							<button
+								type="button"
+								class="panelToggle umaPaneToggle"
+								onClick={openUmaOverlay}
+								aria-haspopup="dialog"
+								aria-expanded="false"
+							>
+								马娘
+							</button>
+						</div>
+					</div>
+				</div>
+
+				{showRunPane && (
+					<div id="runPane" data-mobile={isMobile ? 'true' : 'false'}>
+						<button type="button" class="panelClose" aria-label="收起模拟设置" onClick={() => setShowRunPane(false)}>✕</button>
 						<fieldset>
 							<legend>模式:</legend>
 							<div>
@@ -778,11 +864,11 @@ function doBasinnChart() {
 						</fieldset>
 						{mode == Mode.Compare && (
 							<div>
-							<label for="nsamples">样本数:</label>
-						<input type="number" id="nsamples" min="1" max="10000" value={nsamples} onInput={(e) => setSamples(+e.currentTarget.value)} />
+								<label for="nsamples">样本数:</label>
+								<input type="number" id="nsamples" min="1" max="10000" value={nsamples} onInput={(e) => setSamples(+e.currentTarget.value)} />
 							</div>
-							)}
-			
+						)}
+
 						<label for="seed">随机种子:</label>
 						<div id="seedWrapper">
 							<input type="number" id="seed" value={seed} onInput={(e) => setSeed(+e.currentTarget.value)} />
@@ -796,59 +882,41 @@ function doBasinnChart() {
 							<label for="showhp">耐力消耗显示</label>
 							<input type="checkbox" id="showhp" checked={showHp} onClick={toggleShowHp} />
 						</div>
-					{/* {mode == Mode.Chart && (
-							<div>
-								<label htmlFor="showhp">显示未实装技能</label>
-								<input
-								type="checkbox"
-								id="showUnRelease"
-								checked={ShowUnreleased}
-								onClick={setShowUnreleased} 
-								/>
-								<div id="status">{status}</div>
-							</div>
-							)} */}
 						{
 							mode == Mode.Compare
-							? <button id="run" onClick={doComparison} tabindex={1}>COMPARE</button>
-							: <button id="run" onClick={doBasinnChart} tabindex={1}>RUN</button>
+								? <button id="run" onClick={doComparison} tabindex={1}>COMPARE</button>
+								: <button id="run" onClick={doBasinnChart} tabindex={1}>RUN</button>
 						}
 						<a href="#" onClick={copyStateUrl}>Copy link</a>
-							<RacePresets set={(courseId, racedef) => { setCourseId(courseId); setRaceDef(racedef); }} />
+						<RacePresets set={(courseId, racedef) => { setCourseId(courseId); setRaceDef(racedef); }} />
+						<div class="statusText">{status}</div>
 					</div>
-					<div id="buttonsRow">
-						<TrackSelect key={courseId} courseid={courseId} setCourseid={setCourseId} tabindex={2} />
-						<div id="buttonsRowSpace" />
-						<TimeOfDaySelect value={racedef.time} set={racesetter('time')} />
-						<div>
-							<GroundSelect value={racedef.ground} set={racesetter('ground')} />
-							<WeatherSelect value={racedef.weather} set={racesetter('weather')} />
-						</div>
-						<SeasonSelect value={racedef.season} set={racesetter('season')} />
-					</div>
-				</div>
+				)}
 				{resultsPane}
-				{expanded && <div id="umaPane" />}
-				<div id={expanded ? 'umaOverlay' : 'umaPane'}>
-					<div class={!expanded && currentIdx == 0 ? 'selected' : ''}>
-						<HorseDef key={uma1.outfitId} state={uma1} setState={setUma1} courseDistance={course.distance} tabstart={() => 4}>
-							{expanded ? 'Umamusume 1' : umaTabs}
-						</HorseDef>
-					</div>
-					{expanded &&
-						<div id="copyUmaButtons">
-							<div id="copyUmaToRight" title="Copy uma 1 to uma 2" onClick={copyUmaToRight} />
-							<div id="copyUmaToLeft" title="Copy uma 2 to uma 1" onClick={copyUmaToLeft} />
-							<div id="swapUmas" title="Swap umas" onClick={swapUmas}>⮂</div>
+				{expanded && (
+					<div id="umaOverlay" role="dialog" class={mode === Mode.Compare ? "compareMode" : ""} aria-modal="true" aria-label="Umamusume 设置" tabindex="-1">
+						<div class={`umaPanel ${currentIdx == 0 ? 'selected' : ''}`}>
+							<HorseDef key={uma1.outfitId} state={uma1} setState={setUma1} courseDistance={course.distance} tabstart={() => 4}>
+								{'Umamusume 1'}
+							</HorseDef>
+						</div>
+						{mode == Mode.Compare && (
+							<div id="copyUmaButtons">
+								<div id="copyUmaToRight" title="Copy uma 1 to uma 2" onClick={copyUmaToRight} />
+								<div id="copyUmaToLeft" title="Copy uma 2 to uma 1" onClick={copyUmaToLeft} />
+								<div id="swapUmas" title="Swap umas" onClick={swapUmas}>⮂</div>
+							</div>
+						)}
+						{mode == Mode.Compare && <div class={`umaPanel ${currentIdx == 1 ? 'selected' : ''}`}>
+							<HorseDef key={uma2.outfitId} state={uma2} setState={setUma2} courseDistance={course.distance} tabstart={() => 4 + horseDefTabs()}>
+								{'Umamusume 2'}
+							</HorseDef>
 						</div>}
-					{mode == Mode.Compare && <div class={!expanded && currentIdx == 1 ? 'selected' : ''}>
-						<HorseDef key={uma2.outfitId} state={uma2} setState={setUma2} courseDistance={course.distance} tabstart={() => 4 + horseDefTabs()}>
-							{expanded ? 'Umamusume 2' : umaTabs}
-						</HorseDef>
-					</div>}
-					{expanded && <div id="closeUmaOverlay" title="Close panel" onClick={toggleExpand}>✕</div>}
-				</div>
+						<button type="button" id="closeUmaOverlay" title="关闭面板" onClick={toggleExpand}>✕</button>
+					</div>
+				)}
 				{popoverSkill && <BasinnChartPopover skillid={popoverSkill} results={tableData.get(popoverSkill).results} courseDistance={course.distance} />}
+				<IntroText />
 			</IntlProvider>
 		</Language.Provider>
 	);
