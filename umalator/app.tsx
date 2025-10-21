@@ -461,7 +461,7 @@ function App(props) {
 	const [seed, setSeed] = useState(DEFAULT_SEED);
 	const [usePosKeep, togglePosKeep] = useReducer((b, _) => !b, true);
 	const [showHp, toggleShowHp] = useReducer((b, _) => !b, false);
-	const [showRunPane, setShowRunPane] = useState(true);
+	const [showRunPane, setShowRunPane] = useState(false);
 	const [{ courseId, results, runData, chartData, displaying }, setSimState] = useReducer(updateResultsState, EMPTY_RESULTS_STATE);
 	const setCourseId = setSimState;
 	const setResults = setSimState;
