@@ -714,7 +714,7 @@ export function SkillList(props) {
 			<IntlProvider definition={STRINGS_cn}>
 				<div class="filterGroups" onClick={updateFilters}>
 					<div data-filter-group="search">
-						<Localizer><input type="text" class="filterSearch" value={searchText} placeholder={<Text id="skillfilters.search" />} onInput={updateFilters} ref={searchInput} /></Localizer>
+						<Localizer><input type="text" inputmode="none" class="filterSearch" value={searchText} placeholder={<Text id="skillfilters.search" />} onInput={updateFilters} ref={searchInput} /></Localizer>
 					</div>
 					<FilterGroup group="rarity">
 						<FilterButton filter="white" />
