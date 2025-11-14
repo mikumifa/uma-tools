@@ -1,3 +1,4 @@
+import csv
 import datetime
 import os
 import sqlite3
@@ -8,6 +9,7 @@ from openpyxl.styles import Alignment, Font, PatternFill
 
 IMG_DIR = "D:\Apps\\umas\\export\\Texture2D"
 OUTPUT_XLSX = "results/gacha_with_image.xlsx"
+OUTPUT_CSV = "results/gacha_summary.csv"
 
 
 def ts2str(ts):
@@ -70,6 +72,29 @@ for g in grouped.values():
 
 # 4. 排序
 result.sort(key=lambda r: (r["开始时间戳"], 0 if r["卡池类型"] == "支援卡" else 1))
+
+for output_path in (OUTPUT_XLSX, OUTPUT_CSV):
+    output_dir = os.path.dirname(output_path)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
+
+with open(OUTPUT_CSV, "w", newline="", encoding="utf-8") as csv_file:
+    writer = csv.writer(csv_file)
+    writer.writerow(
+        ["卡池ID", "卡池类型", "开始时间", "结束时间", "PickUp卡名", "图片路径"]
+    )
+    for r in result:
+        writer.writerow(
+            [
+                r["卡池ID"],
+                r["卡池类型"],
+                r["开始时间"],
+                r["结束时间"],
+                r["PickUp卡名"],
+                r.get("图片") or "",
+            ]
+        )
+
 wb = Workbook()
 ws = wb.active
 ws.title = "卡池列表"
@@ -185,4 +210,5 @@ ws.column_dimensions["C"].width = 60
 ws.column_dimensions["D"].width = 70
 
 wb.save(OUTPUT_XLSX)
+print(f"✅ 已生成简易 CSV: {OUTPUT_CSV}")
 print(f"✅ 已生成带颜色和合并单元格的 Excel: {OUTPUT_XLSX}")
