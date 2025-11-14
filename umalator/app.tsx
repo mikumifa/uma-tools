@@ -33,7 +33,7 @@ function skillmeta(id: string) {
 
 import './app.css';
 
-const DEFAULT_COURSE_ID = CC_GLOBAL ? 10606 : 10807;
+const DEFAULT_COURSE_ID = 10606;
 const DEFAULT_SAMPLES = 500;
 const DEFAULT_SEED = 2615953739;
 function id(x) { return x; }
@@ -700,10 +700,10 @@ function App(props) {
 						</tfoot>
 						<tbody>
 							<tr>
-								<td onClick={() => setChartData('minrun')}>{results[0].toFixed(2)}<span class="unit-basinn">{CC_GLOBAL ? 'lengths' : 'バ身'}</span></td>
-								<td onClick={() => setChartData('maxrun')}>{results[results.length - 1].toFixed(2)}<span class="unit-basinn">{CC_GLOBAL ? 'lengths' : 'バ身'}</span></td>
-								<td onClick={() => setChartData('meanrun')}>{mean.toFixed(2)}<span class="unit-basinn">{CC_GLOBAL ? 'lengths' : 'バ身'}</span></td>
-								<td onClick={() => setChartData('medianrun')}>{median.toFixed(2)}<span class="unit-basinn">{CC_GLOBAL ? 'lengths' : 'バ身'}</span></td>
+								<td onClick={() => setChartData('minrun')}>{results[0].toFixed(2)}<span class="unit-basinn">马身</span></td>
+								<td onClick={() => setChartData('maxrun')}>{results[results.length - 1].toFixed(2)}<span class="unit-basinn">马身</span></td>
+								<td onClick={() => setChartData('meanrun')}>{mean.toFixed(2)}<span class="unit-basinn">马身</span></td>
+								<td onClick={() => setChartData('medianrun')}>{median.toFixed(2)}<span class="unit-basinn">马身</span></td>
 							</tr>
 						</tbody>
 					</table>

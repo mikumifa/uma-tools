@@ -378,7 +378,7 @@ export function RaceTrack(props) {
 					state.rungs[i].push(r);
 					const y = 90 - 10 * i;
 					return (
-						<svg class="textbox" x={x + '%'} y={y + '%'} width={w + '%'} height="10%">
+						<svg class="textbox" x={x + '%'} y={y + '%'} width={w + '%'} height="24px">
 							<rect x="0" y="0" width="100%" height="100%" fill={desc.color.fill} stroke={desc.color.stroke} />
 							<text x="0" y="50%" font-size="12px" dominant-baseline="central">{desc.text}</text>
 						</svg>
