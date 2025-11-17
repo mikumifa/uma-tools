@@ -203,7 +203,6 @@ if merge_start < len(result) + 1:
     )
 
 
-# 列宽调整
 ws.column_dimensions["A"].width = 30
 ws.column_dimensions["B"].width = 15
 ws.column_dimensions["C"].width = 60

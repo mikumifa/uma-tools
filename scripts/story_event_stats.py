@@ -76,22 +76,6 @@ def get_story_event_stats(db_path: Path, output_csv: Path):
                         data["total_num"],
                     ]
                 )
-
-    print(
-        tabulate(
-            table,
-            headers=[
-                "Event ID",
-                "Event Name",
-                "Item ID",
-                "Item Name",
-                "Item Category",
-                "Count",
-                "Total Num",
-            ],
-            tablefmt="grid",
-        )
-    )
     print(f"\nCSV saved to {output_csv}")
 
 

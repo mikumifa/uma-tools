@@ -99,22 +99,6 @@ def get_login_bonus_stats(db_path: Path, output_csv: Path):
                         end_date,
                     ]
                 )
-
-    # ================================
-    # 5. 打印表格
-    # ================================
-    print(
-        tabulate(
-            table,
-            headers=[
-                "Item Name",
-                "Item Num",
-                "Start Date",
-                "End Date",
-            ],
-            tablefmt="grid",
-        )
-    )
     print(f"\nCSV saved to {output_csv}")
 
 
