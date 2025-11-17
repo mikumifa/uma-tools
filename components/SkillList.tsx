@@ -152,6 +152,10 @@ export const STRINGS_cn = Object.freeze({
 		'preconditions': '前置条件：',
 		'rotation': Object.freeze(['', '顺时针', '逆时针']),
 		'running_style': Object.freeze(['', '领跑', '前列', '居中', '后追']),
+		'phase': Object.freeze(['序盘', '中盘', '终盘前半', '终盘后半']),
+		/* “否/是” */
+		'yes_or_no': Object.freeze(['否', '是']),
+
 		'season': Object.freeze(['', '早春', '夏', '秋', '冬', '晚春']),
 		'seconds': '{{n}}s',
 		'slope': Object.freeze(['平地', '上坡', '下坡']),
@@ -357,7 +361,21 @@ const conditionFormatters = new Proxy({
 	random_lot: fmtPercent,
 	remain_distance: fmtMeters,
 	rotation: fmtString('rotation'),
+	phase_random: fmtString('phase'),
+	phase: fmtString('phase'),
+	phase_firsthalf_random: fmtString('phase'),
+	phase_laterhalf_random: fmtString('phase'),
+	straight_random: fmtString('yes_or_no'),
+	all_corner_random: fmtString('yes_or_no'),
+	corner: fmtString('yes_or_no'),
+	is_finalcorner: fmtString('yes_or_no'),
+	is_finalcorner_laterhalf: fmtString('yes_or_no'),
 	running_style: fmtString('running_style'),
+	order_rate_out70_continue: fmtString('yes_or_no'),
+	order_rate_in40_continue: fmtString('yes_or_no'),
+	is_lastspurt: fmtString('yes_or_no'),
+	is_overtake: fmtString('yes_or_no'),
+	is_badstart: fmtString('yes_or_no'),
 	season: fmtString('season'),
 	slope: fmtString('slope'),
 	time: fmtString('time'),
@@ -410,15 +428,52 @@ class OrFormatter {
 		);
 	}
 }
+const CONDITION_NAME_MAP: Record<string, string> = {
+	"ground_type": "赛道类型",
+	"corner": "是否是弯道",
+	"straight_random": "是否直线随机",
+	"all_corner_random": "是否弯道随机",
+	"running_style": "跑法",
+	"distance_type": "赛道长度类型",
+	"phase": "比赛阶段",
+	"phase_random": "比赛阶段随机",
+	"phase_firsthalf_random": "阶段前半随机",
+	"phase_laterhalf_random": "阶段后半随机",
+	"order": "名次",
+	"order_rate": "名次百分比",
+	"distance_rate": "赛程百分比",
+	"is_overtake": "准备超车",
+	"overtake_target_time": "被准备超车时间",
+	"change_order_onetime": "名次变化",
+	"change_order_up_end_after": "终盘开始后名次变化",
+	"change_order_up_finalcorner_after": "终弯后名次变化",
+	"remain_distance": "剩余距离",
+	"blocked_side_continuetime": "竞争时间",
+	"bashin_diff_infront": "距离前方马娘距离",
+	"bashin_diff_behind": "距离后方马娘距离",
+	"distance_diff_top": "与第一名距离差",
+	"temptation_count": "失去冷静次数",
+	"is_badstart": "是否出迟",
+	"distance_diff_rate": "队伍位置百分比",
+	"is_finalcorner": "是否最终弯道起点之后",
+	"is_finalcorner_laterhalf": "是否最终弯道起点后半段",
+	"is_lastspurt": "是否冲刺状态",
+	"activate_count_heal": "已发动回复技能次数",
+	"order_rate_in40_continue": "持续处于前40%",
+	"order_rate_out70_continue": "持续处于后70%",
+	"accumulatetime": "比赛开始后时间",
+};
+
 
 function CmpFormatter(op: string) {
 	return class {
 		constructor(readonly cond: ConditionFormatter, readonly arg: number) { }
-
 		format() {
+			const original = this.cond.name;
+			const displayName = CONDITION_NAME_MAP[original] ?? '未知';
 			return (
 				<div class="condition">
-					<span class="conditionName">{this.cond.name}</span><span class="conditionOp">{op}</span><span class="conditionArg">{this.cond.formatArg(this.arg)}</span>
+					<span class="conditionName"><Tooltip title={displayName} tall={useLanguage() == 'ja'}>{this.cond.name}</Tooltip></span><span class="conditionOp">{op}</span><span class="conditionArg">{this.cond.formatArg(this.arg)}</span>
 				</div>
 			);
 		}
@@ -752,7 +807,16 @@ export function SkillList(props) {
 					</FilterGroup>
 				</div>
 				<ul class="skillList" onClick={toggleSelected}>{items}</ul>
-			</IntlProvider></div>
+				<button
+					type="button"
+					id="closeSkill"
+					class="btnBase rounded"
+					title="关闭面板"
+					onClick={(e) => e.currentTarget.closest('.chooseSkill')?.remove()}
+				>
+					✕
+				</button>
+			</IntlProvider></div >
 
 	);
 }

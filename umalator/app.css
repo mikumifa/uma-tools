@@ -30,8 +30,8 @@ body {
 	padding: 0;
 	font-family: "Inter", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
 	background: radial-gradient(circle at 12% 20%, rgba(255, 202, 87, 0.35), transparent 45%),
-		radial-gradient(circle at 88% 10%, rgba(125, 78, 232, 0.18), transparent 55%),
-		radial-gradient(circle at 50% 85%, rgba(255, 111, 186, 0.22), transparent 60%),
+		radial-gradient(circle at 88% 10%, rgba(168, 227, 5, 0.18), transparent 55%),
+		radial-gradient(circle at 50% 85%, rgba(97, 174, 22, 0.22), transparent 60%),
 		linear-gradient(180deg, #f0f4ff 0%, #f7f0ff 100%);
 	color: var(--uma-text);
 	background-attachment: fixed;
@@ -504,104 +504,31 @@ body {
 	width: 100%;
 }
 
-#closeUmaOverlay {
-	align-items: center;
-	background: rgba(58, 226, 7, 0.14);
-	border-radius: 50%;
-	color: var(--uma-purple);
-	cursor: pointer;
-	display: flex;
-	font-size: 1.4em;
-	height: 42px;
-	justify-content: center;
-	border: none;
-	outline: none;
-	position: absolute;
-	right: clamp(12px, 2vw, 20px);
-	top: clamp(12px, 2vw, 20px);
-	transition: background 0.2s ease, transform 0.2s ease;
-	width: 42px;
-	z-index: 10;
-}
-
-#closeUmaOverlay:hover {
-	background: rgba(125, 78, 232, 0.24);
-	transform: rotate(90deg);
-}
-
-#closeUmaOverlay:focus-visible {
-	outline: 2px solid var(--uma-blue);
-	outline-offset: 2px;
-}
-
-#copyUmaButtons>div {
-	background: linear-gradient(135deg, rgb(168, 227, 5), rgb(97, 174, 22));
-	/* ✅ 绿色渐变 */
-	border: 2px solid transparent;
-	/* 透明边框 */
-	border-radius: 8px;
-	height: 60px;
-	line-height: 60px;
-	position: relative;
-	width: 60px;
-	box-shadow: 0px 3px 0 rgb(180, 178, 192);
-	/* 立体效果 */
-	cursor: pointer;
-	transition: all 0.2s ease;
-}
-
-#swapUmas>div {
-	background: linear-gradient(135deg, rgb(168, 227, 5), rgb(97, 174, 22));
-	/* ✅ 绿色渐变 */
-	border: 2px solid transparent;
-	/* 透明边框 */
-	border-radius: 8px;
-	height: 60px;
-	line-height: 60px;
-	position: relative;
-	width: 60px;
-	box-shadow: 0px 3px 0 rgb(180, 178, 192);
-	/* 立体效果 */
-	cursor: pointer;
-	transition: all 0.2s ease;
-}
-
-#copyUmaButtons>div:hover {
-	filter: brightness(1.05);
-	transform: translateY(-2px);
-	box-shadow: 0px 6px 0 rgb(160, 158, 172);
-}
-
-#copyUmaButtons>div:active {
-	transform: translateY(1px);
-	box-shadow: 0px 2px 0 rgb(150, 148, 162);
-}
-
-#copyUmaButtons>div::after {
-	border-top: 2px solid white;
-	border-right: 2px solid white;
-	content: '';
-	display: block;
-	height: 30px;
-	position: absolute;
-	width: 30px;
-}
-
-#copyUmaToRight::after {
-	left: 15px;
-	top: 25px;
-	transform: rotate(45deg) translate(-15px, 0);
-}
-
-#copyUmaToLeft::after {
-	bottom: 25px;
-	right: 15px;
-	transform: rotate(-135deg) translate(-15px, 0);
-}
-
-
 #swapUmas {
 	font-size: 36px;
+	color: white;
+	text-align: center;
+}
+
+#copyUmaButtons {
+	display: flex;
+	flex-direction: column;
+	/* 垂直排列 */
+	gap: 14px;
+	align-items: center;
+	width: fit-content;
+	margin: 0 auto;
+}
+
+#copyUmaToRight {
+	font-size: 36px;
+	color: white;
+	text-align: center;
+}
+
+#copyUmaToLeft {
+	font-size: 36px;
+	color: white;
 	text-align: center;
 }
 
@@ -613,6 +540,47 @@ body {
 #swapUmas::after {
 	display: none !important;
 }
+
+#closeUmaOverlay {
+	align-items: center;
+	border-radius: 0%;
+	background: rgba(0, 206, 86, 0);
+	box-shadow: 0px 2px 0 rgb(150, 148, 162, 0);
+	cursor: pointer;
+	display: flex;
+	font-size: 1.4em;
+	height: 42px;
+	justify-content: center;
+	border: none;
+	outline: none;
+	position: absolute;
+	right: clamp(12px, 2vw, 20px);
+	top: clamp(12px, 2vw, 20px);
+	width: 42px;
+	z-index: 10;
+}
+
+#closeSkill {
+	align-items: center;
+	cursor: pointer;
+	display: flex;
+	font-size: 1.4em;
+	height: 42px;
+	justify-content: center;
+	border: none;
+	outline: none;
+	position: absolute;
+	right: clamp(12px, 2vw, 20px);
+	top: clamp(12px, 2vw, 20px);
+	width: 42px;
+	z-index: 10;
+}
+
+
+#closeUmaOverlay:focus-visible {
+	outline-offset: 2px;
+}
+
 
 .basinnChartPopover {
 	background: linear-gradient(135deg, rgba(61, 125, 209, 0.1), rgba(255, 255, 255, 0.95));
@@ -632,87 +600,6 @@ body {
 	width: 345px;
 }
 
-@media (max-width: 900px) {
-	#app {
-		padding: clamp(14px, 5vw, 28px);
-	}
-
-	#runPane {
-		padding: 18px;
-		align-items: stretch;
-	}
-
-	#runPane input[type="number"],
-	#runPane select {
-		max-width: 100%;
-	}
-
-	#seedWrapper {
-		max-width: 100%;
-	}
-
-	#resultsPaneWrapper {
-		justify-content: flex-start;
-	}
-
-	#umaOverlay {
-		bottom: clamp(14px, 6vw, 32px);
-		flex-direction: column;
-		gap: 18px;
-		left: clamp(10px, 4vw, 28px);
-		right: clamp(10px, 4vw, 28px);
-		top: clamp(14px, 4vw, 28px);
-		max-width: calc(100vw - clamp(20px, 8vw, 56px));
-	}
-
-	.umaPanel {
-		flex: 1 1 100%;
-		min-width: 0;
-	}
-
-	#copyUmaButtons {
-		flex-direction: row;
-		gap: 12px;
-	}
-}
-
-@media (max-width: 600px) {
-	#runPane fieldset {
-		grid-template-columns: 1fr;
-	}
-
-	#run {
-		width: 100%;
-	}
-
-	#buttonsRow {
-		flex-direction: column;
-		align-items: stretch;
-	}
-
-	.trackSelect>select {
-		width: 100%;
-	}
-
-	#buttonsRow>div {
-		width: 100%;
-	}
-
-	#resultsSummary>tbody td {
-		font-size: 1.6em;
-		height: 56px;
-	}
-
-	.panelToggleRow {
-		flex-direction: column;
-	}
-
-	.panelToggle.runPaneToggle,
-	.panelToggle.umaPaneToggle {
-		width: 100%;
-		margin-left: 0;
-	}
-}
 
 #runPane label {
 	font-size: 0.9em;
@@ -878,4 +765,56 @@ button:disabled {
 #run span,
 .panelToggle span {
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+
+
+.btnBase {
+	font-family: "Inter", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+	background: linear-gradient(rgb(168, 227, 5), rgb(97, 174, 22)) padding-box,
+		linear-gradient(rgb(173, 219, 60), rgb(85, 143, 24)) border-box;
+	border: 2px solid transparent;
+
+	/* 原来的圆角去掉，等下面定义 */
+	box-shadow: 0px 3px 0 rgb(180, 178, 192);
+	box-sizing: border-box;
+
+	color: white;
+	font-size: 1.1em;
+	font-weight: bold;
+	text-align: center;
+
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+/* hover */
+.btnBase:hover {
+	filter: brightness(1.05);
+	transform: translateY(-2px);
+	box-shadow: 0px 6px 0 rgb(160, 158, 172);
+}
+
+/* 按压 */
+.btnBase:active {
+	transform: translateY(1px);
+	box-shadow: 0px 2px 0 rgb(150, 148, 162);
+	filter: brightness(0.95);
+}
+
+.rounded {
+	border-radius: 36px;
+	padding: 10px 20px;
+	/* 根据需要调整 */
+}
+
+.circle {
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 28px;
 }

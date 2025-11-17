@@ -902,9 +902,9 @@ function App(props) {
 						</div>
 						{mode == Mode.Compare && (
 							<div id="copyUmaButtons">
-								<div id="copyUmaToRight" title="Copy uma 1 to uma 2" onClick={copyUmaToRight} />
-								<div id="copyUmaToLeft" title="Copy uma 2 to uma 1" onClick={copyUmaToLeft} />
-								<div id="swapUmas" title="Swap umas" onClick={swapUmas}>⮂</div>
+								<div id="copyUmaToRight" class="btnBase rounded" title="Copy uma 1 to uma 2" onClick={copyUmaToRight}>→</div>
+								<div id="copyUmaToLeft" class="btnBase rounded" title="Copy uma 2 to uma 1" onClick={copyUmaToLeft} >←</div>
+								<div id="swapUmas" class="btnBase rounded" title="Swap umas" onClick={swapUmas}>⮂</div>
 							</div>
 						)}
 						{mode == Mode.Compare && <div class={`umaPanel ${currentIdx == 1 ? 'selected' : ''}`}>
@@ -912,7 +912,7 @@ function App(props) {
 								{'Umamusume 2'}
 							</HorseDef>
 						</div>}
-						<button type="button" id="closeUmaOverlay" title="关闭面板" onClick={toggleExpand}>✕</button>
+						<button type="button" id="closeUmaOverlay" class="btnBase rounded" title="关闭面板" onClick={toggleExpand}>✕</button>
 					</div>
 				)}
 				{popoverSkill && <BasinnChartPopover skillid={popoverSkill} results={tableData.get(popoverSkill).results} courseDistance={course.distance} />}
