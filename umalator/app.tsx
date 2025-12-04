@@ -426,9 +426,8 @@ function App(props) {
 	const isMobile = viewportWidth <= 900;
 
 	const trackWidth = useMemo(() => {
-		const maxWidth = 1700; // 桌面最大可拉宽
 		const padding = isMobile ? 24 : viewportWidth * 0.05; // 保留 5% 边距
-		return Math.max(300, Math.min(maxWidth, viewportWidth - padding));
+		return Math.max(300, viewportWidth - padding);
 	}, [viewportWidth, isMobile]);
 
 	const trackHeight = useMemo(
