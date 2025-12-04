@@ -400,9 +400,9 @@ export function RaceTrack(props) {
 
 	return (
 		<IntlProvider definition={STRINGS_cn}>
-			<div class="racetrackWrapper" style={`width: 100%`}>
+			<div class="racetrackWrapper">
 				{trackNameHeader}
-				<svg version="1.1" width="100%" height={props.height + yOffset + yExtra} xmlns="http://www.w3.org/2000/svg" class="racetrackView" data-courseid={props.courseid} onMouseMove={doMouseMove} onMouseLeave={doMouseLeave}>
+				<svg version="1.1" width={props.width} height={props.height + yOffset + yExtra} xmlns="http://www.w3.org/2000/svg" class="racetrackView" data-courseid={props.courseid} onMouseMove={doMouseMove} onMouseLeave={doMouseLeave}>
 					<svg x={props.xOffset} y={props.yOffset} width={props.width} height={props.height}>
 						{almostEverything}
 						{regions}

@@ -426,8 +426,7 @@ function App(props) {
 	const isMobile = viewportWidth <= 900;
 
 	const trackWidth = useMemo(() => {
-		const padding = isMobile ? 24 : viewportWidth * 0.05; // 保留 5% 边距
-		return Math.max(300, viewportWidth - padding);
+		return Math.max(300, viewportWidth - viewportWidth * 0.1);
 	}, [viewportWidth, isMobile]);
 
 	const trackHeight = useMemo(
@@ -446,7 +445,7 @@ function App(props) {
 	);
 
 	const histogramWidth = useMemo(
-		() => Math.min(600, Math.max(280, trackWidth - (isMobile ? 40 : 100))),
+		() => Math.min(600, Math.max(280, trackWidth)),
 		[trackWidth, isMobile]
 	);
 
@@ -806,7 +805,9 @@ function App(props) {
 	return (
 		<Language.Provider value={props.lang}>
 
+
 			<IntlProvider definition={strings}>
+
 				<div
 					id="topPane"
 					class={topPaneClass}
