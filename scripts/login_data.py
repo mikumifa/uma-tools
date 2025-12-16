@@ -44,6 +44,7 @@ def get_login_bonus_stats(db_path: Path, output_csv: Path):
         writer = csv.writer(f)
         writer.writerow(
             [
+                "Login Bonus ID",
                 "Item Name",
                 "Item Num",
                 "Start Date",
@@ -51,7 +52,11 @@ def get_login_bonus_stats(db_path: Path, output_csv: Path):
             ]
         )
 
-        for detail in bonus_details:
+        def start_ts(d):
+            bonus = bonus_data.get(d["login_bonus_id"])
+            return bonus["start_date"] if bonus else 0
+
+        for detail in sorted(bonus_details, key=start_ts):
             bonus_id = detail["login_bonus_id"]
             bonus = bonus_data.get(bonus_id)
             if not bonus:
@@ -85,6 +90,7 @@ def get_login_bonus_stats(db_path: Path, output_csv: Path):
 
                 writer.writerow(
                     [
+                        bonus_id,
                         item_name,
                         item_num,
                         start_date,
@@ -93,6 +99,7 @@ def get_login_bonus_stats(db_path: Path, output_csv: Path):
                 )
                 table.append(
                     [
+                        bonus_id,
                         item_name,
                         item_num,
                         start_date,

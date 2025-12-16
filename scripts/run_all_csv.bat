@@ -19,8 +19,11 @@ set scripts[3]=scripts/mission_data_with_text.py
 set scripts[4]=scripts/story_event_stats.py
 set scripts[5]=scripts/transfer_data.py
 set scripts[6]=scripts/gacha_data.py
+set scripts[7]=scripts/champions_schedule.py
+set scripts[8]=scripts/legend_race.py
+set scripts[9]=scripts/campaign_data.py
 
-for /L %%i in (0,1,6) do (
+for /L %%i in (0,1,9) do (
     set script=!scripts[%%i]!
     echo ==^> Running !script!
     uv run "!script!"
