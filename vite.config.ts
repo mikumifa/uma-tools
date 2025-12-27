@@ -25,7 +25,8 @@ export default defineConfig(({ mode }) => {
 			},
 		},
 		build: {
-			outDir: path.resolve(__dirname, 'umalator', 'dist'),
+			// Keep the published URL at /umalator-cn/ instead of /umalator/dist/
+			outDir: path.resolve(__dirname, 'umalator-cn'),
 			emptyOutDir: true,
 			assetsDir: '.',
 			rollupOptions: {

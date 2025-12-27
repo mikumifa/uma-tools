@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
-const absWorkingDir = path.join(dirname, 'umalator', 'dist');
+const absWorkingDir = path.join(dirname, 'umalator-cn');
 const dataDir = path.join(dirname, 'umalator', 'data');
 
 const args = process.argv.slice(2);
@@ -75,7 +75,7 @@ async function run() {
 			port,
 			servedir: dirname,
 		});
-		console.log(`Dev server running at http://localhost:${server.port}/umalator/dist/`);
+		console.log(`Dev server running at http://localhost:${server.port}/umalator-cn/`);
 	} else {
 		await esbuild.build(buildOptions);
 	}
