@@ -1,17 +1,16 @@
 import { h, Fragment, cloneElement } from 'preact';
-import { useState, useContext, useEffect, useRef } from 'preact/hooks';
+import { useState, useEffect, useRef } from 'preact/hooks';
 import { IntlProvider, Text, Localizer } from 'preact-i18n';
 
 import { getParser } from '../uma-skill-tools/ConditionParser';
 import * as Matcher from '../uma-skill-tools/tools/ConditionMatcher';
 import { SkillRarity } from '../uma-skill-tools/RaceSolver.ts';
 
-import { useLanguage } from './Language';
 import { Tooltip } from './Tooltip';
 import './SkillList.css';
-import skills from '../uma-skill-tools/data/skill_data.json';
-import skillnames from '../uma-skill-tools/data/skillnames.json';
-import skill_meta from '../skill_meta.json';
+import skills from '../umalator/data/skill_data.json';
+import skillnames from '../umalator/data/skillnames.json';
+import skill_meta from '../umalator/data/skill_meta.json';
 
 function skilldata(id: string) {
 	return skills[id.split('-')[0]];
@@ -23,74 +22,7 @@ function skillmeta(id: string) {
 }
 
 const Parser = getParser(Matcher.mockConditions);
-
-export const STRINGS_ja = Object.freeze({
-	'skillfilters': Object.freeze({
-		'search': '',  // TODO translate
-		'white': '白スキル',
-		'gold': '金スキル',
-		'pink': '進化スキル',
-		'unique': '固有スキル',
-		'inherit': '継承した固有スキル',
-		'nige': '逃げ',
-		'senkou': '先行',
-		'sasi': '差し',
-		'oikomi': '追込',
-		'short': '短距離',
-		'mile': 'マイル',
-		'medium': '中距離',
-		'long': '長距離',
-		'turf': '芝',
-		'dirt': 'ダート',
-		'phase0': '序盤',
-		'phase1': '中盤',
-		'phase2': '終盤',
-		'phase3': 'ラストスパート',
-		'finalcorner': '最終コーナー',
-		'finalstraight': '最終直線'
-	}),
-	'skilleffecttypes': Object.freeze({
-		'1': 'スピードアップ',
-		'2': 'スタミナアップ',
-		'3': 'パワーアップ',
-		'4': '根性アップ',
-		'5': '賢さアップ',
-		'9': '体力回復',
-		'21': '現在速度（減速なし）',
-		'22': '現在速度',
-		'27': '目標速度',
-		'28': 'レーン移動速度',
-		'31': '加速',
-		'37': 'Activate random gold skill',
-		'42': 'スキルの効果時間上がり'
-	}),
-	'skilldetails': Object.freeze({
-		'accel': '{{n}}m/s²',
-		'basinn': '{{n}}バ身',
-		'conditions': '発動条件',
-		'distance_type': Object.freeze(['', '短距離', 'マイル', '中距離', '長距離']),
-		'baseduration': '基準持続時間',
-		'effectiveduration': '効果時間（{{distance}}m）',
-		'durationincrease': '{{n}}倍',
-		'effects': '効果',
-		'grade': Object.freeze({ 100: 'G1', 200: 'G2', 300: 'G3', 400: 'OP', 700: 'Pre-OP', 800: 'Maiden', 900: 'デビュー', 999: '毎日' }),
-		'ground_condition': Object.freeze(['', '良', '稍重', '重', '不良']),
-		'ground_type': Object.freeze(['', '芝', 'ダート']),
-		'id': 'ID: ',
-		'meters': '{{n}}m',
-		'motivation': Object.freeze(['', '絶不調', '不調', '普通', '好調', '絶好調']),
-		'order_rate': 'チャンミ：{{cm}}、リグヒ：{{loh}}',
-		'preconditions': '前提条件',
-		'rotation': Object.freeze(['', '右回り', '左回り']),
-		'running_style': Object.freeze(['', '逃げ', '先行', '差し', '追込']),
-		'season': Object.freeze(['', '早春', '夏', '秋', '冬', '春']),
-		'seconds': '{{n}}s',
-		'slope': Object.freeze(['平地', '上り坂', '下り坂']),
-		'speed': '{{n}}m/s',
-		'time': Object.freeze(['', '朝', '昼', '夕方', '夜']),
-		'weather': Object.freeze(['', '晴れ', '曇り', '雨', '雪'])
-	})
-});
+const ICON_BASE = `${import.meta.env.BASE_URL}icons`;
 
 export const STRINGS_cn = Object.freeze({
 	'skillfilters': Object.freeze({
@@ -165,74 +97,6 @@ export const STRINGS_cn = Object.freeze({
 
 
 
-export const STRINGS_en = Object.freeze({
-	'skillfilters': Object.freeze({
-		'search': 'Search by skill name or conditions',
-		'white': 'White skills',
-		'gold': 'Gold skills',
-		'pink': 'Evolved skills',
-		'unique': 'Unique skills',
-		'inherit': 'Inherited uniques',
-		'nige': 'Runner',
-		'senkou': 'Leader',
-		'sasi': 'Betweener',
-		'oikomi': 'Chaser',
-		'short': 'Short',
-		'mile': 'Mile',
-		'medium': 'Medium',
-		'long': 'Long',
-		'turf': 'Turf',
-		'dirt': 'Dirt',
-		'phase0': 'Opening leg',
-		'phase1': 'Middle leg',
-		'phase2': 'Final leg',
-		'phase3': 'Last spurt',
-		'finalcorner': 'Final corner',
-		'finalstraight': 'Final straight'
-	}),
-	'skilleffecttypes': Object.freeze({
-		'1': 'Speed up',
-		'2': 'Stamina up',
-		'3': 'Power up',
-		'4': 'Guts up',
-		'5': 'Wisdom up',
-		'9': 'Recovery',
-		'21': 'Current speed',
-		'22': 'Current speed with natural deceleration',
-		'27': 'Target speed',
-		'28': 'Lane movement speed',
-		'31': 'Acceleration',
-		'37': 'Activate random gold skill',
-		'42': 'Increase skill duration'
-	}),
-	'skilldetails': Object.freeze({
-		'accel': '{{n}}m/s²',
-		'basinn': '{{n}} bashin',
-		'conditions': 'Conditions:',
-		'distance_type': Object.freeze(['', 'Short', 'Mile', 'Medium', 'Long']),
-		'baseduration': 'Base duration:',
-		'effectiveduration': 'Effective duration ({{distance}}m):',
-		'durationincrease': '{{n}}×',
-		'effects': 'Effects:',
-		'grade': Object.freeze({ 100: 'G1', 200: 'G2', 300: 'G3', 400: 'OP', 700: 'Pre-OP', 800: 'Maiden', 900: 'Debut', 999: 'Daily races' }),
-		'ground_condition': Object.freeze(['', 'Good', 'Yielding', 'Soft', 'Heavy']),
-		'ground_type': Object.freeze(['', 'Turf', 'Dirt']),
-		'id': 'ID: ',
-		'meters': '{{n}}m',
-		'motivation': Object.freeze(['', 'Terrible', 'Bad', 'Normal', 'Good', 'Perfect']),
-		'order_rate': 'CM: {{cm}}, LOH: {{loh}}',
-		'preconditions': 'Preconditions:',
-		'rotation': Object.freeze(['', 'Clockwise', 'Counterclockwise']),
-		'running_style': Object.freeze(['', 'Runner', 'Leader', 'Betweener', 'Chaser']),
-		'season': Object.freeze(['', 'Early spring', 'Summer', 'Autumn', 'Winter', 'Late spring']),
-		'seconds': '{{n}}s',
-		'slope': Object.freeze(['Flat', 'Uphill', 'Downhill']),
-		'speed': '{{n}}m/s',
-		'time': Object.freeze(['', 'Morning', 'Mid day', 'Evening', 'Night']),
-		'weather': Object.freeze(['', 'Sunny', 'Cloudy', 'Rainy', 'Snowy'])
-	})
-});
-
 function C(s: string) {
 	return Parser.parseAny(Parser.tokenize(s));
 }
@@ -291,7 +155,7 @@ const classnames = Object.freeze(['', 'skill-white', 'skill-gold', 'skill-unique
 export function Skill(props) {
 	return (
 		<div class={`skill ${classnames[skilldata(props.id).rarity]} ${props.selected ? 'selected' : ''}`} data-skillid={props.id}>
-			<img class="skillIcon" src={`/uma-tools/icons/${skillmeta(props.id).iconId}.png`} />
+			<img class="skillIcon" src={`${ICON_BASE}/${skillmeta(props.id).iconId}.png`} />
 			<span class="skillName"><Text id={`skillnames.${props.id.split('-')[0]}`} /></span>
 			{props.dismissable && <span class="skillDismiss">✕</span>}
 		</div>
@@ -317,7 +181,7 @@ function fmtMeters(arg: number) {
 
 function fmtString(strId: string) {
 	return function (arg: number) {
-		return <Tooltip title={arg.toString()} tall={useLanguage() == 'ja'}><Text id={`skilldetails.${strId}.${arg}`} /></Tooltip>;
+		return <Tooltip title={arg.toString()} tall={false}><Text id={`skilldetails.${strId}.${arg}`} /></Tooltip>;
 	};
 }
 
@@ -378,7 +242,7 @@ const conditionFormatters = new Proxy({
 	slope: fmtString('slope'),
 	time: fmtString('time'),
 	track_id(arg: number) {
-		return <Tooltip title={arg} tall={useLanguage() == 'ja'}><Text id={`tracknames.${arg}`} /></Tooltip>;
+		return <Tooltip title={arg} tall={false}><Text id={`tracknames.${arg}`} /></Tooltip>;
 	},
 	weather: fmtString('weather')
 }, {
@@ -471,7 +335,7 @@ function CmpFormatter(op: string) {
 			const displayName = CONDITION_NAME_MAP[original] ?? '未知';
 			return (
 				<div class="condition">
-					<span class="conditionName"><Tooltip title={displayName} tall={useLanguage() == 'ja'}>{this.cond.name}</Tooltip></span><span class="conditionOp">{op}</span><span class="conditionArg">{this.cond.formatArg(this.arg)}</span>
+					<span class="conditionName"><Tooltip title={displayName} tall={false}>{this.cond.name}</Tooltip></span><span class="conditionOp">{op}</span><span class="conditionArg">{this.cond.formatArg(this.arg)}</span>
 				</div>
 			);
 		}
@@ -515,12 +379,11 @@ const formatEffect = Object.freeze({
 
 export function ExpandedSkillDetails(props) {
 	const skill = skilldata(props.id);
-	const lang = useLanguage();
 	return (
 		<IntlProvider definition={STRINGS_cn}>
 			<div class={`expandedSkill ${classnames[skill.rarity]}`} data-skillid={props.id}>
 				<div class="expandedSkillHeader">
-					<img class="skillIcon" src={`/uma-tools/icons/${skillmeta(props.id).iconId}.png`} />
+					<img class="skillIcon" src={`${ICON_BASE}/${skillmeta(props.id).iconId}.png`} />
 					<span class="skillName"><Text id={`skillnames.${props.id.split('-')[0]}`} /></span>
 					{props.dismissable && <span class="skillDismiss">✕</span>}
 				</div>
@@ -626,7 +489,6 @@ function textSearch(id: string, searchText: string, searchConditions: boolean) {
 }
 
 export function SkillList(props) {
-	const lang = useLanguage();
 	const [visible, setVisible] = useState(() => new Set(props.ids));
 	const active = {}, setActive = {};
 	Object.keys(groups_filters).forEach(group => {
@@ -746,7 +608,7 @@ export function SkillList(props) {
 	}
 
 	function IconFilterButton(props) {
-		return <button data-filter={props.type} class={`iconFilterButton ${active[props.group][props.type] ? 'active' : ''}`} style={`background-image:url(/uma-tools/icons/${props.type}1.png)`}></button>
+		return <button data-filter={props.type} class={`iconFilterButton ${active[props.group][props.type] ? 'active' : ''}`} style={`background-image:url(${ICON_BASE}/${props.type}1.png)`}></button>
 	}
 	const items = props.ids
 		.filter(id => skillmeta(id)?.groupId) // 只保留有 groupId 的

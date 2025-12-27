@@ -9,12 +9,12 @@ import { CourseHelpers } from '../uma-skill-tools/CourseData';
 import { RaceParameters, Mood, GroundCondition, Weather, Season, Time, Grade } from '../uma-skill-tools/RaceParameters';
 import type { GameHpPolicy } from '../uma-skill-tools/HpPolicy';
 
-import { Language, LanguageSelect, useLanguageSelect } from '../components/Language';
-import { ExpandedSkillDetails, STRINGS_en as SKILL_STRINGS_en } from '../components/SkillList';
+import { Language } from '../components/Language';
+import { ExpandedSkillDetails, STRINGS_cn as SKILL_STRINGS_cn } from '../components/SkillList';
 import { RaceTrack, TrackSelect, RegionDisplayType } from '../components/RaceTrack';
 import { HorseState, SkillSet } from '../components/HorseDefTypes';
 import { HorseDef, horseDefTabs } from '../components/HorseDef';
-import { TRACKNAMES_ja, TRACKNAMES_en, TRACKNAMES_cn } from '../strings/common';
+import { TRACKNAMES_cn } from '../strings/common';
 
 import { getActivateableSkills, getNullRow, runBasinnChart, BasinnChart } from './BasinnChart';
 
@@ -22,9 +22,9 @@ import { initTelemetry, postEvent } from './telemetry';
 
 import { IntroText } from './IntroText';
 
-import skilldata from '../uma-skill-tools/data/skill_data.json';
-import skillnames from '../uma-skill-tools/data/skillnames.json';
-import skill_meta from '../skill_meta.json';
+import skilldata from './data/skill_data.json';
+import skillnames from './data/skillnames.json';
+import skill_meta from './data/skill_meta.json';
 
 function skillmeta(id: string) {
 	// handle the fake skills (e.g., variations of Sirius unique) inserted by make_skill_data with ids like 100701-1
@@ -36,6 +36,7 @@ import './app.css';
 const DEFAULT_COURSE_ID = 10606;
 const DEFAULT_SAMPLES = 500;
 const DEFAULT_SEED = 2615953739;
+const ICON_BASE = `${import.meta.env.BASE_URL}icons`;
 function id(x) { return x; }
 
 function binSearch(a: number[], x: number) {
@@ -65,7 +66,7 @@ function TimeOfDaySelect(props) {
 	return (
 		<div class="timeofdaySelect" onClick={click}>
 			{Array(3).fill(0).map((_, i) =>
-				<img src={`/uma-tools/icons/utx_ico_timezone_0${i}.png`} title={SKILL_STRINGS_en.skilldetails.time[i + 2]}
+				<img src={`${ICON_BASE}/utx_ico_timezone_0${i}.png`} title={SKILL_STRINGS_cn.skilldetails.time[i + 2]}
 					class={i + 2 == props.value ? 'selected' : ''} data-timeofday={i + 2} />)}
 		</div>
 	);
@@ -91,7 +92,7 @@ function WeatherSelect(props) {
 	return (
 		<div class="weatherSelect" onClick={click}>
 			{Array(4).fill(0).map((_, i) =>
-				<img src={`/uma-tools/icons/utx_ico_weather_0${i}.png`} title={SKILL_STRINGS_en.skilldetails.weather[i + 1]}
+				<img src={`${ICON_BASE}/utx_ico_weather_0${i}.png`} title={SKILL_STRINGS_cn.skilldetails.weather[i + 1]}
 					class={i + 1 == props.value ? 'selected' : ''} data-weather={i + 1} />)}
 		</div>
 	);
@@ -106,7 +107,7 @@ function SeasonSelect(props) {
 	return (
 		<div class="seasonSelect" onClick={click}>
 			{Array(4 /* global doenst have late spring for some reason */).fill(0).map((_, i) =>
-				<img src={`/uma-tools/icons/utx_txt_season_0${i}.png`} title={SKILL_STRINGS_en.skilldetails.season[i + 1]}
+				<img src={`${ICON_BASE}/utx_txt_season_0${i}.png`} title={SKILL_STRINGS_cn.skilldetails.season[i + 1]}
 					class={i + 1 == props.value ? 'selected' : ''} data-season={i + 1} />)}
 		</div>
 	);
@@ -406,8 +407,7 @@ function nextUiState(state: typeof DEFAULT_UI_STATE, msg: UiStateMsg) {
 	}
 }
 
-function App(props) {
-	//const [language, setLanguage] = useLanguageSelect();
+function App() {
 	const [skillsOpen, setSkillsOpen] = useState(false);
 	const [status, setStatus] = useState("等待操作...");
 	const workerProgress = useRef({ w1: 0, w2: 0 });
@@ -511,7 +511,7 @@ function App(props) {
 	const topPaneClass = [chartData ? 'hasResults' : '', isMobile ? 'mobileLayout' : 'desktopLayout', showRunPane ? '' : 'runPaneHidden'].filter(Boolean).join(' ');
 
 	const [worker1, worker2] = [1, 2].map(_ => useMemo(() => {
-		const w = new Worker('./simulator.worker.js');
+		const w = new Worker(new URL('./simulator.worker.ts', import.meta.url), { type: 'module' });
 		w.addEventListener('message', function (e) {
 			const { type, results } = e.data;
 			switch (type) {
@@ -569,8 +569,8 @@ function App(props) {
 		setUma2(uma1);
 	}
 
-	const strings = { skillnames: {}, tracknames: TRACKNAMES_cn, };
-	const langid = +(props.lang == 'en');
+	const strings = { skillnames: {}, tracknames: TRACKNAMES_cn };
+	const langid = 0;
 	Object.keys(skillnames).forEach(id => strings.skillnames[id] = skillnames[id][langid]);
 
 	function doComparison() {
@@ -803,7 +803,7 @@ function App(props) {
 	}
 
 	return (
-		<Language.Provider value={props.lang}>
+		<Language.Provider value="cn">
 
 
 			<IntlProvider definition={strings}>
@@ -923,4 +923,4 @@ function App(props) {
 }
 
 initTelemetry();
-render(<App lang="en-ja" />, document.getElementById('app'));
+render(<App />, document.getElementById('app'));

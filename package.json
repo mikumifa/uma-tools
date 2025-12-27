@@ -3,12 +3,22 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "vite",
+    "dev:debug": "vite --mode debug",
+    "build": "vite build",
+    "build:debug": "vite build --mode debug",
+    "preview": "vite preview"
+  },
   "author": "pecan",
   "license": "GPL-3.0-or-later",
   "devDependencies": {
+    "@preact/preset-vite": "^2.9.2",
     "commander": "^13.1.0",
-    "esbuild": "^0.19.5"
+    "esbuild": "^0.19.5",
+    "typescript": "^5.9.3",
+    "vite": "^6.0.3"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.2",

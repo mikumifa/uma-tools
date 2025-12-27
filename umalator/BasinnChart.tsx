@@ -1,191 +1,306 @@
-import { h, Fragment } from 'preact';
-import { useState, useMemo, useId } from 'preact/hooks';
-import { Text, Localizer } from 'preact-i18n';
+import { h, Fragment } from "preact";
+import { useState, useMemo, useId } from "preact/hooks";
+import { Text, Localizer } from "preact-i18n";
 
+// 移除 @tanstack/table-core 的所有引用
+
+import { Region, RegionList } from "../uma-skill-tools/Region";
+import { CourseData } from "../uma-skill-tools/CourseData";
+import { RaceParameters } from "../uma-skill-tools/RaceParameters";
+import { getParser } from "../uma-skill-tools/ConditionParser";
 import {
-	ColumnDef, SortFn, SortingState,
-	createSortedRowModel, flexRender, rowSortingFeature, sortFns, tableFeatures, useTable
-} from '@tanstack/preact-table';
+  buildBaseStats,
+  buildSkillData,
+  Perspective,
+} from "../uma-skill-tools/RaceSolverBuilder";
 
-import { Region, RegionList } from '../uma-skill-tools/Region';
-import { CourseData } from '../uma-skill-tools/CourseData';
-import { RaceParameters } from '../uma-skill-tools/RaceParameters';
-import { getParser } from '../uma-skill-tools/ConditionParser';
-import { buildBaseStats, buildSkillData, Perspective } from '../uma-skill-tools/RaceSolverBuilder';
+import type { HorseState } from "../components/HorseDef";
+// import { runComparison } from "./compare"; // 如果没用到可以注释掉
 
-import type { HorseState } from '../components/HorseDef';
-import { runComparison } from './compare';
+import "./BasinnChart.css";
 
-import './BasinnChart.css';
-
-import skillnames from '../uma-skill-tools/data/skillnames.json';
-import skill_meta from '../skill_meta.json';
+import skillnames from "./data/skillnames.json";
+import skill_meta from "./data/skill_meta.json";
 
 function skillmeta(id: string) {
-	// handle the fake skills (e.g., variations of Sirius unique) inserted by make_skill_data with ids like 100701-1
-	return skill_meta[id.split('-')[0]];
+  return skill_meta[id.split("-")[0]];
 }
 
-export function getActivateableSkills(skills: string[], horse: HorseState, course: CourseData, racedef: RaceParameters) {
-	const parser = getParser();
-	const h2 = buildBaseStats(horse, racedef.mood);
-	const wholeCourse = new RegionList();
-	wholeCourse.push(new Region(0, course.distance));
-	return skills.filter(id => {
-		let sd;
-		try {
-			sd = buildSkillData(h2, racedef, course, wholeCourse, parser, id, Perspective.Any);
-		} catch (_) {
-			return false;
-		}
-		return sd.some(trigger => trigger.regions.length > 0 && trigger.regions[0].start < 9999);
-	});
+const ICON_BASE = `${import.meta.env.BASE_URL}icons`;
+
+export function getActivateableSkills(
+  skills: string[],
+  horse: HorseState,
+  course: CourseData,
+  racedef: RaceParameters
+) {
+  const parser = getParser();
+  const h2 = buildBaseStats(horse, racedef.mood);
+  const wholeCourse = new RegionList();
+  wholeCourse.push(new Region(0, course.distance));
+  return skills.filter((id) => {
+    let sd;
+    try {
+      sd = buildSkillData(
+        h2,
+        racedef,
+        course,
+        wholeCourse,
+        parser,
+        id,
+        Perspective.Any
+      );
+    } catch (_) {
+      return false;
+    }
+    return sd.some(
+      (trigger) => trigger.regions.length > 0 && trigger.regions[0].start < 9999
+    );
+  });
 }
 
 export function getNullRow(skillid: string) {
-	return { id: skillid, min: 0, max: 0, mean: 0, median: 0, results: [], runData: null };
+  return {
+    id: skillid,
+    min: 0,
+    max: 0,
+    mean: 0,
+    median: 0,
+    results: [],
+    runData: null,
+  };
 }
 
-function formatBasinn(info) {
-	const value = info.getValue();
-	if (typeof value !== 'number' || isNaN(value)) {
-		return '0.00 L'; // 或者其他你希望的默认值
-	}
-	return value.toFixed(2).replace('-0.00', '0.00') + ' L';
+// 修改：直接接收 value 而不是 cell context
+function formatBasinn(value) {
+  if (typeof value !== "number" || isNaN(value)) {
+    return "0.00 L";
+  }
+  return value.toFixed(2).replace("-0.00", "0.00") + " L";
 }
 
-function SkillNameCell(props) {
-	const id = props.id
-	return (
-		<div className="chartSkillName">
-			<img src={`/uma-tools/icons/${skillmeta(id).iconId}.png`} />
-			<span><Text id={`skillnames.${id}`} /></span>
-		</div>
-	);
-}
-
-function headerRenderer(radioGroup, selectedType, type, text, onClick) {
-	function click(e) {
-		e.stopPropagation();
-		onClick(type);
-	}
-	return (c) => (
-		<div>
-			<input type="radio" name={radioGroup} checked={selectedType == type} title={`Show ${text.toLowerCase()} on chart`} onClick={click} />
-			<span onClick={c.header.column.getToggleSortingHandler()}>{text}</span>
-		</div>
-	);
+function SkillNameCell({ id }) {
+  return (
+    <div className="chartSkillName">
+      <img src={`${ICON_BASE}/${skillmeta(id).iconId}.png`} />
+      <span>
+        <Text id={`skillnames.${id}`} />
+      </span>
+    </div>
+  );
 }
 
 export function BasinnChart(props) {
-	const radioGroup = useId();
-	const [selected, setSelected] = useState('');
-	const [selectedType, setSelectedType] = useState('mean');
+  const radioGroup = useId();
+  const [selected, setSelected] = useState("");
+  const [selectedType, setSelectedType] = useState("mean");
 
-	function headerClick(type) {
-		setSelectedType(type);
-		props.onRunTypeChange(type + 'run');
-	}
+  // 手动管理排序状态： { key: string, direction: 'asc' | 'desc' }
+  const [sortConfig, setSortConfig] = useState({
+    key: "mean",
+    direction: "desc",
+  });
 
-	const columns = useMemo(() => [{
-		header: () => <span>技能名</span>,
-		accessorKey: 'id',
-		cell: (info) => <SkillNameCell id={info.getValue()} />,
-		sortingFn: (a, b, _) => skillnames[a] < skillnames[b] ? -1 : 1
-	}, {
-		header: headerRenderer(radioGroup, selectedType, 'min', '最小', headerClick),
-		accessorKey: 'min',
-		cell: formatBasinn
-	}, {
-		header: headerRenderer(radioGroup, selectedType, 'max', '最大', headerClick),
-		accessorKey: 'max',
-		cell: formatBasinn,
-	}, {
-		header: headerRenderer(radioGroup, selectedType, 'mean', '平均', headerClick),
-		accessorKey: 'mean',
-		cell: formatBasinn,
-		sortDescFirst: true
-	}, {
-		header: headerRenderer(radioGroup, selectedType, 'median', '中位', headerClick),
-		accessorKey: 'median',
-		cell: formatBasinn,
-	}], [selectedType]);
+  function headerClick(type) {
+    setSelectedType(type);
+    props.onRunTypeChange(type + "run");
+  }
 
-	const [sorting, setSorting] = useState<SortingState>([{ id: 'mean', desc: true }]);
+  // 处理排序点击
+  function handleSort(key, defaultDesc = false) {
+    setSortConfig((prev) => {
+      // 如果点击的是当前排序列，则反转方向
+      if (prev.key === key) {
+        return { key, direction: prev.direction === "asc" ? "desc" : "asc" };
+      }
+      // 如果是新列，使用该列的默认排序方向（数值通常默认降序，名称默认升序）
+      return { key, direction: defaultDesc ? "desc" : "asc" };
+    });
+  }
 
-	const table = useTable({
-		_features: tableFeatures({ rowSortingFeature }),
-		_rowModels: { sortedRowModel: createSortedRowModel(sortFns) },
-		columns,
-		data: props.data,
-		onSortingChange: setSorting,
-		enableSortingRemoval: false,
-		state: { sorting }
-	});
+  // 核心逻辑：替代 useTable 的数据处理
+  const sortedData = useMemo(() => {
+    // 浅拷贝数据以避免修改原数组
+    let sortableData = [...props.data];
 
-	function handleClick(e) {
-		const tr = e.target.closest('tr');
-		if (tr == null) return;
-		e.stopPropagation();
-		const id = tr.dataset.skillid;
-		if (e.target.tagName == 'IMG') {
-			props.onInfoClick(id);
-		} else {
-			setSelected(id);
-			props.onSelectionChange(id);
-		}
-	}
+    if (sortConfig.key) {
+      sortableData.sort((a, b) => {
+        const key = sortConfig.key;
+        let valA = a[key];
+        let valB = b[key];
 
-	function handleDblClick(e) {
-		const tr = e.target.closest('tr');
-		if (tr == null) return;
-		e.stopPropagation();
-		const id = tr.dataset.skillid;
-		props.onDblClickRow(id);
-	}
+        // 特殊处理：技能名称排序
+        if (key === "id") {
+          // 使用 skillnames 映射表进行比较
+          valA = skillnames[valA] || valA;
+          valB = skillnames[valB] || valB;
 
-	return (
-		<div class="basinnChartWrapper">
-			<table class="basinnChart">
-				<thead>
-					{table.getHeaderGroups().map(headerGroup => (
-						<tr key={headerGroup.id}>
-							{headerGroup.headers.map(header => (
-								<th key={header.id} colSpan={header.colSpan}>
-									{!header.isPlaceholder && (
-										<div
-											class={`columnHeader ${({
-												'asc': 'basinnChartSortedAsc',
-												'desc': 'basinnChartSortedDesc',
-												'false': ''
-											})[header.column.getIsSorted()]}`}
-											title={header.column.getCanSort() &&
-												({
-													'asc': 'Sort ascending',
-													'desc': 'Sort descending',
-													'false': 'Clear sort'
-												})[header.column.getNextSortingOrder()]}>
-											{flexRender(header.column.columnDef.header, header.getContext())}
-										</div>
-									)}
-								</th>
-							))}
-						</tr>
-					))}
-				</thead>
-				<tbody onClick={handleClick} onDblClick={handleDblClick}>
-					{table.getRowModel().rows.map(row => {
-						const id = row.getValue('id');
-						return (
-							<tr key={row.id} data-skillid={id} class={id == selected && 'selected'} style={props.hidden.has(id) && 'display:none'}>
-								{row.getAllCells().map(cell => (
-									<td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-								))}
-							</tr>
-						);
-					})}
-				</tbody>
-			</table>
-		</div>
-	);
+          if (valA < valB) return sortConfig.direction === "asc" ? -1 : 1;
+          if (valA > valB) return sortConfig.direction === "asc" ? 1 : -1;
+          return 0;
+        }
+
+        // 通用数值排序
+        if (valA < valB) return sortConfig.direction === "asc" ? -1 : 1;
+        if (valA > valB) return sortConfig.direction === "asc" ? 1 : -1;
+        return 0;
+      });
+    }
+    return sortableData;
+  }, [props.data, sortConfig]);
+
+  // 定义列配置，替代 TanStack 的 columns 定义
+  // 这里直接定义结构，不再需要 accessorKey 等复杂配置
+  const columns = [
+    {
+      key: "id",
+      header: () => <span>技能名</span>,
+      cell: (row) => <SkillNameCell id={row.id} />,
+      sortable: true,
+      defaultDesc: false,
+    },
+    {
+      key: "min",
+      label: "最小", // 用于 Radio 的 label
+      radioType: "min", // 用于 Radio 的 value
+      cell: (row) => formatBasinn(row.min),
+      sortable: true,
+      defaultDesc: false,
+    },
+    {
+      key: "max",
+      label: "最大",
+      radioType: "max",
+      cell: (row) => formatBasinn(row.max),
+      sortable: true,
+      defaultDesc: false,
+    },
+    {
+      key: "mean",
+      label: "平均",
+      radioType: "mean",
+      cell: (row) => formatBasinn(row.mean),
+      sortable: true,
+      defaultDesc: true, // 平均值默认降序
+    },
+    {
+      key: "median",
+      label: "中位",
+      radioType: "median",
+      cell: (row) => formatBasinn(row.median),
+      sortable: true,
+      defaultDesc: false,
+    },
+  ];
+
+  function handleClick(e) {
+    const tr = e.target.closest("tr");
+    if (tr == null) return;
+    e.stopPropagation();
+    const id = tr.dataset.skillid;
+    if (e.target.tagName === "IMG") {
+      props.onInfoClick(id);
+    } else {
+      setSelected(id);
+      props.onSelectionChange(id);
+    }
+  }
+
+  function handleDblClick(e) {
+    const tr = e.target.closest("tr");
+    if (tr == null) return;
+    e.stopPropagation();
+    const id = tr.dataset.skillid;
+    props.onDblClickRow(id);
+  }
+
+  // 辅助函数：渲染带 Radio 的表头
+  const renderRadioHeader = (col) => {
+    const clickRadio = (e) => {
+      e.stopPropagation();
+      headerClick(col.radioType);
+    };
+
+    return (
+      <div>
+        <input
+          type="radio"
+          name={radioGroup}
+          checked={selectedType === col.radioType}
+          title={`Show ${col.label.toLowerCase()} on chart`}
+          onClick={clickRadio}
+        />
+        <span onClick={() => handleSort(col.key, col.defaultDesc)}>
+          {col.label}
+        </span>
+      </div>
+    );
+  };
+
+  return (
+    <div class="basinnChartWrapper">
+      <table class="basinnChart">
+        <thead>
+          <tr>
+            {columns.map((col) => {
+              // 计算当前的排序状态 class
+              const isSorted = sortConfig.key === col.key;
+              const sortClass = isSorted
+                ? sortConfig.direction === "asc"
+                  ? "basinnChartSortedAsc"
+                  : "basinnChartSortedDesc"
+                : "";
+
+              return (
+                <th key={col.key}>
+                  <div
+                    class={`columnHeader ${sortClass}`}
+                    title={
+                      col.sortable
+                        ? isSorted
+                          ? sortConfig.direction === "asc"
+                            ? "Sort descending"
+                            : "Sort ascending"
+                          : "Sort"
+                        : ""
+                    }
+                  >
+                    {/* 根据列定义渲染内容：如果是技能名则是普通Header，其他是RadioHeader */}
+                    {col.key === "id" ? (
+                      <span
+                        onClick={() => handleSort(col.key, col.defaultDesc)}
+                      >
+                        {col.header()}
+                      </span>
+                    ) : (
+                      renderRadioHeader(col)
+                    )}
+                  </div>
+                </th>
+              );
+            })}
+          </tr>
+        </thead>
+        <tbody onClick={handleClick} onDblClick={handleDblClick}>
+          {sortedData.map((row) => {
+            const id = row.id;
+            // 处理隐藏行
+            if (props.hidden && props.hidden.has(id)) return null;
+
+            return (
+              <tr
+                key={id}
+                data-skillid={id}
+                class={id === selected ? "selected" : ""}
+              >
+                {columns.map((col) => (
+                  <td key={`${id}-${col.key}`}>{col.cell(row)}</td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 }

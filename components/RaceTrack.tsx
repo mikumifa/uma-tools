@@ -1,19 +1,18 @@
 import { h, Fragment } from 'preact';
-import { useState, useContext, useMemo, useCallback } from 'preact/hooks';
+import { useState, useMemo, useCallback } from 'preact/hooks';
 import { IntlProvider, Text } from 'preact-i18n';
 
 import { CourseData, CourseHelpers, Surface, Orientation } from '../uma-skill-tools/CourseData';
-import { useLanguage } from './Language';
-import { TRACKNAMES_ja, TRACKNAMES_en, TRACKNAMES_cn } from '../strings/common';
+import { TRACKNAMES_cn } from '../strings/common';
 
-import courses from '../umalator-cn/course_data.json';
-import tracknames from '../umalator-cn/tracknames.json';
+import courses from '../umalator/data/course_data.json';
+import tracknames from '../umalator/data/tracknames.json';
 
 import './RaceTrack.css';
 
 export const enum RegionDisplayType { Immediate, Regions, Textbox };
 
-const STRINGS_cn = Object.freeze({
+const STRINGS = Object.freeze({
 	'racetrack': Object.freeze({
 		'none': '​',
 		'inner': '（内）',
@@ -37,71 +36,14 @@ const STRINGS_cn = Object.freeze({
 			'downhill': '下'
 		})
 	}),
-	'tracknames': TRACKNAMES_cn,  // 需要你定义 TRACKNAMES_zh 对应赛道名
-	'coursedesc': Object.freeze({  // 与 STRINGS_en 类似，格式化赛道描述
+	'tracknames': TRACKNAMES_cn,
+	'coursedesc': Object.freeze({
 		'one': '{{distance}}m{{inout}}',
 		'many': '{{surface}}{{distance}}m{{inout}}'
 	})
 });
 
-const STRINGS_ja = Object.freeze({
-	'racetrack': Object.freeze({
-		'none': '​',
-		'inner': ' （内）',
-		'outer': ' （外）',
-		'outin': ' （外→内）',
-		'orientation': Object.freeze(['', '右', '左', '', '直']),
-		'turf': '芝',
-		'dirt': 'ダート',
-		'straight': '直線',
-		'corner': 'コーナー{{n}}',
-		'uphill': '上り坂',
-		'downhill': '下り坂',
-		'phase0': '序盤',
-		'phase1': '中盤',
-		'phase2': '終盤',
-		'phase3': 'ラストスパート',
-		'short': Object.freeze({
-			'straight': '直',
-			'corner': 'コ{{n}}',
-			'uphill': '上',
-			'downhill': '下'
-		})
-	}),
-	'tracknames': TRACKNAMES_ja,
-	'coursedesc': '{{surface}}{{distance}}m{{inout}}'
-});
 
-const STRINGS_en = Object.freeze({
-	'racetrack': Object.freeze({
-		'none': '​',
-		'inner': ' (inner)',
-		'outer': ' (outer)',
-		'outin': ' (outer→inner)',
-		'orientation': Object.freeze(['', '(clockwise)', '(counterclockwise)', '', '(straight)']),
-		'turf': 'Turf',
-		'dirt': 'Dirt',
-		'straight': 'Straight →',
-		'corner': 'Corner ⮌{{n}}',
-		'uphill': 'Uphill ↗',
-		'downhill': 'Downhill ↘',
-		'phase0': 'Opening leg',
-		'phase1': 'Middle leg',
-		'phase2': 'Final leg',
-		'phase3': 'Last spurt',
-		'short': Object.freeze({
-			'straight': '→',
-			'corner': '⮌{{n}}',
-			'uphill': '↗',
-			'downhill': '↘'
-		})
-	}),
-	'tracknames': TRACKNAMES_en,
-	'coursedesc': Object.freeze({  // 1 = turf 2 = dirt
-		'one': '{{distance}}m{{inout}}',
-		'many': '{{surface}} {{distance}}m{{inout}}'
-	})
-});
 
 const inoutKey = Object.freeze(['', 'none', 'inner', 'outer', 'outin']);
 
@@ -119,7 +61,6 @@ const coursesByTrack = (function () {
 })();
 
 export function TrackSelect(props) {
-	const lang = useLanguage();
 	let [trackid, setTrackid] = useState(courses[props.courseid].raceTrackId);
 	const changeCourse = useCallback((e) => props.setCourseid(+e.target.value), [props.setCourseid]);
 
@@ -130,7 +71,7 @@ export function TrackSelect(props) {
 	}
 
 	return (
-		<IntlProvider definition={STRINGS_cn}>
+		<IntlProvider definition={STRINGS}>
 			<div class="trackSelect">
 				<select value={trackid} onChange={changeTrack} tabindex={props.tabindex}>
 					{Object.keys(tracknames).map(tid => <option value={tid}><Text id={`tracknames.${tid}`} /></option>)}
@@ -172,7 +113,6 @@ function SectionText(props) {
 }
 
 export function RaceTrack(props) {
-	const lang = useLanguage();
 	const course = CourseHelpers.getCourse(props.courseid);
 
 	const xOffset = props.xOffset || 0, yOffset = props.yOffset || 0, xExtra = props.xExtra || 0, yExtra = props.yExtra || 0;
@@ -399,7 +339,7 @@ export function RaceTrack(props) {
 	}, [props.regions, course.distance]);
 
 	return (
-		<IntlProvider definition={STRINGS_cn}>
+		<IntlProvider definition={STRINGS}>
 			<div class="racetrackWrapper">
 				{trackNameHeader}
 				<svg version="1.1" width={props.width} height={props.height + yOffset + yExtra} xmlns="http://www.w3.org/2000/svg" class="racetrackView" data-courseid={props.courseid} onMouseMove={doMouseMove} onMouseLeave={doMouseLeave}>

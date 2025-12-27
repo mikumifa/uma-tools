@@ -16,7 +16,7 @@
 
 ## 📊 身位图计算
 
-- [点击进入](https://mikumifa.github.io/uma-tools/umalator-cn/)
+- [点击进入](https://mikumifa.github.io/uma-tools/umalator/dist/)
 - 根据比赛数据计算并生成身位表
 - 源代码： [mikumifa/uma-tools: uma-skills-tools的闪耀优俊少女特供版本](https://github.com/mikumifa/uma-tools)
 - 修改自：[alpha123/uma-tools](https://github.com/alpha123/uma-tools)

@@ -557,7 +557,7 @@ def main():
     parser.add_argument(
         "--run-node",
         action="store_true",
-        help="if provided, run 'node build.mjs' at the end (if available)",
+        help="if provided, run 'node esbuild.config.mjs' at the end (if available)",
     )
     parser.add_argument(
         "--no-uma", action="store_true", help="skip uma/icons processing"
@@ -588,39 +588,39 @@ def main():
 
     # Step 1: skill_meta (filtered or not)
     make_skill_meta(
-        master, out_path="umalator-cn/skill_meta.json", where_filtered=args.filtered
+        master, out_path="umalator/data/skill_meta.json", where_filtered=args.filtered
     )
     # Step 2: global skill data
-    make_global_skill_data(master, out_path="umalator-cn/skill_data.json")
+    make_global_skill_data(master, out_path="umalator/data/skill_data.json")
     # Step 3: skillnames
-    make_global_skillnames(master, out_path="umalator-cn/skillnames.json")
+    make_global_skillnames(master, out_path="umalator/data/skillnames.json")
     # Step 4: uma info (unless skipped)
     if not args.no_uma:
         make_uma_info(
             master,
-            out_umas="umalator-cn/umas.json",
+            out_umas="umalator/data/umas.json",
             out_icons="icons.json",
             dat_copy_target="need_unpack",
         )
-    # Step 5: run node build.mjs (optional)
+    # Step 5: run node esbuild.config.mjs (optional)
     if args.run_node:
-        umalator_path = Path("umalator-cn")  # 目标目录
-        build_file = umalator_path / "build.mjs"
+        repo_root = Path(__file__).resolve().parent.parent
+        build_file = repo_root / "esbuild.config.mjs"
 
         if build_file.exists():
             try:
-                print(f"Running: node {build_file} (cwd={umalator_path})")
+                print(f"Running: node {build_file} (cwd={repo_root})")
                 subprocess.run(
-                    ["node", "build.mjs"],
+                    ["node", "esbuild.config.mjs"],
                     check=True,
-                    cwd=umalator_path,  # 切换工作目录
+                    cwd=repo_root,
                 )
             except FileNotFoundError:
-                print("node not found in PATH; cannot run build.mjs")
+                print("node not found in PATH; cannot run esbuild.config.mjs")
             except subprocess.CalledProcessError as e:
-                print(f"node build.mjs returned non-zero exit: {e.returncode}")
+                print(f"node esbuild.config.mjs returned non-zero exit: {e.returncode}")
         else:
-            print("umalator-cn/build.mjs not found; skipping node build.")
+            print("esbuild.config.mjs not found; skipping node build.")
 
 
 if __name__ == "__main__":
