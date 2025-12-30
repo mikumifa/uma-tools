@@ -708,18 +708,27 @@ function App() {
   const resultsPaneRef = useRef<HTMLDivElement | null>(null);
   const [ShowUnreleased, setShowUnreleased] = useState(false);
   const [trackOrientationMsg, setTrackOrientationMsg] = useState("");
+  const [forceShowTrack, setForceShowTrack] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(() =>
     typeof window === "undefined" ? 1540 : window.innerWidth
+  );
+  const [viewportHeight, setViewportHeight] = useState(() =>
+    typeof window === "undefined" ? 900 : window.innerHeight
   );
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const handleResize = () => setViewportWidth(window.innerWidth);
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+      setViewportHeight(window.innerHeight);
+    };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const isMobile = viewportWidth <= 900;
+  const showTrack = !isMobile || forceShowTrack;
+  const flippedTrack = isMobile && forceShowTrack;
 
   useEffect(() => {
     if (!isMobile) {
@@ -727,20 +736,23 @@ function App() {
     }
   }, [isMobile]);
 
+  const desktopBaselineWidth = 1280;
+  const trackViewportWidth = isMobile
+    ? Math.min(Math.max(320, viewportWidth), 640)
+    : Math.max(viewportWidth, desktopBaselineWidth);
+
   const trackWidth = useMemo(() => {
-    return Math.max(300, viewportWidth - viewportWidth * 0.1);
-  }, [viewportWidth, isMobile]);
+    return Math.max(300, trackViewportWidth - trackViewportWidth * 0.1);
+  }, [trackViewportWidth]);
 
   const trackHeight = useMemo(
-    () =>
-      isMobile ? Math.round(trackWidth * 0.72) : Math.round(trackWidth * 0.28),
-    [trackWidth, isMobile]
+    () => Math.round(trackWidth * 0.28),
+    [trackWidth]
   );
 
   const velocityHeight = useMemo(
-    () =>
-      isMobile ? Math.round(trackHeight * 1.1) : Math.round(trackHeight * 1.05),
-    [trackHeight, isMobile]
+    () => Math.round(trackHeight * 1.05),
+    [trackHeight]
   );
 
   const trackWidthStyle = useMemo(
@@ -750,22 +762,22 @@ function App() {
 
   const histogramWidth = useMemo(
     () => Math.min(600, Math.max(280, trackWidth)),
-    [trackWidth, isMobile]
+    [trackWidth]
   );
 
   const histogramHeight = useMemo(
-    () =>
-      isMobile
-        ? Math.round(histogramWidth * 0.7)
-        : Math.round(histogramWidth * 0.55),
-    [histogramWidth, isMobile]
+    () => Math.round(histogramWidth * 0.55),
+    [histogramWidth]
   );
-  const detailHistogramWidth = useMemo(
-    () => Math.min(420, Math.max(240, trackWidth * 0.35)),
-    [trackWidth]
-  );
+  const detailHistogramWidth = useMemo(() => {
+    if (isMobile) {
+      // Keep within viewport on small screens
+      return Math.max(260, Math.min(trackWidth * 0.9, 420));
+    }
+    return Math.min(520, Math.max(320, trackWidth * 0.4));
+  }, [trackWidth, isMobile]);
   const detailHistogramHeight = useMemo(
-    () => Math.round(detailHistogramWidth * 0.62),
+    () => Math.round(detailHistogramWidth * 0.6),
     [detailHistogramWidth]
   );
   const showStatusBar = Boolean(status) || progress > 0;
@@ -811,25 +823,82 @@ function App() {
 
   const course = useMemo(() => CourseHelpers.getCourse(courseId), [courseId]);
 
-  const requestLandscapeView = async () => {
+  const viewTrackImage = async () => {
+    setTrackOrientationMsg("正在生成赛道图片...");
+    setForceShowTrack(true);
+
+    // 等待渲染
+    await new Promise((res) =>
+      requestAnimationFrame(() => requestAnimationFrame(res))
+    );
+
     const container = raceTrackRef.current;
-    if (!container) return;
-    setTrackOrientationMsg("");
+    const canvas: HTMLCanvasElement | null =
+      container?.querySelector("canvas") || null;
+    const svg: SVGSVGElement | null = container?.querySelector("svg") || null;
+
+    if (!canvas || !svg) {
+      setTrackOrientationMsg("生成赛道图片失败（未找到画布）。");
+      setForceShowTrack(false);
+      return;
+    }
+
+    const displayWidth = canvas.width || trackWidth;
+    const displayHeight = canvas.height || trackHeight;
+
+    const combine = document.createElement("canvas");
+    combine.width = displayWidth;
+    combine.height = displayHeight;
+    const ctx = combine.getContext("2d");
+    if (!ctx) {
+      setTrackOrientationMsg("生成赛道图片失败（无上下文）。");
+      setForceShowTrack(false);
+      return;
+    }
+
+    ctx.drawImage(canvas, 0, 0, displayWidth, displayHeight);
 
     try {
-      if (container.requestFullscreen) {
-        await container.requestFullscreen();
-      }
-
-      if (screen.orientation?.lock) {
-        await screen.orientation.lock("landscape-primary");
-      }
-
-      setTrackOrientationMsg("已尝试全屏横屏，退出全屏即可恢复竖屏。");
+      const svgData = new XMLSerializer().serializeToString(svg);
+      const blob = new Blob([svgData], {
+        type: "image/svg+xml;charset=utf-8",
+      });
+      const url = URL.createObjectURL(blob);
+      await new Promise<void>((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0, displayWidth, displayHeight);
+          URL.revokeObjectURL(url);
+          resolve();
+        };
+        img.onerror = () => {
+          URL.revokeObjectURL(url);
+          reject(new Error("svg load error"));
+        };
+        img.src = url;
+      });
     } catch (err) {
-      console.warn("Landscape view failed", err);
-      setTrackOrientationMsg("浏览器限制自动横屏，可手动旋转或直接放大查看。");
+      console.warn("SVG overlay export failed", err);
     }
+
+    const finalDataUrl = combine.toDataURL("image/png");
+
+    const popup = window.open("");
+    if (popup && popup.document) {
+      popup.document.write(`
+        <title>赛道截图</title>
+        <style>
+          body { margin: 0; background: #111; display: flex; align-items: center; justify-content: center; }
+          img { max-width: 100vw; max-height: 100vh; }
+        </style>
+        <img src="${finalDataUrl}" alt="赛道截图" />
+      `);
+      setTrackOrientationMsg("已弹出赛道图片，可长按/保存。");
+    } else {
+      setTrackOrientationMsg("浏览器阻止弹窗，请允许弹窗后重试。");
+    }
+
+    setForceShowTrack(false);
   };
 
   const [uma1, setUma1] = useState(() => new HorseState());
@@ -839,6 +908,14 @@ function App() {
     nextUiState,
     DEFAULT_UI_STATE
   );
+
+  // Mobile 不支持对比模式，强制回到图表模式
+  useEffect(() => {
+    if (isMobile && mode === Mode.Compare) {
+      updateUiState(UiStateMsg.SetModeChart);
+    }
+  }, [isMobile, mode]);
+
   function toggleExpand(e: Event) {
     e.stopPropagation();
     const next = !expanded;
@@ -858,6 +935,18 @@ function App() {
     if (!expanded || typeof window === "undefined") return;
     const overlay = document.getElementById("umaOverlay") as HTMLElement | null;
     overlay && overlay.focus();
+  }, [expanded]);
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const originalOverflow = document.body.style.overflow;
+    if (expanded) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = originalOverflow;
+    }
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
   }, [expanded]);
   const topPaneClass = [
     chartData ? "hasResults" : "",
@@ -1335,56 +1424,78 @@ function App() {
         >
           {/* Left Column: Track and Track Settings */}
 
-          <div ref={raceTrackRef}>
-            <RaceTrack
-              courseid={courseId}
-              width={trackWidth}
-              height={trackHeight}
-              xOffset={0}
-              yOffset={15}
-              yExtra={40}
-              mouseMove={rtMouseMove}
-              mouseLeave={rtMouseLeave}
-              regions={skillActivations}
+          {showTrack && (
+            <div
+              ref={raceTrackRef}
+              className={flippedTrack ? "racetrackFlipped" : ""}
+              style={
+                flippedTrack
+                  ? {
+                      width: `${trackHeight + 60}px`,
+                      height: `${trackWidth + 80}px`,
+                    }
+                  : undefined
+              }
             >
-              <VelocityLines
-                data={chartData}
-                courseDistance={course.distance}
+              <RaceTrack
+                courseid={courseId}
                 width={trackWidth}
-                height={velocityHeight}
+                height={trackHeight}
                 xOffset={0}
-                showHp={showHp}
-              />
-              <g id="rtMouseOverBox" style="display:none">
-                <text
-                  id="rtV1"
-                  x="25"
-                  y="10"
-                  fill="var(--uma-blue)"
-                  font-size="10px"
-                ></text>
-                <text
-                  id="rtV2"
-                  x="25"
-                  y="20"
-                  fill="var(--uma-pink)"
-                  font-size="10px"
-                ></text>
-              </g>
-            </RaceTrack>
-          </div>
-          {isMobile && (
+                yOffset={15}
+                yExtra={40}
+                mouseMove={rtMouseMove}
+                mouseLeave={rtMouseLeave}
+                regions={skillActivations}
+                hideTitle={true}
+                containerStyle={
+                  flippedTrack
+                    ? {
+                        width: `${trackHeight + 60}px`,
+                        height: `${trackWidth + 80}px`,
+                        overflow: "visible",
+                      }
+                    : undefined
+                }
+              >
+                <VelocityLines
+                  data={chartData}
+                  courseDistance={course.distance}
+                  width={trackWidth}
+                  height={velocityHeight}
+                  xOffset={0}
+                  showHp={showHp}
+                />
+                <g id="rtMouseOverBox" style="display:none">
+                  <text
+                    id="rtV1"
+                    x="25"
+                    y="10"
+                    fill="var(--uma-blue)"
+                    font-size="10px"
+                  ></text>
+                  <text
+                    id="rtV2"
+                    x="25"
+                    y="20"
+                    fill="var(--uma-pink)"
+                    font-size="10px"
+                  ></text>
+                </g>
+              </RaceTrack>
+            </div>
+          )}
+          {isMobile && !showTrack && (
             <div className="mobileTrackActions">
               <button
                 type="button"
                 className="mobileTrackButton"
-                onClick={requestLandscapeView}
+                onClick={viewTrackImage}
               >
-                横屏查看赛道
+                查看赛道图片
               </button>
               <span className="mobileTrackHint">
-                {trackOrientationMsg ||
-                  "全屏横屏查看赛道，退出全屏即可返回。"}
+                {trackOrientationMsg || "弹窗展示赛道图片，可长按/保存。"}
               </span>
             </div>
           )}
@@ -1407,7 +1518,11 @@ function App() {
             >
               <div
                 className={`
-                  ${isMobile ? "flex flex-col items-stretch gap-3 w-full" : "flex flex-wrap items-center gap-2"}
+                  ${
+                    isMobile
+                      ? "flex flex-col items-stretch gap-3 w-full"
+                      : "flex flex-wrap items-center gap-2"
+                  }
                   rounded-2xl border border-white/40
                   bg-white/70 backdrop-blur
                   px-3 ${isMobile ? "py-3" : "py-2"} shadow-sm
@@ -1448,8 +1563,14 @@ function App() {
                     inline-flex items-center gap-1
                     rounded-full
                     bg-gradient-to-r from-lime-300 to-emerald-400
-                    ${isMobile ? "w-full justify-center text-base py-2.5" : "px-3.5 py-1.5"}
-                    ${isMobile ? "text-base" : "text-sm"} font-semibold text-gray-900
+                    ${
+                      isMobile
+                        ? "w-full justify-center text-base py-2.5"
+                        : "px-3.5 py-1.5"
+                    }
+                    ${
+                      isMobile ? "text-base" : "text-sm"
+                    } font-semibold text-gray-900
                     shadow-sm transition
                     hover:shadow
                   `}
@@ -1460,48 +1581,51 @@ function App() {
 
               <div
                 className={`
-                  ${isMobile ? "flex flex-col gap-3 w-full" : "flex flex-wrap items-center gap-3"}
+                  ${
+                    isMobile
+                      ? "flex flex-col gap-3 w-full"
+                      : "flex flex-wrap items-center gap-3"
+                  }
                   rounded-2xl border border-white/40
                   bg-white/70 backdrop-blur
                   px-3 ${isMobile ? "py-3" : "py-2"} shadow-sm
                 `}
               >
+                {!isMobile && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-500">模式</span>
+
+                    <label className="flex items-center gap-1 rounded-full bg-white/70 px-3 py-1">
+                      <input
+                        type="radio"
+                        checked={mode === Mode.Compare}
+                        onChange={() =>
+                          updateUiState(UiStateMsg.SetModeCompare)
+                        }
+                        className="accent-indigo-500"
+                      />
+                      对比
+                    </label>
+
+                    <label className="flex items-center gap-1 rounded-full bg-white/70 px-3 py-1">
+                      <input
+                        type="radio"
+                        checked={mode === Mode.Chart}
+                        onChange={() => updateUiState(UiStateMsg.SetModeChart)}
+                        className="accent-indigo-500"
+                      />
+                      身距图
+                    </label>
+                  </div>
+                )}
+                {isMobile && (
+                  <div className="text-gray-500 text-sm">移动端只支持身距</div>
+                )}
+
                 <div
-                  className={`${
-                    isMobile
-                      ? "flex items-center gap-2 justify-between"
-                      : "flex items-center gap-2"
+                  className={`flex items-center gap-2 rounded-full bg-white/70 px-3 ${
+                    isMobile ? "py-2.5" : "py-1"
                   }`}
-                >
-                  <span className="text-gray-500">模式</span>
-
-                  <label
-                    className={`flex items-center gap-1 rounded-full bg-white/70 px-3 ${isMobile ? "py-2 text-base" : "py-1"}`}
-                  >
-                    <input
-                      type="radio"
-                      checked={mode === Mode.Compare}
-                      onChange={() => updateUiState(UiStateMsg.SetModeCompare)}
-                      className="accent-indigo-500"
-                    />
-                    对比
-                  </label>
-
-                  <label
-                    className={`flex items-center gap-1 rounded-full bg-white/70 px-3 ${isMobile ? "py-2 text-base" : "py-1"}`}
-                  >
-                    <input
-                      type="radio"
-                      checked={mode === Mode.Chart}
-                      onChange={() => updateUiState(UiStateMsg.SetModeChart)}
-                      className="accent-indigo-500"
-                    />
-                    身距图
-                  </label>
-                </div>
-
-                <div
-                  className={`flex items-center gap-2 rounded-full bg-white/70 px-3 ${isMobile ? "py-2.5" : "py-1"}`}
                 >
                   <span className="text-gray-500">Seed</span>
 
@@ -1534,29 +1658,35 @@ function App() {
                   </div>
                 </div>
 
-                <label
-                  className={`flex items-center gap-1 rounded-full bg-white/70 px-3 ${isMobile ? "py-2 text-base" : "py-1"}`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={usePosKeep}
-                    onChange={togglePosKeep}
-                    className="accent-indigo-500"
-                  />
-                  位置意识
-                </label>
+                <div className="flex flex-wrap items-center gap-2">
+                  <label
+                    className={`flex items-center gap-1 rounded-full bg-white/70 px-3 ${
+                      isMobile ? "py-2 text-base" : "py-1"
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={usePosKeep}
+                      onChange={togglePosKeep}
+                      className="accent-indigo-500"
+                    />
+                    位置意识
+                  </label>
 
-                <label
-                  className={`flex items-center gap-1 rounded-full bg-white/70 px-3 ${isMobile ? "py-2 text-base" : "py-1"}`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={showHp}
-                    onChange={toggleShowHp}
-                    className="accent-indigo-500"
-                  />
-                  耐力显示
-                </label>
+                  <label
+                    className={`flex items-center gap-1 rounded-full bg-white/70 px-3 ${
+                      isMobile ? "py-2 text-base" : "py-1"
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={showHp}
+                      onChange={toggleShowHp}
+                      className="accent-indigo-500"
+                    />
+                    耐力显示
+                  </label>
+                </div>
 
                 <RacePresets
                   set={(courseId, racedef) => {
@@ -1579,7 +1709,11 @@ function App() {
                   className={`
                     rounded-full border border-indigo-200
                     bg-white/80
-                    ${isMobile ? "w-full justify-center text-base py-2.5" : "px-3 py-1.5"}
+                    ${
+                      isMobile
+                        ? "w-full justify-center text-base py-2.5"
+                        : "px-3 py-1.5"
+                    }
                     text-indigo-600 font-semibold
                     shadow-sm transition
                     hover:bg-indigo-100 hover:text-indigo-700
@@ -1592,7 +1726,11 @@ function App() {
                   className={`
                     rounded-full
                     bg-gradient-to-r from-indigo-600 to-purple-600
-                    ${isMobile ? "w-full justify-center text-base py-3" : "px-6 py-2"}
+                    ${
+                      isMobile
+                        ? "w-full justify-center text-base py-3"
+                        : "px-6 py-2"
+                    }
                     text-white font-semibold
                     shadow-md transition
                     hover:shadow-lg hover:scale-[1.01]

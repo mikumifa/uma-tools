@@ -1,40 +1,67 @@
-.filterButton {
-  background: rgb(214, 207, 231);
-  border-radius: 8px;
-  border: 2px solid transparent;
-  box-shadow: 0 3px 0 rgb(180, 178, 192);
+.filterChip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(240, 237, 246);
+  border-radius: 999px;
+  border: 1px solid rgba(121, 64, 22, 0.2);
   color: rgb(121, 64, 22);
-  padding: 0.8em;
-  margin: 10px 5px;
-  text-stroke: 1px rgb(121, 64, 22);
-  -webkit-text-stroke: 1px rgb(121, 64, 22);
+  padding: 6px 10px;
+  margin: 2px 2px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
-.filterButton.active {
-  background: rgb(86, 171, 51);
-  box-shadow: 0 3px 0 rgb(86, 171, 51);
+.filterChip.active {
+  background: rgb(103, 170, 68);
+  border-color: rgba(103, 170, 68, 0.6);
   color: white;
-  text-stroke: 1px white;
-  -webkit-text-stroke: 1px white;
 }
 
-.iconFilterButton {
-  all: unset;
+.iconFilterChip {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
   background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   filter: grayscale(1);
-  height: 40px;
-  margin: 5px;
-  width: 40px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid rgba(121, 64, 22, 0.16);
+  margin: 3px;
+  transition: filter 0.15s ease, transform 0.15s ease;
 }
 
-.iconFilterButton.active {
+.iconFilterChip.active {
   filter: none;
+  transform: translateY(-1px);
 }
 
 .filterSearch {
-  margin: 3px 5px;
-  padding: 0.8em;
-  width: calc(100% - 26px);
+  margin: 2px 0;
+  padding: 0.6em 0.75em;
+  width: 100%;
+}
+
+.filterGroups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 10px 12px;
+  align-items: stretch;
+}
+
+.filterGroups > [data-filter-group] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid rgba(121, 64, 22, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .skillList {
@@ -271,6 +298,52 @@
   /* Firefox */
   scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   transform: translate(-50%, -50%) scale(0.85);
+}
+
+@media (max-width: 640px) {
+  .chooseSkill {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    padding: 14px;
+    font-size: 16px;
+    transform: none;
+  }
+
+  .filterChip {
+    padding: 6px 8px;
+    margin: 2px;
+    font-size: 0.9em;
+  }
+
+  .iconFilterChip {
+    width: 28px;
+    height: 28px;
+    margin: 2px;
+  }
+
+  .filterSearch {
+    padding: 0.55em 0.65em;
+  }
+
+  .skillList {
+    font-size: 15px;
+    gap: 10px 12px;
+  }
+
+  .filterGroups {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 6px 8px;
+  }
+
+  .filterGroups > [data-filter-group] {
+    gap: 4px;
+    padding: 6px;
+  }
 }
 
 .chooseSkill.open {

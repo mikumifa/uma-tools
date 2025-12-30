@@ -1,5 +1,5 @@
 import { h, Fragment } from "preact";
-import { useState, useMemo, useId } from "preact/hooks";
+import { useState, useMemo, useId, useEffect } from "preact/hooks";
 import { Text, Localizer } from "preact-i18n";
 
 // 移除 @tanstack/table-core 的所有引用
@@ -94,6 +94,17 @@ export function BasinnChart(props) {
   const radioGroup = useId();
   const [selected, setSelected] = useState("");
   const [selectedType, setSelectedType] = useState("mean");
+  // 视口小于等于 1280px 即使用精简模式（桌面窄屏也触发）
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= 1280 : false
+  );
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const onResize = () => setIsMobile(window.innerWidth <= 1280);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   // 手动管理排序状态： { key: string, direction: 'asc' | 'desc' }
   const [sortConfig, setSortConfig] = useState({
@@ -237,12 +248,43 @@ export function BasinnChart(props) {
     );
   };
 
+  const visibleColumns = useMemo(() => {
+    if (!isMobile) return columns;
+    return columns.filter(
+      (c) => c.key === "id" || c.radioType === selectedType
+    );
+  }, [columns, isMobile, selectedType]);
+  const runOptions = [
+    { key: "min", label: "最小" },
+    { key: "max", label: "最大" },
+    { key: "mean", label: "平均" },
+    { key: "median", label: "中位" },
+  ];
+
   return (
     <div class="basinnChartWrapper">
+      {isMobile && (
+        <div className="mobileRunToggle">
+          <span className="mobileRunToggleLabel">显示</span>
+          <div className="mobileRunToggleButtons">
+            {runOptions.map((opt) => (
+              <button
+                type="button"
+                className={`mobileRunToggleBtn ${
+                  selectedType === opt.key ? "active" : ""
+                }`}
+                onClick={() => headerClick(opt.key)}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
       <table class="basinnChart">
         <thead>
           <tr>
-            {columns.map((col) => {
+            {visibleColumns.map((col) => {
               // 计算当前的排序状态 class
               const isSorted = sortConfig.key === col.key;
               const sortClass = isSorted
@@ -293,7 +335,7 @@ export function BasinnChart(props) {
                 data-skillid={id}
                 class={id === selected ? "selected" : ""}
               >
-                {columns.map((col) => (
+                {visibleColumns.map((col) => (
                   <td key={`${id}-${col.key}`}>{col.cell(row)}</td>
                 ))}
               </tr>

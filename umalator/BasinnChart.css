@@ -126,7 +126,7 @@
   background: linear-gradient(180deg, #6ea0e6, #4a7dcf);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1280px) {
   .basinnChartWrapper {
     border-radius: 14px;
     padding: 10px;
@@ -148,7 +148,7 @@
   }
 
   .basinnChart th:first-child {
-    width: 55%;
+    width: 45%;
   }
 
   .basinnChart .columnHeader {
@@ -161,5 +161,52 @@
 
   .chartSkillName > img {
     height: 1.8em;
+  }
+
+  .chartSkillName span {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+  }
+
+  .basinnChart td:not(:first-child),
+  .basinnChart th:not(:first-child) {
+    white-space: nowrap;
+  }
+
+  .mobileRunToggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .mobileRunToggleLabel {
+    color: #794016;
+    font-weight: 600;
+  }
+
+  .mobileRunToggleButtons {
+    display: flex;
+    gap: 6px;
+  }
+
+  .mobileRunToggleBtn {
+    border: 1px solid rgba(121, 64, 22, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 6px 10px;
+    border-radius: 10px;
+    color: #794016;
+    font-weight: 600;
+  }
+
+  .mobileRunToggleBtn.active {
+    background: #3d7dd1;
+    color: #fff;
+    border-color: #3d7dd1;
   }
 }

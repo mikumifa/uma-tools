@@ -767,33 +767,35 @@ export function RaceTrack(props) {
       <div
         class="racetrackWrapper"
         ref={containerRef}
-        style={{ position: "relative" }}
+        style={{ position: "relative", ...(props.containerStyle || {}) }}
       >
-        <div class="racetrackName">
-          <Text id={`tracknames.${course.raceTrackId}`} />{" "}
-          <Text
-            id="coursedesc"
-            plural={course.surface}
-            fields={{
-              distance: course.distance,
-              inout: (
-                <Text
-                  id={`racetrack.${inoutKey[courses[props.courseid].course]}`}
-                />
-              ),
-              surface: (
-                <Text
-                  id={
-                    course.surface == Surface.Turf
-                      ? "racetrack.turf"
-                      : "racetrack.dirt"
-                  }
-                />
-              ),
-            }}
-          />{" "}
-          <Text id={`racetrack.orientation.${course.turn}`} />
-        </div>
+        {!props.hideTitle && (
+          <div class="racetrackName">
+            <Text id={`tracknames.${course.raceTrackId}`} />{" "}
+            <Text
+              id="coursedesc"
+              plural={course.surface}
+              fields={{
+                distance: course.distance,
+                inout: (
+                  <Text
+                    id={`racetrack.${inoutKey[courses[props.courseid].course]}`}
+                  />
+                ),
+                surface: (
+                  <Text
+                    id={
+                      course.surface == Surface.Turf
+                        ? "racetrack.turf"
+                        : "racetrack.dirt"
+                    }
+                  />
+                ),
+              }}
+            />{" "}
+            <Text id={`racetrack.orientation.${course.turn}`} />
+          </div>
+        )}
 
         <div
           style={{

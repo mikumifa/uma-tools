@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 100%;
+  min-height: 0;
   max-width: 720px;
   width: 100%;
 }
@@ -24,10 +24,10 @@
 
 .umaSelector {
   display: grid;
-  grid-template-columns: 120px minmax(0, 1fr);
-  grid-template-rows: repeat(2, 60px);
-  padding: 0 clamp(24px, 5vw, 50px) 10px;
-  row-gap: 12px;
+  grid-template-columns: 110px minmax(0, 1fr);
+  grid-template-rows: repeat(2, 54px);
+  padding: 0 clamp(18px, 4vw, 40px) 10px;
+  row-gap: 10px;
 }
 
 .umaSelectorIconsBox {
@@ -37,13 +37,13 @@
 
 .umaSelectorIconsBox > img:first-child {
   cursor: pointer;
-  width: 120px;
+  width: 108px;
 }
 
 .umaSelectorIconsBox > img:last-child {
   align-self: flex-start;
   cursor: pointer;
-  width: 56px;
+  width: 48px;
   z-index: 1;
 }
 
@@ -54,7 +54,7 @@
 
 .umaEpithet > span {
   color: rgb(121, 64, 22);
-  font-size: 1.4em;
+  font-size: 1.25em;
   font-weight: bold;
   margin: 0 auto;
 }
@@ -71,10 +71,35 @@
   border: none;
   box-sizing: border-box;
   color: rgb(121, 64, 22);
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: bold;
   text-align: center;
   width: 100%;
+}
+
+@media (max-width: 640px) {
+  .umaSelector {
+    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-rows: repeat(2, 48px);
+    padding: 0 14px 8px;
+    row-gap: 8px;
+  }
+
+  .umaSelectorIconsBox > img:first-child {
+    width: 92px;
+  }
+
+  .umaSelectorIconsBox > img:last-child {
+    width: 42px;
+  }
+
+  .umaEpithet > span {
+    font-size: 1.1em;
+  }
+
+  .umaSelectInput {
+    font-size: 1.05em;
+  }
 }
 
 .umaSuggestions {
@@ -138,6 +163,28 @@
   text-align: center;
 }
 
+@media (max-width: 640px) {
+  .horseParams {
+    font-size: 12px;
+    padding: 2px 2px;
+    gap: 3px 2px;
+  }
+
+  .horseParamHeader > img {
+    height: 0.9em;
+  }
+
+  .horseParam {
+    padding: 2px;
+  }
+
+  .horseParam > input {
+    font-size: 0.9em;
+    width: 54px;
+    margin-left: 4px;
+  }
+}
+
 .horseParamHeader {
   background: rgb(121, 216, 35);
   border-left: 2px dotted rgb(93, 199, 24);
@@ -155,7 +202,7 @@
 
 .horseParamHeader > img {
   filter: drop-shadow(0 2px 0 rgb(103, 162, 58));
-  height: 1.2em;
+  height: 1.05em;
   margin-right: 2px;
   vertical-align: middle;
 }
@@ -171,7 +218,7 @@
   align-items: center;
   border-left: 2px dotted rgb(121, 206, 72);
   display: flex;
-  padding: 8px;
+  padding: 4px;
 }
 
 .horseParam:nth-child(6) {
@@ -179,25 +226,40 @@
 }
 
 .horseParam > img {
-  width: 25px;
+  width: 20px;
+  margin-right: 1px;
 }
 
 .horseParam > input {
   background: inherit;
   border: none;
   color: rgb(121, 64, 22);
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: bold;
-  margin-left: 10px;
+  margin-left: 1px;
   padding: 0;
-  width: 76px;
+  width: 58px;
 }
 
 .horseAptitudes {
   display: grid;
-  grid-template-columns: repeat(2, 210px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px 12px;
   margin: 0 25px;
+}
+
+@media (max-width: 640px) {
+  .horseAptitudes {
+    gap: 8px;
+    margin: 0 12px;
+  }
+
+  .horseAptitudes > div {
+    font-size: 0.95em;
+    height: auto;
+    min-height: 34px;
+    padding: 6px 10px;
+  }
 }
 
 .horseAptitudes > div {
@@ -283,27 +345,46 @@
 .horseSkillListWrapper {
   background: rgb(242, 242, 242);
   border-radius: 4px;
-  height: 100%;
-  margin-right: 20px;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin: 20px 20px 0 20px;
   width: 90%;
+  flex: 1 1 auto;
+  min-height: 200px;
+  max-height: none;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding-bottom: 8px;
+  box-sizing: border-box;
 }
 
 .horseSkillList {
   display: grid;
   gap: 16px 10px;
-  grid-template-columns: repeat(2, 1fr);
-  /* 固定2列，自动均分 */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   list-style-type: none;
   margin: 0 auto;
   padding: 12px;
-  width: 576px;
+  width: 100%;
+  max-width: 640px;
 }
 
 .horseSkillList .skill {
-  width: 95%;
+  width: 100%;
   margin: 0px;
+}
+
+@media (max-width: 640px) {
+  .horseSkillList {
+    gap: 12px 8px;
+    padding: 8px;
+  }
+
+  .horseSkillListWrapper {
+    max-height: none;
+    margin: 12px auto 0 auto;
+    width: 96%;
+    min-height: 180px;
+  }
 }
 
 .horseSkillPickerWrapper {
