@@ -316,7 +316,6 @@ body {
   gap: 16px;
   justify-content: center;
   width: min(100%, var(--track-width, 980px));
-  background: var(--uma-surface);
   border-radius: 22px;
   border: 1px solid rgba(61, 125, 209, 0.18);
   box-shadow: var(--uma-shadow);
@@ -431,22 +430,27 @@ body {
   display: flex;
   gap: 16px;
   width: 100%;
+  align-items: flex-start;
 }
 
 .chartPanel {
-  flex: 0 1 40%;
+  flex: 1 1 0;
   min-width: 0;
+  padding: 8px;
+  align-self: stretch;
 }
 
 .chartDetails {
-  flex: 1 1 0;
+  flex: 0 0 auto;
+  max-width: 480px;
   background: var(--uma-surface-soft);
   border: 1px solid rgba(61, 125, 209, 0.18);
   border-radius: 16px;
   box-shadow: inset 0 1px #ffffff40;
   padding: 12px;
-  overflow-y: auto;
-  min-width: 0;
+  overflow: visible;
+  min-width: 320px;
+  align-self: flex-start;
 }
 
 .chartDetails .expandedSkill {
@@ -458,12 +462,53 @@ body {
   padding: 8px;
   border-radius: 12px;
   background: rgba(61, 125, 209, 0.06);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+  position: relative;
 }
 
 .chartDetailsEmpty {
   color: var(--uma-muted);
   text-align: center;
   padding: 24px 12px;
+}
+
+.jumpButtons {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 30;
+}
+
+.jumpButtons > button {
+  border: 1px solid rgba(61, 125, 209, 0.2);
+  background: #fff;
+  color: var(--uma-text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(61, 125, 209, 0.18);
+  cursor: pointer;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.jumpButtons > button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(61, 125, 209, 0.28);
+  filter: brightness(1.03);
+}
+
+.jumpButtons > button:active {
+  transform: translateY(1px);
+  box-shadow: 0 6px 14px rgba(61, 125, 209, 0.2);
+  filter: brightness(0.97);
 }
 
 @media (max-width: 900px) {
@@ -478,6 +523,7 @@ body {
   .chartDetails {
     flex: 1 2 auto;
     max-width: 100%;
+    min-width: 0;
   }
 }
 

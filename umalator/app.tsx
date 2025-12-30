@@ -704,6 +704,8 @@ function App() {
   const [status, setStatus] = useState("");
   const [progress, setProgress] = useState(0);
   const workerProgress = useRef({ w1: 0, w2: 0 });
+  const raceTrackRef = useRef<HTMLDivElement | null>(null);
+  const resultsPaneRef = useRef<HTMLDivElement | null>(null);
   const [ShowUnreleased, setShowUnreleased] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(() =>
     typeof window === "undefined" ? 1540 : window.innerWidth
@@ -752,7 +754,7 @@ function App() {
     [histogramWidth, isMobile]
   );
   const detailHistogramWidth = useMemo(
-    () => Math.min(520, Math.max(260, trackWidth * 0.4)),
+    () => Math.min(420, Math.max(240, trackWidth * 0.35)),
     [trackWidth]
   );
   const detailHistogramHeight = useMemo(
@@ -1071,7 +1073,7 @@ function App() {
   let resultsPane;
   if (mode == Mode.Compare && results.length > 0) {
     resultsPane = (
-      <div id="resultsPaneWrapper" style={trackWidthStyle}>
+      <div id="resultsPaneWrapper" style={trackWidthStyle} ref={resultsPaneRef}>
         <div id="resultsPane" class="mode-compare" style={trackWidthStyle}>
           <table id="resultsSummary">
             <tfoot>
@@ -1253,7 +1255,7 @@ function App() {
     const selectedResults = selectedRow?.results ?? [];
     const selectedSkill = selectedRow?.id;
     resultsPane = (
-      <div id="resultsPaneWrapper" style={trackWidthStyle}>
+      <div id="resultsPaneWrapper" style={trackWidthStyle} ref={resultsPaneRef}>
         <div id="resultsPane" class="mode-chart" style={trackWidthStyle}>
           <div class="chartLayout">
             <div class="chartPanel">
@@ -1305,42 +1307,44 @@ function App() {
         >
           {/* Left Column: Track and Track Settings */}
 
-          <RaceTrack
-            courseid={courseId}
-            width={trackWidth}
-            height={trackHeight}
-            xOffset={0}
-            yOffset={15}
-            yExtra={40}
-            mouseMove={rtMouseMove}
-            mouseLeave={rtMouseLeave}
-            regions={skillActivations}
-          >
-            <VelocityLines
-              data={chartData}
-              courseDistance={course.distance}
+          <div ref={raceTrackRef}>
+            <RaceTrack
+              courseid={courseId}
               width={trackWidth}
-              height={velocityHeight}
+              height={trackHeight}
               xOffset={0}
-              showHp={showHp}
-            />
-            <g id="rtMouseOverBox" style="display:none">
-              <text
-                id="rtV1"
-                x="25"
-                y="10"
-                fill="var(--uma-blue)"
-                font-size="10px"
-              ></text>
-              <text
-                id="rtV2"
-                x="25"
-                y="20"
-                fill="var(--uma-pink)"
-                font-size="10px"
-              ></text>
-            </g>
-          </RaceTrack>
+              yOffset={15}
+              yExtra={40}
+              mouseMove={rtMouseMove}
+              mouseLeave={rtMouseLeave}
+              regions={skillActivations}
+            >
+              <VelocityLines
+                data={chartData}
+                courseDistance={course.distance}
+                width={trackWidth}
+                height={velocityHeight}
+                xOffset={0}
+                showHp={showHp}
+              />
+              <g id="rtMouseOverBox" style="display:none">
+                <text
+                  id="rtV1"
+                  x="25"
+                  y="10"
+                  fill="var(--uma-blue)"
+                  font-size="10px"
+                ></text>
+                <text
+                  id="rtV2"
+                  x="25"
+                  y="20"
+                  fill="var(--uma-pink)"
+                  font-size="10px"
+                ></text>
+              </g>
+            </RaceTrack>
+          </div>
           <div
             id="buttonsRow"
             data-mobile={isMobile ? "true" : "false"}
@@ -1460,7 +1464,7 @@ function App() {
                       onClick={() =>
                         setSeed(Math.floor(Math.random() * (-1 >>> 0)) >>> 0)
                       }
-                      className="px-2 bg-gray-100 hover:bg-gray-200"
+                      className="px-2"
                     >
                       🎲
                     </button>
@@ -1537,6 +1541,32 @@ function App() {
           </div>
         </div>
         {resultsPane}
+        <div class="jumpButtons">
+          <button
+            type="button"
+            onClick={() =>
+              raceTrackRef.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              })
+            }
+          >
+            <span style="font-size: 1.2em">🏁</span>
+          </button>
+          {resultsPane && (
+            <button
+              type="button"
+              onClick={() =>
+                resultsPaneRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                })
+              }
+            >
+              <span style="font-size: 1.2em">📊</span>
+            </button>
+          )}
+        </div>
         {expanded && (
           <div
             id="umaOverlay"
