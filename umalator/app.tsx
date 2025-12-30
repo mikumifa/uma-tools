@@ -707,6 +707,7 @@ function App() {
   const raceTrackRef = useRef<HTMLDivElement | null>(null);
   const resultsPaneRef = useRef<HTMLDivElement | null>(null);
   const [ShowUnreleased, setShowUnreleased] = useState(false);
+  const [trackOrientationMsg, setTrackOrientationMsg] = useState("");
   const [viewportWidth, setViewportWidth] = useState(() =>
     typeof window === "undefined" ? 1540 : window.innerWidth
   );
@@ -719,6 +720,12 @@ function App() {
   }, []);
 
   const isMobile = viewportWidth <= 900;
+
+  useEffect(() => {
+    if (!isMobile) {
+      setTrackOrientationMsg("");
+    }
+  }, [isMobile]);
 
   const trackWidth = useMemo(() => {
     return Math.max(300, viewportWidth - viewportWidth * 0.1);
@@ -803,6 +810,27 @@ function App() {
   }
 
   const course = useMemo(() => CourseHelpers.getCourse(courseId), [courseId]);
+
+  const requestLandscapeView = async () => {
+    const container = raceTrackRef.current;
+    if (!container) return;
+    setTrackOrientationMsg("");
+
+    try {
+      if (container.requestFullscreen) {
+        await container.requestFullscreen();
+      }
+
+      if (screen.orientation?.lock) {
+        await screen.orientation.lock("landscape-primary");
+      }
+
+      setTrackOrientationMsg("已尝试全屏横屏，退出全屏即可恢复竖屏。");
+    } catch (err) {
+      console.warn("Landscape view failed", err);
+      setTrackOrientationMsg("浏览器限制自动横屏，可手动旋转或直接放大查看。");
+    }
+  };
 
   const [uma1, setUma1] = useState(() => new HorseState());
   const [uma2, setUma2] = useState(() => new HorseState());
@@ -1345,24 +1373,45 @@ function App() {
               </g>
             </RaceTrack>
           </div>
+          {isMobile && (
+            <div className="mobileTrackActions">
+              <button
+                type="button"
+                className="mobileTrackButton"
+                onClick={requestLandscapeView}
+              >
+                横屏查看赛道
+              </button>
+              <span className="mobileTrackHint">
+                {trackOrientationMsg ||
+                  "全屏横屏查看赛道，退出全屏即可返回。"}
+              </span>
+            </div>
+          )}
           <div
             id="buttonsRow"
             data-mobile={isMobile ? "true" : "false"}
             className="
-              flex flex-col gap-2
+              flex flex-col gap-3
               px-4 py-3
               border-b
               text-sm
             "
           >
-            <div className="flex flex-wrap items-center gap-3">
+            <div
+              className={`${
+                isMobile
+                  ? "flex flex-col gap-3 w-full"
+                  : "flex flex-wrap items-center gap-3 w-full"
+              }`}
+            >
               <div
-                className="
-                  flex flex-wrap items-center gap-2
+                className={`
+                  ${isMobile ? "flex flex-col items-stretch gap-3 w-full" : "flex flex-wrap items-center gap-2"}
                   rounded-2xl border border-white/40
                   bg-white/70 backdrop-blur
-                  px-3 py-2 shadow-sm
-                "
+                  px-3 ${isMobile ? "py-3" : "py-2"} shadow-sm
+                `}
               >
                 <TrackSelect
                   key={courseId}
@@ -1395,32 +1444,40 @@ function App() {
                   type="button"
                   onClick={openUmaOverlay}
                   aria-haspopup="dialog"
-                  className="
+                  className={`
                     inline-flex items-center gap-1
                     rounded-full
                     bg-gradient-to-r from-lime-300 to-emerald-400
-                    px-3.5 py-1.5
-                    text-sm font-semibold text-gray-900
+                    ${isMobile ? "w-full justify-center text-base py-2.5" : "px-3.5 py-1.5"}
+                    ${isMobile ? "text-base" : "text-sm"} font-semibold text-gray-900
                     shadow-sm transition
                     hover:shadow
-                  "
+                  `}
                 >
                   马娘
                 </button>
               </div>
 
               <div
-                className="
-                  flex flex-wrap items-center gap-3
+                className={`
+                  ${isMobile ? "flex flex-col gap-3 w-full" : "flex flex-wrap items-center gap-3"}
                   rounded-2xl border border-white/40
                   bg-white/70 backdrop-blur
-                  px-3 py-2 shadow-sm
-                "
+                  px-3 ${isMobile ? "py-3" : "py-2"} shadow-sm
+                `}
               >
-                <div className="flex items-center gap-2">
+                <div
+                  className={`${
+                    isMobile
+                      ? "flex items-center gap-2 justify-between"
+                      : "flex items-center gap-2"
+                  }`}
+                >
                   <span className="text-gray-500">模式</span>
 
-                  <label className="flex items-center gap-1 rounded-full bg-white/70 px-2 py-1">
+                  <label
+                    className={`flex items-center gap-1 rounded-full bg-white/70 px-3 ${isMobile ? "py-2 text-base" : "py-1"}`}
+                  >
                     <input
                       type="radio"
                       checked={mode === Mode.Compare}
@@ -1430,7 +1487,9 @@ function App() {
                     对比
                   </label>
 
-                  <label className="flex items-center gap-1 rounded-full bg-white/70 px-2 py-1">
+                  <label
+                    className={`flex items-center gap-1 rounded-full bg-white/70 px-3 ${isMobile ? "py-2 text-base" : "py-1"}`}
+                  >
                     <input
                       type="radio"
                       checked={mode === Mode.Chart}
@@ -1441,7 +1500,9 @@ function App() {
                   </label>
                 </div>
 
-                <div className="flex items-center gap-2 rounded-full bg-white/70 px-2 py-1">
+                <div
+                  className={`flex items-center gap-2 rounded-full bg-white/70 px-3 ${isMobile ? "py-2.5" : "py-1"}`}
+                >
                   <span className="text-gray-500">Seed</span>
 
                   <div
@@ -1457,21 +1518,25 @@ function App() {
                       type="number"
                       value={seed}
                       onInput={(e) => setSeed(+e.currentTarget.value)}
-                      className="w-28 px-2 py-1 outline-none"
+                      className={`${
+                        isMobile ? "w-full max-w-[220px]" : "w-28"
+                      } px-3 py-2 outline-none text-base`}
                     />
                     <button
                       type="button"
                       onClick={() =>
                         setSeed(Math.floor(Math.random() * (-1 >>> 0)) >>> 0)
                       }
-                      className="px-2"
+                      className="px-3 text-lg"
                     >
                       🎲
                     </button>
                   </div>
                 </div>
 
-                <label className="flex items-center gap-1 rounded-full bg-white/70 px-2 py-1">
+                <label
+                  className={`flex items-center gap-1 rounded-full bg-white/70 px-3 ${isMobile ? "py-2 text-base" : "py-1"}`}
+                >
                   <input
                     type="checkbox"
                     checked={usePosKeep}
@@ -1481,7 +1546,9 @@ function App() {
                   位置意识
                 </label>
 
-                <label className="flex items-center gap-1 rounded-full bg-white/70 px-2 py-1">
+                <label
+                  className={`flex items-center gap-1 rounded-full bg-white/70 px-3 ${isMobile ? "py-2 text-base" : "py-1"}`}
+                >
                   <input
                     type="checkbox"
                     checked={showHp}
@@ -1499,30 +1566,37 @@ function App() {
                 />
               </div>
 
-              <div className="flex items-center gap-2 ml-auto shrink-0">
+              <div
+                className={`actionButtons ${
+                  isMobile
+                    ? "flex flex-col gap-2 w-full"
+                    : "flex items-center gap-2 ml-auto shrink-0"
+                }`}
+              >
                 <button
                   type="button"
                   onClick={copyStateUrl}
-                  className="
+                  className={`
                     rounded-full border border-indigo-200
-                    bg-white/80 px-3 py-1.5
+                    bg-white/80
+                    ${isMobile ? "w-full justify-center text-base py-2.5" : "px-3 py-1.5"}
                     text-indigo-600 font-semibold
                     shadow-sm transition
                     hover:bg-indigo-100 hover:text-indigo-700
-                  "
+                  `}
                 >
                   Copy link
                 </button>
                 <button
                   onClick={mode === Mode.Compare ? doComparison : doBasinnChart}
-                  className="
+                  className={`
                     rounded-full
                     bg-gradient-to-r from-indigo-600 to-purple-600
-                    px-6 py-2
+                    ${isMobile ? "w-full justify-center text-base py-3" : "px-6 py-2"}
                     text-white font-semibold
                     shadow-md transition
                     hover:shadow-lg hover:scale-[1.01]
-                  "
+                  `}
                 >
                   {mode === Mode.Compare ? "COMPARE" : "RUN"}
                 </button>
