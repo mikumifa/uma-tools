@@ -6,10 +6,9 @@ import {
   useEffect,
   useRef,
   useId,
-  useCallback,
 } from "preact/hooks";
-import { Text, IntlProvider } from "preact-i18n";
-import { Record, Set as ImmSet } from "immutable";
+import { IntlProvider } from "preact-i18n";
+import { Record } from "immutable";
 import * as d3 from "d3";
 import { computePosition, flip } from "@floating-ui/dom";
 
@@ -23,8 +22,6 @@ import {
   Time,
   Grade,
 } from "../uma-skill-tools/RaceParameters";
-import type { GameHpPolicy } from "../uma-skill-tools/HpPolicy";
-
 import { Language } from "../components/Language";
 import {
   ExpandedSkillDetails,
@@ -39,12 +36,7 @@ import { HorseState, SkillSet } from "../components/HorseDefTypes";
 import { HorseDef, horseDefTabs } from "../components/HorseDef";
 import { TRACKNAMES_cn } from "../strings/common";
 
-import {
-  getActivateableSkills,
-  getNullRow,
-  runBasinnChart,
-  BasinnChart,
-} from "./BasinnChart";
+import { getActivateableSkills, getNullRow, BasinnChart } from "./BasinnChart";
 
 import { initTelemetry, postEvent } from "./telemetry";
 
@@ -58,6 +50,9 @@ function skillmeta(id: string) {
   // handle the fake skills (e.g., variations of Sirius unique) inserted by make_skill_data with ids like 100701-1
   return skill_meta[id.split("-")[0]];
 }
+
+import { Histogram } from "./components/Histogram";
+import { ProgressBar } from "./components/ProgressBar";
 
 import "./app.css";
 
@@ -87,143 +82,241 @@ function binSearch(a: number[], x: number) {
   return Math.abs(a[lo] - x) < Math.abs(a[hi] - x) ? lo : hi;
 }
 
-function TimeOfDaySelect(props) {
-  function click(e) {
-    e.stopPropagation();
-    if (!("timeofday" in e.target.dataset)) return;
-    props.set(+e.target.dataset.timeofday);
-  }
-  // + 2 because for some reason the icons are 00-02 (noon/evening/night) but the enum values are 1-4 (morning(?) noon evening night)
-  return (
-    <div class="timeofdaySelect" onClick={click}>
-      {Array(3)
-        .fill(0)
-        .map((_, i) => (
-          <img
-            src={`${ICON_BASE}/utx_ico_timezone_0${i}.png`}
-            title={SKILL_STRINGS_cn.skilldetails.time[i + 2]}
-            class={i + 2 == props.value ? "selected" : ""}
-            data-timeofday={i + 2}
-          />
-        ))}
-    </div>
-  );
-}
+type TimeOfDaySelectProps = {
+  value: number;
+  set: (v: number) => void;
+};
 
-function GroundSelect(props) {
+// 显式映射，去掉 magic number
+const TIME_OF_DAY = [
+  { value: 2, label: "中午", icon: "utx_ico_timezone_00.png" },
+  { value: 3, label: "傍晚", icon: "utx_ico_timezone_01.png" },
+  { value: 4, label: "夜晚", icon: "utx_ico_timezone_02.png" },
+];
+
+export function TimeOfDaySelect({ value, set }: TimeOfDaySelectProps) {
   return (
-    <select
-      class="groundSelect"
-      value={props.value}
-      onInput={(e) => props.set(+e.currentTarget.value)}
+    <div
+      className="
+        flex items-center gap-1
+        p-1
+        rounded-full
+        bg-white/70
+        backdrop-blur
+      "
+      role="radiogroup"
     >
-      <option value="1">良</option>
-      <option value="2">稍重</option>
-      <option value="3">重</option>
-      <option value="4">不良</option>
-    </select>
-  );
-}
+      {TIME_OF_DAY.map(({ value: v, label, icon }) => {
+        const selected = v === value;
 
-function WeatherSelect(props) {
-  function click(e) {
-    e.stopPropagation();
-    if (!("weather" in e.target.dataset)) return;
-    props.set(+e.target.dataset.weather);
-  }
-  return (
-    <div class="weatherSelect" onClick={click}>
-      {Array(4)
-        .fill(0)
-        .map((_, i) => (
-          <img
-            src={`${ICON_BASE}/utx_ico_weather_0${i}.png`}
-            title={SKILL_STRINGS_cn.skilldetails.weather[i + 1]}
-            class={i + 1 == props.value ? "selected" : ""}
-            data-weather={i + 1}
-          />
-        ))}
+        return (
+          <div
+            key={v}
+            role="radio"
+            aria-checked={selected}
+            title={label}
+            onClick={() => set(v)}
+            className={`
+              p-2 rounded-full cursor-pointer
+              transition-all duration-150
+              ${selected ? "bg-indigo-500 shadow-md" : "hover:bg-white/60"}
+            `}
+          >
+            <img
+              src={`${ICON_BASE}/${icon}`}
+              alt={label}
+              className={`
+                w-6 h-6 select-none pointer-events-none
+                transition-all duration-150
+                ${selected ? "opacity-100 grayscale-0" : "opacity-40 grayscale"}
+              `}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-function SeasonSelect(props) {
-  function click(e) {
-    e.stopPropagation();
-    if (!("season" in e.target.dataset)) return;
-    props.set(+e.target.dataset.season);
-  }
+const GROUND = [
+  { value: 1, label: "良" },
+  { value: 2, label: "稍重" },
+  { value: 3, label: "重" },
+  { value: 4, label: "不良" },
+];
+
+export function GroundSelect({ value, set }) {
   return (
-    <div class="seasonSelect" onClick={click}>
-      {Array(4 /* global doenst have late spring for some reason */)
-        .fill(0)
-        .map((_, i) => (
-          <img
-            src={`${ICON_BASE}/utx_txt_season_0${i}.png`}
-            title={SKILL_STRINGS_cn.skilldetails.season[i + 1]}
-            class={i + 1 == props.value ? "selected" : ""}
-            data-season={i + 1}
-          />
-        ))}
+    <div
+      className="
+        flex items-center gap-1
+        p-1
+        rounded-full
+        bg-white/70
+        backdrop-blur
+      "
+      role="radiogroup"
+      aria-label="Ground condition"
+    >
+      {GROUND.map(({ value: v, label }) => {
+        const selected = v === value;
+
+        return (
+          <div
+            key={v}
+            role="radio"
+            aria-checked={selected}
+            onClick={() => set(v)}
+            className={`
+              px-3 py-1.5
+              rounded-full
+              cursor-pointer
+              text-sm font-medium
+              transition-all duration-150
+              ${
+                selected
+                  ? "bg-indigo-500 text-white shadow-md"
+                  : "text-gray-500 hover:bg-white/60"
+              }
+            `}
+          >
+            {label}
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-function Histogram(props) {
-  const { data, width, height } = props;
-  const axes = useRef(null);
-  const xH = 20;
-  const yW = 40;
+const WEATHER = [
+  {
+    value: 1,
+    label: SKILL_STRINGS_cn.skilldetails.weather[1],
+    icon: "utx_ico_weather_00.png",
+  },
+  {
+    value: 2,
+    label: SKILL_STRINGS_cn.skilldetails.weather[2],
+    icon: "utx_ico_weather_01.png",
+  },
+  {
+    value: 3,
+    label: SKILL_STRINGS_cn.skilldetails.weather[3],
+    icon: "utx_ico_weather_02.png",
+  },
+  {
+    value: 4,
+    label: SKILL_STRINGS_cn.skilldetails.weather[4],
+    icon: "utx_ico_weather_03.png",
+  },
+];
 
-  const x = d3
-    .scaleLinear()
-    .domain(
-      data[0] == 0 && data[data.length - 1] == 0
-        ? [-1, 1]
-        : [Math.min(0, Math.floor(data[0])), Math.ceil(data[data.length - 1])]
-    )
-    .range([yW, width - yW]);
-  const bucketize = d3
-    .bin()
-    .value(id)
-    .domain(x.domain())
-    .thresholds(x.ticks(30));
-  const buckets = bucketize(data);
-  const y = d3
-    .scaleLinear()
-    .domain([0, d3.max(buckets, (b) => b.length)])
-    .range([height - xH, xH]);
-
-  useEffect(
-    function () {
-      const g = d3.select(axes.current);
-      g.selectAll("*").remove();
-      g.append("g")
-        .attr("transform", `translate(0,${height - xH})`)
-        .call(d3.axisBottom(x));
-      g.append("g")
-        .attr("transform", `translate(${yW},0)`)
-        .call(d3.axisLeft(y));
-    },
-    [data, width, height]
-  );
-
-  const rects = buckets.map((b, i) => (
-    <rect
-      key={i}
-      fill="#2a77c5"
-      stroke="black"
-      x={x(b.x0)}
-      y={y(b.length)}
-      width={x(b.x1) - x(b.x0)}
-      height={height - xH - y(b.length)}
-    />
-  ));
+export function WeatherSelect({ value, set }) {
   return (
-    <svg id="histogram" width={width} height={height}>
-      <g>{rects}</g>
-      <g ref={axes}></g>
-    </svg>
+    <div
+      className="
+        flex items-center gap-1
+        p-1 rounded-full
+        bg-white/70 backdrop-blur
+      "
+      role="radiogroup"
+      aria-label="Weather"
+    >
+      {WEATHER.map(({ value: v, label, icon }) => {
+        const selected = v === value;
+
+        return (
+          <div
+            key={v}
+            role="radio"
+            aria-checked={selected}
+            title={label}
+            onClick={() => set(v)}
+            className={`
+              p-2 rounded-full cursor-pointer
+              transition-all duration-150
+              ${selected ? "bg-indigo-500 shadow-md" : "hover:bg-white/60"}
+            `}
+          >
+            <img
+              src={`${ICON_BASE}/${icon}`}
+              alt={label}
+              className={`
+                w-6 h-6 select-none pointer-events-none
+                transition-all duration-150
+                ${selected ? "opacity-100 grayscale-0" : "opacity-40 grayscale"}
+              `}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+const SEASON = [
+  {
+    value: 1,
+    label: SKILL_STRINGS_cn.skilldetails.season[1],
+    icon: "utx_txt_season_00.png",
+  },
+  {
+    value: 2,
+    label: SKILL_STRINGS_cn.skilldetails.season[2],
+    icon: "utx_txt_season_01.png",
+  },
+  {
+    value: 3,
+    label: SKILL_STRINGS_cn.skilldetails.season[3],
+    icon: "utx_txt_season_02.png",
+  },
+  {
+    value: 4,
+    label: SKILL_STRINGS_cn.skilldetails.season[4],
+    icon: "utx_txt_season_03.png",
+  },
+];
+
+export function SeasonSelect({ value, set }) {
+  return (
+    <div
+      className="
+        flex items-center gap-1
+        p-1 rounded-full
+        bg-white/70 backdrop-blur
+      "
+      role="radiogroup"
+      aria-label="Season"
+    >
+      {SEASON.map(({ value: v, label, icon }) => {
+        const selected = v === value;
+
+        return (
+          <div
+            key={v}
+            role="radio"
+            aria-checked={selected}
+            title={label}
+            onClick={() => set(v)}
+            className={`
+              p-2 rounded-full cursor-pointer
+              transition-all duration-150
+              ${selected ? "bg-indigo-500 shadow-md" : "hover:bg-white/60"}
+            `}
+          >
+            <img
+              src={`${ICON_BASE}/${icon}`}
+              alt={label}
+              className={`
+                w-6 h-6 select-none pointer-events-none
+                transition-all duration-150
+                ${selected ? "opacity-100 grayscale-0" : "opacity-40 grayscale"}
+              `}
+            />
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -250,7 +343,7 @@ function BasinnChartPopover(props) {
   return (
     <div
       class="basinnChartPopover"
-      tabindex="1000"
+      tabIndex="1000"
       style="visibility:hidden"
       ref={popover}
     >
@@ -646,7 +739,8 @@ function nextUiState(state: typeof DEFAULT_UI_STATE, msg: UiStateMsg) {
 
 function App() {
   const [skillsOpen, setSkillsOpen] = useState(false);
-  const [status, setStatus] = useState("等待操作...");
+  const [status, setStatus] = useState("");
+  const [progress, setProgress] = useState(0);
   const workerProgress = useRef({ w1: 0, w2: 0 });
   const [ShowUnreleased, setShowUnreleased] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(() =>
@@ -695,13 +789,15 @@ function App() {
         : Math.round(histogramWidth * 0.55),
     [histogramWidth, isMobile]
   );
+  const showStatusBar = Boolean(status) || progress > 0;
 
   const [racedef, setRaceDef] = useState(() => new RaceParams());
   const [nsamples, setSamples] = useState(DEFAULT_SAMPLES);
   const [seed, setSeed] = useState(DEFAULT_SEED);
   const [usePosKeep, togglePosKeep] = useReducer((b, _) => !b, true);
   const [showHp, toggleShowHp] = useReducer((b, _) => !b, false);
-  const [showRunPane, setShowRunPane] = useState(false);
+  // const [showRunPane, setShowRunPane] = useState(false);
+
   const [{ courseId, results, runData, chartData, displaying }, setSimState] =
     useReducer(updateResultsState, EMPTY_RESULTS_STATE);
   const setCourseId = setSimState;
@@ -756,7 +852,7 @@ function App() {
   const topPaneClass = [
     chartData ? "hasResults" : "",
     isMobile ? "mobileLayout" : "desktopLayout",
-    showRunPane ? "" : "runPaneHidden",
+    // showRunPane ? "" : "runPaneHidden",
   ]
     .filter(Boolean)
     .join(" ");
@@ -800,8 +896,8 @@ function App() {
     window.addEventListener("hashchange", loadState);
   }, []);
 
-  function copyStateUrl(e) {
-    e.preventDefault();
+  function copyStateUrl(e?: Event) {
+    e?.preventDefault();
     serialize(courseId, nsamples, seed, usePosKeep, racedef, uma1, uma2).then(
       (hash) => {
         const url =
@@ -838,6 +934,11 @@ function App() {
 
   function doComparison() {
     postEvent("doComparison", {});
+    // Reset progress
+    workerProgress.current = { w1: 0, w2: 0 };
+    setProgress(0);
+    setStatus("Calculating...");
+
     worker1.postMessage({
       msg: "compare",
       data: {
@@ -880,7 +981,8 @@ function App() {
           workerProgress.current.w1,
           workerProgress.current.w2
         );
-        setStatus(`当前计算进度：${minProgress}%`);
+        setProgress(minProgress);
+        setStatus(`Simulating: ${minProgress}%`);
       }
     };
 
@@ -892,7 +994,8 @@ function App() {
           workerProgress.current.w1,
           workerProgress.current.w2
         );
-        setStatus(`当前计算进度：${minProgress}%`);
+        setProgress(minProgress);
+        setStatus(`Simulating: ${minProgress}%`);
       }
     };
     worker1.postMessage({
@@ -1196,6 +1299,8 @@ function App() {
           data-mobile={isMobile ? "true" : "false"}
           style={trackWidthStyle}
         >
+          {/* Left Column: Track and Track Settings */}
+
           <RaceTrack
             courseid={courseId}
             width={trackWidth}
@@ -1235,151 +1340,198 @@ function App() {
           <div
             id="buttonsRow"
             data-mobile={isMobile ? "true" : "false"}
-            style={trackWidthStyle}
+            className="
+              flex flex-col gap-2
+              px-4 py-3
+              border-b
+              text-sm
+            "
           >
-            <TrackSelect
-              key={courseId}
-              courseid={courseId}
-              setCourseid={setCourseId}
-              tabindex={2}
-            />
-            <div id="buttonsRowSpace" />
-            <TimeOfDaySelect value={racedef.time} set={racesetter("time")} />
-            <div>
-              <GroundSelect value={racedef.ground} set={racesetter("ground")} />
-              <WeatherSelect
-                value={racedef.weather}
-                set={racesetter("weather")}
-              />
-            </div>
-            <SeasonSelect value={racedef.season} set={racesetter("season")} />
-            <div class="panelToggleRow">
-              <button
-                type="button"
-                class="panelToggle runPaneToggle"
-                onClick={() => setShowRunPane(!showRunPane)}
-                aria-expanded="false"
+            <div className="flex flex-wrap items-center gap-3">
+              <div
+                className="
+                  flex flex-wrap items-center gap-2
+                  rounded-2xl border border-white/40
+                  bg-white/70 backdrop-blur
+                  px-3 py-2 shadow-sm
+                "
               >
-                模拟
-              </button>
-              <button
-                type="button"
-                class="panelToggle umaPaneToggle"
-                onClick={openUmaOverlay}
-                aria-haspopup="dialog"
-                aria-expanded="false"
+                <TrackSelect
+                  key={courseId}
+                  courseid={courseId}
+                  setCourseid={setCourseId}
+                  tabindex={2}
+                />
+
+                <TimeOfDaySelect
+                  value={racedef.time}
+                  set={racesetter("time")}
+                />
+
+                <GroundSelect
+                  value={racedef.ground}
+                  set={racesetter("ground")}
+                />
+
+                <WeatherSelect
+                  value={racedef.weather}
+                  set={racesetter("weather")}
+                />
+
+                <SeasonSelect
+                  value={racedef.season}
+                  set={racesetter("season")}
+                />
+
+                <button
+                  type="button"
+                  onClick={openUmaOverlay}
+                  aria-haspopup="dialog"
+                  className="
+                    inline-flex items-center gap-1
+                    rounded-full
+                    bg-gradient-to-r from-lime-300 to-emerald-400
+                    px-3.5 py-1.5
+                    text-sm font-semibold text-gray-900
+                    shadow-sm transition
+                    hover:shadow
+                  "
+                >
+                  马娘
+                </button>
+              </div>
+
+              <div
+                className="
+                  flex flex-wrap items-center gap-3
+                  rounded-2xl border border-white/40
+                  bg-white/70 backdrop-blur
+                  px-3 py-2 shadow-sm
+                "
               >
-                马娘
-              </button>
+                <div className="flex items-center gap-2">
+                  <span className="text-gray-500">模式</span>
+
+                  <label className="flex items-center gap-1 rounded-full bg-white/70 px-2 py-1">
+                    <input
+                      type="radio"
+                      checked={mode === Mode.Compare}
+                      onChange={() => updateUiState(UiStateMsg.SetModeCompare)}
+                      className="accent-indigo-500"
+                    />
+                    对比
+                  </label>
+
+                  <label className="flex items-center gap-1 rounded-full bg-white/70 px-2 py-1">
+                    <input
+                      type="radio"
+                      checked={mode === Mode.Chart}
+                      onChange={() => updateUiState(UiStateMsg.SetModeChart)}
+                      className="accent-indigo-500"
+                    />
+                    身距图
+                  </label>
+                </div>
+
+                <div className="flex items-center gap-2 rounded-full bg-white/70 px-2 py-1">
+                  <span className="text-gray-500">Seed</span>
+
+                  <div
+                    className="
+                      flex items-center
+                      border rounded-full
+                      overflow-hidden
+                      focus-within:ring-1 focus-within:ring-indigo-500
+                      bg-white
+                    "
+                  >
+                    <input
+                      type="number"
+                      value={seed}
+                      onInput={(e) => setSeed(+e.currentTarget.value)}
+                      className="w-28 px-2 py-1 outline-none"
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setSeed(Math.floor(Math.random() * (-1 >>> 0)) >>> 0)
+                      }
+                      className="px-2 bg-gray-100 hover:bg-gray-200"
+                    >
+                      🎲
+                    </button>
+                  </div>
+                </div>
+
+                <label className="flex items-center gap-1 rounded-full bg-white/70 px-2 py-1">
+                  <input
+                    type="checkbox"
+                    checked={usePosKeep}
+                    onChange={togglePosKeep}
+                    className="accent-indigo-500"
+                  />
+                  位置意识
+                </label>
+
+                <label className="flex items-center gap-1 rounded-full bg-white/70 px-2 py-1">
+                  <input
+                    type="checkbox"
+                    checked={showHp}
+                    onChange={toggleShowHp}
+                    className="accent-indigo-500"
+                  />
+                  耐力显示
+                </label>
+
+                <RacePresets
+                  set={(courseId, racedef) => {
+                    setCourseId(courseId);
+                    setRaceDef(racedef);
+                  }}
+                />
+              </div>
+
+              <div className="flex items-center gap-2 ml-auto shrink-0">
+                <button
+                  type="button"
+                  onClick={copyStateUrl}
+                  className="
+                    rounded-full border border-indigo-200
+                    bg-white/80 px-3 py-1.5
+                    text-indigo-600 font-semibold
+                    shadow-sm transition
+                    hover:bg-indigo-100 hover:text-indigo-700
+                  "
+                >
+                  Copy link
+                </button>
+                <button
+                  onClick={mode === Mode.Compare ? doComparison : doBasinnChart}
+                  className="
+                    rounded-full
+                    bg-gradient-to-r from-indigo-600 to-purple-600
+                    px-6 py-2
+                    text-white font-semibold
+                    shadow-md transition
+                    hover:shadow-lg hover:scale-[1.01]
+                  "
+                >
+                  {mode === Mode.Compare ? "COMPARE" : "RUN"}
+                </button>
+              </div>
             </div>
+
+            {showStatusBar && mode !== Mode.Compare && (
+              <div className="flex items-center gap-3 pt-2 mt-1 border-t text-sm text-gray-600">
+                <ProgressBar progress={progress} label="" />
+
+                {status && (
+                  <span className="text-indigo-700 font-medium">{status}</span>
+                )}
+              </div>
+            )}
           </div>
         </div>
-
-        {showRunPane && (
-          <div id="runPane" data-mobile={isMobile ? "true" : "false"}>
-            <button
-              type="button"
-              class="panelClose"
-              aria-label="收起模拟设置"
-              onClick={() => setShowRunPane(false)}
-            >
-              ✕
-            </button>
-            <fieldset>
-              <legend>模式:</legend>
-              <div>
-                <input
-                  type="radio"
-                  id="mode-compare"
-                  name="mode"
-                  value="compare"
-                  checked={mode == Mode.Compare}
-                  onClick={() => updateUiState(UiStateMsg.SetModeCompare)}
-                />
-                <label for="mode-compare">对比</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="mode-chart"
-                  name="mode"
-                  value="chart"
-                  checked={mode == Mode.Chart}
-                  onClick={() => updateUiState(UiStateMsg.SetModeChart)}
-                />
-                <label for="mode-chart">身距图</label>
-              </div>
-            </fieldset>
-            {mode == Mode.Compare && (
-              <div>
-                <label for="nsamples">样本数:</label>
-                <input
-                  type="number"
-                  id="nsamples"
-                  min="1"
-                  max="10000"
-                  value={nsamples}
-                  onInput={(e) => setSamples(+e.currentTarget.value)}
-                />
-              </div>
-            )}
-
-            <label for="seed">随机种子:</label>
-            <div id="seedWrapper">
-              <input
-                type="number"
-                id="seed"
-                value={seed}
-                onInput={(e) => setSeed(+e.currentTarget.value)}
-              />
-              <button
-                title="Randomize seed"
-                onClick={() =>
-                  setSeed(Math.floor(Math.random() * (-1 >>> 0)) >>> 0)
-                }
-              >
-                🎲
-              </button>
-            </div>
-            <div>
-              <label for="poskeep">模拟位置意识</label>
-              <input
-                type="checkbox"
-                id="poskeep"
-                checked={usePosKeep}
-                onClick={togglePosKeep}
-              />
-            </div>
-            <div>
-              <label for="showhp">耐力消耗显示</label>
-              <input
-                type="checkbox"
-                id="showhp"
-                checked={showHp}
-                onClick={toggleShowHp}
-              />
-            </div>
-            {mode == Mode.Compare ? (
-              <button id="run" onClick={doComparison} tabindex={1}>
-                COMPARE
-              </button>
-            ) : (
-              <button id="run" onClick={doBasinnChart} tabindex={1}>
-                RUN
-              </button>
-            )}
-            <a href="#" onClick={copyStateUrl}>
-              Copy link
-            </a>
-            <RacePresets
-              set={(courseId, racedef) => {
-                setCourseId(courseId);
-                setRaceDef(racedef);
-              }}
-            />
-            <div class="statusText">{status}</div>
-          </div>
-        )}
         {resultsPane}
         {expanded && (
           <div
@@ -1401,34 +1553,70 @@ function App() {
                 {"Umamusume 1"}
               </HorseDef>
             </div>
-            {mode == Mode.Compare && (
-              <div id="copyUmaButtons">
-                <div
-                  id="copyUmaToRight"
-                  class="btnBase rounded"
-                  title="Copy uma 1 to uma 2"
+            {mode === Mode.Compare && (
+              <div
+                className="
+      absolute left-1/2 top-[120px] -translate-x-1/2
+      flex flex-col gap-2
+      z-10
+    "
+              >
+                <button
+                  title="Copy uma 1 → uma 2"
                   onClick={copyUmaToRight}
+                  className="
+        w-9 h-9 rounded-full
+        border border-slate-300
+        bg-white
+        text-slate-700 text-lg
+        flex items-center justify-center
+        hover:bg-sky-100 hover:text-sky-700
+        hover:shadow-md
+        active:scale-90
+        transition
+      "
                 >
                   →
-                </div>
-                <div
-                  id="copyUmaToLeft"
-                  class="btnBase rounded"
-                  title="Copy uma 2 to uma 1"
-                  onClick={copyUmaToLeft}
-                >
-                  ←
-                </div>
-                <div
-                  id="swapUmas"
-                  class="btnBase rounded"
+                </button>
+
+                <button
                   title="Swap umas"
                   onClick={swapUmas}
+                  className="
+        w-9 h-9 rounded-full
+        border border-slate-300
+        bg-slate-50
+        text-slate-800 font-semibold
+        flex items-center justify-center
+        hover:bg-amber-100 hover:text-amber-700
+        hover:shadow-md
+        active:scale-90
+        transition
+      "
                 >
                   ⮂
-                </div>
+                </button>
+
+                <button
+                  title="Copy uma 2 → uma 1"
+                  onClick={copyUmaToLeft}
+                  className="
+        w-9 h-9 rounded-full
+        border border-slate-300
+        bg-white
+        text-slate-700 text-lg
+        flex items-center justify-center
+        hover:bg-sky-100 hover:text-sky-700
+        hover:shadow-md
+        active:scale-90
+        transition
+      "
+                >
+                  ←
+                </button>
               </div>
             )}
+
             {mode == Mode.Compare && (
               <div class={`umaPanel ${currentIdx == 1 ? "selected" : ""}`}>
                 <HorseDef

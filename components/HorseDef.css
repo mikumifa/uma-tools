@@ -142,6 +142,9 @@
   background: rgb(121, 216, 35);
   border-left: 2px dotted rgb(93, 199, 24);
   color: white;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   font-weight: bold;
   text-align: center;
 }

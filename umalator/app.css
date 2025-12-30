@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --uma-blue: #3d7dd1;
   --uma-purple: #7d4ee8;
@@ -47,7 +51,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: clamp(16px, 2.5vw, 32px);
-  grid-template-columns: 1fr 1fr;
   padding: clamp(18px, 3vw, 32px);
   width: 100%;
   border-radius: 24px;
@@ -61,6 +64,7 @@ body {
   position: relative;
   overflow: hidden;
   justify-content: center;
+  align-items: center; /* Center content horizontally */
 }
 
 #topPane::before {
@@ -80,11 +84,6 @@ body {
   pointer-events: none;
   z-index: 0;
   opacity: 0.7;
-}
-
-#topPane.desktopLayout {
-  grid-template-columns: minmax(0, var(--track-width, 960px)) minmax(260px, 1fr);
-  align-items: start;
 }
 
 #topPane.mobileLayout {
@@ -254,21 +253,6 @@ body {
   stroke-width: 3px;
 }
 
-#buttonsRow {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(12px, 2vw, 28px);
-  justify-content: space-between;
-  margin: clamp(12px, 2vw, 20px) 0 0;
-  width: 100%;
-  max-width: var(--track-width, 960px);
-}
-
-#buttonsRow[data-mobile="true"] {
-  justify-content: center;
-}
-
 #topPane.desktopLayout.runPaneHidden {
   grid-template-columns: minmax(0, var(--track-width, 960px));
 }
@@ -293,18 +277,6 @@ body {
   border-bottom-left-radius: 0;
 }
 
-#buttonsRow > div {
-  display: flex;
-}
-
-#buttonsRowSpace {
-  flex: 1 1 auto;
-}
-
-#buttonsRow[data-mobile="true"] #buttonsRowSpace {
-  display: none;
-}
-
 .groundSelect {
   background: transparent;
   border: none;
@@ -319,15 +291,6 @@ body {
   display: flex;
   margin-left: 5px;
   gap: 6px;
-}
-
-#buttonsRow img {
-  height: 2em;
-  filter: drop-shadow(0 3px 6px rgba(61, 125, 209, 0.25));
-}
-
-#buttonsRow img:not(.selected) {
-  filter: grayscale(0.8) opacity(0.6);
 }
 
 .hasResults .racetrackView > svg text:not(.mouseoverText) {
@@ -517,25 +480,49 @@ body {
 }
 
 #copyUmaButtons {
-  display: flex;
-  flex-direction: column;
-  /* 垂直排列 */
-  gap: 14px;
+  display: inline-flex;
   align-items: center;
-  width: fit-content;
+  gap: 10px;
+  padding: 10px 12px;
   margin: 0 auto;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(125, 78, 232, 0.2);
+  box-shadow: 0 12px 20px rgba(61, 125, 209, 0.12);
+  backdrop-filter: blur(6px);
 }
 
-#copyUmaToRight {
-  font-size: 36px;
-  color: white;
-  text-align: center;
+.copyUmaBtn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2a44;
+  background: linear-gradient(145deg, #ffffff, #eef1ff);
+  border: 1px solid rgba(61, 125, 209, 0.28);
+  box-shadow: 0 6px 12px rgba(61, 125, 209, 0.18);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
 }
 
-#copyUmaToLeft {
-  font-size: 36px;
-  color: white;
-  text-align: center;
+.copyUmaBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 16px rgba(61, 125, 209, 0.25);
+  background: linear-gradient(145deg, #f8fbff, #e4e7ff);
+}
+
+.copyUmaBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(61, 125, 209, 0.2);
+}
+
+.copyUmaBtn:focus-visible {
+  outline: 2px solid rgba(61, 125, 209, 0.7);
+  outline-offset: 3px;
 }
 
 #swapUmas > div:active {
@@ -726,93 +713,10 @@ body {
   text-decoration: underline;
 }
 
-#run,
-.panelToggle,
-button,
-input[type="button"],
-input[type="submit"] {
-  font-family: "Inter", "Microsoft YaHei", "PingFang SC", "Noto Sans SC",
-    sans-serif;
-  background: linear-gradient(rgb(168, 227, 5), rgb(97, 174, 22)) padding-box,
-    linear-gradient(rgb(173, 219, 60), rgb(85, 143, 24)) border-box;
-  border: 2px solid transparent;
-  border-radius: 36px;
-  box-shadow: 0px 3px 0 rgb(180, 178, 192);
-  box-sizing: border-box;
-  color: white;
-  font-size: 1.1em;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  width: auto;
-}
-
-#run:hover,
-.panelToggle:hover,
-button:hover {
-  filter: brightness(1.05);
-  transform: translateY(-2px);
-  box-shadow: 0px 6px 0 rgb(160, 158, 172);
-}
-
-#run:active,
-.panelToggle:active,
-button:active {
-  transform: translateY(1px);
-  box-shadow: 0px 2px 0 rgb(150, 148, 162);
-  filter: brightness(0.95);
-}
-
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   filter: grayscale(0.5);
-}
-
-#run span,
-.panelToggle span {
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-}
-
-.btnBase {
-  font-family: "Inter", "Microsoft YaHei", "PingFang SC", "Noto Sans SC",
-    sans-serif;
-  background: linear-gradient(rgb(168, 227, 5), rgb(97, 174, 22)) padding-box,
-    linear-gradient(rgb(173, 219, 60), rgb(85, 143, 24)) border-box;
-  border: 2px solid transparent;
-
-  /* 原来的圆角去掉，等下面定义 */
-  box-shadow: 0px 3px 0 rgb(180, 178, 192);
-  box-sizing: border-box;
-
-  color: white;
-  font-size: 1.1em;
-  font-weight: bold;
-  text-align: center;
-
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-/* hover */
-.btnBase:hover {
-  filter: brightness(1.05);
-  transform: translateY(-2px);
-  box-shadow: 0px 6px 0 rgb(160, 158, 172);
-}
-
-/* 按压 */
-.btnBase:active {
-  transform: translateY(1px);
-  box-shadow: 0px 2px 0 rgb(150, 148, 162);
-  filter: brightness(0.95);
-}
-
-.rounded {
-  border-radius: 36px;
-  padding: 10px 20px;
-  /* 根据需要调整 */
 }
 
 .circle {

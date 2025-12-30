@@ -147,6 +147,8 @@
   box-sizing: border-box;
   overflow: hidden;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 .expandedSkillHeader {
@@ -160,6 +162,9 @@
   border-style: solid;
   border-width: 2px 0 0 0;
   color: rgb(121, 64, 22);
+  max-height: 50vh;
+  overflow-y: auto;
+  padding-right: 6px;
 }
 
 .skillDetailsSection {
