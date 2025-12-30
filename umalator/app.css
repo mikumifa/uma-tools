@@ -434,19 +434,19 @@ body {
 }
 
 .chartPanel {
-  flex: 1 1 0;
+  flex: 0 1 40%;
   min-width: 0;
 }
 
 .chartDetails {
-  flex: 0 0 360px;
-  max-width: 40vw;
+  flex: 1 1 0;
   background: var(--uma-surface-soft);
   border: 1px solid rgba(61, 125, 209, 0.18);
   border-radius: 16px;
   box-shadow: inset 0 1px #ffffff40;
   padding: 12px;
   overflow-y: auto;
+  min-width: 0;
 }
 
 .chartDetails .expandedSkill {
@@ -476,7 +476,7 @@ body {
   }
 
   .chartDetails {
-    flex: 1 1 auto;
+    flex: 1 2 auto;
     max-width: 100%;
   }
 }
@@ -561,8 +561,7 @@ body {
   border: 1px solid rgba(61, 125, 209, 0.28);
   box-shadow: 0 6px 12px rgba(61, 125, 209, 0.18);
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease,
-    background 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .copyUmaBtn:hover {
