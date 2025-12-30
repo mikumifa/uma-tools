@@ -10,7 +10,6 @@ import {
 import { IntlProvider } from "preact-i18n";
 import { Record } from "immutable";
 import * as d3 from "d3";
-import { computePosition, flip } from "@floating-ui/dom";
 
 import { CourseHelpers } from "../uma-skill-tools/CourseData";
 import {
@@ -316,43 +315,6 @@ export function SeasonSelect({ value, set }) {
           </div>
         );
       })}
-    </div>
-  );
-}
-
-function BasinnChartPopover(props) {
-  const popover = useRef(null);
-  useEffect(
-    function () {
-      if (popover.current == null) return;
-      // bit nasty
-      const anchor = document.querySelector(
-        `.basinnChart tr[data-skillid="${props.skillid}"] img`
-      );
-      computePosition(anchor, popover.current, {
-        placement: "bottom-start",
-        middleware: [flip()],
-      }).then(({ x, y }) => {
-        popover.current.style.transform = `translate(${x}px,${y}px)`;
-        popover.current.style.visibility = "visible";
-      });
-      popover.current.focus();
-    },
-    [popover.current, props.skillid]
-  );
-  return (
-    <div
-      class="basinnChartPopover"
-      tabIndex="1000"
-      style="visibility:hidden"
-      ref={popover}
-    >
-      <ExpandedSkillDetails
-        id={props.skillid}
-        distanceFactor={props.courseDistance}
-        dismissable={false}
-      />
-      <Histogram width={500} height={333} data={props.results} />
     </div>
   );
 }
@@ -789,6 +751,14 @@ function App() {
         : Math.round(histogramWidth * 0.55),
     [histogramWidth, isMobile]
   );
+  const detailHistogramWidth = useMemo(
+    () => Math.min(520, Math.max(260, trackWidth * 0.4)),
+    [trackWidth]
+  );
+  const detailHistogramHeight = useMemo(
+    () => Math.round(detailHistogramWidth * 0.62),
+    [detailHistogramWidth]
+  );
   const showStatusBar = Boolean(status) || progress > 0;
 
   const [racedef, setRaceDef] = useState(() => new RaceParams());
@@ -813,8 +783,18 @@ function App() {
     newData.forEach((v, k) => merged.set(k, v));
     return merged;
   }, new Map());
+  const [selectedSkillId, setSelectedSkillId] = useState("");
 
-  const [popoverSkill, setPopoverSkill] = useState("");
+  useEffect(() => {
+    if (tableData.size === 0) {
+      if (selectedSkillId) setSelectedSkillId("");
+      return;
+    }
+    if (!selectedSkillId || !tableData.has(selectedSkillId)) {
+      const first = tableData.keys().next().value as string | undefined;
+      if (first) setSelectedSkillId(first);
+    }
+  }, [tableData, selectedSkillId]);
 
   function racesetter(prop) {
     return (value) => setRaceDef(racedef.set(prop, value));
@@ -1020,9 +1000,10 @@ function App() {
     });
   }
 
-  function basinnChartSelection(skillId) {
+  function selectSkillDetails(skillId) {
     const r = tableData.get(skillId);
-    if (r.runData != null) setResults(r);
+    setSelectedSkillId(skillId);
+    if (r?.runData != null) setResults(r);
   }
 
   function addSkillFromTable(skillId) {
@@ -1032,14 +1013,8 @@ function App() {
 
   function showPopover(skillId) {
     postEvent("showPopover", { skillId });
-    setPopoverSkill(skillId);
+    selectSkillDetails(skillId);
   }
-
-  useEffect(function () {
-    document.body.addEventListener("click", function () {
-      setPopoverSkill("");
-    });
-  }, []);
 
   function rtMouseMove(pos) {
     if (chartData == null) return;
@@ -1272,17 +1247,46 @@ function App() {
           };
         });
     }, [tableData]);
+    const selectedRow =
+      (selectedSkillId && tableData.get(selectedSkillId)) ||
+      (filteredData.length > 0 ? tableData.get(filteredData[0].id) : null);
+    const selectedResults = selectedRow?.results ?? [];
+    const selectedSkill = selectedRow?.id;
     resultsPane = (
       <div id="resultsPaneWrapper" style={trackWidthStyle}>
         <div id="resultsPane" class="mode-chart" style={trackWidthStyle}>
-          <BasinnChart
-            data={filteredData}
-            hidden={uma1.skills}
-            onSelectionChange={basinnChartSelection}
-            onRunTypeChange={setChartData}
-            onDblClickRow={addSkillFromTable}
-            onInfoClick={showPopover}
-          />
+          <div class="chartLayout">
+            <div class="chartPanel">
+              <BasinnChart
+                data={filteredData}
+                hidden={uma1.skills}
+                onSelectionChange={selectSkillDetails}
+                onRunTypeChange={setChartData}
+                onDblClickRow={addSkillFromTable}
+                onInfoClick={showPopover}
+              />
+            </div>
+            <aside class="chartDetails">
+              {selectedSkill ? (
+                <Fragment>
+                  <ExpandedSkillDetails
+                    id={selectedSkill}
+                    distanceFactor={course.distance}
+                    dismissable={false}
+                  />
+                  <div class="chartDetailsHistogram">
+                    <Histogram
+                      width={detailHistogramWidth}
+                      height={detailHistogramHeight}
+                      data={selectedResults}
+                    />
+                  </div>
+                </Fragment>
+              ) : (
+                <div class="chartDetailsEmpty">ä»Žå·¦ä¾§é€‰æ‹©ä¸€ä¸ªæŠ€èƒ½</div>
+              )}
+            </aside>
+          </div>
         </div>
       </div>
     );
@@ -1640,13 +1644,6 @@ function App() {
               ✕
             </button>
           </div>
-        )}
-        {popoverSkill && (
-          <BasinnChartPopover
-            skillid={popoverSkill}
-            results={tableData.get(popoverSkill).results}
-            courseDistance={course.distance}
-          />
         )}
         <IntroText />
       </IntlProvider>
