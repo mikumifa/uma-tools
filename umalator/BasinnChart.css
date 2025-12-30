@@ -181,7 +181,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 8px;
     font-size: 14px;
   }
 
@@ -208,5 +207,14 @@
     background: #3d7dd1;
     color: #fff;
     border-color: #3d7dd1;
+  }
+
+  .mobileRunToggleRow th {
+    background: linear-gradient(180deg, #f9fbff, #e9efff);
+    padding: 10px 12px 6px 12px;
+    border-bottom: 1px solid rgba(61, 125, 209, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 3;
   }
 }

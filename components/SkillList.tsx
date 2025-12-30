@@ -932,11 +932,7 @@ export function SkillList(props) {
             <FilterButton filter="unique" />
             <FilterButton filter="inherit" />
           </FilterGroup>
-          <FilterGroup group="icontype">
-            {groups_filters["icontype"].map((t) => (
-              <IconFilterButton type={t} />
-            ))}
-          </FilterGroup>
+
           <FilterGroup group="strategy">
             <FilterButton filter="nige" />
             <FilterButton filter="senkou" />
@@ -960,6 +956,11 @@ export function SkillList(props) {
             <FilterButton filter="phase3" />
             <FilterButton filter="finalcorner" />
             <FilterButton filter="finalstraight" />
+          </FilterGroup>
+          <FilterGroup group="icontype">
+            {groups_filters["icontype"].map((t) => (
+              <IconFilterButton type={t} />
+            ))}
           </FilterGroup>
         </div>
         <ul class="skillList" onClick={toggleSelected}>

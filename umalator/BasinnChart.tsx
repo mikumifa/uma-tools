@@ -263,26 +263,30 @@ export function BasinnChart(props) {
 
   return (
     <div class="basinnChartWrapper">
-      {isMobile && (
-        <div className="mobileRunToggle">
-          <span className="mobileRunToggleLabel">显示</span>
-          <div className="mobileRunToggleButtons">
-            {runOptions.map((opt) => (
-              <button
-                type="button"
-                className={`mobileRunToggleBtn ${
-                  selectedType === opt.key ? "active" : ""
-                }`}
-                onClick={() => headerClick(opt.key)}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
       <table class="basinnChart">
         <thead>
+          {isMobile && (
+            <tr className="mobileRunToggleRow">
+              <th colSpan={visibleColumns.length}>
+                <div className="mobileRunToggle">
+                  <span className="mobileRunToggleLabel">显示</span>
+                  <div className="mobileRunToggleButtons">
+                    {runOptions.map((opt) => (
+                      <button
+                        type="button"
+                        className={`mobileRunToggleBtn ${
+                          selectedType === opt.key ? "active" : ""
+                        }`}
+                        onClick={() => headerClick(opt.key)}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </th>
+            </tr>
+          )}
           <tr>
             {visibleColumns.map((col) => {
               // 计算当前的排序状态 class

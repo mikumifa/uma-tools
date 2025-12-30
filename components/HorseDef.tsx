@@ -226,6 +226,12 @@ export function AptitudeIcon(props) {
   const idx = 7 - APTITUDES.indexOf(props.a);
   return (
     <img
+      className="
+        h-[14px]
+        w-auto
+        inline-block
+        align-middle
+      "
       src={`${ICON_BASE}/utx_ico_statusrank_${(100 + idx)
         .toString()
         .slice(1)}.png`}
@@ -235,31 +241,69 @@ export function AptitudeIcon(props) {
 
 export function AptitudeSelect(props) {
   const [open, setOpen] = useState(false);
+
   function setAptitude(e) {
+    e.preventDefault();
     e.stopPropagation();
     props.setA(e.currentTarget.dataset.horseAptitude);
     setOpen(false);
   }
-  function selectByKey(e: KeyboardEvent) {
-    const k = e.key.toUpperCase();
-    if (APTITUDES.indexOf(k) > -1) {
-      props.setA(k);
-    }
-  }
+
   return (
     <div
-      class="horseAptitudeSelect"
-      tabindex={props.tabindex}
-      onClick={() => setOpen(!open)}
-      onBlur={setOpen.bind(null, false)}
-      onKeyDown={selectByKey}
+      tabIndex={props.tabindex}
+      onClick={() => setOpen((v) => !v)}
+      onBlur={() => setOpen(false)}
+      className="
+        absolute right-2 top-1/2 -translate-y-1/2
+        inline-block
+        z-20
+        cursor-pointer
+        select-none
+        outline-none
+      "
     >
-      <span>
+      {/* 当前 Aptitude + 箭头 */}
+      <span className="relative inline-flex items-center">
         <AptitudeIcon a={props.a} />
+
+        {/* ▼ 箭头 */}
+        <i
+          className="
+            absolute
+            right-[-6px] bottom-[-2px]
+            w-1 h-1
+            border-r border-b
+            border-[rgb(121,64,22)]
+            rotate-45
+          "
+        />
       </span>
-      <ul style={open ? "display:block" : "display:none"}>
+
+      {/* 下拉列表 */}
+      <ul
+        className={`
+    absolute right-[-12px] top-[10px]
+    z-30
+    w-[24px]
+    rounded-sm
+    border border-[rgb(224,214,204)]
+    bg-white
+    shadow-sm
+    ${open ? "block" : "hidden"}
+  `}
+      >
         {APTITUDES.map((a) => (
-          <li key={a} data-horse-aptitude={a} onClick={setAptitude}>
+          <li
+            key={a}
+            data-horse-aptitude={a}
+            onMouseDown={setAptitude}
+            className="
+        flex items-center justify-center
+        h-[18px]
+        hover:bg-[rgb(245,238,230)]
+      "
+          >
             <AptitudeIcon a={a} />
           </li>
         ))}

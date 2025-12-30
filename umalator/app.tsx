@@ -729,6 +729,7 @@ function App() {
   const isMobile = viewportWidth <= 900;
   const showTrack = !isMobile || forceShowTrack;
   const flippedTrack = isMobile && forceShowTrack;
+  const isLandscapeView = isMobile && forceShowTrack;
 
   useEffect(() => {
     if (!isMobile) {
@@ -736,24 +737,25 @@ function App() {
     }
   }, [isMobile]);
 
-  const desktopBaselineWidth = 1280;
-  const trackViewportWidth = isMobile
+  const trackViewportWidth = isLandscapeView
+    ? viewportWidth
+    : isMobile
     ? Math.min(Math.max(320, viewportWidth), 640)
-    : Math.max(viewportWidth, desktopBaselineWidth);
-
+    : Math.max(viewportWidth, 1280);
   const trackWidth = useMemo(() => {
     return Math.max(300, trackViewportWidth - trackViewportWidth * 0.1);
   }, [trackViewportWidth]);
 
-  const trackHeight = useMemo(
-    () => Math.round(trackWidth * 0.28),
-    [trackWidth]
-  );
+  const trackHeight = useMemo(() => {
+    if (isLandscapeView) {
+      return Math.round(viewportHeight * 0.9);
+    }
+    return Math.round(trackWidth * 0.28);
+  }, [trackWidth, isLandscapeView]);
 
-  const velocityHeight = useMemo(
-    () => Math.round(trackHeight * 1.05),
-    [trackHeight]
-  );
+  const velocityHeight = useMemo(() => {
+    return Math.round(trackHeight * (isLandscapeView ? 0.85 : 1.05));
+  }, [trackHeight, isLandscapeView]);
 
   const trackWidthStyle = useMemo(
     () => ({ "--track-width": `${trackWidth}px` } as any),
@@ -823,82 +825,15 @@ function App() {
 
   const course = useMemo(() => CourseHelpers.getCourse(courseId), [courseId]);
 
-  const viewTrackImage = async () => {
-    setTrackOrientationMsg("正在生成赛道图片...");
-    setForceShowTrack(true);
-
-    // 等待渲染
-    await new Promise((res) =>
-      requestAnimationFrame(() => requestAnimationFrame(res))
+  const viewTrackImage = () => {
+    setForceShowTrack((v) => !v);
+    setTrackOrientationMsg("已切换横屏赛道视图，再次点击可收起。");
+    requestAnimationFrame(() =>
+      raceTrackRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
     );
-
-    const container = raceTrackRef.current;
-    const canvas: HTMLCanvasElement | null =
-      container?.querySelector("canvas") || null;
-    const svg: SVGSVGElement | null = container?.querySelector("svg") || null;
-
-    if (!canvas || !svg) {
-      setTrackOrientationMsg("生成赛道图片失败（未找到画布）。");
-      setForceShowTrack(false);
-      return;
-    }
-
-    const displayWidth = canvas.width || trackWidth;
-    const displayHeight = canvas.height || trackHeight;
-
-    const combine = document.createElement("canvas");
-    combine.width = displayWidth;
-    combine.height = displayHeight;
-    const ctx = combine.getContext("2d");
-    if (!ctx) {
-      setTrackOrientationMsg("生成赛道图片失败（无上下文）。");
-      setForceShowTrack(false);
-      return;
-    }
-
-    ctx.drawImage(canvas, 0, 0, displayWidth, displayHeight);
-
-    try {
-      const svgData = new XMLSerializer().serializeToString(svg);
-      const blob = new Blob([svgData], {
-        type: "image/svg+xml;charset=utf-8",
-      });
-      const url = URL.createObjectURL(blob);
-      await new Promise<void>((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => {
-          ctx.drawImage(img, 0, 0, displayWidth, displayHeight);
-          URL.revokeObjectURL(url);
-          resolve();
-        };
-        img.onerror = () => {
-          URL.revokeObjectURL(url);
-          reject(new Error("svg load error"));
-        };
-        img.src = url;
-      });
-    } catch (err) {
-      console.warn("SVG overlay export failed", err);
-    }
-
-    const finalDataUrl = combine.toDataURL("image/png");
-
-    const popup = window.open("");
-    if (popup && popup.document) {
-      popup.document.write(`
-        <title>赛道截图</title>
-        <style>
-          body { margin: 0; background: #111; display: flex; align-items: center; justify-content: center; }
-          img { max-width: 100vw; max-height: 100vh; }
-        </style>
-        <img src="${finalDataUrl}" alt="赛道截图" />
-      `);
-      setTrackOrientationMsg("已弹出赛道图片，可长按/保存。");
-    } else {
-      setTrackOrientationMsg("浏览器阻止弹窗，请允许弹窗后重试。");
-    }
-
-    setForceShowTrack(false);
   };
 
   const [uma1, setUma1] = useState(() => new HorseState());
@@ -936,6 +871,19 @@ function App() {
     const overlay = document.getElementById("umaOverlay") as HTMLElement | null;
     overlay && overlay.focus();
   }, [expanded]);
+
+  // 阻止背景滚动：仅在赛道全屏时锁定 body，Uma 面板保持正常滚动
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    if (forceShowTrack) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = originalOverflow;
+    }
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [expanded, forceShowTrack]);
   useEffect(() => {
     if (typeof document === "undefined") return;
     const originalOverflow = document.body.style.overflow;
@@ -1424,7 +1372,7 @@ function App() {
         >
           {/* Left Column: Track and Track Settings */}
 
-          {showTrack && (
+          {showTrack && (!isMobile || !forceShowTrack) && (
             <div
               ref={raceTrackRef}
               className={flippedTrack ? "racetrackFlipped" : ""}
@@ -1492,7 +1440,7 @@ function App() {
                 className="mobileTrackButton"
                 onClick={viewTrackImage}
               >
-                查看赛道图片
+                横屏查看赛道
               </button>
               <span className="mobileTrackHint">
                 {trackOrientationMsg || "弹窗展示赛道图片，可长按/保存。"}
@@ -1504,7 +1452,7 @@ function App() {
             data-mobile={isMobile ? "true" : "false"}
             className="
               flex flex-col gap-3
-              px-4 py-3
+              py-3
               border-b
               text-sm
             "
@@ -1753,6 +1701,46 @@ function App() {
           </div>
         </div>
         {resultsPane}
+        {isMobile && forceShowTrack && (
+          <div className="trackFullscreen" ref={raceTrackRef}>
+            <button
+              type="button"
+              className="trackFullscreenClose"
+              onClick={() => {
+                if (document.fullscreenElement && document.exitFullscreen) {
+                  document.exitFullscreen();
+                }
+                setForceShowTrack(false);
+                setTrackOrientationMsg("");
+              }}
+            >
+              ✕
+            </button>
+            <div className={flippedTrack ? "racetrackRotated" : ""}>
+              <RaceTrack
+                courseid={courseId}
+                width={trackHeight}
+                height={trackWidth}
+                xOffset={0}
+                yOffset={15}
+                yExtra={40}
+                mouseMove={rtMouseMove}
+                mouseLeave={rtMouseLeave}
+                regions={skillActivations}
+                hideTitle={true}
+              >
+                <VelocityLines
+                  data={chartData}
+                  courseDistance={course.distance}
+                  width={trackHeight}
+                  height={velocityHeight}
+                  xOffset={0}
+                  showHp={showHp}
+                />
+              </RaceTrack>
+            </div>
+          </div>
+        )}
         <div class="jumpButtons">
           <button
             type="button"
@@ -1880,6 +1868,14 @@ function App() {
               type="button"
               id="closeUmaOverlay"
               class="btnBase rounded"
+              title="关闭面板"
+              onClick={toggleExpand}
+            >
+              ✕
+            </button>
+            <button
+              type="button"
+              id="closeUmaOverlayTop"
               title="关闭面板"
               onClick={toggleExpand}
             >

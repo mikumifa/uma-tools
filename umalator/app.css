@@ -311,6 +311,45 @@ body {
   font-size: 1rem;
 }
 
+.trackFullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 12px;
+  box-sizing: border-box;
+}
+.trackFullscreen .racetrackWrapper {
+  width: auto;
+  overflow: visible;
+}
+
+.racetrackRotated {
+  transform: rotate(90deg);
+  transform-origin: center;
+  max-width: 90vh;
+  max-height: 90vw;
+}
+
+.trackFullscreenClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
 .mobileTrackActions {
   width: 100%;
   display: flex;
@@ -600,56 +639,30 @@ body {
 }
 
 #umaOverlay {
-  inline-size: 650px;
-  min-inline-size: 360px;
-  max-inline-size: 650px;
-  block-size: 80vh;
-  overflow-y: visible;
-  overflow-x: visible;
-  padding: 0;
-  border-radius: 0;
-  background: transparent;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: none;
-  border: none;
+  inset: 0;
+  inline-size: 100vw;
+  max-inline-size: 100vw;
+  block-size: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.55);
   z-index: 999;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: stretch;
+  align-items: flex-start;
   box-sizing: border-box;
   scrollbar-width: thin;
   /* Firefox */
   scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
 
-#umaOverlay.compareMode {
-  max-inline-size: min(95vw, 1600px);
-  block-size: 88vh;
-  transition: all 0.25s ease;
-  z-index: 999;
-}
-
-@media (max-width: 640px) {
-  #umaOverlay {
-    position: fixed;
-    inset: 0;
-    transform: none;
-    inline-size: 100vw;
-    max-inline-size: 100vw;
-    block-size: 100vh;
-    border-radius: 0;
-    padding: 12px;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  #umaOverlay .horseDef {
-    font-size: 14px;
-  }
+#umaOverlay .horseDef {
+  background: rgb(248, 248, 248);
+  border: 2px solid rgb(170, 221, 154);
+  border-radius: 12px;
 }
 
 .umaPanel {
@@ -744,6 +757,23 @@ body {
   top: clamp(12px, 2vw, 20px);
   width: 42px;
   z-index: 10;
+}
+
+#closeUmaOverlayTop {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1300;
 }
 
 #closeSkill {
