@@ -315,7 +315,10 @@ export function RaceTrack(props) {
 
             // 贪心算法：寻找能放下的最低层级 (i)
             let i = 0;
-            while (i < 10) {
+            // Allow unlimited layers; create new rung arrays on demand.
+            // 16 stacked regions used to overflow the fixed 10 rungs and crash.
+            while (true) {
+              if (i >= state.rungs.length) state.rungs.push([]);
               if (
                 state.rungs[i].some(
                   (b) =>

@@ -90,7 +90,7 @@ function SkillNameCell({ id }) {
   );
 }
 
-export function   BasinnChart(props) {
+export function BasinnChart(props) {
   const radioGroup = useId();
   const [selected, setSelected] = useState("");
   const [selectedType, setSelectedType] = useState("mean");
