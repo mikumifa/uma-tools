@@ -1,6 +1,9 @@
-import { defineConfig } from "vite";
-import preact from "@preact/preset-vite";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+import preact from "@preact/preset-vite";
+import { defineConfig } from "vite";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(({ mode }) => {
   const debug = mode === "debug";

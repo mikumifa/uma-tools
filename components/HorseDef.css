@@ -333,7 +333,12 @@
   right: 6px;
   top: 50%;
   transform: translateY(-50%);
-  text-align: right;
+  text-align: center;
+  text-align-last: center;
+}
+
+.horseStrategySelect option {
+  text-align: center;
 }
 
 .horseSkillHeader {

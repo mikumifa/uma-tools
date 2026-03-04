@@ -69,6 +69,15 @@ export function UmaSelector(props) {
     u && u.name[0],
     update
   );
+  const selectedUmaName = u ? u.name[0] : "";
+  function currentSuggestions() {
+    // After selecting one uma, keep the selector open to all umas unless the user types a new query.
+    if (props.value && query.input === selectedUmaName) {
+      return umaAltIds;
+    }
+    return query.suggestions;
+  }
+
   function confirm(oid) {
     setOpen(false);
     props.select(oid);
@@ -88,10 +97,12 @@ export function UmaSelector(props) {
   function setActiveAndScroll(idx) {
     setActiveIdx(idx);
     if (!suggestionsContainer.current) return;
+    const suggestions = currentSuggestions();
     const container = suggestionsContainer.current;
     const li = container.querySelector(
-      `[data-uma-id="${query.suggestions[idx]}"]`
+      `[data-uma-id="${suggestions[idx]}"]`
     );
+    if (!li) return;
     const ch = container.offsetHeight - 4; // 4 for borders
     if (li.offsetTop < container.scrollTop) {
       container.scrollTop = li.offsetTop;
@@ -113,10 +124,12 @@ export function UmaSelector(props) {
   }
 
   function handleKeyDown(e) {
-    const l = query.suggestions.length;
+    const suggestions = currentSuggestions();
+    const l = suggestions.length;
+    if (l == 0) return;
     switch (e.keyCode) {
       case 13:
-        if (activeIdx > -1) confirm(query.suggestions[activeIdx]);
+        if (activeIdx > -1) confirm(suggestions[activeIdx]);
         break;
       case 38:
         setActiveAndScroll((activeIdx - 1 + l) % l);
@@ -158,7 +171,7 @@ export function UmaSelector(props) {
           onMouseDown={handleClick}
           ref={suggestionsContainer}
         >
-          {query.suggestions.map((oid, i) => {
+          {currentSuggestions().map((oid, i) => {
             const uid = oid.slice(0, 4);
             return (
               <li
@@ -329,6 +342,23 @@ export function StrategySelect(props) {
   );
 }
 
+export function AptitudeOptionSelect(props) {
+  return (
+    <select
+      class="horseStrategySelect"
+      value={props.a}
+      tabindex={props.tabindex}
+      onInput={(e) => props.setA(e.currentTarget.value)}
+    >
+      {APTITUDES.map((a) => (
+        <option key={a} value={a}>
+          {a}
+        </option>
+      ))}
+    </select>
+  );
+}
+
 const nonUniqueSkills = Object.keys(skills).filter(
   (id) => skilldata(id).rarity < 3 || skilldata(id).rarity > 5
 );
@@ -470,7 +500,7 @@ export function HorseDef(props) {
       <div class="horseAptitudes">
         <div>
           <span>场地适应性</span>
-          <AptitudeSelect
+          <AptitudeOptionSelect
             a={state.surfaceAptitude}
             setA={setter("surfaceAptitude")}
             tabindex={tabnext()}
@@ -478,7 +508,7 @@ export function HorseDef(props) {
         </div>
         <div>
           <span>距离适应性</span>
-          <AptitudeSelect
+          <AptitudeOptionSelect
             a={state.distanceAptitude}
             setA={setter("distanceAptitude")}
             tabindex={tabnext()}
@@ -494,7 +524,7 @@ export function HorseDef(props) {
         </div>
         <div>
           <span>跑法适应性</span>
-          <AptitudeSelect
+          <AptitudeOptionSelect
             a={state.strategyAptitude}
             setA={setter("strategyAptitude")}
             tabindex={tabnext()}
