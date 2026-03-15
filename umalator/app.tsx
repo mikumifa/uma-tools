@@ -352,7 +352,7 @@ function VelocityLines(props) {
           .call(d3.axisLeft(y));
       }
     },
-    [props.data, props.courseDistance, props.width, props.height]
+    [props.data, props.courseDistance, props.width, props.height],
   );
   const colors = ["#3d7dd1", "#ff6fba"];
   const hpColors = ["#7aa8e7", "#ff9ed0"];
@@ -385,7 +385,7 @@ function VelocityLines(props) {
                         .y((j) => hpY(hp[j]))(data.p[i].map((_, j) => j))}
                     />
                   ))
-                : []
+                : [],
             )}
       </g>
       <g ref={axes} />
@@ -437,7 +437,7 @@ const ORDER_RANGE_FOR_STRATEGY = Object.freeze({
 
 function racedefToParams(
   { mood, ground, weather, season, time, grade }: RaceParams,
-  includeOrder?: string
+  includeOrder?: string,
 ): RaceParameters {
   return {
     mood,
@@ -461,7 +461,7 @@ async function serialize(
   usePosKeep: boolean,
   racedef: RaceParams,
   uma1: HorseState,
-  uma2: HorseState
+  uma2: HorseState,
 ) {
   const json = JSON.stringify({
     courseId,
@@ -545,7 +545,7 @@ const EMPTY_RESULTS_STATE = {
 };
 function updateResultsState(
   state: typeof EMPTY_RESULTS_STATE,
-  o: number | string | { results: any; runData: any }
+  o: number | string | { results: any; runData: any },
 ) {
   if (typeof o == "number") {
     return {
@@ -661,7 +661,7 @@ function RacePresets(props) {
 }
 
 const baseSkillsToTest = Object.keys(skilldata).filter(
-  (id) => skilldata[id].rarity < 3
+  (id) => skilldata[id].rarity < 3,
 );
 
 const enum Mode {
@@ -710,10 +710,10 @@ function App() {
   const [trackOrientationMsg, setTrackOrientationMsg] = useState("");
   const [forceShowTrack, setForceShowTrack] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(() =>
-    typeof window === "undefined" ? 1540 : window.innerWidth
+    typeof window === "undefined" ? 1540 : window.innerWidth,
   );
   const [viewportHeight, setViewportHeight] = useState(() =>
-    typeof window === "undefined" ? 900 : window.innerHeight
+    typeof window === "undefined" ? 900 : window.innerHeight,
   );
 
   useEffect(() => {
@@ -740,8 +740,8 @@ function App() {
   const trackViewportWidth = isLandscapeView
     ? viewportWidth
     : isMobile
-    ? Math.min(Math.max(320, viewportWidth), 640)
-    : Math.max(viewportWidth, 1280);
+      ? Math.min(Math.max(320, viewportWidth), 640)
+      : Math.max(viewportWidth, 1280);
   const trackWidth = useMemo(() => {
     return Math.max(300, trackViewportWidth - trackViewportWidth * 0.1);
   }, [trackViewportWidth]);
@@ -758,18 +758,18 @@ function App() {
   }, [trackHeight, isLandscapeView]);
 
   const trackWidthStyle = useMemo(
-    () => ({ "--track-width": `${trackWidth}px` } as any),
-    [trackWidth]
+    () => ({ "--track-width": `${trackWidth}px` }) as any,
+    [trackWidth],
   );
 
   const histogramWidth = useMemo(
     () => Math.min(600, Math.max(280, trackWidth)),
-    [trackWidth]
+    [trackWidth],
   );
 
   const histogramHeight = useMemo(
     () => Math.round(histogramWidth * 0.55),
-    [histogramWidth]
+    [histogramWidth],
   );
   const detailHistogramWidth = useMemo(() => {
     if (isMobile) {
@@ -780,7 +780,7 @@ function App() {
   }, [trackWidth, isMobile]);
   const detailHistogramHeight = useMemo(
     () => Math.round(detailHistogramWidth * 0.6),
-    [detailHistogramWidth]
+    [detailHistogramWidth],
   );
   const showStatusBar = Boolean(status) || progress > 0;
 
@@ -832,7 +832,7 @@ function App() {
       raceTrackRef.current?.scrollIntoView({
         behavior: "smooth",
         block: "start",
-      })
+      }),
     );
   };
 
@@ -841,7 +841,7 @@ function App() {
 
   const [{ mode, currentIdx, expanded }, updateUiState] = useReducer(
     nextUiState,
-    DEFAULT_UI_STATE
+    DEFAULT_UI_STATE,
   );
 
   // Mobile 不支持对比模式，强制回到图表模式
@@ -921,7 +921,7 @@ function App() {
         }
       });
       return w;
-    }, [])
+    }, []),
   );
 
   function loadState() {
@@ -953,7 +953,7 @@ function App() {
           window.location.host +
           window.location.pathname;
         window.navigator.clipboard.writeText(url + "#" + hash);
-      }
+      },
     );
   }
 
@@ -976,7 +976,7 @@ function App() {
   const strings = { skillnames: {}, tracknames: TRACKNAMES_cn };
   const langid = 0;
   Object.keys(skillnames).forEach(
-    (id) => (strings.skillnames[id] = skillnames[id][langid])
+    (id) => (strings.skillnames[id] = skillnames[id][langid]),
   );
 
   function doComparison() {
@@ -1006,11 +1006,11 @@ function App() {
       baseSkillsToTest.filter(
         (s) =>
           !uma1.skills.has(s) &&
-          (s[0] !== "9" || !uma1.skills.has("1" + s.slice(1)))
+          (s[0] !== "9" || !uma1.skills.has("1" + s.slice(1))),
       ),
       uma1,
       course,
-      params
+      params,
     );
     const filler = new Map();
     skills.forEach((id) => filler.set(id, getNullRow(id)));
@@ -1026,7 +1026,7 @@ function App() {
         workerProgress.current.w1 = data.percent;
         const minProgress = Math.min(
           workerProgress.current.w1,
-          workerProgress.current.w2
+          workerProgress.current.w2,
         );
         setProgress(minProgress);
         setStatus(`Simulating: ${minProgress}%`);
@@ -1039,7 +1039,7 @@ function App() {
         workerProgress.current.w2 = data.percent;
         const minProgress = Math.min(
           workerProgress.current.w1,
-          workerProgress.current.w2
+          workerProgress.current.w2,
         );
         setProgress(minProgress);
         setStatus(`Simulating: ${minProgress}%`);
@@ -1090,12 +1090,12 @@ function App() {
     const i0 = binSearch(chartData.p[0], x),
       i1 = binSearch(chartData.p[1], x);
     document.getElementById("rtV1").textContent = `${chartData.v[0][i0].toFixed(
-      2
+      2,
     )} m/s  t=${chartData.t[0][i0].toFixed(2)} s  (${chartData.hp[0][
       i0
     ].toFixed(0)} hp remaining)`;
     document.getElementById("rtV2").textContent = `${chartData.v[1][i1].toFixed(
-      2
+      2,
     )} m/s  t=${chartData.t[1][i1].toFixed(2)} s  (${chartData.hp[1][
       i1
     ].toFixed(0)} hp remaining)`;
@@ -1122,13 +1122,17 @@ function App() {
       : chartData.sk.flatMap((a, i) => {
           return a
             .keys()
+            .filter((id) => !!skillmeta(id))
             .flatMap((id) => {
-              if (NO_SHOW.indexOf(skillmeta(id).iconId) > -1) return [];
+              const meta = skillmeta(id);
+              const skillName = skillnames[id]?.[0];
+              if (!skillName) return [];
+              if (NO_SHOW.indexOf(meta.iconId) > -1) return [];
               else
                 return a.get(id).map((ar) => ({
                   type: RegionDisplayType.Textbox,
                   color: colors[i],
-                  text: skillnames[id][0],
+                  text: skillName,
                   regions: [{ start: ar[0], end: ar[1] }],
                 }));
             })
@@ -1220,15 +1224,16 @@ function App() {
               <tbody>
                 {chartData.sk[0]
                   .entries()
+                  .filter(([id]) => !!skillnames[id]?.[0])
                   .map(([id, ars]) =>
                     ars.flatMap((pos) => (
                       <tr>
                         <th>{skillnames[id][0]}</th>
                         <td>{`${pos[0].toFixed(2)} m – ${pos[1].toFixed(
-                          2
+                          2,
                         )} m`}</td>
                       </tr>
-                    ))
+                    )),
                   )
                   .toArray()}
               </tbody>
@@ -1260,15 +1265,16 @@ function App() {
               <tbody>
                 {chartData.sk[1]
                   .entries()
+                  .filter(([id]) => !!skillnames[id]?.[0])
                   .map(([id, ars]) =>
                     ars.flatMap((pos) => (
                       <tr>
                         <th>{skillnames[id][0]}</th>
                         <td>{`${pos[0].toFixed(2)} m – ${pos[1].toFixed(
-                          2
+                          2,
                         )} m`}</td>
                       </tr>
-                    ))
+                    )),
                   )
                   .toArray()}
               </tbody>
@@ -1295,7 +1301,7 @@ function App() {
           const skillName = skillnames[row.id][0];
           if (!skillName) {
             console.warn(
-              `Warning: skillnames 中没有找到 id=${row.id} 内容为空，已过滤`
+              `Warning: skillnames 中没有找到 id=${row.id} 内容为空，已过滤`,
             );
             return false;
           }
