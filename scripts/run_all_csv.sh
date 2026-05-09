@@ -17,6 +17,7 @@ scripts=(
   "scripts/champions_schedule.py"
   "scripts/legend_race.py"
   "scripts/campaign_data.py"
+  "scripts/factor_research_data.py"
   "scripts/text_data_csv.py"
   "scripts/run_all_csv_jp.py"
 )

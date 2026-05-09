@@ -18,6 +18,7 @@ SCRIPT_FILES = [
     "scripts/champions_schedule.py",
     "scripts/legend_race.py",
     "scripts/campaign_data.py",
+    "scripts/factor_research_data.py",
 ]
 
 

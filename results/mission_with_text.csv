@@ -1,4 +1,4 @@
-disp_order,item_id,start_date,end_date,id,item_num,item_text,mission_text
+﻿disp_order,item_id,start_date,end_date,id,item_num,item_text,mission_text
 1,98,2021-02-24 00:00:00,2021-09-30 04:59:59,100000,100,好友积分,【日常任务①】\n在养成的赛事中赢得胜利
 2,110,2021-02-24 00:00:00,2021-09-30 04:59:59,100001,300,协助积分,【日常任务②】\n参与日常赛事
 4,59,2021-02-24 00:00:00,2021-09-30 04:59:59,100002,1000,金币,【日常任务④】\n参与团队竞技场
