@@ -139,13 +139,13 @@ def make_global_skill_data(master_mdb, out_path="skill_meta.json"):
     sql = """
 SELECT id, rarity,
        condition_1,
-       float_ability_time_1,
+       float_ability_time_1, precondition_1,
        ability_type_1_1, float_ability_value_1_1, target_type_1_1,
        ability_type_1_2, float_ability_value_1_2, target_type_1_2,
        ability_type_1_3, float_ability_value_1_3, target_type_1_3,
 
        condition_2,
-       float_ability_time_2,
+       float_ability_time_2, precondition_2,
        ability_type_2_1, float_ability_value_2_1, target_type_2_1,
        ability_type_2_2, float_ability_value_2_2, target_type_2_2,
        ability_type_2_3, float_ability_value_2_3, target_type_2_3
@@ -159,6 +159,7 @@ SELECT id, rarity,
             rarity,
             condition_1,
             float_ability_time_1,
+            precondition_1,
             ability_type_1_1,
             float_ability_value_1_1,
             target_type_1_1,
@@ -170,6 +171,7 @@ SELECT id, rarity,
             target_type_1_3,
             condition_2,
             float_ability_time_2,
+            precondition_2,
             ability_type_2_1,
             float_ability_value_2_1,
             target_type_2_1,
@@ -248,7 +250,7 @@ SELECT id, rarity,
             )
         triggers = [
             {
-                "precondition": "",  # original perl set precondition_1 = ''
+                "precondition": precondition_1,  # original perl set precondition_1 = ''
                 "condition": condition_1 if condition_1 is not None else "",
                 "baseDuration": float_ability_time_1
                 if float_ability_time_1 is not None
@@ -308,7 +310,7 @@ SELECT id, rarity,
                 )
             triggers.append(
                 {
-                    "precondition": "",
+                    "precondition": precondition_2,
                     "condition": condition_2,
                     "baseDuration": float_ability_time_2
                     if float_ability_time_2 is not None

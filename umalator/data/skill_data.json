@@ -133,7 +133,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&order<=3&bashin_diff_infront<=1&is_overtake==1"
       }
     ],
     "rarity": 5
@@ -167,7 +167,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&order_rate<=40&behind_near_lane_time_set1>=1"
       }
     ],
     "rarity": 5
@@ -408,7 +408,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&is_behind_in==1&change_order_onetime<0&order_rate>=40"
       }
     ],
     "rarity": 5
@@ -493,7 +493,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&blocked_side_continuetime>=2"
       },
       {
         "baseDuration": 50000,
@@ -870,7 +870,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&order<=4&change_order_onetime<0"
       }
     ],
     "rarity": 5
@@ -980,7 +980,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "remain_distance<=305&remain_distance>=300&slope==1"
       },
       {
         "baseDuration": 50000,
@@ -1060,7 +1060,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=50&order_rate_out40_continue==1"
       }
     ],
     "rarity": 5
@@ -1077,7 +1077,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&blocked_side_continuetime>=2"
       }
     ],
     "rarity": 4
@@ -1099,7 +1099,7 @@
             "type": 28
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&order_rate>=40&order_rate<=75&lane_type==0"
       }
     ],
     "rarity": 5
@@ -1349,7 +1349,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "order_rate_out50_continue==1&temptation_count==0&is_finalcorner==1"
       }
     ],
     "rarity": 5
@@ -1451,7 +1451,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&is_overtake==1"
       },
       {
         "baseDuration": 50000,
@@ -1463,7 +1463,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&is_overtake==1"
       }
     ],
     "rarity": 5
@@ -1575,7 +1575,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&blocked_side_continuetime>=2&corner!=0"
       }
     ],
     "rarity": 5
@@ -2251,7 +2251,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&change_order_onetime<0"
       }
     ],
     "rarity": 5
@@ -2319,7 +2319,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=60&phase==1&order>=2&order_rate<=40"
       },
       {
         "baseDuration": 50000,
@@ -2331,7 +2331,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=60&phase==1&order>=2&order_rate<=40"
       }
     ],
     "rarity": 5
@@ -2348,7 +2348,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=50&order_rate_out20_continue==1"
       },
       {
         "baseDuration": 80000,
@@ -2360,7 +2360,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=50&order_rate_out20_continue==1"
       }
     ],
     "rarity": 5
@@ -2506,7 +2506,7 @@
             "type": 22
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&order_rate>=50"
       },
       {
         "baseDuration": 50000,
@@ -2518,7 +2518,7 @@
             "type": 22
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&order_rate>=50"
       }
     ],
     "rarity": 5
@@ -2706,7 +2706,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&blocked_side_continuetime>=2&corner!=0"
       },
       {
         "baseDuration": 40000,
@@ -2718,7 +2718,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&blocked_side_continuetime>=2&corner!=0"
       }
     ],
     "rarity": 5
@@ -3061,7 +3061,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&distance_diff_rate>=50"
       }
     ],
     "rarity": 6
@@ -3095,7 +3095,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=66&temptation_count==0"
       }
     ],
     "rarity": 6
@@ -3443,7 +3443,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "distance_diff_top<=10&distance_rate>=60&phase==1"
       }
     ],
     "rarity": 6
@@ -4728,7 +4728,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&distance_diff_rate>=50"
       }
     ],
     "rarity": 6
@@ -4901,7 +4901,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&blocked_side_continuetime>=2"
       }
     ],
     "rarity": 3
@@ -7678,7 +7678,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&distance_diff_rate>=50"
       }
     ],
     "rarity": 6
@@ -7963,7 +7963,7 @@
             "type": 22
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&bashin_diff_behind>=3&order==1"
       },
       {
         "baseDuration": 50000,
@@ -7992,7 +7992,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&is_overtake==1&order<=5&order_rate<=50&overtake_target_no_order_up_time>=2"
       }
     ],
     "rarity": 5
@@ -8097,7 +8097,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=1&slope==2&order_rate>=50&order_rate<=80&track_id==10006"
       },
       {
         "baseDuration": 40000,
@@ -8109,7 +8109,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=1&slope==2&order_rate>=50&order_rate<=80"
       }
     ],
     "rarity": 5
@@ -8211,7 +8211,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "change_order_up_middle>=3"
       }
     ],
     "rarity": 5
@@ -8291,7 +8291,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&blocked_side_continuetime>=2"
       },
       {
         "baseDuration": 50000,
@@ -8320,7 +8320,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&order_rate<=50&overtake_target_time>=2"
       }
     ],
     "rarity": 5
@@ -8646,7 +8646,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&corner!=0&order_rate>=60&is_overtake==1"
       }
     ],
     "rarity": 5
@@ -8763,7 +8763,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&bashin_diff_behind>=3&order==1"
       },
       {
         "baseDuration": 24000,
@@ -8775,7 +8775,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&bashin_diff_behind>=3&order==1"
       }
     ],
     "rarity": 6
@@ -9086,7 +9086,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&change_order_onetime<0"
       },
       {
         "baseDuration": 50000,
@@ -9098,7 +9098,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&change_order_onetime<0"
       }
     ],
     "rarity": 5
@@ -9149,7 +9149,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=50&order_rate_out70_continue==1&temptation_count==0"
       }
     ],
     "rarity": 5
@@ -9244,7 +9244,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&blocked_side_continuetime>=2"
       }
     ],
     "rarity": 5
@@ -9373,7 +9373,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "track_id==10005"
       },
       {
         "baseDuration": 50000,
@@ -12317,7 +12317,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase==2&distance_diff_rate>=50"
       }
     ],
     "rarity": 2
@@ -12334,7 +12334,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase==2&distance_diff_rate>=50"
       }
     ],
     "rarity": 1
@@ -17905,7 +17905,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "distance_diff_top<=10&distance_rate>=60&phase==1"
       }
     ],
     "rarity": 2
@@ -17922,7 +17922,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "distance_diff_top<=10&distance_rate>=60&phase==1"
       }
     ],
     "rarity": 1
@@ -17939,7 +17939,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=66&order_rate_out50_continue==1&temptation_count==0"
       }
     ],
     "rarity": 2
@@ -17956,7 +17956,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=66&order_rate_out50_continue==1&temptation_count==0"
       }
     ],
     "rarity": 1
@@ -19684,7 +19684,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&order<=3&bashin_diff_infront<=1&is_overtake==1"
       }
     ],
     "rarity": 1
@@ -19718,7 +19718,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&order_rate<=40&behind_near_lane_time_set1>=1"
       }
     ],
     "rarity": 1
@@ -19842,7 +19842,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&is_behind_in==1&change_order_onetime<0&order_rate>=40"
       }
     ],
     "rarity": 1
@@ -19927,7 +19927,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&blocked_side_continuetime>=2"
       },
       {
         "baseDuration": 30000,
@@ -20226,7 +20226,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&order<=4&change_order_onetime<0"
       }
     ],
     "rarity": 1
@@ -20243,7 +20243,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "remain_distance<=305&remain_distance>=300&slope==1"
       },
       {
         "baseDuration": 30000,
@@ -20323,7 +20323,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=50&order_rate_out40_continue==1"
       }
     ],
     "rarity": 1
@@ -20340,7 +20340,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&blocked_side_continuetime>=2"
       }
     ],
     "rarity": 1
@@ -20362,7 +20362,7 @@
             "type": 28
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&order_rate>=40&order_rate<=75&lane_type==0"
       }
     ],
     "rarity": 1
@@ -20544,7 +20544,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "order_rate_out50_continue==1&temptation_count==0&is_finalcorner==1"
       }
     ],
     "rarity": 1
@@ -20646,7 +20646,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&is_overtake==1"
       },
       {
         "baseDuration": 30000,
@@ -20658,7 +20658,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&is_overtake==1"
       }
     ],
     "rarity": 1
@@ -20692,7 +20692,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&blocked_side_continuetime>=2&corner!=0"
       }
     ],
     "rarity": 1
@@ -21139,7 +21139,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&change_order_onetime<0"
       }
     ],
     "rarity": 1
@@ -21207,7 +21207,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=60&phase==1&order>=2&order_rate<=40"
       }
     ],
     "rarity": 1
@@ -21224,7 +21224,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=50&order_rate_out20_continue==1"
       },
       {
         "baseDuration": 48000,
@@ -21236,7 +21236,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=50&order_rate_out20_continue==1"
       }
     ],
     "rarity": 1
@@ -21282,7 +21282,7 @@
             "type": 22
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&order_rate>=50"
       }
     ],
     "rarity": 1
@@ -21360,7 +21360,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&blocked_side_continuetime>=2&corner!=0"
       }
     ],
     "rarity": 1
@@ -21525,7 +21525,7 @@
             "type": 22
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&bashin_diff_behind>=3&order==1"
       },
       {
         "baseDuration": 30000,
@@ -21554,7 +21554,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&is_overtake==1&order<=5&order_rate<=50&overtake_target_no_order_up_time>=2"
       }
     ],
     "rarity": 1
@@ -21659,7 +21659,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=1&slope==2&order_rate>=50&order_rate<=80&track_id==10006"
       },
       {
         "baseDuration": 24000,
@@ -21671,7 +21671,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=1&slope==2&order_rate>=50&order_rate<=80"
       }
     ],
     "rarity": 1
@@ -21773,7 +21773,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "change_order_up_middle>=3"
       }
     ],
     "rarity": 1
@@ -21870,7 +21870,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&order_rate<=50&overtake_target_time>=2"
       }
     ],
     "rarity": 1
@@ -22196,7 +22196,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "phase>=2&corner!=0&order_rate>=60&is_overtake==1"
       }
     ],
     "rarity": 1
@@ -22556,7 +22556,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&change_order_onetime<0"
       },
       {
         "baseDuration": 30000,
@@ -22568,7 +22568,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "is_finalcorner==1&change_order_onetime<0"
       }
     ],
     "rarity": 1
@@ -22585,7 +22585,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "distance_rate>=50&order_rate_out70_continue==1&temptation_count==0"
       }
     ],
     "rarity": 1
@@ -22680,7 +22680,7 @@
             "type": 31
           }
         ],
-        "precondition": ""
+        "precondition": "phase==1&blocked_side_continuetime>=2"
       }
     ],
     "rarity": 1
@@ -22724,7 +22724,7 @@
             "type": 27
           }
         ],
-        "precondition": ""
+        "precondition": "track_id==10005"
       },
       {
         "baseDuration": 30000,
