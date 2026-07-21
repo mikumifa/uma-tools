@@ -76,6 +76,26 @@ HEROES_STAGE_LABELS = {0: "主要赛事", 1: "主要赛事", 2: "特别赛事"}
 HEROES_EVENT_NAME = "英杰集结战"
 
 
+def optional_public_image(public_relative: str) -> str | None:
+    return public_relative if (PUBLIC_DIR / public_relative).exists() else None
+
+
+def factor_research_image() -> str | None:
+    return optional_public_image(FACTOR_RESEARCH_IMAGE)
+
+
+def legend_race_image() -> str | None:
+    return optional_public_image(LEGEND_RACE_IMAGE)
+
+
+def champions_race_image() -> str | None:
+    return optional_public_image(CHAMPIONS_RACE_IMAGE)
+
+
+def heroes_race_image() -> str | None:
+    return optional_public_image(HEROES_RACE_IMAGE)
+
+
 def ts_to_str(ts: int) -> str:
     return dt.datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S")
 
@@ -112,12 +132,18 @@ def texture_asset(filename: str) -> Path | None:
 
 
 def copy_public_asset(src: Path | None, public_relative: str) -> str | None:
-    if src is None or not src.exists():
-        return None
     dst = PUBLIC_DIR / public_relative
+    if src is None or not src.exists():
+        if dst.exists():
+            return public_relative.replace("\\", "/")
+        return None
     dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(src, dst)
     return public_relative.replace("\\", "/")
+
+
+def existing_public_asset(public_relative: str) -> str | None:
+    return public_relative.replace("\\", "/") if (PUBLIC_DIR / public_relative).exists() else None
 
 
 def copy_character_icon(card_id: int, chara_id: int | None, icon_paths: dict) -> str | None:
@@ -144,6 +170,11 @@ def copy_character_icon(card_id: int, chara_id: int | None, icon_paths: dict) ->
             copied = copy_public_asset(match, f"intel/chara/{match.name}")
             if copied:
                 return copied
+
+    if chara_id:
+        matches = sorted((PUBLIC_DIR / "intel" / "chara").glob(f"chr_icon_{chara_id}_*_02.png"))
+        for match in matches:
+            return f"intel/chara/{match.name}"
 
     return None
 
@@ -520,7 +551,7 @@ def generate_heroes_races() -> list[dict]:
                 "end": ts_to_str(end),
                 "startTimestamp": start,
                 "endTimestamp": end,
-                "image": HEROES_RACE_IMAGE,
+                "image": heroes_race_image(),
                 "drops": [],
                 "details": heroes_race_details(cur, start, end),
             }
@@ -786,7 +817,7 @@ def report_events_to_schedule(event_sections: list[dict], include_races: bool = 
             image = None
             drops = []
             if section["title"] == "传奇赛事时间":
-                image = LEGEND_RACE_IMAGE
+                image = legend_race_image()
                 drops = legend_race_drops(cur, item["name"])
             if image is None and section["title"] == "剧情活动时间":
                 image = copy_story_event_logo(cur, item["name"], start, end)
@@ -795,7 +826,7 @@ def report_events_to_schedule(event_sections: list[dict], include_races: bool = 
             if image is None:
                 image = copy_schedule_image(section["title"])
             if include_races:
-                image = CHAMPIONS_RACE_IMAGE
+                image = champions_race_image()
             details = race_schedule_details(cur, start, end) if include_races else []
             events.append(
                 {
@@ -874,7 +905,7 @@ def generate_factor_research_events() -> list[dict]:
                     "end": row["end_date_str"],
                     "startTimestamp": start,
                     "endTimestamp": end,
-                    "image": FACTOR_RESEARCH_IMAGE,
+                    "image": factor_research_image(),
                 }
             )
     return events
