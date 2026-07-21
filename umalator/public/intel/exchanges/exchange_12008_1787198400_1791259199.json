@@ -1,0 +1,151 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 3090007,
+      "order": 30,
+      "reward": {
+        "image": "intel/item/item_icon_00041.png",
+        "name": "养成优俊少女招募券",
+        "rewardType": 40,
+        "rewardValue": 41,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3090003,
+      "order": 50,
+      "reward": {
+        "image": "intel/item/item_icon_00160.png",
+        "name": "启发书",
+        "rewardType": 11,
+        "rewardValue": 160,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 125
+      },
+      "limit": 8,
+      "totalRewardAmount": 8,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3090004,
+      "order": 51,
+      "reward": {
+        "image": "intel/item/item_icon_00161.png",
+        "name": "启发专业书",
+        "rewardType": 11,
+        "rewardValue": 161,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 250
+      },
+      "limit": 4,
+      "totalRewardAmount": 4,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3090005,
+      "order": 52,
+      "reward": {
+        "image": "intel/item/item_icon_00162.png",
+        "name": "稀有启发书",
+        "rewardType": 11,
+        "rewardValue": 162,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 500
+      },
+      "limit": 4,
+      "totalRewardAmount": 4,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3090006,
+      "order": 53,
+      "reward": {
+        "image": "intel/item/item_icon_00163.png",
+        "name": "稀有启发专业书",
+        "rewardType": 11,
+        "rewardValue": 163,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 750
+      },
+      "limit": 2,
+      "totalRewardAmount": 2,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3090001,
+      "order": 80,
+      "reward": {
+        "image": "intel/item/item_icon_00116.png",
+        "name": "干劲满溢甜点",
+        "rewardType": 150,
+        "rewardValue": 116,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 250
+      },
+      "limit": 8,
+      "totalRewardAmount": 8,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3090002,
+      "order": 90,
+      "reward": {
+        "image": "intel/item/item_icon_00034.png",
+        "name": "迷你胡萝卜果冻",
+        "rewardType": 21,
+        "rewardValue": 34,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 500
+      },
+      "limit": 10,
+      "totalRewardAmount": 10,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

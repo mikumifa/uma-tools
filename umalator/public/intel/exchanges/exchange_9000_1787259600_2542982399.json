@@ -1,0 +1,445 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 10115,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_105701.png",
+        "name": "[Clear Bliss]千明代表碎片",
+        "rewardType": 102,
+        "rewardValue": 105701,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10116,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_108301.png",
+        "name": "[Onyx Soldier]克里斯象征碎片",
+        "rewardType": 102,
+        "rewardValue": 108301,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10117,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_107102.png",
+        "name": "[Neige Émeraude]目白雅丹碎片",
+        "rewardType": 102,
+        "rewardValue": 107102,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10118,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_106902.png",
+        "name": "[Fleur Enneigée]樱花千代王碎片",
+        "rewardType": 102,
+        "rewardValue": 106902,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10119,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_110501.png",
+        "name": "[Universe-Naut]新宇宙碎片",
+        "rewardType": 102,
+        "rewardValue": 110501,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10120,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_106202.png",
+        "name": "[碧蓝湍流]待兼唐怀瑟碎片",
+        "rewardType": 102,
+        "rewardValue": 106202,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10121,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_104102.png",
+        "name": "[赤热☆队长]樱花进王碎片",
+        "rewardType": 102,
+        "rewardValue": 104102,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10122,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_108401.png",
+        "name": "[雷霆加身]谷水琴蕾碎片",
+        "rewardType": 102,
+        "rewardValue": 108401,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10123,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_105501.png",
+        "name": "[☆闪亮★心动☆雀跃∞美丽∞]美丽周日碎片",
+        "rewardType": 102,
+        "rewardValue": 105501,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10124,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_110401.png",
+        "name": "[登龙之顶]葛城荣主碎片",
+        "rewardType": 102,
+        "rewardValue": 110401,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10125,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_103202.png",
+        "name": "[Lunatic Lab]爱丽速子碎片",
+        "rewardType": 102,
+        "rewardValue": 103202,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10126,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_106601.png",
+        "name": "[狂奔！涡轮引擎]双涡轮碎片",
+        "rewardType": 102,
+        "rewardValue": 106601,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 5000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10127,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_108501.png",
+        "name": "[华丽红玉]第一红宝碎片",
+        "rewardType": 102,
+        "rewardValue": 108501,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10128,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_107601.png",
+        "name": "[Saisir le rêve]樱花桂冠碎片",
+        "rewardType": 102,
+        "rewardValue": 107601,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10129,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_110601.png",
+        "name": "[奇迹装点！]菱奇宝碎片",
+        "rewardType": 102,
+        "rewardValue": 110601,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10130,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_101202.png",
+        "name": "[Hungry Veil]菱亚马逊碎片",
+        "rewardType": 102,
+        "rewardValue": 101202,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10131,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_105102.png",
+        "name": "[Sweet Juneberry]西野花碎片",
+        "rewardType": 102,
+        "rewardValue": 105102,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10132,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_105302.png",
+        "name": "[Ultra☆Marine]青竹回忆碎片",
+        "rewardType": 102,
+        "rewardValue": 105302,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10133,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_104802.png",
+        "name": "[Aurore☆Vacances]岛川乔丹碎片",
+        "rewardType": 102,
+        "rewardValue": 104802,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10134,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_107001.png",
+        "name": "[Féroce]天狼星象征碎片",
+        "rewardType": 102,
+        "rewardValue": 107001,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10135,
+      "order": 0,
+      "reward": {
+        "image": "intel/piece/piece_icon_100202.png",
+        "name": "[浪间翠玉]无声铃鹿碎片",
+        "rewardType": 102,
+        "rewardValue": 100202,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

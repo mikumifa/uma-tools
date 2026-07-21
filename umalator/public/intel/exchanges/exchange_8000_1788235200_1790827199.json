@@ -1,0 +1,25 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8031,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_105601.png",
+        "name": "[运气高升☆祈福运来]待兼福来碎片",
+        "rewardType": 102,
+        "rewardValue": 105601,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

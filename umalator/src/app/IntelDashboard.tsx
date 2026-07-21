@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { useMemo, useState } from "preact/hooks";
+import { useEffect, useMemo, useState } from "preact/hooks";
 
 import intelData from "@data/results_intel.json";
 
@@ -28,10 +28,11 @@ type IntelData = {
   gachaPools: GachaPool[];
   events: ScheduleItem[];
   races?: ScheduleItem[];
+  exchanges?: ScheduleItem[];
   generatedAt: string;
 };
 
-type IntelTab = "gacha" | "events" | "races";
+type IntelTab = "gacha" | "events" | "races" | "exchanges";
 type ViewMode = "calendar" | "list";
 type GachaKindFilter = "all" | "character" | "support";
 
@@ -45,11 +46,27 @@ type ScheduleItem = {
   endTimestamp: number;
   image?: string | null;
   drops?: Array<{
-    image: string;
+    image?: string | null;
+    name?: string;
+    source?: string;
     label?: string;
     rewardType?: number;
     rewardValue?: number;
+    amount?: number;
+    countOnly?: boolean;
   }>;
+  exchangeDetails?: Array<{
+    id: number;
+    order: number;
+    reward: ScheduleReward;
+    pay: ScheduleReward;
+    limit: number;
+    totalRewardAmount: number;
+    additionalPieceAmount?: number;
+  }>;
+  exchangeDetailPath?: string;
+  exchangeDetailCount?: number;
+  isVoucherExchange?: boolean;
   details?: Array<{
     label?: string;
     raceName?: string;
@@ -71,6 +88,16 @@ type ScheduleItem = {
     } | null;
     entryNum?: number;
   }>;
+};
+
+type ScheduleReward = {
+  image?: string | null;
+  name?: string;
+  rewardType?: number;
+  rewardValue?: number;
+  amount?: number;
+  label?: string;
+  countOnly?: boolean;
 };
 
 const data = intelData as IntelData;
@@ -96,9 +123,16 @@ function scheduleImageClass(path?: string | null) {
   if (path.includes("/legend/")) return "legendImage";
   if (path.includes("/factor_research/")) return "factorResearchImage";
   if (path.includes("/campaign/")) return "campaignImage";
+  if (path.includes("/special/")) return "specialImage";
   if (path.includes("/piece/")) return "pieceImage";
   if (path.includes("/race/")) return "raceImage";
   return "itemImage";
+}
+
+function scheduleTypeClass(type: string) {
+  if (type === "训练员技能考试") return "trainingChallengeEvent";
+  if (type === "竞速嘉年华") return "challengeMatchEvent";
+  return "";
 }
 
 function scheduleTypeLabel(type: string) {
@@ -115,18 +149,32 @@ function fullDate(value: string) {
   return value.slice(5, 16);
 }
 
+function yearDate(value: string) {
+  return value.slice(0, 16);
+}
+
 function sameDay(a: string, b: string) {
   return a.slice(0, 10) === b.slice(0, 10);
 }
 
+function sameYear(a: string, b: string) {
+  return a.slice(0, 4) === b.slice(0, 4);
+}
+
 function dateLabel(start: string, end: string) {
+  const format = sameYear(start, end) ? fullDate : yearDate;
   return sameDay(start, end)
-    ? `${fullDate(start)} - ${end.slice(11, 16)}`
-    : `${fullDate(start)} - ${fullDate(end)}`;
+    ? `${format(start)} - ${end.slice(11, 16)}`
+    : `${format(start)} - ${format(end)}`;
 }
 
 function dateLabelLines(start: string, end: string) {
-  return [fullDate(start), fullDate(end)];
+  const format = sameYear(start, end) ? fullDate : yearDate;
+  return [format(start), format(end)];
+}
+
+function scheduleDateLabel(item: ScheduleItem) {
+  return dateLabel(item.start, item.end);
 }
 
 function monthLabel(value: string) {
@@ -257,7 +305,12 @@ function poolSearchText(pool: GachaPool) {
 }
 
 function eventSearchText(event: ScheduleItem) {
-  return [event.name, event.type, scheduleTypeLabel(event.type)]
+  return [
+    event.name,
+    event.type,
+    scheduleTypeLabel(event.type),
+    ...(event.drops || []).map((drop) => drop.label || ""),
+  ]
     .join(" ")
     .toLocaleLowerCase();
 }
@@ -275,6 +328,77 @@ function seasonIcon(value?: number) {
 function rateText(items?: Array<{ label: string; rate: number }>) {
   if (!items?.length) return "";
   return items.map((item) => `${item.label}${item.rate}%`).join(" / ");
+}
+
+function hideRewardAmount(drop: NonNullable<ScheduleItem["drops"]>[number]) {
+  return (
+    drop.rewardValue === 59 ||
+    drop.rewardValue === 98 ||
+    drop.rewardValue === 110 ||
+    drop.rewardValue === 45 ||
+    drop.rewardValue === 58 ||
+    drop.rewardValue === 156 ||
+    drop.rewardValue === 159
+  );
+}
+
+function rewardAmountLabel(drop: NonNullable<ScheduleItem["drops"]>[number]) {
+  if (hideRewardAmount(drop)) return "";
+  const amount = Number(drop.amount || 0);
+  if (!amount) return "";
+  return amount >= 10000 ? `x${Math.floor(amount / 10000)}w` : `x${amount}`;
+}
+
+function detailAmountLabel(reward?: ScheduleReward | null) {
+  const amount = Number(reward?.amount || 0);
+  if (!amount) return "";
+  return amount >= 10000 ? `x${Math.floor(amount / 10000)}w` : `x${amount}`;
+}
+
+function scheduleDetailKey(item: ScheduleItem) {
+  return `${item.type}-${item.id}-${item.startTimestamp}`;
+}
+
+function scheduleKeyHandler(onSelect: () => void) {
+  return (event: KeyboardEvent) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      onSelect();
+    }
+  };
+}
+
+function rewardSourceGroups(drops?: ScheduleItem["drops"]) {
+  return (drops || []).reduce<Array<{ source: string; drops: NonNullable<ScheduleItem["drops"]> }>>(
+    (groups, drop) => {
+      const source = drop.source || "奖励";
+      let group = groups.find((item) => item.source === source);
+      if (!group) {
+        group = { source, drops: [] };
+        groups.push(group);
+      }
+      group.drops.push(drop);
+      return groups;
+    },
+    [],
+  );
+}
+
+function previewRewardGroupDrops(drops: NonNullable<ScheduleItem["drops"]>) {
+  if (drops.length <= 10) return drops;
+  return [
+    ...drops.slice(0, 10),
+    {
+      label: `+${drops.length - 10}`,
+      countOnly: true,
+    },
+  ];
+}
+
+async function loadExchangeDetails(path: string) {
+  const response = await fetch(assetUrl(path));
+  if (!response.ok) throw new Error(`Failed to load ${path}`);
+  return (await response.json()) as Pick<ScheduleItem, "exchangeDetails">;
 }
 
 const EXPORT_WIDTH = 1280;
@@ -299,7 +423,7 @@ function collectExportImages(source: ExportImageSource) {
   });
   [...source.events, ...source.races].forEach((item) => {
     if (item.image) paths.add(item.image);
-    item.drops?.forEach((drop) => paths.add(drop.image));
+    item.drops?.forEach((drop) => drop.image && paths.add(drop.image));
     item.details?.forEach((detail) => {
       const weather = weatherIcon(detail.weatherValue);
       const season = seasonIcon(detail.seasonValue);
@@ -540,7 +664,25 @@ function drawEventRow(
   ctx.fillStyle = "#5f6b7a";
   ctx.fillText(dateLabel(event.start, event.end), EXPORT_WIDTH - EXPORT_PADDING - 330, y + 37);
   event.drops?.slice(0, 5).forEach((drop, index) => {
-    drawImageFit(ctx, images.get(drop.image), EXPORT_WIDTH - EXPORT_PADDING - 330 + index * 44, y + 43, 38, 38, "contain");
+    const x = EXPORT_WIDTH - EXPORT_PADDING - 330 + index * 54;
+    if (drop.image) {
+      drawImageFit(ctx, images.get(drop.image), x, y + 43, 38, 38, "contain");
+      const amount = rewardAmountLabel(drop);
+      if (amount) {
+        ctx.font = exportFont(12, 900);
+        const width = Math.ceil(ctx.measureText(amount).width) + 10;
+        fillRounded(ctx, x + 38 - width + 4, y + 66, width, 18, 9, "#172033");
+        ctx.fillStyle = "#ffffff";
+        ctx.fillText(amount, x + 38 - width + 9, y + 80);
+      }
+      return;
+    }
+    const label = drop.label || "奖励";
+    ctx.font = exportFont(15, 800);
+    const width = Math.max(48, Math.ceil(ctx.measureText(label).width) + 14);
+    fillRounded(ctx, x, y + 49, width, 26, 13, "#eef2f7", "#d7dce5");
+    ctx.fillStyle = "#475569";
+    ctx.fillText(label, x + 7, y + 68);
   });
 }
 
@@ -962,7 +1104,6 @@ function GachaDetail({
             <h2>{poolSummary(pool, 6)}</h2>
             <p>{dateLabel(pool.start, pool.end)}</p>
           </div>
-          <strong>{pool.cards.length} UP</strong>
         </div>
         {pool.bannerImage && (
           <img
@@ -977,6 +1118,151 @@ function GachaDetail({
             <DetailCard card={card} key={`${pool.id}-${card.id}`} />
           ))}
         </div>
+      </section>
+    </div>
+  );
+}
+
+function DetailRewardIcon({
+  reward,
+  label,
+  showAmount = true,
+}: {
+  reward?: ScheduleReward | null;
+  label?: string;
+  showAmount?: boolean;
+}) {
+  if (!reward) return null;
+  const title = label || reward.name || "奖励";
+  if (reward.countOnly) {
+    return <span class="intelDetailRewardMore" title={title}>{reward.label || title}</span>;
+  }
+  return (
+    <span class="intelDetailRewardIcon" title={title}>
+      {reward.image ? (
+        <img src={assetUrl(reward.image)} alt={title} loading="lazy" />
+      ) : (
+        <span>{(reward.name || title).slice(0, 2)}</span>
+      )}
+      {showAmount && detailAmountLabel(reward) && <em>{detailAmountLabel(reward)}</em>}
+    </span>
+  );
+}
+
+function ScheduleDetail({
+  item,
+  title,
+  exchangeDetails,
+  exchangeLoading,
+  exchangeError,
+  onClose,
+}: {
+  item: ScheduleItem;
+  title: string;
+  exchangeDetails?: ScheduleItem["exchangeDetails"];
+  exchangeLoading?: boolean;
+  exchangeError?: string;
+  onClose: () => void;
+}) {
+  const details = exchangeDetails || item.exchangeDetails || [];
+  const hasExchangeDetails = Boolean(details.length);
+  const detailRewardDrops = details.map((detail) => ({
+    ...detail.reward,
+    source: "可兑换",
+    label: detail.reward.name || "兑换奖励",
+  }));
+  const rewardGroups = rewardSourceGroups(
+    item.drops?.length ? item.drops : detailRewardDrops,
+  );
+  return (
+    <div
+      class="intelModalOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${title}详情`}
+      onClick={onClose}
+    >
+      <section
+        class="intelDetailPanel intelScheduleDetailPanel"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button
+          type="button"
+          class="intelModalClose"
+          onClick={onClose}
+          title="关闭"
+        >
+          ×
+        </button>
+        <div class="intelDetailHeader">
+          <div>
+            <span>{scheduleTypeLabel(item.type)}</span>
+            <h2>{item.name}</h2>
+            <p>{dateLabel(item.start, item.end)}</p>
+          </div>
+        </div>
+        {item.image && (
+          <img
+            src={assetUrl(item.image)}
+            alt=""
+            loading="lazy"
+            class={`intelDetailBanner ${scheduleImageClass(item.image)}`}
+          />
+        )}
+        {rewardGroups.length ? (
+          <section class="intelScheduleDetailSection">
+            <h3>奖励组成</h3>
+            <div class="intelScheduleRewardGroups">
+              {rewardGroups.map((group) => (
+                <div class="intelScheduleRewardGroup" key={group.source}>
+                  <strong>{group.source}</strong>
+                  <div>
+                    {previewRewardGroupDrops(group.drops).map((drop, index) => (
+                      <DetailRewardIcon
+                        reward={drop}
+                        label={drop.name || drop.label}
+                        showAmount={false}
+                        key={`${drop.image}-${drop.label}-${index}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+        {(item.exchangeDetailPath || item.exchangeDetails?.length) && (
+          <section class="intelScheduleDetailSection">
+            <h3>兑换明细</h3>
+            {exchangeLoading && <div class="intelDetailNotice">正在加载兑换明细</div>}
+            {exchangeError && <div class="intelDetailNotice">兑换明细加载失败</div>}
+            {hasExchangeDetails && (
+              <div class="intelExchangeDetailList">
+                {details.map((detail) => (
+                  <div class="intelExchangeDetailItem" key={detail.id}>
+                    <div class="intelExchangeRewardSide">
+                    <DetailRewardIcon reward={detail.reward} showAmount={false} />
+                      <div>
+                        <strong>{detail.reward.name || "兑换奖励"}</strong>
+                        <span>{detailAmountLabel(detail.reward)}</span>
+                      </div>
+                    </div>
+                    <div class="intelExchangePaySide">
+                      <span>消耗</span>
+                      <DetailRewardIcon reward={detail.pay} showAmount={false} />
+                      <strong>{detailAmountLabel(detail.pay)}</strong>
+                    </div>
+                    <div class="intelExchangeLimitSide">
+                      <span>限购</span>
+                      <strong>{detail.limit ? `${detail.limit} 次` : "不限"}</strong>
+                      {detail.totalRewardAmount ? <small>合计 {detail.totalRewardAmount}</small> : null}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
       </section>
     </div>
   );
@@ -1082,6 +1368,30 @@ function EventFilters({
   );
 }
 
+function ScheduleSearch({
+  query,
+  placeholder,
+  label,
+  onQueryChange,
+}: {
+  query: string;
+  placeholder: string;
+  label: string;
+  onQueryChange: (value: string) => void;
+}) {
+  return (
+    <div class="intelFilterBar">
+      <input
+        value={query}
+        onInput={(event) => onQueryChange(event.currentTarget.value)}
+        type="search"
+        placeholder={placeholder}
+        aria-label={label}
+      />
+    </div>
+  );
+}
+
 function GachaList({
   pools,
   now,
@@ -1136,13 +1446,20 @@ function DropIcons({ drops }: { drops?: ScheduleItem["drops"] }) {
   return (
     <div class="intelDropIcons">
       {drops.map((drop, index) => (
-        <img
-          src={assetUrl(drop.image)}
-          alt={drop.label || "掉落"}
-          loading="lazy"
-          title={drop.label || "掉落"}
-          key={`${drop.image}-${index}`}
-        />
+        drop.image ? (
+          <span class="intelDropIcon" title={drop.label || "掉落"} key={`${drop.image}-${index}`}>
+            <img
+              src={assetUrl(drop.image)}
+              alt={drop.label || "掉落"}
+              loading="lazy"
+            />
+            {rewardAmountLabel(drop) && <em>{rewardAmountLabel(drop)}</em>}
+          </span>
+        ) : (
+          <span class="intelDropCount" title={drop.label || "奖励"} key={`${drop.label}-${index}`}>
+            {drop.label || "奖励"}
+          </span>
+        )
       ))}
     </div>
   );
@@ -1151,9 +1468,11 @@ function DropIcons({ drops }: { drops?: ScheduleItem["drops"] }) {
 function EventsSchedule({
   events,
   now,
+  onSelect,
 }: {
   events: ScheduleItem[];
   now: number;
+  onSelect?: (event: ScheduleItem) => void;
 }) {
   const groups = eventMonthGroups(events);
   const months = Object.keys(groups).sort();
@@ -1168,7 +1487,11 @@ function EventsSchedule({
                 event.startTimestamp <= now && event.endTimestamp >= now;
               return (
                 <article
-                  class={`intelEventItem ${event.image ? "hasImage" : ""} ${scheduleImageClass(event.image)} ${active ? "active" : ""}`}
+                  class={`intelEventItem ${event.image ? "hasImage" : ""} ${scheduleImageClass(event.image)} ${scheduleTypeClass(event.type)} ${active ? "active" : ""}`}
+                  role={onSelect ? "button" : undefined}
+                  tabIndex={onSelect ? 0 : undefined}
+                  onClick={() => onSelect?.(event)}
+                  onKeyDown={onSelect ? scheduleKeyHandler(() => onSelect(event)) : undefined}
                   key={event.id}
                 >
                   {event.image && (
@@ -1180,7 +1503,7 @@ function EventsSchedule({
                     />
                   )}
                   <strong>{event.name}</strong>
-                  <time>{dateLabel(event.start, event.end)}</time>
+                  <time>{scheduleDateLabel(event)}</time>
                   <DropIcons drops={event.drops} />
                   {active && <span>进行中</span>}
                 </article>
@@ -1197,10 +1520,12 @@ function EventCalendar({
   events,
   now,
   month,
+  onSelect,
 }: {
   events: ScheduleItem[];
   now: number;
   month?: string;
+  onSelect?: (event: ScheduleItem) => void;
 }) {
   const months = month
     ? [month]
@@ -1264,7 +1589,11 @@ function EventCalendar({
                 );
                 return (
                   <article
-                    class={`intelEventTimelineItem ${event.image ? "hasImage" : ""} ${scheduleImageClass(event.image)} ${active ? "active" : ""}`}
+                    class={`intelEventTimelineItem ${event.image ? "hasImage" : ""} ${scheduleImageClass(event.image)} ${scheduleTypeClass(event.type)} ${active ? "active" : ""}`}
+                    role={onSelect ? "button" : undefined}
+                    tabIndex={onSelect ? 0 : undefined}
+                    onClick={() => onSelect?.(event)}
+                    onKeyDown={onSelect ? scheduleKeyHandler(() => onSelect(event)) : undefined}
                     key={`${month}-${event.id}`}
                   >
                     <div class="intelEventTimelineLabel">
@@ -1278,7 +1607,6 @@ function EventCalendar({
                       )}
                       <span>{scheduleTypeLabel(event.type)}</span>
                       <strong>{event.name}</strong>
-                      <DropIcons drops={event.drops} />
                     </div>
                     <div
                       class="intelEventTimelineGrid"
@@ -1375,10 +1703,12 @@ export function IntelDashboard() {
   const [activeTab, setActiveTab] = useState<IntelTab>("gacha");
   const [gachaView, setGachaView] = useState<ViewMode>("calendar");
   const [eventView, setEventView] = useState<ViewMode>("list");
+  const [exchangeView, setExchangeView] = useState<ViewMode>("list");
   const [gachaKindFilter, setGachaKindFilter] = useState<GachaKindFilter>("all");
   const [gachaQuery, setGachaQuery] = useState("");
   const [eventTypeFilter, setEventTypeFilter] = useState("all");
   const [eventQuery, setEventQuery] = useState("");
+  const [exchangeQuery, setExchangeQuery] = useState("");
   const [exporting, setExporting] = useState(false);
   const pools = useMemo(
     () =>
@@ -1409,6 +1739,23 @@ export function IntelDashboard() {
         ),
     [now],
   );
+  const exchanges = useMemo(
+    () =>
+      (data.exchanges || [])
+        .filter(
+          (exchange) =>
+            exchange.startTimestamp >= now,
+        )
+        .sort(
+          (a, b) =>
+            Number(Boolean(b.isVoucherExchange)) -
+              Number(Boolean(a.isVoucherExchange)) ||
+            a.startTimestamp - b.startTimestamp ||
+            a.endTimestamp - b.endTimestamp ||
+            a.name.localeCompare(b.name),
+        ),
+    [now],
+  );
   const filteredPools = useMemo(() => {
     const query = normalizedSearch(gachaQuery);
     return pools.filter((pool) => {
@@ -1433,19 +1780,80 @@ export function IntelDashboard() {
       return true;
     });
   }, [events, eventTypeFilter, eventQuery]);
+  const filteredExchanges = useMemo(() => {
+    const query = normalizedSearch(exchangeQuery);
+    return exchanges.filter((exchange) => {
+      if (query && !eventSearchText(exchange).includes(query)) return false;
+      return true;
+    });
+  }, [exchanges, exchangeQuery]);
   const [selectedKey, setSelectedKey] = useState(() =>
     filteredPools[0] ? poolKey(filteredPools[0]) : "",
   );
   const [detailKey, setDetailKey] = useState("");
+  const [eventDetailKey, setEventDetailKey] = useState("");
+  const [exchangeDetailKey, setExchangeDetailKey] = useState("");
+  const [exchangeDetailCache, setExchangeDetailCache] = useState<
+    Record<string, ScheduleItem["exchangeDetails"]>
+  >({});
+  const [exchangeDetailLoading, setExchangeDetailLoading] = useState(false);
+  const [exchangeDetailError, setExchangeDetailError] = useState("");
   const selectedPool =
     filteredPools.find((pool) => poolKey(pool) === selectedKey) ??
     filteredPools[0];
   const detailPool = pools.find((pool) => poolKey(pool) === detailKey);
+  const detailEvent = events.find(
+    (event) => scheduleDetailKey(event) === eventDetailKey,
+  );
+  const detailExchange = exchanges.find(
+    (exchange) => scheduleDetailKey(exchange) === exchangeDetailKey,
+  );
+  const detailExchangePath = detailExchange?.exchangeDetailPath || "";
+  const cachedExchangeDetails = detailExchangePath
+    ? exchangeDetailCache[detailExchangePath]
+    : undefined;
+  useEffect(() => {
+    if (!detailExchangePath) {
+      setExchangeDetailLoading(false);
+      setExchangeDetailError("");
+      return;
+    }
+    if (cachedExchangeDetails) {
+      setExchangeDetailLoading(false);
+      setExchangeDetailError("");
+      return;
+    }
+    let cancelled = false;
+    setExchangeDetailLoading(true);
+    setExchangeDetailError("");
+    loadExchangeDetails(detailExchangePath)
+      .then((payload) => {
+        if (cancelled) return;
+        setExchangeDetailCache((cache) => ({
+          ...cache,
+          [detailExchangePath]: payload.exchangeDetails || [],
+        }));
+      })
+      .catch((error) => {
+        if (cancelled) return;
+        console.error(error);
+        setExchangeDetailError("failed");
+      })
+      .finally(() => {
+        if (!cancelled) setExchangeDetailLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [detailExchangePath, cachedExchangeDetails]);
   const months = filteredPools.length
     ? monthsBetween(filteredPools[0].start, filteredPools[filteredPools.length - 1].end)
     : [];
   const eventMonths = filteredEvents.length
     ? monthsBetween(filteredEvents[0].start, filteredEvents[filteredEvents.length - 1].end)
+    : [];
+  const exchangeMonths = filteredExchanges.length
+    ? monthsBetween(filteredExchanges[0].start, filteredExchanges[filteredExchanges.length - 1].end)
     : [];
   const currentMonth = timestampMonth(now);
   const [selectedMonth, setSelectedMonth] = useState(() => {
@@ -1456,12 +1864,19 @@ export function IntelDashboard() {
     if (eventMonths.includes(currentMonth)) return currentMonth;
     return eventMonths[0] ?? currentMonth;
   });
+  const [selectedExchangeMonth, setSelectedExchangeMonth] = useState(() => {
+    if (exchangeMonths.includes(currentMonth)) return currentMonth;
+    return exchangeMonths[0] ?? currentMonth;
+  });
   const visibleMonth = months.includes(selectedMonth)
     ? selectedMonth
     : months[0];
   const visibleEventMonth = eventMonths.includes(selectedEventMonth)
     ? selectedEventMonth
     : eventMonths[0];
+  const visibleExchangeMonth = exchangeMonths.includes(selectedExchangeMonth)
+    ? selectedExchangeMonth
+    : exchangeMonths[0];
   const openPoolDetail = (nextPool: GachaPool) => {
     const nextKey = poolKey(nextPool);
     setSelectedKey(nextKey);
@@ -1513,6 +1928,16 @@ export function IntelDashboard() {
             onClick={() => setActiveTab("races")}
           >
             大赛
+          </button>
+          <button
+            type="button"
+            class={activeTab === "exchanges" ? "selected" : ""}
+            onClick={() => {
+              setActiveTab("exchanges");
+              setExchangeView("list");
+            }}
+          >
+            兑换
           </button>
         </nav>
         <button
@@ -1649,7 +2074,11 @@ export function IntelDashboard() {
           </div>
           {eventView === "list" ? (
             filteredEvents.length ? (
-              <EventsSchedule events={filteredEvents} now={now} />
+              <EventsSchedule
+                events={filteredEvents}
+                now={now}
+                onSelect={(event) => setEventDetailKey(scheduleDetailKey(event))}
+              />
             ) : (
               <div class="intelEmptyTab">没有符合筛选的活动</div>
             )
@@ -1659,6 +2088,7 @@ export function IntelDashboard() {
                 events={filteredEvents}
                 now={now}
                 month={visibleEventMonth}
+                onSelect={(event) => setEventDetailKey(scheduleDetailKey(event))}
               />
             ) : (
               <div class="intelEmptyTab">没有符合筛选的活动</div>
@@ -1677,8 +2107,103 @@ export function IntelDashboard() {
         </section>
       )}
 
+      {activeTab === "exchanges" && (
+        <section class="intelCalendarPanel">
+          <div class="intelSectionTitle">
+            <div class="intelSectionActions">
+              <ScheduleSearch
+                query={exchangeQuery}
+                placeholder="搜索兑换 / 奖励"
+                label="搜索兑换"
+                onQueryChange={setExchangeQuery}
+              />
+              <ViewToggle value={exchangeView} onChange={setExchangeView} />
+              {exchangeView === "calendar" && visibleExchangeMonth && (
+                <div class="intelMonthSelect">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setSelectedExchangeMonth(addMonths(visibleExchangeMonth, -1))
+                    }
+                    disabled={
+                      !exchangeMonths.includes(addMonths(visibleExchangeMonth, -1))
+                    }
+                    title="上个月"
+                  >
+                    ‹
+                  </button>
+                  <select
+                    value={visibleExchangeMonth}
+                    onChange={(event) =>
+                      setSelectedExchangeMonth(event.currentTarget.value)
+                    }
+                  >
+                    {exchangeMonths.map((month) => (
+                      <option value={month} key={month}>
+                        {month}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setSelectedExchangeMonth(addMonths(visibleExchangeMonth, 1))
+                    }
+                    disabled={
+                      !exchangeMonths.includes(addMonths(visibleExchangeMonth, 1))
+                    }
+                    title="下个月"
+                  >
+                    ›
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+          {exchangeView === "list" ? (
+            filteredExchanges.length ? (
+              <EventsSchedule
+                events={filteredExchanges}
+                now={now}
+                onSelect={(exchange) => setExchangeDetailKey(scheduleDetailKey(exchange))}
+              />
+            ) : (
+              <div class="intelEmptyTab">没有符合筛选的兑换</div>
+            )
+          ) : visibleExchangeMonth ? (
+            <EventCalendar
+              events={filteredExchanges}
+              now={now}
+              month={visibleExchangeMonth}
+              onSelect={(exchange) => setExchangeDetailKey(scheduleDetailKey(exchange))}
+            />
+          ) : (
+            <div class="intelEmptyTab">没有符合筛选的兑换</div>
+          )}
+        </section>
+      )}
+
       {detailPool && (
         <GachaDetail pool={detailPool} onClose={() => setDetailKey("")} />
+      )}
+      {detailEvent && (
+        <ScheduleDetail
+          item={detailEvent}
+          title="活动"
+          onClose={() => setEventDetailKey("")}
+        />
+      )}
+      {detailExchange && (
+        <ScheduleDetail
+          item={detailExchange}
+          title="兑换"
+          exchangeDetails={
+            detailExchangePath ? cachedExchangeDetails : detailExchange.exchangeDetails
+          }
+          exchangeLoading={exchangeDetailLoading}
+          exchangeError={exchangeDetailError}
+          onClose={() => setExchangeDetailKey("")}
+        />
       )}
     </main>
   );

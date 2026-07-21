@@ -1,0 +1,2293 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 5505001,
+      "order": 1,
+      "reward": {
+        "image": "intel/support/support_card_s_30001.png",
+        "name": "[献上全国第一的演出]特别周",
+        "rewardType": 51,
+        "rewardValue": 30001,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505002,
+      "order": 2,
+      "reward": {
+        "image": "intel/support/support_card_s_30002.png",
+        "name": "[在耀眼景色的前方]无声铃鹿",
+        "rewardType": 51,
+        "rewardValue": 30002,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505003,
+      "order": 3,
+      "reward": {
+        "image": "intel/support/support_card_s_30003.png",
+        "name": "[有梦想就要大声说出来！]东海帝王",
+        "rewardType": 51,
+        "rewardValue": 30003,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505004,
+      "order": 4,
+      "reward": {
+        "image": "intel/support/support_card_s_30004.png",
+        "name": "[不沉舰的进击]黄金船",
+        "rewardType": 51,
+        "rewardValue": 30004,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505005,
+      "order": 5,
+      "reward": {
+        "image": "intel/support/support_card_s_30005.png",
+        "name": "[伏特加之路]伏特加",
+        "rewardType": 51,
+        "rewardValue": 30005,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505006,
+      "order": 6,
+      "reward": {
+        "image": "intel/support/support_card_s_30006.png",
+        "name": "[万紫千红中一枝独秀]草上飞",
+        "rewardType": 51,
+        "rewardValue": 30006,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505007,
+      "order": 7,
+      "reward": {
+        "image": "intel/support/support_card_s_30007.png",
+        "name": "[热情的冠军！]神鹰",
+        "rewardType": 51,
+        "rewardValue": 30007,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505008,
+      "order": 8,
+      "reward": {
+        "image": "intel/support/support_card_s_30008.png",
+        "name": "[期待已久的计谋]青云天空",
+        "rewardType": 51,
+        "rewardValue": 30008,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505009,
+      "order": 9,
+      "reward": {
+        "image": "intel/support/support_card_s_30009.png",
+        "name": "[划破天空的闪电少女！]玉藻十字",
+        "rewardType": 51,
+        "rewardValue": 30009,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505010,
+      "order": 10,
+      "reward": {
+        "image": "intel/support/support_card_s_30010.png",
+        "name": "[全身心的感谢]美妙姿势",
+        "rewardType": 51,
+        "rewardValue": 30010,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505011,
+      "order": 11,
+      "reward": {
+        "image": "intel/support/support_card_s_30011.png",
+        "name": "[飞奔吧，闪耀吧]艾尼风神",
+        "rewardType": 51,
+        "rewardValue": 30011,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505012,
+      "order": 12,
+      "reward": {
+        "image": "intel/support/support_card_s_30012.png",
+        "name": "[B·N·Winner！]胜利奖券",
+        "rewardType": 51,
+        "rewardValue": 30012,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505013,
+      "order": 13,
+      "reward": {
+        "image": "intel/support/support_card_s_30013.png",
+        "name": "[冲向前方7厘米之外]空中神宫",
+        "rewardType": 51,
+        "rewardValue": 30013,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505014,
+      "order": 14,
+      "reward": {
+        "image": "intel/support/support_card_s_30014.png",
+        "name": "[Run（my）way]黄金城",
+        "rewardType": 51,
+        "rewardValue": 30014,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505015,
+      "order": 15,
+      "reward": {
+        "image": "intel/support/support_card_s_30015.png",
+        "name": "[好快！好吃！好快！]樱花进王",
+        "rewardType": 51,
+        "rewardValue": 30015,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505016,
+      "order": 16,
+      "reward": {
+        "image": "intel/support/support_card_s_30016.png",
+        "name": "[一颗安心糖]超级溪流",
+        "rewardType": 51,
+        "rewardValue": 30016,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505017,
+      "order": 17,
+      "reward": {
+        "image": "intel/support/support_card_s_30017.png",
+        "name": "[这就是我的优俊偶像之道☆]醒目飞鹰",
+        "rewardType": 51,
+        "rewardValue": 30017,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505018,
+      "order": 18,
+      "reward": {
+        "image": "intel/support/support_card_s_30018.png",
+        "name": "[哪怕还不能独当一面]西野花",
+        "rewardType": 51,
+        "rewardValue": 30018,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505019,
+      "order": 19,
+      "reward": {
+        "image": "intel/support/support_card_s_30020.png",
+        "name": "[必杀技！双胡萝卜拳！]微光飞驹",
+        "rewardType": 51,
+        "rewardValue": 30020,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505020,
+      "order": 20,
+      "reward": {
+        "image": "intel/support/support_card_s_30021.png",
+        "name": "[欢迎来到特雷森学园！]骏川手纲",
+        "rewardType": 51,
+        "rewardValue": 30021,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505021,
+      "order": 21,
+      "reward": {
+        "image": "intel/support/support_card_s_30024.png",
+        "name": "[“要受人喜爱啊”]小栗帽",
+        "rewardType": 51,
+        "rewardValue": 30024,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505022,
+      "order": 22,
+      "reward": {
+        "image": "intel/support/support_card_s_30026.png",
+        "name": "[涡轮引擎马力全开！]双涡轮",
+        "rewardType": 51,
+        "rewardValue": 30026,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505023,
+      "order": 23,
+      "reward": {
+        "image": "intel/support/support_card_s_30027.png",
+        "name": "[尽管笑我傻吧]目白善信",
+        "rewardType": 51,
+        "rewardValue": 30027,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505024,
+      "order": 24,
+      "reward": {
+        "image": "intel/support/support_card_s_30028.png",
+        "name": "[身后迫近的热浪是动力]北部玄驹",
+        "rewardType": 51,
+        "rewardValue": 30028,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505025,
+      "order": 25,
+      "reward": {
+        "image": "intel/support/support_card_s_30029.png",
+        "name": "[超越那前方的背影]里见光钻",
+        "rewardType": 51,
+        "rewardValue": 30029,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505026,
+      "order": 26,
+      "reward": {
+        "image": "intel/support/support_card_s_30031.png",
+        "name": "[由故乡直达的助威！]雪之美人",
+        "rewardType": 51,
+        "rewardValue": 30031,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505027,
+      "order": 27,
+      "reward": {
+        "image": "intel/support/support_card_s_30032.png",
+        "name": "[心中的烈火无法抑制]八重无敌",
+        "rewardType": 51,
+        "rewardValue": 30032,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505028,
+      "order": 28,
+      "reward": {
+        "image": "intel/support/support_card_s_30038.png",
+        "name": "[樱花盛开之时]樱花千代王",
+        "rewardType": 51,
+        "rewardValue": 30038,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505029,
+      "order": 29,
+      "reward": {
+        "image": "intel/support/support_card_s_30039.png",
+        "name": "[身为新娘！]川上公主",
+        "rewardType": 51,
+        "rewardValue": 30039,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505030,
+      "order": 30,
+      "reward": {
+        "image": "intel/support/support_card_s_30040.png",
+        "name": "[请品尝第一口！]菱曙",
+        "rewardType": 51,
+        "rewardValue": 30040,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505031,
+      "order": 31,
+      "reward": {
+        "image": "intel/support/support_card_s_30042.png",
+        "name": "[Head-on fight！]青竹回忆",
+        "rewardType": 51,
+        "rewardValue": 30042,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505032,
+      "order": 32,
+      "reward": {
+        "image": "intel/support/support_card_s_30055.png",
+        "name": "[明天全国都会染红吧♪]青云天空",
+        "rewardType": 51,
+        "rewardValue": 30055,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505033,
+      "order": 33,
+      "reward": {
+        "image": "intel/support/support_card_s_30056.png",
+        "name": "[起舞今宵]帝王光辉",
+        "rewardType": 51,
+        "rewardValue": 30056,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505034,
+      "order": 34,
+      "reward": {
+        "image": "intel/support/support_card_s_30048.png",
+        "name": "[爽快！决胜一击！]目白莱恩",
+        "rewardType": 51,
+        "rewardValue": 30048,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505035,
+      "order": 35,
+      "reward": {
+        "image": "intel/support/support_card_s_30045.png",
+        "name": "[独享冰凉？]东商变革",
+        "rewardType": 51,
+        "rewardValue": 30045,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505036,
+      "order": 36,
+      "reward": {
+        "image": "intel/support/support_card_s_30046.png",
+        "name": "[全力嬉闹！]胜利奖券",
+        "rewardType": 51,
+        "rewardValue": 30046,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505037,
+      "order": 37,
+      "reward": {
+        "image": "intel/support/support_card_s_30054.png",
+        "name": "[即使满身泥土，也要追逐梦想]优秀素质",
+        "rewardType": 51,
+        "rewardValue": 30054,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505038,
+      "order": 38,
+      "reward": {
+        "image": "intel/support/support_card_s_30034.png",
+        "name": "[幸福就在转角后]米浴",
+        "rewardType": 51,
+        "rewardValue": 30034,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505039,
+      "order": 39,
+      "reward": {
+        "image": "intel/support/support_card_s_30036.png",
+        "name": "[彻底管理主义]㭴本理子",
+        "rewardType": 51,
+        "rewardValue": 30036,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505040,
+      "order": 40,
+      "reward": {
+        "image": "intel/support/support_card_s_30063.png",
+        "name": "[内心双脚皆温暖]生野狄杜斯",
+        "rewardType": 51,
+        "rewardValue": 30063,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505041,
+      "order": 41,
+      "reward": {
+        "image": "intel/support/support_card_s_30064.png",
+        "name": "[大闹万圣夜！]玉藻十字",
+        "rewardType": 51,
+        "rewardValue": 30064,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505042,
+      "order": 42,
+      "reward": {
+        "image": "intel/support/support_card_s_30065.png",
+        "name": "[被授予魔力的英雄]荒漠英雄",
+        "rewardType": 51,
+        "rewardValue": 30065,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505043,
+      "order": 43,
+      "reward": {
+        "image": "intel/support/support_card_s_30043.png",
+        "name": "[43、8、1]中山庆典",
+        "rewardType": 51,
+        "rewardValue": 30043,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505044,
+      "order": 44,
+      "reward": {
+        "image": "intel/support/support_card_s_30068.png",
+        "name": "[可爱的你，美丽的你]真机伶",
+        "rewardType": 51,
+        "rewardValue": 30068,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505045,
+      "order": 45,
+      "reward": {
+        "image": "intel/support/support_card_s_30069.png",
+        "name": "[鸣箭嗤天]成田白仁",
+        "rewardType": 51,
+        "rewardValue": 30069,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505046,
+      "order": 46,
+      "reward": {
+        "image": "intel/support/support_card_s_30071.png",
+        "name": "[舞动吧·躁动吧·狂欢吧！]大拓太阳神",
+        "rewardType": 51,
+        "rewardValue": 30071,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505047,
+      "order": 47,
+      "reward": {
+        "image": "intel/support/support_card_s_30072.png",
+        "name": "[队形：PARTY]重炮",
+        "rewardType": 51,
+        "rewardValue": 30072,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505048,
+      "order": 48,
+      "reward": {
+        "image": "intel/support/support_card_s_30073.png",
+        "name": "[倔强的集市]成田大进",
+        "rewardType": 51,
+        "rewardValue": 30073,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505049,
+      "order": 49,
+      "reward": {
+        "image": "intel/support/support_card_s_30075.png",
+        "name": "[独奏·螺旋卡农]曼城茶座",
+        "rewardType": 51,
+        "rewardValue": 30075,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505050,
+      "order": 50,
+      "reward": {
+        "image": "intel/support/support_card_s_30077.png",
+        "name": "[夜有黎明，天有祥星]爱慕织姬",
+        "rewardType": 51,
+        "rewardValue": 30077,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505051,
+      "order": 51,
+      "reward": {
+        "image": "intel/support/support_card_s_30078.png",
+        "name": "[萍水相逢即是福♪]待兼福来",
+        "rewardType": 51,
+        "rewardValue": 30078,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505052,
+      "order": 52,
+      "reward": {
+        "image": "intel/support/support_card_s_30080.png",
+        "name": "[要不赶紧扎一针？]安心泽刺刺美",
+        "rewardType": 51,
+        "rewardValue": 30080,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505053,
+      "order": 53,
+      "reward": {
+        "image": "intel/support/support_card_s_30082.png",
+        "name": "[饱含心意的纸杯蛋糕]西野花",
+        "rewardType": 51,
+        "rewardValue": 30082,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505054,
+      "order": 54,
+      "reward": {
+        "image": "intel/support/support_card_s_30083.png",
+        "name": "[极快！最快！花之风暴！]樱花进王",
+        "rewardType": 51,
+        "rewardValue": 30083,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505055,
+      "order": 55,
+      "reward": {
+        "image": "intel/support/support_card_s_30085.png",
+        "name": "[“存在”于此的幸福]爱丽数码",
+        "rewardType": 51,
+        "rewardValue": 30085,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505056,
+      "order": 56,
+      "reward": {
+        "image": "intel/support/support_card_s_30086.png",
+        "name": "[粉色背影]成田路",
+        "rewardType": 51,
+        "rewardValue": 30086,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505057,
+      "order": 57,
+      "reward": {
+        "image": "intel/support/support_card_s_30089.png",
+        "name": "[让世界更加☆marvelous]美丽周日",
+        "rewardType": 51,
+        "rewardValue": 30089,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505058,
+      "order": 58,
+      "reward": {
+        "image": "intel/support/support_card_s_30090.png",
+        "name": "[Enchaînement]鲁道夫象征",
+        "rewardType": 51,
+        "rewardValue": 30090,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505059,
+      "order": 59,
+      "reward": {
+        "image": "intel/support/support_card_s_30091.png",
+        "name": "[Escorte étoile]天狼星象征",
+        "rewardType": 51,
+        "rewardValue": 30091,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505060,
+      "order": 60,
+      "reward": {
+        "image": "intel/support/support_card_s_30093.png",
+        "name": "[Outfit as No.1]大和赤骥",
+        "rewardType": 51,
+        "rewardValue": 30093,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505061,
+      "order": 61,
+      "reward": {
+        "image": "intel/support/support_card_s_30094.png",
+        "name": "[收下这份鼓励吧！]青竹回忆",
+        "rewardType": 51,
+        "rewardValue": 30094,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505062,
+      "order": 62,
+      "reward": {
+        "image": "intel/support/support_card_s_30095.png",
+        "name": "[那声加油改变了世界]采珠",
+        "rewardType": 51,
+        "rewardValue": 30095,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505063,
+      "order": 63,
+      "reward": {
+        "image": "intel/support/support_card_s_30097.png",
+        "name": "[Dear Mr. C.B.]千明代表",
+        "rewardType": 51,
+        "rewardValue": 30097,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505064,
+      "order": 64,
+      "reward": {
+        "image": "intel/support/support_card_s_30098.png",
+        "name": "[乌菈菈的热情之歌♪]春乌菈菈",
+        "rewardType": 51,
+        "rewardValue": 30098,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505065,
+      "order": 65,
+      "reward": {
+        "image": "intel/support/support_card_s_30099.png",
+        "name": "[可爱的金兰之交们]生野狄杜斯",
+        "rewardType": 51,
+        "rewardValue": 30099,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505066,
+      "order": 66,
+      "reward": {
+        "image": "intel/support/support_card_s_30053.png",
+        "name": "[坏蛋，举起手来！]大树快车",
+        "rewardType": 51,
+        "rewardValue": 30053,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505067,
+      "order": 67,
+      "reward": {
+        "image": "intel/support/support_card_s_30102.png",
+        "name": "[光芒四射地奔跑吧∞]神鹰",
+        "rewardType": 51,
+        "rewardValue": 30102,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505068,
+      "order": 68,
+      "reward": {
+        "image": "intel/support/support_card_s_30103.png",
+        "name": "[待兼唐☆大冒险]待兼唐怀瑟",
+        "rewardType": 51,
+        "rewardValue": 30103,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505069,
+      "order": 69,
+      "reward": {
+        "image": "intel/support/support_card_s_30106.png",
+        "name": "[奔向理想的熏风]气槽",
+        "rewardType": 51,
+        "rewardValue": 30106,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505070,
+      "order": 70,
+      "reward": {
+        "image": "intel/support/support_card_s_30067.png",
+        "name": "[尊尚敬爱]聚于王座之人",
+        "rewardType": 51,
+        "rewardValue": 30067,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505071,
+      "order": 71,
+      "reward": {
+        "image": "intel/support/support_card_s_30107.png",
+        "name": "[小感伤预警♪]丸善斯基",
+        "rewardType": 51,
+        "rewardValue": 30107,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505072,
+      "order": 72,
+      "reward": {
+        "image": "intel/support/support_card_s_30108.png",
+        "name": "[听凭骰运]中山庆典",
+        "rewardType": 51,
+        "rewardValue": 30108,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505073,
+      "order": 73,
+      "reward": {
+        "image": "intel/support/support_card_s_30110.png",
+        "name": "[It's on the house.]曼城茶座",
+        "rewardType": 51,
+        "rewardValue": 30110,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505074,
+      "order": 74,
+      "reward": {
+        "image": "intel/support/support_card_s_30052.png",
+        "name": "[from the GROUND UP]明亮光晕",
+        "rewardType": 51,
+        "rewardValue": 30052,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505075,
+      "order": 75,
+      "reward": {
+        "image": "intel/support/support_card_s_30101.png",
+        "name": "[Q≠0]爱丽速子",
+        "rewardType": 51,
+        "rewardValue": 30101,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505076,
+      "order": 76,
+      "reward": {
+        "image": "intel/support/support_card_s_30111.png",
+        "name": "[帝王！王！王！！！]东海帝王",
+        "rewardType": 51,
+        "rewardValue": 30111,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505077,
+      "order": 77,
+      "reward": {
+        "image": "intel/support/support_card_s_30112.png",
+        "name": "[TT Ignition！]双涡轮",
+        "rewardType": 51,
+        "rewardValue": 30112,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505078,
+      "order": 78,
+      "reward": {
+        "image": "intel/support/support_card_s_30114.png",
+        "name": "[啊，华丽一族]第一红宝",
+        "rewardType": 51,
+        "rewardValue": 30114,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505079,
+      "order": 79,
+      "reward": {
+        "image": "intel/support/support_card_s_30115.png",
+        "name": "[月下小恶魔♪]目白善信",
+        "rewardType": 51,
+        "rewardValue": 30115,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505080,
+      "order": 80,
+      "reward": {
+        "image": "intel/support/support_card_s_30116.png",
+        "name": "[太阳小天使♪]大拓太阳神",
+        "rewardType": 51,
+        "rewardValue": 30116,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505081,
+      "order": 81,
+      "reward": {
+        "image": "intel/support/support_card_s_30118.png",
+        "name": "[A Win Foreshadowed]克里斯象征",
+        "rewardType": 51,
+        "rewardValue": 30118,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505082,
+      "order": 82,
+      "reward": {
+        "image": "intel/support/support_card_s_30146.png",
+        "name": "[奔跑吧，奔跑吧，奔跑吧！！]小栗帽",
+        "rewardType": 51,
+        "rewardValue": 30146,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505083,
+      "order": 83,
+      "reward": {
+        "image": "intel/support/support_card_s_30120.png",
+        "name": "[燃至天际的祈祷之火]八重无敌",
+        "rewardType": 51,
+        "rewardValue": 30120,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505084,
+      "order": 84,
+      "reward": {
+        "image": "intel/support/support_card_s_30122.png",
+        "name": "[Danke schön]荣进闪耀",
+        "rewardType": 51,
+        "rewardValue": 30122,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505085,
+      "order": 85,
+      "reward": {
+        "image": "intel/support/support_card_s_30123.png",
+        "name": "[GLAD TIDINGS]成田白仁",
+        "rewardType": 51,
+        "rewardValue": 30123,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505086,
+      "order": 86,
+      "reward": {
+        "image": "intel/support/support_card_s_30124.png",
+        "name": "[Are you merry？]气槽",
+        "rewardType": 51,
+        "rewardValue": 30124,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505087,
+      "order": 87,
+      "reward": {
+        "image": "intel/support/support_card_s_30126.png",
+        "name": "[化为那无人知晓的风]山人西风",
+        "rewardType": 51,
+        "rewardValue": 30126,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505088,
+      "order": 88,
+      "reward": {
+        "image": "intel/support/support_card_s_30127.png",
+        "name": "[平安喜乐寄于板羽球中]特别周",
+        "rewardType": 51,
+        "rewardValue": 30127,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505089,
+      "order": 89,
+      "reward": {
+        "image": "intel/support/support_card_s_30128.png",
+        "name": "[难以捉摸的绝世佳人]东商变革",
+        "rewardType": 51,
+        "rewardValue": 30128,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505090,
+      "order": 90,
+      "reward": {
+        "image": "intel/support/support_card_s_30130.png",
+        "name": "[To you]喜嘉奇迹",
+        "rewardType": 51,
+        "rewardValue": 30130,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505091,
+      "order": 91,
+      "reward": {
+        "image": "intel/support/support_card_s_30131.png",
+        "name": "[Marvelous☆巧克力盛宴]美丽周日",
+        "rewardType": 51,
+        "rewardValue": 30131,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505092,
+      "order": 92,
+      "reward": {
+        "image": "intel/support/support_card_s_30132.png",
+        "name": "[变身！侍者形态！]微光飞驹",
+        "rewardType": 51,
+        "rewardValue": 30132,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505093,
+      "order": 93,
+      "reward": {
+        "image": "intel/support/support_card_s_30134.png",
+        "name": "[璨烂]目白拉莫娜",
+        "rewardType": 51,
+        "rewardValue": 30134,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505094,
+      "order": 94,
+      "reward": {
+        "image": "intel/support/support_card_s_30137.png",
+        "name": "[迈向永恒的荣光]引领众人的始祖",
+        "rewardType": 51,
+        "rewardValue": 30137,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505095,
+      "order": 95,
+      "reward": {
+        "image": "intel/support/support_card_s_30138.png",
+        "name": "[此刻请不要闭眼]优秀素质",
+        "rewardType": 51,
+        "rewardValue": 30138,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505096,
+      "order": 96,
+      "reward": {
+        "image": "intel/support/support_card_s_30139.png",
+        "name": "[夜风掳心]目白麦昆",
+        "rewardType": 51,
+        "rewardValue": 30139,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505097,
+      "order": 97,
+      "reward": {
+        "image": "intel/support/support_card_s_30037.png",
+        "name": "[绝对皇帝]鲁道夫象征",
+        "rewardType": 51,
+        "rewardValue": 30037,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505098,
+      "order": 98,
+      "reward": {
+        "image": "intel/support/support_card_s_30141.png",
+        "name": "[任务“为内心补充营养”]美浦波旁",
+        "rewardType": 51,
+        "rewardValue": 30141,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505099,
+      "order": 99,
+      "reward": {
+        "image": "intel/support/support_card_s_30142.png",
+        "name": "[此刻，樱花烂漫]樱花桂冠",
+        "rewardType": 51,
+        "rewardValue": 30142,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505100,
+      "order": 100,
+      "reward": {
+        "image": "intel/support/support_card_s_30147.png",
+        "name": "[The frontier]森林宝袋",
+        "rewardType": 51,
+        "rewardValue": 30147,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505101,
+      "order": 101,
+      "reward": {
+        "image": "intel/support/support_card_s_30148.png",
+        "name": "[Something Blue]大和赤骥",
+        "rewardType": 51,
+        "rewardValue": 30148,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505102,
+      "order": 102,
+      "reward": {
+        "image": "intel/support/support_card_s_30149.png",
+        "name": "[与你定制的宝贵回忆]阿斯顿真弓",
+        "rewardType": 51,
+        "rewardValue": 30149,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505103,
+      "order": 103,
+      "reward": {
+        "image": "intel/support/support_card_s_30152.png",
+        "name": "[All'alba vincerò！]好歌剧",
+        "rewardType": 51,
+        "rewardValue": 30152,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505104,
+      "order": 104,
+      "reward": {
+        "image": "intel/support/support_card_s_30151.png",
+        "name": "[Chill chill night*]重炮",
+        "rewardType": 51,
+        "rewardValue": 30151,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505105,
+      "order": 105,
+      "reward": {
+        "image": "intel/support/support_card_s_30153.png",
+        "name": "[暖月]黄金城",
+        "rewardType": 51,
+        "rewardValue": 30153,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505106,
+      "order": 106,
+      "reward": {
+        "image": "intel/support/support_card_s_30154.png",
+        "name": "[宛如海鸥]目白善信",
+        "rewardType": 51,
+        "rewardValue": 30154,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505107,
+      "order": 107,
+      "reward": {
+        "image": "intel/support/support_card_s_30156.png",
+        "name": "[坚持一生的奇迹]奇锐骏",
+        "rewardType": 51,
+        "rewardValue": 30156,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505108,
+      "order": 108,
+      "reward": {
+        "image": "intel/support/support_card_s_30157.png",
+        "name": "[与你共赏的泡沫]曼城茶座",
+        "rewardType": 51,
+        "rewardValue": 30157,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 5505109,
+      "order": 109,
+      "reward": {
+        "image": "intel/support/support_card_s_30158.png",
+        "name": "[在这火热的夏天飞奔吧！]森林宝袋",
+        "rewardType": 51,
+        "rewardValue": 30158,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00205.png",
+        "name": "2.5周年庆典 超稀有兑换券",
+        "rewardType": 42,
+        "rewardValue": 205,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

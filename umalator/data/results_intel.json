@@ -4962,7 +4962,118 @@
       "startTimestamp": 1777176000,
       "endTimestamp": 1781038799,
       "image": "intel/mission/tex_campaign_mission_logo_00301.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "任务",
+          "label": "稀有启发书 x1 · 任务",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "任务",
+          "label": "启发专业书 x2 · 任务",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "任务",
+          "label": "启发书 x4 · 任务",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "任务",
+          "label": "协助卡招募券 x1 · 任务",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x10 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "任务",
+          "label": "梦想光辉 x5 · 任务",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x500 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "任务",
+          "label": "养成优俊少女招募券 x1 · 任务",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "任务",
+          "label": "迷你胡萝卜果冻 x10 · 任务",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x50000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 50000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x100000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 100000,
+          "isPiece": false
+        }
+      ]
     },
     {
       "id": 4,
@@ -4995,7 +5106,208 @@
       "startTimestamp": 1778040000,
       "endTimestamp": 1779595199,
       "image": "intel/story/tex_storyevent_logo_1023.png",
-      "drops": [],
+      "drops": [
+        {
+          "image": "intel/support/support_card_s_30135.png",
+          "name": "[高举熊熊燃烧的灯火]葛城荣主",
+          "source": "合计",
+          "label": "[高举熊熊燃烧的灯火]葛城荣主 x5 · 合计",
+          "rewardType": 51,
+          "rewardValue": 30135,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "点数",
+          "label": "稀有启发专业书 x4 · 点数",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "点数",
+          "label": "稀有启发书 x2 · 点数",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "点数",
+          "label": "启发专业书 x6 · 点数",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "点数",
+          "label": "启发书 x10 · 点数",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "宾果",
+          "label": "金结晶片 x3 · 宾果",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "点数",
+          "label": "彩虹结晶片 x3 · 点数",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00133.png",
+          "name": "回忆书签",
+          "source": "点数",
+          "label": "回忆书签 x1 · 点数",
+          "rewardType": 162,
+          "rewardValue": 133,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "合计",
+          "label": "干劲满溢甜点 x7 · 合计",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 7,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00115.png",
+          "name": "女神像",
+          "source": "合计",
+          "label": "女神像 x21 · 合计",
+          "rewardType": 97,
+          "rewardValue": 115,
+          "amount": 21,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "点数",
+          "label": "协助卡招募券 x2 · 点数",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "合计",
+          "label": "闹钟 x25 · 合计",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 25,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "点数",
+          "label": "梦想光辉 x3 · 点数",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "合计",
+          "label": "宝石 x2220 · 合计",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 2220,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "点数",
+          "label": "养成优俊少女招募券 x2 · 点数",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "合计",
+          "label": "迷你胡萝卜果冻 x6 · 合计",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "合计",
+          "label": "能量饮料30 x7 · 合计",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 7,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "合计",
+          "label": "协助积分 x119300 · 合计",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 119300,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "合计",
+          "label": "好友积分 x3200 · 合计",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 3200,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "合计",
+          "label": "金币 x332600 · 合计",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 332600,
+          "isPiece": false
+        }
+      ],
       "details": []
     },
     {
@@ -5007,7 +5319,98 @@
       "startTimestamp": 1778101200,
       "endTimestamp": 1781038799,
       "image": "intel/mission/tex_campaign_mission_logo_00302.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/support/support_card_s_30136.png",
+          "name": "[Unyielding resolve]克里斯象征",
+          "source": "任务",
+          "label": "[Unyielding resolve]克里斯象征 x3 · 任务",
+          "rewardType": 51,
+          "rewardValue": 30136,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "任务",
+          "label": "金结晶片 x1 · 任务",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "任务",
+          "label": "彩虹结晶片 x1 · 任务",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "任务",
+          "label": "协助卡招募券 x1 · 任务",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "任务",
+          "label": "梦想光辉 x5 · 任务",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x500 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "任务",
+          "label": "养成优俊少女招募券 x1 · 任务",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x50000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 50000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x100000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 100000,
+          "isPiece": false
+        }
+      ]
     },
     {
       "id": 8,
@@ -5018,7 +5421,48 @@
       "startTimestamp": 1779076800,
       "endTimestamp": 1779656399,
       "image": "intel/mission/tex_campaign_mission_logo_00304.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
       "id": 9,
@@ -5029,7 +5473,118 @@
       "startTimestamp": 1779163200,
       "endTimestamp": 1781038799,
       "image": "intel/mission/tex_campaign_mission_logo_00303.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00197.png",
+          "name": "2周年庆典 超稀有兑换券",
+          "source": "任务",
+          "label": "2周年庆典 超稀有兑换券 x1 · 任务",
+          "rewardType": 42,
+          "rewardValue": 197,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "任务",
+          "label": "稀有启发专业书 x1 · 任务",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "任务",
+          "label": "稀有启发书 x1 · 任务",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "任务",
+          "label": "金结晶片 x1 · 任务",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "任务",
+          "label": "干劲满溢甜点 x10 · 任务",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "任务",
+          "label": "协助卡招募券 x1 · 任务",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "任务",
+          "label": "梦想光辉 x5 · 任务",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x500 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "任务",
+          "label": "养成优俊少女招募券 x1 · 任务",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x50000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 50000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x100000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 100000,
+          "isPiece": false
+        }
+      ]
     },
     {
       "id": 10,
@@ -5039,7 +5594,149 @@
       "end": "2026-06-02 11:59:59",
       "startTimestamp": 1779336000,
       "endTimestamp": 1780372799,
-      "image": "intel/factor_research/factor_research.png"
+      "image": "intel/factor_research/factor_research.png",
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00195.png",
+          "name": "因子研究报告",
+          "source": "奖励",
+          "label": "因子研究报告 x3 · 奖励",
+          "rewardType": 174,
+          "rewardValue": 195,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "奖励",
+          "label": "稀有启发专业书 x1 · 奖励",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "奖励",
+          "label": "稀有启发书 x2 · 奖励",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "奖励",
+          "label": "启发专业书 x4 · 奖励",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "奖励",
+          "label": "启发书 x8 · 奖励",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "奖励",
+          "label": "金结晶片 x1 · 奖励",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "奖励",
+          "label": "彩虹结晶片 x1 · 奖励",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "奖励",
+          "label": "干劲满溢甜点 x5 · 奖励",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00115.png",
+          "name": "女神像",
+          "source": "奖励",
+          "label": "女神像 x5 · 奖励",
+          "rewardType": 97,
+          "rewardValue": 115,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "奖励",
+          "label": "闹钟 x5 · 奖励",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "奖励",
+          "label": "宝石 x900 · 奖励",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 900,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "奖励",
+          "label": "协助积分 x150000 · 奖励",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 150000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "奖励",
+          "label": "好友积分 x3000 · 奖励",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 3000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "奖励",
+          "label": "金币 x300000 · 奖励",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 300000,
+          "isPiece": false
+        }
+      ]
     },
     {
       "id": 11,
@@ -5053,7 +5750,9 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_103801.png",
-          "label": "掉落碎片",
+          "name": "[闪电少女]真机伶碎片",
+          "source": "掉落",
+          "label": "[闪电少女]真机伶碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
@@ -5079,7 +5778,48 @@
       "startTimestamp": 1779656400,
       "endTimestamp": 1780261199,
       "image": "intel/mission/tex_campaign_mission_logo_00305.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
       "id": 14,
@@ -5090,7 +5830,208 @@
       "startTimestamp": 1780027200,
       "endTimestamp": 1781409599,
       "image": "intel/story/chara_story_thumb_1024.png",
-      "drops": [],
+      "drops": [
+        {
+          "image": "intel/support/support_card_s_30140.png",
+          "name": "[比翼的华尔兹]东海帝王",
+          "source": "合计",
+          "label": "[比翼的华尔兹]东海帝王 x5 · 合计",
+          "rewardType": 51,
+          "rewardValue": 30140,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "点数",
+          "label": "稀有启发专业书 x4 · 点数",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "点数",
+          "label": "稀有启发书 x2 · 点数",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "点数",
+          "label": "启发专业书 x6 · 点数",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "点数",
+          "label": "启发书 x10 · 点数",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "宾果",
+          "label": "金结晶片 x3 · 宾果",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "点数",
+          "label": "彩虹结晶片 x3 · 点数",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00133.png",
+          "name": "回忆书签",
+          "source": "点数",
+          "label": "回忆书签 x1 · 点数",
+          "rewardType": 162,
+          "rewardValue": 133,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "合计",
+          "label": "干劲满溢甜点 x7 · 合计",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 7,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00115.png",
+          "name": "女神像",
+          "source": "合计",
+          "label": "女神像 x21 · 合计",
+          "rewardType": 97,
+          "rewardValue": 115,
+          "amount": 21,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "点数",
+          "label": "协助卡招募券 x2 · 点数",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "合计",
+          "label": "闹钟 x25 · 合计",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 25,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "点数",
+          "label": "梦想光辉 x3 · 点数",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "合计",
+          "label": "宝石 x2160 · 合计",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 2160,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "点数",
+          "label": "养成优俊少女招募券 x2 · 点数",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "合计",
+          "label": "迷你胡萝卜果冻 x6 · 合计",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "合计",
+          "label": "能量饮料30 x7 · 合计",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 7,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "合计",
+          "label": "协助积分 x119300 · 合计",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 119300,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "合计",
+          "label": "好友积分 x3200 · 合计",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 3200,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "合计",
+          "label": "金币 x322600 · 合计",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 322600,
+          "isPiece": false
+        }
+      ],
       "details": []
     },
     {
@@ -5105,7 +6046,9 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_101302.png",
-          "label": "掉落碎片",
+          "name": "[天际尽头]目白麦昆碎片",
+          "source": "掉落",
+          "label": "[天际尽头]目白麦昆碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
@@ -5131,7 +6074,48 @@
       "startTimestamp": 1780261200,
       "endTimestamp": 1780865999,
       "image": "intel/mission/tex_campaign_mission_logo_00306.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
       "id": 18,
@@ -5145,7 +6129,9 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_100901.png",
-          "label": "掉落碎片",
+          "name": "[蔚蓝顶点]大和赤骥碎片",
+          "source": "掉落",
+          "label": "[蔚蓝顶点]大和赤骥碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
@@ -5160,7 +6146,48 @@
       "startTimestamp": 1780866000,
       "endTimestamp": 1781470799,
       "image": "intel/mission/tex_campaign_mission_logo_00307.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
       "id": 20,
@@ -5174,13 +6201,220 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_107201.png",
-          "label": "掉落碎片"
+          "name": "[四白流星之袭]八重无敌碎片",
+          "source": "掉落",
+          "label": "[四白流星之袭]八重无敌碎片",
+          "rewardType": 102,
+          "rewardValue": 107201
         }
       ],
       "details": []
     },
     {
       "id": 21,
+      "name": "训练员技能考试",
+      "type": "训练员技能考试",
+      "start": "2026-06-11 12:00:00",
+      "end": "2026-06-23 11:59:59",
+      "startTimestamp": 1781150400,
+      "endTimestamp": 1782187199,
+      "image": "intel/special/training_challenge_logo.png",
+      "details": [
+        {
+          "label": "考试",
+          "raceName": "06-11 12:00 - 06-20 11:59"
+        },
+        {
+          "label": "结果/兑换",
+          "raceName": "06-20 12:00 - 06-23 11:59"
+        }
+      ],
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "兑换",
+          "label": "稀有启发专业书 x1 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "兑换",
+          "label": "稀有启发书 x2 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "兑换",
+          "label": "启发专业书 x4 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "兑换",
+          "label": "启发书 x8 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "兑换",
+          "label": "金结晶片 x1 · 兑换",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "兑换",
+          "label": "彩虹结晶片 x1 · 兑换",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "兑换",
+          "label": "协助卡招募券 x3 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "兑换",
+          "label": "梦想光辉 x10 · 兑换",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "合计",
+          "label": "宝石 x1250 · 合计",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 1250,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "兑换",
+          "label": "养成优俊少女招募券 x3 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00013.png",
+          "name": "泥地跑鞋",
+          "source": "兑换",
+          "label": "泥地跑鞋 x15 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 13,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00010.png",
+          "name": "长距离跑鞋",
+          "source": "兑换",
+          "label": "长距离跑鞋 x15 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 10,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00007.png",
+          "name": "中距离跑鞋",
+          "source": "兑换",
+          "label": "中距离跑鞋 x15 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 7,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00004.png",
+          "name": "英里跑鞋",
+          "source": "兑换",
+          "label": "英里跑鞋 x15 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 4,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00001.png",
+          "name": "短距离跑鞋",
+          "source": "兑换",
+          "label": "短距离跑鞋 x15 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 1,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "合计",
+          "label": "协助积分 x122500 · 合计",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 122500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "考试",
+          "label": "好友积分 x4500 · 考试",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 4500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "合计",
+          "label": "金币 x345000 · 合计",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 345000,
+          "isPiece": false
+        }
+      ],
+      "shopId": 11003
+    },
+    {
+      "id": 22,
       "name": "指定赛事奖励追加碎片",
       "type": "效果",
       "start": "2026-06-13 05:00:00",
@@ -5191,14 +6425,16 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_102001.png",
-          "label": "掉落碎片",
+          "name": "[青云垂钓者]青云天空碎片",
+          "source": "掉落",
+          "label": "[青云垂钓者]青云天空碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
       ]
     },
     {
-      "id": 22,
+      "id": 23,
       "name": "[飞跃地平线]东海帝王",
       "type": "传奇赛事时间",
       "start": "2026-06-13 05:00:00",
@@ -5209,13 +6445,17 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_100302.png",
-          "label": "掉落碎片"
+          "name": "[飞跃地平线]东海帝王碎片",
+          "source": "掉落",
+          "label": "[飞跃地平线]东海帝王碎片",
+          "rewardType": 102,
+          "rewardValue": 100302
         }
       ],
       "details": []
     },
     {
-      "id": 23,
+      "id": 24,
       "name": "春季一级赛事纪念任务第2弹 天王奖（春）",
       "type": "任务",
       "start": "2026-06-15 12:00:00",
@@ -5223,10 +6463,51 @@
       "startTimestamp": 1781496000,
       "endTimestamp": 1782075599,
       "image": "intel/mission/tex_campaign_mission_logo_00308.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 24,
+      "id": 25,
       "name": "神机妙算？！春日！激战魔鬼躲避球",
       "type": "剧情活动时间",
       "start": "2026-06-19 12:00:00",
@@ -5234,11 +6515,212 @@
       "startTimestamp": 1781841600,
       "endTimestamp": 1783223999,
       "image": "intel/story/chara_story_thumb_1025.png",
-      "drops": [],
+      "drops": [
+        {
+          "image": "intel/support/support_card_s_30143.png",
+          "name": "[终抵之处的风景]生野狄杜斯",
+          "source": "合计",
+          "label": "[终抵之处的风景]生野狄杜斯 x5 · 合计",
+          "rewardType": 51,
+          "rewardValue": 30143,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "点数",
+          "label": "稀有启发专业书 x4 · 点数",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "点数",
+          "label": "稀有启发书 x2 · 点数",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "点数",
+          "label": "启发专业书 x6 · 点数",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "点数",
+          "label": "启发书 x10 · 点数",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "宾果",
+          "label": "金结晶片 x3 · 宾果",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "点数",
+          "label": "彩虹结晶片 x3 · 点数",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00133.png",
+          "name": "回忆书签",
+          "source": "点数",
+          "label": "回忆书签 x1 · 点数",
+          "rewardType": 162,
+          "rewardValue": 133,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "合计",
+          "label": "干劲满溢甜点 x7 · 合计",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 7,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00115.png",
+          "name": "女神像",
+          "source": "合计",
+          "label": "女神像 x21 · 合计",
+          "rewardType": 97,
+          "rewardValue": 115,
+          "amount": 21,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "点数",
+          "label": "协助卡招募券 x2 · 点数",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "合计",
+          "label": "闹钟 x25 · 合计",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 25,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "点数",
+          "label": "梦想光辉 x3 · 点数",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "合计",
+          "label": "宝石 x2160 · 合计",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 2160,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "点数",
+          "label": "养成优俊少女招募券 x2 · 点数",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "合计",
+          "label": "迷你胡萝卜果冻 x6 · 合计",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "合计",
+          "label": "能量饮料30 x7 · 合计",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 7,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "合计",
+          "label": "协助积分 x119300 · 合计",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 119300,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "合计",
+          "label": "好友积分 x3200 · 合计",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 3200,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "合计",
+          "label": "金币 x322600 · 合计",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 322600,
+          "isPiece": false
+        }
+      ],
       "details": []
     },
     {
-      "id": 25,
+      "id": 26,
       "name": "指定赛事奖励追加碎片",
       "type": "效果",
       "start": "2026-06-20 05:00:00",
@@ -5249,14 +6731,16 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_102501.png",
-          "label": "掉落碎片",
+          "name": "[Creeping Black]曼城茶座碎片",
+          "source": "掉落",
+          "label": "[Creeping Black]曼城茶座碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
       ]
     },
     {
-      "id": 26,
+      "id": 27,
       "name": "亲密度获得量提升",
       "type": "效果",
       "start": "2026-06-20 12:00:00",
@@ -5267,7 +6751,7 @@
       "drops": []
     },
     {
-      "id": 27,
+      "id": 28,
       "name": "辣妹散步活动",
       "type": "效果",
       "start": "2026-06-20 12:00:00",
@@ -5275,10 +6759,151 @@
       "startTimestamp": 1781928000,
       "endTimestamp": 1782964799,
       "image": "intel/campaign/campaign_icon_l_0013.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "散步",
+          "label": "稀有启发专业书 x1 · 散步",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "散步",
+          "label": "稀有启发书 x1 · 散步",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "散步",
+          "label": "启发专业书 x1 · 散步",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "散步",
+          "label": "启发书 x1 · 散步",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "散步",
+          "label": "金结晶片 x1 · 散步",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00115.png",
+          "name": "女神像",
+          "source": "散步",
+          "label": "女神像 x3 · 散步",
+          "rewardType": 97,
+          "rewardValue": 115,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "散步",
+          "label": "闹钟 x5 · 散步",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "散步",
+          "label": "梦想光辉 x6 · 散步",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "散步",
+          "label": "宝石 x150 · 散步",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "散步",
+          "label": "迷你胡萝卜果冻 x5 · 散步",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "散步",
+          "label": "能量饮料30 x5 · 散步",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "散步",
+          "label": "协助积分 x20000 · 散步",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 20000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "散步",
+          "label": "好友积分 x1000 · 散步",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 1000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "散步",
+          "label": "金币 x40000 · 散步",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 28,
+      "id": 29,
       "name": "“胜利时必得”概率提升",
       "type": "效果",
       "start": "2026-06-20 12:00:00",
@@ -5289,7 +6914,7 @@
       "drops": []
     },
     {
-      "id": 29,
+      "id": 30,
       "name": "消耗训练值 1/2",
       "type": "效果",
       "start": "2026-06-20 12:00:00",
@@ -5300,7 +6925,7 @@
       "drops": []
     },
     {
-      "id": 30,
+      "id": 31,
       "name": "挑战次数增加",
       "type": "效果",
       "start": "2026-06-21 05:00:00",
@@ -5311,7 +6936,7 @@
       "drops": []
     },
     {
-      "id": 31,
+      "id": 32,
       "name": "春季一级赛事纪念任务第2弹 柏市纪念",
       "type": "任务",
       "start": "2026-06-22 05:00:00",
@@ -5319,10 +6944,51 @@
       "startTimestamp": 1782075600,
       "endTimestamp": 1782680399,
       "image": "intel/mission/tex_campaign_mission_logo_00309.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 32,
+      "id": 33,
       "name": "指定赛事奖励追加碎片",
       "type": "效果",
       "start": "2026-06-27 05:00:00",
@@ -5333,14 +6999,16 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_110001.png",
-          "label": "掉落碎片",
+          "name": "[Butterfly Sting]奇锐骏碎片",
+          "source": "掉落",
+          "label": "[Butterfly Sting]奇锐骏碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
       ]
     },
     {
-      "id": 33,
+      "id": 34,
       "name": "春季一级赛事纪念任务第2弹 广播协会英里杯",
       "type": "任务",
       "start": "2026-06-29 05:00:00",
@@ -5348,10 +7016,274 @@
       "startTimestamp": 1782680400,
       "endTimestamp": 1783285199,
       "image": "intel/mission/tex_campaign_mission_logo_00310.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 34,
+      "id": 35,
+      "name": "竞速嘉年华",
+      "type": "竞速嘉年华",
+      "start": "2026-06-30 12:00:00",
+      "end": "2026-07-10 11:59:59",
+      "startTimestamp": 1782792000,
+      "endTimestamp": 1783655999,
+      "image": "intel/special/challenge_match_logo.png",
+      "details": [
+        {
+          "label": "赛事",
+          "raceName": "06-30 12:00 - 07-07 11:59"
+        },
+        {
+          "label": "兑换",
+          "raceName": "07-07 12:00 - 07-10 11:59"
+        }
+      ],
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_107101.png",
+          "name": "[墨绿柔线]目白雅丹碎片",
+          "source": "合计",
+          "label": "[墨绿柔线]目白雅丹碎片 x11 · 合计",
+          "rewardType": 102,
+          "rewardValue": 107101,
+          "amount": 11,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_106501.png",
+          "name": "[Fun☆Fun☆嗨翻天]大拓太阳神碎片",
+          "source": "合计",
+          "label": "[Fun☆Fun☆嗨翻天]大拓太阳神碎片 x11 · 合计",
+          "rewardType": 102,
+          "rewardValue": 106501,
+          "amount": 11,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_106201.png",
+          "name": "[跌跌撞撞向前冲]待兼唐怀瑟碎片",
+          "source": "合计",
+          "label": "[跌跌撞撞向前冲]待兼唐怀瑟碎片 x11 · 合计",
+          "rewardType": 102,
+          "rewardValue": 106201,
+          "amount": 11,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_106002.png",
+          "name": "[RUN＆WIN]优秀素质碎片",
+          "source": "合计",
+          "label": "[RUN＆WIN]优秀素质碎片 x11 · 合计",
+          "rewardType": 102,
+          "rewardValue": 106002,
+          "amount": 11,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_106001.png",
+          "name": "[绯青缎带]优秀素质碎片",
+          "source": "合计",
+          "label": "[绯青缎带]优秀素质碎片 x11 · 合计",
+          "rewardType": 102,
+          "rewardValue": 106001,
+          "amount": 11,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_100601.png",
+          "name": "[星光跃动]小栗帽碎片",
+          "source": "合计",
+          "label": "[星光跃动]小栗帽碎片 x11 · 合计",
+          "rewardType": 102,
+          "rewardValue": 100601,
+          "amount": 11,
+          "isPiece": true
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "兑换",
+          "label": "金结晶片 x1 · 兑换",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "兑换",
+          "label": "彩虹结晶片 x1 · 兑换",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "兑换",
+          "label": "干劲满溢甜点 x10 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00115.png",
+          "name": "女神像",
+          "source": "兑换",
+          "label": "女神像 x10 · 兑换",
+          "rewardType": 97,
+          "rewardValue": 115,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "兑换",
+          "label": "协助卡招募券 x3 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "兑换",
+          "label": "闹钟 x10 · 兑换",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "掉落",
+          "label": "梦想光辉 x2 · 掉落",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "首通",
+          "label": "宝石 x900 · 首通",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 900,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "兑换",
+          "label": "养成优俊少女招募券 x3 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "掉落",
+          "label": "能量饮料30 x2 · 掉落",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00007.png",
+          "name": "中距离跑鞋",
+          "source": "合计",
+          "label": "中距离跑鞋 x5 · 合计",
+          "rewardType": 11,
+          "rewardValue": 7,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "合计",
+          "label": "协助积分 x30506 · 合计",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 30506,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "掉落",
+          "label": "好友积分 x4 · 掉落",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "合计",
+          "label": "金币 x61006 · 合计",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 61006,
+          "isPiece": false
+        }
+      ],
+      "shopId": 20004
+    },
+    {
+      "id": 36,
       "name": "指定赛事奖励追加碎片",
       "type": "效果",
       "start": "2026-07-04 05:00:00",
@@ -5362,14 +7294,16 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_101401.png",
-          "label": "掉落碎片",
+          "name": "[小鹰☆Número 1]神鹰碎片",
+          "source": "掉落",
+          "label": "[小鹰☆Número 1]神鹰碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
       ]
     },
     {
-      "id": 35,
+      "id": 37,
       "name": "春季一级赛事纪念任务第2弹 维多利亚英里赛",
       "type": "任务",
       "start": "2026-07-06 05:00:00",
@@ -5377,10 +7311,51 @@
       "startTimestamp": 1783285200,
       "endTimestamp": 1783889999,
       "image": "intel/mission/tex_campaign_mission_logo_00311.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 36,
+      "id": 38,
       "name": "宣誓，向奋战的你求婚",
       "type": "剧情活动时间",
       "start": "2026-07-08 12:00:00",
@@ -5388,11 +7363,212 @@
       "startTimestamp": 1783483200,
       "endTimestamp": 1784779199,
       "image": "intel/story/chara_story_thumb_1026.png",
-      "drops": [],
+      "drops": [
+        {
+          "image": "intel/support/support_card_s_30150.png",
+          "name": "[点燃心火！！]伏特加",
+          "source": "合计",
+          "label": "[点燃心火！！]伏特加 x5 · 合计",
+          "rewardType": 51,
+          "rewardValue": 30150,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "点数",
+          "label": "稀有启发专业书 x4 · 点数",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "点数",
+          "label": "稀有启发书 x2 · 点数",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "点数",
+          "label": "启发专业书 x6 · 点数",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "点数",
+          "label": "启发书 x10 · 点数",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "宾果",
+          "label": "金结晶片 x3 · 宾果",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "点数",
+          "label": "彩虹结晶片 x3 · 点数",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00133.png",
+          "name": "回忆书签",
+          "source": "点数",
+          "label": "回忆书签 x1 · 点数",
+          "rewardType": 162,
+          "rewardValue": 133,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "合计",
+          "label": "干劲满溢甜点 x7 · 合计",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 7,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00115.png",
+          "name": "女神像",
+          "source": "合计",
+          "label": "女神像 x21 · 合计",
+          "rewardType": 97,
+          "rewardValue": 115,
+          "amount": 21,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "点数",
+          "label": "协助卡招募券 x2 · 点数",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "合计",
+          "label": "闹钟 x25 · 合计",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 25,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "点数",
+          "label": "梦想光辉 x3 · 点数",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "合计",
+          "label": "宝石 x2160 · 合计",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 2160,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "点数",
+          "label": "养成优俊少女招募券 x2 · 点数",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "合计",
+          "label": "迷你胡萝卜果冻 x6 · 合计",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "合计",
+          "label": "能量饮料30 x7 · 合计",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 7,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "合计",
+          "label": "协助积分 x119300 · 合计",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 119300,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "合计",
+          "label": "好友积分 x3200 · 合计",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 3200,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "合计",
+          "label": "金币 x322600 · 合计",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 322600,
+          "isPiece": false
+        }
+      ],
       "details": []
     },
     {
-      "id": 37,
+      "id": 39,
       "name": "指定赛事奖励追加碎片",
       "type": "效果",
       "start": "2026-07-11 05:00:00",
@@ -5403,14 +7579,16 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_100801.png",
-          "label": "掉落碎片",
+          "name": "[极速狂飙]伏特加碎片",
+          "source": "掉落",
+          "label": "[极速狂飙]伏特加碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
       ]
     },
     {
-      "id": 38,
+      "id": 40,
       "name": "春季一级赛事纪念任务第2弹 奥克斯",
       "type": "任务",
       "start": "2026-07-13 05:00:00",
@@ -5418,10 +7596,51 @@
       "startTimestamp": 1783890000,
       "endTimestamp": 1784494799,
       "image": "intel/mission/tex_campaign_mission_logo_00312.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 39,
+      "id": 41,
       "name": "[Fluttertail Spirit]山人西风",
       "type": "传奇赛事时间",
       "start": "2026-07-16 12:00:00",
@@ -5432,13 +7651,17 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_107801.png",
-          "label": "掉落碎片"
+          "name": "[Fluttertail Spirit]山人西风碎片",
+          "source": "掉落",
+          "label": "[Fluttertail Spirit]山人西风碎片",
+          "rewardType": 102,
+          "rewardValue": 107801
         }
       ],
       "details": []
     },
     {
-      "id": 40,
+      "id": 42,
       "name": "指定赛事奖励追加碎片",
       "type": "效果",
       "start": "2026-07-18 05:00:00",
@@ -5449,14 +7672,16 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_103901.png",
-          "label": "掉落碎片",
+          "name": "[粉红公主]川上公主碎片",
+          "source": "掉落",
+          "label": "[粉红公主]川上公主碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
       ]
     },
     {
-      "id": 41,
+      "id": 43,
       "name": "[爱丽♡僵尸]爱丽数码",
       "type": "传奇赛事时间",
       "start": "2026-07-19 05:00:00",
@@ -5467,13 +7692,17 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_101902.png",
-          "label": "掉落碎片"
+          "name": "[爱丽♡僵尸]爱丽数码碎片",
+          "source": "掉落",
+          "label": "[爱丽♡僵尸]爱丽数码碎片",
+          "rewardType": 102,
+          "rewardValue": 101902
         }
       ],
       "details": []
     },
     {
-      "id": 42,
+      "id": 44,
       "name": "春季一级赛事纪念任务第2弹 全国德比",
       "type": "任务",
       "start": "2026-07-20 05:00:00",
@@ -5481,20 +7710,203 @@
       "startTimestamp": 1784494800,
       "endTimestamp": 1785099599,
       "image": "intel/mission/tex_campaign_mission_logo_00313.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x3 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 43,
+      "id": 45,
       "name": "爱丽速子的因子研究",
       "type": "因子研究",
       "start": "2026-07-20 12:00:00",
       "end": "2026-08-02 11:59:59",
       "startTimestamp": 1784520000,
       "endTimestamp": 1785643199,
-      "image": "intel/factor_research/factor_research.png"
+      "image": "intel/factor_research/factor_research.png",
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00203.png",
+          "name": "因子研究报告",
+          "source": "奖励",
+          "label": "因子研究报告 x3 · 奖励",
+          "rewardType": 174,
+          "rewardValue": 203,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "奖励",
+          "label": "稀有启发专业书 x1 · 奖励",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "奖励",
+          "label": "稀有启发书 x2 · 奖励",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "奖励",
+          "label": "启发专业书 x4 · 奖励",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "奖励",
+          "label": "启发书 x8 · 奖励",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "奖励",
+          "label": "金结晶片 x1 · 奖励",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "奖励",
+          "label": "彩虹结晶片 x1 · 奖励",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "奖励",
+          "label": "干劲满溢甜点 x5 · 奖励",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00115.png",
+          "name": "女神像",
+          "source": "奖励",
+          "label": "女神像 x5 · 奖励",
+          "rewardType": 97,
+          "rewardValue": 115,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "奖励",
+          "label": "闹钟 x5 · 奖励",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "奖励",
+          "label": "宝石 x900 · 奖励",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 900,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "奖励",
+          "label": "协助积分 x150000 · 奖励",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 150000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "奖励",
+          "label": "好友积分 x3000 · 奖励",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 3000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "奖励",
+          "label": "金币 x300000 · 奖励",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 300000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 44,
+      "id": 46,
       "name": "挑战次数增加",
       "type": "效果",
       "start": "2026-07-21 05:00:00",
@@ -5505,7 +7917,7 @@
       "drops": []
     },
     {
-      "id": 45,
+      "id": 47,
       "name": "指定赛事奖励追加碎片",
       "type": "效果",
       "start": "2026-07-25 05:00:00",
@@ -5516,14 +7928,16 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_101601.png",
-          "label": "掉落碎片",
+          "name": "[Maverick]成田白仁碎片",
+          "source": "掉落",
+          "label": "[Maverick]成田白仁碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
       ]
     },
     {
-      "id": 46,
+      "id": 48,
       "name": "春季一级赛事纪念任务第2弹 东京英里赛",
       "type": "任务",
       "start": "2026-07-27 05:00:00",
@@ -5531,10 +7945,51 @@
       "startTimestamp": 1785099600,
       "endTimestamp": 1785704399,
       "image": "intel/mission/tex_campaign_mission_logo_00316.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 47,
+      "id": 49,
       "name": "#summer #besties",
       "type": "剧情活动时间",
       "start": "2026-07-29 12:00:00",
@@ -5542,11 +7997,212 @@
       "startTimestamp": 1785297600,
       "endTimestamp": 1786593599,
       "image": "intel/story/chara_story_thumb_1027.png",
-      "drops": [],
+      "drops": [
+        {
+          "image": "intel/support/support_card_s_30155.png",
+          "name": "[#夏天 #全新的我]大拓太阳神",
+          "source": "合计",
+          "label": "[#夏天 #全新的我]大拓太阳神 x5 · 合计",
+          "rewardType": 51,
+          "rewardValue": 30155,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "点数",
+          "label": "稀有启发专业书 x4 · 点数",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "点数",
+          "label": "稀有启发书 x2 · 点数",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "点数",
+          "label": "启发专业书 x6 · 点数",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "点数",
+          "label": "启发书 x10 · 点数",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "宾果",
+          "label": "金结晶片 x3 · 宾果",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "点数",
+          "label": "彩虹结晶片 x3 · 点数",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00133.png",
+          "name": "回忆书签",
+          "source": "点数",
+          "label": "回忆书签 x1 · 点数",
+          "rewardType": 162,
+          "rewardValue": 133,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "合计",
+          "label": "干劲满溢甜点 x7 · 合计",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 7,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00115.png",
+          "name": "女神像",
+          "source": "合计",
+          "label": "女神像 x21 · 合计",
+          "rewardType": 97,
+          "rewardValue": 115,
+          "amount": 21,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "点数",
+          "label": "协助卡招募券 x2 · 点数",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "合计",
+          "label": "闹钟 x25 · 合计",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 25,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "点数",
+          "label": "梦想光辉 x3 · 点数",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "合计",
+          "label": "宝石 x2160 · 合计",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 2160,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "点数",
+          "label": "养成优俊少女招募券 x2 · 点数",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "合计",
+          "label": "迷你胡萝卜果冻 x6 · 合计",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "合计",
+          "label": "能量饮料30 x7 · 合计",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 7,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "合计",
+          "label": "协助积分 x119300 · 合计",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 119300,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "合计",
+          "label": "好友积分 x3200 · 合计",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 3200,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "合计",
+          "label": "金币 x322600 · 合计",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 322600,
+          "isPiece": false
+        }
+      ],
       "details": []
     },
     {
-      "id": 48,
+      "id": 50,
       "name": "指定赛事奖励追加碎片",
       "type": "效果",
       "start": "2026-08-01 05:00:00",
@@ -5557,14 +8213,16 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_101001.png",
-          "label": "掉落碎片",
+          "name": "[狂野前线]大树快车碎片",
+          "source": "掉落",
+          "label": "[狂野前线]大树快车碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
       ]
     },
     {
-      "id": 49,
+      "id": 51,
       "name": "[阳光花束]重炮",
       "type": "传奇赛事时间",
       "start": "2026-08-02 12:00:00",
@@ -5575,13 +8233,17 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_102402.png",
-          "label": "掉落碎片"
+          "name": "[阳光花束]重炮碎片",
+          "source": "掉落",
+          "label": "[阳光花束]重炮碎片",
+          "rewardType": 102,
+          "rewardValue": 102402
         }
       ],
       "details": []
     },
     {
-      "id": 50,
+      "id": 52,
       "name": "春季一级赛事纪念任务第2弹 宝冢纪念",
       "type": "任务",
       "start": "2026-08-03 05:00:00",
@@ -5589,10 +8251,51 @@
       "startTimestamp": 1785704400,
       "endTimestamp": 1786309199,
       "image": "intel/mission/tex_campaign_mission_logo_00317.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 51,
+      "id": 53,
       "name": "[悬铃木魔女]东商变革",
       "type": "传奇赛事时间",
       "start": "2026-08-05 05:00:00",
@@ -5603,13 +8306,17 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_104401.png",
-          "label": "掉落碎片"
+          "name": "[悬铃木魔女]东商变革碎片",
+          "source": "掉落",
+          "label": "[悬铃木魔女]东商变革碎片",
+          "rewardType": 102,
+          "rewardValue": 104401
         }
       ],
       "details": []
     },
     {
-      "id": 52,
+      "id": 54,
       "name": "指定赛事奖励追加碎片",
       "type": "效果",
       "start": "2026-08-08 05:00:00",
@@ -5620,14 +8327,16 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_102301.png",
-          "label": "掉落碎片",
+          "name": "[pf.胜利公式]琵琶晨光碎片",
+          "source": "掉落",
+          "label": "[pf.胜利公式]琵琶晨光碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
       ]
     },
     {
-      "id": 53,
+      "id": 55,
       "name": "一级赛事纪念任务 帝王奖",
       "type": "任务",
       "start": "2026-08-10 12:00:00",
@@ -5635,10 +8344,51 @@
       "startTimestamp": 1786334400,
       "endTimestamp": 1786913999,
       "image": "intel/mission/tex_campaign_mission_logo_00360.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 54,
+      "id": 56,
       "name": "指定赛事奖励追加碎片",
       "type": "效果",
       "start": "2026-08-15 05:00:00",
@@ -5649,14 +8399,16 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_104601.png",
-          "label": "掉落碎片",
+          "name": "[绝对☆LOVE]醒目飞鹰碎片",
+          "source": "掉落",
+          "label": "[绝对☆LOVE]醒目飞鹰碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
       ]
     },
     {
-      "id": 55,
+      "id": 57,
       "name": "夏阳碧空，煦日无风",
       "type": "剧情活动时间",
       "start": "2026-08-15 22:00:00",
@@ -5664,11 +8416,212 @@
       "startTimestamp": 1786802400,
       "endTimestamp": 1788321599,
       "image": "intel/story/chara_story_thumb_1028.png",
-      "drops": [],
+      "drops": [
+        {
+          "image": "intel/support/support_card_s_30159.png",
+          "name": "[Seaside Bloom]气槽",
+          "source": "合计",
+          "label": "[Seaside Bloom]气槽 x5 · 合计",
+          "rewardType": 51,
+          "rewardValue": 30159,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "点数",
+          "label": "稀有启发专业书 x4 · 点数",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "点数",
+          "label": "稀有启发书 x2 · 点数",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "点数",
+          "label": "启发专业书 x6 · 点数",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "点数",
+          "label": "启发书 x10 · 点数",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "宾果",
+          "label": "金结晶片 x3 · 宾果",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "点数",
+          "label": "彩虹结晶片 x3 · 点数",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00133.png",
+          "name": "回忆书签",
+          "source": "点数",
+          "label": "回忆书签 x1 · 点数",
+          "rewardType": 162,
+          "rewardValue": 133,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "合计",
+          "label": "干劲满溢甜点 x7 · 合计",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 7,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00115.png",
+          "name": "女神像",
+          "source": "合计",
+          "label": "女神像 x21 · 合计",
+          "rewardType": 97,
+          "rewardValue": 115,
+          "amount": 21,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "点数",
+          "label": "协助卡招募券 x2 · 点数",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "合计",
+          "label": "闹钟 x25 · 合计",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 25,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "点数",
+          "label": "梦想光辉 x3 · 点数",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "合计",
+          "label": "宝石 x2160 · 合计",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 2160,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "点数",
+          "label": "养成优俊少女招募券 x2 · 点数",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "合计",
+          "label": "迷你胡萝卜果冻 x6 · 合计",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "合计",
+          "label": "能量饮料30 x7 · 合计",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 7,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "合计",
+          "label": "协助积分 x119300 · 合计",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 119300,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "合计",
+          "label": "好友积分 x3200 · 合计",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 3200,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "合计",
+          "label": "金币 x322600 · 合计",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 322600,
+          "isPiece": false
+        }
+      ],
       "details": []
     },
     {
-      "id": 56,
+      "id": 58,
       "name": "一级赛事纪念任务 全国泥地德比",
       "type": "任务",
       "start": "2026-08-17 05:00:00",
@@ -5676,10 +8629,51 @@
       "startTimestamp": 1786914000,
       "endTimestamp": 1787518799,
       "image": "intel/mission/tex_campaign_mission_logo_00361.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x2 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x150 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x10000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 10000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x40000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 57,
+      "id": 59,
       "name": "[绝对☆LOVE]醒目飞鹰",
       "type": "传奇赛事时间",
       "start": "2026-08-20 12:00:00",
@@ -5690,13 +8684,17 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_104601.png",
-          "label": "掉落碎片"
+          "name": "[绝对☆LOVE]醒目飞鹰碎片",
+          "source": "掉落",
+          "label": "[绝对☆LOVE]醒目飞鹰碎片",
+          "rewardType": 102,
+          "rewardValue": 104601
         }
       ],
       "details": []
     },
     {
-      "id": 58,
+      "id": 60,
       "name": "优俊散步活动",
       "type": "效果",
       "start": "2026-08-20 12:00:00",
@@ -5704,10 +8702,141 @@
       "startTimestamp": 1787198400,
       "endTimestamp": 1788062399,
       "image": "intel/campaign/campaign_icon_l_0013.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "散步",
+          "label": "稀有启发专业书 x1 · 散步",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "散步",
+          "label": "稀有启发书 x1 · 散步",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "散步",
+          "label": "启发专业书 x1 · 散步",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "散步",
+          "label": "启发书 x1 · 散步",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "散步",
+          "label": "金结晶片 x1 · 散步",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00115.png",
+          "name": "女神像",
+          "source": "散步",
+          "label": "女神像 x3 · 散步",
+          "rewardType": 97,
+          "rewardValue": 115,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "散步",
+          "label": "梦想光辉 x5 · 散步",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "散步",
+          "label": "宝石 x150 · 散步",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 150,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "散步",
+          "label": "迷你胡萝卜果冻 x5 · 散步",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "散步",
+          "label": "能量饮料30 x5 · 散步",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 5,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "散步",
+          "label": "协助积分 x20000 · 散步",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 20000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "散步",
+          "label": "好友积分 x1000 · 散步",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 1000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "散步",
+          "label": "金币 x40000 · 散步",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 40000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 59,
+      "id": 61,
       "name": "2.5周年庆典 纪念任务第1弹",
       "type": "任务",
       "start": "2026-08-20 12:00:00",
@@ -5715,10 +8844,121 @@
       "startTimestamp": 1787198400,
       "endTimestamp": 1791320399,
       "image": "intel/mission/tex_campaign_mission_logo_00372.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "任务",
+          "label": "稀有启发书 x3 · 任务",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "任务",
+          "label": "启发专业书 x6 · 任务",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 6,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "任务",
+          "label": "启发书 x12 · 任务",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 12,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "任务",
+          "label": "协助卡招募券 x1 · 任务",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x10 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "任务",
+          "label": "梦想光辉 x10 · 任务",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x500 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "任务",
+          "label": "养成优俊少女招募券 x1 · 任务",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "任务",
+          "label": "迷你胡萝卜果冻 x10 · 任务",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x50000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 50000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x100000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 100000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 60,
+      "id": 62,
       "name": "挑战次数增加",
       "type": "效果",
       "start": "2026-08-21 05:00:00",
@@ -5729,7 +8969,7 @@
       "drops": []
     },
     {
-      "id": 61,
+      "id": 63,
       "name": "指定赛事奖励追加碎片",
       "type": "效果",
       "start": "2026-08-22 05:00:00",
@@ -5740,14 +8980,16 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_100501.png",
-          "label": "掉落碎片",
+          "name": "[流星歌剧]富士奇石碎片",
+          "source": "掉落",
+          "label": "[流星歌剧]富士奇石碎片",
           "rewardType": 1,
           "rewardValue": 5
         }
       ]
     },
     {
-      "id": 62,
+      "id": 64,
       "name": "[阴阳八卦☆开运服]小林历奇",
       "type": "传奇赛事时间",
       "start": "2026-08-23 05:00:00",
@@ -5758,13 +9000,280 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_109801.png",
-          "label": "掉落碎片"
+          "name": "[阴阳八卦☆开运服]小林历奇碎片",
+          "source": "掉落",
+          "label": "[阴阳八卦☆开运服]小林历奇碎片",
+          "rewardType": 102,
+          "rewardValue": 109801
         }
       ],
       "details": []
     },
     {
-      "id": 63,
+      "id": 65,
+      "name": "训练员技能考试",
+      "type": "训练员技能考试",
+      "start": "2026-08-31 12:00:00",
+      "end": "2026-09-14 11:59:59",
+      "startTimestamp": 1788148800,
+      "endTimestamp": 1789358399,
+      "image": "intel/special/training_challenge_logo.png",
+      "details": [
+        {
+          "label": "考试",
+          "raceName": "08-31 12:00 - 09-11 11:59"
+        },
+        {
+          "label": "结果/兑换",
+          "raceName": "09-11 12:00 - 09-14 11:59"
+        }
+      ],
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_107001.png",
+          "name": "[Féroce]天狼星象征碎片",
+          "source": "兑换",
+          "label": "[Féroce]天狼星象征碎片 x10 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 107001,
+          "amount": 10,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_106701.png",
+          "name": "[Natural Brilliance]里见光钻碎片",
+          "source": "兑换",
+          "label": "[Natural Brilliance]里见光钻碎片 x10 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 106701,
+          "amount": 10,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_104901.png",
+          "name": "[死中求生]中山庆典碎片",
+          "source": "兑换",
+          "label": "[死中求生]中山庆典碎片 x10 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 104901,
+          "amount": 10,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_102501.png",
+          "name": "[Creeping Black]曼城茶座碎片",
+          "source": "兑换",
+          "label": "[Creeping Black]曼城茶座碎片 x10 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 102501,
+          "amount": 10,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_101401.png",
+          "name": "[小鹰☆Número 1]神鹰碎片",
+          "source": "兑换",
+          "label": "[小鹰☆Número 1]神鹰碎片 x10 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 101401,
+          "amount": 10,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_100701.png",
+          "name": "[赤色纷争]黄金船碎片",
+          "source": "兑换",
+          "label": "[赤色纷争]黄金船碎片 x10 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 100701,
+          "amount": 10,
+          "isPiece": true
+        },
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "兑换",
+          "label": "稀有启发专业书 x4 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "兑换",
+          "label": "稀有启发书 x10 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "兑换",
+          "label": "启发专业书 x10 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "兑换",
+          "label": "启发书 x20 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 20,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "兑换",
+          "label": "金结晶片 x1 · 兑换",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "兑换",
+          "label": "彩虹结晶片 x1 · 兑换",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "兑换",
+          "label": "协助卡招募券 x3 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "兑换",
+          "label": "梦想光辉 x40 · 兑换",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 40,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "合计",
+          "label": "宝石 x1250 · 合计",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 1250,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "兑换",
+          "label": "养成优俊少女招募券 x3 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00013.png",
+          "name": "泥地跑鞋",
+          "source": "兑换",
+          "label": "泥地跑鞋 x15 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 13,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00010.png",
+          "name": "长距离跑鞋",
+          "source": "兑换",
+          "label": "长距离跑鞋 x15 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 10,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00007.png",
+          "name": "中距离跑鞋",
+          "source": "兑换",
+          "label": "中距离跑鞋 x15 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 7,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00004.png",
+          "name": "英里跑鞋",
+          "source": "兑换",
+          "label": "英里跑鞋 x15 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 4,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00001.png",
+          "name": "短距离跑鞋",
+          "source": "兑换",
+          "label": "短距离跑鞋 x15 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 1,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "合计",
+          "label": "协助积分 x122500 · 合计",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 122500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "考试",
+          "label": "好友积分 x4500 · 考试",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 4500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "合计",
+          "label": "金币 x345000 · 合计",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 345000,
+          "isPiece": false
+        }
+      ],
+      "shopId": 11004
+    },
+    {
+      "id": 66,
       "name": "2.5周年庆典 纪念任务第2弹",
       "type": "任务",
       "start": "2026-08-31 12:00:00",
@@ -5772,10 +9281,101 @@
       "startTimestamp": 1788148800,
       "endTimestamp": 1791320399,
       "image": "intel/mission/tex_campaign_mission_logo_00373.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/support/support_card_s_30162.png",
+          "name": "[Precious☆Moments]爱慕织姬",
+          "source": "任务",
+          "label": "[Precious☆Moments]爱慕织姬 x3 · 任务",
+          "rewardType": 51,
+          "rewardValue": 30162,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "任务",
+          "label": "金结晶片 x1 · 任务",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "任务",
+          "label": "彩虹结晶片 x1 · 任务",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "任务",
+          "label": "协助卡招募券 x1 · 任务",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "任务",
+          "label": "梦想光辉 x10 · 任务",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x500 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "任务",
+          "label": "养成优俊少女招募券 x1 · 任务",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x50000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 50000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x100000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 100000,
+          "isPiece": false
+        }
+      ]
     },
     {
-      "id": 64,
+      "id": 67,
       "name": "[黑铁的壮志]青竹回忆",
       "type": "传奇赛事时间",
       "start": "2026-09-08 12:00:00",
@@ -5786,13 +9386,17 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_105301.png",
-          "label": "掉落碎片"
+          "name": "[黑铁的壮志]青竹回忆碎片",
+          "source": "掉落",
+          "label": "[黑铁的壮志]青竹回忆碎片",
+          "rewardType": 102,
+          "rewardValue": 105301
         }
       ],
       "details": []
     },
     {
-      "id": 65,
+      "id": 68,
       "name": "[Bubblegum☆Memories]大树快车",
       "type": "传奇赛事时间",
       "start": "2026-09-11 05:00:00",
@@ -5803,13 +9407,17 @@
       "drops": [
         {
           "image": "intel/piece/piece_icon_101002.png",
-          "label": "掉落碎片"
+          "name": "[Bubblegum☆Memories]大树快车碎片",
+          "source": "掉落",
+          "label": "[Bubblegum☆Memories]大树快车碎片",
+          "rewardType": 102,
+          "rewardValue": 101002
         }
       ],
       "details": []
     },
     {
-      "id": 66,
+      "id": 69,
       "name": "2.5周年庆典 纪念任务第3弹",
       "type": "任务",
       "start": "2026-09-11 12:00:00",
@@ -5817,7 +9425,118 @@
       "startTimestamp": 1789099200,
       "endTimestamp": 1791320399,
       "image": "intel/mission/tex_campaign_mission_logo_00374.png",
-      "drops": []
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00205.png",
+          "name": "2.5周年庆典 超稀有兑换券",
+          "source": "任务",
+          "label": "2.5周年庆典 超稀有兑换券 x1 · 任务",
+          "rewardType": 42,
+          "rewardValue": 205,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "任务",
+          "label": "稀有启发专业书 x3 · 任务",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "任务",
+          "label": "稀有启发书 x3 · 任务",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "任务",
+          "label": "金结晶片 x1 · 任务",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "任务",
+          "label": "协助卡招募券 x1 · 任务",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "任务",
+          "label": "闹钟 x10 · 任务",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "任务",
+          "label": "梦想光辉 x10 · 任务",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 10,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "任务",
+          "label": "宝石 x500 · 任务",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "任务",
+          "label": "养成优俊少女招募券 x1 · 任务",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "任务",
+          "label": "协助积分 x50000 · 任务",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 50000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "任务",
+          "label": "金币 x100000 · 任务",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 100000,
+          "isPiece": false
+        }
+      ]
     }
   ],
   "races": [
@@ -6138,5 +9857,944 @@
       ]
     }
   ],
-  "generatedAt": "2026-07-22 04:05:31"
+  "exchanges": [
+    {
+      "id": 2762336483,
+      "name": "社团积分兑换 · 追加",
+      "type": "物品兑换",
+      "start": "2026-08-01 12:00:00",
+      "end": "2026-09-01 11:59:59",
+      "startTimestamp": 1785556800,
+      "endTimestamp": 1788235199,
+      "image": "intel/item/item_icon_00134.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_106201.png",
+          "name": "[跌跌撞撞向前冲]待兼唐怀瑟碎片",
+          "source": "兑换",
+          "label": "[跌跌撞撞向前冲]待兼唐怀瑟碎片 x50 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 106201,
+          "amount": 50,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_106001.png",
+          "name": "[绯青缎带]优秀素质碎片",
+          "source": "兑换",
+          "label": "[绯青缎带]优秀素质碎片 x50 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 106001,
+          "amount": 50,
+          "isPiece": true
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_8000_1785556800_1788235199.json",
+      "exchangeDetailCount": 2,
+      "isVoucherExchange": false
+    },
+    {
+      "id": 5740361376,
+      "name": "2.5周年庆典 纪念 · 好友积分",
+      "type": "物品兑换",
+      "start": "2026-08-20 12:00:00",
+      "end": "2026-10-06 11:59:59",
+      "startTimestamp": 1787198400,
+      "endTimestamp": 1791259199,
+      "image": "intel/item/item_icon_00098.png",
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "兑换",
+          "label": "稀有启发专业书 x2 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "兑换",
+          "label": "稀有启发书 x4 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "兑换",
+          "label": "启发专业书 x4 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "兑换",
+          "label": "启发书 x8 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "兑换",
+          "label": "干劲满溢甜点 x8 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "兑换",
+          "label": "养成优俊少女招募券 x1 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "兑换",
+          "label": "迷你胡萝卜果冻 x10 · 兑换",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 10,
+          "isPiece": false
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_12008_1787198400_1791259199.json",
+      "exchangeDetailCount": 7,
+      "isVoucherExchange": false
+    },
+    {
+      "id": 4834413864,
+      "name": "2.5周年庆典 纪念 · 金币",
+      "type": "物品兑换",
+      "start": "2026-08-20 12:00:00",
+      "end": "2026-10-06 11:59:59",
+      "startTimestamp": 1787198400,
+      "endTimestamp": 1791259199,
+      "image": "intel/item/item_icon_00059.png",
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "兑换",
+          "label": "稀有启发专业书 x2 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "兑换",
+          "label": "稀有启发书 x4 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "兑换",
+          "label": "启发专业书 x4 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "兑换",
+          "label": "启发书 x8 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "兑换",
+          "label": "干劲满溢甜点 x15 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "兑换",
+          "label": "梦想光辉 x20 · 兑换",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 20,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "兑换",
+          "label": "迷你胡萝卜果冻 x20 · 兑换",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 20,
+          "isPiece": false
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_12007_1787198400_1791259199.json",
+      "exchangeDetailCount": 7,
+      "isVoucherExchange": false
+    },
+    {
+      "id": 5311568672,
+      "name": "限时特卖 · 金币 · 追加",
+      "type": "物品兑换",
+      "start": "2026-08-21 05:00:00",
+      "end": "2050-08-01 23:59:59",
+      "startTimestamp": 1787259600,
+      "endTimestamp": 2542982399,
+      "image": "intel/item/item_icon_00059.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_110601.png",
+          "name": "[奇迹装点！]菱奇宝碎片",
+          "source": "兑换",
+          "label": "[奇迹装点！]菱奇宝碎片 x1 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 110601,
+          "amount": 1,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_110501.png",
+          "name": "[Universe-Naut]新宇宙碎片",
+          "source": "兑换",
+          "label": "[Universe-Naut]新宇宙碎片 x1 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 110501,
+          "amount": 1,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_110401.png",
+          "name": "[登龙之顶]葛城荣主碎片",
+          "source": "兑换",
+          "label": "[登龙之顶]葛城荣主碎片 x1 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 110401,
+          "amount": 1,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_108501.png",
+          "name": "[华丽红玉]第一红宝碎片",
+          "source": "兑换",
+          "label": "[华丽红玉]第一红宝碎片 x1 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 108501,
+          "amount": 1,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_108401.png",
+          "name": "[雷霆加身]谷水琴蕾碎片",
+          "source": "兑换",
+          "label": "[雷霆加身]谷水琴蕾碎片 x1 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 108401,
+          "amount": 1,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_108301.png",
+          "name": "[Onyx Soldier]克里斯象征碎片",
+          "source": "兑换",
+          "label": "[Onyx Soldier]克里斯象征碎片 x1 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 108301,
+          "amount": 1,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_107601.png",
+          "name": "[Saisir le rêve]樱花桂冠碎片",
+          "source": "兑换",
+          "label": "[Saisir le rêve]樱花桂冠碎片 x1 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 107601,
+          "amount": 1,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_107102.png",
+          "name": "[Neige Émeraude]目白雅丹碎片",
+          "source": "兑换",
+          "label": "[Neige Émeraude]目白雅丹碎片 x1 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 107102,
+          "amount": 1,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_107001.png",
+          "name": "[Féroce]天狼星象征碎片",
+          "source": "兑换",
+          "label": "[Féroce]天狼星象征碎片 x1 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 107001,
+          "amount": 1,
+          "isPiece": true
+        },
+        {
+          "image": "intel/piece/piece_icon_106902.png",
+          "name": "[Fleur Enneigée]樱花千代王碎片",
+          "source": "兑换",
+          "label": "[Fleur Enneigée]樱花千代王碎片 x1 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 106902,
+          "amount": 1,
+          "isPiece": true
+        },
+        {
+          "label": "+11",
+          "countOnly": true
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_9000_1787259600_2542982399.json",
+      "exchangeDetailCount": 21,
+      "isVoucherExchange": false
+    },
+    {
+      "id": 2187766204,
+      "name": "2.5周年庆典 纪念 · 好友积分 · 追加",
+      "type": "物品兑换",
+      "start": "2026-08-31 12:00:00",
+      "end": "2026-10-06 11:59:59",
+      "startTimestamp": 1788148800,
+      "endTimestamp": 1791259199,
+      "image": "intel/item/item_icon_00098.png",
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00194.png",
+          "name": "稀有或以上新人出道招募第3期",
+          "source": "兑换",
+          "label": "稀有或以上新人出道招募第3期 x1 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 194,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00193.png",
+          "name": "2★或以上新人出道招募第3期",
+          "source": "兑换",
+          "label": "2★或以上新人出道招募第3期 x1 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 193,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "兑换",
+          "label": "协助卡招募券 x1 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "兑换",
+          "label": "闹钟 x8 · 兑换",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "兑换",
+          "label": "能量饮料30 x8 · 兑换",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 8,
+          "isPiece": false
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_12008_1788148800_1791259199.json",
+      "exchangeDetailCount": 5,
+      "isVoucherExchange": false
+    },
+    {
+      "id": 4100416052,
+      "name": "2.5周年庆典 纪念 · 金币 · 追加",
+      "type": "物品兑换",
+      "start": "2026-08-31 12:00:00",
+      "end": "2026-10-06 11:59:59",
+      "startTimestamp": 1788148800,
+      "endTimestamp": 1791259199,
+      "image": "intel/item/item_icon_00059.png",
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00150.png",
+          "name": "金结晶片",
+          "source": "兑换",
+          "label": "金结晶片 x1 · 兑换",
+          "rewardType": 164,
+          "rewardValue": 150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00149.png",
+          "name": "彩虹结晶片",
+          "source": "兑换",
+          "label": "彩虹结晶片 x1 · 兑换",
+          "rewardType": 164,
+          "rewardValue": 149,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "兑换",
+          "label": "协助卡招募券 x1 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00095.png",
+          "name": "闹钟",
+          "source": "兑换",
+          "label": "闹钟 x15 · 兑换",
+          "rewardType": 34,
+          "rewardValue": 95,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "兑换",
+          "label": "养成优俊少女招募券 x1 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "兑换",
+          "label": "能量饮料30 x15 · 兑换",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 15,
+          "isPiece": false
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_12007_1788148800_1791259199.json",
+      "exchangeDetailCount": 6,
+      "isVoucherExchange": false
+    },
+    {
+      "id": 5278798276,
+      "name": "2.5周年庆典 3★兑换券",
+      "type": "兑换券兑换",
+      "start": "2026-08-31 12:00:00",
+      "end": "2050-08-01 23:59:59",
+      "startTimestamp": 1788148800,
+      "endTimestamp": 2542982399,
+      "image": "intel/item/item_icon_00204.png",
+      "drops": [],
+      "exchangeDetailPath": "intel/exchanges/exchange_5004_1788148800_2542982399.json",
+      "exchangeDetailCount": 118,
+      "isVoucherExchange": true
+    },
+    {
+      "id": 2103501285,
+      "name": "2.5周年庆典 超稀有兑换券",
+      "type": "兑换券兑换",
+      "start": "2026-08-31 12:00:00",
+      "end": "2050-08-01 23:59:59",
+      "startTimestamp": 1788148800,
+      "endTimestamp": 2542982399,
+      "image": "intel/item/item_icon_00205.png",
+      "drops": [],
+      "exchangeDetailPath": "intel/exchanges/exchange_5505_1788148800_2542982399.json",
+      "exchangeDetailCount": 109,
+      "isVoucherExchange": true
+    },
+    {
+      "id": 4804265697,
+      "name": "社团积分兑换 · 追加",
+      "type": "物品兑换",
+      "start": "2026-09-01 12:00:00",
+      "end": "2026-10-01 11:59:59",
+      "startTimestamp": 1788235200,
+      "endTimestamp": 1790827199,
+      "image": "intel/item/item_icon_00134.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_105601.png",
+          "name": "[运气高升☆祈福运来]待兼福来碎片",
+          "source": "兑换",
+          "label": "[运气高升☆祈福运来]待兼福来碎片 x50 · 兑换",
+          "rewardType": 102,
+          "rewardValue": 105601,
+          "amount": 50,
+          "isPiece": true
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_8000_1788235200_1790827199.json",
+      "exchangeDetailCount": 1,
+      "isVoucherExchange": false
+    },
+    {
+      "id": 4611719191,
+      "name": "好友积分兑换 · 追加",
+      "type": "物品兑换",
+      "start": "2026-09-01 12:00:00",
+      "end": "2050-08-01 23:59:59",
+      "startTimestamp": 1788235200,
+      "endTimestamp": 2542982399,
+      "image": "intel/item/item_icon_00098.png",
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "兑换",
+          "label": "稀有启发专业书 x4 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "兑换",
+          "label": "稀有启发书 x8 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "兑换",
+          "label": "启发专业书 x8 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "兑换",
+          "label": "启发书 x16 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 16,
+          "isPiece": false
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_2000_1788235200_2542982399.json",
+      "exchangeDetailCount": 4,
+      "isVoucherExchange": false
+    },
+    {
+      "id": 3445108830,
+      "name": "彩虹徽章兑换 · 追加",
+      "type": "物品兑换",
+      "start": "2026-09-01 12:00:00",
+      "end": "2050-08-01 23:59:59",
+      "startTimestamp": 1788235200,
+      "endTimestamp": 2542982399,
+      "image": "intel/item/item_icon_00050.png",
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "兑换",
+          "label": "稀有启发专业书 x4 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "兑换",
+          "label": "稀有启发书 x8 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "兑换",
+          "label": "启发专业书 x8 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "兑换",
+          "label": "启发书 x16 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 16,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "兑换",
+          "label": "梦想光辉 x100 · 兑换",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 100,
+          "isPiece": false
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_7000_1788235200_2542982399.json",
+      "exchangeDetailCount": 5,
+      "isVoucherExchange": false
+    },
+    {
+      "id": 5444668042,
+      "name": "金徽章兑换 · 追加",
+      "type": "物品兑换",
+      "start": "2026-09-01 12:00:00",
+      "end": "2050-08-01 23:59:59",
+      "startTimestamp": 1788235200,
+      "endTimestamp": 2542982399,
+      "image": "intel/item/item_icon_00049.png",
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "兑换",
+          "label": "稀有启发专业书 x4 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "兑换",
+          "label": "稀有启发书 x8 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "兑换",
+          "label": "启发专业书 x8 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "兑换",
+          "label": "启发书 x16 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 16,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "兑换",
+          "label": "梦想光辉 x100 · 兑换",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 100,
+          "isPiece": false
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_7001_1788235200_2542982399.json",
+      "exchangeDetailCount": 5,
+      "isVoucherExchange": false
+    },
+    {
+      "id": 5149156279,
+      "name": "银徽章兑换 · 追加",
+      "type": "物品兑换",
+      "start": "2026-09-01 12:00:00",
+      "end": "2050-08-01 23:59:59",
+      "startTimestamp": 1788235200,
+      "endTimestamp": 2542982399,
+      "image": "intel/item/item_icon_00048.png",
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00163.png",
+          "name": "稀有启发专业书",
+          "source": "兑换",
+          "label": "稀有启发专业书 x4 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 163,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00162.png",
+          "name": "稀有启发书",
+          "source": "兑换",
+          "label": "稀有启发书 x8 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 162,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00161.png",
+          "name": "启发专业书",
+          "source": "兑换",
+          "label": "启发专业书 x8 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 161,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00160.png",
+          "name": "启发书",
+          "source": "兑换",
+          "label": "启发书 x16 · 兑换",
+          "rewardType": 11,
+          "rewardValue": 160,
+          "amount": 16,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00044.png",
+          "name": "梦想光辉",
+          "source": "兑换",
+          "label": "梦想光辉 x100 · 兑换",
+          "rewardType": 93,
+          "rewardValue": 44,
+          "amount": 100,
+          "isPiece": false
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_7002_1788235200_2542982399.json",
+      "exchangeDetailCount": 5,
+      "isVoucherExchange": false
+    },
+    {
+      "id": 2021179188,
+      "name": "2.5周年庆典 纪念 · 好友积分 · 追加",
+      "type": "物品兑换",
+      "start": "2026-09-11 12:00:00",
+      "end": "2026-10-06 11:59:59",
+      "startTimestamp": 1789099200,
+      "endTimestamp": 1791259199,
+      "image": "intel/item/item_icon_00098.png",
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00120.png",
+          "name": "外道抽选球",
+          "source": "兑换",
+          "label": "外道抽选球 x8 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 120,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00119.png",
+          "name": "内道抽选球",
+          "source": "兑换",
+          "label": "内道抽选球 x8 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 119,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00118.png",
+          "name": "雨天娃娃",
+          "source": "兑换",
+          "label": "雨天娃娃 x8 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 118,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00117.png",
+          "name": "晴天娃娃",
+          "source": "兑换",
+          "label": "晴天娃娃 x8 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 117,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "兑换",
+          "label": "干劲满溢甜点 x8 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 8,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "兑换",
+          "label": "迷你胡萝卜果冻 x10 · 兑换",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 10,
+          "isPiece": false
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_12008_1789099200_1791259199.json",
+      "exchangeDetailCount": 6,
+      "isVoucherExchange": false
+    },
+    {
+      "id": 4000941244,
+      "name": "2.5周年庆典 纪念 · 金币 · 追加",
+      "type": "物品兑换",
+      "start": "2026-09-11 12:00:00",
+      "end": "2026-10-06 11:59:59",
+      "startTimestamp": 1789099200,
+      "endTimestamp": 1791259199,
+      "image": "intel/item/item_icon_00059.png",
+      "drops": [
+        {
+          "image": "intel/item/item_icon_00120.png",
+          "name": "外道抽选球",
+          "source": "兑换",
+          "label": "外道抽选球 x15 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 120,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00119.png",
+          "name": "内道抽选球",
+          "source": "兑换",
+          "label": "内道抽选球 x15 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 119,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00118.png",
+          "name": "雨天娃娃",
+          "source": "兑换",
+          "label": "雨天娃娃 x15 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 118,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00117.png",
+          "name": "晴天娃娃",
+          "source": "兑换",
+          "label": "晴天娃娃 x15 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 117,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "兑换",
+          "label": "干劲满溢甜点 x15 · 兑换",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 15,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00111.png",
+          "name": "协助卡招募券",
+          "source": "兑换",
+          "label": "协助卡招募券 x1 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 111,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00041.png",
+          "name": "养成优俊少女招募券",
+          "source": "兑换",
+          "label": "养成优俊少女招募券 x1 · 兑换",
+          "rewardType": 40,
+          "rewardValue": 41,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "兑换",
+          "label": "迷你胡萝卜果冻 x20 · 兑换",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 20,
+          "isPiece": false
+        }
+      ],
+      "exchangeDetailPath": "intel/exchanges/exchange_12007_1789099200_1791259199.json",
+      "exchangeDetailCount": 8,
+      "isVoucherExchange": false
+    }
+  ],
+  "generatedAt": "2026-07-22 05:41:22"
 }

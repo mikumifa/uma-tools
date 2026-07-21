@@ -356,6 +356,17 @@ a:hover {
   background: var(--uma-surface-soft);
 }
 
+.intelEventItem[role="button"],
+.intelEventTimelineItem[role="button"] {
+  cursor: pointer;
+}
+
+.intelEventItem[role="button"]:focus-visible,
+.intelEventTimelineItem[role="button"]:focus-visible {
+  outline: 2px solid var(--uma-accent);
+  outline-offset: 2px;
+}
+
 .intelEventItem.hasImage {
   grid-template-columns: 56px minmax(0, 1fr);
 }
@@ -364,7 +375,8 @@ a:hover {
 .intelEventItem.hasImage.storyImage,
 .intelEventItem.hasImage.legendImage,
 .intelEventItem.hasImage.factorResearchImage,
-.intelEventItem.hasImage.campaignImage {
+.intelEventItem.hasImage.campaignImage,
+.intelEventItem.hasImage.specialImage {
   grid-template-columns: 120px minmax(0, 1fr);
 }
 
@@ -381,7 +393,8 @@ a:hover {
 .intelEventItem > img.storyImage,
 .intelEventItem > img.legendImage,
 .intelEventItem > img.factorResearchImage,
-.intelEventItem > img.campaignImage {
+.intelEventItem > img.campaignImage,
+.intelEventItem > img.specialImage {
   width: 120px;
   height: 56px;
 }
@@ -394,6 +407,16 @@ a:hover {
 .intelEventItem.active {
   border-left-color: #0f766e;
   background: #ecfdf5;
+}
+
+.intelEventItem.trainingChallengeEvent,
+.intelEventTimelineItem.trainingChallengeEvent {
+  border-left-color: #7c3aed;
+}
+
+.intelEventItem.challengeMatchEvent,
+.intelEventTimelineItem.challengeMatchEvent {
+  border-left-color: #d97706;
 }
 
 .intelEventItem.active strong,
@@ -449,10 +472,51 @@ a:hover {
   grid-column: 2;
 }
 
-.intelDropIcons img {
+.intelDropIcon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+}
+
+.intelDropIcon img {
   width: 34px;
   height: 34px;
   object-fit: contain;
+}
+
+.intelDropIcon em {
+  position: absolute;
+  right: -5px;
+  bottom: -2px;
+  min-width: 18px;
+  padding: 1px 4px;
+  border-radius: 999px;
+  background: #172033;
+  color: #fff;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1.25;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.25);
+}
+
+.intelDropCount {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 9px;
+  border: 1px solid var(--uma-border);
+  border-radius: 999px;
+  background: #f8fafc;
+  color: var(--uma-muted);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .intelEventItem > span {
@@ -532,6 +596,7 @@ a:hover {
 .intelEventTimelineItem.hasImage.legendImage,
 .intelEventTimelineItem.hasImage.factorResearchImage,
 .intelEventTimelineItem.hasImage.campaignImage,
+.intelEventTimelineItem.hasImage.specialImage,
 .intelEventTimelineHeader {
   grid-template-columns: 300px minmax(0, 1fr);
 }
@@ -581,7 +646,8 @@ a:hover {
 .intelEventTimelineItem.hasImage.storyImage .intelEventTimelineLabel,
 .intelEventTimelineItem.hasImage.legendImage .intelEventTimelineLabel,
 .intelEventTimelineItem.hasImage.factorResearchImage .intelEventTimelineLabel,
-.intelEventTimelineItem.hasImage.campaignImage .intelEventTimelineLabel {
+.intelEventTimelineItem.hasImage.campaignImage .intelEventTimelineLabel,
+.intelEventTimelineItem.hasImage.specialImage .intelEventTimelineLabel {
   align-content: flex-start;
 }
 
@@ -597,7 +663,8 @@ a:hover {
 .intelEventTimelineLabel img.storyImage,
 .intelEventTimelineLabel img.legendImage,
 .intelEventTimelineLabel img.factorResearchImage,
-.intelEventTimelineLabel img.campaignImage {
+.intelEventTimelineLabel img.campaignImage,
+.intelEventTimelineLabel img.specialImage {
   flex-basis: 100%;
   width: 100%;
   max-width: 280px;
@@ -650,6 +717,21 @@ a:hover {
   border-radius: 3px;
   background: #edf2f7;
   color: var(--uma-text);
+}
+
+.intelEventTimelineItem.active .intelEventTimelineBar {
+  border-left-color: #0f766e;
+  background: #ccfbf1;
+}
+
+.intelEventTimelineItem.trainingChallengeEvent .intelEventTimelineBar {
+  border-left-color: #7c3aed;
+  background: #f3e8ff;
+}
+
+.intelEventTimelineItem.challengeMatchEvent .intelEventTimelineBar {
+  border-left-color: #d97706;
+  background: #fef3c7;
 }
 
 .intelEventTimelineItem.active .intelEventTimelineBar {
@@ -1373,6 +1455,211 @@ a:hover {
 .intelDetailCard small {
   color: var(--uma-muted);
   font-size: 12px;
+}
+
+.intelScheduleDetailPanel {
+  width: min(920px, 100%);
+}
+
+.intelScheduleDetailPanel .intelDetailBanner {
+  max-height: 150px;
+}
+
+.intelScheduleDetailSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.intelScheduleDetailSection h3 {
+  margin: 0;
+  color: var(--uma-muted);
+  font-size: 13px;
+}
+
+.intelScheduleRewardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 8px;
+}
+
+.intelScheduleRewardGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.intelScheduleRewardGroup {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  min-width: 0;
+  padding: 7px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface-soft);
+}
+
+.intelScheduleRewardGroup > strong {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--uma-muted);
+  font-size: 12px;
+  line-height: 38px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.intelScheduleRewardGroup > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-width: 0;
+}
+
+.intelScheduleRewardItem,
+.intelExchangeDetailItem {
+  min-width: 0;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface-soft);
+}
+
+.intelScheduleRewardItem {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  padding: 7px;
+}
+
+.intelDetailRewardIcon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+}
+
+.intelDetailRewardIcon img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.intelDetailRewardIcon > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  color: var(--uma-muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.intelDetailRewardMore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface);
+  color: var(--uma-muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.intelDetailRewardIcon em {
+  position: absolute;
+  right: -5px;
+  bottom: -2px;
+  min-width: 18px;
+  padding: 1px 4px;
+  border-radius: 999px;
+  background: #172033;
+  color: #fff;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.intelScheduleRewardItem strong,
+.intelScheduleRewardItem span,
+.intelExchangeDetailItem strong,
+.intelExchangeDetailItem span,
+.intelExchangeDetailItem small {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.intelScheduleRewardItem strong,
+.intelExchangeDetailItem strong {
+  font-size: 13px;
+}
+
+.intelScheduleRewardItem span,
+.intelExchangeDetailItem span,
+.intelExchangeDetailItem small {
+  color: var(--uma-muted);
+  font-size: 12px;
+}
+
+.intelExchangeDetailList {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.intelDetailNotice {
+  padding: 10px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface-soft);
+  color: var(--uma-muted);
+  font-size: 13px;
+}
+
+.intelExchangeDetailItem {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(120px, 0.55fr) 84px;
+  gap: 8px;
+  align-items: center;
+  padding: 7px;
+}
+
+.intelExchangeRewardSide,
+.intelExchangePaySide {
+  display: grid;
+  gap: 7px;
+  align-items: center;
+  min-width: 0;
+}
+
+.intelExchangeRewardSide {
+  grid-template-columns: 42px minmax(0, 1fr);
+}
+
+.intelExchangePaySide {
+  grid-template-columns: auto 38px auto;
+}
+
+.intelExchangeLimitSide {
+  min-width: 0;
+  text-align: right;
 }
 
 #topPane {
@@ -2302,7 +2589,8 @@ a:hover {
   .intelEventTimelineItem.hasImage.storyImage,
   .intelEventTimelineItem.hasImage.legendImage,
   .intelEventTimelineItem.hasImage.factorResearchImage,
-  .intelEventTimelineItem.hasImage.campaignImage {
+  .intelEventTimelineItem.hasImage.campaignImage,
+  .intelEventTimelineItem.hasImage.specialImage {
     grid-template-columns: 240px minmax(420px, 1fr);
   }
 
@@ -2319,7 +2607,8 @@ a:hover {
   .intelEventTimelineLabel img.storyImage,
   .intelEventTimelineLabel img.legendImage,
   .intelEventTimelineLabel img.factorResearchImage,
-  .intelEventTimelineLabel img.campaignImage {
+  .intelEventTimelineLabel img.campaignImage,
+  .intelEventTimelineLabel img.specialImage {
     max-width: 220px;
   }
 
@@ -2466,7 +2755,8 @@ a:hover {
   .intelEventItem.hasImage.storyImage,
   .intelEventItem.hasImage.legendImage,
   .intelEventItem.hasImage.factorResearchImage,
-  .intelEventItem.hasImage.campaignImage {
+  .intelEventItem.hasImage.campaignImage,
+  .intelEventItem.hasImage.specialImage {
     grid-template-columns: 92px minmax(0, 1fr);
   }
 
@@ -2474,7 +2764,8 @@ a:hover {
   .intelEventItem > img.storyImage,
   .intelEventItem > img.legendImage,
   .intelEventItem > img.factorResearchImage,
-  .intelEventItem > img.campaignImage {
+  .intelEventItem > img.campaignImage,
+  .intelEventItem > img.specialImage {
     width: 92px;
     height: 48px;
   }
@@ -2487,9 +2778,19 @@ a:hover {
     font-size: 13px;
   }
 
-  .intelDropIcons img {
+  .intelDropIcon,
+  .intelDropIcon img {
     width: 30px;
     height: 30px;
+  }
+
+  .intelDropIcon em {
+    font-size: 9px;
+  }
+
+  .intelDropCount {
+    min-height: 28px;
+    font-size: 11px;
   }
 
   .intelEventTimelineHeader,
@@ -2499,7 +2800,8 @@ a:hover {
   .intelEventTimelineItem.hasImage.storyImage,
   .intelEventTimelineItem.hasImage.legendImage,
   .intelEventTimelineItem.hasImage.factorResearchImage,
-  .intelEventTimelineItem.hasImage.campaignImage {
+  .intelEventTimelineItem.hasImage.campaignImage,
+  .intelEventTimelineItem.hasImage.specialImage {
     grid-template-columns: 190px minmax(360px, 1fr);
   }
 
@@ -2511,7 +2813,8 @@ a:hover {
   .intelEventTimelineLabel img.storyImage,
   .intelEventTimelineLabel img.legendImage,
   .intelEventTimelineLabel img.factorResearchImage,
-  .intelEventTimelineLabel img.campaignImage {
+  .intelEventTimelineLabel img.campaignImage,
+  .intelEventTimelineLabel img.specialImage {
     max-width: 172px;
     height: 52px;
   }

@@ -1,0 +1,109 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 72102,
+      "order": 101,
+      "reward": {
+        "image": "intel/item/item_icon_00044.png",
+        "name": "梦想光辉",
+        "rewardType": 93,
+        "rewardValue": 44,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00048.png",
+        "name": "银徽章",
+        "rewardType": 160,
+        "rewardValue": 48,
+        "amount": 5
+      },
+      "limit": 100,
+      "totalRewardAmount": 100,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 72251,
+      "order": 251,
+      "reward": {
+        "image": "intel/item/item_icon_00160.png",
+        "name": "启发书",
+        "rewardType": 11,
+        "rewardValue": 160,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00048.png",
+        "name": "银徽章",
+        "rewardType": 160,
+        "rewardValue": 48,
+        "amount": 25
+      },
+      "limit": 16,
+      "totalRewardAmount": 16,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 72252,
+      "order": 252,
+      "reward": {
+        "image": "intel/item/item_icon_00161.png",
+        "name": "启发专业书",
+        "rewardType": 11,
+        "rewardValue": 161,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00048.png",
+        "name": "银徽章",
+        "rewardType": 160,
+        "rewardValue": 48,
+        "amount": 50
+      },
+      "limit": 8,
+      "totalRewardAmount": 8,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 72253,
+      "order": 253,
+      "reward": {
+        "image": "intel/item/item_icon_00162.png",
+        "name": "稀有启发书",
+        "rewardType": 11,
+        "rewardValue": 162,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00048.png",
+        "name": "银徽章",
+        "rewardType": 160,
+        "rewardValue": 48,
+        "amount": 100
+      },
+      "limit": 8,
+      "totalRewardAmount": 8,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 72254,
+      "order": 254,
+      "reward": {
+        "image": "intel/item/item_icon_00163.png",
+        "name": "稀有启发专业书",
+        "rewardType": 11,
+        "rewardValue": 163,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00048.png",
+        "name": "银徽章",
+        "rewardType": 160,
+        "rewardValue": 48,
+        "amount": 150
+      },
+      "limit": 4,
+      "totalRewardAmount": 4,
+      "additionalPieceAmount": 0
+    }
+  ]
+}
