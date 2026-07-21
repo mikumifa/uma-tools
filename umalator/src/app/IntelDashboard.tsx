@@ -393,6 +393,27 @@ function rewardSourceGroups(drops?: ScheduleItem["drops"]) {
   }, []);
 }
 
+function mergedRewardDrops(drops?: ScheduleItem["drops"]) {
+  const merged = new Map<string, NonNullable<ScheduleItem["drops"]>[number]>();
+  (drops || []).forEach((drop) => {
+    const key = `${drop.rewardType || 0}-${drop.rewardValue || 0}-${drop.image || drop.name || drop.label || ""}`;
+    const existing = merged.get(key);
+    if (!existing) {
+      merged.set(key, {
+        ...drop,
+        source: "合计",
+        label: drop.name || drop.label || "奖励",
+      });
+      return;
+    }
+    existing.amount = Number(existing.amount || 0) + Number(drop.amount || 0);
+  });
+  return Array.from(merged.values()).map((drop) => ({
+    ...drop,
+    label: drop.name || drop.label || "奖励",
+  }));
+}
+
 async function loadExchangeDetails(path: string) {
   const response = await fetch(assetUrl(path));
   if (!response.ok) throw new Error(`Failed to load ${path}`);
@@ -732,7 +753,7 @@ function drawEventRow(
     EXPORT_WIDTH - EXPORT_PADDING - 330,
     y + 37,
   );
-  event.drops?.slice(0, 5).forEach((drop, index) => {
+  mergedRewardDrops(event.drops).slice(0, 5).forEach((drop, index) => {
     const x = EXPORT_WIDTH - EXPORT_PADDING - 330 + index * 54;
     if (drop.image) {
       drawImageFit(ctx, images.get(drop.image), x, y + 43, 38, 38, "contain");
@@ -1339,9 +1360,17 @@ function ScheduleDetail({
     source: "可兑换",
     label: detail.reward.name || "兑换奖励",
   }));
-  const rewardGroups = rewardSourceGroups(
-    item.drops?.length ? item.drops : detailRewardDrops,
-  );
+  const sourceDrops = item.drops?.length ? item.drops : detailRewardDrops;
+  const sourceGroups = rewardSourceGroups(sourceDrops);
+  const showMergedGroup = sourceGroups.some((group) => group.source !== "合计");
+  const rewardGroups = sourceDrops.length
+    ? [
+        ...(showMergedGroup
+          ? [{ source: "合计", drops: mergedRewardDrops(sourceDrops) }]
+          : []),
+        ...sourceGroups,
+      ]
+    : [];
   return (
     <div
       class="intelModalOverlay"
@@ -1627,10 +1656,11 @@ function eventMonthGroups(events: ScheduleItem[]) {
 }
 
 function DropIcons({ drops }: { drops?: ScheduleItem["drops"] }) {
-  if (!drops?.length) return null;
+  const mergedDrops = mergedRewardDrops(drops);
+  if (!mergedDrops.length) return null;
   return (
     <div class="intelDropIcons">
-      {drops.map((drop, index) =>
+      {mergedDrops.map((drop, index) =>
         drop.image ? (
           <span
             class="intelDropIcon"
