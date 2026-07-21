@@ -1017,6 +1017,7 @@ a:hover {
 }
 
 .intelGachaListItem {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(220px, 340px) minmax(170px, 0.42fr) minmax(260px, 1fr);
   gap: 10px;
@@ -1058,6 +1059,32 @@ a:hover {
 
 .intelGachaListItem > div {
   min-width: 0;
+}
+
+.intelGachaListMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.intelGachaListMeta strong,
+.intelGachaListMeta span,
+.intelGachaListMeta time {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.intelGachaListMeta strong {
+  color: var(--uma-text);
+  font-size: 15px;
+}
+
+.intelGachaListMeta span {
+  color: var(--uma-muted);
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .intelGachaListItem time {
@@ -1165,6 +1192,7 @@ a:hover {
 }
 
 .intelWeekPool {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(190px, 300px) minmax(0, 1fr);
   gap: 6px;
@@ -1196,6 +1224,34 @@ a:hover {
 
 .intelWeekPool.active {
   box-shadow: inset 0 0 0 2px rgba(15, 118, 110, 0.22);
+}
+
+.intelPoolStatus {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  z-index: 1;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.12);
+  color: #0f766e;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.intelPoolOnce {
+  position: absolute;
+  top: 27px;
+  right: 7px;
+  z-index: 1;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(217, 119, 6, 0.12);
+  color: #b45309;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .intelWeekPool.compact {

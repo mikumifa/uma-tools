@@ -1279,7 +1279,9 @@ def generate_gacha_data() -> list[dict]:
             ga.rarity,
             gd.start_date,
             gd.end_date,
+            gd.only_once_flag,
             td.text,
+            gtd.text,
             cd.chara_id,
             scd.chara_id
         FROM gacha_available ga
@@ -1287,6 +1289,7 @@ def generate_gacha_data() -> list[dict]:
         JOIN text_data td
           ON ga.card_id = td.[index]
          AND td.category = CASE ga.card_type WHEN 1 THEN 4 WHEN 2 THEN 75 END
+        LEFT JOIN text_data gtd ON gtd.category = 26 AND gtd.[index] = ga.gacha_id
         LEFT JOIN card_data cd ON ga.card_type = 1 AND cd.id = ga.card_id
         LEFT JOIN support_card_data scd ON ga.card_type = 2 AND scd.id = ga.card_id
         WHERE ga.is_pickup = 1
@@ -1299,7 +1302,7 @@ def generate_gacha_data() -> list[dict]:
     conn.close()
 
     grouped: dict[tuple[int, str], dict] = {}
-    for gacha_id, card_id, card_type, rarity, start_ts, end_ts, name, chara_id, support_chara_id in rows:
+    for gacha_id, card_id, card_type, rarity, start_ts, end_ts, only_once_flag, name, gacha_name, chara_id, support_chara_id in rows:
         pool_type = "角色卡池" if card_type == 1 else "支援卡"
         key = (gacha_id, pool_type)
         group = grouped.setdefault(
@@ -1307,10 +1310,12 @@ def generate_gacha_data() -> list[dict]:
             {
                 "id": gacha_id,
                 "type": pool_type,
+                "name": display_text(gacha_name or pool_type),
                 "start": ts_to_str(start_ts),
                 "end": ts_to_str(end_ts),
                 "startTimestamp": start_ts,
                 "endTimestamp": end_ts,
+                "onlyOnce": bool(only_once_flag),
                 "bannerImage": None,
                 "cards": [],
             },

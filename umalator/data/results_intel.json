@@ -585,10 +585,12 @@
     {
       "id": 30151,
       "type": "支援卡",
+      "name": "2周年庆典 协助卡招募",
       "start": "2026-05-07 05:00:00",
       "end": "2026-05-31 11:59:59",
       "startTimestamp": 1778101200,
       "endTimestamp": 1780199999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30151.png",
       "cards": [
         {
@@ -668,10 +670,12 @@
     {
       "id": 30150,
       "type": "角色卡池",
+      "name": "2周年庆典 优俊少女招募",
       "start": "2026-05-07 05:00:00",
       "end": "2026-05-31 11:59:59",
       "startTimestamp": 1778101200,
       "endTimestamp": 1780199999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30150.png",
       "cards": [
         {
@@ -697,10 +701,12 @@
     {
       "id": 30153,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-05-19 12:00:00",
       "end": "2026-05-29 11:59:59",
       "startTimestamp": 1779163200,
       "endTimestamp": 1780027199,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30153.png",
       "cards": [
         {
@@ -726,10 +732,12 @@
     {
       "id": 50018,
       "type": "支援卡",
+      "name": "超稀有必得 1周年版本系列招募",
       "start": "2026-05-19 12:00:00",
       "end": "2026-06-09 11:59:59",
       "startTimestamp": 1779163200,
       "endTimestamp": 1780977599,
+      "onlyOnce": true,
       "bannerImage": "intel/gacha/img_bnr_gacha_50018.png",
       "cards": [
         {
@@ -1241,10 +1249,12 @@
     {
       "id": 50020,
       "type": "支援卡",
+      "name": "超稀有必得 2周年版本系列招募",
       "start": "2026-05-19 12:00:00",
       "end": "2026-06-09 11:59:58",
       "startTimestamp": 1779163200,
       "endTimestamp": 1780977598,
+      "onlyOnce": true,
       "bannerImage": "intel/gacha/img_bnr_gacha_50020.png",
       "cards": [
         {
@@ -1585,10 +1595,12 @@
     {
       "id": 30152,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-05-19 12:00:00",
       "end": "2026-05-29 11:59:59",
       "startTimestamp": 1779163200,
       "endTimestamp": 1780027199,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30152.png",
       "cards": [
         {
@@ -1605,10 +1617,12 @@
     {
       "id": 50017,
       "type": "角色卡池",
+      "name": "3★必得 1周年版本系列招募",
       "start": "2026-05-19 12:00:00",
       "end": "2026-06-09 11:59:59",
       "startTimestamp": 1779163200,
       "endTimestamp": 1780977599,
+      "onlyOnce": true,
       "bannerImage": "intel/gacha/img_bnr_gacha_50017.png",
       "cards": [
         {
@@ -2093,10 +2107,12 @@
     {
       "id": 50019,
       "type": "角色卡池",
+      "name": "3★必得 2周年版本系列招募",
       "start": "2026-05-19 12:00:00",
       "end": "2026-06-09 11:59:58",
       "startTimestamp": 1779163200,
       "endTimestamp": 1780977598,
+      "onlyOnce": true,
       "bannerImage": "intel/gacha/img_bnr_gacha_50019.png",
       "cards": [
         {
@@ -2518,10 +2534,12 @@
     {
       "id": 30155,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-05-23 12:00:00",
       "end": "2026-06-01 11:59:59",
       "startTimestamp": 1779508800,
       "endTimestamp": 1780286399,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30155.png",
       "cards": [
         {
@@ -2547,10 +2565,12 @@
     {
       "id": 30154,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-05-23 12:00:00",
       "end": "2026-06-01 11:59:59",
       "startTimestamp": 1779508800,
       "endTimestamp": 1780286399,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30154.png",
       "cards": [
         {
@@ -2567,10 +2587,12 @@
     {
       "id": 30157,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-05-30 12:00:00",
       "end": "2026-06-11 11:59:59",
       "startTimestamp": 1780113600,
       "endTimestamp": 1781150399,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30157.png",
       "cards": [
         {
@@ -2596,10 +2618,12 @@
     {
       "id": 30156,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-05-30 12:00:00",
       "end": "2026-06-11 11:59:59",
       "startTimestamp": 1780113600,
       "endTimestamp": 1781150399,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30156.png",
       "cards": [
         {
@@ -2625,10 +2649,12 @@
     {
       "id": 30159,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-06-06 12:00:00",
       "end": "2026-06-15 11:59:59",
       "startTimestamp": 1780718400,
       "endTimestamp": 1781495999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30159.png",
       "cards": [
         {
@@ -2654,10 +2680,12 @@
     {
       "id": 30158,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-06-06 12:00:00",
       "end": "2026-06-15 11:59:59",
       "startTimestamp": 1780718400,
       "endTimestamp": 1781495999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30158.png",
       "cards": [
         {
@@ -2674,10 +2702,12 @@
     {
       "id": 30161,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-06-11 12:00:00",
       "end": "2026-06-20 11:59:59",
       "startTimestamp": 1781150400,
       "endTimestamp": 1781927999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30161.png",
       "cards": [
         {
@@ -2703,10 +2733,12 @@
     {
       "id": 30160,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-06-11 12:00:00",
       "end": "2026-06-20 11:59:59",
       "startTimestamp": 1781150400,
       "endTimestamp": 1781927999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30160.png",
       "cards": [
         {
@@ -2723,10 +2755,12 @@
     {
       "id": 30163,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-06-20 12:00:00",
       "end": "2026-07-02 11:59:59",
       "startTimestamp": 1781928000,
       "endTimestamp": 1782964799,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30163.png",
       "cards": [
         {
@@ -2752,10 +2786,12 @@
     {
       "id": 30162,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-06-20 12:00:00",
       "end": "2026-07-02 11:59:59",
       "startTimestamp": 1781928000,
       "endTimestamp": 1782964799,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30162.png",
       "cards": [
         {
@@ -2781,10 +2817,12 @@
     {
       "id": 30164,
       "type": "角色卡池",
+      "name": "辣妹周 优俊少女招募",
       "start": "2026-06-20 12:00:00",
       "end": "2026-07-02 11:59:59",
       "startTimestamp": 1781928000,
       "endTimestamp": 1782964799,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30164.png",
       "cards": [
         {
@@ -2828,10 +2866,12 @@
     {
       "id": 30167,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-06-26 12:00:00",
       "end": "2026-07-05 11:59:59",
       "startTimestamp": 1782446400,
       "endTimestamp": 1783223999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30167.png",
       "cards": [
         {
@@ -2857,10 +2897,12 @@
     {
       "id": 30166,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-06-26 12:00:00",
       "end": "2026-07-05 11:59:59",
       "startTimestamp": 1782446400,
       "endTimestamp": 1783223999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30166.png",
       "cards": [
         {
@@ -2877,10 +2919,12 @@
     {
       "id": 30169,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-06-30 12:00:00",
       "end": "2026-07-10 11:59:59",
       "startTimestamp": 1782792000,
       "endTimestamp": 1783655999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30169.png",
       "cards": [
         {
@@ -2906,10 +2950,12 @@
     {
       "id": 30168,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-06-30 12:00:00",
       "end": "2026-07-10 11:59:59",
       "startTimestamp": 1782792000,
       "endTimestamp": 1783655999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30168.png",
       "cards": [
         {
@@ -2926,10 +2972,12 @@
     {
       "id": 30171,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-07-09 12:00:00",
       "end": "2026-07-20 11:59:59",
       "startTimestamp": 1783569600,
       "endTimestamp": 1784519999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30171.png",
       "cards": [
         {
@@ -2955,10 +3003,12 @@
     {
       "id": 30170,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-07-09 12:00:00",
       "end": "2026-07-20 11:59:59",
       "startTimestamp": 1783569600,
       "endTimestamp": 1784519999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30170.png",
       "cards": [
         {
@@ -2984,10 +3034,12 @@
     {
       "id": 30173,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-07-15 12:00:00",
       "end": "2026-07-25 11:59:59",
       "startTimestamp": 1784088000,
       "endTimestamp": 1784951999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30173.png",
       "cards": [
         {
@@ -3013,10 +3065,12 @@
     {
       "id": 30172,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-07-15 12:00:00",
       "end": "2026-07-25 11:59:59",
       "startTimestamp": 1784088000,
       "endTimestamp": 1784951999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30172.png",
       "cards": [
         {
@@ -3042,10 +3096,12 @@
     {
       "id": 30175,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-07-20 12:00:00",
       "end": "2026-07-30 11:59:59",
       "startTimestamp": 1784520000,
       "endTimestamp": 1785383999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30175.png",
       "cards": [
         {
@@ -3080,10 +3136,12 @@
     {
       "id": 50022,
       "type": "支援卡",
+      "name": "超稀有必得 登场日系列招募 第1弹",
       "start": "2026-07-20 12:00:00",
       "end": "2026-08-10 11:59:59",
       "startTimestamp": 1784520000,
       "endTimestamp": 1786334399,
+      "onlyOnce": true,
       "bannerImage": "intel/gacha/img_bnr_gacha_50022.png",
       "cards": [
         {
@@ -3433,10 +3491,12 @@
     {
       "id": 50024,
       "type": "支援卡",
+      "name": "超稀有必得 登场日系列招募 第2弹",
       "start": "2026-07-20 12:00:00",
       "end": "2026-08-10 11:59:59",
       "startTimestamp": 1784520000,
       "endTimestamp": 1786334399,
+      "onlyOnce": true,
       "bannerImage": "intel/gacha/img_bnr_gacha_50024.png",
       "cards": [
         {
@@ -3570,10 +3630,12 @@
     {
       "id": 30174,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-07-20 12:00:00",
       "end": "2026-07-30 11:59:59",
       "startTimestamp": 1784520000,
       "endTimestamp": 1785383999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30174.png",
       "cards": [
         {
@@ -3590,10 +3652,12 @@
     {
       "id": 50021,
       "type": "角色卡池",
+      "name": "3★必得 登场日系列招募 第1弹",
       "start": "2026-07-20 12:00:00",
       "end": "2026-08-10 11:59:59",
       "startTimestamp": 1784520000,
       "endTimestamp": 1786334399,
+      "onlyOnce": true,
       "bannerImage": "intel/gacha/img_bnr_gacha_50021.png",
       "cards": [
         {
@@ -4015,10 +4079,12 @@
     {
       "id": 50023,
       "type": "角色卡池",
+      "name": "3★必得 登场日系列招募 第2弹",
       "start": "2026-07-20 12:00:00",
       "end": "2026-08-10 11:59:59",
       "startTimestamp": 1784520000,
       "endTimestamp": 1786334399,
+      "onlyOnce": true,
       "bannerImage": "intel/gacha/img_bnr_gacha_50023.png",
       "cards": [
         {
@@ -4188,10 +4254,12 @@
     {
       "id": 30177,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-07-30 12:00:00",
       "end": "2026-08-10 11:59:59",
       "startTimestamp": 1785384000,
       "endTimestamp": 1786334399,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30177.png",
       "cards": [
         {
@@ -4217,10 +4285,12 @@
     {
       "id": 30176,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-07-30 12:00:00",
       "end": "2026-08-10 11:59:59",
       "startTimestamp": 1785384000,
       "endTimestamp": 1786334399,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30176.png",
       "cards": [
         {
@@ -4246,10 +4316,12 @@
     {
       "id": 30179,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-08-05 12:00:00",
       "end": "2026-08-16 11:59:59",
       "startTimestamp": 1785902400,
       "endTimestamp": 1786852799,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30179.png",
       "cards": [
         {
@@ -4275,10 +4347,12 @@
     {
       "id": 30178,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-08-05 12:00:00",
       "end": "2026-08-16 11:59:59",
       "startTimestamp": 1785902400,
       "endTimestamp": 1786852799,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30178.png",
       "cards": [
         {
@@ -4295,10 +4369,12 @@
     {
       "id": 30181,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-08-10 12:00:00",
       "end": "2026-08-20 11:59:59",
       "startTimestamp": 1786334400,
       "endTimestamp": 1787198399,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30181.png",
       "cards": [
         {
@@ -4333,10 +4409,12 @@
     {
       "id": 30180,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-08-10 12:00:00",
       "end": "2026-08-20 11:59:59",
       "startTimestamp": 1786334400,
       "endTimestamp": 1787198399,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30180.png",
       "cards": [
         {
@@ -4353,10 +4431,12 @@
     {
       "id": 50025,
       "type": "角色卡池",
+      "name": "3★必得演出纪念招募 DAY1",
       "start": "2026-08-10 12:00:00",
       "end": "2026-08-16 11:59:59",
       "startTimestamp": 1786334400,
       "endTimestamp": 1786852799,
+      "onlyOnce": true,
       "bannerImage": "intel/gacha/img_bnr_gacha_50025.png",
       "cards": [
         {
@@ -4607,10 +4687,12 @@
     {
       "id": 50027,
       "type": "角色卡池",
+      "name": "3★必得演出纪念招募 DAY2",
       "start": "2026-08-11 12:00:00",
       "end": "2026-08-16 11:59:59",
       "startTimestamp": 1786420800,
       "endTimestamp": 1786852799,
+      "onlyOnce": true,
       "bannerImage": "intel/gacha/img_bnr_gacha_50027.png",
       "cards": [
         {
@@ -4816,10 +4898,12 @@
     {
       "id": 30183,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-08-15 12:00:00",
       "end": "2026-08-29 11:59:59",
       "startTimestamp": 1786766400,
       "endTimestamp": 1787975999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30183.png",
       "cards": [
         {
@@ -4845,10 +4929,12 @@
     {
       "id": 30182,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-08-15 12:00:00",
       "end": "2026-08-29 11:59:59",
       "startTimestamp": 1786766400,
       "endTimestamp": 1787975999,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30182.png",
       "cards": [
         {
@@ -4874,10 +4960,12 @@
     {
       "id": 30185,
       "type": "支援卡",
+      "name": "精选 协助卡招募",
       "start": "2026-08-20 12:00:00",
       "end": "2026-09-01 11:59:59",
       "startTimestamp": 1787198400,
       "endTimestamp": 1788235199,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30185.png",
       "cards": [
         {
@@ -4903,10 +4991,12 @@
     {
       "id": 30184,
       "type": "角色卡池",
+      "name": "精选 优俊少女招募",
       "start": "2026-08-20 12:00:00",
       "end": "2026-09-01 11:59:59",
       "startTimestamp": 1787198400,
       "endTimestamp": 1788235199,
+      "onlyOnce": false,
       "bannerImage": "intel/gacha/img_bnr_gacha_30184.png",
       "cards": [
         {
@@ -10796,5 +10886,5 @@
       "isVoucherExchange": false
     }
   ],
-  "generatedAt": "2026-07-22 05:41:22"
+  "generatedAt": "2026-07-22 05:53:51"
 }

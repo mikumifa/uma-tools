@@ -15,11 +15,13 @@ type GachaCard = {
 
 type GachaPool = {
   id: number;
+  name?: string;
   type: string;
   start: string;
   end: string;
   startTimestamp: number;
   endTimestamp: number;
+  onlyOnce?: boolean;
   bannerImage?: string | null;
   cards: GachaCard[];
 };
@@ -264,7 +266,9 @@ function CardImage({ card }: { card: GachaCard }) {
 }
 
 function poolSummary(pool: GachaPool, max = 5) {
-  const names = pool.cards.map((card) => card.characterName);
+  const names = Array.from(
+    new Set(pool.cards.map((card) => card.characterName)),
+  );
   const visible = names.slice(0, max).join(" / ");
   return names.length > max ? `${visible} +${names.length - max}` : visible;
 }
@@ -293,6 +297,7 @@ function normalizedSearch(value: string) {
 
 function poolSearchText(pool: GachaPool) {
   return [
+    pool.name || "",
     pool.type,
     ...pool.cards.flatMap((card) => [
       card.name,
@@ -369,19 +374,18 @@ function scheduleKeyHandler(onSelect: () => void) {
 }
 
 function rewardSourceGroups(drops?: ScheduleItem["drops"]) {
-  return (drops || []).reduce<Array<{ source: string; drops: NonNullable<ScheduleItem["drops"]> }>>(
-    (groups, drop) => {
-      const source = drop.source || "奖励";
-      let group = groups.find((item) => item.source === source);
-      if (!group) {
-        group = { source, drops: [] };
-        groups.push(group);
-      }
-      group.drops.push(drop);
-      return groups;
-    },
-    [],
-  );
+  return (drops || []).reduce<
+    Array<{ source: string; drops: NonNullable<ScheduleItem["drops"]> }>
+  >((groups, drop) => {
+    const source = drop.source || "奖励";
+    let group = groups.find((item) => item.source === source);
+    if (!group) {
+      group = { source, drops: [] };
+      groups.push(group);
+    }
+    group.drops.push(drop);
+    return groups;
+  }, []);
 }
 
 function previewRewardGroupDrops(drops: NonNullable<ScheduleItem["drops"]>) {
@@ -585,12 +589,17 @@ function drawSectionTitle(
   ctx.fillText(title, EXPORT_PADDING, y + 28);
   ctx.font = exportFont(18, 600);
   ctx.fillStyle = "#5f6b7a";
-  ctx.fillText(`${count} 项`, EXPORT_PADDING + ctx.measureText(title).width + 18, y + 28);
+  ctx.fillText(
+    `${count} 项`,
+    EXPORT_PADDING + ctx.measureText(title).width + 18,
+    y + 28,
+  );
 }
 
 function estimateExportHeight(source: ExportImageSource) {
   const raceHeight = source.races.reduce(
-    (height, race) => height + 132 + Math.max(0, (race.details?.length || 0) - 1) * 46,
+    (height, race) =>
+      height + 132 + Math.max(0, (race.details?.length || 0) - 1) * 46,
     0,
   );
   return (
@@ -614,17 +623,35 @@ function drawGachaRow(
 ) {
   const active = pool.startTimestamp <= now && pool.endTimestamp >= now;
   const accent = poolKind(pool) === "character" ? "#db2777" : "#2563eb";
-  fillRounded(ctx, EXPORT_PADDING, y, EXPORT_WIDTH - EXPORT_PADDING * 2, 112, 8, "#ffffff", "#d7dce5");
+  fillRounded(
+    ctx,
+    EXPORT_PADDING,
+    y,
+    EXPORT_WIDTH - EXPORT_PADDING * 2,
+    112,
+    8,
+    "#ffffff",
+    "#d7dce5",
+  );
   ctx.fillStyle = accent;
   ctx.fillRect(EXPORT_PADDING, y, 6, 112);
   const cover = poolCover(pool);
-  drawImageFit(ctx, cover ? images.get(cover) : undefined, EXPORT_PADDING + 20, y + 14, 244, 84, "contain");
+  drawImageFit(
+    ctx,
+    cover ? images.get(cover) : undefined,
+    EXPORT_PADDING + 20,
+    y + 14,
+    244,
+    84,
+    "contain",
+  );
 
   const textX = EXPORT_PADDING + 286;
   ctx.font = exportFont(19, 800);
   ctx.fillStyle = "#18202b";
   ctx.fillText(pool.type, textX, y + 33);
-  if (active) drawBadge(ctx, "进行中", textX + 88, y + 11, "#fee2e2", "#b42318");
+  if (active)
+    drawBadge(ctx, "进行中", textX + 88, y + 11, "#fee2e2", "#b42318");
   ctx.font = exportFont(24, 800);
   ctx.fillStyle = "#18202b";
   drawTextLines(ctx, poolSummary(pool, 8), textX, y + 65, 390, 28, 1);
@@ -635,12 +662,24 @@ function drawGachaRow(
   const startX = EXPORT_WIDTH - EXPORT_PADDING - 508;
   pool.cards.slice(0, 6).forEach((card, index) => {
     const x = startX + index * 78;
-    drawImageFit(ctx, card.image ? images.get(card.image) : undefined, x, y + 22, 68, 68, "contain");
+    drawImageFit(
+      ctx,
+      card.image ? images.get(card.image) : undefined,
+      x,
+      y + 22,
+      68,
+      68,
+      "contain",
+    );
   });
   if (pool.cards.length > 6) {
     ctx.font = exportFont(24, 800);
     ctx.fillStyle = "#5f6b7a";
-    ctx.fillText(`+${pool.cards.length - 6}`, EXPORT_WIDTH - EXPORT_PADDING - 34, y + 64);
+    ctx.fillText(
+      `+${pool.cards.length - 6}`,
+      EXPORT_WIDTH - EXPORT_PADDING - 34,
+      y + 64,
+    );
   }
 }
 
@@ -652,17 +691,53 @@ function drawEventRow(
   now: number,
 ) {
   const active = event.startTimestamp <= now && event.endTimestamp >= now;
-  fillRounded(ctx, EXPORT_PADDING, y, EXPORT_WIDTH - EXPORT_PADDING * 2, 86, 8, "#ffffff", "#d7dce5");
-  drawImageFit(ctx, event.image ? images.get(event.image) : undefined, EXPORT_PADDING + 18, y + 10, 74, 66, "contain");
+  fillRounded(
+    ctx,
+    EXPORT_PADDING,
+    y,
+    EXPORT_WIDTH - EXPORT_PADDING * 2,
+    86,
+    8,
+    "#ffffff",
+    "#d7dce5",
+  );
+  drawImageFit(
+    ctx,
+    event.image ? images.get(event.image) : undefined,
+    EXPORT_PADDING + 18,
+    y + 10,
+    74,
+    66,
+    "contain",
+  );
   const textX = EXPORT_PADDING + 112;
-  const badgeWidth = drawBadge(ctx, scheduleTypeLabel(event.type), textX, y + 11, "#eef2f7", "#18202b");
-  if (active) drawBadge(ctx, "进行中", textX + badgeWidth + 10, y + 11, "#fee2e2", "#b42318");
+  const badgeWidth = drawBadge(
+    ctx,
+    scheduleTypeLabel(event.type),
+    textX,
+    y + 11,
+    "#eef2f7",
+    "#18202b",
+  );
+  if (active)
+    drawBadge(
+      ctx,
+      "进行中",
+      textX + badgeWidth + 10,
+      y + 11,
+      "#fee2e2",
+      "#b42318",
+    );
   ctx.font = exportFont(24, 800);
   ctx.fillStyle = "#18202b";
   drawTextLines(ctx, event.name, textX, y + 61, 560, 28, 1);
   ctx.font = exportFont(22, 700);
   ctx.fillStyle = "#5f6b7a";
-  ctx.fillText(dateLabel(event.start, event.end), EXPORT_WIDTH - EXPORT_PADDING - 330, y + 37);
+  ctx.fillText(
+    dateLabel(event.start, event.end),
+    EXPORT_WIDTH - EXPORT_PADDING - 330,
+    y + 37,
+  );
   event.drops?.slice(0, 5).forEach((drop, index) => {
     const x = EXPORT_WIDTH - EXPORT_PADDING - 330 + index * 54;
     if (drop.image) {
@@ -687,7 +762,11 @@ function drawEventRow(
 }
 
 function raceDetailText(detail: NonNullable<ScheduleItem["details"]>[number]) {
-  const main = [detail.track, detail.distance ? `${detail.distance}m` : "", detail.ground]
+  const main = [
+    detail.track,
+    detail.distance ? `${detail.distance}m` : "",
+    detail.ground,
+  ]
     .filter(Boolean)
     .join(" ");
   const meta = [detail.turn, detail.inout, detail.weather, detail.condition]
@@ -695,7 +774,10 @@ function raceDetailText(detail: NonNullable<ScheduleItem["details"]>[number]) {
     .join(" / ");
   const weatherRates = rateText(detail.conditionRates?.weather);
   const conditionRates = rateText(detail.conditionRates?.condition);
-  const rates = [weatherRates && `天气 ${weatherRates}`, conditionRates && `场地 ${conditionRates}`]
+  const rates = [
+    weatherRates && `天气 ${weatherRates}`,
+    conditionRates && `场地 ${conditionRates}`,
+  ]
     .filter(Boolean)
     .join("；");
   return [main, meta, rates].filter(Boolean).join("  ");
@@ -711,13 +793,38 @@ function drawRaceRow(
   const details = race.details || [];
   const height = 118 + Math.max(0, details.length - 1) * 46;
   const active = race.startTimestamp <= now && race.endTimestamp >= now;
-  fillRounded(ctx, EXPORT_PADDING, y, EXPORT_WIDTH - EXPORT_PADDING * 2, height, 8, "#ffffff", "#d7dce5");
-  drawImageFit(ctx, race.image ? images.get(race.image) : undefined, EXPORT_PADDING + 18, y + 18, 88, 66, "contain");
+  fillRounded(
+    ctx,
+    EXPORT_PADDING,
+    y,
+    EXPORT_WIDTH - EXPORT_PADDING * 2,
+    height,
+    8,
+    "#ffffff",
+    "#d7dce5",
+  );
+  drawImageFit(
+    ctx,
+    race.image ? images.get(race.image) : undefined,
+    EXPORT_PADDING + 18,
+    y + 18,
+    88,
+    66,
+    "contain",
+  );
   const textX = EXPORT_PADDING + 126;
   ctx.font = exportFont(25, 800);
   ctx.fillStyle = "#18202b";
   ctx.fillText(race.name, textX, y + 34);
-  if (active) drawBadge(ctx, "进行中", textX + ctx.measureText(race.name).width + 14, y + 11, "#fee2e2", "#b42318");
+  if (active)
+    drawBadge(
+      ctx,
+      "进行中",
+      textX + ctx.measureText(race.name).width + 14,
+      y + 11,
+      "#fee2e2",
+      "#b42318",
+    );
   ctx.font = exportFont(21, 700);
   ctx.fillStyle = "#5f6b7a";
   ctx.fillText(dateLabel(race.start, race.end), textX, y + 66);
@@ -725,8 +832,26 @@ function drawRaceRow(
     const lineY = y + 100 + index * 42;
     const season = seasonIcon(detail.seasonValue);
     const weather = weatherIcon(detail.weatherValue);
-    if (season) drawImageFit(ctx, images.get(season), textX, lineY - 24, 48, 24, "contain");
-    if (weather) drawImageFit(ctx, images.get(weather), textX + 54, lineY - 28, 34, 28, "contain");
+    if (season)
+      drawImageFit(
+        ctx,
+        images.get(season),
+        textX,
+        lineY - 24,
+        48,
+        24,
+        "contain",
+      );
+    if (weather)
+      drawImageFit(
+        ctx,
+        images.get(weather),
+        textX + 54,
+        lineY - 28,
+        34,
+        28,
+        "contain",
+      );
     ctx.font = exportFont(20, 700);
     ctx.fillStyle = "#18202b";
     drawTextLines(ctx, raceDetailText(detail), textX + 102, lineY, 880, 24, 1);
@@ -734,8 +859,21 @@ function drawRaceRow(
   return height;
 }
 
-function drawEmptyExportRow(ctx: CanvasRenderingContext2D, y: number, text: string) {
-  fillRounded(ctx, EXPORT_PADDING, y, EXPORT_WIDTH - EXPORT_PADDING * 2, 74, 8, "#ffffff", "#d7dce5");
+function drawEmptyExportRow(
+  ctx: CanvasRenderingContext2D,
+  y: number,
+  text: string,
+) {
+  fillRounded(
+    ctx,
+    EXPORT_PADDING,
+    y,
+    EXPORT_WIDTH - EXPORT_PADDING * 2,
+    74,
+    8,
+    "#ffffff",
+    "#d7dce5",
+  );
   ctx.font = exportFont(22, 700);
   ctx.fillStyle = "#8a94a3";
   ctx.fillText(text, EXPORT_PADDING + 24, y + 46);
@@ -756,7 +894,11 @@ async function exportIntelImage(source: ExportImageSource) {
   ctx.fillText("闪耀优俊少女 情报一图流", EXPORT_PADDING, 58);
   ctx.font = exportFont(19, 700);
   ctx.fillStyle = "#5f6b7a";
-  ctx.fillText(`生成 ${source.generatedAt || new Date().toLocaleString()}`, EXPORT_PADDING, 91);
+  ctx.fillText(
+    `生成 ${source.generatedAt || new Date().toLocaleString()}`,
+    EXPORT_PADDING,
+    91,
+  );
   ctx.fillText("当前 / 未来", EXPORT_WIDTH - EXPORT_PADDING - 110, 91);
 
   let y = 126;
@@ -951,13 +1093,14 @@ function WeekPoolCard({
 }) {
   const pool = segment.pool;
   const active = pool.startTimestamp <= now && pool.endTimestamp >= now;
+  const upcoming = pool.startTimestamp > now;
   const cover = poolCover(pool);
   const compact = segment.columnEnd - segment.columnStart <= 2;
 
   return (
     <button
       type="button"
-      class={`intelWeekPool ${poolTypeClass(pool)} ${compact ? "compact" : ""} ${selected ? "selected" : ""} ${active ? "active" : ""}`}
+      class={`intelWeekPool ${poolTypeClass(pool)} ${compact ? "compact" : ""} ${selected ? "selected" : ""} ${active ? "active" : ""} ${upcoming ? "upcoming" : ""}`}
       onClick={() => onSelect(pool)}
       style={{
         gridColumn: `${segment.columnStart} / ${segment.columnEnd}`,
@@ -976,6 +1119,8 @@ function WeekPoolCard({
           </small>
         </div>
       )}
+      {active && <span class="intelPoolStatus">进行中</span>}
+      {pool.onlyOnce && <span class="intelPoolOnce">限购一次</span>}
       {!compact && (
         <div class="intelPoolBody">
           <UpPreview cards={pool.cards} />
@@ -1135,7 +1280,11 @@ function DetailRewardIcon({
   if (!reward) return null;
   const title = label || reward.name || "奖励";
   if (reward.countOnly) {
-    return <span class="intelDetailRewardMore" title={title}>{reward.label || title}</span>;
+    return (
+      <span class="intelDetailRewardMore" title={title}>
+        {reward.label || title}
+      </span>
+    );
   }
   return (
     <span class="intelDetailRewardIcon" title={title}>
@@ -1144,7 +1293,9 @@ function DetailRewardIcon({
       ) : (
         <span>{(reward.name || title).slice(0, 2)}</span>
       )}
-      {showAmount && detailAmountLabel(reward) && <em>{detailAmountLabel(reward)}</em>}
+      {showAmount && detailAmountLabel(reward) && (
+        <em>{detailAmountLabel(reward)}</em>
+      )}
     </span>
   );
 }
@@ -1234,14 +1385,21 @@ function ScheduleDetail({
         {(item.exchangeDetailPath || item.exchangeDetails?.length) && (
           <section class="intelScheduleDetailSection">
             <h3>兑换明细</h3>
-            {exchangeLoading && <div class="intelDetailNotice">正在加载兑换明细</div>}
-            {exchangeError && <div class="intelDetailNotice">兑换明细加载失败</div>}
+            {exchangeLoading && (
+              <div class="intelDetailNotice">正在加载兑换明细</div>
+            )}
+            {exchangeError && (
+              <div class="intelDetailNotice">兑换明细加载失败</div>
+            )}
             {hasExchangeDetails && (
               <div class="intelExchangeDetailList">
                 {details.map((detail) => (
                   <div class="intelExchangeDetailItem" key={detail.id}>
                     <div class="intelExchangeRewardSide">
-                    <DetailRewardIcon reward={detail.reward} showAmount={false} />
+                      <DetailRewardIcon
+                        reward={detail.reward}
+                        showAmount={false}
+                      />
                       <div>
                         <strong>{detail.reward.name || "兑换奖励"}</strong>
                         <span>{detailAmountLabel(detail.reward)}</span>
@@ -1249,13 +1407,20 @@ function ScheduleDetail({
                     </div>
                     <div class="intelExchangePaySide">
                       <span>消耗</span>
-                      <DetailRewardIcon reward={detail.pay} showAmount={false} />
+                      <DetailRewardIcon
+                        reward={detail.pay}
+                        showAmount={false}
+                      />
                       <strong>{detailAmountLabel(detail.pay)}</strong>
                     </div>
                     <div class="intelExchangeLimitSide">
                       <span>限购</span>
-                      <strong>{detail.limit ? `${detail.limit} 次` : "不限"}</strong>
-                      {detail.totalRewardAmount ? <small>合计 {detail.totalRewardAmount}</small> : null}
+                      <strong>
+                        {detail.limit ? `${detail.limit} 次` : "不限"}
+                      </strong>
+                      {detail.totalRewardAmount ? (
+                        <small>合计 {detail.totalRewardAmount}</small>
+                      ) : null}
                     </div>
                   </div>
                 ))}
@@ -1405,11 +1570,12 @@ function GachaList({
     <div class="intelGachaList">
       {pools.map((pool) => {
         const active = pool.startTimestamp <= now && pool.endTimestamp >= now;
+        const upcoming = pool.startTimestamp > now;
         const cover = poolCover(pool);
         return (
           <button
             type="button"
-            class={`intelGachaListItem ${poolTypeClass(pool)} ${active ? "active" : ""}`}
+            class={`intelGachaListItem ${poolTypeClass(pool)} ${active ? "active" : ""} ${upcoming ? "upcoming" : ""}`}
             aria-label={`${dateLabel(pool.start, pool.end)} ${poolSummary(pool, 8)}`}
             onClick={() => onSelect(pool)}
             key={poolKey(pool)}
@@ -1421,10 +1587,14 @@ function GachaList({
                 loading="lazy"
               />
             )}
-            <div>
+            <div class="intelGachaListMeta">
+              <strong>{pool.name || pool.type}</strong>
+              <span>{poolSummary(pool, 12)}</span>
               <time>{dateLabel(pool.start, pool.end)}</time>
             </div>
             <UpPreview cards={pool.cards} />
+            {active && <span class="intelPoolStatus">进行中</span>}
+            {pool.onlyOnce && <span class="intelPoolOnce">限购一次</span>}
           </button>
         );
       })}
@@ -1445,9 +1615,13 @@ function DropIcons({ drops }: { drops?: ScheduleItem["drops"] }) {
   if (!drops?.length) return null;
   return (
     <div class="intelDropIcons">
-      {drops.map((drop, index) => (
+      {drops.map((drop, index) =>
         drop.image ? (
-          <span class="intelDropIcon" title={drop.label || "掉落"} key={`${drop.image}-${index}`}>
+          <span
+            class="intelDropIcon"
+            title={drop.label || "掉落"}
+            key={`${drop.image}-${index}`}
+          >
             <img
               src={assetUrl(drop.image)}
               alt={drop.label || "掉落"}
@@ -1456,11 +1630,15 @@ function DropIcons({ drops }: { drops?: ScheduleItem["drops"] }) {
             {rewardAmountLabel(drop) && <em>{rewardAmountLabel(drop)}</em>}
           </span>
         ) : (
-          <span class="intelDropCount" title={drop.label || "奖励"} key={`${drop.label}-${index}`}>
+          <span
+            class="intelDropCount"
+            title={drop.label || "奖励"}
+            key={`${drop.label}-${index}`}
+          >
             {drop.label || "奖励"}
           </span>
-        )
-      ))}
+        ),
+      )}
     </div>
   );
 }
@@ -1491,7 +1669,11 @@ function EventsSchedule({
                   role={onSelect ? "button" : undefined}
                   tabIndex={onSelect ? 0 : undefined}
                   onClick={() => onSelect?.(event)}
-                  onKeyDown={onSelect ? scheduleKeyHandler(() => onSelect(event)) : undefined}
+                  onKeyDown={
+                    onSelect
+                      ? scheduleKeyHandler(() => onSelect(event))
+                      : undefined
+                  }
                   key={event.id}
                 >
                   {event.image && (
@@ -1593,7 +1775,11 @@ function EventCalendar({
                     role={onSelect ? "button" : undefined}
                     tabIndex={onSelect ? 0 : undefined}
                     onClick={() => onSelect?.(event)}
-                    onKeyDown={onSelect ? scheduleKeyHandler(() => onSelect(event)) : undefined}
+                    onKeyDown={
+                      onSelect
+                        ? scheduleKeyHandler(() => onSelect(event))
+                        : undefined
+                    }
                     key={`${month}-${event.id}`}
                   >
                     <div class="intelEventTimelineLabel">
@@ -1620,9 +1806,11 @@ function EventCalendar({
                         style={{ gridColumn: `${startDay} / ${endDay + 1}` }}
                       >
                         <time>
-                          {dateLabelLines(event.start, event.end).map((line) => (
-                            <span key={line}>{line}</span>
-                          ))}
+                          {dateLabelLines(event.start, event.end).map(
+                            (line) => (
+                              <span key={line}>{line}</span>
+                            ),
+                          )}
                         </time>
                       </div>
                     </div>
@@ -1650,13 +1838,29 @@ function RaceDetails({ details }: { details?: ScheduleItem["details"] }) {
           <div class="intelRaceDetail" key={`${detail.label}-${index}`}>
             {detail.label && <span>{detail.label}</span>}
             <strong>
-              {[detail.track, detail.distance ? `${detail.distance}m` : "", detail.ground]
+              {[
+                detail.track,
+                detail.distance ? `${detail.distance}m` : "",
+                detail.ground,
+              ]
                 .filter(Boolean)
                 .join(" ")}
             </strong>
             <div class="intelRaceMetaLine">
-              {season && <img src={assetUrl(season)} alt={detail.season || "季节"} title={detail.season} />}
-              {weather && <img src={assetUrl(weather)} alt={detail.weather || "天气"} title={detail.weather} />}
+              {season && (
+                <img
+                  src={assetUrl(season)}
+                  alt={detail.season || "季节"}
+                  title={detail.season}
+                />
+              )}
+              {weather && (
+                <img
+                  src={assetUrl(weather)}
+                  alt={detail.weather || "天气"}
+                  title={detail.weather}
+                />
+              )}
               <small>
                 {[detail.turn, detail.inout, detail.weather, detail.condition]
                   .filter(Boolean)
@@ -1665,7 +1869,10 @@ function RaceDetails({ details }: { details?: ScheduleItem["details"] }) {
             </div>
             {(weatherRates || conditionRates) && (
               <em>
-                {[weatherRates && `天气 ${weatherRates}`, conditionRates && `场地 ${conditionRates}`]
+                {[
+                  weatherRates && `天气 ${weatherRates}`,
+                  conditionRates && `场地 ${conditionRates}`,
+                ]
                   .filter(Boolean)
                   .join("；")}
               </em>
@@ -1683,8 +1890,13 @@ function RaceSchedule({ races, now }: { races: ScheduleItem[]; now: number }) {
       {races.map((race) => {
         const active = race.startTimestamp <= now && race.endTimestamp >= now;
         return (
-          <article class={`intelRaceItem ${active ? "active" : ""}`} key={race.id}>
-            {race.image && <img src={assetUrl(race.image)} alt="" loading="lazy" />}
+          <article
+            class={`intelRaceItem ${active ? "active" : ""}`}
+            key={race.id}
+          >
+            {race.image && (
+              <img src={assetUrl(race.image)} alt="" loading="lazy" />
+            )}
             <div>
               <strong>{race.name}</strong>
               <time>{dateLabel(race.start, race.end)}</time>
@@ -1704,7 +1916,8 @@ export function IntelDashboard() {
   const [gachaView, setGachaView] = useState<ViewMode>("calendar");
   const [eventView, setEventView] = useState<ViewMode>("list");
   const [exchangeView, setExchangeView] = useState<ViewMode>("list");
-  const [gachaKindFilter, setGachaKindFilter] = useState<GachaKindFilter>("all");
+  const [gachaKindFilter, setGachaKindFilter] =
+    useState<GachaKindFilter>("all");
   const [gachaQuery, setGachaQuery] = useState("");
   const [eventTypeFilter, setEventTypeFilter] = useState("all");
   const [eventQuery, setEventQuery] = useState("");
@@ -1742,10 +1955,7 @@ export function IntelDashboard() {
   const exchanges = useMemo(
     () =>
       (data.exchanges || [])
-        .filter(
-          (exchange) =>
-            exchange.startTimestamp >= now,
-        )
+        .filter((exchange) => exchange.startTimestamp >= now)
         .sort(
           (a, b) =>
             Number(Boolean(b.isVoucherExchange)) -
@@ -1847,13 +2057,22 @@ export function IntelDashboard() {
     };
   }, [detailExchangePath, cachedExchangeDetails]);
   const months = filteredPools.length
-    ? monthsBetween(filteredPools[0].start, filteredPools[filteredPools.length - 1].end)
+    ? monthsBetween(
+        filteredPools[0].start,
+        filteredPools[filteredPools.length - 1].end,
+      )
     : [];
   const eventMonths = filteredEvents.length
-    ? monthsBetween(filteredEvents[0].start, filteredEvents[filteredEvents.length - 1].end)
+    ? monthsBetween(
+        filteredEvents[0].start,
+        filteredEvents[filteredEvents.length - 1].end,
+      )
     : [];
   const exchangeMonths = filteredExchanges.length
-    ? monthsBetween(filteredExchanges[0].start, filteredExchanges[filteredExchanges.length - 1].end)
+    ? monthsBetween(
+        filteredExchanges[0].start,
+        filteredExchanges[filteredExchanges.length - 1].end,
+      )
     : [];
   const currentMonth = timestampMonth(now);
   const [selectedMonth, setSelectedMonth] = useState(() => {
@@ -2013,7 +2232,11 @@ export function IntelDashboard() {
               )}
             </div>
           ) : (
-            <GachaList pools={filteredPools} now={now} onSelect={openPoolDetail} />
+            <GachaList
+              pools={filteredPools}
+              now={now}
+              onSelect={openPoolDetail}
+            />
           )}
         </section>
       )}
@@ -2077,22 +2300,22 @@ export function IntelDashboard() {
               <EventsSchedule
                 events={filteredEvents}
                 now={now}
-                onSelect={(event) => setEventDetailKey(scheduleDetailKey(event))}
+                onSelect={(event) =>
+                  setEventDetailKey(scheduleDetailKey(event))
+                }
               />
             ) : (
               <div class="intelEmptyTab">没有符合筛选的活动</div>
             )
+          ) : visibleEventMonth ? (
+            <EventCalendar
+              events={filteredEvents}
+              now={now}
+              month={visibleEventMonth}
+              onSelect={(event) => setEventDetailKey(scheduleDetailKey(event))}
+            />
           ) : (
-            visibleEventMonth ? (
-              <EventCalendar
-                events={filteredEvents}
-                now={now}
-                month={visibleEventMonth}
-                onSelect={(event) => setEventDetailKey(scheduleDetailKey(event))}
-              />
-            ) : (
-              <div class="intelEmptyTab">没有符合筛选的活动</div>
-            )
+            <div class="intelEmptyTab">没有符合筛选的活动</div>
           )}
         </section>
       )}
@@ -2123,10 +2346,14 @@ export function IntelDashboard() {
                   <button
                     type="button"
                     onClick={() =>
-                      setSelectedExchangeMonth(addMonths(visibleExchangeMonth, -1))
+                      setSelectedExchangeMonth(
+                        addMonths(visibleExchangeMonth, -1),
+                      )
                     }
                     disabled={
-                      !exchangeMonths.includes(addMonths(visibleExchangeMonth, -1))
+                      !exchangeMonths.includes(
+                        addMonths(visibleExchangeMonth, -1),
+                      )
                     }
                     title="上个月"
                   >
@@ -2147,10 +2374,14 @@ export function IntelDashboard() {
                   <button
                     type="button"
                     onClick={() =>
-                      setSelectedExchangeMonth(addMonths(visibleExchangeMonth, 1))
+                      setSelectedExchangeMonth(
+                        addMonths(visibleExchangeMonth, 1),
+                      )
                     }
                     disabled={
-                      !exchangeMonths.includes(addMonths(visibleExchangeMonth, 1))
+                      !exchangeMonths.includes(
+                        addMonths(visibleExchangeMonth, 1),
+                      )
                     }
                     title="下个月"
                   >
@@ -2165,7 +2396,9 @@ export function IntelDashboard() {
               <EventsSchedule
                 events={filteredExchanges}
                 now={now}
-                onSelect={(exchange) => setExchangeDetailKey(scheduleDetailKey(exchange))}
+                onSelect={(exchange) =>
+                  setExchangeDetailKey(scheduleDetailKey(exchange))
+                }
               />
             ) : (
               <div class="intelEmptyTab">没有符合筛选的兑换</div>
@@ -2175,7 +2408,9 @@ export function IntelDashboard() {
               events={filteredExchanges}
               now={now}
               month={visibleExchangeMonth}
-              onSelect={(exchange) => setExchangeDetailKey(scheduleDetailKey(exchange))}
+              onSelect={(exchange) =>
+                setExchangeDetailKey(scheduleDetailKey(exchange))
+              }
             />
           ) : (
             <div class="intelEmptyTab">没有符合筛选的兑换</div>
@@ -2198,7 +2433,9 @@ export function IntelDashboard() {
           item={detailExchange}
           title="兑换"
           exchangeDetails={
-            detailExchangePath ? cachedExchangeDetails : detailExchange.exchangeDetails
+            detailExchangePath
+              ? cachedExchangeDetails
+              : detailExchange.exchangeDetails
           }
           exchangeLoading={exchangeDetailLoading}
           exchangeError={exchangeDetailError}
