@@ -120,6 +120,16 @@ input[type="number"] {
   font-family: var(--uma-mono);
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  appearance: textfield;
+}
+
 input[type="checkbox"],
 input[type="radio"] {
   accent-color: var(--uma-accent);
@@ -149,26 +159,25 @@ a:hover {
 }
 
 #topPane {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: minmax(320px, var(--sidebar-width, 380px)) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: 10px 12px;
   width: 100%;
   padding: 10px;
   border: 1px solid var(--uma-border);
   border-radius: var(--uma-radius);
   background: var(--uma-surface);
   box-shadow: var(--uma-shadow);
-  overflow: visible;
+  overflow: hidden;
 }
 
 #topPane[data-mobile="true"] {
+  display: flex;
+  flex-direction: column;
   align-items: stretch;
-}
-
-#topPane.desktopLayout.runPaneHidden {
-  grid-template-columns: minmax(0, var(--track-width, 960px));
+  overflow: visible;
 }
 
 #runPane {
@@ -275,8 +284,34 @@ a:hover {
   border-bottom-right-radius: var(--uma-radius-sm);
 }
 
-.racetrackWrapper {
+.raceTrackShell {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: auto;
+  padding: 8px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius);
+  background: var(--uma-surface-soft);
+  scrollbar-color: rgba(100, 116, 139, 0.55) transparent;
+  scrollbar-width: thin;
+}
+
+.raceTrackCanvas {
+  width: 100%;
+  min-width: 100%;
+  margin: 0 auto;
+}
+
+.racetrackWrapper {
+  width: max-content;
+  min-width: 100%;
   overflow: visible;
 }
 
@@ -286,15 +321,12 @@ a:hover {
   transform-origin: center;
 }
 
-#topPane[data-mobile="true"] .racetrackWrapper {
-  padding: 8px;
-  border: 1px solid var(--uma-border);
-  border-radius: var(--uma-radius);
-  background: var(--uma-surface-soft);
-}
-
 #buttonsRow {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
   width: 100%;
+  min-width: 0;
   padding: 8px 0 0;
   border-top: 1px solid var(--uma-border);
   border-bottom: none;
@@ -307,6 +339,32 @@ a:hover {
   box-shadow: none !important;
   padding: 6px !important;
   gap: 6px !important;
+}
+
+#topPane[data-mobile="false"] #buttonsRow > div {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 8px !important;
+}
+
+#topPane[data-mobile="false"] #buttonsRow > div > div {
+  width: 100%;
+}
+
+#topPane[data-mobile="false"] #buttonsRow > div > div:not(.actionButtons) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+}
+
+#topPane[data-mobile="false"] #buttonsRow .actionButtons {
+  margin-left: 0 !important;
+  justify-content: stretch !important;
+}
+
+#topPane[data-mobile="false"] #buttonsRow .actionButtons button {
+  flex: 1 1 0;
 }
 
 #buttonsRow label,
@@ -392,7 +450,7 @@ a:hover {
 }
 
 #buttonsRow input[type="number"] {
-  width: 136px;
+  width: 112px;
   min-width: 0;
   border: none;
   border-left: 1px solid var(--uma-border);
@@ -468,9 +526,14 @@ a:hover {
 }
 
 #resultsPaneWrapper {
+  grid-column: 1;
+  grid-row: 2;
   display: flex;
   justify-content: center;
   width: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
 }
 
 #resultsPane {
@@ -482,8 +545,8 @@ a:hover {
 }
 
 #resultsPane.mode-chart {
-  width: min(100%, var(--track-width, 980px));
-  flex-direction: row;
+  width: 100%;
+  flex-direction: column;
   align-items: stretch;
 }
 
@@ -536,9 +599,23 @@ a:hover {
   margin-top: 2px;
 }
 
+#topPane[data-mobile="false"] #resultsSummary {
+  width: 100%;
+}
+
+#topPane[data-mobile="false"] #resultsSummary > tbody td {
+  min-width: 0;
+  padding: 7px 4px;
+  font-size: 17px;
+}
+
 #infoTables {
   width: min(100%, 720px);
   margin: 8px auto 0;
+}
+
+#topPane[data-mobile="false"] #infoTables {
+  width: 100%;
 }
 
 #infoTables > table {
@@ -595,26 +672,36 @@ a:hover {
   text-align: right;
 }
 
+#topPane[data-mobile="false"] #infoTables > table th,
+#topPane[data-mobile="false"] #infoTables > table td {
+  padding: 4px 6px;
+  font-size: 12px;
+}
+
+#topPane[data-mobile="false"] #infoTables > table td {
+  width: 128px;
+}
+
 .chartLayout {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  flex-direction: column;
   width: 100%;
 }
 
 .chartPanel {
-  flex: 1 1 0;
   min-width: 0;
-  align-self: stretch;
 }
 
 .chartDetails {
-  flex: 0 0 auto;
-  align-self: flex-start;
-  min-width: 320px;
-  max-width: 460px;
-  overflow: visible;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  max-height: none;
+  overflow: auto;
+  padding: 8px;
   border: 1px solid var(--uma-border);
   border-radius: var(--uma-radius);
   background: var(--uma-surface);
@@ -622,13 +709,13 @@ a:hover {
 }
 
 .chartDetails .expandedSkill {
-  margin: 0 0 10px;
+  margin: 0;
 }
 
 .chartDetailsHistogram {
   position: relative;
   width: 100%;
-  overflow: visible;
+  overflow: hidden;
   padding: 6px;
   border: 1px solid var(--uma-border);
   border-radius: var(--uma-radius-sm);
@@ -887,12 +974,20 @@ a:hover {
     padding: 8px;
   }
 
+  .raceTrackShell {
+    width: 100%;
+    overflow: hidden;
+  }
+
   #resultsPane.mode-chart,
   .chartLayout {
+    display: flex;
     flex-direction: column;
   }
 
   .chartDetails {
+    display: flex;
+    flex-direction: column;
     flex: 1 2 auto;
     max-width: 100%;
     min-width: 0;

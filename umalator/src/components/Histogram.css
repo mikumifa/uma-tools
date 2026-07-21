@@ -3,6 +3,10 @@
   user-select: none;
 }
 
+.histogram-container svg {
+  display: block;
+}
+
 .histogram-tooltip {
   position: absolute;
   z-index: 10;
@@ -20,6 +24,26 @@
 
 .histogram-tooltip strong {
   color: var(--uma-text, #18202b);
+}
+
+.histogram-inspector {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 26px;
+  margin-top: 4px;
+  padding: 5px 7px;
+  border: 1px solid var(--uma-border, #d7dce5);
+  border-radius: var(--uma-radius-sm, 4px);
+  background: var(--uma-surface, #fff);
+  color: var(--uma-muted, #5f6b7a);
+  font-size: 12px;
+}
+
+.histogram-inspector strong {
+  color: var(--uma-text, #18202b);
+  font-family: var(--uma-mono, monospace);
 }
 
 .grid line {

@@ -7,16 +7,20 @@ interface ProgressBarProps {
 }
 
 export function ProgressBar({ progress, label }: ProgressBarProps) {
+  const value = Math.min(100, Math.max(0, progress));
   return (
     <div class="progressBarContainer">
-      {label && <div class="progressBarLabel">{label}</div>}
+      <div class="progressBarHeader">
+        {label && <div class="progressBarLabel">{label}</div>}
+        <div class="progressBarValue">{value.toFixed(0)}%</div>
+      </div>
       <div class="progressBarTrack">
         <div
           class="progressBarFill"
-          style={{ width: `${Math.min(100, Math.max(0, progress))}%` }}
+          data-active={value > 0 && value < 100 ? "true" : "false"}
+          style={{ width: `${value}%` }}
         />
       </div>
-      <div class="progressBarValue">{progress.toFixed(0)}%</div>
     </div>
   );
 }

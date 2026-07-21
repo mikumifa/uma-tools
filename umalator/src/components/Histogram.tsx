@@ -8,15 +8,25 @@ interface HistogramProps {
   width: number;
   height: number;
   xLabel?: string;
+  sampleRuns?: Array<{ value: number; ranges: Array<{ start: number; end: number }> }>;
+  onSampleSelect?: (sample: { value: number; ranges: Array<{ start: number; end: number }> } | null) => void;
 }
 
-export function Histogram({ data, width, height, xLabel = "马身差" }: HistogramProps) {
+export function Histogram({
+  data,
+  width,
+  height,
+  xLabel = "马身差",
+  sampleRuns = [],
+  onSampleSelect,
+}: HistogramProps) {
   const axes = useRef<SVGGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [hoveredBin, setHoveredBin] = useState<d3.Bin<number, number> | null>(null);
+  const [selectedBin, setSelectedBin] = useState<d3.Bin<number, number> | null>(null);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
 
-  const xH = 25;
+  const xH = 28;
   const yW = 40;
   const effectiveWidth = width - yW;
   const effectiveHeight = height - xH;
@@ -72,29 +82,50 @@ export function Histogram({ data, width, height, xLabel = "马身差" }: Histogr
   }, [data, width, height, x, y, effectiveHeight, effectiveWidth]);
 
   const totalSamples = data.length;
+  const activeBin = hoveredBin || selectedBin;
+  const activePercent = activeBin
+    ? ((activeBin.length / totalSamples) * 100).toFixed(2)
+    : null;
+  function pickSampleForBin(bin: d3.Bin<number, number>) {
+    const x0 = bin.x0 ?? -Infinity;
+    const x1 = bin.x1 ?? Infinity;
+    const midpoint = (x0 + x1) / 2;
+    const candidates = sampleRuns.filter(
+      (sample) => sample.value >= x0 && sample.value < x1,
+    );
+    return candidates.reduce(
+      (best, sample) =>
+        !best || Math.abs(sample.value - midpoint) < Math.abs(best.value - midpoint)
+          ? sample
+          : best,
+      null,
+    );
+  }
 
   return (
-    <div class="histogram-container" ref={containerRef} style={{ position: "relative", width, height }}>
+    <div class="histogram-container" ref={containerRef} style={{ position: "relative", width }}>
       <svg width={width} height={height}>
         <g>{buckets.map((b, i) => {
            if (b.length === 0) return null;
            const x0 = x(b.x0!);
            const x1 = x(b.x1!);
-           const yVal = y(b.length);
-           const barHeight = effectiveHeight - yVal;
-           const isHovered = hoveredBin === b;
+            const yVal = y(b.length);
+            const barHeight = effectiveHeight - yVal;
+            const isHovered = hoveredBin === b;
+            const isSelected = selectedBin === b;
 
-           return (
-             <rect
+            return (
+              <rect
                key={i}
                x={x0}
                y={yVal}
-               width={Math.max(1, x1 - x0 - 1)}
-               height={barHeight}
-               fill={isHovered ? "#ff6fba" : "#3d7dd1"}
-               stroke={isHovered ? "#333" : "none"}
-               onMouseEnter={(e) => {
-                  setHoveredBin(b);
+                width={Math.max(1, x1 - x0 - 1)}
+                height={barHeight}
+                fill={isSelected ? "#db2777" : isHovered ? "#4f46e5" : "#3d7dd1"}
+                stroke={isHovered || isSelected ? "#18202b" : "none"}
+                stroke-width={isSelected ? 2 : 1}
+                onMouseEnter={(e) => {
+                   setHoveredBin(b);
                   // Calculate tooltip position relative to container
                   const rect = containerRef.current?.getBoundingClientRect();
                   if (rect) {
@@ -103,24 +134,34 @@ export function Histogram({ data, width, height, xLabel = "马身差" }: Histogr
                           y: yVal - 10
                       });
                   }
-               }}
-               onMouseLeave={() => setHoveredBin(null)}
-               style={{ cursor: "pointer", transition: "fill 0.2s" }}
-             />
-           );
-        })}</g>
+                }}
+                onMouseLeave={() => setHoveredBin(null)}
+                onClick={() => {
+                  if (selectedBin === b) {
+                    setSelectedBin(null);
+                    onSampleSelect?.(null);
+                    return;
+                  }
+                  const sample = pickSampleForBin(b);
+                  setSelectedBin(b);
+                  onSampleSelect?.(sample);
+                }}
+                style={{ cursor: "pointer", transition: "fill 0.2s" }}
+              />
+            );
+         })}</g>
         <g ref={axes}></g>
-        <text 
-            x={width} 
-            y={height - 5} 
-            text-anchor="end" 
-            fill="#666" 
-            font-size="10px"
+        <text
+          x={width}
+          y={height - 5}
+          text-anchor="end"
+          fill="#666"
+          font-size="10px"
         >
-            {xLabel} {"->"}
+          {xLabel} {"->"}
         </text>
       </svg>
-      {hoveredBin && (
+      {activeBin && (
         <div 
           class="histogram-tooltip"
           style={{
@@ -128,11 +169,22 @@ export function Histogram({ data, width, height, xLabel = "马身差" }: Histogr
              top: tooltipPos.y + "px",
           }}
         >
-           <div><strong>范围:</strong> {hoveredBin.x0?.toFixed(2)} ~ {hoveredBin.x1?.toFixed(2)} {xLabel}</div>
-           <div><strong>样本数:</strong> {hoveredBin.length}</div>
-           <div><strong>概率:</strong> {((hoveredBin.length / totalSamples) * 100).toFixed(2)}%</div>
+           <div><strong>范围:</strong> {activeBin.x0?.toFixed(2)} ~ {activeBin.x1?.toFixed(2)} {xLabel}</div>
+           <div><strong>样本数:</strong> {activeBin.length}</div>
+           <div><strong>概率:</strong> {activePercent}%</div>
         </div>
       )}
+      <div class="histogram-inspector">
+        {activeBin ? (
+          <Fragment>
+            <span>{activeBin.x0?.toFixed(2)} ~ {activeBin.x1?.toFixed(2)} {xLabel}</span>
+            <strong>{activePercent}%</strong>
+            <span>{activeBin.length}/{totalSamples}</span>
+          </Fragment>
+        ) : (
+          <span>悬停查看区间概率，点击柱子在赛道图显示该身位样本的发动位置。</span>
+        )}
+      </div>
     </div>
   );
 }

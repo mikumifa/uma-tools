@@ -43,6 +43,8 @@ export function runComparison(nsamples: number, course: CourseData, racedef: Rac
 		standard.useDefaultPacer(); compare.useDefaultPacer();
 	}
 	const skillPos1 = new Map(), skillPos2 = new Map();
+	const trackedSkillId = options.trackSkillId;
+	const sampleRuns = trackedSkillId ? [] : null;
 	function getActivator(selfSet, otherSet) {
 		return function (s, id, persp) {
 			const skillSet = persp == Perspective.Self ? selfSet : otherSet;
@@ -129,6 +131,13 @@ export function runComparison(nsamples: number, course: CourseData, racedef: Rac
 			retry = false;
 			const basinn = sign * (s2.pos - pos1) / 2.5;
 			diff.push(basinn);
+			if (sampleRuns) {
+				const ranges = [
+					...(data.sk[0].get(trackedSkillId) || []),
+					...(data.sk[1].get(trackedSkillId) || []),
+				].map(([start, end]) => ({start, end}));
+				sampleRuns.push({value: basinn, ranges});
+			}
 			if (basinn < min) {
 				min = basinn;
 				minrun = data;
@@ -157,5 +166,6 @@ export function runComparison(nsamples: number, course: CourseData, racedef: Rac
 		}
 	}
 	diff.sort((a,b) => a - b);
-	return {results: diff, runData: {minrun, maxrun, meanrun, medianrun}};
+	if (sampleRuns) sampleRuns.sort((a,b) => a.value - b.value);
+	return {results: diff, runData: {minrun, maxrun, meanrun, medianrun}, sampleRuns};
 }

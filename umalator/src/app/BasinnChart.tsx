@@ -94,14 +94,16 @@ export function BasinnChart(props) {
   const radioGroup = useId();
   const [selected, setSelected] = useState("");
   const [selectedType, setSelectedType] = useState("mean");
-  // 视口小于等于 1280px 即使用精简模式（桌面窄屏也触发）
+  const compact = Boolean(props.compact);
+  const activeId = props.selectedId || selected;
+  // Keep the compact two-column mode for mobile; the widened desktop sidebar can fit all metrics.
   const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" ? window.innerWidth <= 1280 : false
+    typeof window !== "undefined" ? window.innerWidth <= 900 : false
   );
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const onResize = () => setIsMobile(window.innerWidth <= 1280);
+    const onResize = () => setIsMobile(window.innerWidth <= 900);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
@@ -249,11 +251,11 @@ export function BasinnChart(props) {
   };
 
   const visibleColumns = useMemo(() => {
-    if (!isMobile) return columns;
+    if (!isMobile && !compact) return columns;
     return columns.filter(
       (c) => c.key === "id" || c.radioType === selectedType
     );
-  }, [columns, isMobile, selectedType]);
+  }, [columns, compact, isMobile, selectedType]);
   const runOptions = [
     { key: "min", label: "最小" },
     { key: "max", label: "最大" },
@@ -262,10 +264,10 @@ export function BasinnChart(props) {
   ];
 
   return (
-    <div class="basinnChartWrapper">
+    <div class={compact ? "basinnChartWrapper compact" : "basinnChartWrapper"}>
       <table class="basinnChart">
         <thead>
-          {isMobile && (
+          {(isMobile || compact) && (
             <tr className="mobileRunToggleRow">
               <th colSpan={visibleColumns.length}>
                 <div className="mobileRunToggle">
@@ -337,7 +339,7 @@ export function BasinnChart(props) {
               <tr
                 key={id}
                 data-skillid={id}
-                class={id === selected ? "selected" : ""}
+                class={id === activeId ? "selected" : ""}
               >
                 {visibleColumns.map((col) => (
                   <td key={`${id}-${col.key}`}>{col.cell(row)}</td>

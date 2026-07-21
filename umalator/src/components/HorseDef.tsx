@@ -213,6 +213,11 @@ function rankForStat(x: number) {
 }
 
 export function Stat(props) {
+  const handleInput = (e) => {
+    const value = e.currentTarget.value.replace(/\D/g, "");
+    props.change(value === "" ? 0 : Math.min(2000, +value));
+  };
+
   return (
     <div class="horseParam">
       <img
@@ -223,12 +228,12 @@ export function Stat(props) {
           .slice(1)}.png`}
       />
       <input
-        type="number"
-        min="1"
-        max="2000"
+        type="text"
+        inputMode="numeric"
+        pattern="[0-9]*"
         value={props.value}
         tabindex={props.tabindex}
-        onInput={(e) => props.change(+e.currentTarget.value)}
+        onInput={handleInput}
       />
     </div>
   );

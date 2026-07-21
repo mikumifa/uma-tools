@@ -648,7 +648,10 @@ function App() {
   const [skillsOpen, setSkillsOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [progress, setProgress] = useState(0);
-  const workerProgress = useRef({ w1: 0, w2: 0 });
+  const [isSimulating, setIsSimulating] = useState(false);
+  const workerProgress = useRef({ percents: [0, 0], totals: [1, 1] });
+  const progressUiRef = useRef({ percent: 0, lastUpdate: 0 });
+  const activeRunId = useRef(0);
   const raceTrackRef = useRef<HTMLDivElement | null>(null);
   const resultsPaneRef = useRef<HTMLDivElement | null>(null);
   const [ShowUnreleased, setShowUnreleased] = useState(false);
@@ -659,6 +662,10 @@ function App() {
   );
   const [viewportHeight, setViewportHeight] = useState(() =>
     typeof window === "undefined" ? 900 : window.innerHeight,
+  );
+  const [{ mode, currentIdx, expanded }, updateUiState] = useReducer(
+    nextUiState,
+    DEFAULT_UI_STATE,
   );
 
   useEffect(() => {
@@ -682,14 +689,24 @@ function App() {
     }
   }, [isMobile]);
 
+  const desktopSidebarWidth =
+    mode === Mode.Chart
+      ? viewportWidth <= 1180
+        ? Math.max(460, Math.round(viewportWidth * 0.43))
+        : 560
+      : 380;
+  const desktopWorkspaceWidth = Math.min(viewportWidth, 1680) - 58;
   const trackViewportWidth = isLandscapeView
     ? viewportWidth
     : isMobile
       ? Math.min(Math.max(320, viewportWidth), 640)
-      : Math.max(viewportWidth, 1280);
+      : Math.max(560, desktopWorkspaceWidth - desktopSidebarWidth - 12);
   const trackWidth = useMemo(() => {
-    return Math.max(300, trackViewportWidth - trackViewportWidth * 0.1);
-  }, [trackViewportWidth]);
+    return Math.max(
+      300,
+      trackViewportWidth - (isMobile ? trackViewportWidth * 0.1 : 16),
+    );
+  }, [trackViewportWidth, isMobile]);
 
   const trackHeight = useMemo(() => {
     if (isLandscapeView) {
@@ -703,13 +720,20 @@ function App() {
   }, [trackHeight, isLandscapeView]);
 
   const trackWidthStyle = useMemo(
-    () => ({ "--track-width": `${trackWidth}px` }) as any,
-    [trackWidth],
+    () =>
+      ({
+        "--track-width": `${trackWidth}px`,
+        "--sidebar-width": `${desktopSidebarWidth}px`,
+      }) as any,
+    [trackWidth, desktopSidebarWidth],
   );
 
   const histogramWidth = useMemo(
-    () => Math.min(600, Math.max(280, trackWidth)),
-    [trackWidth],
+    () =>
+      isMobile
+        ? Math.min(600, Math.max(280, trackWidth))
+        : Math.max(280, desktopSidebarWidth - 42),
+    [trackWidth, isMobile, desktopSidebarWidth],
   );
 
   const histogramHeight = useMemo(
@@ -721,10 +745,10 @@ function App() {
       // Keep within viewport on small screens
       return Math.max(260, Math.min(trackWidth * 0.9, 420));
     }
-    return Math.min(520, Math.max(320, trackWidth * 0.4));
+    return Math.max(420, Math.min(860, Math.round(trackWidth - 32)));
   }, [trackWidth, isMobile]);
   const detailHistogramHeight = useMemo(
-    () => Math.round(detailHistogramWidth * 0.6),
+    () => Math.max(220, Math.round(detailHistogramWidth * 0.42)),
     [detailHistogramWidth],
   );
   const showStatusBar = Boolean(status) || progress > 0;
@@ -752,16 +776,31 @@ function App() {
     return merged;
   }, new Map());
   const [selectedSkillId, setSelectedSkillId] = useState("");
+  const [selectedSampleRanges, setSelectedSampleRanges] = useState([]);
+  const [possibleActivationRanges, setPossibleActivationRanges] = useState([]);
 
   useEffect(() => {
     if (tableData.size === 0) {
       if (selectedSkillId) setSelectedSkillId("");
+      if (selectedSampleRanges.length > 0) setSelectedSampleRanges([]);
+      if (possibleActivationRanges.length > 0) setPossibleActivationRanges([]);
       return;
     }
     if (!selectedSkillId || !tableData.has(selectedSkillId)) {
       const first = tableData.keys().next().value as string | undefined;
       if (first) setSelectedSkillId(first);
     }
+  }, [
+    tableData,
+    selectedSkillId,
+    selectedSampleRanges.length,
+    possibleActivationRanges.length,
+  ]);
+
+  useEffect(() => {
+    if (!selectedSkillId) return;
+    const row = tableData.get(selectedSkillId);
+    setPossibleActivationRanges(row?.possibleActivationRanges ?? []);
   }, [tableData, selectedSkillId]);
 
   function racesetter(prop) {
@@ -783,11 +822,6 @@ function App() {
 
   const [uma1, setUma1] = useState(() => new HorseState());
   const [uma2, setUma2] = useState(() => new HorseState());
-
-  const [{ mode, currentIdx, expanded }, updateUiState] = useReducer(
-    nextUiState,
-    DEFAULT_UI_STATE,
-  );
 
   // Mobile 不支持对比模式，强制回到图表模式
   useEffect(() => {
@@ -844,30 +878,41 @@ function App() {
   const topPaneClass = [
     chartData ? "hasResults" : "",
     isMobile ? "mobileLayout" : "desktopLayout",
-    // showRunPane ? "" : "runPaneHidden",
   ]
     .filter(Boolean)
     .join(" ");
 
-  const [worker1, worker2] = [1, 2].map((_) =>
-    useMemo(() => {
-      const w = new Worker(new URL("./simulator.worker.ts", import.meta.url), {
-        type: "module",
-      });
-      w.addEventListener("message", function (e) {
-        const { type, results } = e.data;
-        switch (type) {
-          case "compare":
-            setResults(results);
-            break;
-          case "chart":
-            updateTableData(results);
-            break;
-        }
-      });
-      return w;
-    }, []),
+  function createWorker(index: number) {
+    const w = new Worker(new URL("./simulator.worker.ts", import.meta.url), {
+      type: "module",
+    });
+    w.addEventListener("message", function (e) {
+      const { type, results, runId, stage, percent } = e.data;
+      if (runId != null && runId !== activeRunId.current) return;
+      switch (type) {
+        case "compare":
+          setResults(results);
+          break;
+        case "chart":
+          updateTableData(results);
+          break;
+        case "progress":
+          workerProgress.current.percents[index] = percent;
+          updateSimulationProgress(stage, percent >= 100);
+          if (workerProgress.current.percents.every((p) => p >= 100)) {
+            setIsSimulating(false);
+          }
+          break;
+      }
+    });
+    return w;
+  }
+
+  const workers = useMemo(
+    () => [0, 1, 2, 3].map((index) => createWorker(index)),
+    [],
   );
+  const worker1 = workers[0];
 
   function loadState() {
     if (window.location.hash) {
@@ -924,16 +969,51 @@ function App() {
     (id) => (strings.skillnames[id] = skillnames[id][langid]),
   );
 
-  function doComparison() {
-    postEvent("doComparison", {});
-    // Reset progress
-    workerProgress.current = { w1: 0, w2: 0 };
+  function updateSimulationProgress(stage: string, force = false) {
+    const { percents, totals } = workerProgress.current;
+    const total = totals.reduce((sum, count) => sum + count, 0);
+    const percent = Math.min(
+      100,
+      total === 0
+        ? Math.min(...percents)
+        : Math.round(
+            percents.reduce(
+              (sum, workerPercent, index) =>
+                sum + workerPercent * totals[index],
+              0,
+            ) / total,
+          ),
+    );
+    const now = performance.now();
+
+    if (!force && percent === progressUiRef.current.percent) return;
+    if (!force && now - progressUiRef.current.lastUpdate < 120) return;
+
+    progressUiRef.current = { percent, lastUpdate: now };
+    setProgress(percent);
+    setStatus(stage ? `${stage} · ${percent}%` : `${percent}%`);
+  }
+
+  function resetSimulationProgress(label: string) {
+    workerProgress.current = { percents: [0, 0], totals: [1, 1] };
+    progressUiRef.current = { percent: 0, lastUpdate: 0 };
     setProgress(0);
-    setStatus("Calculating...");
+    setStatus(label);
+    setIsSimulating(true);
+  }
+
+  function doComparison() {
+    if (isSimulating) return;
+    postEvent("doComparison", {});
+    const runId = activeRunId.current + 1;
+    activeRunId.current = runId;
+    resetSimulationProgress("准备对比模拟...");
+    workerProgress.current = { percents: [0], totals: [1] };
 
     worker1.postMessage({
       msg: "compare",
       data: {
+        runId,
         nsamples,
         course,
         racedef: racedefToParams(racedef),
@@ -944,8 +1024,15 @@ function App() {
     });
   }
 
-  function doBasinnChart() {
+  async function doBasinnChart() {
+    if (isSimulating) return;
     postEvent("doBasinnChart", {});
+    const runId = activeRunId.current + 1;
+    activeRunId.current = runId;
+    resetSimulationProgress("筛选可触发技能...");
+    updateTableData("reset");
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
     const params = racedefToParams(racedef, uma1.strategy);
     const skills = getActivateableSkills(
       baseSkillsToTest.filter(
@@ -957,63 +1044,51 @@ function App() {
       course,
       params,
     );
+    if (runId !== activeRunId.current) return;
+
     const filler = new Map();
     skills.forEach((id) => filler.set(id, getNullRow(id)));
 
     const uma = uma1.toJS();
-    const skills1 = skills.slice(0, Math.floor(skills.length / 2));
-    const skills2 = skills.slice(Math.floor(skills.length / 2));
-    updateTableData("reset");
-    updateTableData(filler);
-    worker1.onmessage = (e) => {
-      const data = e.data;
-      if (data.type === "progress") {
-        workerProgress.current.w1 = data.percent;
-        const minProgress = Math.min(
-          workerProgress.current.w1,
-          workerProgress.current.w2,
-        );
-        setProgress(minProgress);
-        setStatus(`Simulating: ${minProgress}%`);
-      }
-    };
-
-    worker2.onmessage = (e) => {
-      const data = e.data;
-      if (data.type === "progress") {
-        workerProgress.current.w2 = data.percent;
-        const minProgress = Math.min(
-          workerProgress.current.w1,
-          workerProgress.current.w2,
-        );
-        setProgress(minProgress);
-        setStatus(`Simulating: ${minProgress}%`);
-      }
-    };
-    worker1.postMessage({
-      msg: "chart",
-      data: {
-        skills: skills1,
-        course,
-        racedef: params,
-        uma,
-        options: { seed, usePosKeep },
-      },
+    const workerCount = Math.min(
+      workers.length,
+      Math.max(1, Math.min(skills.length, navigator.hardwareConcurrency || 2)),
+    );
+    const skillChunks = Array.from({ length: workerCount }, () => []);
+    skills.forEach((skillId, index) => {
+      skillChunks[index % workerCount].push(skillId);
     });
-    worker2.postMessage({
-      msg: "chart",
-      data: {
-        skills: skills2,
-        course,
-        racedef: params,
-        uma,
-        options: { seed, usePosKeep },
-      },
+    workerProgress.current = {
+      percents: skillChunks.map((chunk) => (chunk.length === 0 ? 100 : 0)),
+      totals: skillChunks.map((chunk) => chunk.length),
+    };
+    updateTableData(filler);
+    updateSimulationProgress(
+      `模拟 ${skills.length} 个技能 · ${workerCount} 路并行`,
+      true,
+    );
+
+    skillChunks.forEach((chunk, index) => {
+      workers[index].postMessage({
+        msg: "chart",
+        data: {
+          runId,
+          skills: chunk,
+          course,
+          racedef: params,
+          uma,
+          options: { seed, usePosKeep },
+        },
+      });
     });
   }
 
   function selectSkillDetails(skillId) {
     const r = tableData.get(skillId);
+    if (skillId !== selectedSkillId) {
+      setSelectedSampleRanges([]);
+      setPossibleActivationRanges(r?.possibleActivationRanges ?? []);
+    }
     setSelectedSkillId(skillId);
     if (r?.runData != null) setResults(r);
   }
@@ -1083,8 +1158,33 @@ function App() {
             })
             .toArray();
         });
+  const selectedSampleActivationRegions = selectedSampleRanges.length
+    ? [
+        {
+          type: RegionDisplayType.Textbox,
+          color: { stroke: "#15803d", fill: "rgba(22, 163, 74, 0.2)" },
+          text: "选中身位发动",
+          regions: selectedSampleRanges,
+        },
+      ]
+    : [];
+  const possibleActivationRegions = possibleActivationRanges.length
+    ? [
+        {
+          type: RegionDisplayType.Textbox,
+          color: { stroke: "#1f66d1", fill: "rgba(31, 102, 209, 0.16)" },
+          text: "可能发动起点",
+          regions: possibleActivationRanges,
+        },
+      ]
+    : [];
+  const trackRegions = skillActivations.concat(
+    possibleActivationRegions,
+    selectedSampleActivationRegions,
+  );
 
   let resultsPane;
+  let trackDetailsPane = null;
   if (mode == Mode.Compare && results.length > 0) {
     resultsPane = (
       <div id="resultsPaneWrapper" style={trackWidthStyle} ref={resultsPaneRef}>
@@ -1270,6 +1370,33 @@ function App() {
       (filteredData.length > 0 ? tableData.get(filteredData[0].id) : null);
     const selectedResults = selectedRow?.results ?? [];
     const selectedSkill = selectedRow?.id;
+    const selectedSampleRuns = selectedRow?.sampleRuns ?? [];
+    trackDetailsPane = (
+      <aside class="chartDetails">
+        {selectedSkill ? (
+          <Fragment>
+            <ExpandedSkillDetails
+              id={selectedSkill}
+              distanceFactor={course.distance}
+              dismissable={false}
+            />
+            <div class="chartDetailsHistogram">
+              <Histogram
+                width={detailHistogramWidth}
+                height={detailHistogramHeight}
+                data={selectedResults}
+                sampleRuns={selectedSampleRuns}
+                onSampleSelect={(sample) =>
+                  setSelectedSampleRanges(sample?.ranges ?? [])
+                }
+              />
+            </div>
+          </Fragment>
+        ) : (
+          <div class="chartDetailsEmpty">ä»Žå·¦ä¾§é€‰æ‹©ä¸€ä¸ªæŠ€èƒ½</div>
+        )}
+      </aside>
+    );
     resultsPane = (
       <div id="resultsPaneWrapper" style={trackWidthStyle} ref={resultsPaneRef}>
         <div id="resultsPane" class="mode-chart" style={trackWidthStyle}>
@@ -1278,32 +1405,14 @@ function App() {
               <BasinnChart
                 data={filteredData}
                 hidden={uma1.skills}
+                selectedId={selectedSkill}
                 onSelectionChange={selectSkillDetails}
                 onRunTypeChange={setChartData}
                 onDblClickRow={addSkillFromTable}
                 onInfoClick={showPopover}
               />
             </div>
-            <aside class="chartDetails">
-              {selectedSkill ? (
-                <Fragment>
-                  <ExpandedSkillDetails
-                    id={selectedSkill}
-                    distanceFactor={course.distance}
-                    dismissable={false}
-                  />
-                  <div class="chartDetailsHistogram">
-                    <Histogram
-                      width={detailHistogramWidth}
-                      height={detailHistogramHeight}
-                      data={selectedResults}
-                    />
-                  </div>
-                </Fragment>
-              ) : (
-                <div class="chartDetailsEmpty">ä»Žå·¦ä¾§é€‰æ‹©ä¸€ä¸ªæŠ€èƒ½</div>
-              )}
-            </aside>
+            {isMobile && trackDetailsPane}
           </div>
         </div>
       </div>
@@ -1324,64 +1433,68 @@ function App() {
           {/* Left Column: Track and Track Settings */}
 
           {showTrack && (!isMobile || !forceShowTrack) && (
-            <div
-              ref={raceTrackRef}
-              className={flippedTrack ? "racetrackFlipped" : ""}
-              style={
-                flippedTrack
-                  ? {
-                      width: `${trackHeight + 60}px`,
-                      height: `${trackWidth + 80}px`,
-                    }
-                  : undefined
-              }
-            >
-              <RaceTrack
-                courseid={courseId}
-                width={trackWidth}
-                height={trackHeight}
-                xOffset={0}
-                yOffset={15}
-                yExtra={40}
-                mouseMove={rtMouseMove}
-                mouseLeave={rtMouseLeave}
-                regions={skillActivations}
-                hideTitle={true}
-                containerStyle={
+            <div ref={raceTrackRef} className="raceTrackShell">
+              <div
+                className={
+                  flippedTrack ? "racetrackFlipped" : "raceTrackCanvas"
+                }
+                style={
                   flippedTrack
                     ? {
                         width: `${trackHeight + 60}px`,
                         height: `${trackWidth + 80}px`,
-                        overflow: "visible",
                       }
                     : undefined
                 }
               >
-                <VelocityLines
-                  data={chartData}
-                  courseDistance={course.distance}
+                <RaceTrack
+                  courseid={courseId}
                   width={trackWidth}
-                  height={velocityHeight}
+                  height={trackHeight}
                   xOffset={0}
-                  showHp={showHp}
-                />
-                <g id="rtMouseOverBox" style="display:none">
-                  <text
-                    id="rtV1"
-                    x="25"
-                    y="10"
-                    fill="var(--uma-blue)"
-                    font-size="10px"
-                  ></text>
-                  <text
-                    id="rtV2"
-                    x="25"
-                    y="20"
-                    fill="var(--uma-pink)"
-                    font-size="10px"
-                  ></text>
-                </g>
-              </RaceTrack>
+                  yOffset={15}
+                  yExtra={40}
+                  mouseMove={rtMouseMove}
+                  mouseLeave={rtMouseLeave}
+                  regions={trackRegions}
+                  hideTitle={true}
+                  containerStyle={
+                    flippedTrack
+                      ? {
+                          width: `${trackHeight + 60}px`,
+                          height: `${trackWidth + 80}px`,
+                          overflow: "visible",
+                        }
+                      : undefined
+                  }
+                >
+                  <VelocityLines
+                    data={chartData}
+                    courseDistance={course.distance}
+                    width={trackWidth}
+                    height={velocityHeight}
+                    xOffset={0}
+                    showHp={showHp}
+                  />
+                  <g id="rtMouseOverBox" style="display:none">
+                    <text
+                      id="rtV1"
+                      x="25"
+                      y="10"
+                      fill="var(--uma-blue)"
+                      font-size="10px"
+                    ></text>
+                    <text
+                      id="rtV2"
+                      x="25"
+                      y="20"
+                      fill="var(--uma-pink)"
+                      font-size="10px"
+                    ></text>
+                  </g>
+                </RaceTrack>
+              </div>
+              {!isMobile && trackDetailsPane}
             </div>
           )}
           {isMobile && !showTrack && (
@@ -1603,7 +1716,9 @@ function App() {
                   Copy link
                 </button>
                 <button
+                  type="button"
                   onClick={mode === Mode.Compare ? doComparison : doBasinnChart}
+                  disabled={isSimulating}
                   className={`
                     ${
                       isMobile
@@ -1613,23 +1728,24 @@ function App() {
                     font-semibold
                   `}
                 >
-                  {mode === Mode.Compare ? "COMPARE" : "RUN"}
+                  {isSimulating
+                    ? "RUNNING"
+                    : mode === Mode.Compare
+                      ? "COMPARE"
+                      : "RUN"}
                 </button>
               </div>
             </div>
 
             {showStatusBar && mode !== Mode.Compare && (
-              <div className="flex items-center gap-3 pt-2 mt-1 border-t text-sm text-gray-600">
-                <ProgressBar progress={progress} label="" />
-
-                {status && (
-                  <span className="text-indigo-700 font-medium">{status}</span>
-                )}
+              <div className="pt-2 mt-1 border-t">
+                <ProgressBar progress={progress} label={status} />
               </div>
             )}
           </div>
+          {!isMobile && resultsPane}
         </div>
-        {resultsPane}
+        {isMobile && resultsPane}
         {isMobile && forceShowTrack && (
           <div className="trackFullscreen" ref={raceTrackRef}>
             <button
@@ -1655,7 +1771,7 @@ function App() {
                 yExtra={40}
                 mouseMove={rtMouseMove}
                 mouseLeave={rtMouseLeave}
-                regions={skillActivations}
+                regions={trackRegions}
                 hideTitle={true}
               >
                 <VelocityLines

@@ -1,15 +1,25 @@
 .progressBarContainer {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 5px;
   width: 100%;
   margin: 4px 0;
 }
 
+.progressBarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .progressBarLabel {
+  overflow: hidden;
   color: var(--uma-muted, #5f6b7a);
   font-size: 12px;
   font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .progressBarTrack {
@@ -24,11 +34,35 @@
 .progressBarFill {
   height: 100%;
   background-color: var(--uma-accent, #1f66d1);
-  transition: width 0.2s ease;
+  transition: width 0.16s ease;
+}
+
+.progressBarFill[data-active="true"] {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.22) 0,
+    rgba(255, 255, 255, 0.22) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+  background-size: 20px 20px;
+  animation: progressBarMotion 0.8s linear infinite;
 }
 
 .progressBarValue {
-  text-align: right;
   color: var(--uma-muted, #5f6b7a);
+  font-family: var(--uma-mono, monospace);
   font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@keyframes progressBarMotion {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 20px 0;
+  }
 }

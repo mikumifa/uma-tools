@@ -145,19 +145,43 @@
 }
 
 .skill-white {
+  border-color: #cbd5e1;
   border-left-color: #94a3b8;
+  background: #f8fafc;
 }
 
 .skill-gold {
+  border-color: #dfc260;
   border-left-color: #ca8a04;
+  background: #fff7db;
 }
 
 .skill-pink {
+  border-color: #e6a3c2;
   border-left-color: #db2777;
+  background: #fff0f7;
 }
 
 .skill-unique {
+  border-color: #b9c2ff;
   border-left-color: #4f46e5;
+  background: #eef2ff;
+}
+
+.skill-white:hover {
+  background: #eef2f7;
+}
+
+.skill-gold:hover {
+  background: #ffefbf;
+}
+
+.skill-pink:hover {
+  background: #ffe0ef;
+}
+
+.skill-unique:hover {
+  background: #e0e7ff;
 }
 
 .skillDetailsList {
@@ -182,6 +206,30 @@
   border-radius: var(--uma-radius);
   background: var(--uma-surface);
   box-sizing: border-box;
+}
+
+.expandedSkill.skill-white {
+  border-color: #cbd5e1;
+  border-left-color: #94a3b8;
+  background: #f8fafc;
+}
+
+.expandedSkill.skill-gold {
+  border-color: #dfc260;
+  border-left-color: #ca8a04;
+  background: #fff7db;
+}
+
+.expandedSkill.skill-pink {
+  border-color: #e6a3c2;
+  border-left-color: #db2777;
+  background: #fff0f7;
+}
+
+.expandedSkill.skill-unique {
+  border-color: #b9c2ff;
+  border-left-color: #4f46e5;
+  background: #eef2ff;
 }
 
 .expandedSkillHeader {
