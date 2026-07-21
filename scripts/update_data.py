@@ -396,7 +396,7 @@ def make_uma_info(
             with open(out_icons, "r", encoding="utf-8") as f:
                 icons = json.load(f)
         except Exception:
-            print("Warning: failed to load existing icons.json, continuing with empty")
+            print("Warning: failed to load existing icon_paths.json, continuing with empty")
 
     # try load temp english icons mapping (umadle/icons.json) if present (as in perl)
     en_icons_map = {}
@@ -465,7 +465,7 @@ def make_uma_info(
     )
     # but we will run per-character further down using SQL with parameter
 
-    # Ensure need_unpack dir exists
+    # Ensure the icon dat scratch directory exists
     Path(dat_copy_target).mkdir(parents=True, exist_ok=True)
 
     for idx, zh_name in id_name_rows:
@@ -481,7 +481,7 @@ def make_uma_info(
                 base = os.path.basename(icon_path)
                 icons[str(idx)] = f"icons/chara/{base}.png"
             if icon_hash:
-                # copy dat piece to need_unpack/<hash>
+                # copy dat piece to var/need-unpack/<hash>
                 hdir = str(icon_hash)[:2]
                 src = dat_dir / hdir / icon_hash
                 dst = Path(dat_copy_target) / icon_hash
