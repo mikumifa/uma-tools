@@ -277,6 +277,401 @@ function rateText(items?: Array<{ label: string; rate: number }>) {
   return items.map((item) => `${item.label}${item.rate}%`).join(" / ");
 }
 
+const EXPORT_WIDTH = 1280;
+const EXPORT_PADDING = 36;
+
+type ExportImageSource = {
+  pools: GachaPool[];
+  events: ScheduleItem[];
+  races: ScheduleItem[];
+  now: number;
+  generatedAt: string;
+};
+
+type LoadedImages = Map<string, HTMLImageElement>;
+
+function collectExportImages(source: ExportImageSource) {
+  const paths = new Set<string>();
+  source.pools.forEach((pool) => {
+    const cover = poolCover(pool);
+    if (cover) paths.add(cover);
+    pool.cards.forEach((card) => card.image && paths.add(card.image));
+  });
+  [...source.events, ...source.races].forEach((item) => {
+    if (item.image) paths.add(item.image);
+    item.drops?.forEach((drop) => paths.add(drop.image));
+    item.details?.forEach((detail) => {
+      const weather = weatherIcon(detail.weatherValue);
+      const season = seasonIcon(detail.seasonValue);
+      if (weather) paths.add(weather);
+      if (season) paths.add(season);
+    });
+  });
+  return Array.from(paths);
+}
+
+function loadExportImage(path: string) {
+  return new Promise<[string, HTMLImageElement | null]>((resolve) => {
+    const image = new Image();
+    image.onload = () => resolve([path, image]);
+    image.onerror = () => resolve([path, null]);
+    image.src = assetUrl(path);
+  });
+}
+
+async function loadExportImages(paths: string[]) {
+  const entries = await Promise.all(paths.map(loadExportImage));
+  const images: LoadedImages = new Map();
+  entries.forEach(([path, image]) => {
+    if (image) images.set(path, image);
+  });
+  return images;
+}
+
+function roundedRect(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  radius = 8,
+) {
+  const r = Math.min(radius, width / 2, height / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + width - r, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + r);
+  ctx.lineTo(x + width, y + height - r);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+  ctx.lineTo(x + r, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function fillRounded(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  radius: number,
+  fill: string,
+  stroke?: string,
+) {
+  roundedRect(ctx, x, y, width, height, radius);
+  ctx.fillStyle = fill;
+  ctx.fill();
+  if (stroke) {
+    ctx.strokeStyle = stroke;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+}
+
+function exportFont(size: number, weight = 500) {
+  return `${weight} ${size}px "Microsoft YaHei", "PingFang SC", Arial, sans-serif`;
+}
+
+function drawTextLines(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  maxWidth: number,
+  lineHeight: number,
+  maxLines = 2,
+) {
+  const chars = Array.from(text || "");
+  const lines: string[] = [];
+  let line = "";
+  chars.forEach((char) => {
+    const next = line + char;
+    if (ctx.measureText(next).width <= maxWidth || !line) {
+      line = next;
+      return;
+    }
+    lines.push(line);
+    line = char;
+  });
+  if (line) lines.push(line);
+  const clipped = lines.slice(0, maxLines);
+  if (lines.length > maxLines && clipped.length) {
+    let last = clipped[clipped.length - 1];
+    while (last && ctx.measureText(`${last}…`).width > maxWidth) {
+      last = last.slice(0, -1);
+    }
+    clipped[clipped.length - 1] = `${last}…`;
+  }
+  clipped.forEach((lineText, index) => {
+    ctx.fillText(lineText, x, y + index * lineHeight);
+  });
+  return clipped.length * lineHeight;
+}
+
+function drawImageFit(
+  ctx: CanvasRenderingContext2D,
+  image: HTMLImageElement | undefined,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  fit: "contain" | "cover" = "contain",
+) {
+  if (!image) {
+    fillRounded(ctx, x, y, width, height, 6, "#eef2f7", "#d7dce5");
+    return;
+  }
+  const scale =
+    fit === "cover"
+      ? Math.max(width / image.naturalWidth, height / image.naturalHeight)
+      : Math.min(width / image.naturalWidth, height / image.naturalHeight);
+  const drawWidth = image.naturalWidth * scale;
+  const drawHeight = image.naturalHeight * scale;
+  const dx = x + (width - drawWidth) / 2;
+  const dy = y + (height - drawHeight) / 2;
+  ctx.drawImage(image, dx, dy, drawWidth, drawHeight);
+}
+
+function drawBadge(
+  ctx: CanvasRenderingContext2D,
+  label: string,
+  x: number,
+  y: number,
+  fill = "#e8f0ff",
+  text = "#1f66d1",
+) {
+  ctx.font = exportFont(18, 700);
+  const width = Math.ceil(ctx.measureText(label).width) + 24;
+  fillRounded(ctx, x, y, width, 30, 15, fill);
+  ctx.fillStyle = text;
+  ctx.fillText(label, x + 12, y + 21);
+  return width;
+}
+
+function drawSectionTitle(
+  ctx: CanvasRenderingContext2D,
+  title: string,
+  count: number,
+  y: number,
+) {
+  ctx.fillStyle = "#18202b";
+  ctx.font = exportFont(28, 800);
+  ctx.fillText(title, EXPORT_PADDING, y + 28);
+  ctx.font = exportFont(18, 600);
+  ctx.fillStyle = "#5f6b7a";
+  ctx.fillText(`${count} 项`, EXPORT_PADDING + ctx.measureText(title).width + 18, y + 28);
+}
+
+function estimateExportHeight(source: ExportImageSource) {
+  const raceHeight = source.races.reduce(
+    (height, race) => height + 132 + Math.max(0, (race.details?.length || 0) - 1) * 46,
+    0,
+  );
+  return (
+    140 +
+    54 +
+    Math.max(1, source.pools.length) * 126 +
+    54 +
+    Math.max(1, source.events.length) * 98 +
+    54 +
+    Math.max(1, raceHeight) +
+    44
+  );
+}
+
+function drawGachaRow(
+  ctx: CanvasRenderingContext2D,
+  images: LoadedImages,
+  pool: GachaPool,
+  y: number,
+  now: number,
+) {
+  const active = pool.startTimestamp <= now && pool.endTimestamp >= now;
+  const accent = poolKind(pool) === "character" ? "#db2777" : "#2563eb";
+  fillRounded(ctx, EXPORT_PADDING, y, EXPORT_WIDTH - EXPORT_PADDING * 2, 112, 8, "#ffffff", "#d7dce5");
+  ctx.fillStyle = accent;
+  ctx.fillRect(EXPORT_PADDING, y, 6, 112);
+  const cover = poolCover(pool);
+  drawImageFit(ctx, cover ? images.get(cover) : undefined, EXPORT_PADDING + 20, y + 14, 244, 84, "contain");
+
+  const textX = EXPORT_PADDING + 286;
+  ctx.font = exportFont(19, 800);
+  ctx.fillStyle = "#18202b";
+  ctx.fillText(pool.type, textX, y + 33);
+  if (active) drawBadge(ctx, "进行中", textX + 88, y + 11, "#fee2e2", "#b42318");
+  ctx.font = exportFont(24, 800);
+  ctx.fillStyle = "#18202b";
+  drawTextLines(ctx, poolSummary(pool, 8), textX, y + 65, 390, 28, 1);
+  ctx.font = exportFont(20, 700);
+  ctx.fillStyle = "#5f6b7a";
+  ctx.fillText(dateLabel(pool.start, pool.end), textX, y + 96);
+
+  const startX = EXPORT_WIDTH - EXPORT_PADDING - 508;
+  pool.cards.slice(0, 6).forEach((card, index) => {
+    const x = startX + index * 78;
+    drawImageFit(ctx, card.image ? images.get(card.image) : undefined, x, y + 22, 68, 68, "contain");
+  });
+  if (pool.cards.length > 6) {
+    ctx.font = exportFont(24, 800);
+    ctx.fillStyle = "#5f6b7a";
+    ctx.fillText(`+${pool.cards.length - 6}`, EXPORT_WIDTH - EXPORT_PADDING - 34, y + 64);
+  }
+}
+
+function drawEventRow(
+  ctx: CanvasRenderingContext2D,
+  images: LoadedImages,
+  event: ScheduleItem,
+  y: number,
+  now: number,
+) {
+  const active = event.startTimestamp <= now && event.endTimestamp >= now;
+  fillRounded(ctx, EXPORT_PADDING, y, EXPORT_WIDTH - EXPORT_PADDING * 2, 86, 8, "#ffffff", "#d7dce5");
+  drawImageFit(ctx, event.image ? images.get(event.image) : undefined, EXPORT_PADDING + 18, y + 10, 74, 66, "contain");
+  const textX = EXPORT_PADDING + 112;
+  const badgeWidth = drawBadge(ctx, scheduleTypeLabel(event.type), textX, y + 11, "#eef2f7", "#18202b");
+  if (active) drawBadge(ctx, "进行中", textX + badgeWidth + 10, y + 11, "#fee2e2", "#b42318");
+  ctx.font = exportFont(24, 800);
+  ctx.fillStyle = "#18202b";
+  drawTextLines(ctx, event.name, textX, y + 61, 560, 28, 1);
+  ctx.font = exportFont(22, 700);
+  ctx.fillStyle = "#5f6b7a";
+  ctx.fillText(dateLabel(event.start, event.end), EXPORT_WIDTH - EXPORT_PADDING - 330, y + 37);
+  event.drops?.slice(0, 5).forEach((drop, index) => {
+    drawImageFit(ctx, images.get(drop.image), EXPORT_WIDTH - EXPORT_PADDING - 330 + index * 44, y + 43, 38, 38, "contain");
+  });
+}
+
+function raceDetailText(detail: NonNullable<ScheduleItem["details"]>[number]) {
+  const main = [detail.track, detail.distance ? `${detail.distance}m` : "", detail.ground]
+    .filter(Boolean)
+    .join(" ");
+  const meta = [detail.turn, detail.inout, detail.weather, detail.condition]
+    .filter(Boolean)
+    .join(" / ");
+  const weatherRates = rateText(detail.conditionRates?.weather);
+  const conditionRates = rateText(detail.conditionRates?.condition);
+  const rates = [weatherRates && `天气 ${weatherRates}`, conditionRates && `场地 ${conditionRates}`]
+    .filter(Boolean)
+    .join("；");
+  return [main, meta, rates].filter(Boolean).join("  ");
+}
+
+function drawRaceRow(
+  ctx: CanvasRenderingContext2D,
+  images: LoadedImages,
+  race: ScheduleItem,
+  y: number,
+  now: number,
+) {
+  const details = race.details || [];
+  const height = 118 + Math.max(0, details.length - 1) * 46;
+  const active = race.startTimestamp <= now && race.endTimestamp >= now;
+  fillRounded(ctx, EXPORT_PADDING, y, EXPORT_WIDTH - EXPORT_PADDING * 2, height, 8, "#ffffff", "#d7dce5");
+  drawImageFit(ctx, race.image ? images.get(race.image) : undefined, EXPORT_PADDING + 18, y + 18, 88, 66, "contain");
+  const textX = EXPORT_PADDING + 126;
+  ctx.font = exportFont(25, 800);
+  ctx.fillStyle = "#18202b";
+  ctx.fillText(race.name, textX, y + 34);
+  if (active) drawBadge(ctx, "进行中", textX + ctx.measureText(race.name).width + 14, y + 11, "#fee2e2", "#b42318");
+  ctx.font = exportFont(21, 700);
+  ctx.fillStyle = "#5f6b7a";
+  ctx.fillText(dateLabel(race.start, race.end), textX, y + 66);
+  details.slice(0, 4).forEach((detail, index) => {
+    const lineY = y + 100 + index * 42;
+    const season = seasonIcon(detail.seasonValue);
+    const weather = weatherIcon(detail.weatherValue);
+    if (season) drawImageFit(ctx, images.get(season), textX, lineY - 24, 48, 24, "contain");
+    if (weather) drawImageFit(ctx, images.get(weather), textX + 54, lineY - 28, 34, 28, "contain");
+    ctx.font = exportFont(20, 700);
+    ctx.fillStyle = "#18202b";
+    drawTextLines(ctx, raceDetailText(detail), textX + 102, lineY, 880, 24, 1);
+  });
+  return height;
+}
+
+function drawEmptyExportRow(ctx: CanvasRenderingContext2D, y: number, text: string) {
+  fillRounded(ctx, EXPORT_PADDING, y, EXPORT_WIDTH - EXPORT_PADDING * 2, 74, 8, "#ffffff", "#d7dce5");
+  ctx.font = exportFont(22, 700);
+  ctx.fillStyle = "#8a94a3";
+  ctx.fillText(text, EXPORT_PADDING + 24, y + 46);
+}
+
+async function exportIntelImage(source: ExportImageSource) {
+  const images = await loadExportImages(collectExportImages(source));
+  const canvas = document.createElement("canvas");
+  canvas.width = EXPORT_WIDTH;
+  canvas.height = estimateExportHeight(source);
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("Canvas is not available");
+
+  ctx.fillStyle = "#f5f6f8";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#18202b";
+  ctx.font = exportFont(34, 900);
+  ctx.fillText("闪耀优俊少女 情报一图流", EXPORT_PADDING, 58);
+  ctx.font = exportFont(19, 700);
+  ctx.fillStyle = "#5f6b7a";
+  ctx.fillText(`生成 ${source.generatedAt || new Date().toLocaleString()}`, EXPORT_PADDING, 91);
+  ctx.fillText("当前 / 未来", EXPORT_WIDTH - EXPORT_PADDING - 110, 91);
+
+  let y = 126;
+  drawSectionTitle(ctx, "卡池", source.pools.length, y);
+  y += 48;
+  if (source.pools.length) {
+    source.pools.forEach((pool) => {
+      drawGachaRow(ctx, images, pool, y, source.now);
+      y += 126;
+    });
+  } else {
+    drawEmptyExportRow(ctx, y, "没有符合筛选的卡池");
+    y += 86;
+  }
+
+  y += 10;
+  drawSectionTitle(ctx, "活动", source.events.length, y);
+  y += 48;
+  if (source.events.length) {
+    source.events.forEach((event) => {
+      drawEventRow(ctx, images, event, y, source.now);
+      y += 98;
+    });
+  } else {
+    drawEmptyExportRow(ctx, y, "没有符合筛选的活动");
+    y += 86;
+  }
+
+  y += 10;
+  drawSectionTitle(ctx, "大赛", source.races.length, y);
+  y += 48;
+  if (source.races.length) {
+    source.races.forEach((race) => {
+      y += drawRaceRow(ctx, images, race, y, source.now) + 14;
+    });
+  } else {
+    drawEmptyExportRow(ctx, y, "暂无当前 / 未来大赛");
+    y += 86;
+  }
+
+  return new Promise<void>((resolve, reject) => {
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        reject(new Error("导出图片失败"));
+        return;
+      }
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `uma-intel-${new Date().toISOString().slice(0, 10)}.png`;
+      link.click();
+      URL.revokeObjectURL(url);
+      resolve();
+    }, "image/png");
+  });
+}
+
 function UpPreview({ cards }: { cards: GachaCard[] }) {
   return (
     <div class="intelUpPreview">
@@ -984,6 +1379,7 @@ export function IntelDashboard() {
   const [gachaQuery, setGachaQuery] = useState("");
   const [eventTypeFilter, setEventTypeFilter] = useState("all");
   const [eventQuery, setEventQuery] = useState("");
+  const [exporting, setExporting] = useState(false);
   const pools = useMemo(
     () =>
       data.gachaPools
@@ -1071,35 +1467,63 @@ export function IntelDashboard() {
     setSelectedKey(nextKey);
     setDetailKey(nextKey);
   };
+  const exportImage = async () => {
+    if (exporting) return;
+    setExporting(true);
+    try {
+      await exportIntelImage({
+        pools: filteredPools,
+        events: filteredEvents,
+        races,
+        now,
+        generatedAt: data.generatedAt,
+      });
+    } catch (error) {
+      console.error(error);
+      window.alert("导出图片失败，请稍后再试");
+    } finally {
+      setExporting(false);
+    }
+  };
 
   return (
     <main class="intelPage">
-      <nav class="intelTabs" aria-label="情报分类">
+      <div class="intelTopBar">
+        <nav class="intelTabs" aria-label="情报分类">
+          <button
+            type="button"
+            class={activeTab === "gacha" ? "selected" : ""}
+            onClick={() => setActiveTab("gacha")}
+          >
+            卡池
+          </button>
+          <button
+            type="button"
+            class={activeTab === "events" ? "selected" : ""}
+            onClick={() => {
+              setActiveTab("events");
+              setEventView("list");
+            }}
+          >
+            活动
+          </button>
+          <button
+            type="button"
+            class={activeTab === "races" ? "selected" : ""}
+            onClick={() => setActiveTab("races")}
+          >
+            大赛
+          </button>
+        </nav>
         <button
           type="button"
-          class={activeTab === "gacha" ? "selected" : ""}
-          onClick={() => setActiveTab("gacha")}
+          class="intelExportButton"
+          onClick={exportImage}
+          disabled={exporting}
         >
-          卡池
+          {exporting ? "导出中" : "导出图片"}
         </button>
-        <button
-          type="button"
-          class={activeTab === "events" ? "selected" : ""}
-          onClick={() => {
-            setActiveTab("events");
-            setEventView("list");
-          }}
-        >
-          活动
-        </button>
-        <button
-          type="button"
-          class={activeTab === "races" ? "selected" : ""}
-          onClick={() => setActiveTab("races")}
-        >
-          大赛
-        </button>
-      </nav>
+      </div>
 
       {activeTab === "gacha" && (
         <section class="intelCalendarPanel">

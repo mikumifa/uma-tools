@@ -265,6 +265,13 @@ a:hover {
   background: var(--uma-surface-soft);
 }
 
+.intelTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .intelTabs {
   display: inline-flex;
   align-self: flex-start;
@@ -288,6 +295,18 @@ a:hover {
 .intelTabs button.selected {
   background: var(--uma-accent);
   color: #fff;
+}
+
+.intelExportButton {
+  flex: 0 0 auto;
+  border-color: #1f66d1;
+  background: #1f66d1;
+  color: #fff;
+}
+
+.intelExportButton:hover {
+  border-color: #174fa7;
+  background: #174fa7;
 }
 
 .intelEmptyTab {
@@ -2356,6 +2375,20 @@ a:hover {
 
   .intelPage {
     gap: 10px;
+  }
+
+  .intelTopBar {
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .intelTopBar .intelTabs {
+    flex: 1 1 auto;
+  }
+
+  .intelExportButton {
+    flex: 0 0 auto;
   }
 
   .intelTabs button {
