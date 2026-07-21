@@ -614,9 +614,16 @@ const enum Mode {
 
 type AppPage = "simulator" | "intel";
 
-function pathForPage(page: AppPage) {
+function appBasePath() {
   const basePath = new URL(import.meta.env.BASE_URL, window.location.href)
     .pathname;
+  return window.location.pathname.replace(/\/+$/, "").endsWith("/intel")
+    ? `${basePath.replace(/intel\/?$/, "")}`
+    : basePath;
+}
+
+function pathForPage(page: AppPage) {
+  const basePath = appBasePath();
   if (page === "intel") {
     return `${basePath.replace(/\/$/, "")}/intel/`;
   }

@@ -74,11 +74,19 @@ type ScheduleItem = {
 };
 
 const data = intelData as IntelData;
-const BASE = import.meta.env.BASE_URL;
+
+function appBasePath() {
+  if (typeof window === "undefined") return import.meta.env.BASE_URL;
+  const basePath = new URL(import.meta.env.BASE_URL, window.location.href)
+    .pathname;
+  return window.location.pathname.replace(/\/+$/, "").endsWith("/intel")
+    ? `${basePath.replace(/intel\/?$/, "")}`
+    : basePath;
+}
 
 function assetUrl(path?: string | null) {
   if (!path) return "";
-  return `${BASE}${path}`;
+  return `${appBasePath()}${path}`;
 }
 
 function scheduleImageClass(path?: string | null) {
