@@ -27,21 +27,12 @@ also implement unique scaling in sim
 * DONE run compare simulator in worker
 should probably not be run on the main UI thread
 * TODO cleanup
-** TODO build system
-convert non-global to use build.mjs. refactor shared parts (most of it except the plugins and defines) to a common file.
-skill visualizer should also be changed to use this, and global skill visualizer can share the data intercept plugin
-with global umalator.
 ** TODO proper i18n
 i.e., remove the stupid CC_GLOBAL?'string1':'string2' bits in favor of the preact-i18n system used everywhere else
 ** DONE change how order is handled
 it might be preferable to add an `order` member in RaceParameters to pass to skill conditions. the advantage here is we
 could filter out skills based on order more easily for the bashin chart instead of the kind of nasty cludge right now.
 (since we already filter out skills that place no triggers)
-** TODO mark various assert functions as pure in esbuild
-i.e. like CourseHelpers.assertIsPhase and stuff
-
-probably requires rewriting CourseHelpers.isSortedByStart to assertIsSortedByStart or something (I don't think that
-function is used in any non-assertion contexts anyway)
 * miscellany
 ** DONE sort skills by disp_order from the db
 add to skill_meta.json

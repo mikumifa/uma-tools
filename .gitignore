@@ -2,4 +2,5 @@ node_modules/
 */__pycache__
 *.sqlite
 result/
-need_unpack
+dist/
+var/need-unpack/

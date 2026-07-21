@@ -1,0 +1,31 @@
+.distanceMarker {
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: white;
+  stroke-width: 2px;
+}
+
+.sectionText {
+  dominant-baseline: central;
+  font-size: 12px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: white;
+  stroke-width: 2px;
+  text-anchor: middle;
+}
+
+.racetrackName {
+  color: var(--uma-text);
+  font: 700 16px var(--uma-font, sans-serif);
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.mouseoverText {
+  font-size: 12px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: white;
+  stroke-width: 2px;
+}

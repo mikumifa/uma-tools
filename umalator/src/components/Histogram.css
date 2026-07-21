@@ -1,0 +1,33 @@
+.histogram-container {
+  font-family: var(--uma-font, sans-serif);
+  user-select: none;
+}
+
+.histogram-tooltip {
+  position: absolute;
+  z-index: 10;
+  padding: 6px 8px;
+  border: 1px solid var(--uma-border-strong, #b8c0cc);
+  border-radius: var(--uma-radius-sm, 4px);
+  background: var(--uma-surface, #fff);
+  color: var(--uma-text, #18202b);
+  font-size: 12px;
+  line-height: 1.4;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+  white-space: nowrap;
+}
+
+.histogram-tooltip strong {
+  color: var(--uma-text, #18202b);
+}
+
+.grid line {
+  stroke: #d7dce5;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}

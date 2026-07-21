@@ -1,0 +1,34 @@
+.progressBarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  margin: 4px 0;
+}
+
+.progressBarLabel {
+  color: var(--uma-muted, #5f6b7a);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.progressBarTrack {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  border: 1px solid var(--uma-border, #d7dce5);
+  border-radius: 999px;
+  background-color: var(--uma-surface-muted, #eef2f7);
+}
+
+.progressBarFill {
+  height: 100%;
+  background-color: var(--uma-accent, #1f66d1);
+  transition: width 0.2s ease;
+}
+
+.progressBarValue {
+  text-align: right;
+  color: var(--uma-muted, #5f6b7a);
+  font-size: 12px;
+}

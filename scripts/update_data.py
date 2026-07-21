@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # update_master.py
 # 功能：整合原来一堆 perl 脚本，对 master.mdb 导出 skill/skill_meta/skillnames/uma info 等 JSON 文件
-# 使用：python update_master.py [master.mdb] [--run-node]
+# 使用：python update_master.py [master.mdb] [--build]
 
 import argparse
 import json
@@ -363,15 +363,15 @@ def make_uma_info(
     master_mdb,
     root_override=None,
     out_umas="umas.json",
-    out_icons="icons.json",
-    dat_copy_target="need_unpack",
+    out_icons="umalator/data/icon_paths.json",
+    dat_copy_target="var/need-unpack",
 ):
     """
     这个函数实现了 Perl 脚本的主要逻辑：
-    - 读取现有 umas.json, icons.json（如果存在）
+    - 读取现有 umas.json, icon_paths.json（如果存在）
     - 从 master.mdb 的 text_data(category 6 <2000) 读取角色名（日本语）
     - 从 meta sqlite（root/meta）读取 chr_icon 路径/hash
-    - 将 icon 数据加入 icons.json，并把对应 dat 文件复制到 need_unpack/
+    - 将 icon 数据加入 icon_paths.json，并把对应 dat 文件复制到 var/need-unpack/
     - 也尝试读取训练后 icon (trained_chr_icon_...) 的条目并为套装(outfits)分配 icon
     注意：元数据库(meta)路径和 dat 目录路径的定位遵循你原来脚本的逻辑（parent(parent(master.mdb)) 下的 meta 和 dat）
     """
@@ -479,7 +479,7 @@ def make_uma_info(
             umas[idx] = {"name": [zh_name], "outfits": {}}
             if icon_path:
                 base = os.path.basename(icon_path)
-                icons[str(idx)] = f"/uma-tools/icons/chara/{base}.png"
+                icons[str(idx)] = f"icons/chara/{base}.png"
             if icon_hash:
                 # copy dat piece to need_unpack/<hash>
                 hdir = str(icon_hash)[:2]
@@ -520,7 +520,7 @@ def make_uma_info(
             if str(outid) in icons:
                 continue
             base = os.path.basename(path_n)
-            icons[str(outid)] = f"/uma-tools/icons/chara/{base}.png"
+            icons[str(outid)] = f"icons/chara/{base}.png"
             if icon_hash:
                 hdir = str(icon_hash)[:2]
                 src = dat_dir / hdir / icon_hash
@@ -558,8 +558,14 @@ def main():
     )
     parser.add_argument(
         "--run-node",
+        dest="build",
         action="store_true",
-        help="if provided, run 'node esbuild.config.mjs' at the end (if available)",
+        help="deprecated alias for --build",
+    )
+    parser.add_argument(
+        "--build",
+        action="store_true",
+        help="if provided, run 'npm run build' after updating data files",
     )
     parser.add_argument(
         "--no-uma", action="store_true", help="skip uma/icons processing"
@@ -601,28 +607,19 @@ def main():
         make_uma_info(
             master,
             out_umas="umalator/data/umas.json",
-            out_icons="icons.json",
-            dat_copy_target="need_unpack",
+            out_icons="umalator/data/icon_paths.json",
+            dat_copy_target="var/need-unpack",
         )
-    # Step 5: run node esbuild.config.mjs (optional)
-    if args.run_node:
+    # Step 5: run the Vite build (optional)
+    if args.build:
         repo_root = Path(__file__).resolve().parent.parent
-        build_file = repo_root / "esbuild.config.mjs"
-
-        if build_file.exists():
-            try:
-                print(f"Running: node {build_file} (cwd={repo_root})")
-                subprocess.run(
-                    ["node", "esbuild.config.mjs"],
-                    check=True,
-                    cwd=repo_root,
-                )
-            except FileNotFoundError:
-                print("node not found in PATH; cannot run esbuild.config.mjs")
-            except subprocess.CalledProcessError as e:
-                print(f"node esbuild.config.mjs returned non-zero exit: {e.returncode}")
-        else:
-            print("esbuild.config.mjs not found; skipping node build.")
+        try:
+            print(f"Running: npm run build (cwd={repo_root})")
+            subprocess.run(["npm", "run", "build"], check=True, cwd=repo_root)
+        except FileNotFoundError:
+            print("npm not found in PATH; cannot run build")
+        except subprocess.CalledProcessError as e:
+            print(f"npm run build returned non-zero exit: {e.returncode}")
 
 
 if __name__ == "__main__":

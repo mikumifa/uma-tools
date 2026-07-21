@@ -11,6 +11,15 @@
     "preserveConstEnums": true,
     "jsx": "react",
     "jsxFactory": "h",
-    "jsxFragmentFactory": "Fragment"
-  }
+    "jsxFragmentFactory": "Fragment",
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["umalator/src/app/*"],
+      "@components/*": ["umalator/src/components/*"],
+      "@shared/*": ["umalator/src/shared/*"],
+      "@data/*": ["umalator/data/*"],
+      "@sim/*": ["uma-skill-tools/*"]
+    }
+  },
+  "include": ["umalator/src", "uma-skill-tools"]
 }

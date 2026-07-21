@@ -1,0 +1,210 @@
+.basinnChartWrapper {
+  width: 100%;
+  height: clamp(420px, 70vh, 720px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius);
+  background: var(--uma-surface);
+  box-shadow: var(--uma-shadow);
+  box-sizing: border-box;
+}
+
+.basinnChart {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--uma-text);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.basinnChart thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.basinnChart th {
+  width: 15%;
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--uma-border-strong);
+  background: var(--uma-surface-soft);
+  color: var(--uma-muted);
+  font-weight: 700;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.basinnChart th:first-child {
+  width: 40%;
+  text-align: left;
+}
+
+.basinnChart .columnHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  margin-left: 0;
+  padding-right: 18px;
+  border-bottom: none;
+}
+
+.basinnChart .columnHeader span {
+  position: relative;
+  cursor: pointer;
+}
+
+.basinnChartSortedAsc span::after,
+.basinnChartSortedDesc span::after {
+  position: absolute;
+  top: calc(50% - 2px);
+  right: -10px;
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-right: 2px solid var(--uma-muted);
+  border-bottom: 2px solid var(--uma-muted);
+  content: "";
+}
+
+.basinnChartSortedAsc span::after {
+  transform: rotate(-135deg);
+}
+
+.basinnChartSortedDesc span::after {
+  transform: rotate(45deg);
+}
+
+.basinnChart tr.selected {
+  background: var(--uma-accent-soft);
+}
+
+.basinnChart tbody tr:hover {
+  background: var(--uma-surface-soft);
+}
+
+.basinnChart td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #edf0f4;
+  vertical-align: middle;
+}
+
+.basinnChart td:not(:first-child) {
+  font-family: var(--uma-mono);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.chartSkillName {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.chartSkillName > img {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  object-fit: contain;
+  filter: none;
+}
+
+.chartSkillName span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.basinnChartWrapper::-webkit-scrollbar {
+  width: 10px;
+}
+
+.basinnChartWrapper::-webkit-scrollbar-track {
+  background: var(--uma-surface-soft);
+}
+
+.basinnChartWrapper::-webkit-scrollbar-thumb {
+  border: 2px solid var(--uma-surface-soft);
+  border-radius: 8px;
+  background: #a8b3c1;
+}
+
+.basinnChartWrapper::-webkit-scrollbar-thumb:hover {
+  background: #8793a3;
+}
+
+.mobileRunToggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.mobileRunToggleLabel {
+  color: var(--uma-muted);
+  font-weight: 600;
+}
+
+.mobileRunToggleButtons {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--uma-border-strong);
+  border-radius: var(--uma-radius-sm);
+  overflow: hidden;
+}
+
+.mobileRunToggleBtn {
+  min-height: 28px;
+  padding: 0 9px;
+  border: none;
+  border-radius: 0;
+  background: var(--uma-surface);
+  color: var(--uma-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mobileRunToggleBtn + .mobileRunToggleBtn {
+  border-left: 1px solid var(--uma-border);
+}
+
+.mobileRunToggleBtn.active {
+  background: var(--uma-accent-soft);
+  color: var(--uma-accent);
+}
+
+.mobileRunToggleRow th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--uma-border-strong);
+  background: var(--uma-surface-soft);
+}
+
+@media (max-width: 1280px) {
+  .basinnChartWrapper {
+    height: auto;
+    max-height: 68vh;
+  }
+
+  .basinnChart {
+    font-size: 13px;
+  }
+
+  .basinnChart th,
+  .basinnChart td {
+    padding: 7px 8px;
+  }
+
+  .basinnChart th {
+    width: auto;
+  }
+
+  .basinnChart th:first-child {
+    width: 45%;
+  }
+}

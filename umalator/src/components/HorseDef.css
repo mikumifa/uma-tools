@@ -1,0 +1,451 @@
+.horseDef {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 720px;
+  min-height: 720px;
+  height: 100%;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius);
+  background: var(--uma-surface);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.horseDefHeader {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--uma-border);
+  background: var(--uma-surface-soft);
+  color: var(--uma-text);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.umaSelector {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  grid-template-rows: repeat(2, 42px);
+  column-gap: 10px;
+  row-gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--uma-border);
+}
+
+.umaSelectorIconsBox {
+  display: flex;
+  grid-row: 1 / 3;
+  align-items: center;
+}
+
+.umaSelectorIconsBox > img:first-child {
+  width: 88px;
+  cursor: pointer;
+}
+
+.umaSelectorIconsBox > img:last-child {
+  align-self: flex-start;
+  width: 38px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.umaEpithet {
+  display: flex;
+  align-items: flex-end;
+  min-width: 0;
+}
+
+.umaEpithet > span {
+  width: 100%;
+  overflow: hidden;
+  color: var(--uma-muted);
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.umaSelectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.umaSelectInput {
+  width: 100%;
+  color: var(--uma-text);
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.umaSuggestions {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  z-index: 40;
+  display: none;
+  width: min(420px, 100%);
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--uma-border-strong);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.16);
+  cursor: default;
+  list-style-type: none;
+}
+
+.umaSuggestions.open {
+  display: block;
+}
+
+.umaSuggestion {
+  padding: 5px 8px;
+  background: var(--uma-surface);
+  color: var(--uma-text);
+}
+
+.umaSuggestion:nth-child(even) {
+  background: var(--uma-surface-soft);
+}
+
+.umaSuggestion.selected,
+.umaSuggestion:hover {
+  background: var(--uma-accent-soft);
+  color: var(--uma-accent);
+}
+
+.umaSuggestion > img {
+  height: 24px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.umaSuggestion > span {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.horseParams {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  align-items: center;
+  width: calc(100% - 24px);
+  max-width: 680px;
+  margin: 10px 12px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface);
+  text-align: center;
+  overflow: hidden;
+}
+
+.horseParamHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  border-left: 1px solid var(--uma-border);
+  border-bottom: 1px solid var(--uma-border);
+  background: var(--uma-surface-soft);
+  color: var(--uma-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.horseParamHeader:first-child {
+  border-left: none;
+}
+
+.horseParamHeader > img {
+  height: 14px;
+  margin-right: 3px;
+  filter: none;
+  vertical-align: middle;
+}
+
+.horseParamHeader > span {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.horseParam {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 4px;
+  border-left: 1px solid var(--uma-border);
+}
+
+.horseParam:nth-child(6) {
+  border-left: none;
+}
+
+.horseParam > img {
+  width: 18px;
+  margin-right: 3px;
+}
+
+.horseParam > input {
+  width: 58px;
+  min-height: 28px;
+  padding: 3px 4px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--uma-text);
+  font-family: var(--uma-mono);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.horseParam > input:focus {
+  border-color: var(--uma-border-strong);
+  background: var(--uma-surface);
+}
+
+.horseAptitudes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0 12px;
+  padding: 0;
+  overflow: visible;
+}
+
+.horseAptitudes > div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 5px 64px 5px 8px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface);
+  color: var(--uma-muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.horseAptitudeSelect {
+  position: absolute;
+  right: 8px;
+  z-index: 20;
+  display: inline-block;
+  transform: translateY(-50%);
+}
+
+.horseAptitudeSelect > span::after {
+  display: block;
+  width: 4px;
+  height: 4px;
+  margin-top: -12px;
+  margin-left: 24px;
+  border-right: 1px solid var(--uma-muted);
+  border-bottom: 1px solid var(--uma-muted);
+  content: "";
+  transform: rotate(45deg);
+}
+
+.horseAptitudeSelect > ul {
+  position: absolute;
+  top: 12px;
+  right: -10px;
+  z-index: 30;
+  width: 26px;
+  list-style-type: none;
+  border: 1px solid var(--uma-border-strong);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.16);
+}
+
+.horseAptitudeSelect li {
+  margin-left: -22px;
+}
+
+.horseAptitudeSelect img {
+  position: relative;
+  top: -7px;
+  height: 14px;
+  vertical-align: middle;
+}
+
+.horseStrategySelect {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  min-height: 26px;
+  width: 56px;
+  padding: 2px 4px;
+  transform: translateY(-50%);
+  color: var(--uma-text);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  text-align-last: center;
+}
+
+.horseStrategySelect option {
+  text-align: center;
+}
+
+.horseSkillHeader {
+  width: calc(100% - 24px);
+  margin: 12px 12px 0;
+  padding: 6px 8px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface-soft);
+  color: var(--uma-muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.horseSkillListWrapper {
+  flex: 1 1 auto;
+  width: calc(100% - 24px);
+  min-height: 120px;
+  max-height: none;
+  margin: 0 12px 12px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--uma-border);
+  border-top: none;
+  border-radius: 0 0 var(--uma-radius-sm) var(--uma-radius-sm);
+  background: var(--uma-surface-soft);
+  box-sizing: border-box;
+}
+
+.horseSkillList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 8px;
+  list-style-type: none;
+}
+
+.horseSkillList .skill {
+  width: 100%;
+  margin: 0;
+}
+
+.horseSkillPickerWrapper {
+  position: fixed;
+  top: 2em;
+  bottom: 0;
+  left: 10%;
+  z-index: 20;
+  display: none;
+  width: 80%;
+  margin: auto;
+  padding: 1em;
+  overflow-y: auto;
+  background: var(--uma-surface);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.horseSkillPickerWrapper.open {
+  display: none;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.horseSkillPickerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.horseSkillPickerOverlay.open {
+  display: block;
+}
+
+.addSkillButton {
+  align-items: center;
+  border: 1px dashed var(--uma-border-strong);
+  background: var(--uma-surface);
+  color: var(--uma-muted);
+}
+
+.addSkillButton > span {
+  margin: 0 6px;
+  font-size: 20px;
+}
+
+.skill-item {
+  opacity: 1;
+  transform-origin: center center;
+}
+
+@media (max-width: 640px) {
+  .horseDef {
+    min-height: 100vh;
+  }
+
+  .umaSelector {
+    grid-template-columns: 86px minmax(0, 1fr);
+    grid-template-rows: repeat(2, 38px);
+    padding: 8px;
+  }
+
+  .umaSelectorIconsBox > img:first-child {
+    width: 78px;
+  }
+
+  .umaSelectorIconsBox > img:last-child {
+    width: 34px;
+  }
+
+  .umaSelectInput {
+    font-size: 15px;
+  }
+
+  .horseParams {
+    width: calc(100% - 16px);
+    margin: 8px;
+    font-size: 12px;
+  }
+
+  .horseParam > input {
+    width: 50px;
+    font-size: 13px;
+  }
+
+  .horseAptitudes {
+    grid-template-columns: 1fr;
+    margin: 0 8px;
+  }
+
+  .horseSkillHeader,
+  .horseSkillListWrapper {
+    width: calc(100% - 16px);
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .horseSkillList {
+    grid-template-columns: 1fr;
+    padding: 6px;
+  }
+}

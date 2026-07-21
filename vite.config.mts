@@ -1,16 +1,43 @@
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import preact from "@preact/preset-vite";
 import { defineConfig } from "vite";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const legacyRedirectHtml = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <meta http-equiv="refresh" content="0; url=../">
+  <link rel="canonical" href="../">
+</head>
+<body>
+  <p>Redirecting to <a href="../">../</a>...</p>
+  <script>window.location.replace("../" + window.location.hash);</script>
+</body>
+</html>
+`;
+
+function legacyCnRedirect() {
+  return {
+    name: "legacy-cn-redirect",
+    writeBundle(options) {
+      if (!options.dir) return;
+      const legacyDir = path.resolve(options.dir, "umalator-cn");
+      fs.mkdirSync(legacyDir, { recursive: true });
+      fs.writeFileSync(path.join(legacyDir, "index.html"), legacyRedirectHtml);
+    },
+  };
+}
 
 export default defineConfig(({ mode }) => {
   const debug = mode === "debug";
   return {
     root: path.resolve(__dirname, "umalator"),
     base: "./",
-    plugins: [preact()],
+    plugins: [preact(), legacyCnRedirect()],
     define: {
       CC_DEBUG: JSON.stringify(debug),
       CC_GLOBAL: "true",
@@ -18,12 +45,32 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: [
         {
+          find: "@app",
+          replacement: path.resolve(__dirname, "umalator/src/app"),
+        },
+        {
+          find: "@components",
+          replacement: path.resolve(__dirname, "umalator/src/components"),
+        },
+        {
+          find: "@shared",
+          replacement: path.resolve(__dirname, "umalator/src/shared"),
+        },
+        {
+          find: "@data",
+          replacement: path.resolve(__dirname, "umalator/data"),
+        },
+        {
+          find: "@sim",
+          replacement: path.resolve(__dirname, "uma-skill-tools"),
+        },
+        {
           find: /^@tanstack\/(.*)/,
           replacement: path.resolve(__dirname, "vendor/$1"),
         },
         {
           find: "node:assert",
-          replacement: path.resolve(__dirname, "mock-assert.ts"),
+          replacement: path.resolve(__dirname, "umalator/src/shims/assert.ts"),
         },
       ],
     },
@@ -35,8 +82,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
-      // Keep the published URL at /umalator-cn/ instead of /umalator/dist/
-      outDir: path.resolve(__dirname, "umalator-cn"),
+      outDir: path.resolve(__dirname, "dist"),
       emptyOutDir: true,
       assetsDir: ".",
       rollupOptions: {
