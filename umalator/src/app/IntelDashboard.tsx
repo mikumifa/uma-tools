@@ -354,6 +354,11 @@ function rewardAmountLabel(drop: NonNullable<ScheduleItem["drops"]>[number]) {
   return amount >= 10000 ? `x${Math.floor(amount / 10000)}w` : `x${amount}`;
 }
 
+function rewardInlineAmountLabel(reward?: ScheduleReward | null) {
+  if (!reward || reward.countOnly) return "";
+  return rewardAmountLabel(reward as NonNullable<ScheduleItem["drops"]>[number]);
+}
+
 function detailAmountLabel(reward?: ScheduleReward | null) {
   const amount = Number(reward?.amount || 0);
   if (!amount) return "";
@@ -386,17 +391,6 @@ function rewardSourceGroups(drops?: ScheduleItem["drops"]) {
     group.drops.push(drop);
     return groups;
   }, []);
-}
-
-function previewRewardGroupDrops(drops: NonNullable<ScheduleItem["drops"]>) {
-  if (drops.length <= 10) return drops;
-  return [
-    ...drops.slice(0, 10),
-    {
-      label: `+${drops.length - 10}`,
-      countOnly: true,
-    },
-  ];
 }
 
 async function loadExchangeDetails(path: string) {
@@ -1300,6 +1294,29 @@ function DetailRewardIcon({
   );
 }
 
+function DetailRewardToken({ reward }: { reward: ScheduleReward }) {
+  const amount = rewardInlineAmountLabel(reward);
+  if (reward.countOnly) {
+    return <DetailRewardIcon reward={reward} showAmount={false} />;
+  }
+  return (
+    <span
+      class="intelDetailRewardToken"
+      title={reward.name || reward.label || "奖励"}
+    >
+      <DetailRewardIcon
+        reward={reward}
+        label={reward.name || reward.label}
+        showAmount={false}
+      />
+      <span>
+        <strong>{reward.name || reward.label || "奖励"}</strong>
+        {amount && <small>{amount}</small>}
+      </span>
+    </span>
+  );
+}
+
 function ScheduleDetail({
   item,
   title,
@@ -1368,11 +1385,9 @@ function ScheduleDetail({
                 <div class="intelScheduleRewardGroup" key={group.source}>
                   <strong>{group.source}</strong>
                   <div>
-                    {previewRewardGroupDrops(group.drops).map((drop, index) => (
-                      <DetailRewardIcon
+                    {group.drops.map((drop, index) => (
+                      <DetailRewardToken
                         reward={drop}
-                        label={drop.name || drop.label}
-                        showAmount={false}
                         key={`${drop.image}-${drop.label}-${index}`}
                       />
                     ))}

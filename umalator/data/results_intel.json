@@ -5200,11 +5200,31 @@
         {
           "image": "intel/support/support_card_s_30135.png",
           "name": "[高举熊熊燃烧的灯火]葛城荣主",
-          "source": "合计",
-          "label": "[高举熊熊燃烧的灯火]葛城荣主 x5 · 合计",
+          "source": "点数",
+          "label": "[高举熊熊燃烧的灯火]葛城荣主 x1 · 点数",
           "rewardType": 51,
           "rewardValue": 30135,
-          "amount": 5,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/support/support_card_s_30135.png",
+          "name": "[高举熊熊燃烧的灯火]葛城荣主",
+          "source": "剧情",
+          "label": "[高举熊熊燃烧的灯火]葛城荣主 x1 · 剧情",
+          "rewardType": 51,
+          "rewardValue": 30135,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/support/support_card_s_30135.png",
+          "name": "[高举熊熊燃烧的灯火]葛城荣主",
+          "source": "宾果",
+          "label": "[高举熊熊燃烧的灯火]葛城荣主 x3 · 宾果",
+          "rewardType": 51,
+          "rewardValue": 30135,
+          "amount": 3,
           "isPiece": false
         },
         {
@@ -5280,21 +5300,31 @@
         {
           "image": "intel/item/item_icon_00116.png",
           "name": "干劲满溢甜点",
-          "source": "合计",
-          "label": "干劲满溢甜点 x7 · 合计",
+          "source": "点数",
+          "label": "干劲满溢甜点 x3 · 点数",
           "rewardType": 150,
           "rewardValue": 116,
-          "amount": 7,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "宾果",
+          "label": "干劲满溢甜点 x3 · 宾果",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00115.png",
           "name": "女神像",
-          "source": "合计",
-          "label": "女神像 x21 · 合计",
+          "source": "点数",
+          "label": "女神像 x20 · 点数",
           "rewardType": 97,
           "rewardValue": 115,
-          "amount": 21,
+          "amount": 20,
           "isPiece": false
         },
         {
@@ -5310,11 +5340,11 @@
         {
           "image": "intel/item/item_icon_00095.png",
           "name": "闹钟",
-          "source": "合计",
-          "label": "闹钟 x25 · 合计",
+          "source": "点数",
+          "label": "闹钟 x24 · 点数",
           "rewardType": 34,
           "rewardValue": 95,
-          "amount": 25,
+          "amount": 24,
           "isPiece": false
         },
         {
@@ -5330,11 +5360,31 @@
         {
           "image": "intel/item/item_icon_00043.png",
           "name": "宝石",
-          "source": "合计",
-          "label": "宝石 x2220 · 合计",
+          "source": "点数",
+          "label": "宝石 x1500 · 点数",
           "rewardType": 90,
           "rewardValue": 43,
-          "amount": 2220,
+          "amount": 1500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "剧情",
+          "label": "宝石 x270 · 剧情",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 270,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "宾果",
+          "label": "宝石 x450 · 宾果",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 450,
           "isPiece": false
         },
         {
@@ -5350,51 +5400,101 @@
         {
           "image": "intel/item/item_icon_00034.png",
           "name": "迷你胡萝卜果冻",
-          "source": "合计",
-          "label": "迷你胡萝卜果冻 x6 · 合计",
+          "source": "点数",
+          "label": "迷你胡萝卜果冻 x2 · 点数",
           "rewardType": 21,
           "rewardValue": 34,
-          "amount": 6,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "宾果",
+          "label": "迷你胡萝卜果冻 x3 · 宾果",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00032.png",
           "name": "能量饮料30",
-          "source": "合计",
-          "label": "能量饮料30 x7 · 合计",
+          "source": "点数",
+          "label": "能量饮料30 x4 · 点数",
           "rewardType": 20,
           "rewardValue": 32,
-          "amount": 7,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "宾果",
+          "label": "能量饮料30 x3 · 宾果",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00110.png",
           "name": "协助积分",
-          "source": "合计",
-          "label": "协助积分 x119300 · 合计",
+          "source": "点数",
+          "label": "协助积分 x116000 · 点数",
           "rewardType": 30,
           "rewardValue": 110,
-          "amount": 119300,
+          "amount": 116000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "宾果",
+          "label": "协助积分 x3000 · 宾果",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 3000,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00098.png",
           "name": "好友积分",
-          "source": "合计",
-          "label": "好友积分 x3200 · 合计",
+          "source": "点数",
+          "label": "好友积分 x2100 · 点数",
           "rewardType": 103,
           "rewardValue": 98,
-          "amount": 3200,
+          "amount": 2100,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "宾果",
+          "label": "好友积分 x1000 · 宾果",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 1000,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00059.png",
           "name": "金币",
-          "source": "合计",
-          "label": "金币 x332600 · 合计",
+          "source": "点数",
+          "label": "金币 x330000 · 点数",
           "rewardType": 91,
           "rewardValue": 59,
-          "amount": 332600,
+          "amount": 330000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "宾果",
+          "label": "金币 x2000 · 宾果",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 2000,
           "isPiece": false
         }
       ],
@@ -5924,11 +6024,31 @@
         {
           "image": "intel/support/support_card_s_30140.png",
           "name": "[比翼的华尔兹]东海帝王",
-          "source": "合计",
-          "label": "[比翼的华尔兹]东海帝王 x5 · 合计",
+          "source": "点数",
+          "label": "[比翼的华尔兹]东海帝王 x1 · 点数",
           "rewardType": 51,
           "rewardValue": 30140,
-          "amount": 5,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/support/support_card_s_30140.png",
+          "name": "[比翼的华尔兹]东海帝王",
+          "source": "剧情",
+          "label": "[比翼的华尔兹]东海帝王 x1 · 剧情",
+          "rewardType": 51,
+          "rewardValue": 30140,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/support/support_card_s_30140.png",
+          "name": "[比翼的华尔兹]东海帝王",
+          "source": "宾果",
+          "label": "[比翼的华尔兹]东海帝王 x3 · 宾果",
+          "rewardType": 51,
+          "rewardValue": 30140,
+          "amount": 3,
           "isPiece": false
         },
         {
@@ -6004,21 +6124,31 @@
         {
           "image": "intel/item/item_icon_00116.png",
           "name": "干劲满溢甜点",
-          "source": "合计",
-          "label": "干劲满溢甜点 x7 · 合计",
+          "source": "点数",
+          "label": "干劲满溢甜点 x3 · 点数",
           "rewardType": 150,
           "rewardValue": 116,
-          "amount": 7,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "宾果",
+          "label": "干劲满溢甜点 x3 · 宾果",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00115.png",
           "name": "女神像",
-          "source": "合计",
-          "label": "女神像 x21 · 合计",
+          "source": "点数",
+          "label": "女神像 x20 · 点数",
           "rewardType": 97,
           "rewardValue": 115,
-          "amount": 21,
+          "amount": 20,
           "isPiece": false
         },
         {
@@ -6034,11 +6164,11 @@
         {
           "image": "intel/item/item_icon_00095.png",
           "name": "闹钟",
-          "source": "合计",
-          "label": "闹钟 x25 · 合计",
+          "source": "点数",
+          "label": "闹钟 x24 · 点数",
           "rewardType": 34,
           "rewardValue": 95,
-          "amount": 25,
+          "amount": 24,
           "isPiece": false
         },
         {
@@ -6054,11 +6184,31 @@
         {
           "image": "intel/item/item_icon_00043.png",
           "name": "宝石",
-          "source": "合计",
-          "label": "宝石 x2160 · 合计",
+          "source": "点数",
+          "label": "宝石 x1500 · 点数",
           "rewardType": 90,
           "rewardValue": 43,
-          "amount": 2160,
+          "amount": 1500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "剧情",
+          "label": "宝石 x210 · 剧情",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 210,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "宾果",
+          "label": "宝石 x450 · 宾果",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 450,
           "isPiece": false
         },
         {
@@ -6074,51 +6224,101 @@
         {
           "image": "intel/item/item_icon_00034.png",
           "name": "迷你胡萝卜果冻",
-          "source": "合计",
-          "label": "迷你胡萝卜果冻 x6 · 合计",
+          "source": "点数",
+          "label": "迷你胡萝卜果冻 x2 · 点数",
           "rewardType": 21,
           "rewardValue": 34,
-          "amount": 6,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "宾果",
+          "label": "迷你胡萝卜果冻 x3 · 宾果",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00032.png",
           "name": "能量饮料30",
-          "source": "合计",
-          "label": "能量饮料30 x7 · 合计",
+          "source": "点数",
+          "label": "能量饮料30 x4 · 点数",
           "rewardType": 20,
           "rewardValue": 32,
-          "amount": 7,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "宾果",
+          "label": "能量饮料30 x3 · 宾果",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00110.png",
           "name": "协助积分",
-          "source": "合计",
-          "label": "协助积分 x119300 · 合计",
+          "source": "点数",
+          "label": "协助积分 x116000 · 点数",
           "rewardType": 30,
           "rewardValue": 110,
-          "amount": 119300,
+          "amount": 116000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "宾果",
+          "label": "协助积分 x3000 · 宾果",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 3000,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00098.png",
           "name": "好友积分",
-          "source": "合计",
-          "label": "好友积分 x3200 · 合计",
+          "source": "点数",
+          "label": "好友积分 x2100 · 点数",
           "rewardType": 103,
           "rewardValue": 98,
-          "amount": 3200,
+          "amount": 2100,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "宾果",
+          "label": "好友积分 x1000 · 宾果",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 1000,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00059.png",
           "name": "金币",
-          "source": "合计",
-          "label": "金币 x322600 · 合计",
+          "source": "点数",
+          "label": "金币 x320000 · 点数",
           "rewardType": 91,
           "rewardValue": 59,
-          "amount": 322600,
+          "amount": 320000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "宾果",
+          "label": "金币 x2000 · 宾果",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 2000,
           "isPiece": false
         }
       ],
@@ -6403,11 +6603,21 @@
         {
           "image": "intel/item/item_icon_00043.png",
           "name": "宝石",
-          "source": "合计",
-          "label": "宝石 x1250 · 合计",
+          "source": "考试",
+          "label": "宝石 x800 · 考试",
           "rewardType": 90,
           "rewardValue": 43,
-          "amount": 1250,
+          "amount": 800,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "兑换",
+          "label": "宝石 x450 · 兑换",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 450,
           "isPiece": false
         },
         {
@@ -6473,11 +6683,21 @@
         {
           "image": "intel/item/item_icon_00110.png",
           "name": "协助积分",
-          "source": "合计",
-          "label": "协助积分 x122500 · 合计",
+          "source": "考试",
+          "label": "协助积分 x22500 · 考试",
           "rewardType": 30,
           "rewardValue": 110,
-          "amount": 122500,
+          "amount": 22500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "兑换",
+          "label": "协助积分 x100000 · 兑换",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 100000,
           "isPiece": false
         },
         {
@@ -6493,11 +6713,21 @@
         {
           "image": "intel/item/item_icon_00059.png",
           "name": "金币",
-          "source": "合计",
-          "label": "金币 x345000 · 合计",
+          "source": "考试",
+          "label": "金币 x45000 · 考试",
           "rewardType": 91,
           "rewardValue": 59,
-          "amount": 345000,
+          "amount": 45000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "兑换",
+          "label": "金币 x300000 · 兑换",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 300000,
           "isPiece": false
         }
       ],
@@ -6609,11 +6839,31 @@
         {
           "image": "intel/support/support_card_s_30143.png",
           "name": "[终抵之处的风景]生野狄杜斯",
-          "source": "合计",
-          "label": "[终抵之处的风景]生野狄杜斯 x5 · 合计",
+          "source": "点数",
+          "label": "[终抵之处的风景]生野狄杜斯 x1 · 点数",
           "rewardType": 51,
           "rewardValue": 30143,
-          "amount": 5,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/support/support_card_s_30143.png",
+          "name": "[终抵之处的风景]生野狄杜斯",
+          "source": "剧情",
+          "label": "[终抵之处的风景]生野狄杜斯 x1 · 剧情",
+          "rewardType": 51,
+          "rewardValue": 30143,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/support/support_card_s_30143.png",
+          "name": "[终抵之处的风景]生野狄杜斯",
+          "source": "宾果",
+          "label": "[终抵之处的风景]生野狄杜斯 x3 · 宾果",
+          "rewardType": 51,
+          "rewardValue": 30143,
+          "amount": 3,
           "isPiece": false
         },
         {
@@ -6689,21 +6939,31 @@
         {
           "image": "intel/item/item_icon_00116.png",
           "name": "干劲满溢甜点",
-          "source": "合计",
-          "label": "干劲满溢甜点 x7 · 合计",
+          "source": "点数",
+          "label": "干劲满溢甜点 x3 · 点数",
           "rewardType": 150,
           "rewardValue": 116,
-          "amount": 7,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "宾果",
+          "label": "干劲满溢甜点 x3 · 宾果",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00115.png",
           "name": "女神像",
-          "source": "合计",
-          "label": "女神像 x21 · 合计",
+          "source": "点数",
+          "label": "女神像 x20 · 点数",
           "rewardType": 97,
           "rewardValue": 115,
-          "amount": 21,
+          "amount": 20,
           "isPiece": false
         },
         {
@@ -6719,11 +6979,11 @@
         {
           "image": "intel/item/item_icon_00095.png",
           "name": "闹钟",
-          "source": "合计",
-          "label": "闹钟 x25 · 合计",
+          "source": "点数",
+          "label": "闹钟 x24 · 点数",
           "rewardType": 34,
           "rewardValue": 95,
-          "amount": 25,
+          "amount": 24,
           "isPiece": false
         },
         {
@@ -6739,11 +6999,31 @@
         {
           "image": "intel/item/item_icon_00043.png",
           "name": "宝石",
-          "source": "合计",
-          "label": "宝石 x2160 · 合计",
+          "source": "点数",
+          "label": "宝石 x1500 · 点数",
           "rewardType": 90,
           "rewardValue": 43,
-          "amount": 2160,
+          "amount": 1500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "剧情",
+          "label": "宝石 x210 · 剧情",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 210,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "宾果",
+          "label": "宝石 x450 · 宾果",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 450,
           "isPiece": false
         },
         {
@@ -6759,51 +7039,101 @@
         {
           "image": "intel/item/item_icon_00034.png",
           "name": "迷你胡萝卜果冻",
-          "source": "合计",
-          "label": "迷你胡萝卜果冻 x6 · 合计",
+          "source": "点数",
+          "label": "迷你胡萝卜果冻 x2 · 点数",
           "rewardType": 21,
           "rewardValue": 34,
-          "amount": 6,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "宾果",
+          "label": "迷你胡萝卜果冻 x3 · 宾果",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00032.png",
           "name": "能量饮料30",
-          "source": "合计",
-          "label": "能量饮料30 x7 · 合计",
+          "source": "点数",
+          "label": "能量饮料30 x4 · 点数",
           "rewardType": 20,
           "rewardValue": 32,
-          "amount": 7,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "宾果",
+          "label": "能量饮料30 x3 · 宾果",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00110.png",
           "name": "协助积分",
-          "source": "合计",
-          "label": "协助积分 x119300 · 合计",
+          "source": "点数",
+          "label": "协助积分 x116000 · 点数",
           "rewardType": 30,
           "rewardValue": 110,
-          "amount": 119300,
+          "amount": 116000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "宾果",
+          "label": "协助积分 x3000 · 宾果",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 3000,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00098.png",
           "name": "好友积分",
-          "source": "合计",
-          "label": "好友积分 x3200 · 合计",
+          "source": "点数",
+          "label": "好友积分 x2100 · 点数",
           "rewardType": 103,
           "rewardValue": 98,
-          "amount": 3200,
+          "amount": 2100,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "宾果",
+          "label": "好友积分 x1000 · 宾果",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 1000,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00059.png",
           "name": "金币",
-          "source": "合计",
-          "label": "金币 x322600 · 合计",
+          "source": "点数",
+          "label": "金币 x320000 · 点数",
           "rewardType": 91,
           "rewardValue": 59,
-          "amount": 322600,
+          "amount": 320000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "宾果",
+          "label": "金币 x2000 · 宾果",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 2000,
           "isPiece": false
         }
       ],
@@ -7457,11 +7787,31 @@
         {
           "image": "intel/support/support_card_s_30150.png",
           "name": "[点燃心火！！]伏特加",
-          "source": "合计",
-          "label": "[点燃心火！！]伏特加 x5 · 合计",
+          "source": "点数",
+          "label": "[点燃心火！！]伏特加 x1 · 点数",
           "rewardType": 51,
           "rewardValue": 30150,
-          "amount": 5,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/support/support_card_s_30150.png",
+          "name": "[点燃心火！！]伏特加",
+          "source": "剧情",
+          "label": "[点燃心火！！]伏特加 x1 · 剧情",
+          "rewardType": 51,
+          "rewardValue": 30150,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/support/support_card_s_30150.png",
+          "name": "[点燃心火！！]伏特加",
+          "source": "宾果",
+          "label": "[点燃心火！！]伏特加 x3 · 宾果",
+          "rewardType": 51,
+          "rewardValue": 30150,
+          "amount": 3,
           "isPiece": false
         },
         {
@@ -7537,21 +7887,31 @@
         {
           "image": "intel/item/item_icon_00116.png",
           "name": "干劲满溢甜点",
-          "source": "合计",
-          "label": "干劲满溢甜点 x7 · 合计",
+          "source": "点数",
+          "label": "干劲满溢甜点 x3 · 点数",
           "rewardType": 150,
           "rewardValue": 116,
-          "amount": 7,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "宾果",
+          "label": "干劲满溢甜点 x3 · 宾果",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00115.png",
           "name": "女神像",
-          "source": "合计",
-          "label": "女神像 x21 · 合计",
+          "source": "点数",
+          "label": "女神像 x20 · 点数",
           "rewardType": 97,
           "rewardValue": 115,
-          "amount": 21,
+          "amount": 20,
           "isPiece": false
         },
         {
@@ -7567,11 +7927,11 @@
         {
           "image": "intel/item/item_icon_00095.png",
           "name": "闹钟",
-          "source": "合计",
-          "label": "闹钟 x25 · 合计",
+          "source": "点数",
+          "label": "闹钟 x24 · 点数",
           "rewardType": 34,
           "rewardValue": 95,
-          "amount": 25,
+          "amount": 24,
           "isPiece": false
         },
         {
@@ -7587,11 +7947,31 @@
         {
           "image": "intel/item/item_icon_00043.png",
           "name": "宝石",
-          "source": "合计",
-          "label": "宝石 x2160 · 合计",
+          "source": "点数",
+          "label": "宝石 x1500 · 点数",
           "rewardType": 90,
           "rewardValue": 43,
-          "amount": 2160,
+          "amount": 1500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "剧情",
+          "label": "宝石 x210 · 剧情",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 210,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "宾果",
+          "label": "宝石 x450 · 宾果",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 450,
           "isPiece": false
         },
         {
@@ -7607,51 +7987,101 @@
         {
           "image": "intel/item/item_icon_00034.png",
           "name": "迷你胡萝卜果冻",
-          "source": "合计",
-          "label": "迷你胡萝卜果冻 x6 · 合计",
+          "source": "点数",
+          "label": "迷你胡萝卜果冻 x2 · 点数",
           "rewardType": 21,
           "rewardValue": 34,
-          "amount": 6,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "宾果",
+          "label": "迷你胡萝卜果冻 x3 · 宾果",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00032.png",
           "name": "能量饮料30",
-          "source": "合计",
-          "label": "能量饮料30 x7 · 合计",
+          "source": "点数",
+          "label": "能量饮料30 x4 · 点数",
           "rewardType": 20,
           "rewardValue": 32,
-          "amount": 7,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "宾果",
+          "label": "能量饮料30 x3 · 宾果",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00110.png",
           "name": "协助积分",
-          "source": "合计",
-          "label": "协助积分 x119300 · 合计",
+          "source": "点数",
+          "label": "协助积分 x116000 · 点数",
           "rewardType": 30,
           "rewardValue": 110,
-          "amount": 119300,
+          "amount": 116000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "宾果",
+          "label": "协助积分 x3000 · 宾果",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 3000,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00098.png",
           "name": "好友积分",
-          "source": "合计",
-          "label": "好友积分 x3200 · 合计",
+          "source": "点数",
+          "label": "好友积分 x2100 · 点数",
           "rewardType": 103,
           "rewardValue": 98,
-          "amount": 3200,
+          "amount": 2100,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "宾果",
+          "label": "好友积分 x1000 · 宾果",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 1000,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00059.png",
           "name": "金币",
-          "source": "合计",
-          "label": "金币 x322600 · 合计",
+          "source": "点数",
+          "label": "金币 x320000 · 点数",
           "rewardType": 91,
           "rewardValue": 59,
-          "amount": 322600,
+          "amount": 320000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "宾果",
+          "label": "金币 x2000 · 宾果",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 2000,
           "isPiece": false
         }
       ],
@@ -8091,11 +8521,31 @@
         {
           "image": "intel/support/support_card_s_30155.png",
           "name": "[#夏天 #全新的我]大拓太阳神",
-          "source": "合计",
-          "label": "[#夏天 #全新的我]大拓太阳神 x5 · 合计",
+          "source": "点数",
+          "label": "[#夏天 #全新的我]大拓太阳神 x1 · 点数",
           "rewardType": 51,
           "rewardValue": 30155,
-          "amount": 5,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/support/support_card_s_30155.png",
+          "name": "[#夏天 #全新的我]大拓太阳神",
+          "source": "剧情",
+          "label": "[#夏天 #全新的我]大拓太阳神 x1 · 剧情",
+          "rewardType": 51,
+          "rewardValue": 30155,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/support/support_card_s_30155.png",
+          "name": "[#夏天 #全新的我]大拓太阳神",
+          "source": "宾果",
+          "label": "[#夏天 #全新的我]大拓太阳神 x3 · 宾果",
+          "rewardType": 51,
+          "rewardValue": 30155,
+          "amount": 3,
           "isPiece": false
         },
         {
@@ -8171,21 +8621,31 @@
         {
           "image": "intel/item/item_icon_00116.png",
           "name": "干劲满溢甜点",
-          "source": "合计",
-          "label": "干劲满溢甜点 x7 · 合计",
+          "source": "点数",
+          "label": "干劲满溢甜点 x3 · 点数",
           "rewardType": 150,
           "rewardValue": 116,
-          "amount": 7,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "宾果",
+          "label": "干劲满溢甜点 x3 · 宾果",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00115.png",
           "name": "女神像",
-          "source": "合计",
-          "label": "女神像 x21 · 合计",
+          "source": "点数",
+          "label": "女神像 x20 · 点数",
           "rewardType": 97,
           "rewardValue": 115,
-          "amount": 21,
+          "amount": 20,
           "isPiece": false
         },
         {
@@ -8201,11 +8661,11 @@
         {
           "image": "intel/item/item_icon_00095.png",
           "name": "闹钟",
-          "source": "合计",
-          "label": "闹钟 x25 · 合计",
+          "source": "点数",
+          "label": "闹钟 x24 · 点数",
           "rewardType": 34,
           "rewardValue": 95,
-          "amount": 25,
+          "amount": 24,
           "isPiece": false
         },
         {
@@ -8221,11 +8681,31 @@
         {
           "image": "intel/item/item_icon_00043.png",
           "name": "宝石",
-          "source": "合计",
-          "label": "宝石 x2160 · 合计",
+          "source": "点数",
+          "label": "宝石 x1500 · 点数",
           "rewardType": 90,
           "rewardValue": 43,
-          "amount": 2160,
+          "amount": 1500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "剧情",
+          "label": "宝石 x210 · 剧情",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 210,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "宾果",
+          "label": "宝石 x450 · 宾果",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 450,
           "isPiece": false
         },
         {
@@ -8241,51 +8721,101 @@
         {
           "image": "intel/item/item_icon_00034.png",
           "name": "迷你胡萝卜果冻",
-          "source": "合计",
-          "label": "迷你胡萝卜果冻 x6 · 合计",
+          "source": "点数",
+          "label": "迷你胡萝卜果冻 x2 · 点数",
           "rewardType": 21,
           "rewardValue": 34,
-          "amount": 6,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "宾果",
+          "label": "迷你胡萝卜果冻 x3 · 宾果",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00032.png",
           "name": "能量饮料30",
-          "source": "合计",
-          "label": "能量饮料30 x7 · 合计",
+          "source": "点数",
+          "label": "能量饮料30 x4 · 点数",
           "rewardType": 20,
           "rewardValue": 32,
-          "amount": 7,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "宾果",
+          "label": "能量饮料30 x3 · 宾果",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00110.png",
           "name": "协助积分",
-          "source": "合计",
-          "label": "协助积分 x119300 · 合计",
+          "source": "点数",
+          "label": "协助积分 x116000 · 点数",
           "rewardType": 30,
           "rewardValue": 110,
-          "amount": 119300,
+          "amount": 116000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "宾果",
+          "label": "协助积分 x3000 · 宾果",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 3000,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00098.png",
           "name": "好友积分",
-          "source": "合计",
-          "label": "好友积分 x3200 · 合计",
+          "source": "点数",
+          "label": "好友积分 x2100 · 点数",
           "rewardType": 103,
           "rewardValue": 98,
-          "amount": 3200,
+          "amount": 2100,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "宾果",
+          "label": "好友积分 x1000 · 宾果",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 1000,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00059.png",
           "name": "金币",
-          "source": "合计",
-          "label": "金币 x322600 · 合计",
+          "source": "点数",
+          "label": "金币 x320000 · 点数",
           "rewardType": 91,
           "rewardValue": 59,
-          "amount": 322600,
+          "amount": 320000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "宾果",
+          "label": "金币 x2000 · 宾果",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 2000,
           "isPiece": false
         }
       ],
@@ -8510,11 +9040,31 @@
         {
           "image": "intel/support/support_card_s_30159.png",
           "name": "[Seaside Bloom]气槽",
-          "source": "合计",
-          "label": "[Seaside Bloom]气槽 x5 · 合计",
+          "source": "点数",
+          "label": "[Seaside Bloom]气槽 x1 · 点数",
           "rewardType": 51,
           "rewardValue": 30159,
-          "amount": 5,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/support/support_card_s_30159.png",
+          "name": "[Seaside Bloom]气槽",
+          "source": "剧情",
+          "label": "[Seaside Bloom]气槽 x1 · 剧情",
+          "rewardType": 51,
+          "rewardValue": 30159,
+          "amount": 1,
+          "isPiece": false
+        },
+        {
+          "image": "intel/support/support_card_s_30159.png",
+          "name": "[Seaside Bloom]气槽",
+          "source": "宾果",
+          "label": "[Seaside Bloom]气槽 x3 · 宾果",
+          "rewardType": 51,
+          "rewardValue": 30159,
+          "amount": 3,
           "isPiece": false
         },
         {
@@ -8590,21 +9140,31 @@
         {
           "image": "intel/item/item_icon_00116.png",
           "name": "干劲满溢甜点",
-          "source": "合计",
-          "label": "干劲满溢甜点 x7 · 合计",
+          "source": "点数",
+          "label": "干劲满溢甜点 x3 · 点数",
           "rewardType": 150,
           "rewardValue": 116,
-          "amount": 7,
+          "amount": 3,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00116.png",
+          "name": "干劲满溢甜点",
+          "source": "宾果",
+          "label": "干劲满溢甜点 x3 · 宾果",
+          "rewardType": 150,
+          "rewardValue": 116,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00115.png",
           "name": "女神像",
-          "source": "合计",
-          "label": "女神像 x21 · 合计",
+          "source": "点数",
+          "label": "女神像 x20 · 点数",
           "rewardType": 97,
           "rewardValue": 115,
-          "amount": 21,
+          "amount": 20,
           "isPiece": false
         },
         {
@@ -8620,11 +9180,11 @@
         {
           "image": "intel/item/item_icon_00095.png",
           "name": "闹钟",
-          "source": "合计",
-          "label": "闹钟 x25 · 合计",
+          "source": "点数",
+          "label": "闹钟 x24 · 点数",
           "rewardType": 34,
           "rewardValue": 95,
-          "amount": 25,
+          "amount": 24,
           "isPiece": false
         },
         {
@@ -8640,11 +9200,31 @@
         {
           "image": "intel/item/item_icon_00043.png",
           "name": "宝石",
-          "source": "合计",
-          "label": "宝石 x2160 · 合计",
+          "source": "点数",
+          "label": "宝石 x1500 · 点数",
           "rewardType": 90,
           "rewardValue": 43,
-          "amount": 2160,
+          "amount": 1500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "剧情",
+          "label": "宝石 x210 · 剧情",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 210,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "宾果",
+          "label": "宝石 x450 · 宾果",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 450,
           "isPiece": false
         },
         {
@@ -8660,51 +9240,101 @@
         {
           "image": "intel/item/item_icon_00034.png",
           "name": "迷你胡萝卜果冻",
-          "source": "合计",
-          "label": "迷你胡萝卜果冻 x6 · 合计",
+          "source": "点数",
+          "label": "迷你胡萝卜果冻 x2 · 点数",
           "rewardType": 21,
           "rewardValue": 34,
-          "amount": 6,
+          "amount": 2,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00034.png",
+          "name": "迷你胡萝卜果冻",
+          "source": "宾果",
+          "label": "迷你胡萝卜果冻 x3 · 宾果",
+          "rewardType": 21,
+          "rewardValue": 34,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00032.png",
           "name": "能量饮料30",
-          "source": "合计",
-          "label": "能量饮料30 x7 · 合计",
+          "source": "点数",
+          "label": "能量饮料30 x4 · 点数",
           "rewardType": 20,
           "rewardValue": 32,
-          "amount": 7,
+          "amount": 4,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00032.png",
+          "name": "能量饮料30",
+          "source": "宾果",
+          "label": "能量饮料30 x3 · 宾果",
+          "rewardType": 20,
+          "rewardValue": 32,
+          "amount": 3,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00110.png",
           "name": "协助积分",
-          "source": "合计",
-          "label": "协助积分 x119300 · 合计",
+          "source": "点数",
+          "label": "协助积分 x116000 · 点数",
           "rewardType": 30,
           "rewardValue": 110,
-          "amount": 119300,
+          "amount": 116000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "宾果",
+          "label": "协助积分 x3000 · 宾果",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 3000,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00098.png",
           "name": "好友积分",
-          "source": "合计",
-          "label": "好友积分 x3200 · 合计",
+          "source": "点数",
+          "label": "好友积分 x2100 · 点数",
           "rewardType": 103,
           "rewardValue": 98,
-          "amount": 3200,
+          "amount": 2100,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00098.png",
+          "name": "好友积分",
+          "source": "宾果",
+          "label": "好友积分 x1000 · 宾果",
+          "rewardType": 103,
+          "rewardValue": 98,
+          "amount": 1000,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00059.png",
           "name": "金币",
-          "source": "合计",
-          "label": "金币 x322600 · 合计",
+          "source": "点数",
+          "label": "金币 x320000 · 点数",
           "rewardType": 91,
           "rewardValue": 59,
-          "amount": 322600,
+          "amount": 320000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "宾果",
+          "label": "金币 x2000 · 宾果",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 2000,
           "isPiece": false
         }
       ],
@@ -9262,11 +9892,21 @@
         {
           "image": "intel/item/item_icon_00043.png",
           "name": "宝石",
-          "source": "合计",
-          "label": "宝石 x1250 · 合计",
+          "source": "考试",
+          "label": "宝石 x800 · 考试",
           "rewardType": 90,
           "rewardValue": 43,
-          "amount": 1250,
+          "amount": 800,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00043.png",
+          "name": "宝石",
+          "source": "兑换",
+          "label": "宝石 x450 · 兑换",
+          "rewardType": 90,
+          "rewardValue": 43,
+          "amount": 450,
           "isPiece": false
         },
         {
@@ -9332,11 +9972,21 @@
         {
           "image": "intel/item/item_icon_00110.png",
           "name": "协助积分",
-          "source": "合计",
-          "label": "协助积分 x122500 · 合计",
+          "source": "考试",
+          "label": "协助积分 x22500 · 考试",
           "rewardType": 30,
           "rewardValue": 110,
-          "amount": 122500,
+          "amount": 22500,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00110.png",
+          "name": "协助积分",
+          "source": "兑换",
+          "label": "协助积分 x100000 · 兑换",
+          "rewardType": 30,
+          "rewardValue": 110,
+          "amount": 100000,
           "isPiece": false
         },
         {
@@ -9352,11 +10002,21 @@
         {
           "image": "intel/item/item_icon_00059.png",
           "name": "金币",
-          "source": "合计",
-          "label": "金币 x345000 · 合计",
+          "source": "考试",
+          "label": "金币 x45000 · 考试",
           "rewardType": 91,
           "rewardValue": 59,
-          "amount": 345000,
+          "amount": 45000,
+          "isPiece": false
+        },
+        {
+          "image": "intel/item/item_icon_00059.png",
+          "name": "金币",
+          "source": "兑换",
+          "label": "金币 x300000 · 兑换",
+          "rewardType": 91,
+          "rewardValue": 59,
+          "amount": 300000,
           "isPiece": false
         }
       ],
@@ -10886,5 +11546,5 @@
       "isVoucherExchange": false
     }
   ],
-  "generatedAt": "2026-07-22 05:53:51"
+  "generatedAt": "2026-07-22 06:07:52"
 }

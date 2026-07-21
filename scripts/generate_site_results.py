@@ -347,11 +347,15 @@ def reward_drop(cur: sqlite3.Cursor, category: int, item_id: int, amount: int = 
     }
 
 
-def sort_reward_drops(drops: list[dict]) -> list[dict]:
+def sort_reward_drops(drops: list[dict], keep_source: bool = False) -> list[dict]:
     low_priority_ids = {59, 98, 110}
-    deduped: dict[tuple[int, int], dict] = {}
+    deduped: dict[tuple[int, int] | tuple[int, int, str], dict] = {}
     for drop in drops:
-        key = (int(drop.get("rewardType") or 0), int(drop.get("rewardValue") or 0))
+        key = (
+            int(drop.get("rewardType") or 0),
+            int(drop.get("rewardValue") or 0),
+            str(drop.get("source") or ""),
+        ) if keep_source else (int(drop.get("rewardType") or 0), int(drop.get("rewardValue") or 0))
         existing = deduped.get(key)
         if existing is None:
             deduped[key] = drop
@@ -363,7 +367,7 @@ def sort_reward_drops(drops: list[dict]) -> list[dict]:
         name = existing.get("name") or existing.get("label", "").split(" x", 1)[0]
         existing_source = existing.get("source") or ""
         next_source = drop.get("source") or ""
-        source = existing_source if existing_source == next_source else "合计"
+        source = existing_source if keep_source or existing_source == next_source else "合计"
         existing["source"] = source
         source_label = f" · {source}" if source else ""
         existing["label"] = f"{name} x{total_amount}{source_label}"
@@ -711,7 +715,7 @@ def training_challenge_reward_drops(cur: sqlite3.Cursor, exam_ids: list[int], sh
                 if drop:
                     drops.append(drop)
     drops.extend(exchange_reward_drops(cur, shop_id, "兑换"))
-    return sort_reward_drops(drops)
+    return sort_reward_drops(drops, keep_source=True)
 
 
 def challenge_match_reward_drops(cur: sqlite3.Cursor, match_id: int, shop_id: int) -> list[dict]:
@@ -1142,6 +1146,7 @@ def story_event_reward_drops(cur: sqlite3.Cursor, name: str, start: int, end: in
         FROM story_event_roulette_bingo serb
         JOIN story_event_bingo_reward sbr ON sbr.reward_set_id = serb.reward_set_id
         WHERE serb.story_event_id IN ({placeholders})
+          AND serb.can_loop = 0
         """,
         story_ids,
     ).fetchall():
@@ -1149,7 +1154,7 @@ def story_event_reward_drops(cur: sqlite3.Cursor, name: str, start: int, end: in
         if drop:
             drops.append(drop)
 
-    return sort_reward_drops(drops)
+    return sort_reward_drops(drops, keep_source=True)
 
 
 def parse_report() -> dict:
