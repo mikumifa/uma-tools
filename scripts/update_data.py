@@ -12,12 +12,20 @@ import subprocess
 import sys
 from pathlib import Path
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(line_buffering=True)
+
 # ==== 配置 / 辅助函数 =====================================================
+
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+FRONTEND_DATA_DIR = REPO_ROOT / "umalator" / "data"
+SIM_DATA_DIR = REPO_ROOT / "uma-skill-tools" / "data"
 
 
 def default_master_path():
     # 默认就是当前目录下的 master.mdb
-    p = Path("master.mdb")
+    p = REPO_ROOT / "master.mdb"
     if p.exists():
         return str(p)
     return None
@@ -27,7 +35,7 @@ def open_sqlite_ro(path):
     # Python sqlite3 uses the file normally. On Windows it's fine. We just open readonly.
     uri = Path(path).absolute().as_uri()
     # sqlite3 in Python supports URI with mode=ro
-    conn = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+    conn = sqlite3.connect(f"{uri}?mode=ro", uri=True)
     conn.row_factory = lambda cursor, row: tuple(row)
     return conn
 
@@ -53,6 +61,44 @@ def dump_json(obj, path):
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, sort_keys=True, indent=2)
+
+
+def sync_json_file(source, target):
+    source = Path(source)
+    target = Path(target)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+    print(f"Synced {source} -> {target}")
+
+
+def load_optional_json(path):
+    path = Path(path)
+    if not path.exists():
+        return {}
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def distance_type(distance):
+    if distance <= 1400:
+        return 1
+    if distance <= 1800:
+        return 2
+    if distance < 2500:
+        return 3
+    return 4
+
+
+def npm_command():
+    candidates = ["npm.cmd", "npm"] if os.name == "nt" else ["npm"]
+    for candidate in candidates:
+        resolved = shutil.which(candidate)
+        if resolved:
+            return resolved
+    raise FileNotFoundError("npm not found in PATH")
 
 
 # ==== 对应 make_skill_data.pl 的最简单实现 ================================
@@ -358,6 +404,125 @@ def make_global_skillnames(master_mdb, out_path="skillnames.json"):
     print(f"Wrote {out_path} ({len(names)} entries)")
 
 
+def make_tracknames(master_mdb, out_path="tracknames.json"):
+    existing = load_optional_json(out_path)
+    conn = open_sqlite_ro(master_mdb)
+    cur = conn.cursor()
+    cur.execute("SELECT [index], text FROM text_data WHERE category = 31;")
+    names = {}
+    for idx, text in cur:
+        idx = str(idx)
+        previous = existing.get(idx, [])
+        jp = previous[0] if len(previous) > 0 else ""
+        en = previous[1] if len(previous) > 1 else ""
+        names[idx] = [jp, en, decode_text(text) or ""]
+    conn.close()
+    dump_json(names, out_path)
+    print(f"Wrote {out_path} ({len(names)} entries)")
+
+
+def make_course_data(master_mdb, course_events_dir, out_path="course_data.json"):
+    course_events_dir = Path(course_events_dir)
+    if not course_events_dir.is_dir():
+        raise FileNotFoundError(f"course event params directory not found: {course_events_dir}")
+
+    conn = open_sqlite_ro(master_mdb)
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT course_set_status_id, target_status_1, target_status_2 FROM race_course_set_status;"
+    )
+    course_set_status = {}
+    for css_id, status_1, status_2 in cur:
+        statuses = [status_1]
+        if status_2 != 0:
+            statuses.append(status_2)
+        course_set_status[css_id] = statuses
+
+    cur.execute(
+        """
+        SELECT id, race_track_id, distance, ground, inout, turn, float_lane_max,
+               course_set_status_id, finish_time_min, finish_time_max
+        FROM race_course_set;
+        """
+    )
+    courses = {}
+    for (
+        course_id,
+        race_track_id,
+        distance,
+        ground,
+        inout,
+        turn,
+        lane_max,
+        css_id,
+        finish_time_min,
+        finish_time_max,
+    ) in cur:
+        if course_id in (11201, 11202):
+            continue
+        params_path = course_events_dir / f"{course_id}.json"
+        if not params_path.exists():
+            raise FileNotFoundError(f"missing course event params: {params_path}")
+        with params_path.open("r", encoding="utf-8") as f:
+            events = json.load(f).get("courseParams", [])
+
+        corners = []
+        straights = []
+        slopes = []
+        pending_straight = None
+        straight_state = 0
+        for event in events:
+            param_type = event.get("_paramType")
+            values = event.get("_values", [])
+            distance_at = event.get("_distance")
+            if param_type == 0:
+                corners.append({"start": distance_at, "length": values[1]})
+            elif param_type == 2:
+                if straight_state == 0:
+                    if values[0] != 1:
+                        raise ValueError(
+                            f"straight ended before it started for course id {course_id}"
+                        )
+                    pending_straight = {"start": distance_at, "frontType": values[1]}
+                    straight_state = 1
+                else:
+                    if values[0] != 2:
+                        raise ValueError(
+                            f"new straight started before previous ended for course id {course_id}"
+                        )
+                    pending_straight["end"] = distance_at
+                    straights.append(pending_straight)
+                    pending_straight = None
+                    straight_state = 0
+            elif param_type == 11:
+                slopes.append(
+                    {"start": distance_at, "length": values[1], "slope": values[0]}
+                )
+
+        corners.sort(key=lambda item: item["start"])
+        straights.sort(key=lambda item: item["start"])
+        slopes.sort(key=lambda item: item["start"])
+        courses[str(course_id)] = {
+            "raceTrackId": race_track_id,
+            "distance": distance,
+            "distanceType": distance_type(distance),
+            "surface": ground,
+            "turn": turn,
+            "course": inout,
+            "laneMax": lane_max,
+            "finishTimeMin": finish_time_min,
+            "finishTimeMax": finish_time_max,
+            "courseSetStatus": course_set_status.get(css_id, []),
+            "corners": corners,
+            "straights": straights,
+            "slopes": slopes,
+        }
+
+    conn.close()
+    dump_json(courses, out_path)
+    print(f"Wrote {out_path} ({len(courses)} entries)")
+
+
 # ==== 对应 make_uma_info.pl 的部分实现 =====================================
 def make_uma_info(
     master_mdb,
@@ -575,6 +740,21 @@ def main():
         action="store_true",
         help="export filtered skill_data (is_general_skill=1 or rarity>=3)",
     )
+    parser.add_argument(
+        "--course-events",
+        default=os.environ.get("UMA_COURSE_EVENT_PARAM_DIR"),
+        help="optional courseeventparam directory; when provided, rebuild course_data.json",
+    )
+    parser.add_argument(
+        "--no-course-data",
+        action="store_true",
+        help="skip course_data/tracknames refresh and sync",
+    )
+    parser.add_argument(
+        "--no-intel",
+        action="store_true",
+        help="skip results_intel.json generation",
+    )
     args = parser.parse_args()
 
     master = args.master
@@ -594,32 +774,76 @@ def main():
         print(f"Error: master.mdb not found at {master}")
         sys.exit(2)
 
+    frontend_skill_data = FRONTEND_DATA_DIR / "skill_data.json"
+    sim_skill_data = SIM_DATA_DIR / "skill_data.json"
+    frontend_tracknames = FRONTEND_DATA_DIR / "tracknames.json"
+    sim_tracknames = SIM_DATA_DIR / "tracknames.json"
+    frontend_course_data = FRONTEND_DATA_DIR / "course_data.json"
+    sim_course_data = SIM_DATA_DIR / "course_data.json"
+
     # Step 1: skill_meta (filtered or not)
     make_skill_meta(
-        master, out_path="umalator/data/skill_meta.json", where_filtered=args.filtered
+        master,
+        out_path=FRONTEND_DATA_DIR / "skill_meta.json",
+        where_filtered=args.filtered,
     )
-    # Step 2: global skill data
-    make_global_skill_data(master, out_path="umalator/data/skill_data.json")
-    # Step 3: skillnames
-    make_global_skillnames(master, out_path="umalator/data/skillnames.json")
-    # Step 4: uma info (unless skipped)
+    # Step 2: skill effects used by both the UI and the simulator core
+    make_global_skill_data(master, out_path=frontend_skill_data)
+    sync_json_file(frontend_skill_data, sim_skill_data)
+    # Step 3: frontend skill names
+    make_global_skillnames(master, out_path=FRONTEND_DATA_DIR / "skillnames.json")
+    # Step 4: track/course data
+    if not args.no_course_data:
+        make_tracknames(master, out_path=frontend_tracknames)
+        sync_json_file(frontend_tracknames, sim_tracknames)
+        if args.course_events:
+            make_course_data(master, args.course_events, out_path=sim_course_data)
+            sync_json_file(sim_course_data, frontend_course_data)
+        elif sim_course_data.exists():
+            sync_json_file(sim_course_data, frontend_course_data)
+            print(
+                "No courseeventparam directory configured; kept existing simulator course_data and synced it to the frontend."
+            )
+        else:
+            print(
+                "No courseeventparam directory configured and no existing simulator course_data found; skipped course_data."
+            )
+    # Step 5: uma info (unless skipped)
     if not args.no_uma:
         make_uma_info(
             master,
-            out_umas="umalator/data/umas.json",
-            out_icons="umalator/data/icon_paths.json",
+            out_umas=FRONTEND_DATA_DIR / "umas.json",
+            out_icons=FRONTEND_DATA_DIR / "icon_paths.json",
             dat_copy_target="var/need-unpack",
         )
-    # Step 5: run the Vite build (optional)
-    if args.build:
-        repo_root = Path(__file__).resolve().parent.parent
+    # Step 6: intel report data. The Vite build runs this via prebuild, so avoid doing it twice.
+    if not args.no_intel and not args.build:
+        env = os.environ.copy()
+        env.setdefault("UMA_MASTER_DB", master)
         try:
-            print(f"Running: npm run build (cwd={repo_root})")
-            subprocess.run(["npm", "run", "build"], check=True, cwd=repo_root)
+            print("Running: python scripts/generate_site_results.py")
+            subprocess.run(
+                [sys.executable, "scripts/generate_site_results.py"],
+                check=True,
+                cwd=REPO_ROOT,
+                env=env,
+            )
+        except subprocess.CalledProcessError as e:
+            print(f"generate_site_results.py returned non-zero exit: {e.returncode}")
+            sys.exit(e.returncode)
+    # Step 7: run the Vite build (optional)
+    if args.build:
+        env = os.environ.copy()
+        env.setdefault("UMA_MASTER_DB", master)
+        try:
+            print(f"Running: npm run build (cwd={REPO_ROOT})")
+            subprocess.run([npm_command(), "run", "build"], check=True, cwd=REPO_ROOT, env=env)
         except FileNotFoundError:
             print("npm not found in PATH; cannot run build")
+            sys.exit(1)
         except subprocess.CalledProcessError as e:
             print(f"npm run build returned non-zero exit: {e.returncode}")
+            sys.exit(e.returncode)
 
 
 if __name__ == "__main__":

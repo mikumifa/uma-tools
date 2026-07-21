@@ -36,6 +36,7 @@ import { HorseDef, horseDefTabs } from "@components/HorseDef";
 import { TRACKNAMES_cn } from "@shared/trackNames";
 
 import { getActivateableSkills, getNullRow, BasinnChart } from "./BasinnChart";
+import { IntelDashboard } from "./IntelDashboard";
 
 import { initTelemetry, postEvent } from "./telemetry";
 
@@ -95,10 +96,7 @@ const TIME_OF_DAY = [
 
 export function TimeOfDaySelect({ value, set }: TimeOfDaySelectProps) {
   return (
-    <div
-      className="inline-flex items-center"
-      role="radiogroup"
-    >
+    <div className="inline-flex items-center" role="radiogroup">
       {TIME_OF_DAY.map(({ value: v, label, icon }) => {
         const selected = v === value;
 
@@ -613,6 +611,58 @@ const enum Mode {
   Compare,
   Chart,
 }
+
+type AppPage = "simulator" | "intel";
+
+function pathForPage(page: AppPage) {
+  const basePath = new URL(import.meta.env.BASE_URL, window.location.href)
+    .pathname;
+  if (page === "intel") {
+    return `${basePath.replace(/\/$/, "")}/intel/`;
+  }
+  return basePath;
+}
+
+function initialAppPage(): AppPage {
+  if (typeof window === "undefined") return "simulator";
+  return window.location.pathname.replace(/\/+$/, "").endsWith("/intel")
+    ? "intel"
+    : "simulator";
+}
+
+function AppNav({
+  activePage,
+  setActivePage,
+}: {
+  activePage: AppPage;
+  setActivePage: (page: AppPage) => void;
+}) {
+  return (
+    <header class="appNav">
+      <div>
+        <strong>《闪耀优俊少女》合集</strong>
+        <span>made by mikumifa</span>
+      </div>
+      <nav aria-label="功能切换">
+        <button
+          type="button"
+          class={activePage === "simulator" ? "selected" : ""}
+          onClick={() => setActivePage("simulator")}
+        >
+          身位图计算
+        </button>
+        <button
+          type="button"
+          class={activePage === "intel" ? "selected" : ""}
+          onClick={() => setActivePage("intel")}
+        >
+          情报汇总
+        </button>
+      </nav>
+    </header>
+  );
+}
+
 const enum UiStateMsg {
   SetModeCompare,
   SetModeChart,
@@ -645,6 +695,24 @@ function nextUiState(state: typeof DEFAULT_UI_STATE, msg: UiStateMsg) {
 }
 
 function App() {
+  const [activePageState, setActivePageState] =
+    useState<AppPage>(initialAppPage);
+  const setActivePage = (page: AppPage) => {
+    setActivePageState(page);
+    if (typeof window === "undefined") return;
+    const nextPath = pathForPage(page);
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState(null, "", nextPath);
+    }
+  };
+  const activePage = activePageState;
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handlePopState = () => setActivePageState(initialAppPage());
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
   const [skillsOpen, setSkillsOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [progress, setProgress] = useState(0);
@@ -1424,151 +1492,159 @@ function App() {
   return (
     <Language.Provider value="cn">
       <IntlProvider definition={strings}>
-        <div
-          id="topPane"
-          class={topPaneClass}
-          data-mobile={isMobile ? "true" : "false"}
-          style={trackWidthStyle}
-        >
-          {/* Left Column: Track and Track Settings */}
+        <AppNav activePage={activePage} setActivePage={setActivePage} />
+        {activePage === "intel" ? (
+          <Fragment>
+            <IntelDashboard />
+            <IntroText />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <div
+              id="topPane"
+              class={topPaneClass}
+              data-mobile={isMobile ? "true" : "false"}
+              style={trackWidthStyle}
+            >
+              {/* Left Column: Track and Track Settings */}
 
-          {showTrack && (!isMobile || !forceShowTrack) && (
-            <div ref={raceTrackRef} className="raceTrackShell">
-              <div
-                className={
-                  flippedTrack ? "racetrackFlipped" : "raceTrackCanvas"
-                }
-                style={
-                  flippedTrack
-                    ? {
-                        width: `${trackHeight + 60}px`,
-                        height: `${trackWidth + 80}px`,
+              {showTrack && (!isMobile || !forceShowTrack) && (
+                <div ref={raceTrackRef} className="raceTrackShell">
+                  <div
+                    className={
+                      flippedTrack ? "racetrackFlipped" : "raceTrackCanvas"
+                    }
+                    style={
+                      flippedTrack
+                        ? {
+                            width: `${trackHeight + 60}px`,
+                            height: `${trackWidth + 80}px`,
+                          }
+                        : undefined
+                    }
+                  >
+                    <RaceTrack
+                      courseid={courseId}
+                      width={trackWidth}
+                      height={trackHeight}
+                      xOffset={0}
+                      yOffset={15}
+                      yExtra={40}
+                      mouseMove={rtMouseMove}
+                      mouseLeave={rtMouseLeave}
+                      regions={trackRegions}
+                      hideTitle={true}
+                      containerStyle={
+                        flippedTrack
+                          ? {
+                              width: `${trackHeight + 60}px`,
+                              height: `${trackWidth + 80}px`,
+                              overflow: "visible",
+                            }
+                          : undefined
                       }
-                    : undefined
-                }
-              >
-                <RaceTrack
-                  courseid={courseId}
-                  width={trackWidth}
-                  height={trackHeight}
-                  xOffset={0}
-                  yOffset={15}
-                  yExtra={40}
-                  mouseMove={rtMouseMove}
-                  mouseLeave={rtMouseLeave}
-                  regions={trackRegions}
-                  hideTitle={true}
-                  containerStyle={
-                    flippedTrack
-                      ? {
-                          width: `${trackHeight + 60}px`,
-                          height: `${trackWidth + 80}px`,
-                          overflow: "visible",
-                        }
-                      : undefined
-                  }
-                >
-                  <VelocityLines
-                    data={chartData}
-                    courseDistance={course.distance}
-                    width={trackWidth}
-                    height={velocityHeight}
-                    xOffset={0}
-                    showHp={showHp}
-                  />
-                  <g id="rtMouseOverBox" style="display:none">
-                    <text
-                      id="rtV1"
-                      x="25"
-                      y="10"
-                      fill="var(--uma-blue)"
-                      font-size="10px"
-                    ></text>
-                    <text
-                      id="rtV2"
-                      x="25"
-                      y="20"
-                      fill="var(--uma-pink)"
-                      font-size="10px"
-                    ></text>
-                  </g>
-                </RaceTrack>
-              </div>
-              {!isMobile && trackDetailsPane}
-            </div>
-          )}
-          {isMobile && !showTrack && (
-            <div className="mobileTrackActions">
-              <button
-                type="button"
-                className="mobileTrackButton"
-                onClick={viewTrackImage}
-              >
-                横屏查看赛道
-              </button>
-              <span className="mobileTrackHint">
-                {trackOrientationMsg || "弹窗展示赛道图片，可长按/保存。"}
-              </span>
-            </div>
-          )}
-          <div
-            id="buttonsRow"
-            data-mobile={isMobile ? "true" : "false"}
-            className="
+                    >
+                      <VelocityLines
+                        data={chartData}
+                        courseDistance={course.distance}
+                        width={trackWidth}
+                        height={velocityHeight}
+                        xOffset={0}
+                        showHp={showHp}
+                      />
+                      <g id="rtMouseOverBox" style="display:none">
+                        <text
+                          id="rtV1"
+                          x="25"
+                          y="10"
+                          fill="var(--uma-blue)"
+                          font-size="10px"
+                        ></text>
+                        <text
+                          id="rtV2"
+                          x="25"
+                          y="20"
+                          fill="var(--uma-pink)"
+                          font-size="10px"
+                        ></text>
+                      </g>
+                    </RaceTrack>
+                  </div>
+                  {!isMobile && trackDetailsPane}
+                </div>
+              )}
+              {isMobile && !showTrack && (
+                <div className="mobileTrackActions">
+                  <button
+                    type="button"
+                    className="mobileTrackButton"
+                    onClick={viewTrackImage}
+                  >
+                    横屏查看赛道
+                  </button>
+                  <span className="mobileTrackHint">
+                    {trackOrientationMsg || "弹窗展示赛道图片，可长按/保存。"}
+                  </span>
+                </div>
+              )}
+              <div
+                id="buttonsRow"
+                data-mobile={isMobile ? "true" : "false"}
+                className="
               flex flex-col gap-3
               py-3
               border-b
               text-sm
             "
-          >
-            <div
-              className={`${
-                isMobile
-                  ? "flex flex-col gap-3 w-full"
-                  : "flex flex-wrap items-center gap-3 w-full"
-              }`}
-            >
-              <div
-                className={`
+              >
+                <div
+                  className={`${
+                    isMobile
+                      ? "flex flex-col gap-3 w-full"
+                      : "flex flex-wrap items-center gap-3 w-full"
+                  }`}
+                >
+                  <div
+                    className={`
                   ${
                     isMobile
                       ? "flex flex-col items-stretch gap-3 w-full"
                       : "flex flex-wrap items-center gap-2"
                   }
                 `}
-              >
-                <TrackSelect
-                  key={courseId}
-                  courseid={courseId}
-                  setCourseid={setCourseId}
-                  tabindex={2}
-                />
+                  >
+                    <TrackSelect
+                      key={courseId}
+                      courseid={courseId}
+                      setCourseid={setCourseId}
+                      tabindex={2}
+                    />
 
-                <TimeOfDaySelect
-                  value={racedef.time}
-                  set={racesetter("time")}
-                />
+                    <TimeOfDaySelect
+                      value={racedef.time}
+                      set={racesetter("time")}
+                    />
 
-                <GroundSelect
-                  value={racedef.ground}
-                  set={racesetter("ground")}
-                />
+                    <GroundSelect
+                      value={racedef.ground}
+                      set={racesetter("ground")}
+                    />
 
-                <WeatherSelect
-                  value={racedef.weather}
-                  set={racesetter("weather")}
-                />
+                    <WeatherSelect
+                      value={racedef.weather}
+                      set={racesetter("weather")}
+                    />
 
-                <SeasonSelect
-                  value={racedef.season}
-                  set={racesetter("season")}
-                />
+                    <SeasonSelect
+                      value={racedef.season}
+                      set={racesetter("season")}
+                    />
 
-                <button
-                  type="button"
-                  onClick={openUmaOverlay}
-                  aria-haspopup="dialog"
-                  className={`
+                    <button
+                      type="button"
+                      onClick={openUmaOverlay}
+                      aria-haspopup="dialog"
+                      className={`
                     inline-flex items-center gap-1
                     ${
                       isMobile
@@ -1577,134 +1653,140 @@ function App() {
                     }
                     ${isMobile ? "text-base" : "text-sm"} font-semibold
                   `}
-                >
-                  马娘
-                </button>
-              </div>
+                    >
+                      马娘
+                    </button>
+                  </div>
 
-              <div
-                className={`
+                  <div
+                    className={`
                   ${
                     isMobile
                       ? "flex flex-col gap-3 w-full"
                       : "flex flex-wrap items-center gap-3"
                   }
                 `}
-              >
-                {!isMobile && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-gray-500">模式</span>
+                  >
+                    {!isMobile && (
+                      <div className="flex items-center gap-2">
+                        <span className="text-gray-500">模式</span>
 
-                    <label className="flex items-center gap-1 px-3 py-1">
-                      <input
-                        type="radio"
-                        checked={mode === Mode.Compare}
-                        onChange={() =>
-                          updateUiState(UiStateMsg.SetModeCompare)
-                        }
-                        className=""
-                      />
-                      对比
-                    </label>
+                        <label className="flex items-center gap-1 px-3 py-1">
+                          <input
+                            type="radio"
+                            checked={mode === Mode.Compare}
+                            onChange={() =>
+                              updateUiState(UiStateMsg.SetModeCompare)
+                            }
+                            className=""
+                          />
+                          对比
+                        </label>
 
-                    <label className="flex items-center gap-1 px-3 py-1">
-                      <input
-                        type="radio"
-                        checked={mode === Mode.Chart}
-                        onChange={() => updateUiState(UiStateMsg.SetModeChart)}
-                        className=""
-                      />
-                      身距图
-                    </label>
-                  </div>
-                )}
-                {isMobile && (
-                  <div className="text-gray-500 text-sm">移动端只支持身距</div>
-                )}
+                        <label className="flex items-center gap-1 px-3 py-1">
+                          <input
+                            type="radio"
+                            checked={mode === Mode.Chart}
+                            onChange={() =>
+                              updateUiState(UiStateMsg.SetModeChart)
+                            }
+                            className=""
+                          />
+                          身距图
+                        </label>
+                      </div>
+                    )}
+                    {isMobile && (
+                      <div className="text-gray-500 text-sm">
+                        移动端只支持身距
+                      </div>
+                    )}
 
-                <div
-                  className={`flex items-center gap-2 px-3 ${
-                    isMobile ? "py-2.5" : "py-1"
-                  }`}
-                >
-                  <span className="text-gray-500">Seed</span>
+                    <div
+                      className={`flex items-center gap-2 px-3 ${
+                        isMobile ? "py-2.5" : "py-1"
+                      }`}
+                    >
+                      <span className="text-gray-500">Seed</span>
 
-                  <div
-                    className="
+                      <div
+                        className="
                       flex items-center
                       border
                       overflow-hidden
                     "
-                  >
-                    <input
-                      type="number"
-                      value={seed}
-                      onInput={(e) => setSeed(+e.currentTarget.value)}
-                      className={`${
-                        isMobile ? "w-full max-w-[220px]" : "w-28"
-                      } px-3 py-2 text-base`}
+                      >
+                        <input
+                          type="number"
+                          value={seed}
+                          onInput={(e) => setSeed(+e.currentTarget.value)}
+                          className={`${
+                            isMobile ? "w-full max-w-[220px]" : "w-28"
+                          } px-3 py-2 text-base`}
+                        />
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setSeed(
+                              Math.floor(Math.random() * (-1 >>> 0)) >>> 0,
+                            )
+                          }
+                          className="px-3 text-lg"
+                        >
+                          🎲
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-2">
+                      <label
+                        className={`flex items-center gap-1 px-3 ${
+                          isMobile ? "py-2 text-base" : "py-1"
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={usePosKeep}
+                          onChange={togglePosKeep}
+                          className=""
+                        />
+                        位置意识
+                      </label>
+
+                      <label
+                        className={`flex items-center gap-1 px-3 ${
+                          isMobile ? "py-2 text-base" : "py-1"
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={showHp}
+                          onChange={toggleShowHp}
+                          className=""
+                        />
+                        耐力显示
+                      </label>
+                    </div>
+
+                    <RacePresets
+                      set={(courseId, racedef) => {
+                        setCourseId(courseId);
+                        setRaceDef(racedef);
+                      }}
                     />
+                  </div>
+
+                  <div
+                    className={`actionButtons ${
+                      isMobile
+                        ? "flex flex-col gap-2 w-full"
+                        : "flex items-center gap-2 ml-auto shrink-0"
+                    }`}
+                  >
                     <button
                       type="button"
-                      onClick={() =>
-                        setSeed(Math.floor(Math.random() * (-1 >>> 0)) >>> 0)
-                      }
-                      className="px-3 text-lg"
-                    >
-                      🎲
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-2">
-                  <label
-                    className={`flex items-center gap-1 px-3 ${
-                      isMobile ? "py-2 text-base" : "py-1"
-                    }`}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={usePosKeep}
-                      onChange={togglePosKeep}
-                      className=""
-                    />
-                    位置意识
-                  </label>
-
-                  <label
-                    className={`flex items-center gap-1 px-3 ${
-                      isMobile ? "py-2 text-base" : "py-1"
-                    }`}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={showHp}
-                      onChange={toggleShowHp}
-                      className=""
-                    />
-                    耐力显示
-                  </label>
-                </div>
-
-                <RacePresets
-                  set={(courseId, racedef) => {
-                    setCourseId(courseId);
-                    setRaceDef(racedef);
-                  }}
-                />
-              </div>
-
-              <div
-                className={`actionButtons ${
-                  isMobile
-                    ? "flex flex-col gap-2 w-full"
-                    : "flex items-center gap-2 ml-auto shrink-0"
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={copyStateUrl}
-                  className={`
+                      onClick={copyStateUrl}
+                      className={`
                     ${
                       isMobile
                         ? "w-full justify-center text-base py-2.5"
@@ -1712,14 +1794,16 @@ function App() {
                     }
                     font-semibold
                   `}
-                >
-                  Copy link
-                </button>
-                <button
-                  type="button"
-                  onClick={mode === Mode.Compare ? doComparison : doBasinnChart}
-                  disabled={isSimulating}
-                  className={`
+                    >
+                      Copy link
+                    </button>
+                    <button
+                      type="button"
+                      onClick={
+                        mode === Mode.Compare ? doComparison : doBasinnChart
+                      }
+                      disabled={isSimulating}
+                      className={`
                     ${
                       isMobile
                         ? "w-full justify-center text-base py-3"
@@ -1727,190 +1811,192 @@ function App() {
                     }
                     font-semibold
                   `}
-                >
-                  {isSimulating
-                    ? "RUNNING"
-                    : mode === Mode.Compare
-                      ? "COMPARE"
-                      : "RUN"}
-                </button>
-              </div>
-            </div>
+                    >
+                      {isSimulating
+                        ? "RUNNING"
+                        : mode === Mode.Compare
+                          ? "COMPARE"
+                          : "RUN"}
+                    </button>
+                  </div>
+                </div>
 
-            {showStatusBar && mode !== Mode.Compare && (
-              <div className="pt-2 mt-1 border-t">
-                <ProgressBar progress={progress} label={status} />
+                {showStatusBar && mode !== Mode.Compare && (
+                  <div className="pt-2 mt-1 border-t">
+                    <ProgressBar progress={progress} label={status} />
+                  </div>
+                )}
+              </div>
+              {!isMobile && resultsPane}
+            </div>
+            {isMobile && resultsPane}
+            {isMobile && forceShowTrack && (
+              <div className="trackFullscreen" ref={raceTrackRef}>
+                <button
+                  type="button"
+                  className="trackFullscreenClose"
+                  onClick={() => {
+                    if (document.fullscreenElement && document.exitFullscreen) {
+                      document.exitFullscreen();
+                    }
+                    setForceShowTrack(false);
+                    setTrackOrientationMsg("");
+                  }}
+                >
+                  ✕
+                </button>
+                <div className={flippedTrack ? "racetrackRotated" : ""}>
+                  <RaceTrack
+                    courseid={courseId}
+                    width={trackHeight}
+                    height={trackWidth}
+                    xOffset={0}
+                    yOffset={15}
+                    yExtra={40}
+                    mouseMove={rtMouseMove}
+                    mouseLeave={rtMouseLeave}
+                    regions={trackRegions}
+                    hideTitle={true}
+                  >
+                    <VelocityLines
+                      data={chartData}
+                      courseDistance={course.distance}
+                      width={trackHeight}
+                      height={velocityHeight}
+                      xOffset={0}
+                      showHp={showHp}
+                    />
+                  </RaceTrack>
+                </div>
               </div>
             )}
-          </div>
-          {!isMobile && resultsPane}
-        </div>
-        {isMobile && resultsPane}
-        {isMobile && forceShowTrack && (
-          <div className="trackFullscreen" ref={raceTrackRef}>
-            <button
-              type="button"
-              className="trackFullscreenClose"
-              onClick={() => {
-                if (document.fullscreenElement && document.exitFullscreen) {
-                  document.exitFullscreen();
+            <div class="jumpButtons">
+              <button
+                type="button"
+                onClick={() =>
+                  raceTrackRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
                 }
-                setForceShowTrack(false);
-                setTrackOrientationMsg("");
-              }}
-            >
-              ✕
-            </button>
-            <div className={flippedTrack ? "racetrackRotated" : ""}>
-              <RaceTrack
-                courseid={courseId}
-                width={trackHeight}
-                height={trackWidth}
-                xOffset={0}
-                yOffset={15}
-                yExtra={40}
-                mouseMove={rtMouseMove}
-                mouseLeave={rtMouseLeave}
-                regions={trackRegions}
-                hideTitle={true}
               >
-                <VelocityLines
-                  data={chartData}
-                  courseDistance={course.distance}
-                  width={trackHeight}
-                  height={velocityHeight}
-                  xOffset={0}
-                  showHp={showHp}
-                />
-              </RaceTrack>
+                <span style="font-size: 1.2em">🏁</span>
+              </button>
+              {resultsPane && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    resultsPaneRef.current?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    })
+                  }
+                >
+                  <span style="font-size: 1.2em">📊</span>
+                </button>
+              )}
             </div>
-          </div>
-        )}
-        <div class="jumpButtons">
-          <button
-            type="button"
-            onClick={() =>
-              raceTrackRef.current?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              })
-            }
-          >
-            <span style="font-size: 1.2em">🏁</span>
-          </button>
-          {resultsPane && (
-            <button
-              type="button"
-              onClick={() =>
-                resultsPaneRef.current?.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                })
-              }
-            >
-              <span style="font-size: 1.2em">📊</span>
-            </button>
-          )}
-        </div>
-        {expanded && (
-          <div
-            id="umaOverlay"
-            role="dialog"
-            class={mode === Mode.Compare ? "compareMode" : ""}
-            aria-modal="true"
-            aria-label="Umamusume 设置"
-            tabindex="-1"
-          >
-            <div class={`umaPanel ${currentIdx == 0 ? "selected" : ""}`}>
-              <HorseDef
-                key={uma1.outfitId}
-                state={uma1}
-                setState={setUma1}
-                courseDistance={course.distance}
-                tabstart={() => 4}
-              >
-                {"Umamusume 1"}
-              </HorseDef>
-            </div>
-            {mode === Mode.Compare && (
+            {expanded && (
               <div
-                className="
+                id="umaOverlay"
+                role="dialog"
+                class={mode === Mode.Compare ? "compareMode" : ""}
+                aria-modal="true"
+                aria-label="Umamusume 设置"
+                tabindex="-1"
+              >
+                <div class={`umaPanel ${currentIdx == 0 ? "selected" : ""}`}>
+                  <HorseDef
+                    key={uma1.outfitId}
+                    state={uma1}
+                    setState={setUma1}
+                    courseDistance={course.distance}
+                    tabstart={() => 4}
+                  >
+                    {"Umamusume 1"}
+                  </HorseDef>
+                </div>
+                {mode === Mode.Compare && (
+                  <div
+                    className="
       absolute left-1/2 top-[120px] -translate-x-1/2
       flex flex-col gap-2
       z-10
     "
-              >
-                <button
-                  title="Copy uma 1 → uma 2"
-                  onClick={copyUmaToRight}
-                  className="
+                  >
+                    <button
+                      title="Copy uma 1 → uma 2"
+                      onClick={copyUmaToRight}
+                      className="
         w-9 h-9
         text-lg
         flex items-center justify-center
       "
-                >
-                  →
-                </button>
+                    >
+                      →
+                    </button>
 
-                <button
-                  title="Swap umas"
-                  onClick={swapUmas}
-                  className="
+                    <button
+                      title="Swap umas"
+                      onClick={swapUmas}
+                      className="
         w-9 h-9
         font-semibold
         flex items-center justify-center
       "
-                >
-                  ⮂
-                </button>
+                    >
+                      ⮂
+                    </button>
 
-                <button
-                  title="Copy uma 2 → uma 1"
-                  onClick={copyUmaToLeft}
-                  className="
+                    <button
+                      title="Copy uma 2 → uma 1"
+                      onClick={copyUmaToLeft}
+                      className="
         w-9 h-9
         text-lg
         flex items-center justify-center
       "
+                    >
+                      ←
+                    </button>
+                  </div>
+                )}
+
+                {mode == Mode.Compare && (
+                  <div class={`umaPanel ${currentIdx == 1 ? "selected" : ""}`}>
+                    <HorseDef
+                      key={uma2.outfitId}
+                      state={uma2}
+                      setState={setUma2}
+                      courseDistance={course.distance}
+                      tabstart={() => 4 + horseDefTabs()}
+                    >
+                      {"Umamusume 2"}
+                    </HorseDef>
+                  </div>
+                )}
+                <button
+                  type="button"
+                  id="closeUmaOverlay"
+                  class="btnBase rounded"
+                  title="关闭面板"
+                  onClick={toggleExpand}
                 >
-                  ←
+                  ✕
+                </button>
+                <button
+                  type="button"
+                  id="closeUmaOverlayTop"
+                  title="关闭面板"
+                  onClick={toggleExpand}
+                >
+                  ✕
                 </button>
               </div>
             )}
-
-            {mode == Mode.Compare && (
-              <div class={`umaPanel ${currentIdx == 1 ? "selected" : ""}`}>
-                <HorseDef
-                  key={uma2.outfitId}
-                  state={uma2}
-                  setState={setUma2}
-                  courseDistance={course.distance}
-                  tabstart={() => 4 + horseDefTabs()}
-                >
-                  {"Umamusume 2"}
-                </HorseDef>
-              </div>
-            )}
-            <button
-              type="button"
-              id="closeUmaOverlay"
-              class="btnBase rounded"
-              title="关闭面板"
-              onClick={toggleExpand}
-            >
-              ✕
-            </button>
-            <button
-              type="button"
-              id="closeUmaOverlayTop"
-              title="关闭面板"
-              onClick={toggleExpand}
-            >
-              ✕
-            </button>
-          </div>
+            <IntroText />
+          </Fragment>
         )}
-        <IntroText />
       </IntlProvider>
     </Language.Provider>
   );

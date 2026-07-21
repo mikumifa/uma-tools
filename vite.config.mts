@@ -32,12 +32,40 @@ function legacyCnRedirect() {
   };
 }
 
+const intelHtml = `<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>赛马娘活动情报汇总</title>
+		<link rel="icon" type="image/png" href="../favicon.ico">
+		<script type="module" crossorigin src="../bundle.js"></script>
+		<link rel="stylesheet" crossorigin href="../bundle.css">
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
+</html>
+`;
+
+function intelRouteHtml() {
+  return {
+    name: "intel-route-html",
+    writeBundle(options) {
+      if (!options.dir) return;
+      const intelDir = path.resolve(options.dir, "intel");
+      fs.mkdirSync(intelDir, { recursive: true });
+      fs.writeFileSync(path.join(intelDir, "index.html"), intelHtml);
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => {
   const debug = mode === "debug";
   return {
     root: path.resolve(__dirname, "umalator"),
     base: "./",
-    plugins: [preact(), legacyCnRedirect()],
+    plugins: [preact(), legacyCnRedirect(), intelRouteHtml()],
     define: {
       CC_DEBUG: JSON.stringify(debug),
       CC_GLOBAL: "true",

@@ -6,6 +6,8 @@
     "start": "npm run dev",
     "dev": "vite",
     "dev:debug": "vite --mode debug",
+    "prebuild": "python scripts/generate_site_results.py",
+    "update:data": "python scripts/update_data.py --build",
     "build": "vite build",
     "build:debug": "vite build --mode debug",
     "preview": "vite preview"

@@ -1,0 +1,6142 @@
+{
+  "rewardSummary": [
+    {
+      "label": "免费抽",
+      "value": "332 抽"
+    },
+    {
+      "label": "登录奖励宝石",
+      "value": "6750"
+    },
+    {
+      "label": "剧情活动宝石",
+      "value": "9000"
+    },
+    {
+      "label": "剧情活动养成优俊少女招募券",
+      "value": "12"
+    },
+    {
+      "label": "剧情活动协助卡招募券",
+      "value": "12"
+    }
+  ],
+  "eventSections": [
+    {
+      "title": "周年与主活动",
+      "items": [
+        {
+          "name": "2周年庆典 纪念任务第2弹",
+          "start": "2026-05-07 05:00:00",
+          "end": "2026-06-10 04:59:59"
+        },
+        {
+          "name": "2周年庆典 纪念任务第3弹",
+          "start": "2026-05-19 12:00:00",
+          "end": "2026-06-10 04:59:59"
+        },
+        {
+          "name": "辣妹散步活动",
+          "start": "2026-06-20 12:00:00",
+          "end": "2026-07-02 11:59:59"
+        },
+        {
+          "name": "优俊散步活动",
+          "start": "2026-08-20 12:00:00",
+          "end": "2026-08-30 11:59:59"
+        },
+        {
+          "name": "2.5周年庆典 纪念任务第1弹",
+          "start": "2026-08-20 12:00:00",
+          "end": "2026-10-07 04:59:59"
+        },
+        {
+          "name": "2.5周年庆典 纪念任务第2弹",
+          "start": "2026-08-31 12:00:00",
+          "end": "2026-10-07 04:59:59"
+        },
+        {
+          "name": "2.5周年庆典 纪念任务第3弹",
+          "start": "2026-09-11 12:00:00",
+          "end": "2026-10-07 04:59:59"
+        }
+      ]
+    },
+    {
+      "title": "春季 G1 纪念任务",
+      "items": [
+        {
+          "name": "中京短途赛",
+          "start": "2026-05-18 12:00:00",
+          "end": "2026-05-25 04:59:59"
+        },
+        {
+          "name": "大阪杯",
+          "start": "2026-05-25 05:00:00",
+          "end": "2026-06-01 04:59:59"
+        },
+        {
+          "name": "樱花奖",
+          "start": "2026-06-01 05:00:00",
+          "end": "2026-06-08 04:59:59"
+        },
+        {
+          "name": "皋月奖",
+          "start": "2026-06-08 05:00:00",
+          "end": "2026-06-15 04:59:59"
+        },
+        {
+          "name": "天王奖（春）",
+          "start": "2026-06-15 12:00:00",
+          "end": "2026-06-22 04:59:59"
+        },
+        {
+          "name": "柏市纪念",
+          "start": "2026-06-22 05:00:00",
+          "end": "2026-06-29 04:59:59"
+        },
+        {
+          "name": "广播协会英里杯",
+          "start": "2026-06-29 05:00:00",
+          "end": "2026-07-06 04:59:59"
+        },
+        {
+          "name": "维多利亚英里赛",
+          "start": "2026-07-06 05:00:00",
+          "end": "2026-07-13 04:59:59"
+        },
+        {
+          "name": "奥克斯",
+          "start": "2026-07-13 05:00:00",
+          "end": "2026-07-20 04:59:59"
+        },
+        {
+          "name": "全国德比",
+          "start": "2026-07-20 05:00:00",
+          "end": "2026-07-27 04:59:59"
+        },
+        {
+          "name": "东京英里赛",
+          "start": "2026-07-27 05:00:00",
+          "end": "2026-08-03 04:59:59"
+        },
+        {
+          "name": "宝冢纪念",
+          "start": "2026-08-03 05:00:00",
+          "end": "2026-08-10 04:59:59"
+        },
+        {
+          "name": "帝王奖",
+          "start": "2026-08-10 12:00:00",
+          "end": "2026-08-17 04:59:59"
+        },
+        {
+          "name": "全国泥地德比",
+          "start": "2026-08-17 05:00:00",
+          "end": "2026-08-24 04:59:59"
+        }
+      ]
+    },
+    {
+      "title": "新增配套增益活动详细时间",
+      "items": [
+        {
+          "name": "2026-05-31 05:00:00` - `2026-06-10 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-06-21 05:00:00` - `2026-07-10 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-07-21 05:00:00` - `2026-08-10 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-08-21 05:00:00` - `2026-10-07 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-05-23 05:00:00` - `2026-05-25 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-05-30 05:00:00` - `2026-06-01 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-06-06 05:00:00` - `2026-06-08 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-06-13 05:00:00` - `2026-06-15 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-06-20 05:00:00` - `2026-06-22 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-06-27 05:00:00` - `2026-06-29 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-07-04 05:00:00` - `2026-07-06 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-07-11 05:00:00` - `2026-07-13 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-07-18 05:00:00` - `2026-07-20 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-07-25 05:00:00` - `2026-07-27 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-08-01 05:00:00` - `2026-08-03 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-08-08 05:00:00` - `2026-08-10 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-08-15 05:00:00` - `2026-08-17 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-08-22 05:00:00` - `2026-08-24 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-05-23 12:00:00` - `2026-05-31 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-05-23 12:00:00` - `2026-05-31 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-06-20 12:00:00` - `2026-07-02 11:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-06-20 12:00:00` - `2026-07-02 11:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-06-20 12:00:00` - `2026-07-10 04:59:59",
+          "start": "",
+          "end": ""
+        },
+        {
+          "name": "2026-06-20 12:00:00` - `2026-07-10 04:59:59",
+          "start": "",
+          "end": ""
+        }
+      ]
+    },
+    {
+      "title": "剧情活动时间",
+      "items": [
+        {
+          "name": "Leap into a New World!",
+          "start": "2026-05-06 12:00:00",
+          "end": "2026-05-24 11:59:59"
+        },
+        {
+          "name": "惟由君故，方使我怜",
+          "start": "2026-05-29 12:00:00",
+          "end": "2026-06-14 11:59:59"
+        },
+        {
+          "name": "神机妙算？！春日！激战魔鬼躲避球",
+          "start": "2026-06-19 12:00:00",
+          "end": "2026-07-05 11:59:59"
+        },
+        {
+          "name": "宣誓，向奋战的你求婚",
+          "start": "2026-07-08 12:00:00",
+          "end": "2026-07-23 11:59:59"
+        },
+        {
+          "name": "#summer #besties",
+          "start": "2026-07-29 12:00:00",
+          "end": "2026-08-13 11:59:59"
+        },
+        {
+          "name": "夏阳碧空，煦日无风",
+          "start": "2026-08-15 22:00:00",
+          "end": "2026-09-02 11:59:59"
+        }
+      ]
+    },
+    {
+      "title": "传奇赛事时间",
+      "items": [
+        {
+          "name": "[四白流星之袭]八重无敌",
+          "start": "2026-06-10 12:00:00",
+          "end": "2026-06-13 04:59:59"
+        },
+        {
+          "name": "[飞跃地平线]东海帝王",
+          "start": "2026-06-13 05:00:00",
+          "end": "2026-06-16 04:59:59"
+        },
+        {
+          "name": "[Fluttertail Spirit]山人西风",
+          "start": "2026-07-16 12:00:00",
+          "end": "2026-07-19 04:59:59"
+        },
+        {
+          "name": "[爱丽♡僵尸]爱丽数码",
+          "start": "2026-07-19 05:00:00",
+          "end": "2026-07-22 04:59:59"
+        },
+        {
+          "name": "[阳光花束]重炮",
+          "start": "2026-08-02 12:00:00",
+          "end": "2026-08-05 04:59:59"
+        },
+        {
+          "name": "[悬铃木魔女]东商变革",
+          "start": "2026-08-05 05:00:00",
+          "end": "2026-08-08 04:59:59"
+        },
+        {
+          "name": "[绝对☆LOVE]醒目飞鹰",
+          "start": "2026-08-20 12:00:00",
+          "end": "2026-08-23 04:59:59"
+        },
+        {
+          "name": "[阴阳八卦☆开运服]小林历奇",
+          "start": "2026-08-23 05:00:00",
+          "end": "2026-08-26 04:59:59"
+        },
+        {
+          "name": "[黑铁的壮志]青竹回忆",
+          "start": "2026-09-08 12:00:00",
+          "end": "2026-09-11 04:59:59"
+        },
+        {
+          "name": "[Bubblegum☆Memories]大树快车",
+          "start": "2026-09-11 05:00:00",
+          "end": "2026-09-14 04:59:59"
+        }
+      ]
+    },
+    {
+      "title": "大赛时间",
+      "items": [
+        {
+          "name": "双鱼杯",
+          "start": "2026-05-19 12:00:00",
+          "end": "2026-05-29 11:59:59"
+        },
+        {
+          "name": "白羊杯",
+          "start": "2026-06-10 12:00:00",
+          "end": "2026-06-19 11:59:59"
+        },
+        {
+          "name": "群英联赛",
+          "start": "2026-07-16 12:00:00",
+          "end": "2026-07-26 11:59:59"
+        },
+        {
+          "name": "群英联赛",
+          "start": "2026-08-20 12:00:00",
+          "end": "2026-08-30 11:59:59"
+        }
+      ]
+    }
+  ],
+  "storyRewardSummary": [
+    {
+      "label": "金币",
+      "value": "1930000"
+    },
+    {
+      "label": "活动积分",
+      "value": "882000"
+    },
+    {
+      "label": "协助积分",
+      "value": "696000"
+    },
+    {
+      "label": "好友积分",
+      "value": "12600"
+    },
+    {
+      "label": "宝石",
+      "value": "9000"
+    },
+    {
+      "label": "轮盘币",
+      "value": "3600"
+    },
+    {
+      "label": "闹钟",
+      "value": "144"
+    },
+    {
+      "label": "女神像",
+      "value": "120"
+    },
+    {
+      "label": "启发书",
+      "value": "60"
+    },
+    {
+      "label": "启发专业书",
+      "value": "36"
+    },
+    {
+      "label": "能量饮料30",
+      "value": "24"
+    },
+    {
+      "label": "稀有启发专业书",
+      "value": "24"
+    },
+    {
+      "label": "干劲满溢甜点",
+      "value": "18"
+    },
+    {
+      "label": "梦想光辉",
+      "value": "18"
+    },
+    {
+      "label": "彩虹结晶片",
+      "value": "18"
+    },
+    {
+      "label": "迷你胡萝卜果冻",
+      "value": "12"
+    },
+    {
+      "label": "协助卡招募券",
+      "value": "12"
+    },
+    {
+      "label": "养成优俊少女招募券",
+      "value": "12"
+    },
+    {
+      "label": "稀有启发书",
+      "value": "12"
+    }
+  ],
+  "freeDraws": [
+    {
+      "gachaId": 30151,
+      "name": "葛城荣主 / 目白拉莫娜 / 森林宝袋",
+      "type": "支援池十连免费",
+      "amount": "12天 x 10 = 120抽"
+    },
+    {
+      "gachaId": 30152,
+      "name": "第一红宝",
+      "type": "角色池单抽免费",
+      "amount": "11天 x 1 = 11抽"
+    },
+    {
+      "gachaId": 30155,
+      "name": "菱曙 / 引领众人的始祖",
+      "type": "支援池单抽免费",
+      "amount": "10天 x 1 = 10抽"
+    },
+    {
+      "gachaId": 30163,
+      "name": "美浦波旁 / 樱花桂冠",
+      "type": "支援池十连免费",
+      "amount": "8天 x 10 = 80抽"
+    },
+    {
+      "gachaId": 30184,
+      "name": "小林历奇 / 北幸樽前",
+      "type": "角色池单抽免费",
+      "amount": "11天 x 1 = 11抽"
+    },
+    {
+      "gachaId": 30187,
+      "name": "佐岳鸣 / 神鹰",
+      "type": "支援池十连免费",
+      "amount": "10天 x 10 = 100抽"
+    }
+  ],
+  "loginBonuses": [
+    {
+      "start": "2026-05-07 05:00:00",
+      "end": "2026-06-10 04:59:59",
+      "details": [
+        "300宝石 x 10 = 3000宝石",
+        "额外：[Unyielding resolve]克里斯象征 x 2"
+      ]
+    },
+    {
+      "start": "2026-05-19 12:00:00",
+      "end": "2026-06-10 04:59:59",
+      "details": [
+        "150宝石 x 15 = 2250宝石"
+      ]
+    },
+    {
+      "start": "2026-08-21 05:00:00",
+      "end": "2026-08-22 04:59:59",
+      "details": [
+        "150宝石 x 1 = 150宝石"
+      ]
+    },
+    {
+      "start": "2026-08-22 05:00:00",
+      "end": "2026-08-23 04:59:58",
+      "details": [
+        "150宝石 x 1 = 150宝石"
+      ]
+    },
+    {
+      "start": "2026-08-23 05:00:00",
+      "end": "2026-08-24 04:59:58",
+      "details": [
+        "150宝石 x 1 = 150宝石"
+      ]
+    },
+    {
+      "start": "2026-08-24 05:00:00",
+      "end": "2026-08-25 04:59:58",
+      "details": [
+        "150宝石 x 1 = 150宝石"
+      ]
+    },
+    {
+      "start": "2026-08-25 05:00:00",
+      "end": "2026-08-26 04:59:58",
+      "details": [
+        "150宝石 x 1 = 150宝石"
+      ]
+    },
+    {
+      "start": "2026-08-26 05:00:00",
+      "end": "2026-08-27 04:59:58",
+      "details": [
+        "150宝石 x 1 = 150宝石"
+      ]
+    },
+    {
+      "start": "2026-08-27 05:00:00",
+      "end": "2026-08-28 04:59:58",
+      "details": [
+        "150宝石 x 1 = 150宝石"
+      ]
+    },
+    {
+      "start": "2026-08-28 05:00:00",
+      "end": "2026-08-29 04:59:58",
+      "details": [
+        "150宝石 x 1 = 150宝石"
+      ]
+    },
+    {
+      "start": "2026-08-29 05:00:00",
+      "end": "2026-08-30 04:59:58",
+      "details": [
+        "150宝石 x 1 = 150宝石"
+      ]
+    },
+    {
+      "start": "2026-08-30 05:00:00",
+      "end": "2026-08-31 04:59:58",
+      "details": [
+        "150宝石 x 1 = 150宝石"
+      ]
+    }
+  ],
+  "gachaPools": [
+    {
+      "id": 30151,
+      "type": "支援卡",
+      "start": "2026-05-07 05:00:00",
+      "end": "2026-05-31 11:59:59",
+      "startTimestamp": 1778101200,
+      "endTimestamp": 1780199999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30151.png",
+      "cards": [
+        {
+          "id": 10089,
+          "type": "support",
+          "name": "[特雷森学园]森林宝袋",
+          "title": "[特雷森学园]",
+          "characterName": "森林宝袋",
+          "rarity": 1,
+          "image": "intel/support/support_card_s_10089.png"
+        },
+        {
+          "id": 10088,
+          "type": "support",
+          "name": "[特雷森学园]目白拉莫娜",
+          "title": "[特雷森学园]",
+          "characterName": "目白拉莫娜",
+          "rarity": 1,
+          "image": "intel/support/support_card_s_10088.png"
+        },
+        {
+          "id": 10091,
+          "type": "support",
+          "name": "[特雷森学园]葛城荣主",
+          "title": "[特雷森学园]",
+          "characterName": "葛城荣主",
+          "rarity": 1,
+          "image": "intel/support/support_card_s_10091.png"
+        },
+        {
+          "id": 20059,
+          "type": "support",
+          "name": "[啊，何等美妙的甘甜]爱丽速子",
+          "title": "[啊，何等美妙的甘甜]",
+          "characterName": "爱丽速子",
+          "rarity": 2,
+          "image": "intel/support/support_card_s_20059.png"
+        },
+        {
+          "id": 20058,
+          "type": "support",
+          "name": "[放学后的莞尔一笑]鲁道夫象征",
+          "title": "[放学后的莞尔一笑]",
+          "characterName": "鲁道夫象征",
+          "rarity": 2,
+          "image": "intel/support/support_card_s_20058.png"
+        },
+        {
+          "id": 20057,
+          "type": "support",
+          "name": "[柔顺飘逸]目白多伯",
+          "title": "[柔顺飘逸]",
+          "characterName": "目白多伯",
+          "rarity": 2,
+          "image": "intel/support/support_card_s_20057.png"
+        },
+        {
+          "id": 20056,
+          "type": "support",
+          "name": "[DEAD·END【休想过去】]森林宝袋",
+          "title": "[DEAD·END【休想过去】]",
+          "characterName": "森林宝袋",
+          "rarity": 2,
+          "image": "intel/support/support_card_s_20056.png"
+        },
+        {
+          "id": 30134,
+          "type": "support",
+          "name": "[璨烂]目白拉莫娜",
+          "title": "[璨烂]",
+          "characterName": "目白拉莫娜",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30134.png"
+        }
+      ]
+    },
+    {
+      "id": 30150,
+      "type": "角色卡池",
+      "start": "2026-05-07 05:00:00",
+      "end": "2026-05-31 11:59:59",
+      "startTimestamp": 1778101200,
+      "endTimestamp": 1780199999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30150.png",
+      "cards": [
+        {
+          "id": 106601,
+          "type": "character",
+          "name": "[狂奔！涡轮引擎]双涡轮",
+          "title": "[狂奔！涡轮引擎]",
+          "characterName": "双涡轮",
+          "rarity": 1,
+          "image": "intel/chara/chr_icon_1066_106601_02.png"
+        },
+        {
+          "id": 105701,
+          "type": "character",
+          "name": "[Clear Bliss]千明代表",
+          "title": "[Clear Bliss]",
+          "characterName": "千明代表",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1057_105701_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30153,
+      "type": "支援卡",
+      "start": "2026-05-19 12:00:00",
+      "end": "2026-05-29 11:59:59",
+      "startTimestamp": 1779163200,
+      "endTimestamp": 1780027199,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30153.png",
+      "cards": [
+        {
+          "id": 30091,
+          "type": "support",
+          "name": "[Escorte étoile]天狼星象征",
+          "title": "[Escorte étoile]",
+          "characterName": "天狼星象征",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30091.png"
+        },
+        {
+          "id": 30146,
+          "type": "support",
+          "name": "[奔跑吧，奔跑吧，奔跑吧！！]小栗帽",
+          "title": "[奔跑吧，奔跑吧，奔跑吧！！]",
+          "characterName": "小栗帽",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30146.png"
+        }
+      ]
+    },
+    {
+      "id": 50018,
+      "type": "支援卡",
+      "start": "2026-05-19 12:00:00",
+      "end": "2026-06-09 11:59:59",
+      "startTimestamp": 1779163200,
+      "endTimestamp": 1780977599,
+      "bannerImage": "intel/gacha/img_bnr_gacha_50018.png",
+      "cards": [
+        {
+          "id": 30001,
+          "type": "support",
+          "name": "[献上全国第一的演出]特别周",
+          "title": "[献上全国第一的演出]",
+          "characterName": "特别周",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30001.png"
+        },
+        {
+          "id": 30002,
+          "type": "support",
+          "name": "[在耀眼景色的前方]无声铃鹿",
+          "title": "[在耀眼景色的前方]",
+          "characterName": "无声铃鹿",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30002.png"
+        },
+        {
+          "id": 30003,
+          "type": "support",
+          "name": "[有梦想就要大声说出来！]东海帝王",
+          "title": "[有梦想就要大声说出来！]",
+          "characterName": "东海帝王",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30003.png"
+        },
+        {
+          "id": 30004,
+          "type": "support",
+          "name": "[不沉舰的进击]黄金船",
+          "title": "[不沉舰的进击]",
+          "characterName": "黄金船",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30004.png"
+        },
+        {
+          "id": 30005,
+          "type": "support",
+          "name": "[伏特加之路]伏特加",
+          "title": "[伏特加之路]",
+          "characterName": "伏特加",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30005.png"
+        },
+        {
+          "id": 30006,
+          "type": "support",
+          "name": "[万紫千红中一枝独秀]草上飞",
+          "title": "[万紫千红中一枝独秀]",
+          "characterName": "草上飞",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30006.png"
+        },
+        {
+          "id": 30007,
+          "type": "support",
+          "name": "[热情的冠军！]神鹰",
+          "title": "[热情的冠军！]",
+          "characterName": "神鹰",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30007.png"
+        },
+        {
+          "id": 30008,
+          "type": "support",
+          "name": "[期待已久的计谋]青云天空",
+          "title": "[期待已久的计谋]",
+          "characterName": "青云天空",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30008.png"
+        },
+        {
+          "id": 30009,
+          "type": "support",
+          "name": "[划破天空的闪电少女！]玉藻十字",
+          "title": "[划破天空的闪电少女！]",
+          "characterName": "玉藻十字",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30009.png"
+        },
+        {
+          "id": 30010,
+          "type": "support",
+          "name": "[全身心的感谢]美妙姿势",
+          "title": "[全身心的感谢]",
+          "characterName": "美妙姿势",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30010.png"
+        },
+        {
+          "id": 30011,
+          "type": "support",
+          "name": "[飞奔吧，闪耀吧]艾尼风神",
+          "title": "[飞奔吧，闪耀吧]",
+          "characterName": "艾尼风神",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30011.png"
+        },
+        {
+          "id": 30012,
+          "type": "support",
+          "name": "[B·N·Winner！]胜利奖券",
+          "title": "[B·N·Winner！]",
+          "characterName": "胜利奖券",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30012.png"
+        },
+        {
+          "id": 30013,
+          "type": "support",
+          "name": "[冲向前方7厘米之外]空中神宫",
+          "title": "[冲向前方7厘米之外]",
+          "characterName": "空中神宫",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30013.png"
+        },
+        {
+          "id": 30014,
+          "type": "support",
+          "name": "[Run（my）way]黄金城",
+          "title": "[Run（my）way]",
+          "characterName": "黄金城",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30014.png"
+        },
+        {
+          "id": 30015,
+          "type": "support",
+          "name": "[好快！好吃！好快！]樱花进王",
+          "title": "[好快！好吃！好快！]",
+          "characterName": "樱花进王",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30015.png"
+        },
+        {
+          "id": 30017,
+          "type": "support",
+          "name": "[这就是我的优俊偶像之道☆]醒目飞鹰",
+          "title": "[这就是我的优俊偶像之道☆]",
+          "characterName": "醒目飞鹰",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30017.png"
+        },
+        {
+          "id": 30018,
+          "type": "support",
+          "name": "[哪怕还不能独当一面]西野花",
+          "title": "[哪怕还不能独当一面]",
+          "characterName": "西野花",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30018.png"
+        },
+        {
+          "id": 30020,
+          "type": "support",
+          "name": "[必杀技！双胡萝卜拳！]微光飞驹",
+          "title": "[必杀技！双胡萝卜拳！]",
+          "characterName": "微光飞驹",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30020.png"
+        },
+        {
+          "id": 30021,
+          "type": "support",
+          "name": "[欢迎来到特雷森学园！]骏川手纲",
+          "title": "[欢迎来到特雷森学园！]",
+          "characterName": "骏川手纲",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30021.png"
+        },
+        {
+          "id": 30024,
+          "type": "support",
+          "name": "[“要受人喜爱啊”]小栗帽",
+          "title": "[“要受人喜爱啊”]",
+          "characterName": "小栗帽",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30024.png"
+        },
+        {
+          "id": 30026,
+          "type": "support",
+          "name": "[涡轮引擎马力全开！]双涡轮",
+          "title": "[涡轮引擎马力全开！]",
+          "characterName": "双涡轮",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30026.png"
+        },
+        {
+          "id": 30027,
+          "type": "support",
+          "name": "[尽管笑我傻吧]目白善信",
+          "title": "[尽管笑我傻吧]",
+          "characterName": "目白善信",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30027.png"
+        },
+        {
+          "id": 30028,
+          "type": "support",
+          "name": "[身后迫近的热浪是动力]北部玄驹",
+          "title": "[身后迫近的热浪是动力]",
+          "characterName": "北部玄驹",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30028.png"
+        },
+        {
+          "id": 30029,
+          "type": "support",
+          "name": "[超越那前方的背影]里见光钻",
+          "title": "[超越那前方的背影]",
+          "characterName": "里见光钻",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30029.png"
+        },
+        {
+          "id": 30031,
+          "type": "support",
+          "name": "[由故乡直达的助威！]雪之美人",
+          "title": "[由故乡直达的助威！]",
+          "characterName": "雪之美人",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30031.png"
+        },
+        {
+          "id": 30032,
+          "type": "support",
+          "name": "[心中的烈火无法抑制]八重无敌",
+          "title": "[心中的烈火无法抑制]",
+          "characterName": "八重无敌",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30032.png"
+        },
+        {
+          "id": 30038,
+          "type": "support",
+          "name": "[樱花盛开之时]樱花千代王",
+          "title": "[樱花盛开之时]",
+          "characterName": "樱花千代王",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30038.png"
+        },
+        {
+          "id": 30039,
+          "type": "support",
+          "name": "[身为新娘！]川上公主",
+          "title": "[身为新娘！]",
+          "characterName": "川上公主",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30039.png"
+        },
+        {
+          "id": 30040,
+          "type": "support",
+          "name": "[请品尝第一口！]菱曙",
+          "title": "[请品尝第一口！]",
+          "characterName": "菱曙",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30040.png"
+        },
+        {
+          "id": 30042,
+          "type": "support",
+          "name": "[Head-on fight！]青竹回忆",
+          "title": "[Head-on fight！]",
+          "characterName": "青竹回忆",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30042.png"
+        },
+        {
+          "id": 30055,
+          "type": "support",
+          "name": "[明天全国都会染红吧♪]青云天空",
+          "title": "[明天全国都会染红吧♪]",
+          "characterName": "青云天空",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30055.png"
+        },
+        {
+          "id": 30056,
+          "type": "support",
+          "name": "[起舞今宵]帝王光辉",
+          "title": "[起舞今宵]",
+          "characterName": "帝王光辉",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30056.png"
+        },
+        {
+          "id": 30048,
+          "type": "support",
+          "name": "[爽快！决胜一击！]目白莱恩",
+          "title": "[爽快！决胜一击！]",
+          "characterName": "目白莱恩",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30048.png"
+        },
+        {
+          "id": 30045,
+          "type": "support",
+          "name": "[独享冰凉？]东商变革",
+          "title": "[独享冰凉？]",
+          "characterName": "东商变革",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30045.png"
+        },
+        {
+          "id": 30046,
+          "type": "support",
+          "name": "[全力嬉闹！]胜利奖券",
+          "title": "[全力嬉闹！]",
+          "characterName": "胜利奖券",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30046.png"
+        },
+        {
+          "id": 30054,
+          "type": "support",
+          "name": "[即使满身泥土，也要追逐梦想]优秀素质",
+          "title": "[即使满身泥土，也要追逐梦想]",
+          "characterName": "优秀素质",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30054.png"
+        },
+        {
+          "id": 30034,
+          "type": "support",
+          "name": "[幸福就在转角后]米浴",
+          "title": "[幸福就在转角后]",
+          "characterName": "米浴",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30034.png"
+        },
+        {
+          "id": 30036,
+          "type": "support",
+          "name": "[彻底管理主义]㭴本理子",
+          "title": "[彻底管理主义]",
+          "characterName": "㭴本理子",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30036.png"
+        },
+        {
+          "id": 30063,
+          "type": "support",
+          "name": "[内心双脚皆温暖]生野狄杜斯",
+          "title": "[内心双脚皆温暖]",
+          "characterName": "生野狄杜斯",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30063.png"
+        },
+        {
+          "id": 30064,
+          "type": "support",
+          "name": "[大闹万圣夜！]玉藻十字",
+          "title": "[大闹万圣夜！]",
+          "characterName": "玉藻十字",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30064.png"
+        },
+        {
+          "id": 30065,
+          "type": "support",
+          "name": "[被授予魔力的英雄]荒漠英雄",
+          "title": "[被授予魔力的英雄]",
+          "characterName": "荒漠英雄",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30065.png"
+        },
+        {
+          "id": 30043,
+          "type": "support",
+          "name": "[43、8、1]中山庆典",
+          "title": "[43、8、1]",
+          "characterName": "中山庆典",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30043.png"
+        },
+        {
+          "id": 30068,
+          "type": "support",
+          "name": "[可爱的你，美丽的你]真机伶",
+          "title": "[可爱的你，美丽的你]",
+          "characterName": "真机伶",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30068.png"
+        },
+        {
+          "id": 30069,
+          "type": "support",
+          "name": "[鸣箭嗤天]成田白仁",
+          "title": "[鸣箭嗤天]",
+          "characterName": "成田白仁",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30069.png"
+        },
+        {
+          "id": 30072,
+          "type": "support",
+          "name": "[队形：PARTY]重炮",
+          "title": "[队形：PARTY]",
+          "characterName": "重炮",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30072.png"
+        },
+        {
+          "id": 30073,
+          "type": "support",
+          "name": "[倔强的集市]成田大进",
+          "title": "[倔强的集市]",
+          "characterName": "成田大进",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30073.png"
+        },
+        {
+          "id": 30075,
+          "type": "support",
+          "name": "[独奏·螺旋卡农]曼城茶座",
+          "title": "[独奏·螺旋卡农]",
+          "characterName": "曼城茶座",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30075.png"
+        },
+        {
+          "id": 30077,
+          "type": "support",
+          "name": "[夜有黎明，天有祥星]爱慕织姬",
+          "title": "[夜有黎明，天有祥星]",
+          "characterName": "爱慕织姬",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30077.png"
+        },
+        {
+          "id": 30078,
+          "type": "support",
+          "name": "[萍水相逢即是福♪]待兼福来",
+          "title": "[萍水相逢即是福♪]",
+          "characterName": "待兼福来",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30078.png"
+        },
+        {
+          "id": 30080,
+          "type": "support",
+          "name": "[要不赶紧扎一针？]安心泽刺刺美",
+          "title": "[要不赶紧扎一针？]",
+          "characterName": "安心泽刺刺美",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30080.png"
+        },
+        {
+          "id": 30082,
+          "type": "support",
+          "name": "[饱含心意的纸杯蛋糕]西野花",
+          "title": "[饱含心意的纸杯蛋糕]",
+          "characterName": "西野花",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30082.png"
+        },
+        {
+          "id": 30083,
+          "type": "support",
+          "name": "[极快！最快！花之风暴！]樱花进王",
+          "title": "[极快！最快！花之风暴！]",
+          "characterName": "樱花进王",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30083.png"
+        },
+        {
+          "id": 30085,
+          "type": "support",
+          "name": "[“存在”于此的幸福]爱丽数码",
+          "title": "[“存在”于此的幸福]",
+          "characterName": "爱丽数码",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30085.png"
+        },
+        {
+          "id": 30016,
+          "type": "support",
+          "name": "[一颗安心糖]超级溪流",
+          "title": "[一颗安心糖]",
+          "characterName": "超级溪流",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30016.png"
+        },
+        {
+          "id": 30071,
+          "type": "support",
+          "name": "[舞动吧·躁动吧·狂欢吧！]大拓太阳神",
+          "title": "[舞动吧·躁动吧·狂欢吧！]",
+          "characterName": "大拓太阳神",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30071.png"
+        },
+        {
+          "id": 30086,
+          "type": "support",
+          "name": "[粉色背影]成田路",
+          "title": "[粉色背影]",
+          "characterName": "成田路",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30086.png"
+        }
+      ]
+    },
+    {
+      "id": 50020,
+      "type": "支援卡",
+      "start": "2026-05-19 12:00:00",
+      "end": "2026-06-09 11:59:58",
+      "startTimestamp": 1779163200,
+      "endTimestamp": 1780977598,
+      "bannerImage": "intel/gacha/img_bnr_gacha_50020.png",
+      "cards": [
+        {
+          "id": 30089,
+          "type": "support",
+          "name": "[让世界更加☆marvelous]美丽周日",
+          "title": "[让世界更加☆marvelous]",
+          "characterName": "美丽周日",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30089.png"
+        },
+        {
+          "id": 30090,
+          "type": "support",
+          "name": "[Enchaînement]鲁道夫象征",
+          "title": "[Enchaînement]",
+          "characterName": "鲁道夫象征",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30090.png"
+        },
+        {
+          "id": 30091,
+          "type": "support",
+          "name": "[Escorte étoile]天狼星象征",
+          "title": "[Escorte étoile]",
+          "characterName": "天狼星象征",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30091.png"
+        },
+        {
+          "id": 30093,
+          "type": "support",
+          "name": "[Outfit as No.1]大和赤骥",
+          "title": "[Outfit as No.1]",
+          "characterName": "大和赤骥",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30093.png"
+        },
+        {
+          "id": 30094,
+          "type": "support",
+          "name": "[收下这份鼓励吧！]青竹回忆",
+          "title": "[收下这份鼓励吧！]",
+          "characterName": "青竹回忆",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30094.png"
+        },
+        {
+          "id": 30095,
+          "type": "support",
+          "name": "[那声加油改变了世界]采珠",
+          "title": "[那声加油改变了世界]",
+          "characterName": "采珠",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30095.png"
+        },
+        {
+          "id": 30097,
+          "type": "support",
+          "name": "[Dear Mr. C.B.]千明代表",
+          "title": "[Dear Mr. C.B.]",
+          "characterName": "千明代表",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30097.png"
+        },
+        {
+          "id": 30098,
+          "type": "support",
+          "name": "[乌菈菈的热情之歌♪]春乌菈菈",
+          "title": "[乌菈菈的热情之歌♪]",
+          "characterName": "春乌菈菈",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30098.png"
+        },
+        {
+          "id": 30099,
+          "type": "support",
+          "name": "[可爱的金兰之交们]生野狄杜斯",
+          "title": "[可爱的金兰之交们]",
+          "characterName": "生野狄杜斯",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30099.png"
+        },
+        {
+          "id": 30053,
+          "type": "support",
+          "name": "[坏蛋，举起手来！]大树快车",
+          "title": "[坏蛋，举起手来！]",
+          "characterName": "大树快车",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30053.png"
+        },
+        {
+          "id": 30102,
+          "type": "support",
+          "name": "[光芒四射地奔跑吧∞]神鹰",
+          "title": "[光芒四射地奔跑吧∞]",
+          "characterName": "神鹰",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30102.png"
+        },
+        {
+          "id": 30103,
+          "type": "support",
+          "name": "[待兼唐☆大冒险]待兼唐怀瑟",
+          "title": "[待兼唐☆大冒险]",
+          "characterName": "待兼唐怀瑟",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30103.png"
+        },
+        {
+          "id": 30106,
+          "type": "support",
+          "name": "[奔向理想的熏风]气槽",
+          "title": "[奔向理想的熏风]",
+          "characterName": "气槽",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30106.png"
+        },
+        {
+          "id": 30107,
+          "type": "support",
+          "name": "[小感伤预警♪]丸善斯基",
+          "title": "[小感伤预警♪]",
+          "characterName": "丸善斯基",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30107.png"
+        },
+        {
+          "id": 30108,
+          "type": "support",
+          "name": "[听凭骰运]中山庆典",
+          "title": "[听凭骰运]",
+          "characterName": "中山庆典",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30108.png"
+        },
+        {
+          "id": 30110,
+          "type": "support",
+          "name": "[It's on the house.]曼城茶座",
+          "title": "[It's on the house.]",
+          "characterName": "曼城茶座",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30110.png"
+        },
+        {
+          "id": 30052,
+          "type": "support",
+          "name": "[from the GROUND UP]明亮光晕",
+          "title": "[from the GROUND UP]",
+          "characterName": "明亮光晕",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30052.png"
+        },
+        {
+          "id": 30101,
+          "type": "support",
+          "name": "[Q≠0]爱丽速子",
+          "title": "[Q≠0]",
+          "characterName": "爱丽速子",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30101.png"
+        },
+        {
+          "id": 30111,
+          "type": "support",
+          "name": "[帝王！王！王！！！]东海帝王",
+          "title": "[帝王！王！王！！！]",
+          "characterName": "东海帝王",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30111.png"
+        },
+        {
+          "id": 30112,
+          "type": "support",
+          "name": "[TT Ignition！]双涡轮",
+          "title": "[TT Ignition！]",
+          "characterName": "双涡轮",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30112.png"
+        },
+        {
+          "id": 30114,
+          "type": "support",
+          "name": "[啊，华丽一族]第一红宝",
+          "title": "[啊，华丽一族]",
+          "characterName": "第一红宝",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30114.png"
+        },
+        {
+          "id": 30115,
+          "type": "support",
+          "name": "[月下小恶魔♪]目白善信",
+          "title": "[月下小恶魔♪]",
+          "characterName": "目白善信",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30115.png"
+        },
+        {
+          "id": 30116,
+          "type": "support",
+          "name": "[太阳小天使♪]大拓太阳神",
+          "title": "[太阳小天使♪]",
+          "characterName": "大拓太阳神",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30116.png"
+        },
+        {
+          "id": 30118,
+          "type": "support",
+          "name": "[A Win Foreshadowed]克里斯象征",
+          "title": "[A Win Foreshadowed]",
+          "characterName": "克里斯象征",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30118.png"
+        },
+        {
+          "id": 30146,
+          "type": "support",
+          "name": "[奔跑吧，奔跑吧，奔跑吧！！]小栗帽",
+          "title": "[奔跑吧，奔跑吧，奔跑吧！！]",
+          "characterName": "小栗帽",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30146.png"
+        },
+        {
+          "id": 30120,
+          "type": "support",
+          "name": "[燃至天际的祈祷之火]八重无敌",
+          "title": "[燃至天际的祈祷之火]",
+          "characterName": "八重无敌",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30120.png"
+        },
+        {
+          "id": 30122,
+          "type": "support",
+          "name": "[Danke schön]荣进闪耀",
+          "title": "[Danke schön]",
+          "characterName": "荣进闪耀",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30122.png"
+        },
+        {
+          "id": 30123,
+          "type": "support",
+          "name": "[GLAD TIDINGS]成田白仁",
+          "title": "[GLAD TIDINGS]",
+          "characterName": "成田白仁",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30123.png"
+        },
+        {
+          "id": 30124,
+          "type": "support",
+          "name": "[Are you merry？]气槽",
+          "title": "[Are you merry？]",
+          "characterName": "气槽",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30124.png"
+        },
+        {
+          "id": 30126,
+          "type": "support",
+          "name": "[化为那无人知晓的风]山人西风",
+          "title": "[化为那无人知晓的风]",
+          "characterName": "山人西风",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30126.png"
+        },
+        {
+          "id": 30127,
+          "type": "support",
+          "name": "[平安喜乐寄于板羽球中]特别周",
+          "title": "[平安喜乐寄于板羽球中]",
+          "characterName": "特别周",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30127.png"
+        },
+        {
+          "id": 30128,
+          "type": "support",
+          "name": "[难以捉摸的绝世佳人]东商变革",
+          "title": "[难以捉摸的绝世佳人]",
+          "characterName": "东商变革",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30128.png"
+        },
+        {
+          "id": 30131,
+          "type": "support",
+          "name": "[Marvelous☆巧克力盛宴]美丽周日",
+          "title": "[Marvelous☆巧克力盛宴]",
+          "characterName": "美丽周日",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30131.png"
+        },
+        {
+          "id": 30132,
+          "type": "support",
+          "name": "[变身！侍者形态！]微光飞驹",
+          "title": "[变身！侍者形态！]",
+          "characterName": "微光飞驹",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30132.png"
+        },
+        {
+          "id": 30130,
+          "type": "support",
+          "name": "[To you]喜嘉奇迹",
+          "title": "[To you]",
+          "characterName": "喜嘉奇迹",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30130.png"
+        },
+        {
+          "id": 30067,
+          "type": "support",
+          "name": "[尊尚敬爱]聚于王座之人",
+          "title": "[尊尚敬爱]",
+          "characterName": "聚于王座之人",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30067.png"
+        },
+        {
+          "id": 30134,
+          "type": "support",
+          "name": "[璨烂]目白拉莫娜",
+          "title": "[璨烂]",
+          "characterName": "目白拉莫娜",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30134.png"
+        }
+      ]
+    },
+    {
+      "id": 30152,
+      "type": "角色卡池",
+      "start": "2026-05-19 12:00:00",
+      "end": "2026-05-29 11:59:59",
+      "startTimestamp": 1779163200,
+      "endTimestamp": 1780027199,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30152.png",
+      "cards": [
+        {
+          "id": 108501,
+          "type": "character",
+          "name": "[华丽红玉]第一红宝",
+          "title": "[华丽红玉]",
+          "characterName": "第一红宝",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1085_108501_02.png"
+        }
+      ]
+    },
+    {
+      "id": 50017,
+      "type": "角色卡池",
+      "start": "2026-05-19 12:00:00",
+      "end": "2026-06-09 11:59:59",
+      "startTimestamp": 1779163200,
+      "endTimestamp": 1780977599,
+      "bannerImage": "intel/gacha/img_bnr_gacha_50017.png",
+      "cards": [
+        {
+          "id": 100101,
+          "type": "character",
+          "name": "[特别追梦者]特别周",
+          "title": "[特别追梦者]",
+          "characterName": "特别周",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1001_100101_02.png"
+        },
+        {
+          "id": 100201,
+          "type": "character",
+          "name": "[无声无瑕]无声铃鹿",
+          "title": "[无声无瑕]",
+          "characterName": "无声铃鹿",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1002_100201_02.png"
+        },
+        {
+          "id": 100301,
+          "type": "character",
+          "name": "[喜乐无边]东海帝王",
+          "title": "[喜乐无边]",
+          "characterName": "东海帝王",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1003_100301_02.png"
+        },
+        {
+          "id": 100401,
+          "type": "character",
+          "name": "[绯红方程式]丸善斯基",
+          "title": "[绯红方程式]",
+          "characterName": "丸善斯基",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1004_100401_02.png"
+        },
+        {
+          "id": 100601,
+          "type": "character",
+          "name": "[星光跃动]小栗帽",
+          "title": "[星光跃动]",
+          "characterName": "小栗帽",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1006_100601_02.png"
+        },
+        {
+          "id": 101001,
+          "type": "character",
+          "name": "[狂野前线]大树快车",
+          "title": "[狂野前线]",
+          "characterName": "大树快车",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1010_101001_02.png"
+        },
+        {
+          "id": 101301,
+          "type": "character",
+          "name": "[优雅曲线]目白麦昆",
+          "title": "[优雅曲线]",
+          "characterName": "目白麦昆",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1013_101301_02.png"
+        },
+        {
+          "id": 101501,
+          "type": "character",
+          "name": "[O sole suo！]好歌剧",
+          "title": "[O sole suo！]",
+          "characterName": "好歌剧",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1015_101501_02.png"
+        },
+        {
+          "id": 101701,
+          "type": "character",
+          "name": "[皇帝]鲁道夫象征",
+          "title": "[皇帝]",
+          "characterName": "鲁道夫象征",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1017_101701_02.png"
+        },
+        {
+          "id": 103001,
+          "type": "character",
+          "name": "[玫瑰之梦]米浴",
+          "title": "[玫瑰之梦]",
+          "characterName": "米浴",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1030_103001_02.png"
+        },
+        {
+          "id": 102601,
+          "type": "character",
+          "name": "[MB-19890425]美浦波旁",
+          "title": "[MB-19890425]",
+          "characterName": "美浦波旁",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1026_102601_02.png"
+        },
+        {
+          "id": 102301,
+          "type": "character",
+          "name": "[pf.胜利公式]琵琶晨光",
+          "title": "[pf.胜利公式]",
+          "characterName": "琵琶晨光",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1023_102301_02.png"
+        },
+        {
+          "id": 100302,
+          "type": "character",
+          "name": "[飞跃地平线]东海帝王",
+          "title": "[飞跃地平线]",
+          "characterName": "东海帝王",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1003_100302_02.png"
+        },
+        {
+          "id": 101302,
+          "type": "character",
+          "name": "[天际尽头]目白麦昆",
+          "title": "[天际尽头]",
+          "characterName": "目白麦昆",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1013_101302_02.png"
+        },
+        {
+          "id": 103801,
+          "type": "character",
+          "name": "[闪电少女]真机伶",
+          "title": "[闪电少女]",
+          "characterName": "真机伶",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1038_103801_02.png"
+        },
+        {
+          "id": 105001,
+          "type": "character",
+          "name": "[Nevertheless]成田大进",
+          "title": "[Nevertheless]",
+          "characterName": "成田大进",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1050_105001_02.png"
+        },
+        {
+          "id": 104601,
+          "type": "character",
+          "name": "[绝对☆LOVE]醒目飞鹰",
+          "title": "[绝对☆LOVE]",
+          "characterName": "醒目飞鹰",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1046_104601_02.png"
+        },
+        {
+          "id": 102402,
+          "type": "character",
+          "name": "[阳光花束]重炮",
+          "title": "[阳光花束]",
+          "characterName": "重炮",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1024_102426_02.png"
+        },
+        {
+          "id": 101802,
+          "type": "character",
+          "name": "[橡木王冠]气槽",
+          "title": "[橡木王冠]",
+          "characterName": "气槽",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1018_101826_02.png"
+        },
+        {
+          "id": 102001,
+          "type": "character",
+          "name": "[青云垂钓者]青云天空",
+          "title": "[青云垂钓者]",
+          "characterName": "青云天空",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1020_102001_02.png"
+        },
+        {
+          "id": 101201,
+          "type": "character",
+          "name": "[亚马逊青金石]菱亚马逊",
+          "title": "[亚马逊青金石]",
+          "characterName": "菱亚马逊",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1012_101201_02.png"
+        },
+        {
+          "id": 101402,
+          "type": "character",
+          "name": "[羽蛇武斗家]神鹰",
+          "title": "[羽蛇武斗家]",
+          "characterName": "神鹰",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1014_101416_02.png"
+        },
+        {
+          "id": 101102,
+          "type": "character",
+          "name": "[圣翠治愈师]草上飞",
+          "title": "[圣翠治愈师]",
+          "characterName": "草上飞",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1011_101116_02.png"
+        },
+        {
+          "id": 100501,
+          "type": "character",
+          "name": "[流星歌剧]富士奇石",
+          "title": "[流星歌剧]",
+          "characterName": "富士奇石",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1005_100501_02.png"
+        },
+        {
+          "id": 104001,
+          "type": "character",
+          "name": "[真我/1928]黄金城",
+          "title": "[真我/1928]",
+          "characterName": "黄金城",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1040_104001_02.png"
+        },
+        {
+          "id": 100102,
+          "type": "character",
+          "name": "[雀跃♪维他命心拍]特别周",
+          "title": "[雀跃♪维他命心拍]",
+          "characterName": "特别周",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1001_100130_02.png"
+        },
+        {
+          "id": 100402,
+          "type": "character",
+          "name": "[飞跃☆夏夜]丸善斯基",
+          "title": "[飞跃☆夏夜]",
+          "characterName": "丸善斯基",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1004_100430_02.png"
+        },
+        {
+          "id": 105801,
+          "type": "character",
+          "name": "[苍蓝/怒涛]名将怒涛",
+          "title": "[苍蓝/怒涛]",
+          "characterName": "名将怒涛",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1058_105801_02.png"
+        },
+        {
+          "id": 103701,
+          "type": "character",
+          "name": "[Meisterschaft]荣进闪耀",
+          "title": "[Meisterschaft]",
+          "characterName": "荣进闪耀",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1037_103701_02.png"
+        },
+        {
+          "id": 105602,
+          "type": "character",
+          "name": "[吉兆秋风]待兼福来",
+          "title": "[吉兆秋风]",
+          "characterName": "待兼福来",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1056_105623_02.png"
+        },
+        {
+          "id": 102801,
+          "type": "character",
+          "name": "[Buono☆时尚]菱曙",
+          "title": "[Buono☆时尚]",
+          "characterName": "菱曙",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1028_102801_02.png"
+        },
+        {
+          "id": 103002,
+          "type": "character",
+          "name": "[Make up Vampire！]米浴",
+          "title": "[Make up Vampire！]",
+          "characterName": "米浴",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1030_103040_02.png"
+        },
+        {
+          "id": 104502,
+          "type": "character",
+          "name": "[雪纺丝带木乃伊]超级溪流",
+          "title": "[雪纺丝带木乃伊]",
+          "characterName": "超级溪流",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1045_104540_02.png"
+        },
+        {
+          "id": 103901,
+          "type": "character",
+          "name": "[粉红公主]川上公主",
+          "title": "[粉红公主]",
+          "characterName": "川上公主",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1039_103901_02.png"
+        },
+        {
+          "id": 102501,
+          "type": "character",
+          "name": "[Creeping Black]曼城茶座",
+          "title": "[Creeping Black]",
+          "characterName": "曼城茶座",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1025_102501_02.png"
+        },
+        {
+          "id": 101702,
+          "type": "character",
+          "name": "[皓月下的神箭手]鲁道夫象征",
+          "title": "[皓月下的神箭手]",
+          "characterName": "鲁道夫象征",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1017_101743_02.png"
+        },
+        {
+          "id": 104002,
+          "type": "character",
+          "name": "[秋樱舞娘]黄金城",
+          "title": "[秋樱舞娘]",
+          "characterName": "黄金城",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1040_104043_02.png"
+        },
+        {
+          "id": 104801,
+          "type": "character",
+          "name": "[潮流☆Joker]岛川乔丹",
+          "title": "[潮流☆Joker]",
+          "characterName": "岛川乔丹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1048_104801_02.png"
+        },
+        {
+          "id": 105901,
+          "type": "character",
+          "name": "[宛延曲线]目白多伯",
+          "title": "[宛延曲线]",
+          "characterName": "目白多伯",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1059_105901_02.png"
+        },
+        {
+          "id": 100602,
+          "type": "character",
+          "name": "[奇迹的胜利之星]小栗帽",
+          "title": "[奇迹的胜利之星]",
+          "characterName": "小栗帽",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1006_100646_02.png"
+        },
+        {
+          "id": 102302,
+          "type": "character",
+          "name": "[嫣红圣诞颂歌]琵琶晨光",
+          "title": "[嫣红圣诞颂歌]",
+          "characterName": "琵琶晨光",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1023_102346_02.png"
+        },
+        {
+          "id": 102201,
+          "type": "character",
+          "name": "[Noble Seamair]美妙姿势",
+          "title": "[Noble Seamair]",
+          "characterName": "美妙姿势",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1022_102201_02.png"
+        },
+        {
+          "id": 102101,
+          "type": "character",
+          "name": "[疾风迅雷]玉藻十字",
+          "title": "[疾风迅雷]",
+          "characterName": "玉藻十字",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1021_102101_02.png"
+        },
+        {
+          "id": 105202,
+          "type": "character",
+          "name": "[明媚新春♪樱花绽放]春乌菈菈",
+          "title": "[明媚新春♪樱花绽放]",
+          "characterName": "春乌菈菈",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1052_105210_02.png"
+        },
+        {
+          "id": 101502,
+          "type": "character",
+          "name": "[新春初晴·宝蓝绚烂]好歌剧",
+          "title": "[新春初晴·宝蓝绚烂]",
+          "characterName": "好歌剧",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1015_101510_02.png"
+        },
+        {
+          "id": 106901,
+          "type": "character",
+          "name": "[举世无双·樱花耀夜]樱花千代王",
+          "title": "[举世无双·樱花耀夜]",
+          "characterName": "樱花千代王",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1069_106901_02.png"
+        },
+        {
+          "id": 102602,
+          "type": "character",
+          "name": "[CODE：淋面装饰]美浦波旁",
+          "title": "[CODE：淋面装饰]",
+          "characterName": "美浦波旁",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1026_102613_02.png"
+        },
+        {
+          "id": 103702,
+          "type": "character",
+          "name": "[精确无比·巧克力大师]荣进闪耀",
+          "title": "[精确无比·巧克力大师]",
+          "characterName": "荣进闪耀",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1037_103713_02.png"
+        },
+        {
+          "id": 107101,
+          "type": "character",
+          "name": "[墨绿柔线]目白雅丹",
+          "title": "[墨绿柔线]",
+          "characterName": "目白雅丹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1071_107101_02.png"
+        },
+        {
+          "id": 103301,
+          "type": "character",
+          "name": "[Starry Nocturne]爱慕织姬",
+          "title": "[Starry Nocturne]",
+          "characterName": "爱慕织姬",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1033_103301_02.png"
+        },
+        {
+          "id": 101601,
+          "type": "character",
+          "name": "[Maverick]成田白仁",
+          "title": "[Maverick]",
+          "characterName": "成田白仁",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1016_101601_02.png"
+        },
+        {
+          "id": 101901,
+          "type": "character",
+          "name": "[超级加急！全彩PP膜特殊加工]爱丽数码",
+          "title": "[超级加急！全彩PP膜特殊加工]",
+          "characterName": "爱丽数码",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1019_101901_02.png"
+        },
+        {
+          "id": 106801,
+          "type": "character",
+          "name": "[锦绣·溢彩盛典]北部玄驹",
+          "title": "[锦绣·溢彩盛典]",
+          "characterName": "北部玄驹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1068_106801_02.png"
+        }
+      ]
+    },
+    {
+      "id": 50019,
+      "type": "角色卡池",
+      "start": "2026-05-19 12:00:00",
+      "end": "2026-06-09 11:59:58",
+      "startTimestamp": 1779163200,
+      "endTimestamp": 1780977598,
+      "bannerImage": "intel/gacha/img_bnr_gacha_50019.png",
+      "cards": [
+        {
+          "id": 106701,
+          "type": "character",
+          "name": "[Natural Brilliance]里见光钻",
+          "title": "[Natural Brilliance]",
+          "characterName": "里见光钻",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1067_106701_02.png"
+        },
+        {
+          "id": 107401,
+          "type": "character",
+          "name": "[砺光韧线]目白光明",
+          "title": "[砺光韧线]",
+          "characterName": "目白光明",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1074_107401_02.png"
+        },
+        {
+          "id": 102002,
+          "type": "character",
+          "name": "[星夜猫咪舞会]青云天空",
+          "title": "[星夜猫咪舞会]",
+          "characterName": "青云天空",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1020_102020_02.png"
+        },
+        {
+          "id": 100502,
+          "type": "character",
+          "name": "[胜利之星]富士奇石",
+          "title": "[胜利之星]",
+          "characterName": "富士奇石",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1005_100520_02.png"
+        },
+        {
+          "id": 105101,
+          "type": "character",
+          "name": "[叠瓣花蕾]西野花",
+          "title": "[叠瓣花蕾]",
+          "characterName": "西野花",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1051_105101_02.png"
+        },
+        {
+          "id": 107201,
+          "type": "character",
+          "name": "[四白流星之袭]八重无敌",
+          "title": "[四白流星之袭]",
+          "characterName": "八重无敌",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1072_107201_02.png"
+        },
+        {
+          "id": 106002,
+          "type": "character",
+          "name": "[RUN＆WIN]优秀素质",
+          "title": "[RUN＆WIN]",
+          "characterName": "优秀素质",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1060_106050_02.png"
+        },
+        {
+          "id": 106102,
+          "type": "character",
+          "name": "[洁白傲气的激励之服]帝王光辉",
+          "title": "[洁白傲气的激励之服]",
+          "characterName": "帝王光辉",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1061_106150_02.png"
+        },
+        {
+          "id": 103101,
+          "type": "character",
+          "name": "[全时狂欢]艾尼风神",
+          "title": "[全时狂欢]",
+          "characterName": "艾尼风神",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1031_103101_02.png"
+        },
+        {
+          "id": 106401,
+          "type": "character",
+          "name": "[Line Breakthrough]目白善信",
+          "title": "[Line Breakthrough]",
+          "characterName": "目白善信",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1064_106401_02.png"
+        },
+        {
+          "id": 103802,
+          "type": "character",
+          "name": "[朔月挚爱]真机伶",
+          "title": "[朔月挚爱]",
+          "characterName": "真机伶",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1038_103826_02.png"
+        },
+        {
+          "id": 102202,
+          "type": "character",
+          "name": "[Titania]美妙姿势",
+          "title": "[Titania]",
+          "characterName": "美妙姿势",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1022_102226_02.png"
+        },
+        {
+          "id": 104401,
+          "type": "character",
+          "name": "[悬铃木魔女]东商变革",
+          "title": "[悬铃木魔女]",
+          "characterName": "东商变革",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1044_104401_02.png"
+        },
+        {
+          "id": 101002,
+          "type": "character",
+          "name": "[Bubblegum☆Memories]大树快车",
+          "title": "[Bubblegum☆Memories]",
+          "characterName": "大树快车",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1010_101023_02.png"
+        },
+        {
+          "id": 105902,
+          "type": "character",
+          "name": "[假日宝石蓝]目白多伯",
+          "title": "[假日宝石蓝]",
+          "characterName": "目白多伯",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1059_105923_02.png"
+        },
+        {
+          "id": 103601,
+          "type": "character",
+          "name": "[unsigned]空中神宫",
+          "title": "[unsigned]",
+          "characterName": "空中神宫",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1036_103601_02.png"
+        },
+        {
+          "id": 101303,
+          "type": "character",
+          "name": "[涟漪佳人]目白麦昆",
+          "title": "[涟漪佳人]",
+          "characterName": "目白麦昆",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1013_101330_02.png"
+        },
+        {
+          "id": 100702,
+          "type": "character",
+          "name": "[RUN！乱！发射！！]黄金船",
+          "title": "[RUN！乱！发射！！]",
+          "characterName": "黄金船",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1007_100730_02.png"
+        },
+        {
+          "id": 105301,
+          "type": "character",
+          "name": "[黑铁的壮志]青竹回忆",
+          "title": "[黑铁的壮志]",
+          "characterName": "青竹回忆",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1053_105301_02.png"
+        },
+        {
+          "id": 109801,
+          "type": "character",
+          "name": "[阴阳八卦☆开运服]小林历奇",
+          "title": "[阴阳八卦☆开运服]",
+          "characterName": "小林历奇",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1098_109801_02.png"
+        },
+        {
+          "id": 104602,
+          "type": "character",
+          "name": "[黄昏凯旋]醒目飞鹰",
+          "title": "[黄昏凯旋]",
+          "characterName": "醒目飞鹰",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1046_104602_02.png"
+        },
+        {
+          "id": 103502,
+          "type": "character",
+          "name": "[梦想传递员]胜利奖券",
+          "title": "[梦想传递员]",
+          "characterName": "胜利奖券",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1035_103516_02.png"
+        },
+        {
+          "id": 105002,
+          "type": "character",
+          "name": "[另类工程师]成田大进",
+          "title": "[另类工程师]",
+          "characterName": "成田大进",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1050_105016_02.png"
+        },
+        {
+          "id": 102901,
+          "type": "character",
+          "name": "[可可爱爱的六出冰花]雪之美人",
+          "title": "[可可爱爱的六出冰花]",
+          "characterName": "雪之美人",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1029_102901_02.png"
+        },
+        {
+          "id": 104201,
+          "type": "character",
+          "name": "[Rocket☆Star]采珠",
+          "title": "[Rocket☆Star]",
+          "characterName": "采珠",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1042_104201_02.png"
+        },
+        {
+          "id": 101902,
+          "type": "character",
+          "name": "[爱丽♡僵尸]爱丽数码",
+          "title": "[爱丽♡僵尸]",
+          "characterName": "爱丽数码",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1019_101940_02.png"
+        },
+        {
+          "id": 105802,
+          "type": "character",
+          "name": "[Dot-o'-Lantern]名将怒涛",
+          "title": "[Dot-o'-Lantern]",
+          "characterName": "名将怒涛",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1058_105840_02.png"
+        },
+        {
+          "id": 107801,
+          "type": "character",
+          "name": "[Fluttertail Spirit]山人西风",
+          "title": "[Fluttertail Spirit]",
+          "characterName": "山人西风",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1078_107801_02.png"
+        },
+        {
+          "id": 102102,
+          "type": "character",
+          "name": "[轰鸣雷神]玉藻十字",
+          "title": "[轰鸣雷神]",
+          "characterName": "玉藻十字",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1021_102143_02.png"
+        },
+        {
+          "id": 103402,
+          "type": "character",
+          "name": "[梦之金原]稻荷一",
+          "title": "[梦之金原]",
+          "characterName": "稻荷一",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1034_103443_02.png"
+        },
+        {
+          "id": 104901,
+          "type": "character",
+          "name": "[死中求生]中山庆典",
+          "title": "[死中求生]",
+          "characterName": "中山庆典",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1049_104901_02.png"
+        },
+        {
+          "id": 110001,
+          "type": "character",
+          "name": "[Butterfly Sting]奇锐骏",
+          "title": "[Butterfly Sting]",
+          "characterName": "奇锐骏",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1100_110001_02.png"
+        },
+        {
+          "id": 100802,
+          "type": "character",
+          "name": "[不会结冰的生命之水]伏特加",
+          "title": "[不会结冰的生命之水]",
+          "characterName": "伏特加",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1008_100846_02.png"
+        },
+        {
+          "id": 100902,
+          "type": "character",
+          "name": "[绯红的星月之夜]大和赤骥",
+          "title": "[绯红的星月之夜]",
+          "characterName": "大和赤骥",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1009_100946_02.png"
+        },
+        {
+          "id": 104701,
+          "type": "character",
+          "name": "[Heroic Author]荒漠英雄",
+          "title": "[Heroic Author]",
+          "characterName": "荒漠英雄",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1047_104701_02.png"
+        },
+        {
+          "id": 101602,
+          "type": "character",
+          "name": "[饿狼]成田白仁",
+          "title": "[饿狼]",
+          "characterName": "成田白仁",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1016_101602_02.png"
+        },
+        {
+          "id": 106802,
+          "type": "character",
+          "name": "[压轴主角·庆鹤之志]北部玄驹",
+          "title": "[压轴主角·庆鹤之志]",
+          "characterName": "北部玄驹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1068_106810_02.png"
+        },
+        {
+          "id": 106702,
+          "type": "character",
+          "name": "[当红之星·荣兴之翠]里见光钻",
+          "title": "[当红之星·荣兴之翠]",
+          "characterName": "里见光钻",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1067_106710_02.png"
+        },
+        {
+          "id": 109901,
+          "type": "character",
+          "name": "[星辉之航]北幸樽前",
+          "title": "[星辉之航]",
+          "characterName": "北幸樽前",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1099_109901_02.png"
+        },
+        {
+          "id": 106501,
+          "type": "character",
+          "name": "[Fun☆Fun☆嗨翻天]大拓太阳神",
+          "title": "[Fun☆Fun☆嗨翻天]",
+          "characterName": "大拓太阳神",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1065_106501_02.png"
+        },
+        {
+          "id": 103102,
+          "type": "character",
+          "name": "[MELTY GIFT]艾尼风神",
+          "title": "[MELTY GIFT]",
+          "characterName": "艾尼风神",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1031_103113_02.png"
+        },
+        {
+          "id": 102702,
+          "type": "character",
+          "name": "[玛格丽特拿铁]目白莱恩",
+          "title": "[玛格丽特拿铁]",
+          "characterName": "目白莱恩",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1027_102713_02.png"
+        },
+        {
+          "id": 104301,
+          "type": "character",
+          "name": "[Wicked Punk]新光风",
+          "title": "[Wicked Punk]",
+          "characterName": "新光风",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1043_104301_02.png"
+        },
+        {
+          "id": 103401,
+          "type": "character",
+          "name": "[稻荷因缘江户紫]稻荷一",
+          "title": "[稻荷因缘江户紫]",
+          "characterName": "稻荷一",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1034_103401_02.png"
+        },
+        {
+          "id": 108701,
+          "type": "character",
+          "name": "[Flare]阿斯顿真弓",
+          "title": "[Flare]",
+          "characterName": "阿斯顿真弓",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1087_108701_02.png"
+        },
+        {
+          "id": 105701,
+          "type": "character",
+          "name": "[Clear Bliss]千明代表",
+          "title": "[Clear Bliss]",
+          "characterName": "千明代表",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1057_105701_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30155,
+      "type": "支援卡",
+      "start": "2026-05-23 12:00:00",
+      "end": "2026-06-01 11:59:59",
+      "startTimestamp": 1779508800,
+      "endTimestamp": 1780286399,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30155.png",
+      "cards": [
+        {
+          "id": 20060,
+          "type": "support",
+          "name": "[享用甜～甜的游泳圈吧]菱曙",
+          "title": "[享用甜～甜的游泳圈吧]",
+          "characterName": "菱曙",
+          "rarity": 2,
+          "image": "intel/support/support_card_s_20060.png"
+        },
+        {
+          "id": 30137,
+          "type": "support",
+          "name": "[迈向永恒的荣光]引领众人的始祖",
+          "title": "[迈向永恒的荣光]",
+          "characterName": "引领众人的始祖",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30137.png"
+        }
+      ]
+    },
+    {
+      "id": 30154,
+      "type": "角色卡池",
+      "start": "2026-05-23 12:00:00",
+      "end": "2026-06-01 11:59:59",
+      "startTimestamp": 1779508800,
+      "endTimestamp": 1780286399,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30154.png",
+      "cards": [
+        {
+          "id": 108301,
+          "type": "character",
+          "name": "[Onyx Soldier]克里斯象征",
+          "title": "[Onyx Soldier]",
+          "characterName": "克里斯象征",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1083_108301_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30157,
+      "type": "支援卡",
+      "start": "2026-05-30 12:00:00",
+      "end": "2026-06-11 11:59:59",
+      "startTimestamp": 1780113600,
+      "endTimestamp": 1781150399,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30157.png",
+      "cards": [
+        {
+          "id": 30139,
+          "type": "support",
+          "name": "[夜风掳心]目白麦昆",
+          "title": "[夜风掳心]",
+          "characterName": "目白麦昆",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30139.png"
+        },
+        {
+          "id": 30138,
+          "type": "support",
+          "name": "[此刻请不要闭眼]优秀素质",
+          "title": "[此刻请不要闭眼]",
+          "characterName": "优秀素质",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30138.png"
+        }
+      ]
+    },
+    {
+      "id": 30156,
+      "type": "角色卡池",
+      "start": "2026-05-30 12:00:00",
+      "end": "2026-06-11 11:59:59",
+      "startTimestamp": 1780113600,
+      "endTimestamp": 1781150399,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30156.png",
+      "cards": [
+        {
+          "id": 106902,
+          "type": "character",
+          "name": "[Fleur Enneigée]樱花千代王",
+          "title": "[Fleur Enneigée]",
+          "characterName": "樱花千代王",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1069_106920_02.png"
+        },
+        {
+          "id": 107102,
+          "type": "character",
+          "name": "[Neige Émeraude]目白雅丹",
+          "title": "[Neige Émeraude]",
+          "characterName": "目白雅丹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1071_107120_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30159,
+      "type": "支援卡",
+      "start": "2026-06-06 12:00:00",
+      "end": "2026-06-15 11:59:59",
+      "startTimestamp": 1780718400,
+      "endTimestamp": 1781495999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30159.png",
+      "cards": [
+        {
+          "id": 30122,
+          "type": "support",
+          "name": "[Danke schön]荣进闪耀",
+          "title": "[Danke schön]",
+          "characterName": "荣进闪耀",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30122.png"
+        },
+        {
+          "id": 30124,
+          "type": "support",
+          "name": "[Are you merry？]气槽",
+          "title": "[Are you merry？]",
+          "characterName": "气槽",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30124.png"
+        }
+      ]
+    },
+    {
+      "id": 30158,
+      "type": "角色卡池",
+      "start": "2026-06-06 12:00:00",
+      "end": "2026-06-15 11:59:59",
+      "startTimestamp": 1780718400,
+      "endTimestamp": 1781495999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30158.png",
+      "cards": [
+        {
+          "id": 107601,
+          "type": "character",
+          "name": "[Saisir le rêve]樱花桂冠",
+          "title": "[Saisir le rêve]",
+          "characterName": "樱花桂冠",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1076_107601_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30161,
+      "type": "支援卡",
+      "start": "2026-06-11 12:00:00",
+      "end": "2026-06-20 11:59:59",
+      "startTimestamp": 1781150400,
+      "endTimestamp": 1781927999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30161.png",
+      "cards": [
+        {
+          "id": 20061,
+          "type": "support",
+          "name": "[小金船特制招牌菜]黄金船",
+          "title": "[小金船特制招牌菜]",
+          "characterName": "黄金船",
+          "rarity": 2,
+          "image": "intel/support/support_card_s_20061.png"
+        },
+        {
+          "id": 30037,
+          "type": "support",
+          "name": "[绝对皇帝]鲁道夫象征",
+          "title": "[绝对皇帝]",
+          "characterName": "鲁道夫象征",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30037.png"
+        }
+      ]
+    },
+    {
+      "id": 30160,
+      "type": "角色卡池",
+      "start": "2026-06-11 12:00:00",
+      "end": "2026-06-20 11:59:59",
+      "startTimestamp": 1781150400,
+      "endTimestamp": 1781927999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30160.png",
+      "cards": [
+        {
+          "id": 110501,
+          "type": "character",
+          "name": "[Universe-Naut]新宇宙",
+          "title": "[Universe-Naut]",
+          "characterName": "新宇宙",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1105_110501_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30163,
+      "type": "支援卡",
+      "start": "2026-06-20 12:00:00",
+      "end": "2026-07-02 11:59:59",
+      "startTimestamp": 1781928000,
+      "endTimestamp": 1782964799,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30163.png",
+      "cards": [
+        {
+          "id": 30142,
+          "type": "support",
+          "name": "[此刻，樱花烂漫]樱花桂冠",
+          "title": "[此刻，樱花烂漫]",
+          "characterName": "樱花桂冠",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30142.png"
+        },
+        {
+          "id": 30141,
+          "type": "support",
+          "name": "[任务“为内心补充营养”]美浦波旁",
+          "title": "[任务“为内心补充营养”]",
+          "characterName": "美浦波旁",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30141.png"
+        }
+      ]
+    },
+    {
+      "id": 30162,
+      "type": "角色卡池",
+      "start": "2026-06-20 12:00:00",
+      "end": "2026-07-02 11:59:59",
+      "startTimestamp": 1781928000,
+      "endTimestamp": 1782964799,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30162.png",
+      "cards": [
+        {
+          "id": 104102,
+          "type": "character",
+          "name": "[赤热☆队长]樱花进王",
+          "title": "[赤热☆队长]",
+          "characterName": "樱花进王",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1041_104150_02.png"
+        },
+        {
+          "id": 106202,
+          "type": "character",
+          "name": "[碧蓝湍流]待兼唐怀瑟",
+          "title": "[碧蓝湍流]",
+          "characterName": "待兼唐怀瑟",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1062_106250_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30164,
+      "type": "角色卡池",
+      "start": "2026-06-20 12:00:00",
+      "end": "2026-07-02 11:59:59",
+      "startTimestamp": 1781928000,
+      "endTimestamp": 1782964799,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30164.png",
+      "cards": [
+        {
+          "id": 106501,
+          "type": "character",
+          "name": "[Fun☆Fun☆嗨翻天]大拓太阳神",
+          "title": "[Fun☆Fun☆嗨翻天]",
+          "characterName": "大拓太阳神",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1065_106501_02.png"
+        },
+        {
+          "id": 106401,
+          "type": "character",
+          "name": "[Line Breakthrough]目白善信",
+          "title": "[Line Breakthrough]",
+          "characterName": "目白善信",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1064_106401_02.png"
+        },
+        {
+          "id": 104801,
+          "type": "character",
+          "name": "[潮流☆Joker]岛川乔丹",
+          "title": "[潮流☆Joker]",
+          "characterName": "岛川乔丹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1048_104801_02.png"
+        },
+        {
+          "id": 104001,
+          "type": "character",
+          "name": "[真我/1928]黄金城",
+          "title": "[真我/1928]",
+          "characterName": "黄金城",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1040_104001_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30167,
+      "type": "支援卡",
+      "start": "2026-06-26 12:00:00",
+      "end": "2026-07-05 11:59:59",
+      "startTimestamp": 1782446400,
+      "endTimestamp": 1783223999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30167.png",
+      "cards": [
+        {
+          "id": 30126,
+          "type": "support",
+          "name": "[化为那无人知晓的风]山人西风",
+          "title": "[化为那无人知晓的风]",
+          "characterName": "山人西风",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30126.png"
+        },
+        {
+          "id": 30130,
+          "type": "support",
+          "name": "[To you]喜嘉奇迹",
+          "title": "[To you]",
+          "characterName": "喜嘉奇迹",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30130.png"
+        }
+      ]
+    },
+    {
+      "id": 30166,
+      "type": "角色卡池",
+      "start": "2026-06-26 12:00:00",
+      "end": "2026-07-05 11:59:59",
+      "startTimestamp": 1782446400,
+      "endTimestamp": 1783223999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30166.png",
+      "cards": [
+        {
+          "id": 110601,
+          "type": "character",
+          "name": "[奇迹装点！]菱奇宝",
+          "title": "[奇迹装点！]",
+          "characterName": "菱奇宝",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1106_110601_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30169,
+      "type": "支援卡",
+      "start": "2026-06-30 12:00:00",
+      "end": "2026-07-10 11:59:59",
+      "startTimestamp": 1782792000,
+      "endTimestamp": 1783655999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30169.png",
+      "cards": [
+        {
+          "id": 20062,
+          "type": "support",
+          "name": "[超有型！兜风喽♪]丸善斯基",
+          "title": "[超有型！兜风喽♪]",
+          "characterName": "丸善斯基",
+          "rarity": 2,
+          "image": "intel/support/support_card_s_20062.png"
+        },
+        {
+          "id": 30147,
+          "type": "support",
+          "name": "[The frontier]森林宝袋",
+          "title": "[The frontier]",
+          "characterName": "森林宝袋",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30147.png"
+        }
+      ]
+    },
+    {
+      "id": 30168,
+      "type": "角色卡池",
+      "start": "2026-06-30 12:00:00",
+      "end": "2026-07-10 11:59:59",
+      "startTimestamp": 1782792000,
+      "endTimestamp": 1783655999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30168.png",
+      "cards": [
+        {
+          "id": 108401,
+          "type": "character",
+          "name": "[雷霆加身]谷水琴蕾",
+          "title": "[雷霆加身]",
+          "characterName": "谷水琴蕾",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1084_108401_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30171,
+      "type": "支援卡",
+      "start": "2026-07-09 12:00:00",
+      "end": "2026-07-20 11:59:59",
+      "startTimestamp": 1783569600,
+      "endTimestamp": 1784519999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30171.png",
+      "cards": [
+        {
+          "id": 30149,
+          "type": "support",
+          "name": "[与你定制的宝贵回忆]阿斯顿真弓",
+          "title": "[与你定制的宝贵回忆]",
+          "characterName": "阿斯顿真弓",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30149.png"
+        },
+        {
+          "id": 30148,
+          "type": "support",
+          "name": "[Something Blue]大和赤骥",
+          "title": "[Something Blue]",
+          "characterName": "大和赤骥",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30148.png"
+        }
+      ]
+    },
+    {
+      "id": 30170,
+      "type": "角色卡池",
+      "start": "2026-07-09 12:00:00",
+      "end": "2026-07-20 11:59:59",
+      "startTimestamp": 1783569600,
+      "endTimestamp": 1784519999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30170.png",
+      "cards": [
+        {
+          "id": 101202,
+          "type": "character",
+          "name": "[Hungry Veil]菱亚马逊",
+          "title": "[Hungry Veil]",
+          "characterName": "菱亚马逊",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1012_101226_02.png"
+        },
+        {
+          "id": 105102,
+          "type": "character",
+          "name": "[Sweet Juneberry]西野花",
+          "title": "[Sweet Juneberry]",
+          "characterName": "西野花",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1051_105126_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30173,
+      "type": "支援卡",
+      "start": "2026-07-15 12:00:00",
+      "end": "2026-07-25 11:59:59",
+      "startTimestamp": 1784088000,
+      "endTimestamp": 1784951999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30173.png",
+      "cards": [
+        {
+          "id": 20063,
+          "type": "support",
+          "name": "[另一角度看骤雨]无声铃鹿",
+          "title": "[另一角度看骤雨]",
+          "characterName": "无声铃鹿",
+          "rarity": 2,
+          "image": "intel/support/support_card_s_20063.png"
+        },
+        {
+          "id": 30152,
+          "type": "support",
+          "name": "[All'alba vincerò！]好歌剧",
+          "title": "[All'alba vincerò！]",
+          "characterName": "好歌剧",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30152.png"
+        }
+      ]
+    },
+    {
+      "id": 30172,
+      "type": "角色卡池",
+      "start": "2026-07-15 12:00:00",
+      "end": "2026-07-25 11:59:59",
+      "startTimestamp": 1784088000,
+      "endTimestamp": 1784951999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30172.png",
+      "cards": [
+        {
+          "id": 107801,
+          "type": "character",
+          "name": "[Fluttertail Spirit]山人西风",
+          "title": "[Fluttertail Spirit]",
+          "characterName": "山人西风",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1078_107801_02.png"
+        },
+        {
+          "id": 101002,
+          "type": "character",
+          "name": "[Bubblegum☆Memories]大树快车",
+          "title": "[Bubblegum☆Memories]",
+          "characterName": "大树快车",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1010_101023_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30175,
+      "type": "支援卡",
+      "start": "2026-07-20 12:00:00",
+      "end": "2026-07-30 11:59:59",
+      "startTimestamp": 1784520000,
+      "endTimestamp": 1785383999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30175.png",
+      "cards": [
+        {
+          "id": 10092,
+          "type": "support",
+          "name": "[特雷森学园]小林历奇",
+          "title": "[特雷森学园]",
+          "characterName": "小林历奇",
+          "rarity": 1,
+          "image": "intel/support/support_card_s_10092.png"
+        },
+        {
+          "id": 20064,
+          "type": "support",
+          "name": "[幸运之神起得早]小林历奇",
+          "title": "[幸运之神起得早]",
+          "characterName": "小林历奇",
+          "rarity": 2,
+          "image": "intel/support/support_card_s_20064.png"
+        },
+        {
+          "id": 30151,
+          "type": "support",
+          "name": "[Chill chill night*]重炮",
+          "title": "[Chill chill night*]",
+          "characterName": "重炮",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30151.png"
+        }
+      ]
+    },
+    {
+      "id": 50022,
+      "type": "支援卡",
+      "start": "2026-07-20 12:00:00",
+      "end": "2026-08-10 11:59:59",
+      "startTimestamp": 1784520000,
+      "endTimestamp": 1786334399,
+      "bannerImage": "intel/gacha/img_bnr_gacha_50022.png",
+      "cards": [
+        {
+          "id": 30080,
+          "type": "support",
+          "name": "[要不赶紧扎一针？]安心泽刺刺美",
+          "title": "[要不赶紧扎一针？]",
+          "characterName": "安心泽刺刺美",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30080.png"
+        },
+        {
+          "id": 30082,
+          "type": "support",
+          "name": "[饱含心意的纸杯蛋糕]西野花",
+          "title": "[饱含心意的纸杯蛋糕]",
+          "characterName": "西野花",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30082.png"
+        },
+        {
+          "id": 30083,
+          "type": "support",
+          "name": "[极快！最快！花之风暴！]樱花进王",
+          "title": "[极快！最快！花之风暴！]",
+          "characterName": "樱花进王",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30083.png"
+        },
+        {
+          "id": 30085,
+          "type": "support",
+          "name": "[“存在”于此的幸福]爱丽数码",
+          "title": "[“存在”于此的幸福]",
+          "characterName": "爱丽数码",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30085.png"
+        },
+        {
+          "id": 30086,
+          "type": "support",
+          "name": "[粉色背影]成田路",
+          "title": "[粉色背影]",
+          "characterName": "成田路",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30086.png"
+        },
+        {
+          "id": 30089,
+          "type": "support",
+          "name": "[让世界更加☆marvelous]美丽周日",
+          "title": "[让世界更加☆marvelous]",
+          "characterName": "美丽周日",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30089.png"
+        },
+        {
+          "id": 30090,
+          "type": "support",
+          "name": "[Enchaînement]鲁道夫象征",
+          "title": "[Enchaînement]",
+          "characterName": "鲁道夫象征",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30090.png"
+        },
+        {
+          "id": 30091,
+          "type": "support",
+          "name": "[Escorte étoile]天狼星象征",
+          "title": "[Escorte étoile]",
+          "characterName": "天狼星象征",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30091.png"
+        },
+        {
+          "id": 30093,
+          "type": "support",
+          "name": "[Outfit as No.1]大和赤骥",
+          "title": "[Outfit as No.1]",
+          "characterName": "大和赤骥",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30093.png"
+        },
+        {
+          "id": 30094,
+          "type": "support",
+          "name": "[收下这份鼓励吧！]青竹回忆",
+          "title": "[收下这份鼓励吧！]",
+          "characterName": "青竹回忆",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30094.png"
+        },
+        {
+          "id": 30095,
+          "type": "support",
+          "name": "[那声加油改变了世界]采珠",
+          "title": "[那声加油改变了世界]",
+          "characterName": "采珠",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30095.png"
+        },
+        {
+          "id": 30098,
+          "type": "support",
+          "name": "[乌菈菈的热情之歌♪]春乌菈菈",
+          "title": "[乌菈菈的热情之歌♪]",
+          "characterName": "春乌菈菈",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30098.png"
+        },
+        {
+          "id": 30099,
+          "type": "support",
+          "name": "[可爱的金兰之交们]生野狄杜斯",
+          "title": "[可爱的金兰之交们]",
+          "characterName": "生野狄杜斯",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30099.png"
+        },
+        {
+          "id": 30053,
+          "type": "support",
+          "name": "[坏蛋，举起手来！]大树快车",
+          "title": "[坏蛋，举起手来！]",
+          "characterName": "大树快车",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30053.png"
+        },
+        {
+          "id": 30102,
+          "type": "support",
+          "name": "[光芒四射地奔跑吧∞]神鹰",
+          "title": "[光芒四射地奔跑吧∞]",
+          "characterName": "神鹰",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30102.png"
+        },
+        {
+          "id": 30103,
+          "type": "support",
+          "name": "[待兼唐☆大冒险]待兼唐怀瑟",
+          "title": "[待兼唐☆大冒险]",
+          "characterName": "待兼唐怀瑟",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30103.png"
+        },
+        {
+          "id": 30106,
+          "type": "support",
+          "name": "[奔向理想的熏风]气槽",
+          "title": "[奔向理想的熏风]",
+          "characterName": "气槽",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30106.png"
+        },
+        {
+          "id": 30067,
+          "type": "support",
+          "name": "[尊尚敬爱]聚于王座之人",
+          "title": "[尊尚敬爱]",
+          "characterName": "聚于王座之人",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30067.png"
+        },
+        {
+          "id": 30108,
+          "type": "support",
+          "name": "[听凭骰运]中山庆典",
+          "title": "[听凭骰运]",
+          "characterName": "中山庆典",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30108.png"
+        },
+        {
+          "id": 30110,
+          "type": "support",
+          "name": "[It's on the house.]曼城茶座",
+          "title": "[It's on the house.]",
+          "characterName": "曼城茶座",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30110.png"
+        },
+        {
+          "id": 30052,
+          "type": "support",
+          "name": "[from the GROUND UP]明亮光晕",
+          "title": "[from the GROUND UP]",
+          "characterName": "明亮光晕",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30052.png"
+        },
+        {
+          "id": 30101,
+          "type": "support",
+          "name": "[Q≠0]爱丽速子",
+          "title": "[Q≠0]",
+          "characterName": "爱丽速子",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30101.png"
+        },
+        {
+          "id": 30111,
+          "type": "support",
+          "name": "[帝王！王！王！！！]东海帝王",
+          "title": "[帝王！王！王！！！]",
+          "characterName": "东海帝王",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30111.png"
+        },
+        {
+          "id": 30114,
+          "type": "support",
+          "name": "[啊，华丽一族]第一红宝",
+          "title": "[啊，华丽一族]",
+          "characterName": "第一红宝",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30114.png"
+        },
+        {
+          "id": 30115,
+          "type": "support",
+          "name": "[月下小恶魔♪]目白善信",
+          "title": "[月下小恶魔♪]",
+          "characterName": "目白善信",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30115.png"
+        },
+        {
+          "id": 30116,
+          "type": "support",
+          "name": "[太阳小天使♪]大拓太阳神",
+          "title": "[太阳小天使♪]",
+          "characterName": "大拓太阳神",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30116.png"
+        },
+        {
+          "id": 30118,
+          "type": "support",
+          "name": "[A Win Foreshadowed]克里斯象征",
+          "title": "[A Win Foreshadowed]",
+          "characterName": "克里斯象征",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30118.png"
+        },
+        {
+          "id": 30146,
+          "type": "support",
+          "name": "[奔跑吧，奔跑吧，奔跑吧！！]小栗帽",
+          "title": "[奔跑吧，奔跑吧，奔跑吧！！]",
+          "characterName": "小栗帽",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30146.png"
+        },
+        {
+          "id": 30120,
+          "type": "support",
+          "name": "[燃至天际的祈祷之火]八重无敌",
+          "title": "[燃至天际的祈祷之火]",
+          "characterName": "八重无敌",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30120.png"
+        },
+        {
+          "id": 30122,
+          "type": "support",
+          "name": "[Danke schön]荣进闪耀",
+          "title": "[Danke schön]",
+          "characterName": "荣进闪耀",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30122.png"
+        },
+        {
+          "id": 30123,
+          "type": "support",
+          "name": "[GLAD TIDINGS]成田白仁",
+          "title": "[GLAD TIDINGS]",
+          "characterName": "成田白仁",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30123.png"
+        },
+        {
+          "id": 30124,
+          "type": "support",
+          "name": "[Are you merry？]气槽",
+          "title": "[Are you merry？]",
+          "characterName": "气槽",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30124.png"
+        },
+        {
+          "id": 30126,
+          "type": "support",
+          "name": "[化为那无人知晓的风]山人西风",
+          "title": "[化为那无人知晓的风]",
+          "characterName": "山人西风",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30126.png"
+        },
+        {
+          "id": 30127,
+          "type": "support",
+          "name": "[平安喜乐寄于板羽球中]特别周",
+          "title": "[平安喜乐寄于板羽球中]",
+          "characterName": "特别周",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30127.png"
+        },
+        {
+          "id": 30128,
+          "type": "support",
+          "name": "[难以捉摸的绝世佳人]东商变革",
+          "title": "[难以捉摸的绝世佳人]",
+          "characterName": "东商变革",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30128.png"
+        },
+        {
+          "id": 30112,
+          "type": "support",
+          "name": "[TT Ignition！]双涡轮",
+          "title": "[TT Ignition！]",
+          "characterName": "双涡轮",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30112.png"
+        },
+        {
+          "id": 30097,
+          "type": "support",
+          "name": "[Dear Mr. C.B.]千明代表",
+          "title": "[Dear Mr. C.B.]",
+          "characterName": "千明代表",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30097.png"
+        },
+        {
+          "id": 30107,
+          "type": "support",
+          "name": "[小感伤预警♪]丸善斯基",
+          "title": "[小感伤预警♪]",
+          "characterName": "丸善斯基",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30107.png"
+        }
+      ]
+    },
+    {
+      "id": 50024,
+      "type": "支援卡",
+      "start": "2026-07-20 12:00:00",
+      "end": "2026-08-10 11:59:59",
+      "startTimestamp": 1784520000,
+      "endTimestamp": 1786334399,
+      "bannerImage": "intel/gacha/img_bnr_gacha_50024.png",
+      "cards": [
+        {
+          "id": 30130,
+          "type": "support",
+          "name": "[To you]喜嘉奇迹",
+          "title": "[To you]",
+          "characterName": "喜嘉奇迹",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30130.png"
+        },
+        {
+          "id": 30131,
+          "type": "support",
+          "name": "[Marvelous☆巧克力盛宴]美丽周日",
+          "title": "[Marvelous☆巧克力盛宴]",
+          "characterName": "美丽周日",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30131.png"
+        },
+        {
+          "id": 30132,
+          "type": "support",
+          "name": "[变身！侍者形态！]微光飞驹",
+          "title": "[变身！侍者形态！]",
+          "characterName": "微光飞驹",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30132.png"
+        },
+        {
+          "id": 30134,
+          "type": "support",
+          "name": "[璨烂]目白拉莫娜",
+          "title": "[璨烂]",
+          "characterName": "目白拉莫娜",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30134.png"
+        },
+        {
+          "id": 30137,
+          "type": "support",
+          "name": "[迈向永恒的荣光]引领众人的始祖",
+          "title": "[迈向永恒的荣光]",
+          "characterName": "引领众人的始祖",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30137.png"
+        },
+        {
+          "id": 30138,
+          "type": "support",
+          "name": "[此刻请不要闭眼]优秀素质",
+          "title": "[此刻请不要闭眼]",
+          "characterName": "优秀素质",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30138.png"
+        },
+        {
+          "id": 30139,
+          "type": "support",
+          "name": "[夜风掳心]目白麦昆",
+          "title": "[夜风掳心]",
+          "characterName": "目白麦昆",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30139.png"
+        },
+        {
+          "id": 30037,
+          "type": "support",
+          "name": "[绝对皇帝]鲁道夫象征",
+          "title": "[绝对皇帝]",
+          "characterName": "鲁道夫象征",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30037.png"
+        },
+        {
+          "id": 30141,
+          "type": "support",
+          "name": "[任务“为内心补充营养”]美浦波旁",
+          "title": "[任务“为内心补充营养”]",
+          "characterName": "美浦波旁",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30141.png"
+        },
+        {
+          "id": 30142,
+          "type": "support",
+          "name": "[此刻，樱花烂漫]樱花桂冠",
+          "title": "[此刻，樱花烂漫]",
+          "characterName": "樱花桂冠",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30142.png"
+        },
+        {
+          "id": 30149,
+          "type": "support",
+          "name": "[与你定制的宝贵回忆]阿斯顿真弓",
+          "title": "[与你定制的宝贵回忆]",
+          "characterName": "阿斯顿真弓",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30149.png"
+        },
+        {
+          "id": 30147,
+          "type": "support",
+          "name": "[The frontier]森林宝袋",
+          "title": "[The frontier]",
+          "characterName": "森林宝袋",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30147.png"
+        },
+        {
+          "id": 30148,
+          "type": "support",
+          "name": "[Something Blue]大和赤骥",
+          "title": "[Something Blue]",
+          "characterName": "大和赤骥",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30148.png"
+        },
+        {
+          "id": 30152,
+          "type": "support",
+          "name": "[All'alba vincerò！]好歌剧",
+          "title": "[All'alba vincerò！]",
+          "characterName": "好歌剧",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30152.png"
+        }
+      ]
+    },
+    {
+      "id": 30174,
+      "type": "角色卡池",
+      "start": "2026-07-20 12:00:00",
+      "end": "2026-07-30 11:59:59",
+      "startTimestamp": 1784520000,
+      "endTimestamp": 1785383999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30174.png",
+      "cards": [
+        {
+          "id": 105501,
+          "type": "character",
+          "name": "[☆闪亮★心动☆雀跃∞美丽∞]美丽周日",
+          "title": "[☆闪亮★心动☆雀跃∞美丽∞]",
+          "characterName": "美丽周日",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1055_105501_02.png"
+        }
+      ]
+    },
+    {
+      "id": 50021,
+      "type": "角色卡池",
+      "start": "2026-07-20 12:00:00",
+      "end": "2026-08-10 11:59:59",
+      "startTimestamp": 1784520000,
+      "endTimestamp": 1786334399,
+      "bannerImage": "intel/gacha/img_bnr_gacha_50021.png",
+      "cards": [
+        {
+          "id": 106901,
+          "type": "character",
+          "name": "[举世无双·樱花耀夜]樱花千代王",
+          "title": "[举世无双·樱花耀夜]",
+          "characterName": "樱花千代王",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1069_106901_02.png"
+        },
+        {
+          "id": 102602,
+          "type": "character",
+          "name": "[CODE：淋面装饰]美浦波旁",
+          "title": "[CODE：淋面装饰]",
+          "characterName": "美浦波旁",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1026_102613_02.png"
+        },
+        {
+          "id": 103702,
+          "type": "character",
+          "name": "[精确无比·巧克力大师]荣进闪耀",
+          "title": "[精确无比·巧克力大师]",
+          "characterName": "荣进闪耀",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1037_103713_02.png"
+        },
+        {
+          "id": 107101,
+          "type": "character",
+          "name": "[墨绿柔线]目白雅丹",
+          "title": "[墨绿柔线]",
+          "characterName": "目白雅丹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1071_107101_02.png"
+        },
+        {
+          "id": 103301,
+          "type": "character",
+          "name": "[Starry Nocturne]爱慕织姬",
+          "title": "[Starry Nocturne]",
+          "characterName": "爱慕织姬",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1033_103301_02.png"
+        },
+        {
+          "id": 106801,
+          "type": "character",
+          "name": "[锦绣·溢彩盛典]北部玄驹",
+          "title": "[锦绣·溢彩盛典]",
+          "characterName": "北部玄驹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1068_106801_02.png"
+        },
+        {
+          "id": 106701,
+          "type": "character",
+          "name": "[Natural Brilliance]里见光钻",
+          "title": "[Natural Brilliance]",
+          "characterName": "里见光钻",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1067_106701_02.png"
+        },
+        {
+          "id": 107401,
+          "type": "character",
+          "name": "[砺光韧线]目白光明",
+          "title": "[砺光韧线]",
+          "characterName": "目白光明",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1074_107401_02.png"
+        },
+        {
+          "id": 102002,
+          "type": "character",
+          "name": "[星夜猫咪舞会]青云天空",
+          "title": "[星夜猫咪舞会]",
+          "characterName": "青云天空",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1020_102020_02.png"
+        },
+        {
+          "id": 100502,
+          "type": "character",
+          "name": "[胜利之星]富士奇石",
+          "title": "[胜利之星]",
+          "characterName": "富士奇石",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1005_100520_02.png"
+        },
+        {
+          "id": 105101,
+          "type": "character",
+          "name": "[叠瓣花蕾]西野花",
+          "title": "[叠瓣花蕾]",
+          "characterName": "西野花",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1051_105101_02.png"
+        },
+        {
+          "id": 107201,
+          "type": "character",
+          "name": "[四白流星之袭]八重无敌",
+          "title": "[四白流星之袭]",
+          "characterName": "八重无敌",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1072_107201_02.png"
+        },
+        {
+          "id": 106002,
+          "type": "character",
+          "name": "[RUN＆WIN]优秀素质",
+          "title": "[RUN＆WIN]",
+          "characterName": "优秀素质",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1060_106050_02.png"
+        },
+        {
+          "id": 103101,
+          "type": "character",
+          "name": "[全时狂欢]艾尼风神",
+          "title": "[全时狂欢]",
+          "characterName": "艾尼风神",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1031_103101_02.png"
+        },
+        {
+          "id": 106401,
+          "type": "character",
+          "name": "[Line Breakthrough]目白善信",
+          "title": "[Line Breakthrough]",
+          "characterName": "目白善信",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1064_106401_02.png"
+        },
+        {
+          "id": 103802,
+          "type": "character",
+          "name": "[朔月挚爱]真机伶",
+          "title": "[朔月挚爱]",
+          "characterName": "真机伶",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1038_103826_02.png"
+        },
+        {
+          "id": 102202,
+          "type": "character",
+          "name": "[Titania]美妙姿势",
+          "title": "[Titania]",
+          "characterName": "美妙姿势",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1022_102226_02.png"
+        },
+        {
+          "id": 103401,
+          "type": "character",
+          "name": "[稻荷因缘江户紫]稻荷一",
+          "title": "[稻荷因缘江户紫]",
+          "characterName": "稻荷一",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1034_103401_02.png"
+        },
+        {
+          "id": 104401,
+          "type": "character",
+          "name": "[悬铃木魔女]东商变革",
+          "title": "[悬铃木魔女]",
+          "characterName": "东商变革",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1044_104401_02.png"
+        },
+        {
+          "id": 101002,
+          "type": "character",
+          "name": "[Bubblegum☆Memories]大树快车",
+          "title": "[Bubblegum☆Memories]",
+          "characterName": "大树快车",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1010_101023_02.png"
+        },
+        {
+          "id": 105902,
+          "type": "character",
+          "name": "[假日宝石蓝]目白多伯",
+          "title": "[假日宝石蓝]",
+          "characterName": "目白多伯",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1059_105923_02.png"
+        },
+        {
+          "id": 103601,
+          "type": "character",
+          "name": "[unsigned]空中神宫",
+          "title": "[unsigned]",
+          "characterName": "空中神宫",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1036_103601_02.png"
+        },
+        {
+          "id": 101303,
+          "type": "character",
+          "name": "[涟漪佳人]目白麦昆",
+          "title": "[涟漪佳人]",
+          "characterName": "目白麦昆",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1013_101330_02.png"
+        },
+        {
+          "id": 100702,
+          "type": "character",
+          "name": "[RUN！乱！发射！！]黄金船",
+          "title": "[RUN！乱！发射！！]",
+          "characterName": "黄金船",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1007_100730_02.png"
+        },
+        {
+          "id": 105301,
+          "type": "character",
+          "name": "[黑铁的壮志]青竹回忆",
+          "title": "[黑铁的壮志]",
+          "characterName": "青竹回忆",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1053_105301_02.png"
+        },
+        {
+          "id": 109801,
+          "type": "character",
+          "name": "[阴阳八卦☆开运服]小林历奇",
+          "title": "[阴阳八卦☆开运服]",
+          "characterName": "小林历奇",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1098_109801_02.png"
+        },
+        {
+          "id": 104602,
+          "type": "character",
+          "name": "[黄昏凯旋]醒目飞鹰",
+          "title": "[黄昏凯旋]",
+          "characterName": "醒目飞鹰",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1046_104602_02.png"
+        },
+        {
+          "id": 103502,
+          "type": "character",
+          "name": "[梦想传递员]胜利奖券",
+          "title": "[梦想传递员]",
+          "characterName": "胜利奖券",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1035_103516_02.png"
+        },
+        {
+          "id": 105002,
+          "type": "character",
+          "name": "[另类工程师]成田大进",
+          "title": "[另类工程师]",
+          "characterName": "成田大进",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1050_105016_02.png"
+        },
+        {
+          "id": 102901,
+          "type": "character",
+          "name": "[可可爱爱的六出冰花]雪之美人",
+          "title": "[可可爱爱的六出冰花]",
+          "characterName": "雪之美人",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1029_102901_02.png"
+        },
+        {
+          "id": 104201,
+          "type": "character",
+          "name": "[Rocket☆Star]采珠",
+          "title": "[Rocket☆Star]",
+          "characterName": "采珠",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1042_104201_02.png"
+        },
+        {
+          "id": 101902,
+          "type": "character",
+          "name": "[爱丽♡僵尸]爱丽数码",
+          "title": "[爱丽♡僵尸]",
+          "characterName": "爱丽数码",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1019_101940_02.png"
+        },
+        {
+          "id": 105802,
+          "type": "character",
+          "name": "[Dot-o'-Lantern]名将怒涛",
+          "title": "[Dot-o'-Lantern]",
+          "characterName": "名将怒涛",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1058_105840_02.png"
+        },
+        {
+          "id": 108701,
+          "type": "character",
+          "name": "[Flare]阿斯顿真弓",
+          "title": "[Flare]",
+          "characterName": "阿斯顿真弓",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1087_108701_02.png"
+        },
+        {
+          "id": 107801,
+          "type": "character",
+          "name": "[Fluttertail Spirit]山人西风",
+          "title": "[Fluttertail Spirit]",
+          "characterName": "山人西风",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1078_107801_02.png"
+        },
+        {
+          "id": 102102,
+          "type": "character",
+          "name": "[轰鸣雷神]玉藻十字",
+          "title": "[轰鸣雷神]",
+          "characterName": "玉藻十字",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1021_102143_02.png"
+        },
+        {
+          "id": 103402,
+          "type": "character",
+          "name": "[梦之金原]稻荷一",
+          "title": "[梦之金原]",
+          "characterName": "稻荷一",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1034_103443_02.png"
+        },
+        {
+          "id": 104901,
+          "type": "character",
+          "name": "[死中求生]中山庆典",
+          "title": "[死中求生]",
+          "characterName": "中山庆典",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1049_104901_02.png"
+        },
+        {
+          "id": 110001,
+          "type": "character",
+          "name": "[Butterfly Sting]奇锐骏",
+          "title": "[Butterfly Sting]",
+          "characterName": "奇锐骏",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1100_110001_02.png"
+        },
+        {
+          "id": 100902,
+          "type": "character",
+          "name": "[绯红的星月之夜]大和赤骥",
+          "title": "[绯红的星月之夜]",
+          "characterName": "大和赤骥",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1009_100946_02.png"
+        },
+        {
+          "id": 104701,
+          "type": "character",
+          "name": "[Heroic Author]荒漠英雄",
+          "title": "[Heroic Author]",
+          "characterName": "荒漠英雄",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1047_104701_02.png"
+        },
+        {
+          "id": 106702,
+          "type": "character",
+          "name": "[当红之星·荣兴之翠]里见光钻",
+          "title": "[当红之星·荣兴之翠]",
+          "characterName": "里见光钻",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1067_106710_02.png"
+        },
+        {
+          "id": 106802,
+          "type": "character",
+          "name": "[压轴主角·庆鹤之志]北部玄驹",
+          "title": "[压轴主角·庆鹤之志]",
+          "characterName": "北部玄驹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1068_106810_02.png"
+        },
+        {
+          "id": 106102,
+          "type": "character",
+          "name": "[洁白傲气的激励之服]帝王光辉",
+          "title": "[洁白傲气的激励之服]",
+          "characterName": "帝王光辉",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1061_106150_02.png"
+        },
+        {
+          "id": 100802,
+          "type": "character",
+          "name": "[不会结冰的生命之水]伏特加",
+          "title": "[不会结冰的生命之水]",
+          "characterName": "伏特加",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1008_100846_02.png"
+        },
+        {
+          "id": 101602,
+          "type": "character",
+          "name": "[饿狼]成田白仁",
+          "title": "[饿狼]",
+          "characterName": "成田白仁",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1016_101602_02.png"
+        }
+      ]
+    },
+    {
+      "id": 50023,
+      "type": "角色卡池",
+      "start": "2026-07-20 12:00:00",
+      "end": "2026-08-10 11:59:59",
+      "startTimestamp": 1784520000,
+      "endTimestamp": 1786334399,
+      "bannerImage": "intel/gacha/img_bnr_gacha_50023.png",
+      "cards": [
+        {
+          "id": 109901,
+          "type": "character",
+          "name": "[星辉之航]北幸樽前",
+          "title": "[星辉之航]",
+          "characterName": "北幸樽前",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1099_109901_02.png"
+        },
+        {
+          "id": 106501,
+          "type": "character",
+          "name": "[Fun☆Fun☆嗨翻天]大拓太阳神",
+          "title": "[Fun☆Fun☆嗨翻天]",
+          "characterName": "大拓太阳神",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1065_106501_02.png"
+        },
+        {
+          "id": 103102,
+          "type": "character",
+          "name": "[MELTY GIFT]艾尼风神",
+          "title": "[MELTY GIFT]",
+          "characterName": "艾尼风神",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1031_103113_02.png"
+        },
+        {
+          "id": 102702,
+          "type": "character",
+          "name": "[玛格丽特拿铁]目白莱恩",
+          "title": "[玛格丽特拿铁]",
+          "characterName": "目白莱恩",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1027_102713_02.png"
+        },
+        {
+          "id": 104301,
+          "type": "character",
+          "name": "[Wicked Punk]新光风",
+          "title": "[Wicked Punk]",
+          "characterName": "新光风",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1043_104301_02.png"
+        },
+        {
+          "id": 105701,
+          "type": "character",
+          "name": "[Clear Bliss]千明代表",
+          "title": "[Clear Bliss]",
+          "characterName": "千明代表",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1057_105701_02.png"
+        },
+        {
+          "id": 108301,
+          "type": "character",
+          "name": "[Onyx Soldier]克里斯象征",
+          "title": "[Onyx Soldier]",
+          "characterName": "克里斯象征",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1083_108301_02.png"
+        },
+        {
+          "id": 107102,
+          "type": "character",
+          "name": "[Neige Émeraude]目白雅丹",
+          "title": "[Neige Émeraude]",
+          "characterName": "目白雅丹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1071_107120_02.png"
+        },
+        {
+          "id": 106902,
+          "type": "character",
+          "name": "[Fleur Enneigée]樱花千代王",
+          "title": "[Fleur Enneigée]",
+          "characterName": "樱花千代王",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1069_106920_02.png"
+        },
+        {
+          "id": 107601,
+          "type": "character",
+          "name": "[Saisir le rêve]樱花桂冠",
+          "title": "[Saisir le rêve]",
+          "characterName": "樱花桂冠",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1076_107601_02.png"
+        },
+        {
+          "id": 106202,
+          "type": "character",
+          "name": "[碧蓝湍流]待兼唐怀瑟",
+          "title": "[碧蓝湍流]",
+          "characterName": "待兼唐怀瑟",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1062_106250_02.png"
+        },
+        {
+          "id": 104102,
+          "type": "character",
+          "name": "[赤热☆队长]樱花进王",
+          "title": "[赤热☆队长]",
+          "characterName": "樱花进王",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1041_104150_02.png"
+        },
+        {
+          "id": 110601,
+          "type": "character",
+          "name": "[奇迹装点！]菱奇宝",
+          "title": "[奇迹装点！]",
+          "characterName": "菱奇宝",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1106_110601_02.png"
+        },
+        {
+          "id": 105102,
+          "type": "character",
+          "name": "[Sweet Juneberry]西野花",
+          "title": "[Sweet Juneberry]",
+          "characterName": "西野花",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1051_105126_02.png"
+        },
+        {
+          "id": 101202,
+          "type": "character",
+          "name": "[Hungry Veil]菱亚马逊",
+          "title": "[Hungry Veil]",
+          "characterName": "菱亚马逊",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1012_101226_02.png"
+        },
+        {
+          "id": 110501,
+          "type": "character",
+          "name": "[Universe-Naut]新宇宙",
+          "title": "[Universe-Naut]",
+          "characterName": "新宇宙",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1105_110501_02.png"
+        },
+        {
+          "id": 108501,
+          "type": "character",
+          "name": "[华丽红玉]第一红宝",
+          "title": "[华丽红玉]",
+          "characterName": "第一红宝",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1085_108501_02.png"
+        },
+        {
+          "id": 108401,
+          "type": "character",
+          "name": "[雷霆加身]谷水琴蕾",
+          "title": "[雷霆加身]",
+          "characterName": "谷水琴蕾",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1084_108401_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30177,
+      "type": "支援卡",
+      "start": "2026-07-30 12:00:00",
+      "end": "2026-08-10 11:59:59",
+      "startTimestamp": 1785384000,
+      "endTimestamp": 1786334399,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30177.png",
+      "cards": [
+        {
+          "id": 30154,
+          "type": "support",
+          "name": "[宛如海鸥]目白善信",
+          "title": "[宛如海鸥]",
+          "characterName": "目白善信",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30154.png"
+        },
+        {
+          "id": 30153,
+          "type": "support",
+          "name": "[暖月]黄金城",
+          "title": "[暖月]",
+          "characterName": "黄金城",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30153.png"
+        }
+      ]
+    },
+    {
+      "id": 30176,
+      "type": "角色卡池",
+      "start": "2026-07-30 12:00:00",
+      "end": "2026-08-10 11:59:59",
+      "startTimestamp": 1785384000,
+      "endTimestamp": 1786334399,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30176.png",
+      "cards": [
+        {
+          "id": 104802,
+          "type": "character",
+          "name": "[Aurore☆Vacances]岛川乔丹",
+          "title": "[Aurore☆Vacances]",
+          "characterName": "岛川乔丹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1048_104823_02.png"
+        },
+        {
+          "id": 105302,
+          "type": "character",
+          "name": "[Ultra☆Marine]青竹回忆",
+          "title": "[Ultra☆Marine]",
+          "characterName": "青竹回忆",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1053_105323_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30179,
+      "type": "支援卡",
+      "start": "2026-08-05 12:00:00",
+      "end": "2026-08-16 11:59:59",
+      "startTimestamp": 1785902400,
+      "endTimestamp": 1786852799,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30179.png",
+      "cards": [
+        {
+          "id": 30112,
+          "type": "support",
+          "name": "[TT Ignition！]双涡轮",
+          "title": "[TT Ignition！]",
+          "characterName": "双涡轮",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30112.png"
+        },
+        {
+          "id": 30114,
+          "type": "support",
+          "name": "[啊，华丽一族]第一红宝",
+          "title": "[啊，华丽一族]",
+          "characterName": "第一红宝",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30114.png"
+        }
+      ]
+    },
+    {
+      "id": 30178,
+      "type": "角色卡池",
+      "start": "2026-08-05 12:00:00",
+      "end": "2026-08-16 11:59:59",
+      "startTimestamp": 1785902400,
+      "endTimestamp": 1786852799,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30178.png",
+      "cards": [
+        {
+          "id": 110401,
+          "type": "character",
+          "name": "[登龙之顶]葛城荣主",
+          "title": "[登龙之顶]",
+          "characterName": "葛城荣主",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1104_110401_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30181,
+      "type": "支援卡",
+      "start": "2026-08-10 12:00:00",
+      "end": "2026-08-20 11:59:59",
+      "startTimestamp": 1786334400,
+      "endTimestamp": 1787198399,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30181.png",
+      "cards": [
+        {
+          "id": 10093,
+          "type": "support",
+          "name": "[特雷森学园]奇锐骏",
+          "title": "[特雷森学园]",
+          "characterName": "奇锐骏",
+          "rarity": 1,
+          "image": "intel/support/support_card_s_10093.png"
+        },
+        {
+          "id": 20065,
+          "type": "support",
+          "name": "[佳茗回味无穷]草上飞",
+          "title": "[佳茗回味无穷]",
+          "characterName": "草上飞",
+          "rarity": 2,
+          "image": "intel/support/support_card_s_20065.png"
+        },
+        {
+          "id": 30156,
+          "type": "support",
+          "name": "[坚持一生的奇迹]奇锐骏",
+          "title": "[坚持一生的奇迹]",
+          "characterName": "奇锐骏",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30156.png"
+        }
+      ]
+    },
+    {
+      "id": 30180,
+      "type": "角色卡池",
+      "start": "2026-08-10 12:00:00",
+      "end": "2026-08-20 11:59:59",
+      "startTimestamp": 1786334400,
+      "endTimestamp": 1787198399,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30180.png",
+      "cards": [
+        {
+          "id": 107001,
+          "type": "character",
+          "name": "[Féroce]天狼星象征",
+          "title": "[Féroce]",
+          "characterName": "天狼星象征",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1070_107001_02.png"
+        }
+      ]
+    },
+    {
+      "id": 50025,
+      "type": "角色卡池",
+      "start": "2026-08-10 12:00:00",
+      "end": "2026-08-16 11:59:59",
+      "startTimestamp": 1786334400,
+      "endTimestamp": 1786852799,
+      "bannerImage": "intel/gacha/img_bnr_gacha_50025.png",
+      "cards": [
+        {
+          "id": 100301,
+          "type": "character",
+          "name": "[喜乐无边]东海帝王",
+          "title": "[喜乐无边]",
+          "characterName": "东海帝王",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1003_100301_02.png"
+        },
+        {
+          "id": 100601,
+          "type": "character",
+          "name": "[星光跃动]小栗帽",
+          "title": "[星光跃动]",
+          "characterName": "小栗帽",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1006_100601_02.png"
+        },
+        {
+          "id": 102301,
+          "type": "character",
+          "name": "[pf.胜利公式]琵琶晨光",
+          "title": "[pf.胜利公式]",
+          "characterName": "琵琶晨光",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1023_102301_02.png"
+        },
+        {
+          "id": 100302,
+          "type": "character",
+          "name": "[飞跃地平线]东海帝王",
+          "title": "[飞跃地平线]",
+          "characterName": "东海帝王",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1003_100302_02.png"
+        },
+        {
+          "id": 101601,
+          "type": "character",
+          "name": "[Maverick]成田白仁",
+          "title": "[Maverick]",
+          "characterName": "成田白仁",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1016_101601_02.png"
+        },
+        {
+          "id": 101901,
+          "type": "character",
+          "name": "[超级加急！全彩PP膜特殊加工]爱丽数码",
+          "title": "[超级加急！全彩PP膜特殊加工]",
+          "characterName": "爱丽数码",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1019_101901_02.png"
+        },
+        {
+          "id": 104502,
+          "type": "character",
+          "name": "[雪纺丝带木乃伊]超级溪流",
+          "title": "[雪纺丝带木乃伊]",
+          "characterName": "超级溪流",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1045_104540_02.png"
+        },
+        {
+          "id": 100602,
+          "type": "character",
+          "name": "[奇迹的胜利之星]小栗帽",
+          "title": "[奇迹的胜利之星]",
+          "characterName": "小栗帽",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1006_100646_02.png"
+        },
+        {
+          "id": 102302,
+          "type": "character",
+          "name": "[嫣红圣诞颂歌]琵琶晨光",
+          "title": "[嫣红圣诞颂歌]",
+          "characterName": "琵琶晨光",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1023_102346_02.png"
+        },
+        {
+          "id": 102201,
+          "type": "character",
+          "name": "[Noble Seamair]美妙姿势",
+          "title": "[Noble Seamair]",
+          "characterName": "美妙姿势",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1022_102201_02.png"
+        },
+        {
+          "id": 106801,
+          "type": "character",
+          "name": "[锦绣·溢彩盛典]北部玄驹",
+          "title": "[锦绣·溢彩盛典]",
+          "characterName": "北部玄驹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1068_106801_02.png"
+        },
+        {
+          "id": 106401,
+          "type": "character",
+          "name": "[Line Breakthrough]目白善信",
+          "title": "[Line Breakthrough]",
+          "characterName": "目白善信",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1064_106401_02.png"
+        },
+        {
+          "id": 102202,
+          "type": "character",
+          "name": "[Titania]美妙姿势",
+          "title": "[Titania]",
+          "characterName": "美妙姿势",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1022_102226_02.png"
+        },
+        {
+          "id": 103601,
+          "type": "character",
+          "name": "[unsigned]空中神宫",
+          "title": "[unsigned]",
+          "characterName": "空中神宫",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1036_103601_02.png"
+        },
+        {
+          "id": 101902,
+          "type": "character",
+          "name": "[爱丽♡僵尸]爱丽数码",
+          "title": "[爱丽♡僵尸]",
+          "characterName": "爱丽数码",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1019_101940_02.png"
+        },
+        {
+          "id": 107801,
+          "type": "character",
+          "name": "[Fluttertail Spirit]山人西风",
+          "title": "[Fluttertail Spirit]",
+          "characterName": "山人西风",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1078_107801_02.png"
+        },
+        {
+          "id": 110001,
+          "type": "character",
+          "name": "[Butterfly Sting]奇锐骏",
+          "title": "[Butterfly Sting]",
+          "characterName": "奇锐骏",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1100_110001_02.png"
+        },
+        {
+          "id": 100802,
+          "type": "character",
+          "name": "[不会结冰的生命之水]伏特加",
+          "title": "[不会结冰的生命之水]",
+          "characterName": "伏特加",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1008_100846_02.png"
+        },
+        {
+          "id": 100902,
+          "type": "character",
+          "name": "[绯红的星月之夜]大和赤骥",
+          "title": "[绯红的星月之夜]",
+          "characterName": "大和赤骥",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1009_100946_02.png"
+        },
+        {
+          "id": 101602,
+          "type": "character",
+          "name": "[饿狼]成田白仁",
+          "title": "[饿狼]",
+          "characterName": "成田白仁",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1016_101602_02.png"
+        },
+        {
+          "id": 106802,
+          "type": "character",
+          "name": "[压轴主角·庆鹤之志]北部玄驹",
+          "title": "[压轴主角·庆鹤之志]",
+          "characterName": "北部玄驹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1068_106810_02.png"
+        },
+        {
+          "id": 106501,
+          "type": "character",
+          "name": "[Fun☆Fun☆嗨翻天]大拓太阳神",
+          "title": "[Fun☆Fun☆嗨翻天]",
+          "characterName": "大拓太阳神",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1065_106501_02.png"
+        },
+        {
+          "id": 105701,
+          "type": "character",
+          "name": "[Clear Bliss]千明代表",
+          "title": "[Clear Bliss]",
+          "characterName": "千明代表",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1057_105701_02.png"
+        },
+        {
+          "id": 108501,
+          "type": "character",
+          "name": "[华丽红玉]第一红宝",
+          "title": "[华丽红玉]",
+          "characterName": "第一红宝",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1085_108501_02.png"
+        },
+        {
+          "id": 109901,
+          "type": "character",
+          "name": "[星辉之航]北幸樽前",
+          "title": "[星辉之航]",
+          "characterName": "北幸樽前",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1099_109901_02.png"
+        },
+        {
+          "id": 108301,
+          "type": "character",
+          "name": "[Onyx Soldier]克里斯象征",
+          "title": "[Onyx Soldier]",
+          "characterName": "克里斯象征",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1083_108301_02.png"
+        },
+        {
+          "id": 110401,
+          "type": "character",
+          "name": "[登龙之顶]葛城荣主",
+          "title": "[登龙之顶]",
+          "characterName": "葛城荣主",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1104_110401_02.png"
+        }
+      ]
+    },
+    {
+      "id": 50027,
+      "type": "角色卡池",
+      "start": "2026-08-11 12:00:00",
+      "end": "2026-08-16 11:59:59",
+      "startTimestamp": 1786420800,
+      "endTimestamp": 1786852799,
+      "bannerImage": "intel/gacha/img_bnr_gacha_50027.png",
+      "cards": [
+        {
+          "id": 100301,
+          "type": "character",
+          "name": "[喜乐无边]东海帝王",
+          "title": "[喜乐无边]",
+          "characterName": "东海帝王",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1003_100301_02.png"
+        },
+        {
+          "id": 103001,
+          "type": "character",
+          "name": "[玫瑰之梦]米浴",
+          "title": "[玫瑰之梦]",
+          "characterName": "米浴",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1030_103001_02.png"
+        },
+        {
+          "id": 101501,
+          "type": "character",
+          "name": "[O sole suo！]好歌剧",
+          "title": "[O sole suo！]",
+          "characterName": "好歌剧",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1015_101501_02.png"
+        },
+        {
+          "id": 100302,
+          "type": "character",
+          "name": "[飞跃地平线]东海帝王",
+          "title": "[飞跃地平线]",
+          "characterName": "东海帝王",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1003_100302_02.png"
+        },
+        {
+          "id": 105801,
+          "type": "character",
+          "name": "[苍蓝/怒涛]名将怒涛",
+          "title": "[苍蓝/怒涛]",
+          "characterName": "名将怒涛",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1058_105801_02.png"
+        },
+        {
+          "id": 103002,
+          "type": "character",
+          "name": "[Make up Vampire！]米浴",
+          "title": "[Make up Vampire！]",
+          "characterName": "米浴",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1030_103040_02.png"
+        },
+        {
+          "id": 101502,
+          "type": "character",
+          "name": "[新春初晴·宝蓝绚烂]好歌剧",
+          "title": "[新春初晴·宝蓝绚烂]",
+          "characterName": "好歌剧",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1015_101510_02.png"
+        },
+        {
+          "id": 103301,
+          "type": "character",
+          "name": "[Starry Nocturne]爱慕织姬",
+          "title": "[Starry Nocturne]",
+          "characterName": "爱慕织姬",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1033_103301_02.png"
+        },
+        {
+          "id": 106801,
+          "type": "character",
+          "name": "[锦绣·溢彩盛典]北部玄驹",
+          "title": "[锦绣·溢彩盛典]",
+          "characterName": "北部玄驹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1068_106801_02.png"
+        },
+        {
+          "id": 109801,
+          "type": "character",
+          "name": "[阴阳八卦☆开运服]小林历奇",
+          "title": "[阴阳八卦☆开运服]",
+          "characterName": "小林历奇",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1098_109801_02.png"
+        },
+        {
+          "id": 105802,
+          "type": "character",
+          "name": "[Dot-o'-Lantern]名将怒涛",
+          "title": "[Dot-o'-Lantern]",
+          "characterName": "名将怒涛",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1058_105840_02.png"
+        },
+        {
+          "id": 110001,
+          "type": "character",
+          "name": "[Butterfly Sting]奇锐骏",
+          "title": "[Butterfly Sting]",
+          "characterName": "奇锐骏",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1100_110001_02.png"
+        },
+        {
+          "id": 100902,
+          "type": "character",
+          "name": "[绯红的星月之夜]大和赤骥",
+          "title": "[绯红的星月之夜]",
+          "characterName": "大和赤骥",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1009_100946_02.png"
+        },
+        {
+          "id": 106802,
+          "type": "character",
+          "name": "[压轴主角·庆鹤之志]北部玄驹",
+          "title": "[压轴主角·庆鹤之志]",
+          "characterName": "北部玄驹",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1068_106810_02.png"
+        },
+        {
+          "id": 109901,
+          "type": "character",
+          "name": "[星辉之航]北幸樽前",
+          "title": "[星辉之航]",
+          "characterName": "北幸樽前",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1099_109901_02.png"
+        },
+        {
+          "id": 108301,
+          "type": "character",
+          "name": "[Onyx Soldier]克里斯象征",
+          "title": "[Onyx Soldier]",
+          "characterName": "克里斯象征",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1083_108301_02.png"
+        },
+        {
+          "id": 106202,
+          "type": "character",
+          "name": "[碧蓝湍流]待兼唐怀瑟",
+          "title": "[碧蓝湍流]",
+          "characterName": "待兼唐怀瑟",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1062_106250_02.png"
+        },
+        {
+          "id": 108401,
+          "type": "character",
+          "name": "[雷霆加身]谷水琴蕾",
+          "title": "[雷霆加身]",
+          "characterName": "谷水琴蕾",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1084_108401_02.png"
+        },
+        {
+          "id": 110401,
+          "type": "character",
+          "name": "[登龙之顶]葛城荣主",
+          "title": "[登龙之顶]",
+          "characterName": "葛城荣主",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1104_110401_02.png"
+        },
+        {
+          "id": 110601,
+          "type": "character",
+          "name": "[奇迹装点！]菱奇宝",
+          "title": "[奇迹装点！]",
+          "characterName": "菱奇宝",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1106_110601_02.png"
+        },
+        {
+          "id": 107601,
+          "type": "character",
+          "name": "[Saisir le rêve]樱花桂冠",
+          "title": "[Saisir le rêve]",
+          "characterName": "樱花桂冠",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1076_107601_02.png"
+        },
+        {
+          "id": 105701,
+          "type": "character",
+          "name": "[Clear Bliss]千明代表",
+          "title": "[Clear Bliss]",
+          "characterName": "千明代表",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1057_105701_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30183,
+      "type": "支援卡",
+      "start": "2026-08-15 12:00:00",
+      "end": "2026-08-29 11:59:59",
+      "startTimestamp": 1786766400,
+      "endTimestamp": 1787975999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30183.png",
+      "cards": [
+        {
+          "id": 30158,
+          "type": "support",
+          "name": "[在这火热的夏天飞奔吧！]森林宝袋",
+          "title": "[在这火热的夏天飞奔吧！]",
+          "characterName": "森林宝袋",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30158.png"
+        },
+        {
+          "id": 30157,
+          "type": "support",
+          "name": "[与你共赏的泡沫]曼城茶座",
+          "title": "[与你共赏的泡沫]",
+          "characterName": "曼城茶座",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30157.png"
+        }
+      ]
+    },
+    {
+      "id": 30182,
+      "type": "角色卡池",
+      "start": "2026-08-15 12:00:00",
+      "end": "2026-08-29 11:59:59",
+      "startTimestamp": 1786766400,
+      "endTimestamp": 1787975999,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30182.png",
+      "cards": [
+        {
+          "id": 100202,
+          "type": "character",
+          "name": "[浪间翠玉]无声铃鹿",
+          "title": "[浪间翠玉]",
+          "characterName": "无声铃鹿",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1002_100230_02.png"
+        },
+        {
+          "id": 103202,
+          "type": "character",
+          "name": "[Lunatic Lab]爱丽速子",
+          "title": "[Lunatic Lab]",
+          "characterName": "爱丽速子",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1032_103230_02.png"
+        }
+      ]
+    },
+    {
+      "id": 30185,
+      "type": "支援卡",
+      "start": "2026-08-20 12:00:00",
+      "end": "2026-09-01 11:59:59",
+      "startTimestamp": 1787198400,
+      "endTimestamp": 1788235199,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30185.png",
+      "cards": [
+        {
+          "id": 30107,
+          "type": "support",
+          "name": "[小感伤预警♪]丸善斯基",
+          "title": "[小感伤预警♪]",
+          "characterName": "丸善斯基",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30107.png"
+        },
+        {
+          "id": 30134,
+          "type": "support",
+          "name": "[璨烂]目白拉莫娜",
+          "title": "[璨烂]",
+          "characterName": "目白拉莫娜",
+          "rarity": 3,
+          "image": "intel/support/support_card_s_30134.png"
+        }
+      ]
+    },
+    {
+      "id": 30184,
+      "type": "角色卡池",
+      "start": "2026-08-20 12:00:00",
+      "end": "2026-09-01 11:59:59",
+      "startTimestamp": 1787198400,
+      "endTimestamp": 1788235199,
+      "bannerImage": "intel/gacha/img_bnr_gacha_30184.png",
+      "cards": [
+        {
+          "id": 109901,
+          "type": "character",
+          "name": "[星辉之航]北幸樽前",
+          "title": "[星辉之航]",
+          "characterName": "北幸樽前",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1099_109901_02.png"
+        },
+        {
+          "id": 109801,
+          "type": "character",
+          "name": "[阴阳八卦☆开运服]小林历奇",
+          "title": "[阴阳八卦☆开运服]",
+          "characterName": "小林历奇",
+          "rarity": 3,
+          "image": "intel/chara/chr_icon_1098_109801_02.png"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "name": "奖励获得量提升",
+      "type": "效果",
+      "start": "2026-04-26 12:00:00",
+      "end": "2026-06-09 11:59:59",
+      "startTimestamp": 1777176000,
+      "endTimestamp": 1780977599,
+      "image": "intel/campaign/campaign_icon_l_0001.png",
+      "drops": []
+    },
+    {
+      "id": 2,
+      "name": "消耗训练值 1/2",
+      "type": "效果",
+      "start": "2026-04-26 12:00:00",
+      "end": "2026-06-09 11:59:59",
+      "startTimestamp": 1777176000,
+      "endTimestamp": 1780977599,
+      "image": "intel/campaign/campaign_icon_l_0005.png",
+      "drops": []
+    },
+    {
+      "id": 3,
+      "name": "2周年庆典 纪念任务第1弹",
+      "type": "任务",
+      "start": "2026-04-26 12:00:00",
+      "end": "2026-06-10 04:59:59",
+      "startTimestamp": 1777176000,
+      "endTimestamp": 1781038799,
+      "image": "intel/mission/tex_campaign_mission_logo_00301.png",
+      "drops": []
+    },
+    {
+      "id": 4,
+      "name": "借用继承优俊少女消耗金币 1/2",
+      "type": "效果",
+      "start": "2026-04-27 05:00:00",
+      "end": "2026-06-10 04:59:59",
+      "startTimestamp": 1777237200,
+      "endTimestamp": 1781038799,
+      "image": "intel/campaign/campaign_icon_l_0014.png",
+      "drops": []
+    },
+    {
+      "id": 5,
+      "name": "挑战次数增加",
+      "type": "效果",
+      "start": "2026-04-27 05:00:00",
+      "end": "2026-06-10 04:59:59",
+      "startTimestamp": 1777237200,
+      "endTimestamp": 1781038799,
+      "image": "intel/campaign/campaign_icon_l_0002.png",
+      "drops": []
+    },
+    {
+      "id": 6,
+      "name": "Leap into a New World!",
+      "type": "剧情活动时间",
+      "start": "2026-05-06 12:00:00",
+      "end": "2026-05-24 11:59:59",
+      "startTimestamp": 1778040000,
+      "endTimestamp": 1779595199,
+      "image": "intel/story/tex_storyevent_logo_1023.png",
+      "drops": [],
+      "details": []
+    },
+    {
+      "id": 7,
+      "name": "2周年庆典 纪念任务第2弹",
+      "type": "任务",
+      "start": "2026-05-07 05:00:00",
+      "end": "2026-06-10 04:59:59",
+      "startTimestamp": 1778101200,
+      "endTimestamp": 1781038799,
+      "image": "intel/mission/tex_campaign_mission_logo_00302.png",
+      "drops": []
+    },
+    {
+      "id": 8,
+      "name": "春季一级赛事纪念任务第1弹 中京短途赛",
+      "type": "任务",
+      "start": "2026-05-18 12:00:00",
+      "end": "2026-05-25 04:59:59",
+      "startTimestamp": 1779076800,
+      "endTimestamp": 1779656399,
+      "image": "intel/mission/tex_campaign_mission_logo_00304.png",
+      "drops": []
+    },
+    {
+      "id": 9,
+      "name": "2周年庆典 纪念任务第3弹",
+      "type": "任务",
+      "start": "2026-05-19 12:00:00",
+      "end": "2026-06-10 04:59:59",
+      "startTimestamp": 1779163200,
+      "endTimestamp": 1781038799,
+      "image": "intel/mission/tex_campaign_mission_logo_00303.png",
+      "drops": []
+    },
+    {
+      "id": 10,
+      "name": "爱丽速子的因子研究",
+      "type": "因子研究",
+      "start": "2026-05-21 12:00:00",
+      "end": "2026-06-02 11:59:59",
+      "startTimestamp": 1779336000,
+      "endTimestamp": 1780372799,
+      "image": "intel/factor_research/factor_research.png"
+    },
+    {
+      "id": 11,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-05-23 05:00:00",
+      "end": "2026-05-25 04:59:59",
+      "startTimestamp": 1779483600,
+      "endTimestamp": 1779656399,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_103801.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "亲密度获得量提升",
+      "type": "效果",
+      "start": "2026-05-23 12:00:00",
+      "end": "2026-05-31 04:59:59",
+      "startTimestamp": 1779508800,
+      "endTimestamp": 1780174799,
+      "image": "intel/campaign/campaign_icon_l_0011.png",
+      "drops": []
+    },
+    {
+      "id": 13,
+      "name": "春季一级赛事纪念任务第1弹 大阪杯",
+      "type": "任务",
+      "start": "2026-05-25 05:00:00",
+      "end": "2026-06-01 04:59:59",
+      "startTimestamp": 1779656400,
+      "endTimestamp": 1780261199,
+      "image": "intel/mission/tex_campaign_mission_logo_00305.png",
+      "drops": []
+    },
+    {
+      "id": 14,
+      "name": "惟由君故，方使我怜",
+      "type": "剧情活动时间",
+      "start": "2026-05-29 12:00:00",
+      "end": "2026-06-14 11:59:59",
+      "startTimestamp": 1780027200,
+      "endTimestamp": 1781409599,
+      "image": "intel/story/chara_story_thumb_1024.png",
+      "drops": [],
+      "details": []
+    },
+    {
+      "id": 15,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-05-30 05:00:00",
+      "end": "2026-06-01 04:59:59",
+      "startTimestamp": 1780088400,
+      "endTimestamp": 1780261199,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_101302.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "挑战次数增加",
+      "type": "效果",
+      "start": "2026-05-31 05:00:00",
+      "end": "2026-06-10 04:59:59",
+      "startTimestamp": 1780174800,
+      "endTimestamp": 1781038799,
+      "image": "intel/campaign/campaign_icon_l_0016.png",
+      "drops": []
+    },
+    {
+      "id": 17,
+      "name": "春季一级赛事纪念任务第1弹 樱花奖",
+      "type": "任务",
+      "start": "2026-06-01 05:00:00",
+      "end": "2026-06-08 04:59:59",
+      "startTimestamp": 1780261200,
+      "endTimestamp": 1780865999,
+      "image": "intel/mission/tex_campaign_mission_logo_00306.png",
+      "drops": []
+    },
+    {
+      "id": 18,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-06-06 05:00:00",
+      "end": "2026-06-08 04:59:59",
+      "startTimestamp": 1780693200,
+      "endTimestamp": 1780865999,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_100901.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "春季一级赛事纪念任务第1弹 皋月奖",
+      "type": "任务",
+      "start": "2026-06-08 05:00:00",
+      "end": "2026-06-15 04:59:59",
+      "startTimestamp": 1780866000,
+      "endTimestamp": 1781470799,
+      "image": "intel/mission/tex_campaign_mission_logo_00307.png",
+      "drops": []
+    },
+    {
+      "id": 20,
+      "name": "[四白流星之袭]八重无敌",
+      "type": "传奇赛事时间",
+      "start": "2026-06-10 12:00:00",
+      "end": "2026-06-13 04:59:59",
+      "startTimestamp": 1781064000,
+      "endTimestamp": 1781297999,
+      "image": "intel/legend/legend_vs.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_107201.png",
+          "label": "掉落碎片"
+        }
+      ],
+      "details": []
+    },
+    {
+      "id": 21,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-06-13 05:00:00",
+      "end": "2026-06-15 04:59:59",
+      "startTimestamp": 1781298000,
+      "endTimestamp": 1781470799,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_102001.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "[飞跃地平线]东海帝王",
+      "type": "传奇赛事时间",
+      "start": "2026-06-13 05:00:00",
+      "end": "2026-06-16 04:59:59",
+      "startTimestamp": 1781298000,
+      "endTimestamp": 1781557199,
+      "image": "intel/legend/legend_vs.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_100302.png",
+          "label": "掉落碎片"
+        }
+      ],
+      "details": []
+    },
+    {
+      "id": 23,
+      "name": "春季一级赛事纪念任务第2弹 天王奖（春）",
+      "type": "任务",
+      "start": "2026-06-15 12:00:00",
+      "end": "2026-06-22 04:59:59",
+      "startTimestamp": 1781496000,
+      "endTimestamp": 1782075599,
+      "image": "intel/mission/tex_campaign_mission_logo_00308.png",
+      "drops": []
+    },
+    {
+      "id": 24,
+      "name": "神机妙算？！春日！激战魔鬼躲避球",
+      "type": "剧情活动时间",
+      "start": "2026-06-19 12:00:00",
+      "end": "2026-07-05 11:59:59",
+      "startTimestamp": 1781841600,
+      "endTimestamp": 1783223999,
+      "image": "intel/story/chara_story_thumb_1025.png",
+      "drops": [],
+      "details": []
+    },
+    {
+      "id": 25,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-06-20 05:00:00",
+      "end": "2026-06-22 04:59:59",
+      "startTimestamp": 1781902800,
+      "endTimestamp": 1782075599,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_102501.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "name": "亲密度获得量提升",
+      "type": "效果",
+      "start": "2026-06-20 12:00:00",
+      "end": "2026-07-02 11:59:59",
+      "startTimestamp": 1781928000,
+      "endTimestamp": 1782964799,
+      "image": "intel/campaign/campaign_icon_l_0011.png",
+      "drops": []
+    },
+    {
+      "id": 27,
+      "name": "辣妹散步活动",
+      "type": "效果",
+      "start": "2026-06-20 12:00:00",
+      "end": "2026-07-02 11:59:59",
+      "startTimestamp": 1781928000,
+      "endTimestamp": 1782964799,
+      "image": "intel/campaign/campaign_icon_l_0013.png",
+      "drops": []
+    },
+    {
+      "id": 28,
+      "name": "“胜利时必得”概率提升",
+      "type": "效果",
+      "start": "2026-06-20 12:00:00",
+      "end": "2026-07-10 04:59:59",
+      "startTimestamp": 1781928000,
+      "endTimestamp": 1783630799,
+      "image": "intel/campaign/campaign_icon_l_0008.png",
+      "drops": []
+    },
+    {
+      "id": 29,
+      "name": "消耗训练值 1/2",
+      "type": "效果",
+      "start": "2026-06-20 12:00:00",
+      "end": "2026-07-10 04:59:59",
+      "startTimestamp": 1781928000,
+      "endTimestamp": 1783630799,
+      "image": "intel/campaign/campaign_icon_l_0005.png",
+      "drops": []
+    },
+    {
+      "id": 30,
+      "name": "挑战次数增加",
+      "type": "效果",
+      "start": "2026-06-21 05:00:00",
+      "end": "2026-07-10 04:59:59",
+      "startTimestamp": 1781989200,
+      "endTimestamp": 1783630799,
+      "image": "intel/campaign/campaign_icon_l_0002.png",
+      "drops": []
+    },
+    {
+      "id": 31,
+      "name": "春季一级赛事纪念任务第2弹 柏市纪念",
+      "type": "任务",
+      "start": "2026-06-22 05:00:00",
+      "end": "2026-06-29 04:59:59",
+      "startTimestamp": 1782075600,
+      "endTimestamp": 1782680399,
+      "image": "intel/mission/tex_campaign_mission_logo_00309.png",
+      "drops": []
+    },
+    {
+      "id": 32,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-06-27 05:00:00",
+      "end": "2026-06-29 04:59:59",
+      "startTimestamp": 1782507600,
+      "endTimestamp": 1782680399,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_110001.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "name": "春季一级赛事纪念任务第2弹 广播协会英里杯",
+      "type": "任务",
+      "start": "2026-06-29 05:00:00",
+      "end": "2026-07-06 04:59:59",
+      "startTimestamp": 1782680400,
+      "endTimestamp": 1783285199,
+      "image": "intel/mission/tex_campaign_mission_logo_00310.png",
+      "drops": []
+    },
+    {
+      "id": 34,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-07-04 05:00:00",
+      "end": "2026-07-06 04:59:59",
+      "startTimestamp": 1783112400,
+      "endTimestamp": 1783285199,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_101401.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "name": "春季一级赛事纪念任务第2弹 维多利亚英里赛",
+      "type": "任务",
+      "start": "2026-07-06 05:00:00",
+      "end": "2026-07-13 04:59:59",
+      "startTimestamp": 1783285200,
+      "endTimestamp": 1783889999,
+      "image": "intel/mission/tex_campaign_mission_logo_00311.png",
+      "drops": []
+    },
+    {
+      "id": 36,
+      "name": "宣誓，向奋战的你求婚",
+      "type": "剧情活动时间",
+      "start": "2026-07-08 12:00:00",
+      "end": "2026-07-23 11:59:59",
+      "startTimestamp": 1783483200,
+      "endTimestamp": 1784779199,
+      "image": "intel/story/chara_story_thumb_1026.png",
+      "drops": [],
+      "details": []
+    },
+    {
+      "id": 37,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-07-11 05:00:00",
+      "end": "2026-07-13 04:59:59",
+      "startTimestamp": 1783717200,
+      "endTimestamp": 1783889999,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_100801.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "name": "春季一级赛事纪念任务第2弹 奥克斯",
+      "type": "任务",
+      "start": "2026-07-13 05:00:00",
+      "end": "2026-07-20 04:59:59",
+      "startTimestamp": 1783890000,
+      "endTimestamp": 1784494799,
+      "image": "intel/mission/tex_campaign_mission_logo_00312.png",
+      "drops": []
+    },
+    {
+      "id": 39,
+      "name": "[Fluttertail Spirit]山人西风",
+      "type": "传奇赛事时间",
+      "start": "2026-07-16 12:00:00",
+      "end": "2026-07-19 04:59:59",
+      "startTimestamp": 1784174400,
+      "endTimestamp": 1784408399,
+      "image": "intel/legend/legend_vs.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_107801.png",
+          "label": "掉落碎片"
+        }
+      ],
+      "details": []
+    },
+    {
+      "id": 40,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-07-18 05:00:00",
+      "end": "2026-07-20 04:59:59",
+      "startTimestamp": 1784322000,
+      "endTimestamp": 1784494799,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_103901.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "name": "[爱丽♡僵尸]爱丽数码",
+      "type": "传奇赛事时间",
+      "start": "2026-07-19 05:00:00",
+      "end": "2026-07-22 04:59:59",
+      "startTimestamp": 1784408400,
+      "endTimestamp": 1784667599,
+      "image": "intel/legend/legend_vs.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_101902.png",
+          "label": "掉落碎片"
+        }
+      ],
+      "details": []
+    },
+    {
+      "id": 42,
+      "name": "春季一级赛事纪念任务第2弹 全国德比",
+      "type": "任务",
+      "start": "2026-07-20 05:00:00",
+      "end": "2026-07-27 04:59:59",
+      "startTimestamp": 1784494800,
+      "endTimestamp": 1785099599,
+      "image": "intel/mission/tex_campaign_mission_logo_00313.png",
+      "drops": []
+    },
+    {
+      "id": 43,
+      "name": "爱丽速子的因子研究",
+      "type": "因子研究",
+      "start": "2026-07-20 12:00:00",
+      "end": "2026-08-02 11:59:59",
+      "startTimestamp": 1784520000,
+      "endTimestamp": 1785643199,
+      "image": "intel/factor_research/factor_research.png"
+    },
+    {
+      "id": 44,
+      "name": "挑战次数增加",
+      "type": "效果",
+      "start": "2026-07-21 05:00:00",
+      "end": "2026-08-10 04:59:59",
+      "startTimestamp": 1784581200,
+      "endTimestamp": 1786309199,
+      "image": "intel/campaign/campaign_icon_l_0002.png",
+      "drops": []
+    },
+    {
+      "id": 45,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-07-25 05:00:00",
+      "end": "2026-07-27 04:59:59",
+      "startTimestamp": 1784926800,
+      "endTimestamp": 1785099599,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_101601.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "name": "春季一级赛事纪念任务第2弹 东京英里赛",
+      "type": "任务",
+      "start": "2026-07-27 05:00:00",
+      "end": "2026-08-03 04:59:59",
+      "startTimestamp": 1785099600,
+      "endTimestamp": 1785704399,
+      "image": "intel/mission/tex_campaign_mission_logo_00316.png",
+      "drops": []
+    },
+    {
+      "id": 47,
+      "name": "#summer #besties",
+      "type": "剧情活动时间",
+      "start": "2026-07-29 12:00:00",
+      "end": "2026-08-13 11:59:59",
+      "startTimestamp": 1785297600,
+      "endTimestamp": 1786593599,
+      "image": "intel/story/chara_story_thumb_1027.png",
+      "drops": [],
+      "details": []
+    },
+    {
+      "id": 48,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-08-01 05:00:00",
+      "end": "2026-08-03 04:59:59",
+      "startTimestamp": 1785531600,
+      "endTimestamp": 1785704399,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_101001.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "name": "[阳光花束]重炮",
+      "type": "传奇赛事时间",
+      "start": "2026-08-02 12:00:00",
+      "end": "2026-08-05 04:59:59",
+      "startTimestamp": 1785643200,
+      "endTimestamp": 1785877199,
+      "image": "intel/legend/legend_vs.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_102402.png",
+          "label": "掉落碎片"
+        }
+      ],
+      "details": []
+    },
+    {
+      "id": 50,
+      "name": "春季一级赛事纪念任务第2弹 宝冢纪念",
+      "type": "任务",
+      "start": "2026-08-03 05:00:00",
+      "end": "2026-08-10 04:59:59",
+      "startTimestamp": 1785704400,
+      "endTimestamp": 1786309199,
+      "image": "intel/mission/tex_campaign_mission_logo_00317.png",
+      "drops": []
+    },
+    {
+      "id": 51,
+      "name": "[悬铃木魔女]东商变革",
+      "type": "传奇赛事时间",
+      "start": "2026-08-05 05:00:00",
+      "end": "2026-08-08 04:59:59",
+      "startTimestamp": 1785877200,
+      "endTimestamp": 1786136399,
+      "image": "intel/legend/legend_vs.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_104401.png",
+          "label": "掉落碎片"
+        }
+      ],
+      "details": []
+    },
+    {
+      "id": 52,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-08-08 05:00:00",
+      "end": "2026-08-10 04:59:59",
+      "startTimestamp": 1786136400,
+      "endTimestamp": 1786309199,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_102301.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "name": "一级赛事纪念任务 帝王奖",
+      "type": "任务",
+      "start": "2026-08-10 12:00:00",
+      "end": "2026-08-17 04:59:59",
+      "startTimestamp": 1786334400,
+      "endTimestamp": 1786913999,
+      "image": "intel/mission/tex_campaign_mission_logo_00360.png",
+      "drops": []
+    },
+    {
+      "id": 54,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-08-15 05:00:00",
+      "end": "2026-08-17 04:59:59",
+      "startTimestamp": 1786741200,
+      "endTimestamp": 1786913999,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_104601.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "name": "夏阳碧空，煦日无风",
+      "type": "剧情活动时间",
+      "start": "2026-08-15 22:00:00",
+      "end": "2026-09-02 11:59:59",
+      "startTimestamp": 1786802400,
+      "endTimestamp": 1788321599,
+      "image": "intel/story/chara_story_thumb_1028.png",
+      "drops": [],
+      "details": []
+    },
+    {
+      "id": 56,
+      "name": "一级赛事纪念任务 全国泥地德比",
+      "type": "任务",
+      "start": "2026-08-17 05:00:00",
+      "end": "2026-08-24 04:59:59",
+      "startTimestamp": 1786914000,
+      "endTimestamp": 1787518799,
+      "image": "intel/mission/tex_campaign_mission_logo_00361.png",
+      "drops": []
+    },
+    {
+      "id": 57,
+      "name": "[绝对☆LOVE]醒目飞鹰",
+      "type": "传奇赛事时间",
+      "start": "2026-08-20 12:00:00",
+      "end": "2026-08-23 04:59:59",
+      "startTimestamp": 1787198400,
+      "endTimestamp": 1787432399,
+      "image": "intel/legend/legend_vs.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_104601.png",
+          "label": "掉落碎片"
+        }
+      ],
+      "details": []
+    },
+    {
+      "id": 58,
+      "name": "优俊散步活动",
+      "type": "效果",
+      "start": "2026-08-20 12:00:00",
+      "end": "2026-08-30 11:59:59",
+      "startTimestamp": 1787198400,
+      "endTimestamp": 1788062399,
+      "image": "intel/campaign/campaign_icon_l_0013.png",
+      "drops": []
+    },
+    {
+      "id": 59,
+      "name": "2.5周年庆典 纪念任务第1弹",
+      "type": "任务",
+      "start": "2026-08-20 12:00:00",
+      "end": "2026-10-07 04:59:59",
+      "startTimestamp": 1787198400,
+      "endTimestamp": 1791320399,
+      "image": "intel/mission/tex_campaign_mission_logo_00372.png",
+      "drops": []
+    },
+    {
+      "id": 60,
+      "name": "挑战次数增加",
+      "type": "效果",
+      "start": "2026-08-21 05:00:00",
+      "end": "2026-10-07 04:59:59",
+      "startTimestamp": 1787259600,
+      "endTimestamp": 1791320399,
+      "image": "intel/campaign/campaign_icon_l_0002.png",
+      "drops": []
+    },
+    {
+      "id": 61,
+      "name": "指定赛事奖励追加碎片",
+      "type": "效果",
+      "start": "2026-08-22 05:00:00",
+      "end": "2026-08-24 04:59:59",
+      "startTimestamp": 1787346000,
+      "endTimestamp": 1787518799,
+      "image": "intel/campaign/campaign_icon_l_0010.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_100501.png",
+          "label": "掉落碎片",
+          "rewardType": 1,
+          "rewardValue": 5
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "name": "[阴阳八卦☆开运服]小林历奇",
+      "type": "传奇赛事时间",
+      "start": "2026-08-23 05:00:00",
+      "end": "2026-08-26 04:59:59",
+      "startTimestamp": 1787432400,
+      "endTimestamp": 1787691599,
+      "image": "intel/legend/legend_vs.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_109801.png",
+          "label": "掉落碎片"
+        }
+      ],
+      "details": []
+    },
+    {
+      "id": 63,
+      "name": "2.5周年庆典 纪念任务第2弹",
+      "type": "任务",
+      "start": "2026-08-31 12:00:00",
+      "end": "2026-10-07 04:59:59",
+      "startTimestamp": 1788148800,
+      "endTimestamp": 1791320399,
+      "image": "intel/mission/tex_campaign_mission_logo_00373.png",
+      "drops": []
+    },
+    {
+      "id": 64,
+      "name": "[黑铁的壮志]青竹回忆",
+      "type": "传奇赛事时间",
+      "start": "2026-09-08 12:00:00",
+      "end": "2026-09-11 04:59:59",
+      "startTimestamp": 1788840000,
+      "endTimestamp": 1789073999,
+      "image": "intel/legend/legend_vs.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_105301.png",
+          "label": "掉落碎片"
+        }
+      ],
+      "details": []
+    },
+    {
+      "id": 65,
+      "name": "[Bubblegum☆Memories]大树快车",
+      "type": "传奇赛事时间",
+      "start": "2026-09-11 05:00:00",
+      "end": "2026-09-14 04:59:59",
+      "startTimestamp": 1789074000,
+      "endTimestamp": 1789333199,
+      "image": "intel/legend/legend_vs.png",
+      "drops": [
+        {
+          "image": "intel/piece/piece_icon_101002.png",
+          "label": "掉落碎片"
+        }
+      ],
+      "details": []
+    },
+    {
+      "id": 66,
+      "name": "2.5周年庆典 纪念任务第3弹",
+      "type": "任务",
+      "start": "2026-09-11 12:00:00",
+      "end": "2026-10-07 04:59:59",
+      "startTimestamp": 1789099200,
+      "endTimestamp": 1791320399,
+      "image": "intel/mission/tex_campaign_mission_logo_00374.png",
+      "drops": []
+    }
+  ],
+  "races": [
+    {
+      "id": 1,
+      "name": "双鱼杯",
+      "type": "大赛时间",
+      "start": "2026-05-19 12:00:00",
+      "end": "2026-05-29 11:59:59",
+      "startTimestamp": 1779163200,
+      "endTimestamp": 1780027199,
+      "image": "intel/race/champions_logo.png",
+      "drops": [],
+      "details": [
+        {
+          "label": "",
+          "raceName": "双鱼杯",
+          "track": "中山赛场",
+          "distance": 2000,
+          "ground": "草地",
+          "inout": "外",
+          "turn": "逆",
+          "season": "春",
+          "weather": "晴",
+          "condition": "良",
+          "seasonValue": 1,
+          "weatherValue": 1,
+          "conditionValue": 1,
+          "conditionRates": null,
+          "entryNum": 9,
+          "thumbnailId": 6003
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "白羊杯",
+      "type": "大赛时间",
+      "start": "2026-06-10 12:00:00",
+      "end": "2026-06-19 11:59:59",
+      "startTimestamp": 1781064000,
+      "endTimestamp": 1781841599,
+      "image": "intel/race/champions_logo.png",
+      "drops": [],
+      "details": [
+        {
+          "label": "",
+          "raceName": "白羊杯",
+          "track": "京都赛场",
+          "distance": 3200,
+          "ground": "草地",
+          "inout": "外→内",
+          "turn": "逆",
+          "season": "春",
+          "weather": "晴",
+          "condition": "良",
+          "seasonValue": 1,
+          "weatherValue": 1,
+          "conditionValue": 1,
+          "conditionRates": null,
+          "entryNum": 9,
+          "thumbnailId": 6004
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "英杰集结战",
+      "type": "英杰集结战",
+      "start": "2026-06-28 12:00:00",
+      "end": "2026-07-09 11:59:59",
+      "startTimestamp": 1782619200,
+      "endTimestamp": 1783569599,
+      "image": "intel/race/heroes_logo.png",
+      "drops": [],
+      "details": [
+        {
+          "label": "",
+          "raceName": "主要赛事",
+          "track": "东京赛场",
+          "distance": 2400,
+          "ground": "草地",
+          "inout": "内",
+          "turn": "顺",
+          "season": "春",
+          "weather": "随机",
+          "condition": "随机",
+          "seasonValue": 1,
+          "weatherValue": 0,
+          "conditionValue": 0,
+          "conditionRates": {
+            "weather": [
+              {
+                "label": "晴",
+                "rate": 60.0
+              },
+              {
+                "label": "多云",
+                "rate": 30.0
+              },
+              {
+                "label": "雨",
+                "rate": 10.0
+              }
+            ],
+            "condition": [
+              {
+                "label": "良",
+                "rate": 78.0
+              },
+              {
+                "label": "稍重",
+                "rate": 12.0
+              },
+              {
+                "label": "重",
+                "rate": 5.5
+              },
+              {
+                "label": "不良",
+                "rate": 4.5
+              }
+            ],
+            "combos": [
+              {
+                "weather": "晴",
+                "condition": "良",
+                "rate": 54.6
+              },
+              {
+                "weather": "晴",
+                "condition": "稍重",
+                "rate": 5.4
+              },
+              {
+                "weather": "多云",
+                "condition": "良",
+                "rate": 23.4
+              },
+              {
+                "weather": "多云",
+                "condition": "稍重",
+                "rate": 6.6
+              },
+              {
+                "weather": "雨",
+                "condition": "重",
+                "rate": 5.5
+              },
+              {
+                "weather": "雨",
+                "condition": "不良",
+                "rate": 4.5
+              }
+            ]
+          },
+          "entryNum": 12,
+          "thumbnailId": 6001
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "群英联赛",
+      "type": "大赛时间",
+      "start": "2026-07-16 12:00:00",
+      "end": "2026-07-26 11:59:59",
+      "startTimestamp": 1784174400,
+      "endTimestamp": 1785038399,
+      "image": "intel/race/champions_logo.png",
+      "drops": [],
+      "details": [
+        {
+          "label": "",
+          "raceName": "群英联赛",
+          "track": "东京赛场",
+          "distance": 1600,
+          "ground": "草地",
+          "inout": "内",
+          "turn": "顺",
+          "season": "春",
+          "weather": "雨",
+          "condition": "不良",
+          "seasonValue": 1,
+          "weatherValue": 3,
+          "conditionValue": 4,
+          "conditionRates": null,
+          "entryNum": 9,
+          "thumbnailId": 6014
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "英杰集结战",
+      "type": "英杰集结战",
+      "start": "2026-08-02 12:00:00",
+      "end": "2026-08-14 11:59:59",
+      "startTimestamp": 1785643200,
+      "endTimestamp": 1786679999,
+      "image": "intel/race/heroes_logo.png",
+      "drops": [],
+      "details": [
+        {
+          "label": "",
+          "raceName": "主要赛事",
+          "track": "中山赛场",
+          "distance": 1200,
+          "ground": "草地",
+          "inout": "外→内",
+          "turn": "逆",
+          "season": "夏",
+          "weather": "随机",
+          "condition": "随机",
+          "seasonValue": 2,
+          "weatherValue": 0,
+          "conditionValue": 0,
+          "conditionRates": {
+            "weather": [
+              {
+                "label": "晴",
+                "rate": 60.0
+              },
+              {
+                "label": "多云",
+                "rate": 30.0
+              },
+              {
+                "label": "雨",
+                "rate": 10.0
+              }
+            ],
+            "condition": [
+              {
+                "label": "良",
+                "rate": 78.0
+              },
+              {
+                "label": "稍重",
+                "rate": 12.0
+              },
+              {
+                "label": "重",
+                "rate": 5.5
+              },
+              {
+                "label": "不良",
+                "rate": 4.5
+              }
+            ],
+            "combos": [
+              {
+                "weather": "晴",
+                "condition": "良",
+                "rate": 54.6
+              },
+              {
+                "weather": "晴",
+                "condition": "稍重",
+                "rate": 5.4
+              },
+              {
+                "weather": "多云",
+                "condition": "良",
+                "rate": 23.4
+              },
+              {
+                "weather": "多云",
+                "condition": "稍重",
+                "rate": 6.6
+              },
+              {
+                "weather": "雨",
+                "condition": "重",
+                "rate": 5.5
+              },
+              {
+                "weather": "雨",
+                "condition": "不良",
+                "rate": 4.5
+              }
+            ]
+          },
+          "entryNum": 12,
+          "thumbnailId": 6001
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "群英联赛",
+      "type": "大赛时间",
+      "start": "2026-08-20 12:00:00",
+      "end": "2026-08-30 11:59:59",
+      "startTimestamp": 1787198400,
+      "endTimestamp": 1788062399,
+      "image": "intel/race/champions_logo.png",
+      "drops": [],
+      "details": [
+        {
+          "label": "",
+          "raceName": "群英联赛",
+          "track": "船桥赛场",
+          "distance": 1600,
+          "ground": "泥地",
+          "inout": "内",
+          "turn": "顺",
+          "season": "夏",
+          "weather": "晴",
+          "condition": "良",
+          "seasonValue": 2,
+          "weatherValue": 1,
+          "conditionValue": 1,
+          "conditionRates": null,
+          "entryNum": 9,
+          "thumbnailId": 6017
+        }
+      ]
+    }
+  ],
+  "generatedAt": "2026-07-22 03:47:04"
+}

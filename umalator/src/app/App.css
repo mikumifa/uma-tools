@@ -158,6 +158,1204 @@ a:hover {
   padding: 12px;
 }
 
+.appNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius);
+  background: var(--uma-surface);
+  box-shadow: var(--uma-shadow);
+}
+
+.appNav > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.appNav strong {
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.appNav span {
+  color: var(--uma-muted);
+  font-size: 12px;
+}
+
+.appNav nav {
+  display: inline-flex;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--uma-border-strong);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface);
+}
+
+.appNav nav button {
+  min-width: 104px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.appNav nav button + button {
+  border-left: 1px solid var(--uma-border);
+}
+
+.appNav nav button.selected {
+  background: var(--uma-accent);
+  color: #fff;
+}
+
+.intelPage {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.intelHero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius);
+  background: var(--uma-surface);
+  box-shadow: var(--uma-shadow);
+}
+
+.intelHero p,
+.intelHero h1,
+.intelHero span {
+  margin: 0;
+}
+
+.intelHero p {
+  color: #0f766e;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.intelHero h1 {
+  margin-top: 4px;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.intelHero span,
+.intelGenerated {
+  color: var(--uma-muted);
+  font-size: 13px;
+}
+
+.intelGenerated {
+  flex: 0 0 auto;
+  padding: 6px 8px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface-soft);
+}
+
+.intelTabs {
+  display: inline-flex;
+  align-self: flex-start;
+  overflow: hidden;
+  border: 1px solid var(--uma-border-strong);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface);
+}
+
+.intelTabs button {
+  min-width: 96px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.intelTabs button + button {
+  border-left: 1px solid var(--uma-border);
+}
+
+.intelTabs button.selected {
+  background: var(--uma-accent);
+  color: #fff;
+}
+
+.intelEmptyTab {
+  padding: 28px 12px;
+  color: var(--uma-muted);
+  text-align: center;
+}
+
+.intelEventMonths {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.intelEventMonth {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.intelEventMonth h3 {
+  margin: 0;
+  color: var(--uma-muted);
+  font-family: var(--uma-mono);
+  font-size: 13px;
+}
+
+.intelEventList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  min-width: 0;
+}
+
+.intelEventItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px 10px;
+  align-items: center;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--uma-border);
+  border-left: 4px solid #64748b;
+  border-radius: var(--uma-radius);
+  background: var(--uma-surface-soft);
+}
+
+.intelEventItem.hasImage {
+  grid-template-columns: 56px minmax(0, 1fr);
+}
+
+.intelEventItem.hasImage.missionImage,
+.intelEventItem.hasImage.storyImage,
+.intelEventItem.hasImage.legendImage,
+.intelEventItem.hasImage.factorResearchImage,
+.intelEventItem.hasImage.campaignImage {
+  grid-template-columns: 120px minmax(0, 1fr);
+}
+
+.intelEventItem > img {
+  grid-row: 1 / span 2;
+  justify-self: center;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 3px;
+}
+
+.intelEventItem > img.missionImage,
+.intelEventItem > img.storyImage,
+.intelEventItem > img.legendImage,
+.intelEventItem > img.factorResearchImage,
+.intelEventItem > img.campaignImage {
+  width: 120px;
+  height: 56px;
+}
+
+.intelEventItem > img.raceImage {
+  width: 92px;
+  height: 56px;
+}
+
+.intelEventItem.active {
+  border-left-color: #0f766e;
+  background: #ecfdf5;
+}
+
+.intelEventItem.active strong,
+.intelEventItem.active time,
+.intelRaceItem.active strong,
+.intelRaceItem.active time {
+  padding-right: 64px;
+}
+
+.intelEventType {
+  color: var(--uma-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.intelEventItem strong,
+.intelEventItem time {
+  min-width: 0;
+}
+
+.intelEventItem strong {
+  font-size: 13px;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.intelEventItem time {
+  grid-column: 1;
+  color: var(--uma-muted);
+  font-family: var(--uma-mono);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.intelEventItem.hasImage time {
+  grid-column: 2;
+}
+
+.intelDropIcons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-width: 0;
+}
+
+.intelEventItem .intelDropIcons {
+  grid-column: 1;
+}
+
+.intelEventItem.hasImage .intelDropIcons {
+  grid-column: 2;
+}
+
+.intelDropIcons img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.intelEventItem > span {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.12);
+  color: #0f766e;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.intelEventCalendarMonths {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.intelEventTimelineMonth {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  padding: 0 0 10px;
+  border: none;
+  border-bottom: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: transparent;
+}
+
+.intelEventTimelineMonth:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.intelEventTimelineHeader,
+.intelEventTimelineItem {
+  padding: 8px;
+  border: 1px solid var(--uma-border);
+  border-left: 4px solid #64748b;
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface-soft);
+}
+
+.intelEventTimelineHeader {
+  display: grid;
+  gap: 8px;
+  align-items: center;
+}
+
+.intelEventTimelineItem.active {
+  border-left-color: #0f766e;
+  background: #ecfdf5;
+}
+
+.intelEventTimelineItem + .intelEventTimelineItem {
+  margin-top: 1px;
+}
+
+.intelEventTimelineItem {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 8px;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.intelEventTimelineItem.hasImage,
+.intelEventTimelineHeader {
+  grid-template-columns: 300px minmax(0, 1fr);
+}
+
+.intelEventTimelineItem.hasImage.missionImage,
+.intelEventTimelineItem.hasImage.storyImage,
+.intelEventTimelineItem.hasImage.legendImage,
+.intelEventTimelineItem.hasImage.factorResearchImage,
+.intelEventTimelineItem.hasImage.campaignImage,
+.intelEventTimelineHeader {
+  grid-template-columns: 300px minmax(0, 1fr);
+}
+
+.intelEventTimelineHeader h3 {
+  margin: 0;
+  color: var(--uma-muted);
+  font-family: var(--uma-mono);
+  font-size: 12px;
+}
+
+.intelEventTicks,
+.intelEventTimelineGrid {
+  display: grid;
+  min-width: 0;
+}
+
+.intelEventTicks span {
+  min-height: 16px;
+  border-left: 1px solid #e5eaf1;
+  color: var(--uma-muted);
+  font-family: var(--uma-mono);
+  font-size: 10px;
+  text-align: center;
+}
+
+.intelEventTicks span.marked {
+  color: var(--uma-text);
+  font-weight: 700;
+}
+
+.intelEventTimelineRows {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.intelEventTimelineLabel {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  min-width: 0;
+}
+
+.intelEventTimelineItem.hasImage.missionImage .intelEventTimelineLabel,
+.intelEventTimelineItem.hasImage.storyImage .intelEventTimelineLabel,
+.intelEventTimelineItem.hasImage.legendImage .intelEventTimelineLabel,
+.intelEventTimelineItem.hasImage.factorResearchImage .intelEventTimelineLabel,
+.intelEventTimelineItem.hasImage.campaignImage .intelEventTimelineLabel {
+  align-content: flex-start;
+}
+
+.intelEventTimelineLabel img {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: 3px;
+}
+
+.intelEventTimelineLabel img.missionImage,
+.intelEventTimelineLabel img.storyImage,
+.intelEventTimelineLabel img.legendImage,
+.intelEventTimelineLabel img.factorResearchImage,
+.intelEventTimelineLabel img.campaignImage {
+  flex-basis: 100%;
+  width: 100%;
+  max-width: 280px;
+  height: 64px;
+}
+
+.intelEventTimelineLabel img.raceImage {
+  width: 58px;
+  height: 34px;
+}
+
+.intelEventTimelineLabel span {
+  flex: 0 0 100%;
+  color: var(--uma-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.intelEventTimelineLabel strong {
+  flex: 0 0 100%;
+  min-width: 0;
+  color: var(--uma-text);
+  font-size: 13px;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.intelEventTimelineLabel .intelDropIcons {
+  flex: 0 1 auto;
+}
+
+.intelEventTimelineGrid {
+  min-height: 38px;
+  border-left: 1px solid #e5eaf1;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent calc(100% / var(--intel-days, 31) - 1px),
+    rgba(148, 163, 184, 0.24) calc(100% / var(--intel-days, 31) - 1px),
+    rgba(148, 163, 184, 0.24) calc(100% / var(--intel-days, 31))
+  );
+}
+
+.intelEventTimelineBar {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 3px 7px;
+  border-left: 4px solid #64748b;
+  border-radius: 3px;
+  background: #edf2f7;
+  color: var(--uma-text);
+}
+
+.intelEventTimelineItem.active .intelEventTimelineBar {
+  border-left-color: #0f766e;
+  background: #ccfbf1;
+}
+
+.intelEventTimelineBar time {
+  min-width: 0;
+  overflow: hidden;
+  font-family: var(--uma-mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.intelEventTimelineBar time span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.intelRaceList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.intelRaceItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+  padding: 4px;
+  border: 1px solid var(--uma-border);
+  border-left: 4px solid #7c3aed;
+  border-radius: var(--uma-radius);
+  background: var(--uma-surface-soft);
+}
+
+.intelRaceItem.active {
+  border-left-color: #0f766e;
+  background: #ecfdf5;
+}
+
+.intelRaceItem > img {
+  width: 128px;
+  height: 68px;
+  padding: 6px;
+  object-fit: contain;
+  border-radius: 3px;
+}
+
+.intelRaceItem div {
+  min-width: 0;
+}
+
+.intelRaceItem strong,
+.intelRaceItem time {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.intelRaceItem strong {
+  font-size: 15px;
+}
+
+.intelRaceItem time {
+  color: var(--uma-muted);
+  font-family: var(--uma-mono);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.intelRaceDetails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.intelRaceDetail {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 2px 6px;
+  align-items: center;
+  min-width: min(220px, 100%);
+  padding: 5px 7px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface);
+}
+
+.intelRaceDetail span {
+  color: #0f766e;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.intelRaceDetail strong {
+  font-size: 13px;
+}
+
+.intelRaceDetail small {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--uma-muted);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.intelRaceMetaLine {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.intelRaceMetaLine img {
+  flex: 0 0 auto;
+  max-width: 28px;
+  max-height: 20px;
+  object-fit: contain;
+}
+
+.intelRaceDetail em {
+  grid-column: 1 / -1;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--uma-muted);
+  font-size: 11px;
+  font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.intelRaceItem > span {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.12);
+  color: #0f766e;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.intelCalendarPanel,
+.intelDetailPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius);
+  background: var(--uma-surface);
+  box-shadow: var(--uma-shadow);
+}
+
+.intelSectionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.intelSectionActions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.intelFilterBar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.intelFilterBar select,
+.intelFilterBar input {
+  min-height: 30px;
+  border: 1px solid var(--uma-border-strong);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface);
+  font-size: 13px;
+}
+
+.intelFilterBar select {
+  max-width: 128px;
+}
+
+.intelFilterBar input {
+  width: min(220px, 34vw);
+  min-width: 140px;
+}
+
+.intelSectionTitle h2,
+.intelCalendarMonth h3,
+.intelDetailHeader h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.intelSectionTitle h2 {
+  font-size: 18px;
+}
+
+.intelSectionTitle span {
+  color: var(--uma-muted);
+  font-size: 12px;
+}
+
+.intelMonthSelect {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.intelViewToggle {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--uma-border-strong);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface);
+}
+
+.intelViewToggle button {
+  min-width: 54px;
+  min-height: 30px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.intelViewToggle button + button {
+  border-left: 1px solid var(--uma-border);
+}
+
+.intelViewToggle button.selected {
+  background: var(--uma-accent);
+  color: #fff;
+}
+
+.intelMonthSelect button {
+  width: 30px;
+  height: 30px;
+  min-height: 30px;
+  padding: 0;
+  font-size: 18px;
+}
+
+.intelMonthSelect select {
+  min-height: 30px;
+  font-family: var(--uma-mono);
+  font-weight: 700;
+}
+
+.intelCalendarMonths {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.intelGachaList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.intelGachaListItem {
+  display: grid;
+  grid-template-columns: minmax(220px, 340px) minmax(170px, 0.42fr) minmax(260px, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 92px;
+  width: 100%;
+  padding: 4px;
+  border-color: #c9d2df !important;
+  background: #f8fafc !important;
+  text-align: left;
+}
+
+.intelGachaListItem.characterPool {
+  border-left: 4px solid #2563eb !important;
+  background: #eff6ff !important;
+}
+
+.intelGachaListItem.supportPool {
+  border-left: 4px solid #0f766e !important;
+  background: #ecfdf5 !important;
+}
+
+.intelGachaListItem:hover,
+.intelGachaListItem.active {
+  border-color: var(--uma-accent) !important;
+  background: #f8fbff !important;
+}
+
+.intelGachaListItem.active {
+  box-shadow: inset 0 0 0 2px rgba(15, 118, 110, 0.22);
+}
+
+.intelGachaListItem > img {
+  width: 100%;
+  height: 84px;
+  object-fit: contain;
+  border-radius: 3px;
+}
+
+.intelGachaListItem > div {
+  min-width: 0;
+}
+
+.intelGachaListItem time {
+  display: block;
+  color: var(--uma-muted);
+  font-family: var(--uma-mono);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.intelMonthCalendar {
+  min-width: 0;
+}
+
+.intelMonthCalendar h3 {
+  margin: 0 0 8px;
+  color: var(--uma-text);
+  font-family: var(--uma-mono);
+  font-size: 15px;
+}
+
+.intelWeekHeader {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.intelWeekHeader {
+  border: 1px solid var(--uma-border);
+  border-bottom: none;
+  border-radius: var(--uma-radius-sm) var(--uma-radius-sm) 0 0;
+  background: var(--uma-surface-soft);
+}
+
+.intelWeekHeader span {
+  padding: 6px 8px;
+  border-right: 1px solid var(--uma-border);
+  color: var(--uma-muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.intelWeekHeader span:last-child {
+  border-right: none;
+}
+
+.intelCalendarWeeks {
+  overflow: hidden;
+  border: 1px solid var(--uma-border);
+  border-radius: 0 0 var(--uma-radius-sm) var(--uma-radius-sm);
+  background: var(--uma-border);
+}
+
+.intelCalendarWeek {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--uma-border);
+}
+
+.intelCalendarWeek + .intelCalendarWeek {
+  border-top: 1px solid var(--uma-border);
+}
+
+.intelWeekDays,
+.intelWeekTrack {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 1px;
+}
+
+.intelWeekPools {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 3px;
+  background: var(--uma-surface);
+  min-height: 76px;
+}
+
+.intelWeekTrack {
+  min-width: 0;
+}
+
+.intelDayCell {
+  min-width: 0;
+  min-height: 28px;
+  padding: 5px 7px;
+  background: var(--uma-surface-soft);
+  color: var(--uma-muted);
+  font-family: var(--uma-mono);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.intelDayCell.outside {
+  background: #f0f3f7;
+  color: #a3adba;
+}
+
+.intelDayCell.today {
+  background: #ecfdf5;
+  color: #0f766e;
+}
+
+.intelWeekPool {
+  display: grid;
+  grid-template-columns: minmax(190px, 300px) minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+  justify-content: stretch;
+  min-height: 96px;
+  width: 100%;
+  padding: 3px;
+  border-color: #c9d2df !important;
+  background: #f8fafc !important;
+  text-align: left;
+}
+
+.intelWeekPool.characterPool {
+  border-left: 4px solid #2563eb !important;
+  background: #eff6ff !important;
+}
+
+.intelWeekPool.supportPool {
+  border-left: 4px solid #0f766e !important;
+  background: #ecfdf5 !important;
+}
+
+.intelWeekPool:hover,
+.intelWeekPool.selected {
+  border-color: var(--uma-accent) !important;
+  background: #f8fbff !important;
+}
+
+.intelWeekPool.active {
+  box-shadow: inset 0 0 0 2px rgba(15, 118, 110, 0.22);
+}
+
+.intelWeekPool.compact {
+  grid-template-columns: 1fr;
+  min-height: 88px;
+}
+
+.intelCoverBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.intelPoolCover {
+  width: 100%;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 3px;
+  background: transparent;
+}
+
+.intelWeekPool.compact .intelPoolCover {
+  height: 54px;
+}
+
+.intelPoolBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.intelWeekPool span,
+.intelWeekPool strong,
+.intelWeekPool small {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.intelWeekPool span {
+  color: var(--uma-muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.intelWeekPool strong {
+  color: var(--uma-text);
+  font-size: 12px;
+}
+
+.intelWeekPool small,
+.intelCoverBlock small {
+  margin-top: 1px;
+  color: var(--uma-subtle);
+  font-family: var(--uma-mono);
+  font-size: 11px;
+}
+
+.intelUpPreview {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+.intelUpMini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.intelUpMini img,
+.intelUpMini .intelCardFallback {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.intelUpPreview em {
+  color: var(--uma-muted);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.intelWeekPool.compact .intelUpPreview {
+  gap: 4px;
+}
+
+.intelWeekPool.compact .intelUpMini {
+  width: 54px;
+  height: 54px;
+}
+
+.intelWeekPool.compact .intelUpMini img,
+.intelWeekPool.compact .intelUpMini .intelCardFallback {
+  width: 54px;
+  height: 54px;
+}
+
+.intelModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 16px;
+  overflow: auto;
+  background: rgba(15, 23, 42, 0.58);
+}
+
+.intelModalOverlay .intelDetailPanel {
+  position: relative;
+  width: min(1040px, 100%);
+  max-height: none;
+}
+
+.intelModalClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  min-height: 32px;
+  padding: 0;
+  color: var(--uma-muted);
+  font-size: 22px;
+  z-index: 1;
+}
+
+.intelDetailHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.intelDetailHeader span,
+.intelDetailHeader p,
+.intelDetailHeader strong {
+  color: var(--uma-muted);
+  font-size: 13px;
+}
+
+.intelDetailHeader h2 {
+  margin-top: 2px;
+  font-size: 22px;
+}
+
+.intelDetailHeader p {
+  margin: 3px 0 0;
+  font-family: var(--uma-mono);
+}
+
+.intelDetailHeader > strong {
+  flex: 0 0 auto;
+  padding: 6px 8px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface-soft);
+  color: var(--uma-text);
+}
+
+.intelDetailBanner {
+  display: block;
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface-soft);
+}
+
+.intelDetailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.intelDetailCard {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius);
+  background: var(--uma-surface-soft);
+}
+
+.intelDetailImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  overflow: hidden;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface);
+}
+
+.intelDetailImage img,
+.intelCardFallback {
+  width: 100%;
+  height: 100%;
+}
+
+.intelDetailImage .characterImage {
+  object-fit: cover;
+}
+
+.intelDetailImage .supportImage {
+  object-fit: cover;
+}
+
+.intelCardFallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--uma-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.intelDetailCard div:last-child {
+  min-width: 0;
+}
+
+.intelDetailCard strong,
+.intelDetailCard span,
+.intelDetailCard small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.intelDetailCard span,
+.intelDetailCard small {
+  color: var(--uma-muted);
+  font-size: 12px;
+}
+
 #topPane {
   display: grid;
   grid-template-columns: minmax(320px, var(--sidebar-width, 380px)) minmax(0, 1fr);
@@ -974,6 +2172,148 @@ a:hover {
     padding: 8px;
   }
 
+  .appNav {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .appNav nav,
+  .appNav nav button {
+    width: 100%;
+  }
+
+  .intelHero {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .intelHero h1 {
+    font-size: 23px;
+  }
+
+  .intelTabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .intelTabs button {
+    min-width: 0;
+  }
+
+  .intelSectionTitle {
+    display: block;
+  }
+
+  .intelSectionActions {
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .intelFilterBar {
+    display: grid;
+    grid-template-columns: minmax(112px, 0.42fr) minmax(0, 1fr);
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .intelFilterBar select,
+  .intelFilterBar input {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .intelViewToggle {
+    flex: 1 1 160px;
+  }
+
+  .intelViewToggle button {
+    flex: 1 1 0;
+  }
+
+  .intelMonthSelect {
+    flex: 1 1 180px;
+  }
+
+  .intelMonthSelect select {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .intelGachaListItem {
+    grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
+    min-height: 84px;
+  }
+
+  .intelGachaListItem > img {
+    grid-row: 1 / span 2;
+    height: 74px;
+  }
+
+  .intelGachaListItem time {
+    font-size: 14px;
+  }
+
+  .intelGachaListItem .intelUpPreview {
+    grid-column: 2;
+  }
+
+  .intelUpMini,
+  .intelUpMini img,
+  .intelUpMini .intelCardFallback {
+    width: 58px;
+    height: 58px;
+  }
+
+  .intelEventMonth {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .intelEventMonth h3 {
+    padding-left: 2px;
+  }
+
+  .intelEventTimelineHeader,
+  .intelEventTimelineItem,
+  .intelEventTimelineItem.hasImage,
+  .intelEventTimelineItem.hasImage.missionImage,
+  .intelEventTimelineItem.hasImage.storyImage,
+  .intelEventTimelineItem.hasImage.legendImage,
+  .intelEventTimelineItem.hasImage.factorResearchImage,
+  .intelEventTimelineItem.hasImage.campaignImage {
+    grid-template-columns: 240px minmax(420px, 1fr);
+  }
+
+  .intelEventCalendarMonths {
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .intelEventTimelineMonth {
+    min-width: 680px;
+  }
+
+  .intelEventTimelineLabel img.missionImage,
+  .intelEventTimelineLabel img.storyImage,
+  .intelEventTimelineLabel img.legendImage,
+  .intelEventTimelineLabel img.factorResearchImage,
+  .intelEventTimelineLabel img.campaignImage {
+    max-width: 220px;
+  }
+
+  .intelMonthCalendar {
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .intelWeekHeader,
+  .intelCalendarWeeks {
+    min-width: 860px;
+  }
+
   .raceTrackShell {
     width: 100%;
     overflow: hidden;
@@ -997,6 +2337,191 @@ a:hover {
 @media (max-width: 640px) {
   body {
     font-size: 13px;
+  }
+
+  #app {
+    gap: 8px;
+    padding: 6px;
+  }
+
+  .appNav {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .appNav nav button {
+    min-width: 0;
+    padding: 6px 8px;
+  }
+
+  .intelPage {
+    gap: 10px;
+  }
+
+  .intelTabs button {
+    min-height: 34px;
+    padding: 0 8px;
+  }
+
+  .intelCalendarPanel,
+  .intelDetailPanel {
+    gap: 8px;
+    padding: 8px;
+    border-radius: var(--uma-radius-sm);
+  }
+
+  .intelSectionActions {
+    gap: 6px;
+  }
+
+  .intelFilterBar {
+    grid-template-columns: 104px minmax(0, 1fr);
+  }
+
+  .intelFilterBar select,
+  .intelFilterBar input,
+  .intelMonthSelect select {
+    font-size: 12px;
+  }
+
+  .intelMonthSelect,
+  .intelViewToggle {
+    flex-basis: 100%;
+  }
+
+  .intelGachaListItem {
+    grid-template-columns: 116px minmax(0, 1fr);
+    gap: 6px;
+    min-height: 78px;
+  }
+
+  .intelGachaListItem > img {
+    height: 64px;
+  }
+
+  .intelGachaListItem time {
+    font-size: 13px;
+  }
+
+  .intelUpPreview {
+    gap: 4px;
+  }
+
+  .intelUpMini,
+  .intelUpMini img,
+  .intelUpMini .intelCardFallback {
+    width: 48px;
+    height: 48px;
+  }
+
+  .intelWeekHeader,
+  .intelCalendarWeeks {
+    min-width: 760px;
+  }
+
+  .intelWeekPool {
+    grid-template-columns: minmax(150px, 220px) minmax(0, 1fr);
+    min-height: 84px;
+  }
+
+  .intelPoolCover {
+    height: 58px;
+  }
+
+  .intelEventItem.hasImage,
+  .intelEventItem.hasImage.missionImage,
+  .intelEventItem.hasImage.storyImage,
+  .intelEventItem.hasImage.legendImage,
+  .intelEventItem.hasImage.factorResearchImage,
+  .intelEventItem.hasImage.campaignImage {
+    grid-template-columns: 92px minmax(0, 1fr);
+  }
+
+  .intelEventItem > img.missionImage,
+  .intelEventItem > img.storyImage,
+  .intelEventItem > img.legendImage,
+  .intelEventItem > img.factorResearchImage,
+  .intelEventItem > img.campaignImage {
+    width: 92px;
+    height: 48px;
+  }
+
+  .intelEventItem strong {
+    font-size: 12px;
+  }
+
+  .intelEventItem time {
+    font-size: 13px;
+  }
+
+  .intelDropIcons img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .intelEventTimelineHeader,
+  .intelEventTimelineItem,
+  .intelEventTimelineItem.hasImage,
+  .intelEventTimelineItem.hasImage.missionImage,
+  .intelEventTimelineItem.hasImage.storyImage,
+  .intelEventTimelineItem.hasImage.legendImage,
+  .intelEventTimelineItem.hasImage.factorResearchImage,
+  .intelEventTimelineItem.hasImage.campaignImage {
+    grid-template-columns: 190px minmax(360px, 1fr);
+  }
+
+  .intelEventTimelineMonth {
+    min-width: 570px;
+  }
+
+  .intelEventTimelineLabel img.missionImage,
+  .intelEventTimelineLabel img.storyImage,
+  .intelEventTimelineLabel img.legendImage,
+  .intelEventTimelineLabel img.factorResearchImage,
+  .intelEventTimelineLabel img.campaignImage {
+    max-width: 172px;
+    height: 52px;
+  }
+
+  .intelRaceItem {
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .intelRaceItem > img {
+    width: 82px;
+    height: 58px;
+    padding: 5px;
+  }
+
+  .intelRaceItem time {
+    font-size: 13px;
+  }
+
+  .intelRaceDetails {
+    gap: 4px;
+  }
+
+  .intelRaceDetail {
+    min-width: 100%;
+    padding: 5px 6px;
+  }
+
+  .intelRaceDetail em {
+    white-space: normal;
+  }
+
+  .intelDetailGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .intelDetailCard {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .intelDetailImage {
+    width: 64px;
+    height: 64px;
   }
 
   #buttonsRow[data-mobile="true"] button,
