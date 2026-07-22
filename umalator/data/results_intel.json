@@ -665,6 +665,16 @@
           "rarity": 3,
           "image": "intel/support/support_card_s_30134.png"
         }
+      ],
+      "freeDraws": [
+        {
+          "drawType": 10,
+          "label": "免费10抽",
+          "start": "2026-05-07 05:00:00",
+          "end": "2026-05-19 04:59:59",
+          "startTimestamp": 1778101200,
+          "endTimestamp": 1779137999
+        }
       ]
     },
     {
@@ -1611,6 +1621,16 @@
           "characterName": "第一红宝",
           "rarity": 3,
           "image": "intel/chara/chr_icon_1085_108501_02.png"
+        }
+      ],
+      "freeDraws": [
+        {
+          "drawType": 1,
+          "label": "免费1抽",
+          "start": "2026-05-19 12:00:00",
+          "end": "2026-05-29 11:59:59",
+          "startTimestamp": 1779163200,
+          "endTimestamp": 1780027199
         }
       ]
     },
@@ -2560,6 +2580,16 @@
           "rarity": 3,
           "image": "intel/support/support_card_s_30137.png"
         }
+      ],
+      "freeDraws": [
+        {
+          "drawType": 1,
+          "label": "免费1抽",
+          "start": "2026-05-23 12:00:00",
+          "end": "2026-06-01 11:59:59",
+          "startTimestamp": 1779508800,
+          "endTimestamp": 1780286399
+        }
       ]
     },
     {
@@ -2780,6 +2810,16 @@
           "characterName": "美浦波旁",
           "rarity": 3,
           "image": "intel/support/support_card_s_30141.png"
+        }
+      ],
+      "freeDraws": [
+        {
+          "drawType": 10,
+          "label": "免费10抽",
+          "start": "2026-06-20 12:00:00",
+          "end": "2026-06-28 04:59:59",
+          "startTimestamp": 1781928000,
+          "endTimestamp": 1782593999
         }
       ]
     },
@@ -5016,6 +5056,16 @@
           "characterName": "小林历奇",
           "rarity": 3,
           "image": "intel/chara/chr_icon_1098_109801_02.png"
+        }
+      ],
+      "freeDraws": [
+        {
+          "drawType": 1,
+          "label": "免费1抽",
+          "start": "2026-08-20 12:00:00",
+          "end": "2026-08-30 11:59:59",
+          "startTimestamp": 1787198400,
+          "endTimestamp": 1788062399
         }
       ]
     }
@@ -11824,5 +11874,5 @@
       "isVoucherExchange": false
     }
   ],
-  "generatedAt": "2026-07-22 16:26:15"
+  "generatedAt": "2026-07-22 16:45:42"
 }

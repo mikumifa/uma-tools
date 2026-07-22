@@ -1360,6 +1360,28 @@ def generate_gacha_data() -> list[dict]:
 
     conn = sqlite3.connect(MASTER_DB)
     cur = conn.cursor()
+    free_rows = cur.execute(
+        """
+        SELECT gacha_id, target_draw_type, start_date, end_date
+        FROM gacha_free_campaign
+        WHERE end_date >= ? AND end_date < ?
+        ORDER BY start_date, id
+        """,
+        (SINCE_TS, PLACEHOLDER_END_TS),
+    ).fetchall()
+    free_draws_by_gacha: dict[int, list[dict]] = {}
+    for gacha_id, draw_type, start_ts, end_ts in free_rows:
+        free_draws_by_gacha.setdefault(gacha_id, []).append(
+            {
+                "drawType": draw_type,
+                "label": f"免费{draw_type}抽",
+                "start": ts_to_str(start_ts),
+                "end": ts_to_str(end_ts),
+                "startTimestamp": start_ts,
+                "endTimestamp": end_ts,
+            }
+        )
+
     rows = cur.execute(
         """
         SELECT
@@ -1410,6 +1432,8 @@ def generate_gacha_data() -> list[dict]:
                 "cards": [],
             },
         )
+        if gacha_id in free_draws_by_gacha:
+            group["freeDraws"] = free_draws_by_gacha[gacha_id]
 
         banner_src = texture_asset(f"img_bnr_gacha_{gacha_id}.png")
         if group["bannerImage"] is None:

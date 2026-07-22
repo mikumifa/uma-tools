@@ -22,6 +22,14 @@ type GachaPool = {
   startTimestamp: number;
   endTimestamp: number;
   onlyOnce?: boolean;
+  freeDraws?: Array<{
+    drawType: number;
+    label: string;
+    start: string;
+    end: string;
+    startTimestamp: number;
+    endTimestamp: number;
+  }>;
   bannerImage?: string | null;
   cards: GachaCard[];
 };
@@ -284,6 +292,67 @@ function poolKey(pool: GachaPool) {
   return `${pool.id}-${pool.type}`;
 }
 
+function freeDrawText(pool: GachaPool) {
+  return (pool.freeDraws || []).map((draw) => draw.label).join(" / ");
+}
+
+function freeDrawDayCount(draw: NonNullable<GachaPool["freeDraws"]>[number]) {
+  const refreshOffsetSeconds = 5 * 60 * 60;
+  const startKey = Math.floor((draw.startTimestamp - refreshOffsetSeconds) / 86400);
+  const endKey = Math.floor((draw.endTimestamp - refreshOffsetSeconds) / 86400);
+  return Math.max(1, endKey - startKey + 1);
+}
+
+function freeDrawTotal(draw: NonNullable<GachaPool["freeDraws"]>[number]) {
+  return freeDrawDayCount(draw) * draw.drawType;
+}
+
+function freeDrawEndText(draw: NonNullable<GachaPool["freeDraws"]>[number]) {
+  const endDate = new Date(draw.endTimestamp * 1000);
+  const endsBeforeRefresh = endDate.getHours() < 5;
+  return `${fullDate(draw.end)} 结束${endsBeforeRefresh ? "，结束当天不计入" : ""}`;
+}
+
+function FreeDrawBadges({ pool, inline = false }: { pool: GachaPool; inline?: boolean }) {
+  const freeDraws = pool.freeDraws || [];
+  if (!pool.onlyOnce && !freeDraws.length) return null;
+  return (
+    <div class={`intelFreeDraws ${inline ? "inline" : ""}`}>
+      {pool.onlyOnce && <span class="once">限购一次</span>}
+      {freeDraws.map((draw) => (
+        <span title={dateLabel(draw.start, draw.end)} key={`${draw.start}-${draw.end}-${draw.drawType}`}>
+          {draw.label}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function FreeDrawSchedule({ pool }: { pool: GachaPool }) {
+  if (!pool.freeDraws?.length) return null;
+  return (
+    <section class="intelGachaFreeSchedule">
+      <h3>免费抽安排</h3>
+      <div>
+        {pool.freeDraws.map((draw) => (
+          <article
+            class="intelGachaFreeItem"
+            key={`${draw.start}-${draw.end}-${draw.drawType}`}
+          >
+            <strong>{draw.label}</strong>
+            <p>
+              从 {fullDate(draw.start)} 到 {fullDate(draw.end)}，共{
+                freeDrawDayCount(draw)
+              }天，合计 {freeDrawTotal(draw)} 抽。
+            </p>
+            <small>按每日 05:00 刷新计算；{freeDrawEndText(draw)}</small>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function poolCover(pool: GachaPool) {
   return (
     pool.bannerImage || pool.cards.find((card) => card.image)?.image || null
@@ -306,6 +375,7 @@ function poolSearchText(pool: GachaPool) {
   return [
     pool.name || "",
     pool.type,
+    freeDrawText(pool),
     ...pool.cards.flatMap((card) => [
       card.name,
       card.title,
@@ -674,6 +744,16 @@ function drawGachaRow(
   ctx.fillText(pool.type, textX, y + 33);
   if (active)
     drawBadge(ctx, "进行中", textX + 88, y + 11, "#fee2e2", "#b42318");
+  if (pool.freeDraws?.length) {
+    drawBadge(
+      ctx,
+      freeDrawText(pool),
+      active ? textX + 158 : textX + 88,
+      y + 11,
+      "#fef3c7",
+      "#92400e",
+    );
+  }
   ctx.font = exportFont(24, 800);
   ctx.fillStyle = "#18202b";
   drawTextLines(ctx, poolSummary(pool, 8), textX, y + 65, 390, 28, 1);
@@ -1158,7 +1238,7 @@ function WeekPoolCard({
         </div>
       )}
       {active && <span class="intelPoolStatus">进行中</span>}
-      {pool.onlyOnce && <span class="intelPoolOnce">限购一次</span>}
+      <FreeDrawBadges pool={pool} />
       {!compact && (
         <div class="intelPoolBody">
           <UpPreview cards={pool.cards} />
@@ -1288,6 +1368,7 @@ function GachaDetail({
             <p>{dateLabel(pool.start, pool.end)}</p>
           </div>
         </div>
+        <FreeDrawSchedule pool={pool} />
         {pool.bannerImage && (
           <img
             src={assetUrl(pool.bannerImage)}
@@ -1693,10 +1774,10 @@ function GachaList({
               <strong>{pool.name || pool.type}</strong>
               <span>{poolSummary(pool, 12)}</span>
               <time>{dateLabel(pool.start, pool.end)}</time>
+              <FreeDrawBadges pool={pool} inline />
             </div>
             <UpPreview cards={pool.cards} />
             {active && <span class="intelPoolStatus">进行中</span>}
-            {pool.onlyOnce && <span class="intelPoolOnce">限购一次</span>}
           </button>
         );
       })}

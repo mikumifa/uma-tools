@@ -432,6 +432,97 @@ a:hover {
   font-weight: 700;
 }
 
+.intelFreeDraws {
+  position: absolute;
+  right: 7px;
+  bottom: 6px;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 3px;
+  max-width: min(160px, 60%);
+}
+
+.intelFreeDraws.inline {
+  position: static;
+  justify-content: flex-start;
+  max-width: 100%;
+  margin-top: 4px;
+}
+
+.intelFreeDraws span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  padding: 1px 6px;
+  border: 1px solid rgba(217, 119, 6, 0.28);
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.intelFreeDraws span.once {
+  border-color: rgba(217, 119, 6, 0.28);
+  background: #fff7ed;
+  color: #b45309;
+}
+
+.intelGachaFreeSchedule {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid rgba(217, 119, 6, 0.28);
+  border-radius: var(--uma-radius-sm);
+  background: #fffbeb;
+}
+
+.intelGachaFreeSchedule h3 {
+  margin: 0;
+  color: #92400e;
+  font-size: 13px;
+}
+
+.intelGachaFreeSchedule > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 8px;
+}
+
+.intelGachaFreeItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid rgba(217, 119, 6, 0.24);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface);
+}
+
+.intelGachaFreeItem strong {
+  color: #92400e;
+  font-size: 14px;
+}
+
+.intelGachaFreeItem p,
+.intelGachaFreeItem small {
+  margin: 0;
+  min-width: 0;
+  color: var(--uma-muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.intelGachaFreeItem small {
+  font-family: var(--uma-mono);
+  font-weight: 800;
+}
+
 .intelEventItem strong,
 .intelEventItem time {
   min-width: 0;
@@ -1250,21 +1341,6 @@ a:hover {
   border-radius: 999px;
   background: #ecfdf5;
   color: #0f766e;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.25;
-}
-
-.intelPoolOnce {
-  position: absolute;
-  top: 27px;
-  right: 7px;
-  z-index: 1;
-  padding: 2px 6px;
-  border: 1px solid rgba(217, 119, 6, 0.28);
-  border-radius: 999px;
-  background: #fff7ed;
-  color: #b45309;
   font-size: 12px;
   font-weight: 700;
   line-height: 1.25;
@@ -2705,8 +2781,7 @@ a:hover {
     padding-right: 78px;
   }
 
-  .intelPoolStatus,
-  .intelPoolOnce {
+  .intelPoolStatus {
     right: 6px;
     font-size: 11px;
   }
@@ -2925,14 +3000,9 @@ a:hover {
     padding-right: 70px;
   }
 
-  .intelPoolStatus,
-  .intelPoolOnce {
+  .intelPoolStatus {
     padding: 1px 5px;
     font-size: 10px;
-  }
-
-  .intelPoolOnce {
-    top: 24px;
   }
 
   .intelUpPreview {
