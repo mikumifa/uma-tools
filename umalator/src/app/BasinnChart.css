@@ -166,6 +166,55 @@
   min-width: 0;
 }
 
+.basinnChartWrapper.mobile {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: clamp(260px, 42vh, 360px);
+  overflow-x: hidden;
+}
+
+.basinnChartWrapper.mobile .basinnChart {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+.basinnChartWrapper.mobile .basinnChart th:first-child,
+.basinnChartWrapper.mobile .basinnChart td:first-child {
+  width: 68%;
+}
+
+.basinnChartWrapper.mobile .basinnChart th:not(:first-child),
+.basinnChartWrapper.mobile .basinnChart td:not(:first-child) {
+  width: 32%;
+}
+
+.basinnChartWrapper.mobile .basinnChart th,
+.basinnChartWrapper.mobile .basinnChart td {
+  min-width: 0;
+  overflow: hidden;
+  padding: 6px 7px;
+}
+
+.basinnChartWrapper.mobile .basinnChart .columnHeader {
+  min-width: 0;
+  padding-right: 0;
+}
+
+.basinnChartWrapper.mobile .chartSkillName {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.basinnChartWrapper.mobile .chartSkillName span {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+}
+
 .mobileRunToggle {
   display: flex;
   align-items: center;
@@ -219,6 +268,11 @@
   .basinnChartWrapper {
     height: auto;
     max-height: 68vh;
+  }
+
+  .basinnChartWrapper.mobile {
+    height: clamp(260px, 42vh, 360px);
+    max-height: 360px;
   }
 
   .basinnChart {

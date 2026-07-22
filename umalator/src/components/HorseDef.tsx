@@ -1,5 +1,5 @@
 import { h, Fragment } from "preact";
-import { useState, useReducer, useMemo, useEffect, useRef } from "preact/hooks";
+import { useState, useMemo, useEffect, useRef } from "preact/hooks";
 import { IntlProvider, Text, Localizer } from "preact-i18n";
 import { Set as ImmSet } from "immutable";
 
@@ -58,158 +58,84 @@ export function UmaSelector(props) {
   );
   const u = props.value && umas[props.value.slice(0, 4)];
   const input = useRef(null);
-  const suggestionsContainer = useRef(null);
   const [open, setOpen] = useState(false);
-  const [activeIdx, setActiveIdx] = useState(-1);
-  function update(q) {
-    return { input: q, suggestions: searchNames(q) };
-  }
-  const [query, search] = useReducer(
-    (_, q) => update(q),
-    u && u.name[0],
-    update
+  const [query, setQuery] = useState("");
+  const outfitName = props.value && u ? u.outfits[props.value] : "";
+  const umaName = u ? u.name[0] : "";
+  const suggestions = useMemo(
+    () => (query.trim().length > 0 ? searchNames(query) : umaAltIds),
+    [query]
   );
-  const selectedUmaName = u ? u.name[0] : "";
-  function currentSuggestions() {
-    // After selecting one uma, keep the selector open to all umas unless the user types a new query.
-    if (props.value && query.input === selectedUmaName) {
-      return umaAltIds;
-    }
-    return query.suggestions;
-  }
+
+  useEffect(() => {
+    if (!open) return;
+    setQuery("");
+    window.requestAnimationFrame(() => input.current?.focus());
+  }, [open]);
 
   function confirm(oid) {
     setOpen(false);
     props.select(oid);
-    const uname = umas[oid.slice(0, 4)].name[0];
-    search(uname);
-    setActiveIdx(-1);
-    if (input.current != null) {
-      input.current.value = uname;
-      input.current.blur();
-    }
-  }
-
-  function focus() {
-    input.current && input.current.select();
-  }
-
-  function setActiveAndScroll(idx) {
-    setActiveIdx(idx);
-    if (!suggestionsContainer.current) return;
-    const suggestions = currentSuggestions();
-    const container = suggestionsContainer.current;
-    const li = container.querySelector(
-      `[data-uma-id="${suggestions[idx]}"]`
-    );
-    if (!li) return;
-    const ch = container.offsetHeight - 4; // 4 for borders
-    if (li.offsetTop < container.scrollTop) {
-      container.scrollTop = li.offsetTop;
-    } else if (li.offsetTop >= container.scrollTop + ch) {
-      const h = li.offsetHeight;
-      container.scrollTop = (li.offsetTop / h - (ch / h - 1)) * h;
-    }
-  }
-
-  function handleClick(e) {
-    const li = e.target.closest(".umaSuggestion");
-    if (li == null) return;
-    e.stopPropagation();
-    confirm(li.dataset.umaId);
-  }
-
-  function handleInput(e) {
-    search(e.target.value);
-  }
-
-  function handleKeyDown(e) {
-    const suggestions = currentSuggestions();
-    const l = suggestions.length;
-    if (l == 0) return;
-    switch (e.keyCode) {
-      case 13:
-        if (activeIdx > -1) confirm(suggestions[activeIdx]);
-        break;
-      case 38:
-        setActiveAndScroll((activeIdx - 1 + l) % l);
-        break;
-      case 40:
-        setActiveAndScroll((activeIdx + 1 + l) % l);
-        break;
-    }
-  }
-
-  function handleBlur(e) {
-    if (e.target.value.length == 0) props.select("");
-    setOpen(false);
   }
 
   return (
     <div class="umaSelector">
-      <div class="umaSelectorIconsBox" onClick={focus}>
-        <img src={props.value ? iconUrl(icons[props.value]) : randomMob} />
-        <img src={`${ICON_BASE}/utx_ico_umamusume_00.png`} />
-      </div>
-      <div class="umaEpithet">
-        <span>{props.value && u.outfits[props.value]}</span>
-      </div>
-      <div class="umaSelectWrapper">
-        <input
-          type="text"
-          class="umaSelectInput"
-          value={query.input}
-          tabindex={props.tabindex}
-          onInput={handleInput}
-          onKeyDown={handleKeyDown}
-          onFocus={() => setOpen(true)}
-          onBlur={handleBlur}
-          ref={input}
-        />
-        <ul
-          class={`umaSuggestions ${open ? "open" : ""}`}
-          onMouseDown={handleClick}
-          ref={suggestionsContainer}
-        >
-          {currentSuggestions().map((oid, i) => {
-            const uid = oid.slice(0, 4);
-            return (
-              <li
-                key={oid}
-                data-uma-id={oid}
-                class={`umaSuggestion ${i == activeIdx ? "selected" : ""}`}
-              >
-                <img src={iconUrl(icons[oid])} />
-                <span>
-                  {umas[uid].outfits[oid]} {umas[uid].name[0]}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <button
+        type="button"
+        class="umaSelectedButton"
+        tabindex={props.tabindex}
+        onClick={() => setOpen(true)}
+      >
+        <span class="umaSelectorIconsBox">
+          <img src={props.value ? iconUrl(icons[props.value]) : randomMob} />
+        </span>
+        <span class="umaSelectedText">
+          <strong>{umaName || "选择马娘"}</strong>
+          <span>{outfitName || "点击搜索角色和衣装"}</span>
+        </span>
+      </button>
+      {open &&
+        <div class="umaPickerPanel">
+          <div class="umaPickerHeader">
+            <input
+              type="search"
+              class="umaPickerSearch"
+              placeholder="搜索马娘 / 衣装"
+              value={query}
+              onInput={(e) => setQuery(e.currentTarget.value)}
+              ref={input}
+            />
+            <button
+              type="button"
+              class="umaPickerClose"
+              title="关闭"
+              onClick={() => setOpen(false)}
+            >
+              ×
+            </button>
+          </div>
+          <div class="umaPickerList">
+            {suggestions.map((oid) => {
+              const uid = oid.slice(0, 4);
+              return (
+                <button
+                  key={oid}
+                  type="button"
+                  class={`umaPickerItem ${oid === props.value ? "selected" : ""}`}
+                  onClick={() => confirm(oid)}
+                >
+                  <img src={iconUrl(icons[oid])} />
+                  <span>
+                    <strong>{umas[uid].name[0]}</strong>
+                    <small>{umas[uid].outfits[oid]}</small>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>}
     </div>
   );
-}
-
-function rankForStat(x: number) {
-  if (x > 1200) {
-    // over 1200 letter (eg UG) goes up by 100 and minor number (eg UG8) goes up by 10
-    return Math.min(
-      18 + Math.floor((x - 1200) / 100) * 10 + (Math.floor(x / 10) % 10),
-      97
-    );
-  } else if (x >= 1150) {
-    return 17; // SS+
-  } else if (x >= 1100) {
-    return 16; // SS
-  } else if (x >= 400) {
-    // between 400 and 1100 letter goes up by 100 starting with C (8)
-    return 8 + Math.floor((x - 400) / 100);
-  } else {
-    // between 1 and 400 letter goes up by 50 starting with G+ (0)
-    return Math.floor(x / 50);
-  }
 }
 
 export function Stat(props) {
@@ -220,13 +146,6 @@ export function Stat(props) {
 
   return (
     <div class="horseParam">
-      <img
-        src={`${ICON_BASE}/statusrank/ui_statusrank_${(
-          100 + rankForStat(props.value)
-        )
-          .toString()
-          .slice(1)}.png`}
-      />
       <input
         type="text"
         inputMode="numeric"
@@ -461,23 +380,18 @@ export function HorseDef(props) {
       <UmaSelector value={umaId} select={setUma} tabindex={tabnext()} />
       <div class="horseParams">
         <div class="horseParamHeader">
-          <img src={`${ICON_BASE}/status_00.png`} />
           <span>速度</span>
         </div>
         <div class="horseParamHeader">
-          <img src={`${ICON_BASE}/status_01.png`} />
           <span>耐力</span>
         </div>
         <div class="horseParamHeader">
-          <img src={`${ICON_BASE}/status_02.png`} />
           <span>力量</span>
         </div>
         <div class="horseParamHeader">
-          <img src={`${ICON_BASE}/status_03.png`} />
           <span>根性</span>
         </div>
         <div class="horseParamHeader">
-          <img src={`${ICON_BASE}/status_04.png`} />
           <span>智力</span>
         </div>
         <Stat

@@ -730,7 +730,6 @@ function App() {
   const raceTrackRef = useRef<HTMLDivElement | null>(null);
   const resultsPaneRef = useRef<HTMLDivElement | null>(null);
   const [ShowUnreleased, setShowUnreleased] = useState(false);
-  const [trackOrientationMsg, setTrackOrientationMsg] = useState("");
   const [forceShowTrack, setForceShowTrack] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(() =>
     typeof window === "undefined" ? 1540 : window.innerWidth,
@@ -754,15 +753,8 @@ function App() {
   }, []);
 
   const isMobile = viewportWidth <= 900;
-  const showTrack = !isMobile || forceShowTrack;
-  const flippedTrack = isMobile && forceShowTrack;
+  const showTrack = !isMobile;
   const isLandscapeView = isMobile && forceShowTrack;
-
-  useEffect(() => {
-    if (!isMobile) {
-      setTrackOrientationMsg("");
-    }
-  }, [isMobile]);
 
   const desktopSidebarWidth =
     mode === Mode.Chart
@@ -885,15 +877,25 @@ function App() {
   const course = useMemo(() => CourseHelpers.getCourse(courseId), [courseId]);
 
   const viewTrackImage = () => {
-    setForceShowTrack((v) => !v);
-    setTrackOrientationMsg("已切换横屏赛道视图，再次点击可收起。");
-    requestAnimationFrame(() =>
-      raceTrackRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      }),
-    );
+    setForceShowTrack(true);
   };
+
+  useEffect(() => {
+    if (!isMobile && forceShowTrack) {
+      setForceShowTrack(false);
+    }
+  }, [isMobile, forceShowTrack]);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const originalOverflow = document.body.style.overflow;
+    if (forceShowTrack) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [forceShowTrack]);
 
   const [uma1, setUma1] = useState(() => new HorseState());
   const [uma2, setUma2] = useState(() => new HorseState());
@@ -926,18 +928,6 @@ function App() {
     overlay && overlay.focus();
   }, [expanded]);
 
-  // 阻止背景滚动：仅在赛道全屏时锁定 body，Uma 面板保持正常滚动
-  useEffect(() => {
-    const originalOverflow = document.body.style.overflow;
-    if (forceShowTrack) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = originalOverflow;
-    }
-    return () => {
-      document.body.style.overflow = originalOverflow;
-    };
-  }, [expanded, forceShowTrack]);
   useEffect(() => {
     if (typeof document === "undefined") return;
     const originalOverflow = document.body.style.overflow;
@@ -1515,21 +1505,9 @@ function App() {
             >
               {/* Left Column: Track and Track Settings */}
 
-              {showTrack && (!isMobile || !forceShowTrack) && (
+              {showTrack && (
                 <div ref={raceTrackRef} className="raceTrackShell">
-                  <div
-                    className={
-                      flippedTrack ? "racetrackFlipped" : "raceTrackCanvas"
-                    }
-                    style={
-                      flippedTrack
-                        ? {
-                            width: `${trackHeight + 60}px`,
-                            height: `${trackWidth + 80}px`,
-                          }
-                        : undefined
-                    }
-                  >
+                  <div className="raceTrackCanvas">
                     <RaceTrack
                       courseid={courseId}
                       width={trackWidth}
@@ -1541,15 +1519,6 @@ function App() {
                       mouseLeave={rtMouseLeave}
                       regions={trackRegions}
                       hideTitle={true}
-                      containerStyle={
-                        flippedTrack
-                          ? {
-                              width: `${trackHeight + 60}px`,
-                              height: `${trackWidth + 80}px`,
-                              overflow: "visible",
-                            }
-                          : undefined
-                      }
                     >
                       <VelocityLines
                         data={chartData}
@@ -1589,9 +1558,6 @@ function App() {
                   >
                     横屏查看赛道
                   </button>
-                  <span className="mobileTrackHint">
-                    {trackOrientationMsg || "弹窗展示赛道图片，可长按/保存。"}
-                  </span>
                 </div>
               )}
               <div
@@ -1612,7 +1578,7 @@ function App() {
                   }`}
                 >
                   <div
-                    className={`
+                    className={`courseControls
                   ${
                     isMobile
                       ? "flex flex-col items-stretch gap-3 w-full"
@@ -1842,17 +1808,11 @@ function App() {
                 <button
                   type="button"
                   className="trackFullscreenClose"
-                  onClick={() => {
-                    if (document.fullscreenElement && document.exitFullscreen) {
-                      document.exitFullscreen();
-                    }
-                    setForceShowTrack(false);
-                    setTrackOrientationMsg("");
-                  }}
+                  onClick={() => setForceShowTrack(false)}
                 >
-                  ✕
+                  ×
                 </button>
-                <div className={flippedTrack ? "racetrackRotated" : ""}>
+                <div className="racetrackRotated">
                   <RaceTrack
                     courseid={courseId}
                     width={trackHeight}
@@ -1864,45 +1824,10 @@ function App() {
                     mouseLeave={rtMouseLeave}
                     regions={trackRegions}
                     hideTitle={true}
-                  >
-                    <VelocityLines
-                      data={chartData}
-                      courseDistance={course.distance}
-                      width={trackHeight}
-                      height={velocityHeight}
-                      xOffset={0}
-                      showHp={showHp}
-                    />
-                  </RaceTrack>
+                  />
                 </div>
               </div>
             )}
-            <div class="jumpButtons">
-              <button
-                type="button"
-                onClick={() =>
-                  raceTrackRef.current?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  })
-                }
-              >
-                <span style="font-size: 1.2em">🏁</span>
-              </button>
-              {resultsPane && (
-                <button
-                  type="button"
-                  onClick={() =>
-                    resultsPaneRef.current?.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    })
-                  }
-                >
-                  <span style="font-size: 1.2em">📊</span>
-                </button>
-              )}
-            </div>
             {expanded && (
               <div
                 id="umaOverlay"

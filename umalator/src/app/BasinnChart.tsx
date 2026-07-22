@@ -264,7 +264,9 @@ export function BasinnChart(props) {
   ];
 
   return (
-    <div class={compact ? "basinnChartWrapper compact" : "basinnChartWrapper"}>
+    <div
+      class={`basinnChartWrapper ${compact ? "compact" : ""} ${isMobile ? "mobile" : ""}`}
+    >
       <table class="basinnChart">
         <thead>
           {(isMobile || compact) && (

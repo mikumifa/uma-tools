@@ -1823,10 +1823,10 @@ a:hover {
 }
 
 .panelClose,
-.trackFullscreenClose,
 #closeUmaOverlay,
 #closeUmaOverlayTop,
-#closeSkill {
+#closeSkill,
+.trackFullscreenClose {
   width: 32px;
   height: 32px;
   min-height: 32px;
@@ -2046,7 +2046,6 @@ a:hover {
 
 #buttonsRow button,
 .mobileTrackButton,
-.jumpButtons > button,
 .copyUmaBtn {
   border-radius: var(--uma-radius-sm) !important;
   background: var(--uma-surface) !important;
@@ -2088,11 +2087,6 @@ a:hover {
   background: rgba(15, 23, 42, 0.72);
 }
 
-.trackFullscreen .racetrackWrapper {
-  width: auto;
-  overflow: visible;
-}
-
 .racetrackRotated {
   max-width: 90vh;
   max-height: 90vw;
@@ -2104,6 +2098,7 @@ a:hover {
   position: absolute;
   top: 12px;
   right: 12px;
+  z-index: 1;
 }
 
 .mobileTrackActions {
@@ -2112,13 +2107,12 @@ a:hover {
   align-items: stretch;
   gap: 6px;
   width: 100%;
-  margin-top: 6px;
+  margin-top: 2px;
 }
 
-.mobileTrackHint {
-  color: var(--uma-muted);
-  font-size: 12px;
-  text-align: center;
+.mobileTrackButton {
+  width: 100%;
+  min-height: 38px;
 }
 
 .groundSelect {
@@ -2346,24 +2340,6 @@ a:hover {
   color: var(--uma-muted);
   padding: 20px 12px;
   text-align: center;
-}
-
-.jumpButtons {
-  position: fixed;
-  right: 12px;
-  bottom: 12px;
-  z-index: 30;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.jumpButtons > button {
-  width: 34px;
-  height: 34px;
-  min-height: 34px;
-  padding: 0;
-  background: var(--uma-surface) !important;
 }
 
 #umaOverlay {
@@ -2759,6 +2735,57 @@ a:hover {
     flex-direction: column;
   }
 
+  #buttonsRow[data-mobile="true"] .courseControls {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 6px !important;
+    width: 100%;
+  }
+
+  #buttonsRow[data-mobile="true"] .courseControls > * {
+    justify-self: start;
+    width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  #buttonsRow[data-mobile="true"] .trackSelect {
+    grid-column: 1 / -1;
+  }
+
+  #buttonsRow[data-mobile="true"] .courseControls > button {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    width: 100%;
+  }
+
+  #buttonsRow[data-mobile="true"] [role="radiogroup"] {
+    justify-content: flex-start;
+  }
+
+  #buttonsRow[data-mobile="true"] [role="radio"] {
+    flex: 0 0 auto;
+    justify-content: center;
+  }
+
+  #resultsPaneWrapper,
+  #resultsPane.mode-chart {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  #resultsPane.mode-chart,
+  #resultsPane.mode-chart .chartLayout,
+  #resultsPane.mode-chart .chartPanel,
+  #resultsPane.mode-chart .chartDetails {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
   .chartDetails {
     display: flex;
     flex-direction: column;
@@ -3005,6 +3032,11 @@ a:hover {
   #buttonsRow[data-mobile="true"] input,
   #buttonsRow[data-mobile="true"] select {
     font-size: 14px;
+  }
+
+  #buttonsRow[data-mobile="true"] > div,
+  #buttonsRow[data-mobile="true"] > div > div {
+    gap: 6px !important;
   }
 
   #buttonsRow input[type="number"] {
