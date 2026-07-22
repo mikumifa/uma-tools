@@ -774,11 +774,22 @@ a:hover {
   border-left: 4px solid #7c3aed;
   border-radius: var(--uma-radius);
   background: var(--uma-surface-soft);
+  cursor: pointer;
+}
+
+.intelRaceItem:hover {
+  border-color: var(--uma-border-strong);
+  border-left-color: #7c3aed;
+  background: var(--uma-surface);
 }
 
 .intelRaceItem.active {
   border-left-color: #0f766e;
   background: #ecfdf5;
+}
+
+.intelRaceItem.active:hover {
+  border-left-color: #0f766e;
 }
 
 .intelRaceItem > img {
@@ -1199,7 +1210,10 @@ a:hover {
   align-items: center;
   justify-content: stretch;
   min-height: 96px;
-  width: 100%;
+  width: auto;
+  overflow: hidden;
+  margin-left: var(--segment-start-inset, 0);
+  margin-right: var(--segment-end-inset, 0);
   padding: 3px;
   border-color: #c9d2df !important;
   background: #f8fafc !important;
@@ -1539,6 +1553,35 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
   gap: 8px;
+}
+
+.intelRaceMilestones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 7px;
+}
+
+.intelRaceMilestone {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface-soft);
+}
+
+.intelRaceMilestone strong {
+  color: var(--uma-text);
+  font-size: 13px;
+}
+
+.intelRaceMilestone time {
+  color: var(--uma-muted);
+  font-family: var(--uma-mono);
+  font-size: 12px;
+  line-height: 1.35;
 }
 
 .intelScheduleRewardGroups {

@@ -10319,6 +10319,50 @@
           "entryNum": 9,
           "thumbnailId": 6003
         }
+      ],
+      "milestones": [
+        {
+          "label": "报名",
+          "start": "2026-05-19 12:00:00",
+          "end": "2026-05-23 11:59:59",
+          "startTimestamp": 1779163200,
+          "endTimestamp": 1779508799
+        },
+        {
+          "label": "第1轮",
+          "start": "2026-05-23 12:00:00",
+          "end": "2026-05-25 11:59:59",
+          "startTimestamp": 1779508800,
+          "endTimestamp": 1779681599
+        },
+        {
+          "label": "第2轮",
+          "start": "2026-05-25 12:00:00",
+          "end": "2026-05-27 11:59:59",
+          "startTimestamp": 1779681600,
+          "endTimestamp": 1779854399
+        },
+        {
+          "label": "决赛准备",
+          "start": "2026-05-27 12:00:00",
+          "end": "2026-05-27 23:59:59",
+          "startTimestamp": 1779854400,
+          "endTimestamp": 1779897599
+        },
+        {
+          "label": "决赛",
+          "start": "2026-05-28 00:00:00",
+          "end": "2026-05-28 11:59:59",
+          "startTimestamp": 1779897600,
+          "endTimestamp": 1779940799
+        },
+        {
+          "label": "结果发表",
+          "start": "2026-05-28 12:00:00",
+          "end": "2026-05-29 11:59:59",
+          "startTimestamp": 1779940800,
+          "endTimestamp": 1780027199
+        }
       ]
     },
     {
@@ -10349,6 +10393,50 @@
           "conditionRates": null,
           "entryNum": 9,
           "thumbnailId": 6004
+        }
+      ],
+      "milestones": [
+        {
+          "label": "报名",
+          "start": "2026-06-10 12:00:00",
+          "end": "2026-06-13 11:59:59",
+          "startTimestamp": 1781064000,
+          "endTimestamp": 1781323199
+        },
+        {
+          "label": "第1轮",
+          "start": "2026-06-13 12:00:00",
+          "end": "2026-06-15 11:59:59",
+          "startTimestamp": 1781323200,
+          "endTimestamp": 1781495999
+        },
+        {
+          "label": "第2轮",
+          "start": "2026-06-15 12:00:00",
+          "end": "2026-06-17 11:59:59",
+          "startTimestamp": 1781496000,
+          "endTimestamp": 1781668799
+        },
+        {
+          "label": "决赛准备",
+          "start": "2026-06-17 12:00:00",
+          "end": "2026-06-17 23:59:59",
+          "startTimestamp": 1781668800,
+          "endTimestamp": 1781711999
+        },
+        {
+          "label": "决赛",
+          "start": "2026-06-18 00:00:00",
+          "end": "2026-06-18 11:59:59",
+          "startTimestamp": 1781712000,
+          "endTimestamp": 1781755199
+        },
+        {
+          "label": "结果发表",
+          "start": "2026-06-18 12:00:00",
+          "end": "2026-06-19 11:59:59",
+          "startTimestamp": 1781755200,
+          "endTimestamp": 1781841599
         }
       ]
     },
@@ -10446,6 +10534,57 @@
           "entryNum": 12,
           "thumbnailId": 6001
         }
+      ],
+      "milestones": [
+        {
+          "label": "预告",
+          "start": "2026-06-28 12:00:00",
+          "end": "2026-06-30 11:59:59",
+          "startTimestamp": 1782619200,
+          "endTimestamp": 1782791999
+        },
+        {
+          "label": "主要赛事 5战",
+          "start": "2026-06-30 12:00:00",
+          "end": "2026-07-06 11:59:59",
+          "startTimestamp": 1782792000,
+          "endTimestamp": 1783310399
+        },
+        {
+          "label": "集结",
+          "start": "2026-07-06 12:00:00",
+          "end": "2026-07-06 13:59:59",
+          "startTimestamp": 1783310400,
+          "endTimestamp": 1783317599
+        },
+        {
+          "label": "特别赛事准备",
+          "start": "2026-07-06 14:00:00",
+          "end": "2026-07-07 09:59:59",
+          "startTimestamp": 1783317600,
+          "endTimestamp": 1783389599
+        },
+        {
+          "label": "特别赛事报名",
+          "start": "2026-07-07 10:00:00",
+          "end": "2026-07-07 11:59:59",
+          "startTimestamp": 1783389600,
+          "endTimestamp": 1783396799
+        },
+        {
+          "label": "特别赛事",
+          "start": "2026-07-07 12:00:00",
+          "end": "2026-07-08 11:59:59",
+          "startTimestamp": 1783396800,
+          "endTimestamp": 1783483199
+        },
+        {
+          "label": "结果发表",
+          "start": "2026-07-08 12:00:00",
+          "end": "2026-07-09 11:59:59",
+          "startTimestamp": 1783483200,
+          "endTimestamp": 1783569599
+        }
       ]
     },
     {
@@ -10476,6 +10615,50 @@
           "conditionRates": null,
           "entryNum": 9,
           "thumbnailId": 6014
+        }
+      ],
+      "milestones": [
+        {
+          "label": "报名",
+          "start": "2026-07-16 12:00:00",
+          "end": "2026-07-20 11:59:59",
+          "startTimestamp": 1784174400,
+          "endTimestamp": 1784519999
+        },
+        {
+          "label": "第1轮",
+          "start": "2026-07-20 12:00:00",
+          "end": "2026-07-22 11:59:59",
+          "startTimestamp": 1784520000,
+          "endTimestamp": 1784692799
+        },
+        {
+          "label": "第2轮",
+          "start": "2026-07-22 12:00:00",
+          "end": "2026-07-24 11:59:59",
+          "startTimestamp": 1784692800,
+          "endTimestamp": 1784865599
+        },
+        {
+          "label": "决赛准备",
+          "start": "2026-07-24 12:00:00",
+          "end": "2026-07-24 23:59:59",
+          "startTimestamp": 1784865600,
+          "endTimestamp": 1784908799
+        },
+        {
+          "label": "决赛",
+          "start": "2026-07-25 00:00:00",
+          "end": "2026-07-25 11:59:59",
+          "startTimestamp": 1784908800,
+          "endTimestamp": 1784951999
+        },
+        {
+          "label": "结果发表",
+          "start": "2026-07-25 12:00:00",
+          "end": "2026-07-26 11:59:59",
+          "startTimestamp": 1784952000,
+          "endTimestamp": 1785038399
         }
       ]
     },
@@ -10573,6 +10756,57 @@
           "entryNum": 12,
           "thumbnailId": 6001
         }
+      ],
+      "milestones": [
+        {
+          "label": "预告",
+          "start": "2026-08-02 12:00:00",
+          "end": "2026-08-05 11:59:59",
+          "startTimestamp": 1785643200,
+          "endTimestamp": 1785902399
+        },
+        {
+          "label": "主要赛事 5战",
+          "start": "2026-08-05 12:00:00",
+          "end": "2026-08-11 11:59:59",
+          "startTimestamp": 1785902400,
+          "endTimestamp": 1786420799
+        },
+        {
+          "label": "集结",
+          "start": "2026-08-11 12:00:00",
+          "end": "2026-08-11 13:59:59",
+          "startTimestamp": 1786420800,
+          "endTimestamp": 1786427999
+        },
+        {
+          "label": "特别赛事准备",
+          "start": "2026-08-11 14:00:00",
+          "end": "2026-08-12 09:59:59",
+          "startTimestamp": 1786428000,
+          "endTimestamp": 1786499999
+        },
+        {
+          "label": "特别赛事报名",
+          "start": "2026-08-12 10:00:00",
+          "end": "2026-08-12 11:59:59",
+          "startTimestamp": 1786500000,
+          "endTimestamp": 1786507199
+        },
+        {
+          "label": "特别赛事",
+          "start": "2026-08-12 12:00:00",
+          "end": "2026-08-13 11:59:59",
+          "startTimestamp": 1786507200,
+          "endTimestamp": 1786593599
+        },
+        {
+          "label": "结果发表",
+          "start": "2026-08-13 12:00:00",
+          "end": "2026-08-14 11:59:59",
+          "startTimestamp": 1786593600,
+          "endTimestamp": 1786679999
+        }
       ]
     },
     {
@@ -10603,6 +10837,50 @@
           "conditionRates": null,
           "entryNum": 9,
           "thumbnailId": 6017
+        }
+      ],
+      "milestones": [
+        {
+          "label": "报名",
+          "start": "2026-08-20 12:00:00",
+          "end": "2026-08-24 11:59:59",
+          "startTimestamp": 1787198400,
+          "endTimestamp": 1787543999
+        },
+        {
+          "label": "第1轮",
+          "start": "2026-08-24 12:00:00",
+          "end": "2026-08-26 11:59:59",
+          "startTimestamp": 1787544000,
+          "endTimestamp": 1787716799
+        },
+        {
+          "label": "第2轮",
+          "start": "2026-08-26 12:00:00",
+          "end": "2026-08-28 11:59:59",
+          "startTimestamp": 1787716800,
+          "endTimestamp": 1787889599
+        },
+        {
+          "label": "决赛准备",
+          "start": "2026-08-28 12:00:00",
+          "end": "2026-08-28 23:59:59",
+          "startTimestamp": 1787889600,
+          "endTimestamp": 1787932799
+        },
+        {
+          "label": "决赛",
+          "start": "2026-08-29 00:00:00",
+          "end": "2026-08-29 11:59:59",
+          "startTimestamp": 1787932800,
+          "endTimestamp": 1787975999
+        },
+        {
+          "label": "结果发表",
+          "start": "2026-08-29 12:00:00",
+          "end": "2026-08-30 11:59:59",
+          "startTimestamp": 1787976000,
+          "endTimestamp": 1788062399
         }
       ]
     }
@@ -11546,5 +11824,5 @@
       "isVoucherExchange": false
     }
   ],
-  "generatedAt": "2026-07-22 12:31:59"
+  "generatedAt": "2026-07-22 16:26:15"
 }

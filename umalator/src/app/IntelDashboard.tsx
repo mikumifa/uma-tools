@@ -90,6 +90,13 @@ type ScheduleItem = {
     } | null;
     entryNum?: number;
   }>;
+  milestones?: Array<{
+    label: string;
+    start: string;
+    end: string;
+    startTimestamp: number;
+    endTimestamp: number;
+  }>;
 };
 
 type ScheduleReward = {
@@ -1043,7 +1050,13 @@ type WeekPoolSegment = {
   pool: GachaPool;
   columnStart: number;
   columnEnd: number;
+  startInset: number;
+  endInset: number;
 };
+
+function clamp01(value: number) {
+  return Math.max(0, Math.min(1, value));
+}
 
 function weekPoolSegment(
   days: CalendarDay[],
@@ -1063,10 +1076,18 @@ function weekPoolSegment(
     }
   }
   if (startIndex < 0 || endIndex < 0) return null;
+  const spanDays = endIndex - startIndex + 1;
   return {
     pool,
     columnStart: startIndex + 1,
     columnEnd: endIndex + 2,
+    startInset:
+      (clamp01((visibleStart - days[startIndex].start) / 86400) /
+        spanDays) *
+      100,
+    endInset:
+      (clamp01((days[endIndex].end - visibleEnd) / 86400) / spanDays) *
+      100,
   };
 }
 
@@ -1119,6 +1140,8 @@ function WeekPoolCard({
       onClick={() => onSelect(pool)}
       style={{
         gridColumn: `${segment.columnStart} / ${segment.columnEnd}`,
+        "--segment-start-inset": `${segment.startInset}%`,
+        "--segment-end-inset": `${segment.endInset}%`,
       }}
     >
       {cover && (
@@ -1383,6 +1406,7 @@ function ScheduleDetail({
         ...sourceGroups,
       ]
     : [];
+  const milestones = item.milestones || [];
   return (
     <div
       class="intelModalOverlay"
@@ -1439,6 +1463,25 @@ function ScheduleDetail({
                 </div>
               ))}
             </div>
+          </section>
+        ) : null}
+        {milestones.length ? (
+          <section class="intelScheduleDetailSection">
+            <h3>大赛流程</h3>
+            <div class="intelRaceMilestones">
+              {milestones.map((milestone, index) => (
+                <div class="intelRaceMilestone" key={`${milestone.label}-${index}`}>
+                  <strong>{milestone.label}</strong>
+                  <time>{dateLabel(milestone.start, milestone.end)}</time>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+        {title === "大赛" && item.details?.length ? (
+          <section class="intelScheduleDetailSection">
+            <h3>赛事条件</h3>
+            <RaceDetails details={item.details} />
           </section>
         ) : null}
         {(item.exchangeDetailPath || item.exchangeDetails?.length) && (
@@ -1944,7 +1987,15 @@ function RaceDetails({ details }: { details?: ScheduleItem["details"] }) {
   );
 }
 
-function RaceSchedule({ races, now }: { races: ScheduleItem[]; now: number }) {
+function RaceSchedule({
+  races,
+  now,
+  onSelect,
+}: {
+  races: ScheduleItem[];
+  now: number;
+  onSelect: (race: ScheduleItem) => void;
+}) {
   return (
     <div class="intelRaceList">
       {races.map((race) => {
@@ -1953,6 +2004,7 @@ function RaceSchedule({ races, now }: { races: ScheduleItem[]; now: number }) {
           <article
             class={`intelRaceItem ${active ? "active" : ""}`}
             key={race.id}
+            onClick={() => onSelect(race)}
           >
             {race.image && (
               <img src={assetUrl(race.image)} alt="" loading="lazy" />
@@ -2061,6 +2113,7 @@ export function IntelDashboard() {
   );
   const [detailKey, setDetailKey] = useState("");
   const [eventDetailKey, setEventDetailKey] = useState("");
+  const [raceDetailKey, setRaceDetailKey] = useState("");
   const [exchangeDetailKey, setExchangeDetailKey] = useState("");
   const [exchangeDetailCache, setExchangeDetailCache] = useState<
     Record<string, ScheduleItem["exchangeDetails"]>
@@ -2073,6 +2126,9 @@ export function IntelDashboard() {
   const detailPool = pools.find((pool) => poolKey(pool) === detailKey);
   const detailEvent = events.find(
     (event) => scheduleDetailKey(event) === eventDetailKey,
+  );
+  const detailRace = races.find(
+    (race) => scheduleDetailKey(race) === raceDetailKey,
   );
   const detailExchange = exchanges.find(
     (exchange) => scheduleDetailKey(exchange) === exchangeDetailKey,
@@ -2355,7 +2411,11 @@ export function IntelDashboard() {
       {activeTab === "races" && (
         <section class="intelCalendarPanel">
           {races.length ? (
-            <RaceSchedule races={races} now={now} />
+            <RaceSchedule
+              races={races}
+              now={now}
+              onSelect={(race) => setRaceDetailKey(scheduleDetailKey(race))}
+            />
           ) : (
             <div class="intelEmptyTab">待添加</div>
           )}
@@ -2458,6 +2518,13 @@ export function IntelDashboard() {
           item={detailEvent}
           title="活动"
           onClose={() => setEventDetailKey("")}
+        />
+      )}
+      {detailRace && (
+        <ScheduleDetail
+          item={detailRace}
+          title="大赛"
+          onClose={() => setRaceDetailKey("")}
         />
       )}
       {detailExchange && (

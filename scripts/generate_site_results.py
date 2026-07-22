@@ -81,6 +81,24 @@ CHAMPIONS_ROUND_LABELS = {
 HEROES_STAGE_LABELS = {0: "主要赛事", 1: "主要赛事", 2: "特别赛事"}
 HEROES_EVENT_NAME = "英杰集结战"
 
+CHAMPIONS_MILESTONE_LABELS = {
+    (0, 0): "报名",
+    (1, 0): "第1轮",
+    (2, 0): "第2轮",
+    (3, 1): "决赛准备",
+    (3, 2): "决赛",
+    (3, 3): "结果发表",
+}
+HEROES_MILESTONE_LABELS = {
+    (0, 0): "预告",
+    (1, 1): "主要赛事",
+    (1, 2): "集结",
+    (2, 1): "特别赛事准备",
+    (2, 2): "特别赛事报名",
+    (2, 3): "特别赛事",
+    (2, 4): "结果发表",
+}
+
 
 def optional_public_image(public_relative: str) -> str | None:
     return public_relative if (PUBLIC_DIR / public_relative).exists() else None
@@ -1005,6 +1023,72 @@ def race_schedule_details(cur: sqlite3.Cursor, start: int, end: int) -> list[dic
     return champions_race_details(cur, start, end) or heroes_race_details(cur, start, end)
 
 
+def milestone_row(label: str, start: int, end: int) -> dict:
+    return {
+        "label": label,
+        "start": ts_to_str(start),
+        "end": ts_to_str(end),
+        "startTimestamp": start,
+        "endTimestamp": end,
+    }
+
+
+def champions_milestones(cur: sqlite3.Cursor, start: int, end: int) -> list[dict]:
+    schedule = cur.execute(
+        """
+        SELECT id
+        FROM champions_schedule
+        WHERE start_date < ? AND end_date >= ?
+        ORDER BY (MIN(end_date, ?) - MAX(start_date, ?)) DESC, start_date DESC
+        LIMIT 1
+        """,
+        (end, start, end, start),
+    ).fetchone()
+    if not schedule:
+        return []
+    rows = cur.execute(
+        """
+        SELECT round, round_detail, start_date, end_date
+        FROM champions_round_schedule
+        WHERE champions_id = ?
+        ORDER BY start_date, id
+        """,
+        (schedule[0],),
+    ).fetchall()
+    return [
+        milestone_row(
+            CHAMPIONS_MILESTONE_LABELS.get((round_id, detail), f"阶段{round_id}"),
+            start_ts,
+            end_ts,
+        )
+        for round_id, detail, start_ts, end_ts in rows
+    ]
+
+
+def heroes_milestones(cur: sqlite3.Cursor, start: int, end: int) -> list[dict]:
+    rows = cur.execute(
+        """
+        SELECT hss.stage, hss.stage_step, hss.race_num, hss.start_date, hss.end_date
+        FROM heroes_data hd
+        JOIN heroes_stage_schedule hss ON hss.heroes_id = hd.heroes_id
+        WHERE hd.start_date < ? AND hd.end_date >= ?
+        ORDER BY hss.start_date, hss.id
+        """,
+        (end, start),
+    ).fetchall()
+    milestones = []
+    for stage, step, race_num, start_ts, end_ts in rows:
+        label = HEROES_MILESTONE_LABELS.get((stage, step), f"阶段{stage}-{step}")
+        if race_num:
+            label = f"{label} {race_num}战"
+        milestones.append(milestone_row(label, start_ts, end_ts))
+    return milestones
+
+
+def race_schedule_milestones(cur: sqlite3.Cursor, start: int, end: int) -> list[dict]:
+    return champions_milestones(cur, start, end) or heroes_milestones(cur, start, end)
+
+
 def generate_heroes_races() -> list[dict]:
     conn = sqlite3.connect(MASTER_DB)
     cur = conn.cursor()
@@ -1031,6 +1115,7 @@ def generate_heroes_races() -> list[dict]:
                 "image": heroes_race_image(),
                 "drops": [],
                 "details": heroes_race_details(cur, start, end),
+                "milestones": heroes_milestones(cur, start, end),
             }
         )
     conn.close()
@@ -1388,8 +1473,7 @@ def report_events_to_schedule(event_sections: list[dict], include_races: bool = 
             if include_races:
                 image = champions_race_image()
             details = race_schedule_details(cur, start, end) if include_races else []
-            events.append(
-                {
+            event = {
                     "id": event_id,
                     "name": item["name"],
                     "type": section["title"],
@@ -1401,7 +1485,9 @@ def report_events_to_schedule(event_sections: list[dict], include_races: bool = 
                     "drops": drops,
                     "details": details,
                 }
-            )
+            if include_races:
+                event["milestones"] = race_schedule_milestones(cur, start, end)
+            events.append(event)
             event_id += 1
     conn.close()
     return sorted(events, key=lambda item: (item["startTimestamp"], item["endTimestamp"], item["type"], item["name"]))
