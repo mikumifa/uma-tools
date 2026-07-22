@@ -1362,8 +1362,20 @@ function ScheduleDetail({
   }));
   const sourceDrops = item.drops?.length ? item.drops : detailRewardDrops;
   const sourceGroups = rewardSourceGroups(sourceDrops);
-  const showMergedGroup = sourceGroups.some((group) => group.source !== "合计");
-  const rewardGroups = sourceDrops.length
+  const uniqueSourceNames = new Set(sourceGroups.map((group) => group.source));
+  const uniqueRewardKeys = new Set(
+    sourceDrops.map(
+      (drop) => `${drop.rewardType || 0}-${drop.rewardValue || 0}-${drop.image || drop.name || drop.label || ""}`,
+    ),
+  );
+  const showMergedGroup =
+    uniqueSourceNames.size > 1 &&
+    uniqueRewardKeys.size > 1 &&
+    sourceGroups.some((group) => group.source !== "合计");
+  const shouldShowRewardGroups = !(
+    item.exchangeDetailPath || item.exchangeDetails?.length
+  );
+  const rewardGroups = shouldShowRewardGroups && sourceDrops.length
     ? [
         ...(showMergedGroup
           ? [{ source: "合计", drops: mergedRewardDrops(sourceDrops) }]
@@ -1411,7 +1423,10 @@ function ScheduleDetail({
             <h3>奖励组成</h3>
             <div class="intelScheduleRewardGroups">
               {rewardGroups.map((group) => (
-                <div class="intelScheduleRewardGroup" key={group.source}>
+                <div
+                  class={`intelScheduleRewardGroup ${group.source === "合计" ? "merged" : ""}`}
+                  key={group.source}
+                >
                   <strong>{group.source}</strong>
                   <div>
                     {group.drops.map((drop, index) => (
@@ -1958,7 +1973,7 @@ function RaceSchedule({ races, now }: { races: ScheduleItem[]; now: number }) {
 export function IntelDashboard() {
   const now = currentTimestamp();
   const [activeTab, setActiveTab] = useState<IntelTab>("gacha");
-  const [gachaView, setGachaView] = useState<ViewMode>("calendar");
+  const [gachaView, setGachaView] = useState<ViewMode>("list");
   const [eventView, setEventView] = useState<ViewMode>("list");
   const [exchangeView, setExchangeView] = useState<ViewMode>("list");
   const [gachaKindFilter, setGachaKindFilter] =
@@ -1967,7 +1982,6 @@ export function IntelDashboard() {
   const [eventTypeFilter, setEventTypeFilter] = useState("all");
   const [eventQuery, setEventQuery] = useState("");
   const [exchangeQuery, setExchangeQuery] = useState("");
-  const [exporting, setExporting] = useState(false);
   const pools = useMemo(
     () =>
       data.gachaPools
@@ -2146,25 +2160,6 @@ export function IntelDashboard() {
     setSelectedKey(nextKey);
     setDetailKey(nextKey);
   };
-  const exportImage = async () => {
-    if (exporting) return;
-    setExporting(true);
-    try {
-      await exportIntelImage({
-        pools: filteredPools,
-        events: filteredEvents,
-        races,
-        now,
-        generatedAt: data.generatedAt,
-      });
-    } catch (error) {
-      console.error(error);
-      window.alert("导出图片失败，请稍后再试");
-    } finally {
-      setExporting(false);
-    }
-  };
-
   return (
     <main class="intelPage">
       <div class="intelTopBar">
@@ -2204,14 +2199,6 @@ export function IntelDashboard() {
             兑换
           </button>
         </nav>
-        <button
-          type="button"
-          class="intelExportButton"
-          onClick={exportImage}
-          disabled={exporting}
-        >
-          {exporting ? "导出中" : "导出图片"}
-        </button>
       </div>
 
       {activeTab === "gacha" && (

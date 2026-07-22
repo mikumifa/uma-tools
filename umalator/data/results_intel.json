@@ -10298,7 +10298,7 @@
       "end": "2026-05-29 11:59:59",
       "startTimestamp": 1779163200,
       "endTimestamp": 1780027199,
-      "image": "intel/race/champions_logo.png",
+      "image": "intel/race/heroes_logo.png",
       "drops": [],
       "details": [
         {
@@ -10329,7 +10329,7 @@
       "end": "2026-06-19 11:59:59",
       "startTimestamp": 1781064000,
       "endTimestamp": 1781841599,
-      "image": "intel/race/champions_logo.png",
+      "image": "intel/race/heroes_logo.png",
       "drops": [],
       "details": [
         {
@@ -10360,7 +10360,7 @@
       "end": "2026-07-09 11:59:59",
       "startTimestamp": 1782619200,
       "endTimestamp": 1783569599,
-      "image": "intel/race/heroes_logo.png",
+      "image": "intel/race/champions_logo.png",
       "drops": [],
       "details": [
         {
@@ -10456,7 +10456,7 @@
       "end": "2026-07-26 11:59:59",
       "startTimestamp": 1784174400,
       "endTimestamp": 1785038399,
-      "image": "intel/race/champions_logo.png",
+      "image": "intel/race/heroes_logo.png",
       "drops": [],
       "details": [
         {
@@ -10487,7 +10487,7 @@
       "end": "2026-08-14 11:59:59",
       "startTimestamp": 1785643200,
       "endTimestamp": 1786679999,
-      "image": "intel/race/heroes_logo.png",
+      "image": "intel/race/champions_logo.png",
       "drops": [],
       "details": [
         {
@@ -10583,7 +10583,7 @@
       "end": "2026-08-30 11:59:59",
       "startTimestamp": 1787198400,
       "endTimestamp": 1788062399,
-      "image": "intel/race/champions_logo.png",
+      "image": "intel/race/heroes_logo.png",
       "drops": [],
       "details": [
         {
@@ -11546,5 +11546,5 @@
       "isVoucherExchange": false
     }
   ],
-  "generatedAt": "2026-07-22 06:11:56"
+  "generatedAt": "2026-07-22 12:31:59"
 }

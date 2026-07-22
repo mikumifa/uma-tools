@@ -1232,8 +1232,9 @@ a:hover {
   right: 7px;
   z-index: 1;
   padding: 2px 6px;
+  border: 1px solid rgba(15, 118, 110, 0.28);
   border-radius: 999px;
-  background: rgba(15, 118, 110, 0.12);
+  background: #ecfdf5;
   color: #0f766e;
   font-size: 12px;
   font-weight: 700;
@@ -1246,8 +1247,9 @@ a:hover {
   right: 7px;
   z-index: 1;
   padding: 2px 6px;
+  border: 1px solid rgba(217, 119, 6, 0.28);
   border-radius: 999px;
-  background: rgba(217, 119, 6, 0.12);
+  background: #fff7ed;
   color: #b45309;
   font-size: 12px;
   font-weight: 700;
@@ -1555,6 +1557,21 @@ a:hover {
   border: 1px solid var(--uma-border);
   border-radius: var(--uma-radius-sm);
   background: var(--uma-surface-soft);
+}
+
+.intelScheduleRewardGroup.merged {
+  border-left: 4px solid #0f766e;
+  background: #ecfdf5;
+}
+
+.intelScheduleRewardGroup.merged + .intelScheduleRewardGroup {
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top-color: #cbd5e1;
+}
+
+.intelScheduleRewardGroup.merged > strong {
+  color: #0f766e;
 }
 
 .intelScheduleRewardGroup > strong {
@@ -2665,6 +2682,16 @@ a:hover {
     grid-column: 2;
   }
 
+  .intelGachaListMeta {
+    padding-right: 78px;
+  }
+
+  .intelPoolStatus,
+  .intelPoolOnce {
+    right: 6px;
+    font-size: 11px;
+  }
+
   .intelUpMini,
   .intelUpMini img,
   .intelUpMini .intelCardFallback {
@@ -2822,6 +2849,20 @@ a:hover {
 
   .intelGachaListItem time {
     font-size: 13px;
+  }
+
+  .intelGachaListMeta {
+    padding-right: 70px;
+  }
+
+  .intelPoolStatus,
+  .intelPoolOnce {
+    padding: 1px 5px;
+    font-size: 10px;
+  }
+
+  .intelPoolOnce {
+    top: 24px;
   }
 
   .intelUpPreview {
