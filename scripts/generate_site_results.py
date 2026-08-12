@@ -60,6 +60,8 @@ CHAMPIONS_RACE_IMAGE = "intel/race/heroes_logo.png"
 HEROES_RACE_IMAGE = "intel/race/champions_logo.png"
 TRAINING_CHALLENGE_IMAGE = "intel/special/training_challenge_logo.png"
 CHALLENGE_MATCH_IMAGE = "intel/special/challenge_match_logo.png"
+TEAM_BUILDING_EVENT_NAME = "目标！最强团队"
+TEAM_BUILDING_IMAGE = "intel/special/team_building_logo.png"
 ACTIVITY_EXCHANGE_PAY_ITEMS = {45, 58, 156, 159}
 VOUCHER_EXCHANGE_PAY_CATEGORIES = {41, 42, 179}
 
@@ -126,6 +128,10 @@ def training_challenge_image() -> str | None:
 
 def challenge_match_image() -> str | None:
     return optional_public_image(CHALLENGE_MATCH_IMAGE)
+
+
+def team_building_image() -> str | None:
+    return optional_public_image(TEAM_BUILDING_IMAGE)
 
 
 def ts_to_str(ts: int) -> str:
@@ -733,7 +739,7 @@ def training_challenge_reward_drops(cur: sqlite3.Cursor, exam_ids: list[int], sh
                 if drop:
                     drops.append(drop)
     drops.extend(exchange_reward_drops(cur, shop_id, "兑换"))
-    return sort_reward_drops(drops, keep_source=True)
+    return sort_reward_drops(drops)
 
 
 def challenge_match_reward_drops(cur: sqlite3.Cursor, match_id: int, shop_id: int) -> list[dict]:
@@ -765,6 +771,80 @@ def challenge_match_reward_drops(cur: sqlite3.Cursor, match_id: int, shop_id: in
                 drops.append(drop)
     drops.extend(exchange_reward_drops(cur, shop_id, "兑换"))
     return sort_reward_drops(drops)
+
+
+def team_building_reward_drops(cur: sqlite3.Cursor, event_id: int) -> list[dict]:
+    rows = cur.execute(
+        """
+        SELECT item_category, item_id, item_num
+        FROM team_building_rank_reward_group
+        ORDER BY reward_group_id, id
+        """,
+    ).fetchall()
+    drops = []
+    for category, item_id, amount in rows:
+        drop = reward_drop(cur, category, item_id, amount, "评级")
+        if drop:
+            drops.append(drop)
+
+    mission_group = int(event_id) - 1000
+    mission_id_start = 2_400_000 + mission_group * 1000
+    rows = cur.execute(
+        """
+        SELECT item_category, item_id, item_num
+        FROM mission_data
+        WHERE id >= ? AND id < ?
+        ORDER BY mission_type, start_date, id
+        """,
+        (mission_id_start, mission_id_start + 1000),
+    ).fetchall()
+    for category, item_id, amount in rows:
+        drop = reward_drop(cur, category, item_id, amount, "任务")
+        if drop:
+            drops.append(drop)
+    return sort_reward_drops(drops, keep_source=True)
+
+
+def team_building_details(row: tuple) -> list[dict]:
+    (
+        _event_id,
+        _notice,
+        start,
+        middle,
+        ending,
+        end,
+        stamina_default,
+        stamina_max,
+        stamina_add,
+        stamina_add_time,
+        special_race_count,
+        required_race_count,
+    ) = row
+    details = [
+        {
+            "label": "招揽赛",
+            "raceName": f"{ts_to_str(start)[5:16]} - {ts_to_str(ending)[5:16]}",
+        },
+        {
+            "label": "入场券",
+            "raceName": f"每日 {stamina_add_time[:5]} +{stamina_add} / 初始 {stamina_default} / 上限 {stamina_max}",
+        },
+    ]
+    if start < middle <= ending and special_race_count and required_race_count:
+        details.append(
+            {
+                "label": "特别赛",
+                "raceName": f"{ts_to_str(middle)[5:16]} 起 / 每日 {required_race_count} 场后 {special_race_count} 次",
+            }
+        )
+    if ending < end:
+        details.append(
+            {
+                "label": "奖励领取",
+                "raceName": f"{ts_to_str(ending + 1)[5:16]} - {ts_to_str(end)[5:16]}",
+            }
+        )
+    return details
 
 
 def mission_reward_drops(cur: sqlite3.Cursor, campaign_id: int) -> list[dict]:
@@ -1684,6 +1764,42 @@ def generate_challenge_match_events() -> list[dict]:
     return events
 
 
+def generate_team_building_events() -> list[dict]:
+    conn = sqlite3.connect(MASTER_DB)
+    cur = conn.cursor()
+    rows = cur.execute(
+        """
+        SELECT team_building_event_id, notice_date, start_date, middle_date, ending_date, end_date,
+               stamina_default, stamina_max, stamina_add, stamina_add_time,
+               special_race_count, required_race_count
+        FROM team_building_data
+        WHERE end_date >= ? AND end_date < ?
+        ORDER BY start_date, team_building_event_id
+        """,
+        (SINCE_TS, PLACEHOLDER_END_TS),
+    ).fetchall()
+    events = []
+    for row in rows:
+        event_id, _notice, start, _middle, _ending, end, *_rest = row
+        name = text_value(cur, 265, int(event_id)) or TEAM_BUILDING_EVENT_NAME
+        events.append(
+            {
+                "id": 800000 + int(event_id),
+                "name": name,
+                "type": TEAM_BUILDING_EVENT_NAME,
+                "start": ts_to_str(start),
+                "end": ts_to_str(end),
+                "startTimestamp": start,
+                "endTimestamp": end,
+                "image": team_building_image(),
+                "details": team_building_details(row),
+                "drops": team_building_reward_drops(cur, int(event_id)),
+            }
+        )
+    conn.close()
+    return events
+
+
 def generate_exchange_data() -> list[dict]:
     if EXCHANGE_DETAIL_DIR.exists():
         shutil.rmtree(EXCHANGE_DETAIL_DIR)
@@ -1750,6 +1866,7 @@ def generate_extra_activity_events() -> list[dict]:
         *generate_factor_research_events(),
         *generate_training_challenge_events(),
         *generate_challenge_match_events(),
+        *generate_team_building_events(),
     ]
 
 
