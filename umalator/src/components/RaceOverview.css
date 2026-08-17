@@ -22,6 +22,62 @@
   flex-direction: column;
 }
 
+.raceOverviewRunSelect {
+  display: none;
+  min-width: 92px;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.raceOverviewRunButtons {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.raceOverviewRunButtons > div {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  background: #eff6ff;
+}
+
+.raceOverviewHeader .raceOverviewRunButtons button {
+  min-width: 58px;
+  min-height: 30px;
+  padding: 3px 10px;
+  border: 0;
+  border-right: 1px solid #bfdbfe;
+  border-radius: 0;
+  color: #1d4ed8;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.raceOverviewHeader .raceOverviewRunButtons button:last-child {
+  border-right: 0;
+}
+
+.raceOverviewHeader .raceOverviewRunButtons button.active {
+  color: #fff;
+  background: #2563eb;
+}
+
+.raceOverviewRunSelect select {
+  min-height: 30px;
+  padding: 3px 28px 3px 9px;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  color: #1d4ed8;
+  background-color: #eff6ff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .raceOverviewHeader span {
   color: var(--uma-muted);
   font-size: 10px;
@@ -277,6 +333,14 @@
 }
 
 @media (max-width: 900px) {
+  .raceOverviewRunButtons {
+    display: none;
+  }
+
+  .raceOverviewRunSelect {
+    display: flex;
+  }
+
   .raceTrajectoryChart > svg {
     min-height: 220px;
   }

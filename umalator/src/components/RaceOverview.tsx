@@ -299,6 +299,45 @@ export function RaceOverview(props) {
               {props.selectedSkillName || "运行后从技能表格中选择"}
             </strong>
           </div>
+          {props.onRunTypeChange && (
+            <>
+              <div className="raceOverviewRunButtons">
+                <span>身位情况</span>
+                <div>
+                  {[
+                    ["minrun", "最小"],
+                    ["maxrun", "最大"],
+                    ["meanrun", "平均"],
+                    ["medianrun", "中位"],
+                  ].map(([value, label]) => (
+                    <button
+                      type="button"
+                      className={props.runType === value ? "active" : ""}
+                      disabled={!props.selectedSkillName}
+                      onClick={() => props.onRunTypeChange(value)}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <label className="raceOverviewRunSelect">
+                <span>身位情况</span>
+                <select
+                  value={props.runType || "meanrun"}
+                  disabled={!props.selectedSkillName}
+                  onChange={(event) =>
+                    props.onRunTypeChange(event.currentTarget.value)
+                  }
+                >
+                  <option value="minrun">最小</option>
+                  <option value="maxrun">最大</option>
+                  <option value="meanrun">平均</option>
+                  <option value="medianrun">中位</option>
+                </select>
+              </label>
+            </>
+          )}
           <button
             type="button"
             disabled={!props.selectedSkillName}

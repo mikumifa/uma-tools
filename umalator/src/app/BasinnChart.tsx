@@ -98,15 +98,30 @@ export function BasinnChart(props) {
   const activeId = props.selectedId || selected;
   // Keep the compact two-column mode for mobile; the widened desktop sidebar can fit all metrics.
   const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" ? window.innerWidth <= 900 : false
+    typeof window !== "undefined"
+      ? window.innerWidth <= 900 ||
+          (window.matchMedia("(pointer: coarse)").matches &&
+            window.innerHeight <= 900)
+      : false
   );
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const onResize = () => setIsMobile(window.innerWidth <= 900);
+    const onResize = () =>
+      setIsMobile(
+        window.innerWidth <= 900 ||
+          (window.matchMedia("(pointer: coarse)").matches &&
+            window.innerHeight <= 900),
+      );
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
+
+  useEffect(() => {
+    if (props.selectedRunType && props.selectedRunType !== selectedType) {
+      setSelectedType(props.selectedRunType);
+    }
+  }, [props.selectedRunType]);
 
   // 手动管理排序状态： { key: string, direction: 'asc' | 'desc' }
   const [sortConfig, setSortConfig] = useState({

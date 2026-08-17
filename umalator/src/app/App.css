@@ -2245,17 +2245,28 @@ a:hover {
   inset: 0;
   z-index: 1200;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 8px;
+  overflow: hidden;
   background: rgba(15, 23, 42, 0.72);
 }
 
 .racetrackRotated {
-  max-width: 90vh;
-  max-height: 90vw;
-  transform: rotate(90deg);
-  transform-origin: center;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  transform: none;
+}
+
+.trackFullscreen .raceOverview {
+  width: 100% !important;
+  min-width: 0;
+  max-width: 100%;
+  padding: 4px;
 }
 
 .trackFullscreenClose {
@@ -2599,21 +2610,32 @@ a:hover {
   position: sticky;
   bottom: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: stretch;
+  gap: 10px;
   padding: 12px;
   border-top: 1px solid var(--uma-border);
   background: var(--uma-surface);
 }
 
 .chartSkillModalActions button {
-  min-width: 104px;
+  flex: 1 1 0;
+  min-width: 0;
   min-height: 42px;
   border: 0;
   border-radius: 10px;
   color: #fff;
-  background: #db2777;
   font-weight: 700;
   cursor: pointer;
+}
+
+.chartSkillModalActions .learnSkill {
+  border: 1px solid #f9a8d4;
+  color: #be185d;
+  background: #fdf2f8;
+}
+
+.chartSkillModalActions .viewSkillResult {
+  background: #db2777;
 }
 
 .chartDetails {

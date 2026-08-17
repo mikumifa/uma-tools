@@ -768,7 +768,11 @@ function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const isMobile = viewportWidth <= 900;
+  const isMobile =
+    viewportWidth <= 900 ||
+    (typeof window !== "undefined" &&
+      window.matchMedia("(pointer: coarse)").matches &&
+      viewportHeight <= 900);
   const showTrack = !isMobile;
   const isLandscapeView = isMobile && forceShowTrack;
 
@@ -947,8 +951,25 @@ function App() {
 
   const course = useMemo(() => CourseHelpers.getCourse(courseId), [courseId]);
 
-  const viewTrackImage = () => {
+  const viewTrackImage = async () => {
     setForceShowTrack(true);
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen?.();
+      }
+      await (window.screen.orientation as any)?.lock?.("landscape");
+    } catch (_) {
+      // Some mobile browsers do not expose orientation locking. Keep the
+      // scrollable overlay open as a usable fallback.
+    }
+  };
+
+  const closeTrackImage = async () => {
+    setForceShowTrack(false);
+    try {
+      (window.screen.orientation as any)?.unlock?.();
+      if (document.fullscreenElement) await document.exitFullscreen?.();
+    } catch (_) {}
   };
 
   useEffect(() => {
@@ -956,6 +977,19 @@ function App() {
       setForceShowTrack(false);
     }
   }, [isMobile, forceShowTrack]);
+
+  useEffect(() => {
+    if (typeof document === "undefined" || !forceShowTrack) return;
+    const handleFullscreenChange = () => {
+      if (!document.fullscreenElement) {
+        (window.screen.orientation as any)?.unlock?.();
+        setForceShowTrack(false);
+      }
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () =>
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, [forceShowTrack]);
 
   useEffect(() => {
     if (typeof document === "undefined") return;
@@ -1585,6 +1619,7 @@ function App() {
                 data={filteredChartData}
                 hidden={uma1.skills}
                 selectedId={selectedChartSkill}
+                selectedRunType={displaying.replace(/run$/, "") || "mean"}
                 onSelectionChange={selectSkillDetails}
                 onRunTypeChange={setChartData}
                 onDblClickRow={addSkillFromTable}
@@ -1633,6 +1668,10 @@ function App() {
                       selectedSampleRanges={selectedSampleRanges}
                       possibleActivationRanges={possibleActivationRanges}
                       selectedSkillName={selectedChartSkillName}
+                      runType={displaying || "meanrun"}
+                      onRunTypeChange={
+                        mode === Mode.Chart ? setChartData : undefined
+                      }
                       onShowSelectedSkillDetails={() =>
                         selectedChartSkill && openSkillDetails(selectedChartSkill)
                       }
@@ -1647,7 +1686,7 @@ function App() {
                     className="mobileTrackButton"
                     onClick={viewTrackImage}
                   >
-                    横屏查看赛道
+                    查看赛道泳道图
                   </button>
                 </div>
               )}
@@ -1980,12 +2019,23 @@ function App() {
                     <div className="chartSkillModalActions">
                       <button
                         type="button"
+                        className="learnSkill"
+                        onClick={() => {
+                          addSkillFromTable(skillDetailId);
+                          closeSkillDetails();
+                        }}
+                      >
+                        学习该技能
+                      </button>
+                      <button
+                        type="button"
+                        className="viewSkillResult"
                         onClick={() => {
                           selectSkillDetails(skillDetailId);
                           closeSkillDetails();
                         }}
                       >
-                        选择
+                        查看身位差详情
                       </button>
                     </div>
                   )}
@@ -1997,7 +2047,7 @@ function App() {
                 <button
                   type="button"
                   className="trackFullscreenClose"
-                  onClick={() => setForceShowTrack(false)}
+                  onClick={closeTrackImage}
                 >
                   ×
                 </button>
