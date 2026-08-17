@@ -37,6 +37,7 @@ import { TRACKNAMES_cn } from "@shared/trackNames";
 
 import { getActivateableSkills, getNullRow, BasinnChart } from "./BasinnChart";
 import { IntelDashboard } from "./IntelDashboard";
+import { SuccessionPlanner } from "./SuccessionPlanner";
 
 import { initTelemetry, postEvent } from "./telemetry";
 
@@ -612,13 +613,15 @@ const enum Mode {
   Chart,
 }
 
-type AppPage = "simulator" | "intel";
+type AppPage = "simulator" | "succession" | "intel";
 
 function appBasePath() {
   const basePath = new URL(import.meta.env.BASE_URL, window.location.href)
     .pathname;
-  return window.location.pathname.replace(/\/+$/, "").endsWith("/intel")
-    ? `${basePath.replace(/intel\/?$/, "")}`
+  const currentPath = window.location.pathname.replace(/\/+$/, "");
+  const pageSuffix = currentPath.match(/\/(intel|succession)$/)?.[1];
+  return pageSuffix
+    ? `${basePath.replace(new RegExp(`${pageSuffix}\\/?$`), "")}`
     : basePath;
 }
 
@@ -627,14 +630,18 @@ function pathForPage(page: AppPage) {
   if (page === "intel") {
     return `${basePath.replace(/\/$/, "")}/intel/`;
   }
+  if (page === "succession") {
+    return `${basePath.replace(/\/$/, "")}/succession/`;
+  }
   return basePath;
 }
 
 function initialAppPage(): AppPage {
   if (typeof window === "undefined") return "simulator";
-  return window.location.pathname.replace(/\/+$/, "").endsWith("/intel")
-    ? "intel"
-    : "simulator";
+  const currentPath = window.location.pathname.replace(/\/+$/, "");
+  if (currentPath.endsWith("/intel")) return "intel";
+  if (currentPath.endsWith("/succession")) return "succession";
+  return "simulator";
 }
 
 function AppNav({
@@ -647,7 +654,7 @@ function AppNav({
   return (
     <header class="appNav">
       <div>
-        <strong>《闪耀优俊少女》合集</strong>
+        <strong>《闪耀优俊少女》工具集</strong>
         <span>made by mikumifa</span>
       </div>
       <nav aria-label="功能切换">
@@ -657,6 +664,14 @@ function AppNav({
           onClick={() => setActivePage("simulator")}
         >
           身位图计算
+        </button>
+        <button
+          type="button"
+          class={activePage === "succession" ? "selected" : ""}
+          title="Inheritance Planner"
+          onClick={() => setActivePage("succession")}
+        >
+          种马设计
         </button>
         <button
           type="button"
@@ -1493,6 +1508,11 @@ function App() {
         {activePage === "intel" ? (
           <Fragment>
             <IntelDashboard />
+            <IntroText />
+          </Fragment>
+        ) : activePage === "succession" ? (
+          <Fragment>
+            <SuccessionPlanner />
             <IntroText />
           </Fragment>
         ) : (

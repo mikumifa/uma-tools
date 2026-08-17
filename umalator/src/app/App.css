@@ -25,9 +25,10 @@
   --uma-control-h: 32px;
   --uma-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
   --uma-focus: 0 0 0 2px rgba(37, 99, 235, 0.18);
-  --uma-font: "Inter", "Microsoft YaHei", "PingFang SC", "Noto Sans SC",
-    Arial, sans-serif;
-  --uma-mono: "Consolas", "SFMono-Regular", "Roboto Mono", monospace;
+  --uma-font: "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei",
+    sans-serif;
+  --uma-mono: "Consolas", "Microsoft YaHei UI", "Microsoft YaHei",
+    monospace;
 }
 
 * {

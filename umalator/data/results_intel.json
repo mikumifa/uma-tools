@@ -7522,121 +7522,61 @@
         {
           "image": "intel/piece/piece_icon_107101.png",
           "name": "[墨绿柔线]目白雅丹碎片",
-          "source": "掉落",
-          "label": "[墨绿柔线]目白雅丹碎片 x1 · 掉落",
+          "source": "合计",
+          "label": "[墨绿柔线]目白雅丹碎片 x11 · 合计",
           "rewardType": 102,
           "rewardValue": 107101,
-          "amount": 1,
-          "isPiece": true
-        },
-        {
-          "image": "intel/piece/piece_icon_107101.png",
-          "name": "[墨绿柔线]目白雅丹碎片",
-          "source": "兑换",
-          "label": "[墨绿柔线]目白雅丹碎片 x10 · 兑换",
-          "rewardType": 102,
-          "rewardValue": 107101,
-          "amount": 10,
+          "amount": 11,
           "isPiece": true
         },
         {
           "image": "intel/piece/piece_icon_106501.png",
           "name": "[Fun☆Fun☆嗨翻天]大拓太阳神碎片",
-          "source": "掉落",
-          "label": "[Fun☆Fun☆嗨翻天]大拓太阳神碎片 x1 · 掉落",
+          "source": "合计",
+          "label": "[Fun☆Fun☆嗨翻天]大拓太阳神碎片 x11 · 合计",
           "rewardType": 102,
           "rewardValue": 106501,
-          "amount": 1,
-          "isPiece": true
-        },
-        {
-          "image": "intel/piece/piece_icon_106501.png",
-          "name": "[Fun☆Fun☆嗨翻天]大拓太阳神碎片",
-          "source": "兑换",
-          "label": "[Fun☆Fun☆嗨翻天]大拓太阳神碎片 x10 · 兑换",
-          "rewardType": 102,
-          "rewardValue": 106501,
-          "amount": 10,
+          "amount": 11,
           "isPiece": true
         },
         {
           "image": "intel/piece/piece_icon_106201.png",
           "name": "[跌跌撞撞向前冲]待兼唐怀瑟碎片",
-          "source": "掉落",
-          "label": "[跌跌撞撞向前冲]待兼唐怀瑟碎片 x1 · 掉落",
+          "source": "合计",
+          "label": "[跌跌撞撞向前冲]待兼唐怀瑟碎片 x11 · 合计",
           "rewardType": 102,
           "rewardValue": 106201,
-          "amount": 1,
-          "isPiece": true
-        },
-        {
-          "image": "intel/piece/piece_icon_106201.png",
-          "name": "[跌跌撞撞向前冲]待兼唐怀瑟碎片",
-          "source": "兑换",
-          "label": "[跌跌撞撞向前冲]待兼唐怀瑟碎片 x10 · 兑换",
-          "rewardType": 102,
-          "rewardValue": 106201,
-          "amount": 10,
+          "amount": 11,
           "isPiece": true
         },
         {
           "image": "intel/piece/piece_icon_106002.png",
           "name": "[RUN＆WIN]优秀素质碎片",
-          "source": "掉落",
-          "label": "[RUN＆WIN]优秀素质碎片 x1 · 掉落",
+          "source": "合计",
+          "label": "[RUN＆WIN]优秀素质碎片 x11 · 合计",
           "rewardType": 102,
           "rewardValue": 106002,
-          "amount": 1,
-          "isPiece": true
-        },
-        {
-          "image": "intel/piece/piece_icon_106002.png",
-          "name": "[RUN＆WIN]优秀素质碎片",
-          "source": "兑换",
-          "label": "[RUN＆WIN]优秀素质碎片 x10 · 兑换",
-          "rewardType": 102,
-          "rewardValue": 106002,
-          "amount": 10,
+          "amount": 11,
           "isPiece": true
         },
         {
           "image": "intel/piece/piece_icon_106001.png",
           "name": "[绯青缎带]优秀素质碎片",
-          "source": "掉落",
-          "label": "[绯青缎带]优秀素质碎片 x1 · 掉落",
+          "source": "合计",
+          "label": "[绯青缎带]优秀素质碎片 x11 · 合计",
           "rewardType": 102,
           "rewardValue": 106001,
-          "amount": 1,
-          "isPiece": true
-        },
-        {
-          "image": "intel/piece/piece_icon_106001.png",
-          "name": "[绯青缎带]优秀素质碎片",
-          "source": "兑换",
-          "label": "[绯青缎带]优秀素质碎片 x10 · 兑换",
-          "rewardType": 102,
-          "rewardValue": 106001,
-          "amount": 10,
+          "amount": 11,
           "isPiece": true
         },
         {
           "image": "intel/piece/piece_icon_100601.png",
           "name": "[星光跃动]小栗帽碎片",
-          "source": "掉落",
-          "label": "[星光跃动]小栗帽碎片 x1 · 掉落",
+          "source": "合计",
+          "label": "[星光跃动]小栗帽碎片 x11 · 合计",
           "rewardType": 102,
           "rewardValue": 100601,
-          "amount": 1,
-          "isPiece": true
-        },
-        {
-          "image": "intel/piece/piece_icon_100601.png",
-          "name": "[星光跃动]小栗帽碎片",
-          "source": "兑换",
-          "label": "[星光跃动]小栗帽碎片 x10 · 兑换",
-          "rewardType": 102,
-          "rewardValue": 100601,
-          "amount": 10,
+          "amount": 11,
           "isPiece": true
         },
         {
@@ -7742,51 +7682,21 @@
         {
           "image": "intel/item/item_icon_00007.png",
           "name": "中距离跑鞋",
-          "source": "掉落",
-          "label": "中距离跑鞋 x4 · 掉落",
+          "source": "合计",
+          "label": "中距离跑鞋 x5 · 合计",
           "rewardType": 11,
           "rewardValue": 7,
-          "amount": 4,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00007.png",
-          "name": "中距离跑鞋",
-          "source": "兑换",
-          "label": "中距离跑鞋 x1 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 7,
-          "amount": 1,
+          "amount": 5,
           "isPiece": false
         },
         {
           "image": "intel/item/item_icon_00110.png",
           "name": "协助积分",
-          "source": "首通",
-          "label": "协助积分 x30000 · 首通",
+          "source": "合计",
+          "label": "协助积分 x30506 · 合计",
           "rewardType": 30,
           "rewardValue": 110,
-          "amount": 30000,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00110.png",
-          "name": "协助积分",
-          "source": "掉落",
-          "label": "协助积分 x6 · 掉落",
-          "rewardType": 30,
-          "rewardValue": 110,
-          "amount": 6,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00110.png",
-          "name": "协助积分",
-          "source": "兑换",
-          "label": "协助积分 x500 · 兑换",
-          "rewardType": 30,
-          "rewardValue": 110,
-          "amount": 500,
+          "amount": 30506,
           "isPiece": false
         },
         {
@@ -7802,31 +7712,11 @@
         {
           "image": "intel/item/item_icon_00059.png",
           "name": "金币",
-          "source": "首通",
-          "label": "金币 x60000 · 首通",
+          "source": "合计",
+          "label": "金币 x61006 · 合计",
           "rewardType": 91,
           "rewardValue": 59,
-          "amount": 60000,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00059.png",
-          "name": "金币",
-          "source": "掉落",
-          "label": "金币 x6 · 掉落",
-          "rewardType": 91,
-          "rewardValue": 59,
-          "amount": 6,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00059.png",
-          "name": "金币",
-          "source": "兑换",
-          "label": "金币 x1000 · 兑换",
-          "rewardType": 91,
-          "rewardValue": 59,
-          "amount": 1000,
+          "amount": 61006,
           "isPiece": false
         }
       ],
@@ -11237,41 +11127,6 @@
   ],
   "exchanges": [
     {
-      "id": 2762336483,
-      "name": "社团积分兑换 · 追加",
-      "type": "物品兑换",
-      "start": "2026-08-01 12:00:00",
-      "end": "2026-09-01 11:59:59",
-      "startTimestamp": 1785556800,
-      "endTimestamp": 1788235199,
-      "image": "intel/item/item_icon_00134.png",
-      "drops": [
-        {
-          "image": "intel/piece/piece_icon_106201.png",
-          "name": "[跌跌撞撞向前冲]待兼唐怀瑟碎片",
-          "source": "兑换",
-          "label": "[跌跌撞撞向前冲]待兼唐怀瑟碎片 x50 · 兑换",
-          "rewardType": 102,
-          "rewardValue": 106201,
-          "amount": 50,
-          "isPiece": true
-        },
-        {
-          "image": "intel/piece/piece_icon_106001.png",
-          "name": "[绯青缎带]优秀素质碎片",
-          "source": "兑换",
-          "label": "[绯青缎带]优秀素质碎片 x50 · 兑换",
-          "rewardType": 102,
-          "rewardValue": 106001,
-          "amount": 50,
-          "isPiece": true
-        }
-      ],
-      "exchangeDetailPath": "intel/exchanges/exchange_8000_1785556800_1788235199.json",
-      "exchangeDetailCount": 2,
-      "isVoucherExchange": false
-    },
-    {
       "id": 5740361376,
       "name": "2.5周年庆典 纪念 · 好友积分",
       "type": "物品兑换",
@@ -12174,5 +12029,5 @@
       "isVoucherExchange": false
     }
   ],
-  "generatedAt": "2026-08-12 16:20:52"
+  "generatedAt": "2026-08-17 04:46:45"
 }

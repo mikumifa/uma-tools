@@ -591,7 +591,7 @@ function fillRounded(
 }
 
 function exportFont(size: number, weight = 500) {
-  return `${weight} ${size}px "Microsoft YaHei", "PingFang SC", Arial, sans-serif`;
+  return `${weight} ${size}px "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif`;
 }
 
 function drawTextLines(

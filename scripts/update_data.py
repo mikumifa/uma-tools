@@ -710,6 +710,88 @@ def make_uma_info(
     print(f"Wrote {out_umas} and {out_icons}")
 
 
+def make_succession_data(master_mdb, out_path):
+    """Export the character aptitudes and relation groups used by the planner."""
+    umas = load_optional_json(FRONTEND_DATA_DIR / "umas.json")
+    icons = load_optional_json(FRONTEND_DATA_DIR / "icon_paths.json")
+    conn = open_sqlite_ro(master_mdb)
+
+    relation_points = {
+        str(int(relation_type)): int(relation_point)
+        for relation_type, relation_point in conn.execute(
+            "SELECT relation_type, relation_point FROM succession_relation"
+        )
+    }
+    relation_types_by_chara = {}
+    for relation_type, chara_id in conn.execute(
+        "SELECT relation_type, chara_id FROM succession_relation_member"
+    ):
+        relation_types_by_chara.setdefault(int(chara_id), []).append(
+            int(relation_type)
+        )
+
+    aptitude_columns = (
+        "proper_ground_turf",
+        "proper_ground_dirt",
+        "proper_distance_short",
+        "proper_distance_mile",
+        "proper_distance_middle",
+        "proper_distance_long",
+        "proper_running_style_nige",
+        "proper_running_style_senko",
+        "proper_running_style_sashi",
+        "proper_running_style_oikomi",
+    )
+    rows = conn.execute(
+        f"SELECT card_id, {', '.join(aptitude_columns)} "
+        "FROM card_rarity_data WHERE rarity = 5 ORDER BY card_id"
+    )
+    characters = []
+    seen = set()
+    for row in rows:
+        card_id = int(row[0])
+        chara_id = card_id // 100
+        if chara_id in seen:
+            continue
+        seen.add(chara_id)
+        uma = umas.get(str(chara_id), {})
+        names = uma.get("name") or []
+        name = next((value for value in names if value), str(chara_id))
+        characters.append(
+            {
+                "id": chara_id,
+                "name": name,
+                "icon": icons.get(str(chara_id)),
+                "aptitudes": dict(zip(
+                    (
+                        "turf",
+                        "dirt",
+                        "short",
+                        "mile",
+                        "middle",
+                        "long",
+                        "nige",
+                        "senko",
+                        "sashi",
+                        "oikomi",
+                    ),
+                    (int(value or 0) for value in row[1:]),
+                )),
+                "relationTypes": sorted(relation_types_by_chara.get(chara_id, [])),
+            }
+        )
+    conn.close()
+    characters.sort(key=lambda item: (item["name"], item["id"]))
+    dump_json(
+        {
+            "relationPoints": relation_points,
+            "umas": characters,
+        },
+        out_path,
+    )
+    print(f"Wrote {out_path}")
+
+
 # ==== 主 CLI ==============================================================
 def main():
     parser = argparse.ArgumentParser(
@@ -816,7 +898,12 @@ def main():
             out_icons=FRONTEND_DATA_DIR / "icon_paths.json",
             dat_copy_target="var/need-unpack",
         )
-    # Step 6: intel report data. The Vite build runs this via prebuild, so avoid doing it twice.
+    # Step 6: inheritance-planner data.
+    make_succession_data(
+        master,
+        out_path=FRONTEND_DATA_DIR / "succession_data.json",
+    )
+    # Step 7: intel report data. The Vite build runs this via prebuild, so avoid doing it twice.
     if not args.no_intel and not args.build:
         env = os.environ.copy()
         env.setdefault("UMA_MASTER_DB", master)
@@ -831,7 +918,7 @@ def main():
         except subprocess.CalledProcessError as e:
             print(f"generate_site_results.py returned non-zero exit: {e.returncode}")
             sys.exit(e.returncode)
-    # Step 7: run the Vite build (optional)
+    # Step 8: run the Vite build (optional)
     if args.build:
         env = os.environ.copy()
         env.setdefault("UMA_MASTER_DB", master)
