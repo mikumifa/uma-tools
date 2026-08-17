@@ -90,6 +90,16 @@ type FactorAssignment = {
   free?: boolean;
   unconstrained?: boolean;
 };
+type TrainedLineageMember = {
+  umaId: number;
+  factor: Pick<FactorAssignment, "type" | "stars">;
+  routeId: string;
+};
+type TrainedUmaSetting = {
+  self: TrainedLineageMember;
+  parents: [TrainedLineageMember, TrainedLineageMember];
+};
+type TrainedUmaSettings = Partial<Record<LineageSlot, TrainedUmaSetting>>;
 
 type TargetFactorPlan = {
   assignments: Record<LineageSlot, FactorAssignment>;
@@ -111,6 +121,13 @@ type CompleteDesignPosition = {
   cumulativeDemand?: FactorDemand;
   fixed: boolean;
   requiresUma: boolean;
+  inRaceFactorJump?: {
+    type: FactorKey;
+    fromRank: number;
+    toRank: number;
+  };
+  alternatives?: CompleteDesignPosition[];
+  alternativeCount?: number;
 };
 
 type CompleteFactorDesign = {
@@ -151,6 +168,7 @@ const EMPTY_TARGET_FACTOR_PLAN_ENUMERATOR: TargetFactorPlanEnumerator = {
   total: 0,
   getRange: () => [],
 };
+const MIN_DISPLAYED_PROBABILITY = 0.00005;
 const APTITUDE_LABELS: Record<AptitudeKey, string> = {
   turf: "草地",
   dirt: "泥地",
@@ -395,8 +413,11 @@ type StoredSuccessionSettings = {
   routeMinimums: RouteMinimums;
   inheritanceAptitudes: FactorKey[];
   inheritanceTargets: InheritanceTargets;
+  allowInRaceFactorJump: boolean;
+  inRaceFactorJumpMinimumRank: number;
   excludedUmaIds: number[];
   slotRouteOverrides: SlotRouteOverrides;
+  trainedUmaSettings: TrainedUmaSettings;
 };
 
 function loadStoredSuccessionSettings(): StoredSuccessionSettings {
@@ -410,8 +431,11 @@ function loadStoredSuccessionSettings(): StoredSuccessionSettings {
     },
     inheritanceAptitudes: [...INITIAL_INHERITANCE_APTITUDES],
     inheritanceTargets: { ...INITIAL_INHERITANCE_TARGETS },
+    allowInRaceFactorJump: false,
+    inRaceFactorJumpMinimumRank: 6,
     excludedUmaIds: [],
     slotRouteOverrides: {},
+    trainedUmaSettings: {},
   };
   if (typeof localStorage === "undefined") return fallback;
 
@@ -422,6 +446,7 @@ function loadStoredSuccessionSettings(): StoredSuccessionSettings {
     if (!stored || typeof stored !== "object") return fallback;
 
     const umaIds = new Set(data.umas.map((uma) => uma.id));
+    const validAptitudes = new Set<FactorKey>(ALL_APTITUDES);
     const excludedUmaIds = [
       ...new Set(
         (Array.isArray(stored.excludedUmaIds) ? stored.excludedUmaIds : [])
@@ -485,6 +510,41 @@ function loadStoredSuccessionSettings(): StoredSuccessionSettings {
       };
     });
 
+    const trainedUmaSettings: TrainedUmaSettings = {};
+    const parseTrainedMember = (value: any): TrainedLineageMember | null => {
+      const umaId = Number(value?.umaId);
+      const type = value?.factor?.type;
+      const stars = Number(value?.factor?.stars);
+      const routeId = value?.routeId;
+      if (
+        !umaIds.has(umaId) ||
+        !validAptitudes.has(type) ||
+        (stars !== 1 && stars !== 2 && stars !== 3) ||
+        !ROUTES.some((route) => route.id === routeId)
+      ) {
+        return null;
+      }
+      return {
+        umaId,
+        factor: { type, stars: stars as 1 | 2 | 3 },
+        routeId,
+      };
+    };
+    (Object.keys(INITIAL_LINEAGE) as LineageSlot[]).forEach((slot) => {
+      const storedSetting = stored.trainedUmaSettings?.[slot];
+      const self = parseTrainedMember(storedSetting?.self);
+      const firstParent = parseTrainedMember(storedSetting?.parents?.[0]);
+      const secondParent = parseTrainedMember(storedSetting?.parents?.[1]);
+      if (!self || !firstParent || !secondParent) return;
+      if (new Set([self.umaId, firstParent.umaId, secondParent.umaId]).size < 3) {
+        return;
+      }
+      trainedUmaSettings[slot] = {
+        self,
+        parents: [firstParent, secondParent],
+      };
+    });
+
     const targetUma = data.umas.find((uma) => uma.id === targetId);
     const inheritanceTargets: InheritanceTargets = {};
     ALL_APTITUDES.forEach((type) => {
@@ -500,7 +560,6 @@ function loadStoredSuccessionSettings(): StoredSuccessionSettings {
       }
     });
 
-    const validAptitudes = new Set<FactorKey>(ALL_APTITUDES);
     const storedInheritanceValues = Array.isArray(stored.inheritanceAptitudes)
       ? stored.inheritanceAptitudes
       : [
@@ -531,6 +590,13 @@ function loadStoredSuccessionSettings(): StoredSuccessionSettings {
     const runningStyleStars = [1, 4, 7, 10].includes(storedRunningStyleStars)
       ? storedRunningStyleStars
       : 1;
+    const allowInRaceFactorJump = stored.allowInRaceFactorJump === true;
+    const storedJumpMinimumRank = Number(stored.inRaceFactorJumpMinimumRank);
+    const inRaceFactorJumpMinimumRank = [3, 4, 5, 6].includes(
+      storedJumpMinimumRank,
+    )
+      ? storedJumpMinimumRank
+      : 6;
     if (targetUma) {
       inheritanceAptitudes.forEach((type) => {
         const base = targetUma.aptitudes[type];
@@ -556,8 +622,11 @@ function loadStoredSuccessionSettings(): StoredSuccessionSettings {
       routeMinimums,
       inheritanceAptitudes,
       inheritanceTargets,
+      allowInRaceFactorJump,
+      inRaceFactorJumpMinimumRank,
       excludedUmaIds,
       slotRouteOverrides,
+      trainedUmaSettings,
     };
   } catch {
     return fallback;
@@ -667,6 +736,21 @@ function fitMinimumsForUma(
 
 function factorSlotsForStars(stars: number) {
   return stars > 0 ? Math.ceil(stars / 3) : 0;
+}
+
+function factorAssignmentKey(assignment: FactorAssignment) {
+  return [
+    assignment.type,
+    assignment.stars,
+    assignment.free ? "free" : "required",
+    assignment.unconstrained ? "unconstrained" : "typed",
+  ].join(":");
+}
+
+function effectiveFactorRoleKey(assignment: FactorAssignment) {
+  return assignment.unconstrained
+    ? `free:${assignment.stars}`
+    : `${assignment.type}:${assignment.stars}`;
 }
 
 function inheritanceAllocation(
@@ -812,6 +896,7 @@ function factorDemandForUma(
   route: Route,
   minimums: AptitudeMinimums,
   producedType?: FactorKey,
+  factorProductionMinimumRank = 7,
 ) {
   const demand: FactorDemand = {};
   const impossible: FactorKey[] = [];
@@ -821,9 +906,19 @@ function factorDemandForUma(
   types.forEach((type) => {
     const targetRank = Math.max(
       route.aptitudes.includes(type) ? minimums[type] : 0,
-      type === producedType ? 7 : 0,
+      type === producedType ? factorProductionMinimumRank : 0,
     );
     const stars = minimumStarsForRank(uma.aptitudes[type], targetRank);
+    if (
+      type === producedType &&
+      targetRank < 7 &&
+      uma.aptitudes[type] < 7 &&
+      stars === 0
+    ) {
+      // 没有对应红因子时不存在局内继续提升到 A 的触发来源。
+      impossible.push(type);
+      return;
+    }
     if (stars === null) impossible.push(type);
     else if (stars > 0) demand[type] = stars;
   });
@@ -1013,6 +1108,10 @@ function UmaSelect({
   exclude = [],
   compatibility,
   footer,
+  modeSelector,
+  openRequest,
+  displayOnly = false,
+  onClear,
 }: {
   label: string;
   value: number;
@@ -1021,6 +1120,10 @@ function UmaSelect({
   exclude?: number[];
   compatibility?: PositionCompatibilityScore;
   footer?: ComponentChildren;
+  modeSelector?: ComponentChildren;
+  openRequest?: number;
+  displayOnly?: boolean;
+  onClear?: () => void;
 }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -1055,52 +1158,63 @@ function UmaSelect({
   };
   const clearSearch = () => setQuery("");
 
+  useEffect(() => {
+    if (openRequest === undefined || openRequest <= 0) return;
+    setOpen(true);
+  }, [openRequest]);
+
   return (
-    <div class={`successionUmaSelect ${selected ? "selected" : ""}`}>
+    <div
+      class={`successionUmaSelect ${selected ? "selected" : ""}${modeSelector ? " withModeSelector" : ""}`}
+    >
       <div class="successionUmaSelectTitle">
-        <span>{label}</span>
-        {selected && (
+        <span>{!selected && modeSelector ? "未设置" : label}</span>
+        {selected && (!displayOnly || onClear) && (
           <button
             type="button"
-            onClick={() => onChange(0)}
+            onClick={() => (onClear ? onClear() : onChange(0))}
             aria-label={`清除${label}`}
           >
             清除
           </button>
         )}
       </div>
-      <button
-        type="button"
-        class="successionUmaTrigger"
-        aria-label={label}
-        onClick={() => setOpen(true)}
-      >
-        {selected ? (
-          <Fragment>
-            <UmaPortrait uma={selected} />
-            <div class="successionSelectedUma">
-              <strong>{selected.name}</strong>
-              <UmaAptitudeRows uma={selected} />
-            </div>
-            {compatibility && (
-              <span
-                class="successionUmaCompatibility"
-                title={compatibilityTitle(compatibility)}
-              >
-                <small>相性</small>
-                <strong>{compatibility.total}</strong>
-              </span>
-            )}
-          </Fragment>
-        ) : (
-          <Fragment>
-            <span class="successionPortrait empty">+</span>
-            <div class="successionUmaPlaceholder">
-              <strong>{required ? "请选择目标马娘" : "不固定"}</strong>
-            </div>
-          </Fragment>
-        )}
-      </button>
+      {(selected || !modeSelector) && (
+        <button
+          type="button"
+          class="successionUmaTrigger"
+          aria-label={label}
+          disabled={displayOnly}
+          onClick={() => setOpen(true)}
+        >
+          {selected ? (
+            <Fragment>
+              <UmaPortrait uma={selected} />
+              <div class="successionSelectedUma">
+                <strong>{selected.name}</strong>
+                <UmaAptitudeRows uma={selected} />
+              </div>
+              {compatibility && (
+                <span
+                  class="successionUmaCompatibility"
+                  title={compatibilityTitle(compatibility)}
+                >
+                  <small>相性</small>
+                  <strong>{compatibility.total}</strong>
+                </span>
+              )}
+            </Fragment>
+          ) : (
+            <Fragment>
+              {required && <span class="successionPortrait empty">+</span>}
+              <div class="successionUmaPlaceholder">
+                <strong>{required ? "请选择马娘" : "不固定"}</strong>
+              </div>
+            </Fragment>
+          )}
+        </button>
+      )}
+      {modeSelector}
       {selected && footer}
 
       {open && (
@@ -1218,6 +1332,7 @@ function BranchRouteCard({
   onMinimumChange,
   settingLabel,
   compact = false,
+  trained = false,
   followsDefault = false,
   onReset,
 }: {
@@ -1229,6 +1344,7 @@ function BranchRouteCard({
   onMinimumChange: (type: AptitudeKey, value: number) => void;
   settingLabel?: string;
   compact?: boolean;
+  trained?: boolean;
   followsDefault?: boolean;
   onReset?: () => void;
 }) {
@@ -1271,14 +1387,20 @@ function BranchRouteCard({
         >
           <header>
             <span class={compact ? "" : "successionDefaultRouteLabel"}>
-              {compact ? "单独赛程" : `${branchLabel}默认赛程`}
+              {trained
+                ? "育成赛程"
+                : compact
+                  ? "单独赛程"
+                  : `${branchLabel}默认赛程`}
             </span>
             <strong>
               {route.id === "none" ? "暂不规划" : route.shortName}
             </strong>
           </header>
           <div class="successionRouteSummaryNeeds">
-            {route.aptitudes.length ? (
+            {trained ? (
+              <span>{route.g1Count} 场 G1</span>
+            ) : route.aptitudes.length ? (
               route.aptitudes.map((type) => (
                 <span key={type}>
                   <b>{APTITUDE_LABELS[type]}</b>
@@ -1324,7 +1446,11 @@ function BranchRouteCard({
               <section class="successionRouteModalPresets">
                 <header>
                   <strong>选择赛程</strong>
-                  <span>赛程决定改马的适应性要求</span>
+                  <span>
+                    {trained
+                      ? "记录实际参加的赛程，用于计算共同 G1 相性"
+                      : "赛程决定改马的适应性要求"}
+                  </span>
                 </header>
                 <div role="radiogroup" aria-label={`${displayLabel}赛程`}>
                   {ROUTES.map((item) => (
@@ -1344,7 +1470,12 @@ function BranchRouteCard({
                   ))}
                 </div>
               </section>
-              {route.aptitudes.length ? (
+              {trained ? (
+                <div class="successionRouteModalEmpty">
+                  已育成马娘不会再反推适性因子；这里的赛程仅用于计算与目标、父辈之间的共同
+                  G1 相性。
+                </div>
+              ) : route.aptitudes.length ? (
                 <section class="successionRouteAptitudeMinimums">
                   <header>
                     <strong>设置比赛的最低适应性</strong>
@@ -1459,8 +1590,10 @@ function BranchRouteCard({
             </div>
             <footer class="successionRouteModalFooter">
               <div class="successionRouteFactorSummary">
-                <strong>需要的因子</strong>
-                {uma ? (
+                <strong>{trained ? "记录用途" : "需要的因子"}</strong>
+                {trained ? (
+                  <em>按实际赛程计算共同 G1 与继承相性</em>
+                ) : uma ? (
                   routeFactorRequirements.length ? (
                     routeFactorRequirements.map((item) => (
                       <span key={item.type}>
@@ -1500,6 +1633,346 @@ function BranchRouteCard({
   );
 }
 
+function TrainedRedFactorInput({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value?: Pick<FactorAssignment, "type" | "stars">;
+  onChange: (value: Pick<FactorAssignment, "type" | "stars">) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const [draftType, setDraftType] = useState<FactorKey>(value?.type || "turf");
+  const [draftStars, setDraftStars] = useState<1 | 2 | 3>(value?.stars || 3);
+  const openEditor = () => {
+    setDraftType(value?.type || "turf");
+    setDraftStars(value?.stars || 3);
+    setOpen(true);
+  };
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
+  return (
+    <>
+      <button
+        type="button"
+        class={`successionTrainedFactorButton${value ? " configured" : ""}`}
+        aria-label={`设置${label}的红因子`}
+        onClick={openEditor}
+      >
+        <span>红因子</span>
+        {value ? (
+          <strong>
+            <FactorIcon type={value.type} compact />
+            <b>{value.stars}★</b>
+          </strong>
+        ) : (
+          <em>未设置</em>
+        )}
+      </button>
+      {open && (
+        <div
+          class="successionInheritanceModalOverlay"
+          role="presentation"
+          onClick={(event) => {
+            if (event.currentTarget === event.target) setOpen(false);
+          }}
+        >
+          <section
+            class="successionInheritanceModal successionTrainedFactorModal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`设置${label}的红因子`}
+          >
+            <header>
+              <div>
+                <span>TRAINED RED FACTOR</span>
+                <h3>{label}的红因子</h3>
+              </div>
+              <button
+                type="button"
+                aria-label="关闭红因子设置"
+                onClick={() => setOpen(false)}
+              >
+                ×
+              </button>
+            </header>
+            <div class="successionTrainedFactorModalBody">
+              <section>
+                <strong>因子属性</strong>
+                <div class="successionTrainedFactorTypes">
+                  {APTITUDE_GROUPS.map((group) => (
+                    <div key={group.label}>
+                      <span>{group.label}</span>
+                      <div>
+                        {group.types.map((type) => (
+                          <button
+                            type="button"
+                            class={draftType === type ? "selected" : ""}
+                            aria-pressed={draftType === type}
+                            onClick={() => setDraftType(type)}
+                            key={type}
+                          >
+                            <FactorIcon type={type} compact />
+                            <b>{APTITUDE_LABELS[type]}</b>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+              <section>
+                <strong>因子星级</strong>
+                <div
+                  class="successionTrainedFactorStars"
+                  role="radiogroup"
+                  aria-label="红因子星级"
+                >
+                  {([1, 2, 3] as const).map((stars) => (
+                    <button
+                      type="button"
+                      role="radio"
+                      class={draftStars === stars ? "selected" : ""}
+                      aria-checked={draftStars === stars}
+                      onClick={() => setDraftStars(stars)}
+                      key={stars}
+                    >
+                      {stars}★
+                    </button>
+                  ))}
+                </div>
+              </section>
+              <footer>
+                <span>
+                  当前：<FactorIcon type={draftType} compact />
+                  {APTITUDE_LABELS[draftType]} {draftStars}★
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onChange({ type: draftType, stars: draftStars });
+                    setOpen(false);
+                  }}
+                >
+                  保存
+                </button>
+              </footer>
+            </div>
+          </section>
+        </div>
+      )}
+    </>
+  );
+}
+
+function TrainedLineageMemberEditor({
+  label,
+  branch,
+  member,
+  exclude,
+  onChange,
+}: {
+  label: string;
+  branch: BranchKey;
+  member: TrainedLineageMember;
+  exclude: number[];
+  onChange: (member: TrainedLineageMember) => void;
+}) {
+  const uma = data.umas.find((candidate) => candidate.id === member.umaId);
+  const route = ROUTES.find((item) => item.id === member.routeId) || ROUTES[0];
+  return (
+    <div class="successionTrainedMemberEditor">
+      <UmaSelect
+        label={label}
+        value={member.umaId}
+        required
+        exclude={exclude}
+        onChange={(umaId) => onChange({ ...member, umaId })}
+        footer={
+          uma ? (
+            <div class="successionLineageUmaDetails trained">
+              <TrainedRedFactorInput
+                label={`${label}（${uma.name}）`}
+                value={member.factor}
+                onChange={(factor) => onChange({ ...member, factor })}
+              />
+              <BranchRouteCard
+                branch={branch}
+                route={route}
+                minimums={DEFAULT_APTITUDE_MINIMUMS}
+                uma={uma}
+                settingLabel={`${label}（${uma.name}）`}
+                compact
+                trained
+                onRouteChange={(routeId) => onChange({ ...member, routeId })}
+                onMinimumChange={() => undefined}
+              />
+            </div>
+          ) : null
+        }
+      />
+    </div>
+  );
+}
+
+function TrainedUmaSettingModal({
+  slot,
+  branch,
+  currentUmaId,
+  defaultRouteId,
+  existing,
+  exclude,
+  onSave,
+  onClose,
+}: {
+  slot: LineageSlot;
+  branch: BranchKey;
+  currentUmaId: number;
+  defaultRouteId: string;
+  existing?: TrainedUmaSetting;
+  exclude: number[];
+  onSave: (setting: TrainedUmaSetting) => void;
+  onClose: () => void;
+}) {
+  const createMember = (umaId = 0): TrainedLineageMember => ({
+    umaId,
+    factor: { type: "turf", stars: 3 },
+    routeId: defaultRouteId,
+  });
+  const [setting, setSetting] = useState<TrainedUmaSetting>(
+    existing || {
+      self: createMember(currentUmaId),
+      parents: [createMember(), createMember()],
+    },
+  );
+  const members = [setting.self, ...setting.parents];
+  const memberIds = members.map((member) => member.umaId).filter(Boolean);
+  const complete = memberIds.length === 3 && new Set(memberIds).size === 3;
+  const updateMember = (index: number, member: TrainedLineageMember) => {
+    if (index === 0) {
+      setSetting((current) => ({ ...current, self: member }));
+      return;
+    }
+    setSetting((current) => ({
+      ...current,
+      parents: current.parents.map((item, parentIndex) =>
+        parentIndex === index - 1 ? member : item,
+      ) as [TrainedLineageMember, TrainedLineageMember],
+    }));
+  };
+  const parentCodes = [`${SLOT_CODES[slot]}A`, `${SLOT_CODES[slot]}B`];
+  const renderMemberEditor = (member: TrainedLineageMember, index: number) => {
+    const allowedCurrentIds = new Set(memberIds);
+    const memberExclude = [
+      ...exclude.filter((id) => !allowedCurrentIds.has(id)),
+      ...members
+        .filter((_, memberIndex) => memberIndex !== index)
+        .map((item) => item.umaId)
+        .filter(Boolean),
+    ];
+    return (
+      <TrainedLineageMemberEditor
+        label={
+          index === 0
+            ? `${SLOT_LABELS[slot]}本人`
+            : `父辈 ${parentCodes[index - 1]}`
+        }
+        branch={branch}
+        member={member}
+        exclude={[...new Set(memberExclude)]}
+        onChange={(value) => updateMember(index, value)}
+      />
+    );
+  };
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, []);
+
+  return (
+    <div
+      class="successionInheritanceModalOverlay"
+      role="presentation"
+      onClick={(event) => {
+        if (event.currentTarget === event.target) onClose();
+      }}
+    >
+      <section
+        class="successionInheritanceModal successionTrainedUmaModal"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`设置${SLOT_LABELS[slot]}已育成马娘`}
+      >
+        <header>
+          <div>
+            <span>TRAINED UMAMUSUME</span>
+            <h3>设置{SLOT_LABELS[slot]}已育成马娘</h3>
+          </div>
+          <button type="button" aria-label="关闭已育成马娘设置" onClick={onClose}>
+            ×
+          </button>
+        </header>
+        <div class="successionTrainedUmaModalBody">
+          <div class="successionTrainedUmaTree">
+            <div class="successionTrainedUmaTreeRoot">
+              {renderMemberEditor(members[0], 0)}
+            </div>
+            <div class="successionTrainedUmaTreeChildren">
+              {members.slice(1).map((member, index) => (
+                <div class="successionTrainedUmaTreeChild" key={index}>
+                  {renderMemberEditor(member, index + 1)}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <footer class="successionTrainedUmaModalFooter">
+          <span>
+            {complete
+              ? "本人和两位父辈已完整设置，保存后不再向上搜索。"
+              : "请选择本人和两位不同的父辈马娘。"}
+          </span>
+          <div>
+            <button type="button" class="secondary" onClick={onClose}>
+              取消
+            </button>
+            <button
+              type="button"
+              disabled={!complete}
+              onClick={() => complete && onSave(setting)}
+            >
+              保存已育成马娘
+            </button>
+          </div>
+        </footer>
+      </section>
+    </div>
+  );
+}
+
 function LineageUmaSetting({
   slot,
   branch,
@@ -1509,10 +1982,16 @@ function LineageUmaSetting({
   route,
   minimums,
   followsDefault,
-  onUmaChange,
   onRouteChange,
   onMinimumChange,
   onResetRoute,
+  trainedSetting,
+  inheritedMember,
+  inheritedSourceLabel,
+  trainedModalExclude,
+  onPlanUmaChange,
+  onTrainedSettingChange,
+  onClear,
   draggedSlot,
   dropSlot,
 }: {
@@ -1524,45 +2003,257 @@ function LineageUmaSetting({
   route: Route;
   minimums: AptitudeMinimums;
   followsDefault: boolean;
-  onUmaChange: (value: number) => void;
   onRouteChange: (value: string) => void;
   onMinimumChange: (type: AptitudeKey, value: number) => void;
   onResetRoute: () => void;
+  trainedSetting?: TrainedUmaSetting;
+  inheritedMember?: TrainedLineageMember;
+  inheritedSourceLabel?: string;
+  trainedModalExclude: number[];
+  onPlanUmaChange: (value: number) => void;
+  onTrainedSettingChange: (setting: TrainedUmaSetting) => void;
+  onClear: () => void;
   draggedSlot: LineageSlot | null;
   dropSlot: LineageSlot | null;
 }) {
-  const uma = data.umas.find((candidate) => candidate.id === value);
+  const [planPickerRequest, setPlanPickerRequest] = useState(0);
+  const [showTrainedModal, setShowTrainedModal] = useState(false);
+  const trainedMember = inheritedMember || trainedSetting?.self;
+  const effectiveValue = trainedMember?.umaId || value;
+  const uma = data.umas.find((candidate) => candidate.id === effectiveValue);
+  const trainedRoute = trainedMember
+    ? ROUTES.find((item) => item.id === trainedMember.routeId) || route
+    : route;
+  const locked = Boolean(inheritedMember);
+  const hiddenParentFactors =
+    trainedSetting && slot !== "father" && slot !== "mother"
+      ? trainedSetting.parents
+      : [];
+  const hiddenParentCodes = [`${SLOT_CODES[slot]}A`, `${SLOT_CODES[slot]}B`];
+  const factorBadge = (
+    factor: Pick<FactorAssignment, "type" | "stars">,
+    label: string,
+  ) => (
+    <span class="successionTrainedFactorItem">
+      <small>{label}</small>
+      <span
+        class="successionCandidateFactor"
+        title={`${APTITUDE_LABELS[factor.type]} ${factor.stars}★`}
+      >
+        {APTITUDE_LABELS[factor.type]}
+        <b>{factor.stars}★</b>
+      </span>
+    </span>
+  );
   return (
     <div
       class={`successionLineageUmaSetting${draggedSlot === slot ? " dragging" : ""}${dropSlot === slot && draggedSlot !== slot ? " dropTarget" : ""}`}
       data-lineage-slot={slot}
-      draggable={Boolean(uma)}
+      draggable={Boolean(uma) && !locked}
       aria-grabbed={draggedSlot === slot}
     >
       <UmaSelect
         label={SLOT_LABELS[slot]}
-        value={value}
+        value={effectiveValue}
         exclude={exclude}
         compatibility={compatibility}
-        onChange={onUmaChange}
+        onChange={onPlanUmaChange}
+        onClear={!locked && uma ? onClear : undefined}
+        openRequest={planPickerRequest}
+        displayOnly
+        modeSelector={
+          !uma && !locked ? (
+            <div
+              class="successionBranchModeSwitch"
+              role="group"
+              aria-label={`${SLOT_LABELS[slot]}设置方式`}
+            >
+              <button
+                type="button"
+                onClick={() => setPlanPickerRequest((current) => current + 1)}
+              >
+                设置计划马娘
+              </button>
+              <button type="button" onClick={() => setShowTrainedModal(true)}>
+                设置已育成马娘
+              </button>
+            </div>
+          ) : null
+        }
         footer={
           uma ? (
-            <BranchRouteCard
-              branch={branch}
-              route={route}
-              minimums={minimums}
-              uma={uma}
-              settingLabel={`${SLOT_LABELS[slot]}（${uma.name}）`}
-              compact
-              followsDefault={followsDefault}
-              onRouteChange={onRouteChange}
-              onMinimumChange={onMinimumChange}
-              onReset={onResetRoute}
-            />
+            trainedMember ? (
+              <div class="successionTrainedUmaSummary">
+                <div class="successionTrainedFactorSummary">
+                  {factorBadge(trainedMember.factor, "自身")}
+                  {hiddenParentFactors.map((member, index) => (
+                    <Fragment key={hiddenParentCodes[index]}>
+                      {factorBadge(member.factor, hiddenParentCodes[index])}
+                    </Fragment>
+                  ))}
+                </div>
+                <span class="successionTrainedRoute">{trainedRoute.shortName}</span>
+                <em>
+                  {inheritedSourceLabel
+                    ? `由${inheritedSourceLabel}固定`
+                    : "本人及父辈已固定"}
+                </em>
+              </div>
+            ) : (
+              <div class="successionLineageUmaDetails planned">
+                <BranchRouteCard
+                  branch={branch}
+                  route={route}
+                  minimums={minimums}
+                  uma={uma}
+                  settingLabel={`${SLOT_LABELS[slot]}（${uma.name}）`}
+                  compact
+                  followsDefault={followsDefault}
+                  onRouteChange={onRouteChange}
+                  onMinimumChange={onMinimumChange}
+                  onReset={onResetRoute}
+                />
+              </div>
+            )
           ) : null
         }
       />
+      {showTrainedModal && (
+        <TrainedUmaSettingModal
+          slot={slot}
+          branch={branch}
+          currentUmaId={value}
+          defaultRouteId={route.id}
+          existing={trainedSetting}
+          exclude={trainedModalExclude}
+          onSave={(setting) => {
+            onTrainedSettingChange(setting);
+            setShowTrainedModal(false);
+          }}
+          onClose={() => setShowTrainedModal(false)}
+        />
+      )}
     </div>
+  );
+}
+
+function InRaceFactorJumpOption({
+  enabled,
+  minimumRank,
+  onEnabledChange,
+  onMinimumRankChange,
+  footer,
+}: {
+  enabled: boolean;
+  minimumRank: number;
+  onEnabledChange: (enabled: boolean) => void;
+  onMinimumRankChange: (rank: number) => void;
+  footer?: ComponentChildren;
+}) {
+  const [showInfo, setShowInfo] = useState(false);
+  const selectRank = (rank: number) => {
+    onMinimumRankChange(rank);
+    onEnabledChange(true);
+  };
+  return (
+    <>
+      <section class="successionInheritanceAptitudes successionFactorJumpOption">
+        <header>
+          <strong>产生红因子最低适应性要求</strong>
+          <button
+            type="button"
+            class="successionFactorJumpInfoButton"
+            aria-label="查看局内跳因子说明"
+            onClick={() => setShowInfo(true)}
+          >
+            i
+          </button>
+        </header>
+        <div
+          class="successionFactorJumpChoices"
+          role="group"
+          aria-label="局内跳因子最低初始适性"
+        >
+          <button
+            type="button"
+            class={!enabled ? "selected" : ""}
+            aria-pressed={!enabled}
+            onClick={() => onEnabledChange(false)}
+          >
+            关闭
+          </button>
+          {[6, 5, 4, 3].map((rank) => (
+            <button
+              type="button"
+              class={`successionFactorJumpRankChoice${enabled && minimumRank === rank ? " selected" : ""}`}
+              aria-pressed={enabled && minimumRank === rank}
+              aria-label={`允许初始适性 ${rankLabel(rank)} 以上通过局内提升到 A`}
+              title={`允许初始适性 ${rankLabel(rank)} 以上通过局内提升到 A`}
+              onClick={() => selectRank(rank)}
+              key={rank}
+            >
+              <RankIcon value={rank} compact />
+            </button>
+          ))}
+        </div>
+        {footer && (
+          <div class="successionFactorProductionTargets">{footer}</div>
+        )}
+      </section>
+      {showInfo && (
+        <div
+          class="successionInheritanceModalOverlay"
+          role="presentation"
+          onClick={(event) => {
+            if (event.currentTarget === event.target) setShowInfo(false);
+          }}
+        >
+          <section
+            class="successionInheritanceModal successionFactorJumpModal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="succession-factor-jump-modal-title"
+          >
+            <header>
+              <div>
+                <span class="successionModalChineseLabel">规则说明</span>
+                <h3 id="succession-factor-jump-modal-title">
+                  产生红因子最低适应性要求
+                </h3>
+              </div>
+              <button
+                type="button"
+                aria-label="关闭局内跳因子说明"
+                onClick={() => setShowInfo(false)}
+              >
+                ×
+              </button>
+            </header>
+            <div class="successionFactorJumpModalBody">
+              <p>
+                通常只有育成开始时对应适性达到 A，马娘才能产出该红因子。
+              </p>
+              <div>
+                <strong>选择 B / C / D / E</strong>
+                <span>
+                  如果父祖辈提供的同类红因子能让马娘以所选等级以上开始育成，并可能在局内继续提升到
+                  A，也将她视为可产出对应红因子。
+                </span>
+              </div>
+              <div>
+                <strong>结果标记</strong>
+                <span>
+                  对应马娘会显示“需要局内 属性 X → A”，方便区分正常产出方案。
+                </span>
+              </div>
+              <footer>
+                此设置只判断理论可达，不会把局内红因子的触发概率计入最终达成概率。
+              </footer>
+            </div>
+          </section>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -1572,14 +2263,12 @@ function InheritanceAptitudes({
   targets,
   onToggle,
   onConfigure,
-  footer,
 }: {
   target: SuccessionUma;
   selected: FactorKey[];
   targets: InheritanceTargets;
   onToggle: (type: FactorKey) => void;
   onConfigure: (type: FactorKey, rank: number) => void;
-  footer?: ComponentChildren;
 }) {
   const [editingType, setEditingType] = useState<FactorKey | null>(null);
   const allocations = inheritanceAllocation(target, selected, targets);
@@ -1658,9 +2347,6 @@ function InheritanceAptitudes({
             </div>
           ))}
         </div>
-        {footer && (
-          <div class="successionInheritanceProbabilitySection">{footer}</div>
-        )}
       </section>
       {editingType && editingBase < 7 && (
         <div
@@ -2039,12 +2725,37 @@ function UmaExclusionList({
   );
 }
 
-function CompleteDesignPositionCard({
+function CompleteDesignFactorBadge({
   position,
-  onExcludeUma,
 }: {
   position: CompleteDesignPosition;
-  onExcludeUma: (umaId: number) => void;
+}) {
+  return position.factor.free ? (
+    <span
+      class="successionCandidateFactor free"
+      title={
+        position.factor.unconstrained
+          ? "该位置不指定红因子类型"
+          : `自由槽位：实际按${APTITUDE_LABELS[position.factor.type]} ${position.factor.stars}★计算`
+      }
+    >
+      自由
+    </span>
+  ) : (
+    <span
+      class="successionCandidateFactor"
+      title={`${APTITUDE_LABELS[position.factor.type]} ${position.factor.stars}★`}
+    >
+      {APTITUDE_LABELS[position.factor.type]}
+      <b>{position.factor.stars}★</b>
+    </span>
+  );
+}
+
+function CompleteDesignUpstreamRequirements({
+  position,
+}: {
+  position: CompleteDesignPosition;
 }) {
   const minimumDemandTypes = ALL_APTITUDES.filter(
     (type) => (position.minimumDemand?.[type] || 0) > 0,
@@ -2058,10 +2769,100 @@ function CompleteDesignPositionCard({
   const ancestorOnlyDemandTypes = cumulativeDemandTypes.filter(
     (type) => !(position.minimumDemand?.[type] || 0),
   );
+  if (position.generation !== 2) return null;
   return (
-    <article class={position.uma ? "" : "missing"}>
-      <header>
-        <b>{position.code}</b>
+    <div class="successionUpstreamRequirements">
+      {minimumDemandTypes.length > 0 ? (
+        <div>
+          <small>{position.uma?.name || position.code}的父辈需要</small>
+          <span>
+            {minimumDemandTypes.map((type) => (
+              <b key={type}>
+                {APTITUDE_LABELS[type]} ≥{position.minimumDemand?.[type]}★
+              </b>
+            ))}
+          </span>
+        </div>
+      ) : cumulativeDemandTypes.length === 0 ? (
+        <em>{position.uma?.name || position.code}的父辈无额外要求</em>
+      ) : null}
+      {minimumDemandTypes.length === 0 && cumulativeDemandTypes.length > 0 && (
+        <div class="successionCombinedRequirement">
+          <small>父辈连同祖辈共要有</small>
+          <span>
+            {cumulativeDemandTypes.map((type) => (
+              <b key={type}>
+                {APTITUDE_LABELS[type]} ≥{position.cumulativeDemand?.[type]}★
+              </b>
+            ))}
+          </span>
+        </div>
+      )}
+      {minimumDemandTypes.length > 0 && ancestorOnlyDemandTypes.length > 0 && (
+        <div>
+          <small>祖辈需要</small>
+          <span>
+            {ancestorOnlyDemandTypes.map((type) => (
+              <b key={type}>
+                {APTITUDE_LABELS[type]} ≥{position.cumulativeDemand?.[type]}★
+              </b>
+            ))}
+          </span>
+        </div>
+      )}
+      {overlappingDemandTypes.length > 0 && (
+        <div class="successionCombinedRequirement">
+          <small>同时父辈连同祖辈共要有</small>
+          <span>
+            {overlappingDemandTypes.map((type) => (
+              <b key={type}>
+                {APTITUDE_LABELS[type]} ≥
+                {(position.minimumDemand?.[type] || 0) +
+                  (position.cumulativeDemand?.[type] || 0)}
+                ★
+              </b>
+            ))}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CompleteDesignCandidateIdentity({
+  position,
+  onExcludeUma,
+}: {
+  position: CompleteDesignPosition;
+  onExcludeUma: (umaId: number) => void;
+}) {
+  return (
+    <div class="successionCandidateOption">
+      <div class="successionCandidateOptionIdentity">
+        <UmaPortrait uma={position.uma} />
+        <span class="successionCandidateIdentity">
+          <strong>{position.uma?.name || "没有可用马娘"}</strong>
+          {position.uma && position.compatibility !== undefined && (
+            <small
+              class="successionCandidateCompatibility"
+              title={position.compatibilityTitle}
+            >
+              相性 <b>{position.compatibility}</b>
+            </small>
+          )}
+          {position.inRaceFactorJump && (
+            <small
+              class="successionCandidateJumpRequirement"
+              title="该马娘需要在育成局内触发对应红因子，将适性提升到 A 后才能产出该红因子"
+            >
+              <strong>需要局内</strong>
+              <span>{APTITUDE_LABELS[position.inRaceFactorJump.type]}</span>
+              <b>{rankLabel(position.inRaceFactorJump.fromRank)}</b>
+              <i aria-hidden="true">→</i>
+              <b>{rankLabel(position.inRaceFactorJump.toRank)}</b>
+            </small>
+          )}
+        </span>
         {position.uma && (
           <button
             type="button"
@@ -2078,100 +2879,56 @@ function CompleteDesignPositionCard({
             {position.fixed ? "已固定" : "加入黑名单"}
           </button>
         )}
-      </header>
-      <div>
-        <UmaPortrait uma={position.uma} />
-        <span class="successionCandidateIdentity">
-          <strong>{position.uma?.name || "没有可用马娘"}</strong>
-          {position.uma && position.compatibility !== undefined && (
-            <small
-              class="successionCandidateCompatibility"
-              title={position.compatibilityTitle}
-            >
-              相性 <b>{position.compatibility}</b>
+      </div>
+      <CompleteDesignUpstreamRequirements position={position} />
+    </div>
+  );
+}
+
+function CompleteDesignPositionCard({
+  position,
+  onExcludeUma,
+}: {
+  position: CompleteDesignPosition;
+  onExcludeUma: (umaId: number) => void;
+}) {
+  const alternatives = position.alternatives?.length
+    ? position.alternatives
+    : [position];
+  const multiple = alternatives.length > 1;
+  return (
+    <article class={position.uma ? "" : "missing"}>
+      <header>
+        <b>{position.code}</b>
+        <div class="successionCandidateHeaderMeta">
+          {multiple && (
+            <small>
+              {position.alternativeCount || alternatives.length} 位候选，任选其一
             </small>
           )}
-        </span>
-      </div>
-      {position.factor.free ? (
-        <span
-          class="free"
-          title={
-            position.factor.unconstrained
-              ? "该位置不指定红因子类型"
-              : `自由槽位：实际按${APTITUDE_LABELS[position.factor.type]} ${position.factor.stars}★计算`
-          }
-        >
-          自由
-        </span>
-      ) : (
-        <span
-          title={`${APTITUDE_LABELS[position.factor.type]} ${position.factor.stars}★`}
-        >
-          {APTITUDE_LABELS[position.factor.type]}
-          <b>{position.factor.stars}★</b>
-        </span>
-      )}
-      {position.generation === 2 && (
-        <div class="successionUpstreamRequirements">
-          {minimumDemandTypes.length > 0 ? (
-            <div>
-              <small>{position.uma?.name || position.code}的父辈需要</small>
-              <span>
-                {minimumDemandTypes.map((type) => (
-                  <b key={type}>
-                    {APTITUDE_LABELS[type]} ≥{position.minimumDemand?.[type]}★
-                  </b>
-                ))}
-              </span>
-            </div>
-          ) : cumulativeDemandTypes.length === 0 ? (
-            <em>{position.uma?.name || position.code}的父辈无额外要求</em>
-          ) : null}
-          {minimumDemandTypes.length === 0 &&
-            cumulativeDemandTypes.length > 0 && (
-              <div class="successionCombinedRequirement">
-                <small>父辈连同祖辈共要有</small>
-                <span>
-                  {cumulativeDemandTypes.map((type) => (
-                    <b key={type}>
-                      {APTITUDE_LABELS[type]} ≥
-                      {position.cumulativeDemand?.[type]}★
-                    </b>
-                  ))}
-                </span>
-              </div>
-            )}
-          {minimumDemandTypes.length > 0 &&
-            ancestorOnlyDemandTypes.length > 0 && (
-              <div>
-                <small>祖辈需要</small>
-                <span>
-                  {ancestorOnlyDemandTypes.map((type) => (
-                    <b key={type}>
-                      {APTITUDE_LABELS[type]} ≥
-                      {position.cumulativeDemand?.[type]}★
-                    </b>
-                  ))}
-                </span>
-              </div>
-            )}
-          {overlappingDemandTypes.length > 0 && (
-            <div class="successionCombinedRequirement">
-              <small>同时父辈连同祖辈共要有</small>
-              <span>
-                {overlappingDemandTypes.map((type) => (
-                  <b key={type}>
-                    {APTITUDE_LABELS[type]} ≥
-                    {(position.minimumDemand?.[type] || 0) +
-                      (position.cumulativeDemand?.[type] || 0)}
-                    ★
-                  </b>
-                ))}
-              </span>
-            </div>
-          )}
+          <CompleteDesignFactorBadge position={position} />
         </div>
+      </header>
+      {multiple ? (
+        <div class="successionCandidateOptions">
+          {alternatives.map((alternative, index) => (
+            <div
+              class="successionCandidateOptionChoice"
+              key={`${alternative.uma?.id || 0}:${index}`}
+            >
+              {index > 0 && <strong class="successionCandidateOr">或</strong>}
+              <CompleteDesignCandidateIdentity
+                position={alternative}
+                onExcludeUma={onExcludeUma}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <CompleteDesignCandidateIdentity
+          position={position}
+          onExcludeUma={onExcludeUma}
+        />
       )}
     </article>
   );
@@ -2191,9 +2948,17 @@ function CompleteDesignBranchTree({
     design?.positions.find((position) => position.code === code),
   );
   const [parent, ...grandparents] = positions;
+  const hasAlternatives = grandparents.some(
+    (position) => (position?.alternatives?.length || 0) > 1,
+  );
+  const alternativeCounts = grandparents.map(
+    (position) => position?.alternatives?.length || 1,
+  );
+  const hasMatchingAlternativeCounts =
+    alternativeCounts[0] === alternativeCounts[1];
   return (
     <section
-      class={`successionRequirementBranch successionOptimalBranch ${branch}`}
+      class={`successionRequirementBranch successionOptimalBranch ${branch}${hasAlternatives ? " hasAlternatives" : ""}${hasMatchingAlternativeCounts ? " hasMatchingAlternativeCounts" : ""}`}
     >
       <header>
         <strong>{branch === "paternal" ? "父系" : "母系"}</strong>
@@ -2223,6 +2988,27 @@ function CompleteDesignBranchTree({
   );
 }
 
+const COMPLETE_DESIGN_BRANCH_CODES: Record<BranchKey, string[]> = {
+  paternal: ["A", "AA", "AB"],
+  maternal: ["B", "BA", "BB"],
+};
+
+function visibleCompleteDesignBranches(
+  design: CompleteFactorDesign,
+): BranchKey[] {
+  const branchFullyFixed = (branch: BranchKey) =>
+    COMPLETE_DESIGN_BRANCH_CODES[branch].every(
+      (code) =>
+        design.positions.find((position) => position.code === code)?.fixed,
+    );
+  const paternalFixed = branchFullyFixed("paternal");
+  const maternalFixed = branchFullyFixed("maternal");
+  if (paternalFixed && maternalFixed) return [];
+  if (paternalFixed) return ["maternal"];
+  if (maternalFixed) return ["paternal"];
+  return ["paternal", "maternal"];
+}
+
 function CompleteDesignResult({
   rank,
   design,
@@ -2236,6 +3022,15 @@ function CompleteDesignResult({
   probabilityTargets: Array<{ type: FactorKey; rank: number }>;
   onExcludeUma: (umaId: number) => void;
 }) {
+  const visibleBranches = visibleCompleteDesignBranches(design);
+  const visibleCodes = new Set(
+    visibleBranches.flatMap((branch) => COMPLETE_DESIGN_BRANCH_CODES[branch]),
+  );
+  const hasAlternatives = design.positions.some(
+    (position) =>
+      visibleCodes.has(position.code) &&
+      (position.alternatives?.length || 0) > 1,
+  );
   return (
     <section class="successionCompleteDesign successionOptimalResult">
       <header>
@@ -2257,17 +3052,21 @@ function CompleteDesignResult({
           </strong>
         </div>
       </header>
-      <div class="successionOptimalBranches">
-        <CompleteDesignBranchTree
-          branch="paternal"
-          design={design}
-          onExcludeUma={onExcludeUma}
-        />
-        <CompleteDesignBranchTree
-          branch="maternal"
-          design={design}
-          onExcludeUma={onExcludeUma}
-        />
+      <div
+        class={`successionOptimalBranches${hasAlternatives ? " hasAlternatives" : ""}${visibleBranches.length === 1 ? " singleBranch" : ""}`}
+      >
+        {visibleBranches.length ? (
+          visibleBranches.map((branch) => (
+            <CompleteDesignBranchTree
+              branch={branch}
+              design={design}
+              onExcludeUma={onExcludeUma}
+              key={branch}
+            />
+          ))
+        ) : (
+          <div class="successionAllBranchesFixed">父系与母系均已固定</div>
+        )}
       </div>
     </section>
   );
@@ -2479,6 +3278,8 @@ export function SuccessionPlanner() {
   const [initialSettings] = useState(loadStoredSuccessionSettings);
   const [targetId, setTargetId] = useState(initialSettings.targetId);
   const [lineage, setLineage] = useState(initialSettings.lineage);
+  const [trainedUmaSettings, setTrainedUmaSettings] =
+    useState<TrainedUmaSettings>(initialSettings.trainedUmaSettings);
   const [routes, setRoutes] = useState<Record<BranchKey, string>>(
     initialSettings.routes,
   );
@@ -2490,6 +3291,11 @@ export function SuccessionPlanner() {
   );
   const [inheritanceTargets, setInheritanceTargets] =
     useState<InheritanceTargets>(initialSettings.inheritanceTargets);
+  const [allowInRaceFactorJump, setAllowInRaceFactorJump] = useState(
+    initialSettings.allowInRaceFactorJump,
+  );
+  const [inRaceFactorJumpMinimumRank, setInRaceFactorJumpMinimumRank] =
+    useState(initialSettings.inRaceFactorJumpMinimumRank);
   const [excludedUmaIds, setExcludedUmaIds] = useState<number[]>(
     initialSettings.excludedUmaIds,
   );
@@ -2526,8 +3332,11 @@ export function SuccessionPlanner() {
           routeMinimums,
           inheritanceAptitudes,
           inheritanceTargets,
+          allowInRaceFactorJump,
+          inRaceFactorJumpMinimumRank,
           excludedUmaIds,
           slotRouteOverrides,
+          trainedUmaSettings,
         }),
       );
     } catch {
@@ -2540,8 +3349,11 @@ export function SuccessionPlanner() {
     routeMinimums,
     inheritanceAptitudes,
     inheritanceTargets,
+    allowInRaceFactorJump,
+    inRaceFactorJumpMinimumRank,
     excludedUmaIds,
     slotRouteOverrides,
+    trainedUmaSettings,
   ]);
 
   const umaById = useMemo(
@@ -2560,9 +3372,12 @@ export function SuccessionPlanner() {
     routeMinimums,
     inheritanceAptitudes,
     inheritanceTargets,
+    allowInRaceFactorJump,
+    inRaceFactorJumpMinimumRank,
     probabilityTargetRanks,
     excludedUmaIds,
     slotRouteOverrides,
+    trainedUmaSettings,
   });
   const calculationReady =
     calculationRequestId > 0 &&
@@ -2835,6 +3650,35 @@ export function SuccessionPlanner() {
       grandparents: ["maternalA", "maternalB"],
     },
   };
+  const lineageFullyUnfixed = TARGET_FACTOR_SLOTS.every(
+    (slot) => !lineage[slot],
+  );
+  const branchSettingsEquivalent =
+    routes.paternal === routes.maternal &&
+    ALL_APTITUDES.every(
+      (type) =>
+        routeMinimums.paternal[type] === routeMinimums.maternal[type],
+    );
+  const branchesInterchangeable =
+    lineageFullyUnfixed &&
+    branchSettingsEquivalent &&
+    !Object.keys(trainedUmaSettings).length;
+  const factorProductionMinimumRank = allowInRaceFactorJump
+    ? inRaceFactorJumpMinimumRank
+    : 7;
+  const factorPlanBranchKey = (
+    plan: TargetFactorPlan,
+    branch: BranchKey,
+  ) => {
+    const { parent, grandparents } = branchConfigs[branch];
+    const grandparentKeys = grandparents
+      .map((slot) => factorAssignmentKey(plan.assignments[slot]))
+      .sort();
+    return [
+      factorAssignmentKey(plan.assignments[parent]),
+      ...grandparentKeys,
+    ].join("|");
+  };
 
   const buildBranchStrategies = (
     factorPlan: TargetFactorPlan,
@@ -2845,11 +3689,109 @@ export function SuccessionPlanner() {
       parent,
       ...grandparents,
     ];
+    const trainedParent = trainedUmaSettings[parent];
+    if (trainedParent) {
+      const trainedMembers = [trainedParent.self, ...trainedParent.parents];
+      const trainedUmas = trainedMembers.map((member) =>
+        umaById.get(member.umaId),
+      );
+      if (trainedUmas.some((uma) => !uma)) return [];
+      return [
+        {
+          positions: slots.map((slot, index) => ({
+            code: SLOT_CODES[slot],
+            generation: index === 0 ? 1 : 2,
+            uma: trainedUmas[index]!,
+            factor: trainedMembers[index].factor,
+            fixed: true,
+            requiresUma: true,
+          })),
+          cumulativeRequirements: [],
+          greatFactorRequirements: {
+            parent: {},
+            grandparents: [{}, {}],
+          },
+        },
+      ];
+    }
+    const effectiveAssignmentForSlot = (slot: LineageSlot): FactorAssignment => {
+      const trainedFactor = trainedUmaSettings[slot]?.self.factor;
+      return trainedFactor ? { ...trainedFactor } : factorPlan.assignments[slot];
+    };
+    const factorRequirementForCandidate = (
+      slot: LineageSlot,
+      candidate: SuccessionUma,
+      producedType?: FactorKey,
+    ) => {
+      const trainedSelf = trainedUmaSettings[slot]?.self;
+      if (trainedSelf?.umaId === candidate.id) {
+        return { demand: {}, impossible: [] as FactorKey[] };
+      }
+      const setting = routeSettingForSlot(slot, candidate.id);
+      return factorDemandForUma(
+        candidate,
+        setting.route,
+        setting.minimums,
+        producedType,
+        factorProductionMinimumRank,
+      );
+    };
+    const inRaceFactorJumpForCandidate = (
+      slot: LineageSlot,
+      candidate: SuccessionUma,
+      assignment: FactorAssignment,
+    ): CompleteDesignPosition["inRaceFactorJump"] => {
+      if (
+        trainedUmaSettings[slot] ||
+        !allowInRaceFactorJump ||
+        assignment.unconstrained ||
+        candidate.aptitudes[assignment.type] >= 7
+      ) {
+        return undefined;
+      }
+      const setting = routeSettingForSlot(slot, candidate.id);
+      const fromRank = Math.max(
+        setting.route.aptitudes.includes(assignment.type)
+          ? setting.minimums[assignment.type]
+          : 0,
+        factorProductionMinimumRank,
+      );
+      const requiredStars = minimumStarsForRank(
+        candidate.aptitudes[assignment.type],
+        fromRank,
+      );
+      if (fromRank >= 7 || !requiredStars) return undefined;
+      return {
+        type: assignment.type,
+        fromRank,
+        toRank: 7,
+      };
+    };
+    const candidateCanProduceConfiguredFactor = (
+      slot: LineageSlot,
+      candidate: SuccessionUma,
+    ) =>
+      inheritanceAptitudes.some((type) => {
+        const requirement = factorRequirementForCandidate(
+          slot,
+          candidate,
+          type,
+        );
+        return (
+          !requirement.impossible.length &&
+          demandSlotCount(requirement.demand) <= MAX_INHERITANCE_SLOTS
+        );
+      });
     const buildCandidateList = (
       slot: LineageSlot,
       allowedFixedUmas?: SuccessionUma[],
     ) => {
-      const assignment = factorPlan.assignments[slot];
+      const trainedSelf = trainedUmaSettings[slot]?.self;
+      if (trainedSelf) {
+        const trainedUma = umaById.get(trainedSelf.umaId);
+        return trainedUma ? [trainedUma] : [];
+      }
+      const assignment = effectiveAssignmentForSlot(slot);
       return data.umas
         .filter((candidate) => {
           if (candidate.id === targetId) return false;
@@ -2865,16 +3807,18 @@ export function SuccessionPlanner() {
           ) {
             return false;
           }
-          const setting = routeSettingForSlot(slot, candidate.id);
-          const producedType =
-            assignment.unconstrained || (fixedCandidate && assignment.free)
-              ? undefined
-              : assignment.type;
-          const requirement = factorDemandForUma(
+          if (
+            assignment.unconstrained &&
+            candidateCanProduceConfiguredFactor(slot, candidate)
+          ) {
+            // “自由”是该马娘无法产出任何目标红因子时的兜底，不与
+            // 可产出的具体红因子方案一起参与同概率候选。
+            return false;
+          }
+          const requirement = factorRequirementForCandidate(
+            slot,
             candidate,
-            setting.route,
-            setting.minimums,
-            producedType,
+            assignment.unconstrained ? undefined : assignment.type,
           );
           return (
             !requirement.impossible.length &&
@@ -2883,13 +3827,10 @@ export function SuccessionPlanner() {
         })
         .map((candidate) => {
           const setting = routeSettingForSlot(slot, candidate.id);
-          const fixedCandidate =
-            lineage[slot] === candidate.id ||
-            Boolean(allowedFixedUmas?.some((uma) => uma.id === candidate.id));
           return {
             candidate,
             factorQuality:
-              assignment.unconstrained || (fixedCandidate && assignment.free)
+              assignment.unconstrained
                 ? 0
                 : candidate.aptitudes[assignment.type],
             routeQuality: setting.route.aptitudes.reduce(
@@ -2926,7 +3867,7 @@ export function SuccessionPlanner() {
       ];
     const pruneDominatedParents = (candidates: SuccessionUma[]) => {
       if (fixedParent) return candidates;
-      const assignment = factorPlan.assignments[parent];
+      const assignment = effectiveAssignmentForSlot(parent);
       const parentSetting = routeSettingForSlot(parent);
       const relevantTypes = [
         ...new Set([
@@ -2947,10 +3888,9 @@ export function SuccessionPlanner() {
               coParentCompatibility: fixedCoParentId
                 ? relationScore(candidate.id, fixedCoParentId)
                 : 0,
-              demand: factorDemandForUma(
+              demand: factorRequirementForCandidate(
+                parent,
                 candidate,
-                routeSettingForSlot(parent, candidate.id).route,
-                routeSettingForSlot(parent, candidate.id).minimums,
                 assignment.unconstrained ? undefined : assignment.type,
               ).demand,
               relationTypes,
@@ -3023,7 +3963,7 @@ export function SuccessionPlanner() {
       parentUma: SuccessionUma,
     ) => {
       if (fixedGrandparents.length === 2) return candidates;
-      const assignment = factorPlan.assignments[slot];
+      const assignment = effectiveAssignmentForSlot(slot);
       const slotSetting = routeSettingForSlot(slot);
       const relevantTypes = [
         ...new Set([
@@ -3036,10 +3976,9 @@ export function SuccessionPlanner() {
           candidate.id,
           {
             compatibility: relationScore(targetId, parentUma.id, candidate.id),
-            demand: factorDemandForUma(
+            demand: factorRequirementForCandidate(
+              slot,
               candidate,
-              routeSettingForSlot(slot, candidate.id).route,
-              routeSettingForSlot(slot, candidate.id).minimums,
               assignment.unconstrained ? undefined : assignment.type,
             ).demand,
           },
@@ -3085,21 +4024,33 @@ export function SuccessionPlanner() {
       });
     };
     const grandparentAssignmentsEquivalent =
-      `${factorPlan.assignments[grandparents[0]].type}:${factorPlan.assignments[grandparents[0]].stars}:${factorPlan.assignments[grandparents[0]].free ? 1 : 0}` ===
-      `${factorPlan.assignments[grandparents[1]].type}:${factorPlan.assignments[grandparents[1]].stars}:${factorPlan.assignments[grandparents[1]].free ? 1 : 0}`;
+      effectiveFactorRoleKey(effectiveAssignmentForSlot(grandparents[0])) ===
+      effectiveFactorRoleKey(effectiveAssignmentForSlot(grandparents[1]));
     function* grandparentPairs(
       parentUma: SuccessionUma,
     ): Generator<[SuccessionUma, SuccessionUma]> {
-      const firstCandidates = pruneDominatedGrandparents(
+      let firstCandidates = pruneDominatedGrandparents(
         candidateLists[1],
         grandparents[0],
         parentUma,
       );
-      const secondCandidates = pruneDominatedGrandparents(
+      let secondCandidates = pruneDominatedGrandparents(
         candidateLists[2],
         grandparents[1],
         parentUma,
       );
+      if (!fixedGrandparents.length && !grandparentAssignmentsEquivalent) {
+        const sharedCandidates = [
+          ...new Map(
+            [...firstCandidates, ...secondCandidates].map((uma) => [
+              uma.id,
+              uma,
+            ]),
+          ).values(),
+        ].sort((a, b) => a.id - b.id);
+        firstCandidates = sharedCandidates;
+        secondCandidates = sharedCandidates;
+      }
       const firstGrandparentById = new Map(
         firstCandidates.map((uma) => [uma.id, uma]),
       );
@@ -3151,22 +4102,23 @@ export function SuccessionPlanner() {
         firstIndex < firstCandidates.length;
         firstIndex += 1
       ) {
-        const secondStart = grandparentAssignmentsEquivalent
-          ? firstIndex + 1
-          : 0;
         for (
-          let secondIndex = secondStart;
+          let secondIndex = 0;
           secondIndex < secondCandidates.length;
           secondIndex += 1
         ) {
           const firstUma = firstCandidates[firstIndex];
           const secondUma = secondCandidates[secondIndex];
-          if (firstUma.id !== secondUma.id) yield [firstUma, secondUma];
+          // 空祖辈槽没有左右语义：马娘组合只按 ID 升序生成一次。
+          // 不同因子角色在下方交换 assignment，而不是反向遍历马娘。
+          if (firstUma.id >= secondUma.id) continue;
+          yield [firstUma, secondUma];
         }
       }
     }
 
     const strategies: BranchFactorStrategy[] = [];
+    const seenStrategies = new Set<string>();
     for (const parentUma of candidateLists[0]) {
       for (const [firstGrandparent, secondGrandparent] of grandparentPairs(
         parentUma,
@@ -3174,18 +4126,19 @@ export function SuccessionPlanner() {
         const directUmas = [parentUma, firstGrandparent, secondGrandparent];
         if (new Set(directUmas.map((uma) => uma.id)).size !== 3) continue;
 
-        const parentAssignment = factorPlan.assignments[parent];
-        const effectiveParentAssignment =
-          fixedParent && parentAssignment.free
-            ? { ...parentAssignment, unconstrained: true }
-            : parentAssignment;
-        const parentRequirement = factorDemandForUma(
+        const parentAssignment = effectiveAssignmentForSlot(parent);
+        if (
+          parentAssignment.unconstrained &&
+          candidateCanProduceConfiguredFactor(parent, parentUma)
+        ) {
+          continue;
+        }
+        const parentRequirement = factorRequirementForCandidate(
+          parent,
           parentUma,
-          routeSettingForSlot(parent, parentUma.id).route,
-          routeSettingForSlot(parent, parentUma.id).minimums,
-          effectiveParentAssignment.unconstrained
+          parentAssignment.unconstrained
             ? undefined
-            : effectiveParentAssignment.type,
+            : parentAssignment.type,
         );
         if (
           parentRequirement.impossible.length ||
@@ -3197,165 +4150,197 @@ export function SuccessionPlanner() {
         const usefulFreeTypes = ALL_APTITUDES.filter(
           (type) => (parentRequirement.demand[type] || 0) > 0,
         );
-        const grandparentFactorChoices = grandparents.map((slot, index) => {
-          const assignment = factorPlan.assignments[slot];
-          if (
-            assignment.free &&
-            fixedGrandparentIds.has(directUmas[index + 1].id)
-          ) {
-            return [{ ...assignment, unconstrained: true }];
-          }
-          if (!assignment.unconstrained) return [assignment];
-          return [
-            ...usefulFreeTypes.map(
-              (type): FactorAssignment => ({ type, stars: 3 }),
-            ),
-            assignment,
-          ];
-        });
-        let resolvedGrandparentAssignments: FactorAssignment[] | undefined;
-        let grandparentRequirements:
-          | ReturnType<typeof factorDemandForUma>[]
-          | undefined;
-        let parentRemaining: FactorDemand | undefined;
-        let bestAssignmentScore = Number.POSITIVE_INFINITY;
-        grandparentFactorChoices[0].forEach((firstFactor) => {
-          grandparentFactorChoices[1].forEach((secondFactor) => {
-            const assignments = [firstFactor, secondFactor];
-            const requirements = grandparents.map((_, index) => {
-              const setting = routeSettingForSlot(
-                grandparents[index],
-                directUmas[index + 1].id,
+        const baseGrandparentAssignments = grandparents.map(
+          (slot) => effectiveAssignmentForSlot(slot),
+        );
+        const grandparentAssignmentOrders =
+          !fixedGrandparents.length && !grandparentAssignmentsEquivalent
+            ? [
+                baseGrandparentAssignments,
+                [
+                  baseGrandparentAssignments[1],
+                  baseGrandparentAssignments[0],
+                ],
+              ]
+            : [baseGrandparentAssignments];
+        for (const grandparentAssignments of grandparentAssignmentOrders) {
+          const grandparentFactorChoices = grandparentAssignments.map(
+            (assignment) => {
+              if (!assignment.unconstrained) return [assignment];
+              return [
+                ...usefulFreeTypes.map(
+                  (type): FactorAssignment => ({ type, stars: 3 }),
+                ),
+                assignment,
+              ];
+            },
+          );
+          let resolvedGrandparentAssignments: FactorAssignment[] | undefined;
+          let grandparentRequirements:
+            | ReturnType<typeof factorDemandForUma>[]
+            | undefined;
+          let parentRemaining: FactorDemand | undefined;
+          let bestAssignmentScore = Number.POSITIVE_INFINITY;
+          grandparentFactorChoices[0].forEach((firstFactor) => {
+            grandparentFactorChoices[1].forEach((secondFactor) => {
+              const assignments = [firstFactor, secondFactor];
+              const requirements = grandparents.map((_, index) => {
+                return factorRequirementForCandidate(
+                  grandparents[index],
+                  directUmas[index + 1],
+                  assignments[index].unconstrained
+                    ? undefined
+                    : assignments[index].type,
+                );
+              });
+              if (
+                requirements.some(
+                  (item) =>
+                    item.impossible.length ||
+                    demandSlotCount(item.demand) > MAX_INHERITANCE_SLOTS,
+                )
+              ) {
+                return;
+              }
+              const remaining = remainingFactorDemand(
+                parentRequirement.demand,
+                assignments,
               );
-              return factorDemandForUma(
-                directUmas[index + 1],
-                setting.route,
-                setting.minimums,
-                assignments[index].unconstrained
-                  ? undefined
-                  : assignments[index].type,
-              );
+              const remainingSlots = demandSlotCount(remaining);
+              if (remainingSlots > 4) return;
+              const score =
+                remainingSlots * 100 +
+                requirements.reduce(
+                  (total, item) => total + demandSlotCount(item.demand),
+                  0,
+                );
+              if (score >= bestAssignmentScore) return;
+              bestAssignmentScore = score;
+              resolvedGrandparentAssignments = assignments;
+              grandparentRequirements = requirements;
+              parentRemaining = remaining;
             });
-            if (
-              requirements.some(
-                (item) =>
-                  item.impossible.length ||
-                  demandSlotCount(item.demand) > MAX_INHERITANCE_SLOTS,
-              )
-            ) {
+          });
+          if (
+            !resolvedGrandparentAssignments ||
+            !grandparentRequirements ||
+            !parentRemaining
+          ) {
+            continue;
+          }
+
+          const universe = [
+            ...inheritanceAptitudes,
+            ...ALL_APTITUDES.filter(
+              (type) =>
+                Boolean(parentRemaining[type]) ||
+                grandparentRequirements.some((item) =>
+                  Boolean(item.demand[type]),
+                ),
+            ),
+          ].filter((type, index, values) => values.indexOf(type) === index);
+          let greatAssignments: FactorAssignment[] | undefined =
+            universe.length
+              ? undefined
+              : Array.from({ length: 4 }, () => ({
+                  type: "turf" as const,
+                  stars: 3 as const,
+                  free: true,
+                  unconstrained: true,
+                }));
+          const visitGreatAssignments = (types: FactorKey[]) => {
+            if (greatAssignments) return;
+            if (types.length < 4) {
+              universe.forEach((type) =>
+                visitGreatAssignments([...types, type]),
+              );
               return;
             }
-            const remaining = remainingFactorDemand(
-              parentRequirement.demand,
-              assignments,
-            );
-            const remainingSlots = demandSlotCount(remaining);
-            if (remainingSlots > 4) return;
-            const score =
-              remainingSlots * 100 +
-              requirements.reduce(
-                (total, item) => total + demandSlotCount(item.demand),
-                0,
-              );
-            if (score >= bestAssignmentScore) return;
-            bestAssignmentScore = score;
-            resolvedGrandparentAssignments = assignments;
-            grandparentRequirements = requirements;
-            parentRemaining = remaining;
-          });
-        });
-        if (
-          !resolvedGrandparentAssignments ||
-          !grandparentRequirements ||
-          !parentRemaining
-        ) {
-          continue;
-        }
-
-        const universe = [
-          ...inheritanceAptitudes,
-          ...ALL_APTITUDES.filter(
-            (type) =>
-              Boolean(parentRemaining[type]) ||
-              grandparentRequirements.some((item) =>
-                Boolean(item.demand[type]),
-              ),
-          ),
-        ].filter((type, index, values) => values.indexOf(type) === index);
-        let greatAssignments: FactorAssignment[] | undefined = universe.length
-          ? undefined
-          : Array.from({ length: 4 }, () => ({
-              type: "turf" as const,
+            const assignments = types.map((type) => ({
+              type,
               stars: 3 as const,
-              free: true,
-              unconstrained: true,
             }));
-        const visitGreatAssignments = (types: FactorKey[]) => {
-          if (greatAssignments) return;
-          if (types.length < 4) {
-            universe.forEach((type) => visitGreatAssignments([...types, type]));
-            return;
-          }
-          const assignments = types.map((type) => ({
-            type,
-            stars: 3 as const,
-          }));
-          if (!demandSatisfied(parentRemaining, assignments)) return;
-          const ancestorsFit = grandparents.every((_, index) => {
-            const remaining = remainingFactorDemand(
-              grandparentRequirements[index].demand,
-              assignments.slice(index * 2, index * 2 + 2),
-            );
-            return demandSlotCount(remaining) <= 4;
-          });
-          if (ancestorsFit) greatAssignments = assignments;
-        };
-        visitGreatAssignments([]);
-        if (!greatAssignments) continue;
+            if (!demandSatisfied(parentRemaining, assignments)) return;
+            const ancestorsFit = grandparents.every((_, index) => {
+              const remaining = remainingFactorDemand(
+                grandparentRequirements[index].demand,
+                assignments.slice(index * 2, index * 2 + 2),
+              );
+              return demandSlotCount(remaining) <= 4;
+            });
+            if (ancestorsFit) greatAssignments = assignments;
+          };
+          visitGreatAssignments([]);
+          if (!greatAssignments) continue;
 
-        const positions: CompleteDesignPosition[] = slots.map(
-          (slot, index) => ({
-            code: SLOT_CODES[slot],
-            generation: index === 0 ? 1 : 2,
-            uma: directUmas[index],
-            factor:
-              index === 0
-                ? effectiveParentAssignment
-                : resolvedGrandparentAssignments![index - 1],
-            fixed:
-              index === 0
-                ? Boolean(lineage[parent])
-                : fixedGrandparentIds.has(directUmas[index].id),
-            requiresUma: true,
-          }),
-        );
-        const greatCodes = grandparents.flatMap((slot) => [
-          `${SLOT_CODES[slot]}A`,
-          `${SLOT_CODES[slot]}B`,
-        ]);
-        greatAssignments.forEach((factor, index) => {
-          positions.push({
-            code: greatCodes[index],
-            generation: 3,
-            factor,
-            fixed: false,
-            requiresUma: false,
+          const positions: CompleteDesignPosition[] = slots.map(
+            (slot, index) => {
+              const factor =
+                index === 0
+                  ? parentAssignment
+                  : resolvedGrandparentAssignments![index - 1];
+              return {
+                code: SLOT_CODES[slot],
+                generation: index === 0 ? 1 : 2,
+                uma: directUmas[index],
+                factor,
+                fixed:
+                  index === 0
+                    ? Boolean(lineage[parent])
+                    : fixedGrandparentIds.has(directUmas[index].id) ||
+                      Boolean(trainedUmaSettings[slot]),
+                requiresUma: true,
+                inRaceFactorJump: inRaceFactorJumpForCandidate(
+                  slot,
+                  directUmas[index],
+                  factor,
+                ),
+              };
+            },
+          );
+          const greatCodes = grandparents.flatMap((slot) => [
+            `${SLOT_CODES[slot]}A`,
+            `${SLOT_CODES[slot]}B`,
+          ]);
+          greatAssignments.forEach((factor, index) => {
+            positions.push({
+              code: greatCodes[index],
+              generation: 3,
+              factor,
+              fixed: false,
+              requiresUma: false,
+            });
           });
-        });
-        strategies.push({
-          positions,
-          cumulativeRequirements: grandparents.map((slot, index) => ({
-            code: SLOT_CODES[slot],
-            demand: grandparentRequirements[index].demand,
-          })),
-          greatFactorRequirements: {
-            parent: parentRemaining,
-            grandparents: [
-              grandparentRequirements[0].demand,
-              grandparentRequirements[1].demand,
-            ],
-          },
-        });
+          const demandOrderKey = (demand: FactorDemand) =>
+            ALL_APTITUDES.map((type) => demand[type] || 0).join(":");
+          const strategyKey = [
+            directUmas.map((uma) => uma.id).join(":"),
+            [parentAssignment, ...resolvedGrandparentAssignments]
+              .map(effectiveFactorRoleKey)
+              .join("|"),
+            greatAssignments.map(effectiveFactorRoleKey).join("|"),
+            demandOrderKey(parentRemaining),
+            grandparentRequirements
+              .map((requirement) => demandOrderKey(requirement.demand))
+              .join("|"),
+          ].join("||");
+          if (seenStrategies.has(strategyKey)) continue;
+          seenStrategies.add(strategyKey);
+          strategies.push({
+            positions,
+            cumulativeRequirements: grandparents.map((slot, index) => ({
+              code: SLOT_CODES[slot],
+              demand: grandparentRequirements[index].demand,
+            })),
+            greatFactorRequirements: {
+              parent: parentRemaining,
+              grandparents: [
+                grandparentRequirements[0].demand,
+                grandparentRequirements[1].demand,
+              ],
+            },
+          });
+        }
       }
     }
     return strategies;
@@ -3421,15 +4406,18 @@ export function SuccessionPlanner() {
     };
     return rawTargetFactorPlanEnumerator
       .getRange(0, rawTargetFactorPlanEnumerator.total)
+      .filter(
+        (plan) =>
+          !branchesInterchangeable ||
+          factorPlanBranchKey(plan, "paternal") <=
+            factorPlanBranchKey(plan, "maternal"),
+      )
       .map((plan) => {
         const getStrategies = (branch: BranchKey) => {
           const { parent, grandparents } = branchConfigs[branch];
           return expandBranchFactorPlans(plan, branch).flatMap((variant) => {
             const key = [parent, ...grandparents]
-              .map((slot) => {
-                const assignment = variant.assignments[slot];
-                return `${assignment.type}:${assignment.stars}:${assignment.free ? "free" : "required"}:${assignment.unconstrained ? "unconstrained" : "typed"}`;
-              })
+              .map((slot) => factorAssignmentKey(variant.assignments[slot]))
               .join("|");
             let strategies = branchCaches[branch].get(key);
             if (!strategies) {
@@ -3445,10 +4433,9 @@ export function SuccessionPlanner() {
           plan,
           paternal,
           maternal,
-          strategyTotal: paternal.length * maternal.length,
         };
       })
-      .filter((item) => item.strategyTotal > 0);
+      .filter((item) => item.paternal.length > 0 && item.maternal.length > 0);
   }, [
     calculationReady,
     calculationRequestId,
@@ -3460,9 +4447,15 @@ export function SuccessionPlanner() {
     JSON.stringify(routeMinimums),
     JSON.stringify(slotRouteOverrides),
     inheritanceAptitudes.join("|"),
+    factorProductionMinimumRank,
     excludedUmaIds.join("|"),
+    branchesInterchangeable,
+    JSON.stringify(trainedUmaSettings),
   ]);
   const probabilityTargetTypes = inheritanceAptitudes;
+  const guaranteedFactorDemand: FactorDemand = Object.fromEntries(
+    targetInheritanceAllocations.map((item) => [item.type, item.stars]),
+  );
   const probabilityRequiredRaises = useMemo(() => {
     const raises: Partial<Record<FactorKey, number>> = {};
     if (!target) return raises;
@@ -3540,8 +4533,14 @@ export function SuccessionPlanner() {
       }
       return [3, 3, 3, 3];
     };
+    const resolvedPositionCache = new WeakMap<
+      BranchFactorStrategy,
+      CompleteDesignPosition[]
+    >();
     const resolvedPositions = (...strategies: BranchFactorStrategy[]) =>
       strategies.flatMap((strategy) => {
+        const cached = resolvedPositionCache.get(strategy);
+        if (cached) return cached;
         const greatStars = minimumGreatFactorStars(strategy);
         const directPositions = strategy.positions
           .filter((position) => position.generation !== 3)
@@ -3584,7 +4583,7 @@ export function SuccessionPlanner() {
           };
         });
         let grandparentIndex = 0;
-        return directPositions.map((position) => {
+        const resolved = directPositions.map((position) => {
           if (position.generation !== 2) return position;
           const requirements = groupedGreatRequirements[grandparentIndex];
           grandparentIndex += 1;
@@ -3594,111 +4593,13 @@ export function SuccessionPlanner() {
             cumulativeDemand: requirements?.cumulativeDemand || {},
           };
         });
+        resolvedPositionCache.set(strategy, resolved);
+        return resolved;
       });
     const demandKey = (demand: FactorDemand) =>
       ALL_APTITUDES.filter((type) => (demand[type] || 0) > 0)
         .map((type) => `${type}:${demand[type]}`)
         .join(",");
-    const strategyDesignKey = (strategy: BranchFactorStrategy) => {
-      const parent = strategy.positions.find(
-        (position) => position.generation === 1,
-      );
-      const grandparents = strategy.positions.filter(
-        (position) => position.generation === 2,
-      );
-      const greatGrandparents = strategy.positions.filter(
-        (position) => position.generation === 3,
-      );
-      const grandparentNodes = grandparents.map((position, index) => {
-        const greatPair = greatGrandparents
-          .slice(index * 2, index * 2 + 2)
-          .map(
-            (greatPosition) =>
-              `${greatPosition.factor.type}:${greatPosition.factor.stars}`,
-          )
-          .sort()
-          .join("+");
-        return [
-          `${position.uma?.id || 0}:${position.factor.type}:${position.factor.stars}`,
-          greatPair,
-          demandKey(strategy.cumulativeRequirements[index]?.demand || {}),
-          demandKey(strategy.greatFactorRequirements.grandparents[index] || {}),
-        ].join("/");
-      });
-      const grandparentsAreUnordered =
-        parent?.code === "A"
-          ? !lineage.paternalA && !lineage.paternalB
-          : !lineage.maternalA && !lineage.maternalB;
-      if (grandparentsAreUnordered) grandparentNodes.sort();
-      return [
-        `${parent?.uma?.id || 0}:${parent?.factor.type || ""}:${parent?.factor.stars || 0}`,
-        demandKey(strategy.greatFactorRequirements.parent),
-        ...grandparentNodes,
-      ].join("|");
-    };
-    const resolvedStrategyDesignKey = (strategy: BranchFactorStrategy) => {
-      const positions = resolvedPositions(strategy);
-      const parent = positions.find((position) => position.generation === 1);
-      const grandparentNodes = positions
-        .filter((position) => position.generation === 2)
-        .map((position) =>
-          [
-            `${position.uma?.id || 0}:${position.factor.type}:${position.factor.stars}`,
-            demandKey(position.minimumDemand || {}),
-            demandKey(position.cumulativeDemand || {}),
-          ].join("/"),
-        );
-      const grandparentsAreUnordered =
-        parent?.code === "A"
-          ? !lineage.paternalA && !lineage.paternalB
-          : !lineage.maternalA && !lineage.maternalB;
-      if (grandparentsAreUnordered) grandparentNodes.sort();
-      return [
-        `${parent?.uma?.id || 0}:${parent?.factor.type || ""}:${parent?.factor.stars || 0}`,
-        ...grandparentNodes,
-      ].join("|");
-    };
-    const completeDesignKey = (
-      paternal: BranchFactorStrategy,
-      maternal: BranchFactorStrategy,
-    ) => {
-      const branchKeys = [
-        resolvedStrategyDesignKey(paternal),
-        resolvedStrategyDesignKey(maternal),
-      ];
-      const branchesAreUnordered =
-        !lineage.father &&
-        !lineage.mother &&
-        !lineage.paternalA &&
-        !lineage.paternalB &&
-        !lineage.maternalA &&
-        !lineage.maternalB;
-      if (branchesAreUnordered) branchKeys.sort();
-      return branchKeys.join("||");
-    };
-    const buildRankedResult = (
-      probability: number,
-      plan: TargetFactorPlan,
-      paternal: BranchFactorStrategy,
-      maternal: BranchFactorStrategy,
-      positionCompatibilities: Record<string, { total: number; title: string }>,
-    ) => ({
-      probability: Math.max(0, probability),
-      plan,
-      design: {
-        positions: resolvedPositions(paternal, maternal).map((position) => ({
-          ...position,
-          compatibility: positionCompatibilities[position.code]?.total,
-          compatibilityTitle: positionCompatibilities[position.code]?.title,
-        })),
-        cumulativeRequirements: [
-          ...paternal.cumulativeRequirements,
-          ...maternal.cumulativeRequirements,
-        ],
-        issues: [],
-      } satisfies CompleteFactorDesign,
-    });
-
     type BranchProbabilitySummary = {
       strategy: BranchFactorStrategy;
       parentId: number;
@@ -3832,44 +4733,77 @@ export function SuccessionPlanner() {
       strategies: BranchFactorStrategy[],
       branch: BranchKey,
     ) => {
+      const { parent, grandparents } = branchConfigs[branch];
+      const positionRoles = new Map<string, string>([
+        [SLOT_CODES[parent], "P"],
+        [SLOT_CODES[grandparents[0]], "G0"],
+        [SLOT_CODES[grandparents[1]], "G1"],
+      ]);
+      const resolvedOptionKey = (position: CompleteDesignPosition) =>
+        [
+          position.uma?.id || 0,
+          factorAssignmentKey(position.factor),
+          demandKey(position.minimumDemand || {}),
+          demandKey(position.cumulativeDemand || {}),
+        ].join("/");
       const summaries = new Map<
         string,
         {
           representative: BranchProbabilitySummary;
-          alternatives: BranchProbabilitySummary[];
-          alternativeCount: number;
+          positionOptions: Map<
+            string,
+            Map<string, CompleteDesignPosition>
+          >;
         }
       >();
       strategies.forEach((strategy) => {
         const summary = summarizeBranch(strategy, branch);
         if (!summary) return;
-        const key = `${summary.parentId}|${summary.factors
-          .map(
-            (factor) =>
-              `${factor.type}:${factor.stars}:${factor.compatibility}:${factor.parent ? 1 : 0}`,
-          )
-          .sort()
-          .join("|")}`;
-        const group = summaries.get(key);
-        const designKey = strategyDesignKey(strategy);
-        if (!group) {
-          summaries.set(key, {
-            representative: summary,
-            alternatives: [summary],
-            alternativeCount: 1,
+        const resolved = resolvedPositions(strategy)
+          .filter((position) => position.generation <= 2)
+          .map((position) => {
+            const compatibility = summary.positionCompatibilities[position.code];
+            return {
+              ...position,
+              compatibility: compatibility?.total,
+              compatibilityTitle: compatibility?.formula,
+            };
           });
-        } else if (
-          !group.alternatives.some(
-            (existing) => strategyDesignKey(existing.strategy) === designKey,
-          )
-        ) {
-          group.alternativeCount += 1;
-          if (group.alternatives.length <= MAX_EQUAL_CANDIDATES) {
-            group.alternatives.push(summary);
-          }
+        // 在固定父辈下，祖辈身份不进入等价键；每个槽位的相性和因子
+        // 相同即可归为同一概率/展示组，具体马娘保留为“或”选项。
+        const key = [
+          String(summary.parentId).padStart(10, "0"),
+          ...resolved
+            .map((position) => {
+              const compatibility =
+                summary.positionCompatibilities[position.code]?.total ?? -1;
+              return `${positionRoles.get(position.code)}:${factorAssignmentKey(position.factor)}:${compatibility}`;
+            })
+            .sort(),
+        ].join("|");
+        let group = summaries.get(key);
+        if (!group) {
+          group = {
+            representative: summary,
+            positionOptions: new Map(),
+          };
+          summaries.set(key, group);
         }
+        resolved
+          .filter((position) => position.generation === 2)
+          .forEach((position) => {
+            let options = group!.positionOptions.get(position.code);
+            if (!options) {
+              options = new Map();
+              group!.positionOptions.set(position.code, options);
+            }
+            options.set(resolvedOptionKey(position), position);
+          });
       });
-      return [...summaries.values()];
+      return [...summaries.entries()].map(([orderKey, group]) => ({
+        orderKey,
+        ...group,
+      }));
     };
 
     const probabilityCache = new Map<string, number>();
@@ -3892,42 +4826,113 @@ export function SuccessionPlanner() {
         } satisfies ProbabilityFactor;
       });
     };
-    const combinedPositionCompatibilities = (
-      paternal: BranchProbabilitySummary,
-      maternal: BranchProbabilitySummary,
+    const buildRankedResult = (
+      probability: number,
+      plan: TargetFactorPlan,
+      paternal: BranchProbabilityGroup,
+      maternal: BranchProbabilityGroup,
     ) => {
       const parentPairCompatibility = relationScore(
-        paternal.parentId,
-        maternal.parentId,
+        paternal.representative.parentId,
+        maternal.representative.parentId,
       );
-      return Object.fromEntries(
-        Object.entries({
-          ...paternal.positionCompatibilities,
-          ...maternal.positionCompatibilities,
-        }).map(([code, detail]) => {
-          const total =
-            detail.total + (detail.parent ? parentPairCompatibility : 0);
-          return [
-            code,
-            {
-              total,
-              title: detail.parent
-                ? `${detail.formula} + 父母基础相性 ${parentPairCompatibility} = ${total}`
-                : detail.formula,
-            },
-          ];
-        }),
-      );
+      const materializeBranch = (group: BranchProbabilityGroup) =>
+        resolvedPositions(group.representative.strategy).map((position) => {
+          const detail =
+            group.representative.positionCompatibilities[position.code];
+          const compatibility =
+            detail?.total + (detail?.parent ? parentPairCompatibility : 0);
+          const compatibilityTitle = detail?.parent
+            ? `${detail.formula} + 父母基础相性 ${parentPairCompatibility} = ${compatibility}`
+            : detail?.formula;
+          const options = [
+            ...(group.positionOptions.get(position.code)?.values() || []),
+          ].sort((left, right) => (left.uma?.id || 0) - (right.uma?.id || 0));
+          return {
+            ...position,
+            compatibility,
+            compatibilityTitle,
+            ...(options.length > 1
+              ? {
+                  alternatives: options,
+                  alternativeCount: options.length,
+                }
+              : {}),
+          };
+        });
+      return {
+        probability: Math.max(0, probability),
+        plan,
+        design: {
+          positions: [
+            ...materializeBranch(paternal),
+            ...materializeBranch(maternal),
+          ],
+          cumulativeRequirements: [
+            ...paternal.representative.strategy.cumulativeRequirements,
+            ...maternal.representative.strategy.cumulativeRequirements,
+          ],
+          issues: [],
+        } satisfies CompleteFactorDesign,
+      };
     };
-    const bestMatches: Array<{
+    type BestMatch = {
       plan: TargetFactorPlan;
       paternal: BranchProbabilityGroup;
       maternal: BranchProbabilityGroup;
-    }> = [];
+    };
+    const bestMatches: BestMatch[] = [];
+    const bestMatchByKey = new Map<string, BestMatch>();
+    const bestMatchKeys = new Set<string>();
+    const mergeBranchGroupOptions = (
+      target: BranchProbabilityGroup,
+      source: BranchProbabilityGroup,
+    ) => {
+      source.positionOptions.forEach((sourceOptions, code) => {
+        let targetOptions = target.positionOptions.get(code);
+        if (!targetOptions) {
+          targetOptions = new Map();
+          target.positionOptions.set(code, targetOptions);
+        }
+        sourceOptions.forEach((position, optionKey) => {
+          targetOptions!.set(optionKey, position);
+        });
+      });
+    };
+    const bestMatchKey = (
+      paternal: BranchProbabilityGroup,
+      maternal: BranchProbabilityGroup,
+      branchesUnordered: boolean,
+    ) => {
+      const branchKeys = [paternal.orderKey, maternal.orderKey];
+      if (branchesUnordered) branchKeys.sort();
+      return branchKeys.join("||");
+    };
+    const recordBestMatch = (
+      match: BestMatch,
+      key: string,
+    ) => {
+      const existing = bestMatchByKey.get(key);
+      if (existing) {
+        mergeBranchGroupOptions(existing.paternal, match.paternal);
+        mergeBranchGroupOptions(existing.maternal, match.maternal);
+        return;
+      }
+      if (bestMatchKeys.has(key)) return;
+      bestMatchKeys.add(key);
+      bestMatchCount += 1;
+      if (bestMatches.length >= MAX_EQUAL_MATCH_GROUPS) return;
+      bestMatches.push(match);
+      bestMatchByKey.set(key, match);
+    };
     let bestProbability = -1;
     let bestMatchCount = 0;
 
     for (const completeDesignGroup of validCompleteDesigns) {
+      const branchFactorPlansEquivalent =
+        branchesInterchangeable &&
+        factorPlanBranchKey(completeDesignGroup.plan, "paternal") ===
+          factorPlanBranchKey(completeDesignGroup.plan, "maternal");
       const paternalSummaries = compactBranch(
         completeDesignGroup.paternal,
         "paternal",
@@ -3938,8 +4943,22 @@ export function SuccessionPlanner() {
       );
       for (const paternal of paternalSummaries) {
         for (const maternal of maternalSummaries) {
+          if (
+            branchFactorPlansEquivalent &&
+            paternal.orderKey > maternal.orderKey
+          ) {
+            continue;
+          }
           const paternalSummary = paternal.representative;
           const maternalSummary = maternal.representative;
+          if (
+            !demandSatisfied(guaranteedFactorDemand, [
+              ...paternalSummary.factors,
+              ...maternalSummary.factors,
+            ])
+          ) {
+            continue;
+          }
           const factors = combinedProbabilityFactors(
             paternalSummary,
             maternalSummary,
@@ -3960,59 +4979,52 @@ export function SuccessionPlanner() {
             );
             probabilityCache.set(probabilityKey, probability);
           }
+          if (probability < MIN_DISPLAYED_PROBABILITY) continue;
           if (probability > bestProbability) {
             bestProbability = probability;
             bestMatches.length = 0;
-            bestMatchCount = 1;
-            bestMatches.push({
+            bestMatchByKey.clear();
+            bestMatchKeys.clear();
+            bestMatchCount = 0;
+            const match = {
               plan: completeDesignGroup.plan,
               paternal,
               maternal,
-            });
+            };
+            recordBestMatch(
+              match,
+              bestMatchKey(paternal, maternal, branchFactorPlansEquivalent),
+            );
           } else if (probability === bestProbability) {
-            bestMatchCount += 1;
-            if (bestMatches.length < MAX_EQUAL_MATCH_GROUPS) {
-              bestMatches.push({
-                plan: completeDesignGroup.plan,
-                paternal,
-                maternal,
-              });
-            }
+            const match = {
+              plan: completeDesignGroup.plan,
+              paternal,
+              maternal,
+            };
+            recordBestMatch(
+              match,
+              bestMatchKey(paternal, maternal, branchFactorPlansEquivalent),
+            );
           }
         }
       }
     }
 
     if (!bestMatches.length) return undefined;
-    const resultKeys = new Set<string>();
     const results: ReturnType<typeof buildRankedResult>[] = [];
     let truncated = bestMatchCount > bestMatches.length;
-    candidateExpansion: for (const match of bestMatches) {
-      if (
-        match.paternal.alternativeCount > match.paternal.alternatives.length ||
-        match.maternal.alternativeCount > match.maternal.alternatives.length
-      ) {
+    for (const match of bestMatches) {
+      results.push(
+        buildRankedResult(
+          bestProbability,
+          match.plan,
+          match.paternal,
+          match.maternal,
+        ),
+      );
+      if (results.length >= MAX_EQUAL_CANDIDATES) {
         truncated = true;
-      }
-      for (const paternal of match.paternal.alternatives) {
-        for (const maternal of match.maternal.alternatives) {
-          const key = completeDesignKey(paternal.strategy, maternal.strategy);
-          if (resultKeys.has(key)) continue;
-          resultKeys.add(key);
-          results.push(
-            buildRankedResult(
-              bestProbability,
-              match.plan,
-              paternal.strategy,
-              maternal.strategy,
-              combinedPositionCompatibilities(paternal, maternal),
-            ),
-          );
-          if (results.length >= MAX_EQUAL_CANDIDATES) {
-            truncated = true;
-            break candidateExpansion;
-          }
-        }
+        break;
       }
     }
     return {
@@ -4030,6 +5042,8 @@ export function SuccessionPlanner() {
     routes.paternal,
     routes.maternal,
     JSON.stringify(slotRouteOverrides),
+    branchesInterchangeable,
+    JSON.stringify(guaranteedFactorDemand),
   ]);
   useEffect(() => {
     if (!isCalculating || !calculationReady) return;
@@ -4070,6 +5084,11 @@ export function SuccessionPlanner() {
   const calculationComplete =
     displayedCalculation !== undefined && !isCalculating;
   const completeFactorDesigns = displayedCalculation?.result?.results || [];
+  const singleBranchCompleteDesigns =
+    completeFactorDesigns.length > 0 &&
+    completeFactorDesigns.every(
+      (result) => visibleCompleteDesignBranches(result.design).length === 1,
+    );
 
   const calculateOptimalDesign = () => {
     if (!target || isCalculating) return;
@@ -4102,6 +5121,37 @@ export function SuccessionPlanner() {
     setLineage((current) => ({ ...current, [slot]: value }));
     if (!changed) return;
     setSlotRouteOverrides((current) => {
+      if (!current[slot]) return current;
+      const next = { ...current };
+      delete next[slot];
+      return next;
+    });
+    setTrainedUmaSettings((current) => {
+      if (!current[slot]) return current;
+      const next = { ...current };
+      delete next[slot];
+      return next;
+    });
+  };
+
+  const clearLineageSetting = (slot: LineageSlot) => {
+    const clearedSlots = [
+      slot,
+      ...(trainedUmaSettings[slot] ? SLOT_UPSTREAM_SLOTS[slot] || [] : []),
+    ];
+    setLineage((current) => {
+      const next = { ...current };
+      clearedSlots.forEach((item) => {
+        next[item] = 0;
+      });
+      return next;
+    });
+    setSlotRouteOverrides((current) => {
+      const next = { ...current };
+      clearedSlots.forEach((item) => delete next[item]);
+      return next;
+    });
+    setTrainedUmaSettings((current) => {
       if (!current[slot]) return current;
       const next = { ...current };
       delete next[slot];
@@ -4187,7 +5237,52 @@ export function SuccessionPlanner() {
       [sourceSlot]: current[targetSlot],
       [targetSlot]: current[sourceSlot],
     }));
+    setSlotRouteOverrides((current) => ({
+      ...current,
+      [sourceSlot]: current[targetSlot],
+      [targetSlot]: current[sourceSlot],
+    }));
+    setTrainedUmaSettings((current) => ({
+      ...current,
+      [sourceSlot]: current[targetSlot],
+      [targetSlot]: current[sourceSlot],
+    }));
     clearLineageDragState();
+  };
+
+  const saveTrainedUmaSetting = (
+    slot: LineageSlot,
+    setting: TrainedUmaSetting,
+  ) => {
+    const upstreamSlots = SLOT_UPSTREAM_SLOTS[slot] || [];
+    setTrainedUmaSettings((current) => {
+      const next = { ...current, [slot]: setting };
+      upstreamSlots.forEach((upstreamSlot) => delete next[upstreamSlot]);
+      return next;
+    });
+    setLineage((current) => {
+      const next = { ...current, [slot]: setting.self.umaId };
+      upstreamSlots.forEach((upstreamSlot, index) => {
+        next[upstreamSlot] = setting.parents[index].umaId;
+      });
+      return next;
+    });
+    setSlotRouteOverrides((current) => {
+      const next = {
+        ...current,
+        [slot]: {
+          routeId: setting.self.routeId,
+          minimums: { ...DEFAULT_APTITUDE_MINIMUMS },
+        },
+      };
+      upstreamSlots.forEach((upstreamSlot, index) => {
+        next[upstreamSlot] = {
+          routeId: setting.parents[index].routeId,
+          minimums: { ...DEFAULT_APTITUDE_MINIMUMS },
+        };
+      });
+      return next;
+    });
   };
 
   const updateSlotRoute = (slot: LineageSlot, routeId: string) => {
@@ -4245,7 +5340,28 @@ export function SuccessionPlanner() {
     });
   };
 
+  const clearAllUmaSelections = () => {
+    calculationRunToken.current += 1;
+    setTargetId(0);
+    setLineage({ ...INITIAL_LINEAGE });
+    setSlotRouteOverrides({});
+    setTrainedUmaSettings({});
+    setInheritanceTargets({});
+    setProbabilityTargetRanks({});
+    setConfiguredProbabilityTargetTypes([]);
+    setCalculationInputKey("");
+    setCalculationRequestId(0);
+    setCompletedCalculation(undefined);
+    setIsCalculating(false);
+    setCalculationProgress(0);
+    setCalculationStage(0);
+  };
+
   const updateTarget = (value: number) => {
+    if (!value) {
+      clearAllUmaSelections();
+      return;
+    }
     setTargetId(value);
     setProbabilityTargetRanks({});
     setConfiguredProbabilityTargetTypes([]);
@@ -4347,7 +5463,10 @@ export function SuccessionPlanner() {
       maternal: { ...INITIAL_ROUTE_MINIMUMS.maternal },
     });
     setSlotRouteOverrides({});
+    setTrainedUmaSettings({});
     setInheritanceAptitudes([...INITIAL_INHERITANCE_APTITUDES]);
+    setAllowInRaceFactorJump(false);
+    setInRaceFactorJumpMinimumRank(6);
     setProbabilityTargetRanks({});
     setConfiguredProbabilityTargetTypes([]);
     setCalculationInputKey("");
@@ -4367,6 +5486,34 @@ export function SuccessionPlanner() {
     } else {
       setInheritanceTargets({ ...INITIAL_INHERITANCE_TARGETS });
     }
+  };
+
+  const inheritedTrainedMemberForSlot = (slot: LineageSlot) => {
+    const mappings: Partial<
+      Record<LineageSlot, { parent: LineageSlot; index: 0 | 1 }>
+    > = {
+      paternalA: { parent: "father", index: 0 },
+      paternalB: { parent: "father", index: 1 },
+      maternalA: { parent: "mother", index: 0 },
+      maternalB: { parent: "mother", index: 1 },
+    };
+    const mapping = mappings[slot];
+    if (!mapping) return undefined;
+    const parentSetting = trainedUmaSettings[mapping.parent];
+    if (!parentSetting) return undefined;
+    return {
+      member: parentSetting.parents[mapping.index],
+      sourceLabel: SLOT_LABELS[mapping.parent],
+    };
+  };
+  const trainedModalExcludedIds = (slot: LineageSlot) => {
+    const replacedSlots = new Set([slot, ...(SLOT_UPSTREAM_SLOTS[slot] || [])]);
+    return [
+      targetId,
+      ...TARGET_FACTOR_SLOTS.filter((item) => !replacedSlots.has(item)).map(
+        (item) => lineage[item],
+      ),
+    ].filter(Boolean);
   };
 
   return (
@@ -4405,9 +5552,15 @@ export function SuccessionPlanner() {
                     route={routeSettingForSlot("father").route}
                     minimums={routeSettingForSlot("father").minimums}
                     followsDefault={!slotRouteOverrides.father}
+                    trainedSetting={trainedUmaSettings.father}
+                    trainedModalExclude={trainedModalExcludedIds("father")}
                     draggedSlot={draggedLineageSlot}
                     dropSlot={lineageDropSlot}
-                    onUmaChange={(value) => updateLineage("father", value)}
+                    onPlanUmaChange={(value) => updateLineage("father", value)}
+                    onClear={() => clearLineageSetting("father")}
+                    onTrainedSettingChange={(setting) =>
+                      saveTrainedUmaSetting("father", setting)
+                    }
                     onRouteChange={(value) => updateSlotRoute("father", value)}
                     onMinimumChange={(type, value) =>
                       updateSlotRouteMinimum("father", type, value)
@@ -4424,9 +5577,23 @@ export function SuccessionPlanner() {
                       route={routeSettingForSlot("paternalA").route}
                       minimums={routeSettingForSlot("paternalA").minimums}
                       followsDefault={!slotRouteOverrides.paternalA}
+                      trainedSetting={trainedUmaSettings.paternalA}
+                      inheritedMember={
+                        inheritedTrainedMemberForSlot("paternalA")?.member
+                      }
+                      inheritedSourceLabel={
+                        inheritedTrainedMemberForSlot("paternalA")?.sourceLabel
+                      }
+                      trainedModalExclude={trainedModalExcludedIds("paternalA")}
                       draggedSlot={draggedLineageSlot}
                       dropSlot={lineageDropSlot}
-                      onUmaChange={(value) => updateLineage("paternalA", value)}
+                      onPlanUmaChange={(value) =>
+                        updateLineage("paternalA", value)
+                      }
+                      onClear={() => clearLineageSetting("paternalA")}
+                      onTrainedSettingChange={(setting) =>
+                        saveTrainedUmaSetting("paternalA", setting)
+                      }
                       onRouteChange={(value) =>
                         updateSlotRoute("paternalA", value)
                       }
@@ -4444,9 +5611,23 @@ export function SuccessionPlanner() {
                       route={routeSettingForSlot("paternalB").route}
                       minimums={routeSettingForSlot("paternalB").minimums}
                       followsDefault={!slotRouteOverrides.paternalB}
+                      trainedSetting={trainedUmaSettings.paternalB}
+                      inheritedMember={
+                        inheritedTrainedMemberForSlot("paternalB")?.member
+                      }
+                      inheritedSourceLabel={
+                        inheritedTrainedMemberForSlot("paternalB")?.sourceLabel
+                      }
+                      trainedModalExclude={trainedModalExcludedIds("paternalB")}
                       draggedSlot={draggedLineageSlot}
                       dropSlot={lineageDropSlot}
-                      onUmaChange={(value) => updateLineage("paternalB", value)}
+                      onPlanUmaChange={(value) =>
+                        updateLineage("paternalB", value)
+                      }
+                      onClear={() => clearLineageSetting("paternalB")}
+                      onTrainedSettingChange={(setting) =>
+                        saveTrainedUmaSetting("paternalB", setting)
+                      }
                       onRouteChange={(value) =>
                         updateSlotRoute("paternalB", value)
                       }
@@ -4483,9 +5664,15 @@ export function SuccessionPlanner() {
                     route={routeSettingForSlot("mother").route}
                     minimums={routeSettingForSlot("mother").minimums}
                     followsDefault={!slotRouteOverrides.mother}
+                    trainedSetting={trainedUmaSettings.mother}
+                    trainedModalExclude={trainedModalExcludedIds("mother")}
                     draggedSlot={draggedLineageSlot}
                     dropSlot={lineageDropSlot}
-                    onUmaChange={(value) => updateLineage("mother", value)}
+                    onPlanUmaChange={(value) => updateLineage("mother", value)}
+                    onClear={() => clearLineageSetting("mother")}
+                    onTrainedSettingChange={(setting) =>
+                      saveTrainedUmaSetting("mother", setting)
+                    }
                     onRouteChange={(value) => updateSlotRoute("mother", value)}
                     onMinimumChange={(type, value) =>
                       updateSlotRouteMinimum("mother", type, value)
@@ -4502,9 +5689,23 @@ export function SuccessionPlanner() {
                       route={routeSettingForSlot("maternalA").route}
                       minimums={routeSettingForSlot("maternalA").minimums}
                       followsDefault={!slotRouteOverrides.maternalA}
+                      trainedSetting={trainedUmaSettings.maternalA}
+                      inheritedMember={
+                        inheritedTrainedMemberForSlot("maternalA")?.member
+                      }
+                      inheritedSourceLabel={
+                        inheritedTrainedMemberForSlot("maternalA")?.sourceLabel
+                      }
+                      trainedModalExclude={trainedModalExcludedIds("maternalA")}
                       draggedSlot={draggedLineageSlot}
                       dropSlot={lineageDropSlot}
-                      onUmaChange={(value) => updateLineage("maternalA", value)}
+                      onPlanUmaChange={(value) =>
+                        updateLineage("maternalA", value)
+                      }
+                      onClear={() => clearLineageSetting("maternalA")}
+                      onTrainedSettingChange={(setting) =>
+                        saveTrainedUmaSetting("maternalA", setting)
+                      }
                       onRouteChange={(value) =>
                         updateSlotRoute("maternalA", value)
                       }
@@ -4522,9 +5723,23 @@ export function SuccessionPlanner() {
                       route={routeSettingForSlot("maternalB").route}
                       minimums={routeSettingForSlot("maternalB").minimums}
                       followsDefault={!slotRouteOverrides.maternalB}
+                      trainedSetting={trainedUmaSettings.maternalB}
+                      inheritedMember={
+                        inheritedTrainedMemberForSlot("maternalB")?.member
+                      }
+                      inheritedSourceLabel={
+                        inheritedTrainedMemberForSlot("maternalB")?.sourceLabel
+                      }
+                      trainedModalExclude={trainedModalExcludedIds("maternalB")}
                       draggedSlot={draggedLineageSlot}
                       dropSlot={lineageDropSlot}
-                      onUmaChange={(value) => updateLineage("maternalB", value)}
+                      onPlanUmaChange={(value) =>
+                        updateLineage("maternalB", value)
+                      }
+                      onClear={() => clearLineageSetting("maternalB")}
+                      onTrainedSettingChange={(setting) =>
+                        saveTrainedUmaSetting("maternalB", setting)
+                      }
                       onRouteChange={(value) =>
                         updateSlotRoute("maternalB", value)
                       }
@@ -4553,13 +5768,12 @@ export function SuccessionPlanner() {
             </div>
             <section class="successionCalculationPanel">
               <div class="successionCalculationWorkspace">
-                <div class="successionCalculationInheritance">
-                  <InheritanceAptitudes
-                    target={target}
-                    selected={inheritanceAptitudes}
-                    targets={inheritanceTargets}
-                    onToggle={toggleInheritanceAptitude}
-                    onConfigure={configureInheritanceAptitude}
+                <div class="successionCalculationPlanning">
+                  <InRaceFactorJumpOption
+                    enabled={allowInRaceFactorJump}
+                    minimumRank={inRaceFactorJumpMinimumRank}
+                    onEnabledChange={setAllowInRaceFactorJump}
+                    onMinimumRankChange={setInRaceFactorJumpMinimumRank}
                     footer={
                       <ProbabilityTargetInput
                         targetName={target.name}
@@ -4578,6 +5792,15 @@ export function SuccessionPlanner() {
                       />
                     }
                   />
+                  <div class="successionCalculationInheritance">
+                    <InheritanceAptitudes
+                      target={target}
+                      selected={inheritanceAptitudes}
+                      targets={inheritanceTargets}
+                      onToggle={toggleInheritanceAptitude}
+                      onConfigure={configureInheritanceAptitude}
+                    />
+                  </div>
                 </div>
                 <div class="successionCalculationControls">
                   <UmaExclusionList
@@ -4650,7 +5873,9 @@ export function SuccessionPlanner() {
               )}
             </section>
             {calculationComplete && completeFactorDesigns.length ? (
-              <div class="successionOptimalResults">
+              <div
+                class={`successionOptimalResults${singleBranchCompleteDesigns ? " singleBranchResults" : ""}`}
+              >
                 {displayedCalculation?.result?.truncated && (
                   <div class="successionOptimalResultsNotice">
                     候选过多，仅显示前
