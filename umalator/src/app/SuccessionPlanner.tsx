@@ -564,9 +564,18 @@ function loadStoredSuccessionSettings(): StoredSuccessionSettings {
   }
 }
 
+function appBasePath() {
+  if (typeof window === "undefined") return import.meta.env.BASE_URL;
+  const pathname = window.location.pathname.replace(/\/+$/, "");
+  if (pathname.endsWith("/succession")) {
+    return `${pathname.slice(0, -"/succession".length)}/`;
+  }
+  return new URL(import.meta.env.BASE_URL, window.location.href).pathname;
+}
+
 function assetUrl(path?: string | null) {
   if (!path) return "";
-  return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+  return `${appBasePath()}${path.replace(/^\/+/, "")}`;
 }
 
 function rankLabel(value: number) {
