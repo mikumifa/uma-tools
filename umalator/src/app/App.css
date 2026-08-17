@@ -189,6 +189,15 @@ a:hover {
   font-size: 12px;
 }
 
+.appNav .appRepositoryLink {
+  overflow: hidden;
+  color: var(--uma-accent);
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .appNav nav {
   display: inline-flex;
   flex: 0 0 auto;

@@ -1270,17 +1270,12 @@ function BranchRouteCard({
           onClick={() => setOpen(true)}
         >
           <header>
-            <span>{compact ? "单独赛程" : "默认赛程"}</span>
+            <span class={compact ? "" : "successionDefaultRouteLabel"}>
+              {compact ? "单独赛程" : `${branchLabel}默认赛程`}
+            </span>
             <strong>
               {route.id === "none" ? "暂不规划" : route.shortName}
             </strong>
-            <em>
-              {followsDefault
-                ? "跟随默认"
-                : route.g1Count
-                  ? `${route.g1Count} 场 G1`
-                  : "不限制"}
-            </em>
           </header>
           <div class="successionRouteSummaryNeeds">
             {route.aptitudes.length ? (
@@ -2515,8 +2510,9 @@ export function SuccessionPlanner() {
     useState<CompletedCalculation>();
   const [draggedLineageSlot, setDraggedLineageSlot] =
     useState<LineageSlot | null>(null);
-  const [lineageDropSlot, setLineageDropSlot] =
-    useState<LineageSlot | null>(null);
+  const [lineageDropSlot, setLineageDropSlot] = useState<LineageSlot | null>(
+    null,
+  );
   const calculationRunToken = useRef(0);
 
   useEffect(() => {
@@ -4071,7 +4067,8 @@ export function SuccessionPlanner() {
     completedCalculation?.inputKey === currentCalculationInputKey
       ? completedCalculation
       : undefined;
-  const calculationComplete = displayedCalculation !== undefined && !isCalculating;
+  const calculationComplete =
+    displayedCalculation !== undefined && !isCalculating;
   const completeFactorDesigns = displayedCalculation?.result?.results || [];
 
   const calculateOptimalDesign = () => {
@@ -4377,16 +4374,6 @@ export function SuccessionPlanner() {
       <section class="successionPanel successionLineagePanel">
         <div class={`successionTargetSetup${target ? " hasTarget" : ""}`}>
           <div class={`successionTargetBar${target ? " hasTarget" : ""}`}>
-            {target && (
-              <button
-                class="successionResetLineage"
-                type="button"
-                onClick={resetLineage}
-              >
-                <span aria-hidden="true">↺</span>
-                重置种马路线
-              </button>
-            )}
             <div class="successionTargetInline">
               <UmaSelect
                 label="养成马娘"
@@ -4408,9 +4395,6 @@ export function SuccessionPlanner() {
               onDragEnd={clearLineageDragState}
             >
               <article class="successionBranch paternal">
-                <header>
-                  <span>父系</span>
-                </header>
                 <div class="successionBranchLineage">
                   <LineageUmaSetting
                     slot="father"
@@ -4489,9 +4473,6 @@ export function SuccessionPlanner() {
                 />
               </article>
               <article class="successionBranch maternal">
-                <header>
-                  <span>母系</span>
-                </header>
                 <div class="successionBranchLineage">
                   <LineageUmaSetting
                     slot="mother"
@@ -4605,18 +4586,29 @@ export function SuccessionPlanner() {
                     onToggle={toggleExcludedUma}
                   />
                 </div>
-                <button
-                  type="button"
-                  class="successionCalculateButton"
-                  disabled={isCalculating}
-                  onClick={calculateOptimalDesign}
-                >
-                  {isCalculating
-                    ? "计算中"
-                    : calculationComplete
-                      ? "重新计算最优种马路线"
-                      : "计算最优种马路线"}
-                </button>
+                <div class="successionCalculationActions">
+                  <button
+                    class="successionResetLineage"
+                    type="button"
+                    disabled={isCalculating}
+                    onClick={resetLineage}
+                  >
+                    <span aria-hidden="true">↺</span>
+                    重置种马路线
+                  </button>
+                  <button
+                    type="button"
+                    class="successionCalculateButton"
+                    disabled={isCalculating}
+                    onClick={calculateOptimalDesign}
+                  >
+                    {isCalculating
+                      ? "计算中"
+                      : calculationComplete
+                        ? "重新计算最优种马路线"
+                        : "计算最优种马路线"}
+                  </button>
+                </div>
               </div>
               {isCalculating && (
                 <div class="successionCalculationProgress" aria-live="polite">
@@ -4683,8 +4675,7 @@ export function SuccessionPlanner() {
               </div>
             ) : calculationComplete ? (
               <div class="successionCompleteDesignIssues successionStandaloneIssue">
-                <strong>没有可计算的最优种马路线</strong>
-                <span>当前固定马娘、赛程与最低适性没有可行策略。</span>
+                <strong>未找到可行的种马路线</strong>
               </div>
             ) : null}
           </>

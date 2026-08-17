@@ -41,8 +41,6 @@ import { SuccessionPlanner } from "./SuccessionPlanner";
 
 import { initTelemetry, postEvent } from "./telemetry";
 
-import { IntroText } from "./IntroText";
-
 import skilldata from "@data/skill_data.json";
 import skillnames from "@data/skillnames.json";
 import skill_meta from "@data/skill_meta.json";
@@ -655,7 +653,12 @@ function AppNav({
     <header class="appNav">
       <div>
         <strong>《闪耀优俊少女》工具集</strong>
-        <span>made by mikumifa</span>
+        <a
+          class="appRepositoryLink"
+          href="https://github.com/mikumifa/uma-tools"
+        >
+          github.com/mikumifa/uma-tools
+        </a>
       </div>
       <nav aria-label="功能切换">
         <button
@@ -1506,15 +1509,9 @@ function App() {
       <IntlProvider definition={strings}>
         <AppNav activePage={activePage} setActivePage={setActivePage} />
         {activePage === "intel" ? (
-          <Fragment>
-            <IntelDashboard />
-            <IntroText />
-          </Fragment>
+          <IntelDashboard />
         ) : activePage === "succession" ? (
-          <Fragment>
-            <SuccessionPlanner />
-            <IntroText />
-          </Fragment>
+          <SuccessionPlanner />
         ) : (
           <Fragment>
             <div
@@ -1946,7 +1943,6 @@ function App() {
                 </button>
               </div>
             )}
-            <IntroText />
           </Fragment>
         )}
       </IntlProvider>

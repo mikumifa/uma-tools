@@ -890,15 +890,9 @@
   height: 100%;
 }
 
-.successionTargetBar.hasTarget .successionUmaSelectTitle {
-  padding-right: 136px;
-}
-
-.successionTargetBar.hasTarget .successionResetLineage {
-  position: absolute;
-  z-index: 2;
-  top: 7px;
-  right: 42px;
+.successionTargetInline .successionUmaSelect.selected {
+  border-color: var(--uma-border-strong);
+  background: #fff;
 }
 
 .successionTargetInline .successionAptitudeRows.compact {
@@ -991,28 +985,6 @@
   background: transparent;
 }
 
-.successionBranch > header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 0 2px 7px;
-  border-bottom: 2px solid color-mix(in srgb, var(--succession-paternal) 42%, transparent);
-}
-
-.successionBranch.maternal > header {
-  border-bottom-color: color-mix(in srgb, var(--succession-maternal) 42%, transparent);
-}
-
-.successionBranch > header span {
-  color: var(--succession-paternal);
-  font-size: 17px;
-  font-weight: 800;
-}
-
-.successionBranch.maternal > header span {
-  color: var(--succession-maternal);
-}
-
 .successionBranchLineage {
   display: grid;
   grid-template-columns: 1fr;
@@ -1020,10 +992,76 @@
   align-items: stretch;
 }
 
+.successionBranchLineage > .successionLineageUmaSetting {
+  width: clamp(280px, 82%, 460px);
+  max-width: 100%;
+  justify-self: center;
+}
+
+.successionBranchLineage > .successionLineageUmaSetting::after {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 2px;
+  height: 8px;
+  background: color-mix(in srgb, var(--succession-paternal) 45%, transparent);
+  content: "";
+  transform: translateX(-50%);
+}
+
 .successionGrandparents {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
+  padding-top: 14px;
+}
+
+.successionGrandparents::before {
+  position: absolute;
+  top: 0;
+  right: 25%;
+  left: 25%;
+  height: 14px;
+  border-top: 2px solid
+    color-mix(in srgb, var(--succession-paternal) 45%, transparent);
+  border-right: 2px solid
+    color-mix(in srgb, var(--succession-paternal) 45%, transparent);
+  border-left: 2px solid
+    color-mix(in srgb, var(--succession-paternal) 45%, transparent);
+  content: "";
+}
+
+.successionBranch.maternal
+  .successionBranchLineage
+  > .successionLineageUmaSetting::after {
+  background: color-mix(in srgb, var(--succession-maternal) 45%, transparent);
+}
+
+.successionBranch.maternal .successionGrandparents::before {
+  border-color: color-mix(
+    in srgb,
+    var(--succession-maternal) 45%,
+    transparent
+  );
+}
+
+.successionBranch.paternal .successionUmaSelectTitle > span {
+  color: var(--succession-paternal);
+}
+
+.successionBranch.maternal .successionUmaSelectTitle > span {
+  color: var(--succession-maternal);
+}
+
+.successionBranch.maternal .successionUmaSelect {
+  border-color: #efd8e1;
+  background: #fffafd;
+}
+
+.successionBranch.maternal .successionUmaSelect.selected {
+  border-color: #efbfd1;
+  background: color-mix(in srgb, var(--succession-maternal-soft) 64%, #fff);
 }
 
 .successionLineageUmaSetting {
@@ -1753,6 +1791,14 @@
   font-weight: 800;
 }
 
+.successionRouteCard.paternal .successionDefaultRouteLabel {
+  color: var(--succession-paternal);
+}
+
+.successionRouteCard.maternal .successionDefaultRouteLabel {
+  color: var(--succession-maternal);
+}
+
 .successionRouteSummaryButton > header strong {
   color: var(--succession-paternal);
   font-size: 15px;
@@ -2312,10 +2358,24 @@
 }
 
 .successionCalculationActions {
-  display: flex;
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: 10px;
-  flex: 0 0 auto;
+  gap: 8px;
+}
+
+.successionCalculationActions .successionResetLineage,
+.successionCalculationActions .successionCalculateButton {
+  min-height: 42px;
+  border-radius: 7px;
+  font-size: 14px;
+}
+
+.successionCalculationActions .successionResetLineage {
+  padding-right: 14px;
+  padding-left: 14px;
+  border-radius: 7px;
 }
 
 .successionCalculateButton {
@@ -2509,11 +2569,8 @@
   text-align: center;
 }
 
-.successionCalculationWorkspace > .successionCalculateButton {
-  grid-column: 1 / -1;
+.successionCalculationActions .successionCalculateButton {
   width: 100%;
-  min-height: 42px;
-  font-size: 14px;
 }
 
 .successionUmaExclusionList {
@@ -3276,6 +3333,11 @@
 .successionOptimalResults {
   display: grid;
   gap: 12px;
+  margin-top: 12px;
+}
+
+.successionOptimalResults .successionOptimalResult {
+  margin-top: 0;
 }
 
 .successionOptimalResultsNotice {
@@ -3908,6 +3970,59 @@
 }
 
 @media (max-width: 640px) {
+  .successionBranchLineage > .successionLineageUmaSetting {
+    width: 100%;
+  }
+
+  .successionBranchLineage .successionUmaSelect {
+    height: auto;
+    min-height: 0;
+  }
+
+  .successionRouteCard.compact .successionRouteSummaryButton {
+    height: auto;
+    min-height: 62px;
+    overflow: visible;
+  }
+
+  .successionRouteCard.compact .successionRouteSummaryButton > header {
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+
+  .successionBranchLineage > .successionLineageUmaSetting::after,
+  .successionGrandparents::before {
+    display: none;
+  }
+
+  .successionGrandparents {
+    padding-top: 0;
+  }
+
+  .successionCalculationProbabilityTargets.embedded {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 7px;
+    height: auto;
+    min-height: 38px;
+  }
+
+  .successionProbabilityTargets.successionCalculationProbabilityTargets
+    > span {
+    width: 100%;
+    line-height: 1.45;
+  }
+
+  .successionProbabilityTargets.successionCalculationProbabilityTargets
+    > div {
+    width: 100%;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 2px;
+  }
+
   .successionRouteModalPresets > header,
   .successionRouteAptitudeMinimums > header,
   .successionRouteModalFooter {
@@ -4000,6 +4115,16 @@
     flex-direction: column;
   }
 
+  .successionOptimalResult > header {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .successionOptimalTree .successionRequirementTreeRoot {
+    width: 100%;
+  }
+
   .successionCalculationProgress ol {
     grid-template-columns: 1fr;
   }
@@ -4055,9 +4180,12 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .successionResetLineage {
-    justify-self: end;
-    order: -1;
+  .successionCalculationActions .successionResetLineage,
+  .successionCalculationActions .successionCalculateButton {
+    padding-right: 8px;
+    padding-left: 8px;
+    font-size: 12px;
+    white-space: nowrap;
   }
 
   .successionRouteControls {
