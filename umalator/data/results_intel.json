@@ -10544,14 +10544,15 @@
         {
           "label": "",
           "raceName": "双鱼杯",
+          "courseId": 10504,
           "track": "中山赛场",
           "distance": 2000,
           "ground": "草地",
-          "inout": "外",
-          "turn": "逆",
-          "season": "春",
-          "weather": "晴",
-          "condition": "良",
+          "inout": "外圈",
+          "turn": "顺时针",
+          "season": "春天",
+          "weather": "晴天",
+          "condition": "良场地",
           "seasonValue": 1,
           "weatherValue": 1,
           "conditionValue": 1,
@@ -10619,14 +10620,15 @@
         {
           "label": "",
           "raceName": "白羊杯",
+          "courseId": 10811,
           "track": "京都赛场",
           "distance": 3200,
           "ground": "草地",
-          "inout": "外→内",
-          "turn": "逆",
-          "season": "春",
-          "weather": "晴",
-          "condition": "良",
+          "inout": "外圈转内圈",
+          "turn": "顺时针",
+          "season": "春天",
+          "weather": "晴天",
+          "condition": "良场地",
           "seasonValue": 1,
           "weatherValue": 1,
           "conditionValue": 1,
@@ -10694,79 +10696,80 @@
         {
           "label": "",
           "raceName": "主要赛事",
+          "courseId": 10606,
           "track": "东京赛场",
           "distance": 2400,
           "ground": "草地",
-          "inout": "内",
-          "turn": "顺",
-          "season": "春",
-          "weather": "随机",
-          "condition": "随机",
+          "inout": "内圈",
+          "turn": "逆时针",
+          "season": "春天",
+          "weather": "随机天气",
+          "condition": "随机场地",
           "seasonValue": 1,
           "weatherValue": 0,
           "conditionValue": 0,
           "conditionRates": {
             "weather": [
               {
-                "label": "晴",
+                "label": "晴天",
                 "rate": 60.0
               },
               {
-                "label": "多云",
+                "label": "多云天气",
                 "rate": 30.0
               },
               {
-                "label": "雨",
+                "label": "雨天",
                 "rate": 10.0
               }
             ],
             "condition": [
               {
-                "label": "良",
+                "label": "良场地",
                 "rate": 78.0
               },
               {
-                "label": "稍重",
+                "label": "稍重场地",
                 "rate": 12.0
               },
               {
-                "label": "重",
+                "label": "重场地",
                 "rate": 5.5
               },
               {
-                "label": "不良",
+                "label": "不良场地",
                 "rate": 4.5
               }
             ],
             "combos": [
               {
-                "weather": "晴",
-                "condition": "良",
+                "weather": "晴天",
+                "condition": "良场地",
                 "rate": 54.6
               },
               {
-                "weather": "晴",
-                "condition": "稍重",
+                "weather": "晴天",
+                "condition": "稍重场地",
                 "rate": 5.4
               },
               {
-                "weather": "多云",
-                "condition": "良",
+                "weather": "多云天气",
+                "condition": "良场地",
                 "rate": 23.4
               },
               {
-                "weather": "多云",
-                "condition": "稍重",
+                "weather": "多云天气",
+                "condition": "稍重场地",
                 "rate": 6.6
               },
               {
-                "weather": "雨",
-                "condition": "重",
+                "weather": "雨天",
+                "condition": "重场地",
                 "rate": 5.5
               },
               {
-                "weather": "雨",
-                "condition": "不良",
+                "weather": "雨天",
+                "condition": "不良场地",
                 "rate": 4.5
               }
             ]
@@ -10841,14 +10844,15 @@
         {
           "label": "",
           "raceName": "群英联赛",
+          "courseId": 10602,
           "track": "东京赛场",
           "distance": 1600,
           "ground": "草地",
-          "inout": "内",
-          "turn": "顺",
-          "season": "春",
-          "weather": "雨",
-          "condition": "不良",
+          "inout": "内圈",
+          "turn": "逆时针",
+          "season": "春天",
+          "weather": "雨天",
+          "condition": "不良场地",
           "seasonValue": 1,
           "weatherValue": 3,
           "conditionValue": 4,
@@ -10916,79 +10920,80 @@
         {
           "label": "",
           "raceName": "主要赛事",
+          "courseId": 10501,
           "track": "中山赛场",
           "distance": 1200,
           "ground": "草地",
-          "inout": "外→内",
-          "turn": "逆",
-          "season": "夏",
-          "weather": "随机",
-          "condition": "随机",
+          "inout": "外圈转内圈",
+          "turn": "顺时针",
+          "season": "夏天",
+          "weather": "随机天气",
+          "condition": "随机场地",
           "seasonValue": 2,
           "weatherValue": 0,
           "conditionValue": 0,
           "conditionRates": {
             "weather": [
               {
-                "label": "晴",
+                "label": "晴天",
                 "rate": 60.0
               },
               {
-                "label": "多云",
+                "label": "多云天气",
                 "rate": 30.0
               },
               {
-                "label": "雨",
+                "label": "雨天",
                 "rate": 10.0
               }
             ],
             "condition": [
               {
-                "label": "良",
+                "label": "良场地",
                 "rate": 78.0
               },
               {
-                "label": "稍重",
+                "label": "稍重场地",
                 "rate": 12.0
               },
               {
-                "label": "重",
+                "label": "重场地",
                 "rate": 5.5
               },
               {
-                "label": "不良",
+                "label": "不良场地",
                 "rate": 4.5
               }
             ],
             "combos": [
               {
-                "weather": "晴",
-                "condition": "良",
+                "weather": "晴天",
+                "condition": "良场地",
                 "rate": 54.6
               },
               {
-                "weather": "晴",
-                "condition": "稍重",
+                "weather": "晴天",
+                "condition": "稍重场地",
                 "rate": 5.4
               },
               {
-                "weather": "多云",
-                "condition": "良",
+                "weather": "多云天气",
+                "condition": "良场地",
                 "rate": 23.4
               },
               {
-                "weather": "多云",
-                "condition": "稍重",
+                "weather": "多云天气",
+                "condition": "稍重场地",
                 "rate": 6.6
               },
               {
-                "weather": "雨",
-                "condition": "重",
+                "weather": "雨天",
+                "condition": "重场地",
                 "rate": 5.5
               },
               {
-                "weather": "雨",
-                "condition": "不良",
+                "weather": "雨天",
+                "condition": "不良场地",
                 "rate": 4.5
               }
             ]
@@ -11063,14 +11068,15 @@
         {
           "label": "",
           "raceName": "群英联赛",
+          "courseId": 11402,
           "track": "船桥赛场",
           "distance": 1600,
           "ground": "泥地",
-          "inout": "内",
-          "turn": "顺",
-          "season": "夏",
-          "weather": "晴",
-          "condition": "良",
+          "inout": "内圈",
+          "turn": "逆时针",
+          "season": "夏天",
+          "weather": "晴天",
+          "condition": "良场地",
           "seasonValue": 2,
           "weatherValue": 1,
           "conditionValue": 1,
@@ -12029,5 +12035,5 @@
       "isVoucherExchange": false
     }
   ],
-  "generatedAt": "2026-08-17 04:46:45"
+  "generatedAt": "2026-08-17 18:35:43"
 }

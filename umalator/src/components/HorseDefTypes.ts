@@ -26,7 +26,7 @@ export function SkillSet(iterable): SortedSet<keyof typeof skills> {
 
 export class HorseState extends Record({
   outfitId: "",
-  speed: 1200,
+  speed: 1500,
   stamina: 1200,
   power: 1200,
   guts: 1200,

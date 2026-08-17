@@ -1,0 +1,287 @@
+.raceOverview {
+  max-width: 100%;
+  min-width: 0;
+  color: var(--uma-text);
+}
+
+.raceOverviewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 7px;
+  padding: 8px 10px;
+  border: 1px solid var(--uma-border);
+  border-radius: 8px;
+  background: var(--uma-surface);
+}
+
+.raceOverviewHeader > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.raceOverviewHeader span {
+  color: var(--uma-muted);
+  font-size: 10px;
+}
+
+.raceOverviewHeader strong {
+  overflow: hidden;
+  color: var(--uma-text);
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.raceOverviewHeader button {
+  flex: 0 0 auto;
+  min-height: 28px;
+  border-color: #bfdbfe;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 11px;
+}
+
+.raceTrajectoryChart {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--uma-border);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+}
+
+.raceTrajectoryChart > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 260px;
+}
+
+.raceAxisText {
+  fill: #94a3b8;
+  font-size: 11px;
+}
+
+.raceChartLegend {
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 8px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+.raceChartLegendSeries {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.raceChartLegend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.raceChartLegend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.raceChartLegend .hpLegend {
+  font-weight: 500;
+}
+
+.raceHoverCard {
+  position: absolute;
+  top: 42px;
+  z-index: 5;
+  display: flex;
+  width: min(330px, 48%);
+  flex-direction: column;
+  gap: 4px;
+  padding: 9px 11px;
+  border: 1px solid var(--uma-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14);
+  color: #475569;
+  font-family: var(--uma-mono);
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.raceHoverCard strong {
+  color: #0f172a;
+}
+
+.courseBands {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 7px;
+}
+
+.courseBandRow,
+.skillLaneRow {
+  display: grid;
+  grid-template-columns: 5.7142857% minmax(0, 1fr) 6.4285714%;
+  align-items: center;
+  min-width: 0;
+}
+
+.courseBandTitle,
+.skillLaneLabel {
+  padding-right: 10px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.courseBandTrack,
+.skillLaneTrack {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--uma-border);
+  border-radius: 6px;
+  background: #f8fafc;
+}
+
+.courseBandTrack {
+  height: 22px;
+}
+
+.courseBandSegment {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  border: 1px solid;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.skillSwimlanes {
+  margin-top: 9px;
+  padding-top: 9px;
+  border-top: 1px solid var(--uma-border);
+}
+
+.skillLaneScroll {
+  display: flex;
+  max-height: 230px;
+  flex-direction: column;
+  gap: 3px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.skillLaneTrack {
+  height: 22px;
+}
+
+.skillLaneBar {
+  position: absolute;
+  top: 2px;
+  height: 16px;
+  overflow: hidden;
+  padding: 0 5px;
+  border-left: 3px solid;
+  border-radius: 0 5px 5px 0;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.skillLaneBar span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skillLaneBar.dense {
+  top: 1px;
+  height: 18px;
+  padding: 0;
+  border-left-width: 1px;
+  border-radius: 2px;
+}
+
+.skillLaneEmpty {
+  margin: 0 6.4285714% 0 5.7142857%;
+  padding: 9px 12px;
+  border: 1px dashed var(--uma-border-strong);
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #94a3b8;
+  font-size: 12px;
+  text-align: center;
+}
+
+.raceTrackShell:has(.raceOverview) {
+  overflow-y: hidden;
+}
+
+.raceTrackShell .raceTrackCanvas {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.raceTrackShell .raceOverview {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.raceTrackShell .skillSwimlanes {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.raceTrackShell .skillLaneScroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+}
+
+.raceTrackShell .skillLaneEmpty {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 64px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .raceTrajectoryChart > svg {
+    min-height: 220px;
+  }
+
+  .raceHoverCard {
+    width: 64%;
+  }
+}

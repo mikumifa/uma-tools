@@ -18,7 +18,7 @@
   font-size: 12px;
   line-height: 1.4;
   pointer-events: none;
-  transform: translate(-50%, -100%);
+  transform: translateX(-50%);
   white-space: nowrap;
 }
 
@@ -27,11 +27,12 @@
 }
 
 .histogram-inspector {
-  display: flex;
-  flex-wrap: wrap;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
   align-items: center;
   gap: 8px;
-  min-height: 26px;
+  min-height: 46px;
   margin-top: 4px;
   padding: 5px 7px;
   border: 1px solid var(--uma-border, #d7dce5);
@@ -39,6 +40,14 @@
   background: var(--uma-surface, #fff);
   color: var(--uma-muted, #5f6b7a);
   font-size: 12px;
+}
+
+.histogram-inspector > span:first-child {
+  min-width: 0;
+}
+
+.histogram-inspector > span:only-child {
+  grid-column: 1 / -1;
 }
 
 .histogram-inspector strong {

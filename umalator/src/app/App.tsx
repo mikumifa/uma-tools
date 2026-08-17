@@ -5,11 +5,9 @@ import {
   useMemo,
   useEffect,
   useRef,
-  useId,
 } from "preact/hooks";
 import { IntlProvider } from "preact-i18n";
 import { Record } from "immutable";
-import * as d3 from "d3";
 
 import { CourseHelpers } from "@sim/CourseData";
 import {
@@ -26,11 +24,8 @@ import {
   ExpandedSkillDetails,
   STRINGS_cn as SKILL_STRINGS_cn,
 } from "@components/SkillList";
-import {
-  RaceTrack,
-  TrackSelect,
-  RegionDisplayType,
-} from "@components/RaceTrack";
+import { TrackSelect } from "@components/RaceTrack";
+import { RaceOverview } from "@components/RaceOverview";
 import { HorseState, SkillSet } from "@components/HorseDefTypes";
 import { HorseDef, horseDefTabs } from "@components/HorseDef";
 import { TRACKNAMES_cn } from "@shared/trackNames";
@@ -44,6 +39,7 @@ import { initTelemetry, postEvent } from "./telemetry";
 import skilldata from "@data/skill_data.json";
 import skillnames from "@data/skillnames.json";
 import skill_meta from "@data/skill_meta.json";
+import intelData from "@data/results_intel.json";
 
 function skillmeta(id: string) {
   // handle the fake skills (e.g., variations of Sirius unique) inserted by make_skill_data with ids like 100701-1
@@ -61,24 +57,6 @@ const DEFAULT_SEED = 2615953739;
 const ICON_BASE = `${import.meta.env.BASE_URL}icons`;
 function id(x) {
   return x;
-}
-
-function binSearch(a: number[], x: number) {
-  let lo = 0,
-    hi = a.length - 1;
-  if (x < a[0]) return 0;
-  if (x > a[hi]) return hi - 1;
-  while (lo <= hi) {
-    const mid = Math.floor((lo + hi) / 2);
-    if (x < a[mid]) {
-      hi = mid - 1;
-    } else if (x > a[mid]) {
-      lo = mid + 1;
-    } else {
-      return mid;
-    }
-  }
-  return Math.abs(a[lo] - x) < Math.abs(a[hi] - x) ? lo : hi;
 }
 
 type TimeOfDaySelectProps = {
@@ -258,80 +236,6 @@ export function SeasonSelect({ value, set }) {
         );
       })}
     </div>
-  );
-}
-
-function VelocityLines(props) {
-  const axes = useRef(null);
-  const data = props.data;
-  const x = d3
-    .scaleLinear()
-    .domain([0, props.courseDistance])
-    .range([0, props.width]);
-  const y =
-    data &&
-    d3
-      .scaleLinear()
-      .domain([0, d3.max(data.v, (v) => d3.max(v))])
-      .range([props.height, 0]);
-  const hpY =
-    data &&
-    d3
-      .scaleLinear()
-      .domain([0, d3.max(data.hp, (hp) => d3.max(hp))])
-      .range([props.height, 0]);
-  useEffect(
-    function () {
-      if (axes.current == null) return;
-      const g = d3.select(axes.current);
-      g.selectAll("*").remove();
-      g.append("g")
-        .attr("transform", `translate(${props.xOffset},${props.height + 5})`)
-        .call(d3.axisBottom(x));
-      if (data) {
-        g.append("g")
-          .attr("transform", `translate(${props.xOffset},4)`)
-          .call(d3.axisLeft(y));
-      }
-    },
-    [props.data, props.courseDistance, props.width, props.height],
-  );
-  const colors = ["#3d7dd1", "#ff6fba"];
-  const hpColors = ["#7aa8e7", "#ff9ed0"];
-  return (
-    <Fragment>
-      <g transform={`translate(${props.xOffset},5)`}>
-        {data &&
-          data.v
-            .map((v, i) => (
-              <path
-                fill="none"
-                stroke={colors[i]}
-                stroke-width="2.5"
-                d={d3
-                  .line()
-                  .x((j) => x(data.p[i][j]))
-                  .y((j) => y(v[j]))(data.p[i].map((_, j) => j))}
-              />
-            ))
-            .concat(
-              props.showHp
-                ? data.hp.map((hp, i) => (
-                    <path
-                      fill="none"
-                      stroke={hpColors[i]}
-                      stroke-width="2.5"
-                      d={d3
-                        .line()
-                        .x((j) => x(data.p[i][j]))
-                        .y((j) => hpY(hp[j]))(data.p[i].map((_, j) => j))}
-                    />
-                  ))
-                : [],
-            )}
-      </g>
-      <g ref={axes} />
-    </Fragment>
   );
 }
 
@@ -517,94 +421,187 @@ function updateResultsState(
   }
 }
 
-const enum EventType {
-  CM,
-  LOH,
+type CompetitionDetail = {
+  courseId: number;
+  track: string;
+  distance: number;
+  ground: string;
+  seasonValue: number;
+  weatherValue: number;
+  conditionValue: number;
+};
+
+type CompetitionPreset = {
+  key: string;
+  name: string;
+  startTimestamp: number;
+  endTimestamp: number;
+  detail: CompetitionDetail;
+};
+
+const COMPETITION_PRESETS: CompetitionPreset[] = (
+  ((intelData as any).races ?? []) as Array<{
+    id: number;
+    name: string;
+    startTimestamp: number;
+    endTimestamp: number;
+    details?: CompetitionDetail[];
+  }>
+)
+  .flatMap((race) => {
+    const detail = race.details?.[0];
+    return detail?.courseId
+      ? [
+          {
+            key: `${race.startTimestamp}:${race.id}`,
+            name: race.name,
+            startTimestamp: race.startTimestamp,
+            endTimestamp: race.endTimestamp,
+            detail,
+          },
+        ]
+      : [];
+  })
+  .filter((race) => race.endTimestamp >= Date.now() / 1000)
+  .sort((a, b) => a.startTimestamp - b.startTimestamp);
+
+function raceParamsForCompetition(preset: CompetitionPreset) {
+  return new RaceParams({
+    mood: 2 as Mood,
+    ground: (preset.detail.conditionValue ||
+      GroundCondition.Good) as GroundCondition,
+    weather: (preset.detail.weatherValue || Weather.Sunny) as Weather,
+    season: (preset.detail.seasonValue || Season.Spring) as Season,
+    time: Time.Midday,
+    grade: Grade.G1,
+  });
 }
 
-const presets = [
-  {
-    type: EventType.CM,
-    date: "2025-09",
-    courseId: 10807,
-    season: Season.Autumn,
-    ground: GroundCondition.Good,
-    weather: Weather.Sunny,
-    Time: Time.Midday,
-  },
-  {
-    type: EventType.LOH,
-    date: "2025-08",
-    courseId: 10105,
-    season: Season.Summer,
-    Time: Time.Midday,
-  },
-  {
-    type: EventType.CM,
-    date: "2025-07-25",
-    courseId: 10906,
-    ground: GroundCondition.Yielding,
-    weather: Weather.Cloudy,
-    season: Season.Summer,
-    time: Time.Midday,
-  },
-  {
-    type: EventType.CM,
-    date: "2025-06-21",
-    courseId: 10606,
-    ground: GroundCondition.Good,
-    weather: Weather.Sunny,
-    season: Season.Spring,
-    time: Time.Midday,
-  },
-]
-  .map((def) => ({
-    type: def.type,
-    date: new Date(def.date),
-    courseId: def.courseId,
-    racedef: new RaceParams({
-      mood: 2 as Mood,
-      ground: def.type == EventType.CM ? def.ground : GroundCondition.Good,
-      weather: def.type == EventType.CM ? def.weather : Weather.Sunny,
-      season: def.season,
-      time: def.time,
-      grade: Grade.G1,
-    }),
-  }))
-  .sort((a, b) => +b.date - +a.date);
+function competitionLabel(preset: CompetitionPreset, index: number) {
+  const date = new Date(preset.startTimestamp * 1000);
+  const monthDay = `${date.getMonth() + 1}/${date.getDate()}`;
+  const surface = preset.detail.ground === "泥地" ? "泥" : "草";
+  return `${index === 0 ? "当期" : "后续"} · ${preset.name} · ${monthDay} · ${preset.detail.track}${preset.detail.distance}m${surface}`;
+}
 
-function RacePresets(props) {
-  const id = useId();
-  if (CC_GLOBAL) {
-    return null;
-  }
+function CompetitionSelect({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  if (COMPETITION_PRESETS.length === 0) return null;
   return (
-    <div class="presetSelect">
-      <label for={id}>Preset:</label>
+    <label class="competitionSelect">
+      <span>大赛</span>
       <select
-        id={id}
-        onChange={(e) => {
-          const i = +e.currentTarget.value;
-          i > -1 && props.set(presets[i].courseId, presets[i].racedef);
-        }}
+        aria-label="大赛配置"
+        value={value}
+        onChange={(e) => onChange(e.currentTarget.value)}
       >
-        <option value="-1"></option>
-        {presets.map((p, i) => (
-          <option value={i}>
-            {p.date.getFullYear() +
-              "-" +
-              (100 + p.date.getUTCMonth() + 1).toString().slice(-2) +
-              (p.type == EventType.CM ? " CM" : " LOH")}
-          </option>
+        <option value="">自定义赛道</option>
+        {COMPETITION_PRESETS.map((preset, index) => (
+          <option value={preset.key}>{competitionLabel(preset, index)}</option>
         ))}
       </select>
-    </div>
+    </label>
   );
 }
 
-const baseSkillsToTest = Object.keys(skilldata).filter(
-  (id) => skilldata[id].rarity < 3,
-);
+const SIMULATOR_CACHE_KEY = "uma-tools.simulator-config.v1";
+
+type InitialSimulatorConfig = {
+  courseId: number;
+  racedef: RaceParams;
+  nsamples: number;
+  seed: number;
+  usePosKeep: boolean;
+  uma1: HorseState;
+  uma2: HorseState;
+  competitionKey: string;
+};
+
+function restoreHorseState(value: any) {
+  const horse = value && typeof value === "object" ? value : {};
+  return new HorseState(horse).set(
+    "skills",
+    SkillSet(Array.isArray(horse.skills) ? horse.skills : []),
+  );
+}
+
+function defaultSimulatorConfig(): InitialSimulatorConfig {
+  const competition = COMPETITION_PRESETS[0];
+  return {
+    courseId: competition?.detail.courseId ?? DEFAULT_COURSE_ID,
+    racedef: competition
+      ? raceParamsForCompetition(competition)
+      : new RaceParams(),
+    nsamples: DEFAULT_SAMPLES,
+    seed: DEFAULT_SEED,
+    usePosKeep: true,
+    uma1: new HorseState(),
+    uma2: new HorseState(),
+    competitionKey: competition?.key ?? "",
+  };
+}
+
+function loadInitialSimulatorConfig(): InitialSimulatorConfig {
+  const fallback = defaultSimulatorConfig();
+  if (typeof window === "undefined" || window.location.hash) return fallback;
+  try {
+    const raw = window.localStorage.getItem(SIMULATOR_CACHE_KEY);
+    if (!raw) return fallback;
+    const cached = JSON.parse(raw);
+    return {
+      courseId: Number(cached.courseId) || fallback.courseId,
+      racedef: new RaceParams(cached.racedef ?? fallback.racedef.toJS()),
+      nsamples: Number(cached.nsamples) || DEFAULT_SAMPLES,
+      seed: Number.isFinite(cached.seed) ? cached.seed : DEFAULT_SEED,
+      usePosKeep:
+        typeof cached.usePosKeep === "boolean" ? cached.usePosKeep : true,
+      uma1: restoreHorseState(cached.uma1),
+      uma2: restoreHorseState(cached.uma2),
+      competitionKey:
+        typeof cached.competitionKey === "string" &&
+        COMPETITION_PRESETS.some(
+          (preset) => preset.key === cached.competitionKey,
+        )
+          ? cached.competitionKey
+          : "",
+    };
+  } catch {
+    return fallback;
+  }
+}
+
+function matchingCompetitionKey(courseId: number, racedef: RaceParams) {
+  return (
+    COMPETITION_PRESETS.find((preset) => {
+      const expected = raceParamsForCompetition(preset);
+      return (
+        preset.detail.courseId === courseId &&
+        expected.ground === racedef.ground &&
+        expected.weather === racedef.weather &&
+        expected.season === racedef.season &&
+        expected.time === racedef.time
+      );
+    })?.key ?? ""
+  );
+}
+
+const EXCLUDED_CHART_SKILL_ICON_IDS = new Set([
+  // 特殊活动技能：内道英雄、冲刺英雄
+  "1010051",
+]);
+
+const baseSkillsToTest = Object.keys(skilldata).filter((id) => {
+  const meta = skillmeta(id);
+  return (
+    skilldata[id].rarity < 3 &&
+    !EXCLUDED_CHART_SKILL_ICON_IDS.has(meta?.iconId)
+  );
+});
 
 const enum Mode {
   Compare,
@@ -743,6 +740,7 @@ function App() {
   const [progress, setProgress] = useState(0);
   const [isSimulating, setIsSimulating] = useState(false);
   const workerProgress = useRef({ percents: [0, 0], totals: [1, 1] });
+  const pendingChartResults = useRef(new Map());
   const progressUiRef = useRef({ percent: 0, lastUpdate: 0 });
   const activeRunId = useRef(0);
   const raceTrackRef = useRef<HTMLDivElement | null>(null);
@@ -780,7 +778,7 @@ function App() {
         ? Math.max(460, Math.round(viewportWidth * 0.43))
         : 560
       : 380;
-  const desktopWorkspaceWidth = Math.min(viewportWidth, 1680) - 58;
+  const desktopWorkspaceWidth = viewportWidth - 58;
   const trackViewportWidth = isLandscapeView
     ? viewportWidth
     : isMobile
@@ -800,10 +798,6 @@ function App() {
     return Math.round(trackWidth * 0.28);
   }, [trackWidth, isLandscapeView]);
 
-  const velocityHeight = useMemo(() => {
-    return Math.round(trackHeight * (isLandscapeView ? 0.85 : 1.05));
-  }, [trackHeight, isLandscapeView]);
-
   const trackWidthStyle = useMemo(
     () =>
       ({
@@ -817,36 +811,60 @@ function App() {
     () =>
       isMobile
         ? Math.min(600, Math.max(280, trackWidth))
-        : Math.max(280, desktopSidebarWidth - 42),
-    [trackWidth, isMobile, desktopSidebarWidth],
+        : Math.min(
+            720,
+            Math.max(360, Math.round(desktopWorkspaceWidth / 2) - 56),
+          ),
+    [trackWidth, isMobile, desktopWorkspaceWidth],
   );
 
   const histogramHeight = useMemo(
-    () => Math.round(histogramWidth * 0.55),
-    [histogramWidth],
+    () =>
+      isMobile
+        ? Math.round(histogramWidth * 0.55)
+        : Math.min(340, Math.max(220, Math.round(histogramWidth * 0.45))),
+    [histogramWidth, isMobile],
   );
-  const detailHistogramWidth = useMemo(() => {
-    if (isMobile) {
-      // Keep within viewport on small screens
-      return Math.max(260, Math.min(trackWidth * 0.9, 420));
-    }
-    return Math.max(420, Math.min(860, Math.round(trackWidth - 32)));
-  }, [trackWidth, isMobile]);
-  const detailHistogramHeight = useMemo(
-    () => Math.max(220, Math.round(detailHistogramWidth * 0.42)),
-    [detailHistogramWidth],
+  const chartHistogramWidth = useMemo(
+    () =>
+      isMobile
+        ? Math.max(280, Math.min(viewportWidth - 40, 520))
+        : Math.max(320, Math.round(desktopSidebarWidth - 32)),
+    [desktopSidebarWidth, isMobile, viewportWidth],
+  );
+  const chartHistogramHeight = useMemo(
+    () => Math.max(210, Math.min(310, Math.round(chartHistogramWidth * 0.5))),
+    [chartHistogramWidth],
   );
   const showStatusBar = Boolean(status) || progress > 0;
 
-  const [racedef, setRaceDef] = useState(() => new RaceParams());
-  const [nsamples, setSamples] = useState(DEFAULT_SAMPLES);
-  const [seed, setSeed] = useState(DEFAULT_SEED);
-  const [usePosKeep, togglePosKeep] = useReducer((b, _) => !b, true);
+  const initialConfig = useMemo(loadInitialSimulatorConfig, []);
+  const [racedef, setRaceDef] = useState(() => initialConfig.racedef);
+  const [nsamples, setSamples] = useState(initialConfig.nsamples);
+  const [seed, setSeed] = useState(initialConfig.seed);
+  const [usePosKeep, togglePosKeep] = useReducer(
+    (current, next?: boolean) =>
+      typeof next === "boolean" ? next : !current,
+    initialConfig.usePosKeep,
+  );
   const [showHp, toggleShowHp] = useReducer((b, _) => !b, false);
+  const [selectedCompetitionKey, setSelectedCompetitionKey] = useState(
+    initialConfig.competitionKey,
+  );
+  const [configHydrated, setConfigHydrated] = useState(
+    () => typeof window === "undefined" || !window.location.hash,
+  );
   // const [showRunPane, setShowRunPane] = useState(false);
 
   const [{ courseId, results, runData, chartData, displaying }, setSimState] =
-    useReducer(updateResultsState, EMPTY_RESULTS_STATE);
+    useReducer(
+      updateResultsState,
+      initialConfig.courseId,
+      (initialCourseId) => ({
+        ...EMPTY_RESULTS_STATE,
+        courseId: initialCourseId,
+      }),
+    );
   const setCourseId = setSimState;
   const setResults = setSimState;
   const setChartData = setSimState;
@@ -863,6 +881,37 @@ function App() {
   const [selectedSkillId, setSelectedSkillId] = useState("");
   const [selectedSampleRanges, setSelectedSampleRanges] = useState([]);
   const [possibleActivationRanges, setPossibleActivationRanges] = useState([]);
+  const [hoveredSkill, setHoveredSkill] = useState(null);
+  const [skillDetailOpen, setSkillDetailOpen] = useState(false);
+  const hoverDismissTimer = useRef<number | null>(null);
+
+  function cancelHoverDismiss() {
+    if (hoverDismissTimer.current == null) return;
+    window.clearTimeout(hoverDismissTimer.current);
+    hoverDismissTimer.current = null;
+  }
+
+  function showHoveredSkill(id, point) {
+    cancelHoverDismiss();
+    setHoveredSkill({ id, ...point });
+  }
+
+  function scheduleHoverDismiss() {
+    cancelHoverDismiss();
+    hoverDismissTimer.current = window.setTimeout(() => {
+      hoverDismissTimer.current = null;
+      setHoveredSkill(null);
+    }, 160);
+  }
+
+  useEffect(
+    () => () => {
+      if (hoverDismissTimer.current != null) {
+        window.clearTimeout(hoverDismissTimer.current);
+      }
+    },
+    [],
+  );
 
   useEffect(() => {
     if (tableData.size === 0) {
@@ -889,7 +938,10 @@ function App() {
   }, [tableData, selectedSkillId]);
 
   function racesetter(prop) {
-    return (value) => setRaceDef(racedef.set(prop, value));
+    return (value) => {
+      setSelectedCompetitionKey("");
+      setRaceDef(racedef.set(prop, value));
+    };
   }
 
   const course = useMemo(() => CourseHelpers.getCourse(courseId), [courseId]);
@@ -915,8 +967,53 @@ function App() {
     };
   }, [forceShowTrack]);
 
-  const [uma1, setUma1] = useState(() => new HorseState());
-  const [uma2, setUma2] = useState(() => new HorseState());
+  const [uma1, setUma1] = useState(() => initialConfig.uma1);
+  const [uma2, setUma2] = useState(() => initialConfig.uma2);
+
+  function setCustomCourseId(nextCourseId: number) {
+    setSelectedCompetitionKey("");
+    setCourseId(nextCourseId);
+  }
+
+  function selectCompetition(key: string) {
+    setSelectedCompetitionKey(key);
+    const preset = COMPETITION_PRESETS.find((candidate) => candidate.key === key);
+    if (!preset) return;
+    setCourseId(preset.detail.courseId);
+    setRaceDef(raceParamsForCompetition(preset));
+  }
+
+  useEffect(() => {
+    if (!configHydrated || typeof window === "undefined") return;
+    try {
+      window.localStorage.setItem(
+        SIMULATOR_CACHE_KEY,
+        JSON.stringify({
+          version: 1,
+          courseId,
+          racedef: racedef.toJS(),
+          nsamples,
+          seed,
+          usePosKeep,
+          uma1: uma1.toJS(),
+          uma2: uma2.toJS(),
+          competitionKey: selectedCompetitionKey,
+        }),
+      );
+    } catch {
+      // Storage can be unavailable in private browsing or restricted embeds.
+    }
+  }, [
+    configHydrated,
+    courseId,
+    racedef,
+    nsamples,
+    seed,
+    usePosKeep,
+    uma1,
+    uma2,
+    selectedCompetitionKey,
+  ]);
 
   // Mobile 不支持对比模式，强制回到图表模式
   useEffect(() => {
@@ -949,7 +1046,7 @@ function App() {
   useEffect(() => {
     if (typeof document === "undefined") return;
     const originalOverflow = document.body.style.overflow;
-    if (expanded) {
+    if (expanded || skillDetailOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = originalOverflow;
@@ -957,10 +1054,20 @@ function App() {
     return () => {
       document.body.style.overflow = originalOverflow;
     };
-  }, [expanded]);
+  }, [expanded, skillDetailOpen]);
+
+  useEffect(() => {
+    if (!skillDetailOpen || typeof window === "undefined") return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSkillDetailOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [skillDetailOpen]);
   const topPaneClass = [
     chartData ? "hasResults" : "",
     isMobile ? "mobileLayout" : "desktopLayout",
+    mode === Mode.Compare ? "mode-compare" : "mode-chart",
   ]
     .filter(Boolean)
     .join(" ");
@@ -977,12 +1084,18 @@ function App() {
           setResults(results);
           break;
         case "chart":
-          updateTableData(results);
+          results.forEach((value, key) =>
+            pendingChartResults.current.set(key, value),
+          );
           break;
         case "progress":
           workerProgress.current.percents[index] = percent;
           updateSimulationProgress(stage, percent >= 100);
           if (workerProgress.current.percents.every((p) => p >= 100)) {
+            if (pendingChartResults.current.size > 0) {
+              updateTableData(new Map(pendingChartResults.current));
+              pendingChartResults.current.clear();
+            }
             setIsSimulating(false);
           }
           break;
@@ -999,15 +1112,23 @@ function App() {
 
   function loadState() {
     if (window.location.hash) {
-      deserialize(window.location.hash.slice(1)).then((o) => {
-        setCourseId(o.courseId);
-        setSamples(o.nsamples);
-        setSeed(o.seed);
-        if (o.usePosKeep != usePosKeep) togglePosKeep(0);
-        setRaceDef(o.racedef);
-        setUma1(o.uma1);
-        setUma2(o.uma2);
-      });
+      setConfigHydrated(false);
+      deserialize(window.location.hash.slice(1))
+        .then((o) => {
+          setCourseId(o.courseId);
+          setSamples(o.nsamples);
+          setSeed(o.seed);
+          togglePosKeep(o.usePosKeep);
+          setRaceDef(o.racedef);
+          setUma1(o.uma1);
+          setUma2(o.uma2);
+          setSelectedCompetitionKey(
+            matchingCompetitionKey(o.courseId, o.racedef),
+          );
+        })
+        .finally(() => setConfigHydrated(true));
+    } else {
+      setConfigHydrated(true);
     }
   }
 
@@ -1091,6 +1212,7 @@ function App() {
     const runId = activeRunId.current + 1;
     activeRunId.current = runId;
     resetSimulationProgress("准备对比模拟...");
+    pendingChartResults.current.clear();
     workerProgress.current = { percents: [0], totals: [1] };
 
     worker1.postMessage({
@@ -1113,6 +1235,8 @@ function App() {
     const runId = activeRunId.current + 1;
     activeRunId.current = runId;
     resetSimulationProgress("筛选可触发技能...");
+    pendingChartResults.current.clear();
+    setSkillDetailOpen(false);
     updateTableData("reset");
     await new Promise((resolve) => setTimeout(resolve, 0));
 
@@ -1129,9 +1253,6 @@ function App() {
     );
     if (runId !== activeRunId.current) return;
 
-    const filler = new Map();
-    skills.forEach((id) => filler.set(id, getNullRow(id)));
-
     const uma = uma1.toJS();
     const workerCount = Math.min(
       workers.length,
@@ -1145,7 +1266,6 @@ function App() {
       percents: skillChunks.map((chunk) => (chunk.length === 0 ? 100 : 0)),
       totals: skillChunks.map((chunk) => chunk.length),
     };
-    updateTableData(filler);
     updateSimulationProgress(
       `模拟 ${skills.length} 个技能 · ${workerCount} 路并行`,
       true,
@@ -1186,28 +1306,6 @@ function App() {
     selectSkillDetails(skillId);
   }
 
-  function rtMouseMove(pos) {
-    if (chartData == null) return;
-    document.getElementById("rtMouseOverBox").style.display = "block";
-    const x = pos * course.distance;
-    const i0 = binSearch(chartData.p[0], x),
-      i1 = binSearch(chartData.p[1], x);
-    document.getElementById("rtV1").textContent = `${chartData.v[0][i0].toFixed(
-      2,
-    )} m/s  t=${chartData.t[0][i0].toFixed(2)} s  (${chartData.hp[0][
-      i0
-    ].toFixed(0)} hp remaining)`;
-    document.getElementById("rtV2").textContent = `${chartData.v[1][i1].toFixed(
-      2,
-    )} m/s  t=${chartData.t[1][i1].toFixed(2)} s  (${chartData.hp[1][
-      i1
-    ].toFixed(0)} hp remaining)`;
-  }
-
-  function rtMouseLeave() {
-    document.getElementById("rtMouseOverBox").style.display = "none";
-  }
-
   const mid = Math.floor(results.length / 2);
   const median =
     results.length % 2 == 0
@@ -1215,59 +1313,112 @@ function App() {
       : results[mid];
   const mean = results.reduce((a, b) => a + b, 0) / results.length;
 
-  const colors = [
+  const compareLaneColors = [
     { stroke: "#3d7dd1", fill: "rgba(61, 125, 209, 0.7)" },
     { stroke: "#ff6fba", fill: "rgba(255, 111, 186, 0.7)" },
   ];
-  const skillActivations =
+  const commonSkillLaneColor = {
+    stroke: "#64748b",
+    fill: "rgba(100, 116, 139, 0.72)",
+  };
+  const selectedSkillLaneColor = {
+    stroke: "#db2777",
+    fill: "rgba(219, 39, 119, 0.78)",
+  };
+  const selectedLaneSkillId = selectedSkillId.split("-")[0];
+  const makeSkillLaneEvents = (activations, color, sourceIndex) => {
+    if (!activations) return [];
+    return activations
+      .keys()
+      .filter((id) => !!skillmeta(id))
+      .flatMap((id) => {
+        const meta = skillmeta(id);
+        const skillName = skillnames[id]?.[0];
+        if (!skillName || NO_SHOW.indexOf(meta.iconId) > -1) return [];
+        return activations.get(id).map((ar, activationIndex) => ({
+          key: `${sourceIndex}-${id}-${activationIndex}-${ar[0]}`,
+          color,
+          text: skillName,
+          start: ar[0],
+          end: Math.max(ar[0] + 0.1, ar[1]),
+        }));
+      })
+      .toArray();
+  };
+  const skillLaneEvents =
     chartData == null
       ? []
-      : chartData.sk.flatMap((a, i) => {
-          return a
-            .keys()
-            .filter((id) => !!skillmeta(id))
-            .flatMap((id) => {
-              const meta = skillmeta(id);
-              const skillName = skillnames[id]?.[0];
-              if (!skillName) return [];
-              if (NO_SHOW.indexOf(meta.iconId) > -1) return [];
-              else
-                return a.get(id).map((ar) => ({
-                  type: RegionDisplayType.Textbox,
-                  color: colors[i],
-                  text: skillName,
-                  regions: [{ start: ar[0], end: ar[1] }],
-                }));
-            })
-            .toArray();
-        });
-  const selectedSampleActivationRegions = selectedSampleRanges.length
-    ? [
-        {
-          type: RegionDisplayType.Textbox,
-          color: { stroke: "#15803d", fill: "rgba(22, 163, 74, 0.2)" },
-          text: "选中身位发动",
-          regions: selectedSampleRanges,
-        },
-      ]
-    : [];
-  const possibleActivationRegions = possibleActivationRanges.length
-    ? [
-        {
-          type: RegionDisplayType.Textbox,
-          color: { stroke: "#1f66d1", fill: "rgba(31, 102, 209, 0.16)" },
-          text: "可能发动起点",
-          regions: possibleActivationRanges,
-        },
-      ]
-    : [];
-  const trackRegions = skillActivations.concat(
-    possibleActivationRegions,
-    selectedSampleActivationRegions,
-  );
+      : mode === Mode.Chart
+        ? [
+            ...makeSkillLaneEvents(
+              chartData.sk[0],
+              commonSkillLaneColor,
+              0,
+            ),
+            ...(selectedLaneSkillId
+              ? makeSkillLaneEvents(
+                  new Map([
+                    [
+                      selectedLaneSkillId,
+                      chartData.sk[1].get(selectedLaneSkillId) ?? [],
+                    ],
+                  ]),
+                  selectedSkillLaneColor,
+                  1,
+                )
+              : []),
+          ]
+        : chartData.sk.flatMap((activations, index) =>
+            makeSkillLaneEvents(
+              activations,
+              compareLaneColors[index],
+              index,
+            ),
+          );
+
+  const filteredChartData = useMemo(() => {
+    return tableData
+      .values()
+      .toArray()
+      .filter((row) => {
+        if (!row?.id) {
+          console.warn("Warning: row.id 不存在，已过滤", row);
+          return false;
+        }
+        if (!skillnames[row.id]) {
+          console.warn(`Warning: skillnames 中没有找到 id=${row.id}，已过滤`);
+          return false;
+        }
+        const skillName = skillnames[row.id][0];
+        if (!skillName) {
+          console.warn(
+            `Warning: skillnames 中没有找到 id=${row.id} 内容为空，已过滤`,
+          );
+          return false;
+        }
+        return ShowUnreleased || !skillName.startsWith("[未实装]");
+      })
+      .map((row) => ({
+        ...row,
+        mean: Number.isNaN(row.mean) ? 0 : row.mean,
+        min: Number.isNaN(row.min) ? 0 : row.min,
+        max: Number.isNaN(row.max) ? 0 : row.max,
+        median: Number.isNaN(row.mean) ? 0 : row.median,
+      }));
+  }, [tableData, ShowUnreleased]);
+  const selectedChartRow =
+    (selectedSkillId && tableData.get(selectedSkillId)) ||
+    (filteredChartData.length > 0
+      ? tableData.get(filteredChartData[0].id)
+      : null);
+  const selectedChartSkill = selectedChartRow?.id;
+  const selectedChartSkillName = selectedChartSkill
+    ? skillnames[selectedChartSkill.split("-")[0]]?.[0] || selectedChartSkill
+    : "";
+  const selectedChartResults = selectedChartRow?.results ?? [];
+  const selectedChartSampleRuns = selectedChartRow?.sampleRuns ?? [];
 
   let resultsPane;
-  let trackDetailsPane = null;
   if (mode == Mode.Compare && results.length > 0) {
     resultsPane = (
       <div id="resultsPaneWrapper" style={trackWidthStyle} ref={resultsPaneRef}>
@@ -1412,90 +1563,24 @@ function App() {
       </div>
     );
   } else if (mode == Mode.Chart && tableData.size > 0) {
-    const filteredData = useMemo(() => {
-      return tableData
-        .values()
-        .toArray()
-        .filter((row) => {
-          if (!row?.id) {
-            console.warn("Warning: row.id 不存在，已过滤", row);
-            return false;
-          }
-
-          if (!skillnames[row.id]) {
-            console.warn(`Warning: skillnames 中没有找到 id=${row.id}，已过滤`);
-            return false;
-          }
-          const skillName = skillnames[row.id][0];
-          if (!skillName) {
-            console.warn(
-              `Warning: skillnames 中没有找到 id=${row.id} 内容为空，已过滤`,
-            );
-            return false;
-          }
-          if (!ShowUnreleased && skillName.startsWith("[未实装]")) {
-            return false;
-          }
-          return true;
-        })
-        .map((row) => {
-          return {
-            ...row,
-            mean: Number.isNaN(row.mean) ? 0 : row.mean,
-            min: Number.isNaN(row.min) ? 0 : row.min,
-            max: Number.isNaN(row.max) ? 0 : row.max,
-            median: Number.isNaN(row.mean) ? 0 : row.median,
-          };
-        });
-    }, [tableData]);
-    const selectedRow =
-      (selectedSkillId && tableData.get(selectedSkillId)) ||
-      (filteredData.length > 0 ? tableData.get(filteredData[0].id) : null);
-    const selectedResults = selectedRow?.results ?? [];
-    const selectedSkill = selectedRow?.id;
-    const selectedSampleRuns = selectedRow?.sampleRuns ?? [];
-    trackDetailsPane = (
-      <aside class="chartDetails">
-        {selectedSkill ? (
-          <Fragment>
-            <ExpandedSkillDetails
-              id={selectedSkill}
-              distanceFactor={course.distance}
-              dismissable={false}
-            />
-            <div class="chartDetailsHistogram">
-              <Histogram
-                width={detailHistogramWidth}
-                height={detailHistogramHeight}
-                data={selectedResults}
-                sampleRuns={selectedSampleRuns}
-                onSampleSelect={(sample) =>
-                  setSelectedSampleRanges(sample?.ranges ?? [])
-                }
-              />
-            </div>
-          </Fragment>
-        ) : (
-          <div class="chartDetailsEmpty">ä»Žå·¦ä¾§é€‰æ‹©ä¸€ä¸ªæŠ€èƒ½</div>
-        )}
-      </aside>
-    );
     resultsPane = (
       <div id="resultsPaneWrapper" style={trackWidthStyle} ref={resultsPaneRef}>
         <div id="resultsPane" class="mode-chart" style={trackWidthStyle}>
           <div class="chartLayout">
             <div class="chartPanel">
               <BasinnChart
-                data={filteredData}
+                data={filteredChartData}
                 hidden={uma1.skills}
-                selectedId={selectedSkill}
+                selectedId={selectedChartSkill}
                 onSelectionChange={selectSkillDetails}
                 onRunTypeChange={setChartData}
                 onDblClickRow={addSkillFromTable}
                 onInfoClick={showPopover}
+                onSkillHover={(id, point) =>
+                  id ? showHoveredSkill(id, point) : scheduleHoverDismiss()
+                }
               />
             </div>
-            {isMobile && trackDetailsPane}
           </div>
         </div>
       </div>
@@ -1525,45 +1610,20 @@ function App() {
               {showTrack && (
                 <div ref={raceTrackRef} className="raceTrackShell">
                   <div className="raceTrackCanvas">
-                    <RaceTrack
+                    <RaceOverview
                       courseid={courseId}
                       width={trackWidth}
-                      height={trackHeight}
-                      xOffset={0}
-                      yOffset={15}
-                      yExtra={40}
-                      mouseMove={rtMouseMove}
-                      mouseLeave={rtMouseLeave}
-                      regions={trackRegions}
-                      hideTitle={true}
-                    >
-                      <VelocityLines
-                        data={chartData}
-                        courseDistance={course.distance}
-                        width={trackWidth}
-                        height={velocityHeight}
-                        xOffset={0}
-                        showHp={showHp}
-                      />
-                      <g id="rtMouseOverBox" style="display:none">
-                        <text
-                          id="rtV1"
-                          x="25"
-                          y="10"
-                          fill="var(--uma-blue)"
-                          font-size="10px"
-                        ></text>
-                        <text
-                          id="rtV2"
-                          x="25"
-                          y="20"
-                          fill="var(--uma-pink)"
-                          font-size="10px"
-                        ></text>
-                      </g>
-                    </RaceTrack>
+                      data={chartData}
+                      showHp={showHp}
+                      skillEvents={skillLaneEvents}
+                      selectedSampleRanges={selectedSampleRanges}
+                      possibleActivationRanges={possibleActivationRanges}
+                      selectedSkillName={selectedChartSkillName}
+                      onShowSelectedSkillDetails={() =>
+                        selectedChartSkill && setSkillDetailOpen(true)
+                      }
+                    />
                   </div>
-                  {!isMobile && trackDetailsPane}
                 </div>
               )}
               {isMobile && !showTrack && (
@@ -1606,8 +1666,13 @@ function App() {
                     <TrackSelect
                       key={courseId}
                       courseid={courseId}
-                      setCourseid={setCourseId}
+                      setCourseid={setCustomCourseId}
                       tabindex={2}
+                    />
+
+                    <CompetitionSelect
+                      value={selectedCompetitionKey}
+                      onChange={selectCompetition}
                     />
 
                     <TimeOfDaySelect
@@ -1737,7 +1802,7 @@ function App() {
                         <input
                           type="checkbox"
                           checked={usePosKeep}
-                          onChange={togglePosKeep}
+                          onChange={() => togglePosKeep()}
                           className=""
                         />
                         位置意识
@@ -1758,12 +1823,6 @@ function App() {
                       </label>
                     </div>
 
-                    <RacePresets
-                      set={(courseId, racedef) => {
-                        setCourseId(courseId);
-                        setRaceDef(racedef);
-                      }}
-                    />
                   </div>
 
                   <div
@@ -1811,15 +1870,99 @@ function App() {
                   </div>
                 </div>
 
-                {showStatusBar && mode !== Mode.Compare && (
-                  <div className="pt-2 mt-1 border-t">
-                    <ProgressBar progress={progress} label={status} />
+                {mode === Mode.Chart && (
+                  <div className="chartProgressAndHistogram">
+                    <div className="chartProgressSlot">
+                      {showStatusBar ? (
+                        <ProgressBar progress={progress} label={status} />
+                      ) : (
+                        <div className="chartProgressPlaceholder">
+                          运行后显示进度
+                        </div>
+                      )}
+                    </div>
+                    <div
+                      className="chartHistogramSlot"
+                      style={{
+                        minHeight: `${chartHistogramHeight + 64}px`,
+                      }}
+                    >
+                      {!isSimulating &&
+                      selectedChartSkill &&
+                      selectedChartResults.length > 0 ? (
+                        <Histogram
+                          width={chartHistogramWidth}
+                          height={chartHistogramHeight}
+                          data={selectedChartResults}
+                          sampleRuns={selectedChartSampleRuns}
+                          onSampleSelect={(sample) =>
+                            setSelectedSampleRanges(sample?.ranges ?? [])
+                          }
+                        />
+                      ) : (
+                        <div className="chartHistogramPlaceholder">
+                          {isSimulating
+                            ? "正在计算身位分布…"
+                            : "运行后在这里显示身位分布"}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
               {!isMobile && resultsPane}
             </div>
             {isMobile && resultsPane}
+            {hoveredSkill && mode === Mode.Chart && (
+              <aside
+                className="chartSkillHover"
+                onMouseEnter={cancelHoverDismiss}
+                onMouseLeave={scheduleHoverDismiss}
+                style={{
+                  left: `${Math.max(
+                    8,
+                    Math.min(hoveredSkill.x + 14, viewportWidth - 380),
+                  )}px`,
+                  top: `${Math.max(
+                    8,
+                    Math.min(hoveredSkill.y + 12, viewportHeight - 360),
+                  )}px`,
+                }}
+              >
+                <ExpandedSkillDetails
+                  id={hoveredSkill.id}
+                  distanceFactor={course.distance}
+                  dismissable={false}
+                />
+              </aside>
+            )}
+            {skillDetailOpen && selectedChartSkill && mode === Mode.Chart && (
+              <div
+                className="chartSkillModalOverlay"
+                role="presentation"
+                onClick={() => setSkillDetailOpen(false)}
+              >
+                <section
+                  className="chartSkillModalCard"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label={`技能详细：${selectedChartSkillName}`}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    const target = event.target as Element;
+                    if (target.closest(".skillDismiss")) {
+                      setSkillDetailOpen(false);
+                    }
+                  }}
+                >
+                  <ExpandedSkillDetails
+                    id={selectedChartSkill}
+                    distanceFactor={course.distance}
+                    dismissable={true}
+                  />
+                </section>
+              </div>
+            )}
             {isMobile && forceShowTrack && (
               <div className="trackFullscreen" ref={raceTrackRef}>
                 <button
@@ -1830,17 +1973,18 @@ function App() {
                   ×
                 </button>
                 <div className="racetrackRotated">
-                  <RaceTrack
+                  <RaceOverview
                     courseid={courseId}
                     width={trackHeight}
-                    height={trackWidth}
-                    xOffset={0}
-                    yOffset={15}
-                    yExtra={40}
-                    mouseMove={rtMouseMove}
-                    mouseLeave={rtMouseLeave}
-                    regions={trackRegions}
-                    hideTitle={true}
+                    data={chartData}
+                    showHp={showHp}
+                    skillEvents={skillLaneEvents}
+                    selectedSampleRanges={selectedSampleRanges}
+                    possibleActivationRanges={possibleActivationRanges}
+                    selectedSkillName={selectedChartSkillName}
+                    onShowSelectedSkillDetails={() =>
+                      selectedChartSkill && setSkillDetailOpen(true)
+                    }
                   />
                 </div>
               </div>

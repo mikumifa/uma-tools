@@ -7,6 +7,7 @@ import shutil
 import sqlite3
 import zlib
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -50,8 +51,9 @@ OUTPUT_JSON = DATA_DIR / "results_intel.json"
 EXCHANGE_DETAIL_DIR = PUBLIC_DIR / "intel" / "exchanges"
 TEXTURE_DIR = configured_texture_dir()
 
-SINCE_TS = int(dt.datetime(2026, 5, 1).timestamp())
-PLACEHOLDER_END_TS = int(dt.datetime(2040, 1, 1).timestamp())
+SCHEDULE_TIMEZONE = ZoneInfo("Asia/Shanghai")
+SINCE_TS = int(dt.datetime(2026, 5, 1, tzinfo=SCHEDULE_TIMEZONE).timestamp())
+PLACEHOLDER_END_TS = int(dt.datetime(2040, 1, 1, tzinfo=SCHEDULE_TIMEZONE).timestamp())
 EVENT_ICON_NAME = "item_icon_00143.png"
 RACE_THUMB_NAME = "thum_race_rt_000_1001_00.png"
 FACTOR_RESEARCH_IMAGE = "intel/factor_research/factor_research.png"
@@ -65,12 +67,18 @@ TEAM_BUILDING_IMAGE = "intel/special/team_building_logo.png"
 ACTIVITY_EXCHANGE_PAY_ITEMS = {45, 58, 156, 159}
 VOUCHER_EXCHANGE_PAY_CATEGORIES = {41, 42, 179}
 
-SEASON_LABELS = {1: "春", 2: "夏", 3: "秋", 4: "冬"}
-WEATHER_LABELS = {0: "随机", 1: "晴", 2: "多云", 3: "雨", 4: "雪"}
-CONDITION_LABELS = {0: "随机", 1: "良", 2: "稍重", 3: "重", 4: "不良"}
+SEASON_LABELS = {0: "随机季节", 1: "春天", 2: "夏天", 3: "秋天", 4: "冬天"}
+WEATHER_LABELS = {0: "随机天气", 1: "晴天", 2: "多云天气", 3: "雨天", 4: "雪天"}
+CONDITION_LABELS = {
+    0: "随机场地",
+    1: "良场地",
+    2: "稍重场地",
+    3: "重场地",
+    4: "不良场地",
+}
 GROUND_LABELS = {1: "草地", 2: "泥地"}
-INOUT_LABELS = {1: "内", 2: "外", 3: "外→内"}
-TURN_LABELS = {1: "逆", 2: "顺", 3: "直线"}
+INOUT_LABELS = {1: "内圈", 2: "外圈", 3: "外圈转内圈"}
+TURN_LABELS = {1: "顺时针", 2: "逆时针", 3: "直线"}
 CHAMPIONS_ROUND_LABELS = {
     0: "公告",
     1: "第1轮",
@@ -135,7 +143,12 @@ def team_building_image() -> str | None:
 
 
 def ts_to_str(ts: int) -> str:
-    return dt.datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S")
+    return dt.datetime.fromtimestamp(ts, SCHEDULE_TIMEZONE).strftime("%Y-%m-%d %H:%M:%S")
+
+
+def local_str_to_ts(value: str) -> int:
+    parsed = dt.datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
+    return int(parsed.replace(tzinfo=SCHEDULE_TIMEZONE).timestamp())
 
 
 def text_value(cur: sqlite3.Cursor, category: int, index: int) -> str | None:
@@ -966,7 +979,7 @@ def race_course_detail(
 ) -> dict | None:
     row = cur.execute(
         """
-        SELECT ri.race_id, r.thumbnail_id, r.entry_num, rcs.race_track_id,
+        SELECT ri.race_id, r.thumbnail_id, r.entry_num, rcs.id, rcs.race_track_id,
                rcs.distance, rcs.ground, rcs.inout, rcs.turn
         FROM race_instance ri
         JOIN race r ON r.id = ri.race_id
@@ -977,18 +990,19 @@ def race_course_detail(
     ).fetchone()
     if not row:
         return None
-    race_id, thumbnail_id, entry_num, track_id, distance, ground, inout, turn = row
+    race_id, thumbnail_id, entry_num, course_id, track_id, distance, ground, inout, turn = row
     race_name = text_value(cur, 29, race_instance_id) or text_value(cur, 33, race_id) or ""
     track_name = text_value(cur, 31, track_id) or text_value(cur, 34, track_id) or ""
     return {
         "label": label,
         "raceName": race_name,
+        "courseId": course_id,
         "track": track_name,
         "distance": distance,
         "ground": GROUND_LABELS.get(ground, str(ground)),
         "inout": INOUT_LABELS.get(inout, str(inout)),
         "turn": TURN_LABELS.get(turn, str(turn)),
-        "season": SEASON_LABELS.get(season, "随机" if season == 0 else str(season)),
+        "season": SEASON_LABELS.get(season, str(season)),
         "weather": WEATHER_LABELS.get(weather, str(weather)),
         "condition": CONDITION_LABELS.get(condition, str(condition)),
         "seasonValue": season,
@@ -1558,8 +1572,8 @@ def report_events_to_schedule(event_sections: list[dict], include_races: bool = 
         for item in section["items"]:
             if not item.get("start") or not item.get("end"):
                 continue
-            start = int(dt.datetime.strptime(item["start"], "%Y-%m-%d %H:%M:%S").timestamp())
-            end = int(dt.datetime.strptime(item["end"], "%Y-%m-%d %H:%M:%S").timestamp())
+            start = local_str_to_ts(item["start"])
+            end = local_str_to_ts(item["end"])
             if end < SINCE_TS or end >= PLACEHOLDER_END_TS:
                 continue
             image = None
@@ -1805,7 +1819,7 @@ def generate_exchange_data() -> list[dict]:
         shutil.rmtree(EXCHANGE_DETAIL_DIR)
     conn = sqlite3.connect(MASTER_DB)
     cur = conn.cursor()
-    now_ts = int(dt.datetime.now().timestamp())
+    now_ts = int(dt.datetime.now(SCHEDULE_TIMEZONE).timestamp())
     rows = cur.execute(
         """
         SELECT iet.id, iet.start_date, iet.end_date, td39.text, td40.text
@@ -1937,7 +1951,7 @@ def main() -> None:
         generate_heroes_races(),
     )
     data["exchanges"] = generate_exchange_data()
-    data["generatedAt"] = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    data["generatedAt"] = dt.datetime.now(SCHEDULE_TIMEZONE).strftime("%Y-%m-%d %H:%M:%S")
     OUTPUT_JSON.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Generated {OUTPUT_JSON.relative_to(ROOT)}")
 

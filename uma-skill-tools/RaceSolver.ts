@@ -206,6 +206,7 @@ export interface PendingSkill {
   perspective?: Perspective;
   rarity: SkillRarity;
   trigger: Region;
+  randomActivationRegions?: readonly Region[];
   extraCondition: DynamicCondition;
   effects: SkillEffect[];
 }

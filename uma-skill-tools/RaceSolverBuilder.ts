@@ -899,10 +899,12 @@ export class RaceSolverBuilder {
     );
     const skilldata = this._skills.flatMap(({ id, p }) => makeSkill(id, p));
     this._extraSkillHooks.forEach((h) => h(skilldata, horse, this._course));
-    const triggers = skilldata.map((sd) => {
-      const sp = this._samplePolicyOverride.get(sd.skillId) || sd.samplePolicy;
-      return sp.sample(sd.regions, this.nsamples, this._rng);
-    });
+    const samplePolicies = skilldata.map(
+      (sd) => this._samplePolicyOverride.get(sd.skillId) || sd.samplePolicy,
+    );
+    const triggers = skilldata.map((sd, index) =>
+      samplePolicies[index].sample(sd.regions, this.nsamples, this._rng),
+    );
 
     // must come after skill activations are decided because conditions like base_power depend on base stats
     horse = buildAdjustedStats(
@@ -917,6 +919,8 @@ export class RaceSolverBuilder {
         perspective: sd.perspective,
         rarity: sd.rarity,
         trigger: triggers[sdi][i % triggers[sdi].length],
+        randomActivationRegions:
+          samplePolicies[sdi] === ImmediatePolicy ? undefined : sd.regions,
         extraCondition: sd.extraCondition,
         effects: sd.effects,
       }));

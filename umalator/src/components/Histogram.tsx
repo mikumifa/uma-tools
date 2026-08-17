@@ -21,7 +21,6 @@ export function Histogram({
   onSampleSelect,
 }: HistogramProps) {
   const axes = useRef<SVGGElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const [hoveredBin, setHoveredBin] = useState<d3.Bin<number, number> | null>(null);
   const [selectedBin, setSelectedBin] = useState<d3.Bin<number, number> | null>(null);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
@@ -103,7 +102,7 @@ export function Histogram({
   }
 
   return (
-    <div class="histogram-container" ref={containerRef} style={{ position: "relative", width }}>
+    <div class="histogram-container" style={{ position: "relative", width }}>
       <svg width={width} height={height}>
         <g>{buckets.map((b, i) => {
            if (b.length === 0) return null;
@@ -124,16 +123,15 @@ export function Histogram({
                 fill={isSelected ? "#db2777" : isHovered ? "#4f46e5" : "#3d7dd1"}
                 stroke={isHovered || isSelected ? "#18202b" : "none"}
                 stroke-width={isSelected ? 2 : 1}
-                onMouseEnter={(e) => {
-                   setHoveredBin(b);
-                  // Calculate tooltip position relative to container
-                  const rect = containerRef.current?.getBoundingClientRect();
-                  if (rect) {
-                      setTooltipPos({
-                          x: x0 + (x1-x0)/2,
-                          y: yVal - 10
-                      });
-                  }
+                onMouseEnter={() => {
+                  setHoveredBin(b);
+                  setTooltipPos({
+                    x: Math.max(
+                      88,
+                      Math.min(width - 88, x0 + (x1 - x0) / 2),
+                    ),
+                    y: 8,
+                  });
                 }}
                 onMouseLeave={() => setHoveredBin(null)}
                 onClick={() => {

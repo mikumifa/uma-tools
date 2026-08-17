@@ -4,7 +4,7 @@ import type { RaceParameters } from "@sim/RaceParameters";
 import { HorseState, SkillSet } from "@components/HorseDefTypes";
 import { runComparison } from "./compare";
 
-function mergeResults(results1, results2, courseDistance) {
+function mergeResults(results1, results2) {
   console.assert(
     results1.id == results2.id,
     `mergeResults: ${results1.id} != ${results2.id}`
@@ -31,7 +31,10 @@ function mergeResults(results1, results2, courseDistance) {
     mean: combinedMean,
     median: newMedian,
     sampleRuns,
-    possibleActivationRanges: mergeActivationStartRanges(sampleRuns, courseDistance),
+    possibleActivationRanges: dedupeActivationRanges(
+      results1.possibleActivationRanges,
+      results2.possibleActivationRanges,
+    ),
     runData: {
       // TODO should re-compute the bashin gain from .t/.p and pick whichever is closer to new mean/median
       ...(n2 > n1 ? results2.runData : results1.runData),
@@ -56,7 +59,12 @@ function run1Skill(
   options
 ) {
   const withSkill = uma.set("skills", uma.skills.add(id));
-  const { results, runData, sampleRuns = [] } = runComparison(
+  const {
+    results,
+    runData,
+    sampleRuns = [],
+    activationTriggerRanges = [],
+  } = runComparison(
     nsamples,
     course,
     racedef,
@@ -75,7 +83,7 @@ function run1Skill(
     results,
     runData,
     sampleRuns,
-    possibleActivationRanges: mergeActivationStartRanges(sampleRuns, course.distance),
+    possibleActivationRanges: activationTriggerRanges,
     min: results[0],
     max: results[results.length - 1],
     mean,
@@ -83,37 +91,17 @@ function run1Skill(
   };
 }
 
-function mergeActivationStartRanges(sampleRuns, courseDistance) {
-  const mergeGap = Math.max(2, courseDistance * 0.002);
-  const minVisibleWidth = Math.max(1, courseDistance * 0.0005);
-  const starts = sampleRuns
-    .flatMap((sample) => sample.ranges || [])
-    .map((range) => range.start)
-    .filter((start) => Number.isFinite(start))
-    .sort((a, b) => a - b);
-  const merged = [];
-
-  starts.forEach((start) => {
-    const last = merged[merged.length - 1];
-    if (last && start <= last.end + mergeGap) {
-      last.end = start;
-    } else {
-      merged.push({ start, end: start });
+function dedupeActivationRanges(...rangeLists) {
+  const ranges = new Map();
+  rangeLists.flat().forEach((range) => {
+    if (!range || !Number.isFinite(range.start) || !Number.isFinite(range.end)) {
+      return;
     }
+    ranges.set(`${range.start}:${range.end}`, range);
   });
-
-  return merged.map((range) => {
-    if (range.end - range.start >= minVisibleWidth) return range;
-
-    const pad = (minVisibleWidth - (range.end - range.start)) / 2;
-    let start = Math.max(0, range.start - pad);
-    let end = Math.min(courseDistance, range.end + pad);
-    if (end - start < minVisibleWidth) {
-      if (start === 0) end = Math.min(courseDistance, start + minVisibleWidth);
-      else start = Math.max(0, end - minVisibleWidth);
-    }
-    return { start, end };
-  });
+  return Array.from(ranges.values()).sort(
+    (a, b) => a.start - b.start || a.end - b.end,
+  );
 }
 
 function runChartStage({
@@ -148,7 +136,7 @@ function runChartStage({
   skills.forEach((id, index) => {
     const row = run1Skill(nsamples, id, course, racedef, uma, options);
     if (results.has(id)) {
-      results.set(id, mergeResults(results.get(id), row, course.distance));
+      results.set(id, mergeResults(results.get(id), row));
     } else {
       results.set(id, row);
     }

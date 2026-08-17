@@ -227,6 +227,15 @@ export function BasinnChart(props) {
     props.onDblClickRow(id);
   }
 
+  function handleMouseMove(e) {
+    const tr = e.target.closest("tr[data-skillid]");
+    if (tr == null) return;
+    props.onSkillHover?.(tr.dataset.skillid, {
+      x: e.clientX,
+      y: e.clientY,
+    });
+  }
+
   // 辅助函数：渲染带 Radio 的表头
   const renderRadioHeader = (col) => {
     const clickRadio = (e) => {
@@ -331,7 +340,12 @@ export function BasinnChart(props) {
             })}
           </tr>
         </thead>
-        <tbody onClick={handleClick} onDblClick={handleDblClick}>
+        <tbody
+          onClick={handleClick}
+          onDblClick={handleDblClick}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={() => props.onSkillHover?.(null)}
+        >
           {sortedData.map((row) => {
             const id = row.id;
             // 处理隐藏行

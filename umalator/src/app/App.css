@@ -153,8 +153,9 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
   min-height: 100vh;
-  max-width: 1680px;
+  max-width: none;
   margin: 0 auto;
   padding: 12px;
 }
@@ -1929,6 +1930,21 @@ a:hover {
   overflow: visible;
 }
 
+#app:has(> #topPane.mode-chart[data-mobile="false"]) {
+  height: max(100dvh, 980px);
+  min-height: 0;
+  overflow: visible;
+}
+
+#topPane.mode-chart[data-mobile="false"] {
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+#topPane.mode-chart[data-mobile="false"]:has(.basinnChartWrapper) {
+  grid-template-rows: minmax(0, auto) minmax(180px, 1fr);
+}
+
 #runPane {
   position: fixed;
   top: 12px;
@@ -2031,6 +2047,25 @@ a:hover {
 .trackSelect > select:last-child {
   border-top-right-radius: var(--uma-radius-sm);
   border-bottom-right-radius: var(--uma-radius-sm);
+}
+
+.competitionSelect {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.competitionSelect > span {
+  flex: 0 0 auto;
+  color: var(--uma-muted);
+  font-size: 12px;
+}
+
+.competitionSelect > select {
+  width: min(280px, 38vw);
+  min-width: 210px;
+  max-width: 100%;
 }
 
 .raceTrackShell {
@@ -2279,6 +2314,11 @@ a:hover {
   overflow: auto;
 }
 
+#topPane.mode-compare #resultsPaneWrapper {
+  grid-column: 1 / -1;
+  grid-row: 3;
+}
+
 #resultsPane {
   display: flex;
   flex-direction: column;
@@ -2291,6 +2331,11 @@ a:hover {
   width: 100%;
   flex-direction: column;
   align-items: stretch;
+}
+
+#resultsPane.mode-compare .histogram-container {
+  max-width: 100%;
+  margin-inline: auto;
 }
 
 #resultsHelp {
@@ -2433,6 +2478,121 @@ a:hover {
 
 .chartPanel {
   min-width: 0;
+}
+
+#topPane.mode-chart[data-mobile="false"] #resultsPaneWrapper {
+  align-self: stretch;
+  overflow: hidden;
+}
+
+#topPane.mode-chart[data-mobile="false"] #resultsPane,
+#topPane.mode-chart[data-mobile="false"] .chartLayout,
+#topPane.mode-chart[data-mobile="false"] .chartPanel {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+#topPane.mode-chart[data-mobile="false"] .basinnChartWrapper {
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 180px;
+  max-height: none;
+}
+
+.chartProgressAndHistogram {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 4px;
+  padding-top: 9px;
+  border-top: 1px solid var(--uma-border);
+}
+
+.chartProgressSlot {
+  min-height: 38px;
+  padding: 6px 8px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius-sm);
+  background: var(--uma-surface-soft);
+  box-sizing: border-box;
+}
+
+.chartProgressPlaceholder {
+  display: flex;
+  min-height: 24px;
+  align-items: center;
+  justify-content: center;
+  color: var(--uma-muted);
+  font-size: 12px;
+}
+
+.chartHistogramSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  padding: 8px;
+  border: 1px solid var(--uma-border);
+  border-radius: var(--uma-radius);
+  background: var(--uma-surface);
+  box-shadow: var(--uma-shadow);
+  box-sizing: border-box;
+}
+
+.chartHistogramPlaceholder {
+  color: var(--uma-muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.chartSkillHover {
+  position: fixed;
+  z-index: 1100;
+  width: min(360px, calc(100vw - 16px));
+  max-height: min(340px, calc(100vh - 16px));
+  overflow: auto;
+  padding: 9px;
+  border: 1px solid var(--uma-border-strong);
+  border-radius: var(--uma-radius);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.2);
+  overscroll-behavior: contain;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+}
+
+.chartSkillHover .expandedSkill {
+  margin: 0;
+}
+
+.chartSkillModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.58);
+}
+
+.chartSkillModalCard {
+  width: min(680px, 100%);
+  max-height: min(760px, calc(100dvh - 32px));
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.chartSkillModalCard .expandedSkill {
+  margin: 0;
+  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.28);
+}
+
+.chartSkillModalCard .skillDismiss {
+  cursor: pointer;
 }
 
 .chartDetails {
@@ -2880,6 +3040,17 @@ a:hover {
 
   #buttonsRow[data-mobile="true"] .trackSelect {
     grid-column: 1 / -1;
+  }
+
+  #buttonsRow[data-mobile="true"] .competitionSelect {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  #buttonsRow[data-mobile="true"] .competitionSelect > select {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
   }
 
   #buttonsRow[data-mobile="true"] .courseControls > button {
