@@ -291,21 +291,23 @@ export function RaceOverview(props) {
   const colors = ["#2563eb", "#db2777"];
   return (
     <div className="raceOverview" style={{ width: props.width }}>
-      <div className="raceOverviewHeader">
-        <div>
-          <span>当前技能</span>
-          <strong title={props.selectedSkillName || ""}>
-            {props.selectedSkillName || "运行后从技能表格中选择"}
-          </strong>
+      {!props.hideHeader && (
+        <div className="raceOverviewHeader">
+          <div>
+            <span>当前技能</span>
+            <strong title={props.selectedSkillName || ""}>
+              {props.selectedSkillName || "运行后从技能表格中选择"}
+            </strong>
+          </div>
+          <button
+            type="button"
+            disabled={!props.selectedSkillName}
+            onClick={props.onShowSelectedSkillDetails}
+          >
+            查看技能详细
+          </button>
         </div>
-        <button
-          type="button"
-          disabled={!props.selectedSkillName}
-          onClick={props.onShowSelectedSkillDetails}
-        >
-          查看技能详细
-        </button>
-      </div>
+      )}
       <div className="raceTrajectoryChart">
         <svg
           viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`}

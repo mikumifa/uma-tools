@@ -211,6 +211,10 @@ export function BasinnChart(props) {
     if (tr == null) return;
     e.stopPropagation();
     const id = tr.dataset.skillid;
+    if (isMobile && props.onMobileSkillClick) {
+      props.onMobileSkillClick(id);
+      return;
+    }
     if (e.target.tagName === "IMG") {
       props.onInfoClick(id);
     } else {
@@ -342,9 +346,11 @@ export function BasinnChart(props) {
         </thead>
         <tbody
           onClick={handleClick}
-          onDblClick={handleDblClick}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={() => props.onSkillHover?.(null)}
+          onDblClick={isMobile ? undefined : handleDblClick}
+          onMouseMove={isMobile ? undefined : handleMouseMove}
+          onMouseLeave={
+            isMobile ? undefined : () => props.onSkillHover?.(null)
+          }
         >
           {sortedData.map((row) => {
             const id = row.id;

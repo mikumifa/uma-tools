@@ -883,6 +883,7 @@ function App() {
   const [possibleActivationRanges, setPossibleActivationRanges] = useState([]);
   const [hoveredSkill, setHoveredSkill] = useState(null);
   const [skillDetailOpen, setSkillDetailOpen] = useState(false);
+  const [skillDetailId, setSkillDetailId] = useState("");
   const hoverDismissTimer = useRef<number | null>(null);
 
   function cancelHoverDismiss() {
@@ -1306,6 +1307,18 @@ function App() {
     selectSkillDetails(skillId);
   }
 
+  function openSkillDetails(skillId: string) {
+    if (!skillId) return;
+    cancelHoverDismiss();
+    setHoveredSkill(null);
+    setSkillDetailId(skillId);
+    setSkillDetailOpen(true);
+  }
+
+  function closeSkillDetails() {
+    setSkillDetailOpen(false);
+  }
+
   const mid = Math.floor(results.length / 2);
   const median =
     results.length % 2 == 0
@@ -1576,6 +1589,7 @@ function App() {
                 onRunTypeChange={setChartData}
                 onDblClickRow={addSkillFromTable}
                 onInfoClick={showPopover}
+                onMobileSkillClick={openSkillDetails}
                 onSkillHover={(id, point) =>
                   id ? showHoveredSkill(id, point) : scheduleHoverDismiss()
                 }
@@ -1620,7 +1634,7 @@ function App() {
                       possibleActivationRanges={possibleActivationRanges}
                       selectedSkillName={selectedChartSkillName}
                       onShowSelectedSkillDetails={() =>
-                        selectedChartSkill && setSkillDetailOpen(true)
+                        selectedChartSkill && openSkillDetails(selectedChartSkill)
                       }
                     />
                   </div>
@@ -1913,7 +1927,7 @@ function App() {
               {!isMobile && resultsPane}
             </div>
             {isMobile && resultsPane}
-            {hoveredSkill && mode === Mode.Chart && (
+            {!isMobile && hoveredSkill && mode === Mode.Chart && (
               <aside
                 className="chartSkillHover"
                 onMouseEnter={cancelHoverDismiss}
@@ -1936,30 +1950,45 @@ function App() {
                 />
               </aside>
             )}
-            {skillDetailOpen && selectedChartSkill && mode === Mode.Chart && (
+            {skillDetailOpen && skillDetailId && mode === Mode.Chart && (
               <div
                 className="chartSkillModalOverlay"
                 role="presentation"
-                onClick={() => setSkillDetailOpen(false)}
+                onClick={closeSkillDetails}
               >
                 <section
                   className="chartSkillModalCard"
                   role="dialog"
                   aria-modal="true"
-                  aria-label={`技能详细：${selectedChartSkillName}`}
+                  aria-label={`技能详细：${
+                    skillnames[skillDetailId.split("-")[0]]?.[0] || skillDetailId
+                  }`}
                   onClick={(event) => {
                     event.stopPropagation();
                     const target = event.target as Element;
                     if (target.closest(".skillDismiss")) {
-                      setSkillDetailOpen(false);
+                      closeSkillDetails();
                     }
                   }}
                 >
                   <ExpandedSkillDetails
-                    id={selectedChartSkill}
+                    id={skillDetailId}
                     distanceFactor={course.distance}
                     dismissable={true}
                   />
+                  {isMobile && (
+                    <div className="chartSkillModalActions">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          selectSkillDetails(skillDetailId);
+                          closeSkillDetails();
+                        }}
+                      >
+                        选择
+                      </button>
+                    </div>
+                  )}
                 </section>
               </div>
             )}
@@ -1976,6 +2005,7 @@ function App() {
                   <RaceOverview
                     courseid={courseId}
                     width={trackHeight}
+                    hideHeader={true}
                     data={chartData}
                     showHp={showHp}
                     skillEvents={skillLaneEvents}
@@ -1983,7 +2013,7 @@ function App() {
                     possibleActivationRanges={possibleActivationRanges}
                     selectedSkillName={selectedChartSkillName}
                     onShowSelectedSkillDetails={() =>
-                      selectedChartSkill && setSkillDetailOpen(true)
+                      selectedChartSkill && openSkillDetails(selectedChartSkill)
                     }
                   />
                 </div>
