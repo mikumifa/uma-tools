@@ -58,7 +58,6 @@ type Route = {
 type PositionCompatibilityScore = {
   base: number;
   g1Count: number;
-  multiplier: 1 | 2;
   total: number;
   ownTotal?: number;
   inheritedTotal?: number;
@@ -72,7 +71,6 @@ type PositionCompatibilityScore = {
     umaName?: string;
     base: number;
     g1Count: number;
-    multiplier: 1 | 2;
     total: number;
   }>;
 };
@@ -320,7 +318,7 @@ const INITIAL_ROUTE_MINIMUMS: RouteMinimums = {
   paternal: { ...DEFAULT_APTITUDE_MINIMUMS },
   maternal: { ...DEFAULT_APTITUDE_MINIMUMS },
 };
-const INITIAL_INHERITANCE_APTITUDES: FactorKey[] = ["dirt", "mile"];
+const INITIAL_INHERITANCE_APTITUDES: FactorKey[] = [];
 const INITIAL_INHERITANCE_TARGETS: InheritanceTargets = {};
 const MAX_INHERITANCE_SLOTS = 6;
 const TARGET_FACTOR_SLOTS: LineageSlot[] = [
@@ -1070,14 +1068,32 @@ function UmaAptitudeRows({
 
 function compatibilityTitle(compatibility: PositionCompatibilityScore) {
   if (compatibility.inheritedTotal === undefined) {
-    const relationLabel = (compatibility.relationNames || []).join("、");
-    return `${relationLabel}相性 ${compatibility.base} + 共同 G1 ${compatibility.g1Count} 场 × ${G1_COMPATIBILITY_POINTS} × ${compatibility.multiplier} = ${compatibility.total}`;
+    const relationNames = compatibility.relationNames || [];
+    const relationLabel = relationNames.join("、");
+    const umaName = relationNames[relationNames.length - 1] || "当前马娘";
+    const childName = relationNames[relationNames.length - 2] || "子代";
+    const victoryCompatibility =
+      compatibility.g1Count * G1_COMPATIBILITY_POINTS;
+    return [
+      `自身相性：${relationLabel}基础相性 ${compatibility.base}`,
+      `胜鞍相性：${umaName}与子代${childName}共同 G1 ${compatibility.g1Count} 场 × ${G1_COMPATIBILITY_POINTS} = ${victoryCompatibility}`,
+      `总计：${compatibility.base} + ${victoryCompatibility} = ${compatibility.total}`,
+    ].join("\n");
   }
 
   const ancestorDetails = (compatibility.ancestorDetails || []).filter(
     (detail) => detail.umaName,
   );
   const targetName = compatibility.relationNames?.[0] || "目标马娘";
+  const umaName = compatibility.relationNames?.[1] || "当前亲代";
+  const victoryDetails = ancestorDetails.map((detail) => ({
+    ...detail,
+    points: detail.g1Count * G1_COMPATIBILITY_POINTS,
+  }));
+  const victoryCompatibility = victoryDetails.reduce(
+    (total, detail) => total + detail.points,
+    0,
+  );
   const totalParts = [compatibility.ownTotal || 0];
   if (compatibility.coParentName) {
     totalParts.push(compatibility.coParentTotal || 0);
@@ -1086,16 +1102,32 @@ function compatibilityTitle(compatibility: PositionCompatibilityScore) {
     totalParts.push(compatibility.inheritedTotal || 0);
   }
   return [
-    `自身：与${targetName}相性 ${compatibility.base}`,
-    ...(compatibility.coParentName
+    `自身基础相性：与${targetName} ${compatibility.base}`,
+    ...victoryDetails.map(
+      (detail) =>
+        `胜鞍相性：${detail.label} ${detail.umaName || ""}与子代${umaName}共同 G1 ${detail.g1Count} 场 × ${G1_COMPATIBILITY_POINTS} = ${detail.points}`,
+    ),
+    ...(victoryDetails.length > 1
       ? [
-          `亲代：与${compatibility.coParentLabel || "另一亲代"} ${compatibility.coParentName}相性 ${compatibility.coParentBase || 0}`,
+          `胜鞍小计：${victoryDetails.map((detail) => detail.points).join(" + ")} = ${victoryCompatibility}`,
         ]
       : []),
-    ...ancestorDetails.map(
-      (detail) =>
-        `${detail.label}：${detail.umaName || ""}基础相性 ${detail.base}`,
-    ),
+    `自身小计：${compatibility.base} + ${victoryCompatibility} = ${compatibility.ownTotal || 0}`,
+    ...(compatibility.coParentName
+      ? [
+          `亲代相性：与${compatibility.coParentLabel || "另一亲代"} ${compatibility.coParentName} ${compatibility.coParentBase || 0}`,
+        ]
+      : []),
+    ...(ancestorDetails.length
+      ? [
+          `祖代相性：${ancestorDetails
+            .map(
+              (detail) =>
+                `${detail.label} ${detail.umaName || ""} ${detail.base}`,
+            )
+            .join(" + ")} = ${compatibility.inheritedTotal || 0}`,
+        ]
+      : []),
     `总计：${totalParts.join(" + ")} = ${compatibility.total}`,
   ].join("\n");
 }
@@ -3513,7 +3545,6 @@ export function SuccessionPlanner() {
   const positionScore = (
     slot: LineageSlot,
     branch: BranchKey,
-    multiplier: 1 | 2,
     parentId?: number,
   ): PositionCompatibilityScore => {
     const umaId = lineage[slot];
@@ -3526,10 +3557,9 @@ export function SuccessionPlanner() {
     const isParentSlot = slot === "father" || slot === "mother";
     const slotRoute = routeSettingForSlot(slot).route;
     const parentSlot = branch === "paternal" ? "father" : "mother";
-    const g1Count = !umaId
-      ? 0
-      : isParentSlot
-        ? slotRoute.g1Count
+    const g1Count =
+      !umaId || isParentSlot
+        ? 0
         : commonG1Count(routeSettingForSlot(parentSlot).route, slotRoute);
     const relationNames = [
       target?.name,
@@ -3539,9 +3569,8 @@ export function SuccessionPlanner() {
     return {
       base,
       g1Count,
-      multiplier,
       relationNames,
-      total: umaId ? base + g1Count * G1_COMPATIBILITY_POINTS * multiplier : 0,
+      total: umaId ? base + g1Count * G1_COMPATIBILITY_POINTS : 0,
     };
   };
 
@@ -3551,16 +3580,23 @@ export function SuccessionPlanner() {
   const paternalACompatibility = positionScore(
     "paternalA",
     "paternal",
-    1,
     lineage.father,
   );
   const paternalBCompatibility = positionScore(
     "paternalB",
     "paternal",
-    1,
     lineage.father,
   );
-  const fatherOwnCompatibility = positionScore("father", "paternal", 2);
+  const fatherBaseCompatibility = positionScore("father", "paternal");
+  const fatherG1Count =
+    paternalACompatibility.g1Count + paternalBCompatibility.g1Count;
+  const fatherOwnCompatibility: PositionCompatibilityScore = {
+    ...fatherBaseCompatibility,
+    g1Count: fatherG1Count,
+    total:
+      fatherBaseCompatibility.base +
+      fatherG1Count * G1_COMPATIBILITY_POINTS,
+  };
   const fatherCompatibility: PositionCompatibilityScore = {
     ...fatherOwnCompatibility,
     ownTotal: fatherOwnCompatibility.total,
@@ -3591,16 +3627,23 @@ export function SuccessionPlanner() {
   const maternalACompatibility = positionScore(
     "maternalA",
     "maternal",
-    1,
     lineage.mother,
   );
   const maternalBCompatibility = positionScore(
     "maternalB",
     "maternal",
-    1,
     lineage.mother,
   );
-  const motherOwnCompatibility = positionScore("mother", "maternal", 2);
+  const motherBaseCompatibility = positionScore("mother", "maternal");
+  const motherG1Count =
+    maternalACompatibility.g1Count + maternalBCompatibility.g1Count;
+  const motherOwnCompatibility: PositionCompatibilityScore = {
+    ...motherBaseCompatibility,
+    g1Count: motherG1Count,
+    total:
+      motherBaseCompatibility.base +
+      motherG1Count * G1_COMPATIBILITY_POINTS,
+  };
   const motherCompatibility: PositionCompatibilityScore = {
     ...motherOwnCompatibility,
     ownTotal: motherOwnCompatibility.total,
@@ -4668,9 +4711,8 @@ export function SuccessionPlanner() {
       const parentBaseCompatibility = relationScore(targetId, parentId);
       const parentLocalCompatibility =
         parentBaseCompatibility +
-        parentRoute.g1Count * G1_COMPATIBILITY_POINTS * 2 +
         grandparentCompatibilityDetails.reduce(
-          (total, detail) => total + detail.base,
+          (total, detail) => total + detail.total,
           0,
         );
       const factors: BranchProbabilitySummary["factors"] = [];
@@ -4681,10 +4723,9 @@ export function SuccessionPlanner() {
             parent: true,
             formula: [
               `与目标基础相性 ${parentBaseCompatibility}`,
-              `赛程 ${parentRoute.g1Count} 场 G1 × ${G1_COMPATIBILITY_POINTS} × 2`,
               ...grandparentCompatibilityDetails.map(
                 (detail, index) =>
-                  `${grandparentCodes[index]}基础相性 ${detail.base}`,
+                  `${grandparentCodes[index]}三者基础相性 ${detail.base} + 与子代共同 G1 ${detail.g1Count} 场 × ${G1_COMPATIBILITY_POINTS}`,
               ),
             ].join(" + "),
           },
@@ -4694,7 +4735,7 @@ export function SuccessionPlanner() {
         positionCompatibilities[code] = {
           total: detail.total,
           parent: false,
-          formula: `三者基础相性 ${detail.base} + 共同 G1 ${detail.g1Count} 场 × ${G1_COMPATIBILITY_POINTS} = ${detail.total}`,
+          formula: `三者基础相性 ${detail.base} + 与子代共同 G1 ${detail.g1Count} 场 × ${G1_COMPATIBILITY_POINTS} = ${detail.total}`,
         };
       });
       if (
