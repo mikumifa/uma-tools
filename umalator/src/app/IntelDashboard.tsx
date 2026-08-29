@@ -22,6 +22,9 @@ type GachaPool = {
   startTimestamp: number;
   endTimestamp: number;
   onlyOnce?: boolean;
+  selectableCount?: number;
+  selectionLimit?: number | null;
+  stageCount?: number;
   freeDraws?: Array<{
     drawType: number;
     label: string;
@@ -190,6 +193,21 @@ function dateLabelLines(start: string, end: string) {
   return [format(start), format(end)];
 }
 
+function PoolTimeRange({
+  pool,
+  className = "",
+}: {
+  pool: GachaPool;
+  className?: string;
+}) {
+  return (
+    <time class={`intelPoolTime ${className}`.trim()}>
+      <span>{pool.start}</span>
+      <span>至 {pool.end}</span>
+    </time>
+  );
+}
+
 function scheduleDateLabel(item: ScheduleItem) {
   return dateLabel(item.start, item.end);
 }
@@ -281,6 +299,14 @@ function CardImage({ card }: { card: GachaCard }) {
 }
 
 function poolSummary(pool: GachaPool, max = 5) {
+  if (pool.selectableCount) {
+    const unit = pool.type.includes("角色") ? "位" : "张";
+    const selection = pool.selectionLimit
+      ? `自选${pool.selectionLimit}${unit}`
+      : "自选卡池";
+    const stages = pool.stageCount ? ` · ${pool.stageCount}阶段` : "";
+    return `${pool.selectableCount}${unit}可选 · ${selection}${stages}`;
+  }
   const names = Array.from(
     new Set(pool.cards.map((card) => card.characterName)),
   );
@@ -296,10 +322,20 @@ function freeDrawText(pool: GachaPool) {
   return (pool.freeDraws || []).map((draw) => draw.label).join(" / ");
 }
 
+function freeDrawGameDayKey(value: string) {
+  const [datePart, timePart = "00:00:00"] = value.split(" ");
+  const [year, month, day] = datePart.split("-").map(Number);
+  const [hour, minute, second] = timePart.split(":").map(Number);
+  // Treat the source value as a wall-clock time so the result is independent
+  // of the browser timezone, then shift the game's day boundary to 05:00.
+  return Math.floor(
+    Date.UTC(year, month - 1, day, hour - 5, minute, second) / 86400000,
+  );
+}
+
 function freeDrawDayCount(draw: NonNullable<GachaPool["freeDraws"]>[number]) {
-  const refreshOffsetSeconds = 5 * 60 * 60;
-  const startKey = Math.floor((draw.startTimestamp - refreshOffsetSeconds) / 86400);
-  const endKey = Math.floor((draw.endTimestamp - refreshOffsetSeconds) / 86400);
+  const startKey = freeDrawGameDayKey(draw.start);
+  const endKey = freeDrawGameDayKey(draw.end);
   return Math.max(1, endKey - startKey + 1);
 }
 
@@ -308,8 +344,7 @@ function freeDrawTotal(draw: NonNullable<GachaPool["freeDraws"]>[number]) {
 }
 
 function freeDrawEndText(draw: NonNullable<GachaPool["freeDraws"]>[number]) {
-  const endDate = new Date(draw.endTimestamp * 1000);
-  const endsBeforeRefresh = endDate.getHours() < 5;
+  const endsBeforeRefresh = draw.end.slice(11, 19) < "05:00:00";
   return `${fullDate(draw.end)} 结束${endsBeforeRefresh ? "，结束当天不计入" : ""}`;
 }
 
@@ -318,10 +353,13 @@ function FreeDrawBadges({ pool, inline = false }: { pool: GachaPool; inline?: bo
   if (!pool.onlyOnce && !freeDraws.length) return null;
   return (
     <div class={`intelFreeDraws ${inline ? "inline" : ""}`}>
-      {pool.onlyOnce && <span class="once">限购一次</span>}
+      {pool.onlyOnce && <span class="paid">付费</span>}
       {freeDraws.map((draw) => (
-        <span title={dateLabel(draw.start, draw.end)} key={`${draw.start}-${draw.end}-${draw.drawType}`}>
-          {draw.label}
+        <span
+          title={dateLabel(draw.start, draw.end)}
+          key={`${draw.start}-${draw.end}-${draw.drawType}`}
+        >
+          {draw.label} ×{freeDrawDayCount(draw)}
         </span>
       ))}
     </div>
@@ -339,7 +377,7 @@ function FreeDrawSchedule({ pool }: { pool: GachaPool }) {
             class="intelGachaFreeItem"
             key={`${draw.start}-${draw.end}-${draw.drawType}`}
           >
-            <strong>{draw.label}</strong>
+            <strong>{draw.label} ×{freeDrawDayCount(draw)}</strong>
             <p>
               从 {fullDate(draw.start)} 到 {fullDate(draw.end)}，共{
                 freeDrawDayCount(draw)
@@ -757,9 +795,10 @@ function drawGachaRow(
   ctx.font = exportFont(24, 800);
   ctx.fillStyle = "#18202b";
   drawTextLines(ctx, poolSummary(pool, 8), textX, y + 65, 390, 28, 1);
-  ctx.font = exportFont(20, 700);
+  ctx.font = exportFont(16, 700);
   ctx.fillStyle = "#5f6b7a";
-  ctx.fillText(dateLabel(pool.start, pool.end), textX, y + 96);
+  ctx.fillText(pool.start, textX, y + 86);
+  ctx.fillText(`至 ${pool.end}`, textX, y + 106);
 
   const startX = EXPORT_WIDTH - EXPORT_PADDING - 508;
   pool.cards.slice(0, 6).forEach((card, index) => {
@@ -1059,14 +1098,17 @@ async function exportIntelImage(source: ExportImageSource) {
 }
 
 function UpPreview({ cards }: { cards: GachaCard[] }) {
+  const visibleCount = 7;
   return (
     <div class="intelUpPreview">
-      {cards.slice(0, 8).map((card) => (
+      {cards.slice(0, visibleCount).map((card) => (
         <div class="intelUpMini" title={card.name} key={card.id}>
           <CardImage card={card} />
         </div>
       ))}
-      {cards.length > 8 && <em>+{cards.length - 8}</em>}
+      {cards.length > visibleCount && (
+        <em>+{cards.length - visibleCount}</em>
+      )}
     </div>
   );
 }
@@ -1232,9 +1274,7 @@ function WeekPoolCard({
             alt={`${pool.type}封面`}
             loading="lazy"
           />
-          <small>
-            {shortDate(pool.start)} - {shortDate(pool.end)}
-          </small>
+          <PoolTimeRange pool={pool} />
         </div>
       )}
       {active && <span class="intelPoolStatus">进行中</span>}
@@ -1365,7 +1405,7 @@ function GachaDetail({
           <div>
             <span>{pool.type}</span>
             <h2>{poolSummary(pool, 6)}</h2>
-            <p>{dateLabel(pool.start, pool.end)}</p>
+            <PoolTimeRange pool={pool} />
           </div>
         </div>
         <FreeDrawSchedule pool={pool} />
@@ -1548,7 +1588,7 @@ function ScheduleDetail({
         ) : null}
         {milestones.length ? (
           <section class="intelScheduleDetailSection">
-            <h3>大赛流程</h3>
+            <h3>{item.type === "剧情活动时间" ? "活动流程" : "大赛流程"}</h3>
             <div class="intelRaceMilestones">
               {milestones.map((milestone, index) => (
                 <div class="intelRaceMilestone" key={`${milestone.label}-${index}`}>
@@ -1759,7 +1799,7 @@ function GachaList({
           <button
             type="button"
             class={`intelGachaListItem ${poolTypeClass(pool)} ${active ? "active" : ""} ${upcoming ? "upcoming" : ""}`}
-            aria-label={`${dateLabel(pool.start, pool.end)} ${poolSummary(pool, 8)}`}
+            aria-label={`${pool.start} 至 ${pool.end} ${poolSummary(pool, 8)}`}
             onClick={() => onSelect(pool)}
             key={poolKey(pool)}
           >
@@ -1773,7 +1813,7 @@ function GachaList({
             <div class="intelGachaListMeta">
               <strong>{pool.name || pool.type}</strong>
               <span>{poolSummary(pool, 12)}</span>
-              <time>{dateLabel(pool.start, pool.end)}</time>
+              <PoolTimeRange pool={pool} />
               <FreeDrawBadges pool={pool} inline />
             </div>
             <UpPreview cards={pool.cards} />

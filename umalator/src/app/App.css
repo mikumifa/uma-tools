@@ -226,9 +226,11 @@ a:hover {
 
 .intelPage {
   display: flex;
+  align-self: center;
   flex-direction: column;
   gap: 14px;
   width: 100%;
+  max-width: 1280px;
 }
 
 .intelHero {
@@ -476,7 +478,7 @@ a:hover {
   line-height: 1;
 }
 
-.intelFreeDraws span.once {
+.intelFreeDraws span.paid {
   border-color: rgba(217, 119, 6, 0.28);
   background: #fff7ed;
   color: #b45309;
@@ -1418,10 +1420,48 @@ a:hover {
   font-size: 11px;
 }
 
+.intelPoolTime {
+  display: flex !important;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: normal !important;
+}
+
+.intelPoolTime span,
+.intelGachaListMeta .intelPoolTime span,
+.intelWeekPool .intelPoolTime span {
+  display: block;
+  min-width: 0;
+  overflow: visible;
+  color: inherit;
+  font: inherit;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.intelCoverBlock .intelPoolTime {
+  margin-top: 1px;
+  color: var(--uma-subtle);
+  font-family: var(--uma-mono);
+  font-size: 11px;
+}
+
+.intelDetailHeader .intelPoolTime {
+  margin-top: 3px;
+  color: var(--uma-muted);
+  font-family: var(--uma-mono);
+  font-size: 13px;
+}
+
 .intelUpPreview {
+  --intel-up-size: 70px;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 6px;
   min-width: 0;
   margin-top: 0;
@@ -1431,9 +1471,10 @@ a:hover {
 .intelUpMini {
   display: flex;
   align-items: center;
+  flex: 0 0 var(--intel-up-size);
   justify-content: center;
-  width: 70px;
-  height: 70px;
+  width: var(--intel-up-size);
+  height: var(--intel-up-size);
   padding: 0;
   border: none;
   border-radius: 0;
@@ -1442,32 +1483,28 @@ a:hover {
 
 .intelUpMini img,
 .intelUpMini .intelCardFallback {
-  width: 70px;
-  height: 70px;
+  width: var(--intel-up-size);
+  height: var(--intel-up-size);
   object-fit: cover;
   border-radius: 0;
 }
 
 .intelUpPreview em {
+  display: flex;
+  align-items: center;
+  flex: 0 0 var(--intel-up-size);
+  justify-content: center;
+  width: var(--intel-up-size);
+  height: var(--intel-up-size);
   color: var(--uma-muted);
-  font-size: 11px;
+  font-size: 18px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .intelWeekPool.compact .intelUpPreview {
+  --intel-up-size: 54px;
   gap: 4px;
-}
-
-.intelWeekPool.compact .intelUpMini {
-  width: 54px;
-  height: 54px;
-}
-
-.intelWeekPool.compact .intelUpMini img,
-.intelWeekPool.compact .intelUpMini .intelCardFallback {
-  width: 54px;
-  height: 54px;
 }
 
 .intelModalOverlay {
@@ -2999,11 +3036,8 @@ a:hover {
     font-size: 11px;
   }
 
-  .intelUpMini,
-  .intelUpMini img,
-  .intelUpMini .intelCardFallback {
-    width: 58px;
-    height: 58px;
+  .intelUpPreview {
+    --intel-up-size: 58px;
   }
 
   .intelEventMonth {
@@ -3230,14 +3264,8 @@ a:hover {
   }
 
   .intelUpPreview {
+    --intel-up-size: 48px;
     gap: 4px;
-  }
-
-  .intelUpMini,
-  .intelUpMini img,
-  .intelUpMini .intelCardFallback {
-    width: 48px;
-    height: 48px;
   }
 
   .intelWeekHeader,

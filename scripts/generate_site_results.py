@@ -89,6 +89,7 @@ CHAMPIONS_ROUND_LABELS = {
     6: "决赛",
 }
 HEROES_STAGE_LABELS = {0: "主要赛事", 1: "主要赛事", 2: "特别赛事"}
+CHAMPIONS_EVENT_NAME = "群英联赛"
 HEROES_EVENT_NAME = "英杰集结战"
 
 CHAMPIONS_MILESTONE_LABELS = {
@@ -1183,6 +1184,39 @@ def race_schedule_milestones(cur: sqlite3.Cursor, start: int, end: int) -> list[
     return champions_milestones(cur, start, end) or heroes_milestones(cur, start, end)
 
 
+def generate_champions_races() -> list[dict]:
+    conn = sqlite3.connect(MASTER_DB)
+    cur = conn.cursor()
+    rows = cur.execute(
+        """
+        SELECT id, start_date, end_date
+        FROM champions_schedule
+        WHERE end_date >= ? AND end_date < ?
+        ORDER BY start_date, id
+        """,
+        (SINCE_TS, PLACEHOLDER_END_TS),
+    ).fetchall()
+    races = []
+    for champions_id, start, end in rows:
+        races.append(
+            {
+                "id": 200000 + champions_id,
+                "name": CHAMPIONS_EVENT_NAME,
+                "type": "大赛时间",
+                "start": ts_to_str(start),
+                "end": ts_to_str(end),
+                "startTimestamp": start,
+                "endTimestamp": end,
+                "image": champions_race_image(),
+                "drops": [],
+                "details": champions_race_details(cur, start, end),
+                "milestones": champions_milestones(cur, start, end),
+            }
+        )
+    conn.close()
+    return races
+
+
 def generate_heroes_races() -> list[dict]:
     conn = sqlite3.connect(MASTER_DB)
     cur = conn.cursor()
@@ -1259,16 +1293,13 @@ def copy_story_event_logo(cur: sqlite3.Cursor, name: str, start: int, end: int) 
     story_ids = story_event_ids_for_event(cur, name, start, end)
 
     for story_id in story_ids:
-        for filename in (
-            f"tex_storyevent_logo_{int(story_id)}.png",
-            f"chara_story_thumb_{int(story_id)}.png",
-        ):
-            copied = copy_public_asset(
-                texture_asset(filename),
-                f"intel/story/{filename}",
-            )
-            if copied:
-                return copied
+        filename = f"story_event_story_list_thumb_title_{int(story_id)}.png"
+        copied = copy_public_asset(
+            texture_asset(filename),
+            f"intel/story/{filename}",
+        )
+        if copied:
+            return copied
     return None
 
 
@@ -1334,6 +1365,69 @@ def story_event_reward_drops(cur: sqlite3.Cursor, name: str, start: int, end: in
             drops.append(drop)
 
     return sort_reward_drops(drops, keep_source=True)
+
+
+def generate_story_events() -> list[dict]:
+    conn = sqlite3.connect(MASTER_DB)
+    cur = conn.cursor()
+    rows = cur.execute(
+        """
+        SELECT
+            sed.story_event_id,
+            td.text,
+            sed.start_date,
+            sed.ending_date,
+            sed.end_date
+        FROM story_event_data sed
+        LEFT JOIN text_data td
+          ON td.category = 214
+         AND td.[index] = sed.story_event_id
+        WHERE sed.end_date >= ?
+          AND sed.end_date < ?
+        ORDER BY sed.start_date, sed.story_event_id
+        """,
+        (SINCE_TS, PLACEHOLDER_END_TS),
+    ).fetchall()
+
+    events = []
+    for story_id, raw_name, start, ending, end in rows:
+        name = display_text(raw_name or f"剧情活动 {story_id}")
+        milestones = [
+            {
+                "label": "活动期间",
+                "start": ts_to_str(start),
+                "end": ts_to_str(ending),
+                "startTimestamp": start,
+                "endTimestamp": ending,
+            }
+        ]
+        if end > ending:
+            reward_start = ending + 1
+            milestones.append(
+                {
+                    "label": "奖励领取",
+                    "start": ts_to_str(reward_start),
+                    "end": ts_to_str(end),
+                    "startTimestamp": reward_start,
+                    "endTimestamp": end,
+                }
+            )
+        events.append(
+            {
+                "id": 200000 + story_id,
+                "name": name,
+                "type": "剧情活动时间",
+                "start": ts_to_str(start),
+                "end": ts_to_str(end),
+                "startTimestamp": start,
+                "endTimestamp": end,
+                "image": copy_story_event_logo(cur, name, start, end),
+                "drops": story_event_reward_drops(cur, name, start, end),
+                "milestones": milestones,
+            }
+        )
+    conn.close()
+    return events
 
 
 def parse_report() -> dict:
@@ -1479,44 +1573,109 @@ def generate_gacha_data() -> list[dict]:
     rows = cur.execute(
         """
         SELECT
-            ga.gacha_id,
-            ga.card_id,
-            ga.card_type,
-            ga.rarity,
-            gd.start_date,
-            gd.end_date,
-            gd.only_once_flag,
-            td.text,
-            gtd.text,
-            cd.chara_id,
-            scd.chara_id
-        FROM gacha_available ga
-        JOIN gacha_data gd ON ga.gacha_id = gd.id
-        JOIN text_data td
-          ON ga.card_id = td.[index]
-         AND td.category = CASE ga.card_type WHEN 1 THEN 4 WHEN 2 THEN 75 END
-        LEFT JOIN text_data gtd ON gtd.category = 26 AND gtd.[index] = ga.gacha_id
-        LEFT JOIN card_data cd ON ga.card_type = 1 AND cd.id = ga.card_id
-        LEFT JOIN support_card_data scd ON ga.card_type = 2 AND scd.id = ga.card_id
-        WHERE ga.is_pickup = 1
-          AND gd.start_date >= ?
-          AND gd.end_date < ?
-        ORDER BY gd.start_date, gd.end_date, ga.gacha_id, ga.card_type, ga.recommend_order, ga.card_id
+            gacha_id, card_id, card_type, rarity, start_date, end_date,
+            only_once_flag, card_name, gacha_name, chara_id,
+            support_chara_id, is_selectable, selection_text, stage_count
+        FROM (
+            SELECT
+                ga.gacha_id,
+                ga.card_id,
+                ga.card_type,
+                ga.rarity,
+                gd.start_date,
+                gd.end_date,
+                gd.only_once_flag,
+                td.text AS card_name,
+                gtd.text AS gacha_name,
+                cd.chara_id,
+                scd.chara_id AS support_chara_id,
+                0 AS is_selectable,
+                NULL AS selection_text,
+                0 AS stage_count,
+                ga.recommend_order AS display_order
+            FROM gacha_available ga
+            JOIN gacha_data gd ON ga.gacha_id = gd.id
+            JOIN text_data td
+              ON ga.card_id = td.[index]
+             AND td.category = CASE ga.card_type WHEN 1 THEN 4 WHEN 2 THEN 75 END
+            LEFT JOIN text_data gtd ON gtd.category = 26 AND gtd.[index] = ga.gacha_id
+            LEFT JOIN card_data cd ON ga.card_type = 1 AND cd.id = ga.card_id
+            LEFT JOIN support_card_data scd ON ga.card_type = 2 AND scd.id = ga.card_id
+            WHERE (
+                    ga.is_pickup = 1
+                    OR (
+                        gd.type = 11
+                        AND ga.rarity = 3
+                        AND ga.recommend_order > 0
+                    )
+                )
+              AND gd.start_date >= ?
+              AND gd.end_date < ?
+
+            UNION ALL
+
+            SELECT
+                sp.gacha_id,
+                sp.card_id,
+                sp.card_type,
+                CASE sp.card_type
+                    WHEN 1 THEN cd.default_rarity
+                    WHEN 2 THEN scd.rarity
+                END AS rarity,
+                gd.start_date,
+                gd.end_date,
+                gd.only_once_flag,
+                td.text AS card_name,
+                gtd.text AS gacha_name,
+                cd.chara_id,
+                scd.chara_id AS support_chara_id,
+                1 AS is_selectable,
+                std.text AS selection_text,
+                (
+                    SELECT COUNT(*)
+                    FROM gacha_stepup gs
+                    WHERE gs.stepup_id = sp.gacha_id
+                ) AS stage_count,
+                sp.recommend_order AS display_order
+            FROM select_pickup sp
+            JOIN gacha_data gd ON sp.gacha_id = gd.id
+            JOIN text_data td
+              ON sp.card_id = td.[index]
+             AND td.category = CASE sp.card_type WHEN 1 THEN 4 WHEN 2 THEN 75 END
+            LEFT JOIN text_data gtd ON gtd.category = 26 AND gtd.[index] = sp.gacha_id
+            LEFT JOIN text_data std ON std.category = 13 AND std.[index] = sp.gacha_id
+            LEFT JOIN card_data cd ON sp.card_type = 1 AND cd.id = sp.card_id
+            LEFT JOIN support_card_data scd ON sp.card_type = 2 AND scd.id = sp.card_id
+            WHERE EXISTS (
+                    SELECT 1
+                    FROM gacha_stepup base_step
+                    WHERE base_step.stepup_id = sp.gacha_id
+                      AND base_step.target_gacha_id = sp.gacha_id
+                )
+              AND sp.card_type IN (1, 2)
+              AND gd.start_date >= ?
+              AND gd.end_date < ?
+        )
+        ORDER BY start_date, end_date, gacha_id, card_type, display_order, card_id
         """,
-        (SINCE_TS, PLACEHOLDER_END_TS),
+        (SINCE_TS, PLACEHOLDER_END_TS, SINCE_TS, PLACEHOLDER_END_TS),
     ).fetchall()
     conn.close()
 
     grouped: dict[tuple[int, str], dict] = {}
-    for gacha_id, card_id, card_type, rarity, start_ts, end_ts, only_once_flag, name, gacha_name, chara_id, support_chara_id in rows:
+    for gacha_id, card_id, card_type, rarity, start_ts, end_ts, only_once_flag, name, gacha_name, chara_id, support_chara_id, is_selectable, selection_text, stage_count in rows:
         pool_type = "角色卡池" if card_type == 1 else "支援卡"
         key = (gacha_id, pool_type)
+        pool_name = display_text(gacha_name or pool_type)
+        if is_selectable:
+            pool_name = re.sub(r"\s*阶段1$", "", pool_name)
+        selection_match = re.search(r"选择的(\d+)", selection_text or "")
         group = grouped.setdefault(
             key,
             {
                 "id": gacha_id,
                 "type": pool_type,
-                "name": display_text(gacha_name or pool_type),
+                "name": pool_name,
                 "start": ts_to_str(start_ts),
                 "end": ts_to_str(end_ts),
                 "startTimestamp": start_ts,
@@ -1526,6 +1685,10 @@ def generate_gacha_data() -> list[dict]:
                 "cards": [],
             },
         )
+        if is_selectable:
+            group["selectableCount"] = group.get("selectableCount", 0) + 1
+            group["selectionLimit"] = int(selection_match.group(1)) if selection_match else None
+            group["stageCount"] = stage_count
         if gacha_id in free_draws_by_gacha:
             group["freeDraws"] = free_draws_by_gacha[gacha_id]
 
@@ -1557,6 +1720,9 @@ def generate_gacha_data() -> list[dict]:
             }
         )
 
+    for group in grouped.values():
+        group["cards"].sort(key=lambda card: (-card["rarity"], -card["id"]))
+
     return sorted(grouped.values(), key=lambda item: (item["startTimestamp"], item["type"], item["id"]))
 
 
@@ -1568,6 +1734,8 @@ def report_events_to_schedule(event_sections: list[dict], include_races: bool = 
     for section in event_sections:
         is_race_section = section["title"] == "大赛时间"
         if include_races != is_race_section:
+            continue
+        if not include_races and section["title"] == "剧情活动时间":
             continue
         for item in section["items"]:
             if not item.get("start") or not item.get("end"):
@@ -1929,7 +2097,16 @@ def merge_event_schedules(report_events: list[dict], campaign_tasks: list[dict],
 
 
 def merge_race_schedules(report_races: list[dict], extra_races: list[dict]) -> list[dict]:
-    merged = [*report_races, *extra_races]
+    merged = list(report_races)
+    known_schedules = {
+        (race["startTimestamp"], race["endTimestamp"]) for race in report_races
+    }
+    for race in extra_races:
+        schedule = (race["startTimestamp"], race["endTimestamp"])
+        if schedule in known_schedules:
+            continue
+        known_schedules.add(schedule)
+        merged.append(race)
     for index, race in enumerate(
         sorted(merged, key=lambda item: (item["startTimestamp"], item["endTimestamp"], item["type"], item["name"])),
         1,
@@ -1944,11 +2121,11 @@ def main() -> None:
     data["events"] = merge_event_schedules(
         report_events_to_schedule(data.get("eventSections", [])),
         generate_campaign_tasks(),
-        generate_extra_activity_events(),
+        [*generate_story_events(), *generate_extra_activity_events()],
     )
     data["races"] = merge_race_schedules(
         report_events_to_schedule(data.get("eventSections", []), include_races=True),
-        generate_heroes_races(),
+        [*generate_champions_races(), *generate_heroes_races()],
     )
     data["exchanges"] = generate_exchange_data()
     data["generatedAt"] = dt.datetime.now(SCHEDULE_TIMEZONE).strftime("%Y-%m-%d %H:%M:%S")
