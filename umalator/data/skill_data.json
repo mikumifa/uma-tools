@@ -82,6 +82,50 @@
     ],
     "rarity": 1
   },
+  "1000015": {
+    "alternatives": [
+      {
+        "baseDuration": -1,
+        "condition": "",
+        "effects": [
+          {
+            "modifier": 10000.0,
+            "target": 1,
+            "type": 502
+          },
+          {
+            "modifier": 10000.0,
+            "target": 1,
+            "type": 503
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "1000016": {
+    "alternatives": [
+      {
+        "baseDuration": -1,
+        "condition": "",
+        "effects": [
+          {
+            "modifier": 10000.0,
+            "target": 1,
+            "type": 502
+          },
+          {
+            "modifier": 10000.0,
+            "target": 1,
+            "type": 503
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
   "100011": {
     "alternatives": [
       {
@@ -125,7 +169,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 4500.0,
@@ -248,7 +292,7 @@
   "100101": {
     "alternatives": [
       {
-        "baseDuration": 40000,
+        "baseDuration": 50000,
         "condition": "is_finalcorner_laterhalf==1&corner!=0&order>=3&order_rate<=40",
         "effects": [
           {
@@ -383,7 +427,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&change_order_onetime<0&order>=3",
+        "condition": "is_last_straight==1&change_order_onetime<0&order>=3",
         "effects": [
           {
             "modifier": 3500.0,
@@ -400,7 +444,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 3500.0,
@@ -446,7 +490,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&hp_per>=30&order<=2",
+        "condition": "is_last_straight==1&hp_per>=30&order<=2",
         "effects": [
           {
             "modifier": 2500.0,
@@ -514,7 +558,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&change_order_up_end_after>=3&corner==0",
+        "condition": "is_last_straight==1&change_order_up_end_after>=3",
         "effects": [
           {
             "modifier": 4500.0,
@@ -777,7 +821,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_badstart==0&order<=3&is_finalcorner==1&corner==0&order_rate_in20_continue==1",
+        "condition": "is_badstart==0&order<=3&is_last_straight==1&order_rate_in20_continue==1",
         "effects": [
           {
             "modifier": 4500.0,
@@ -789,7 +833,7 @@
       },
       {
         "baseDuration": 50000,
-        "condition": "is_badstart==0&order<=3&is_finalcorner==1&corner==0",
+        "condition": "is_badstart==0&order<=3&is_last_straight==1",
         "effects": [
           {
             "modifier": 3500.0,
@@ -862,7 +906,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 3500.0,
@@ -882,7 +926,7 @@
         "condition": "running_style==2&is_move_lane==1@running_style==2&is_move_lane==2",
         "effects": [
           {
-            "modifier": 3000.0,
+            "modifier": 4000.0,
             "target": 1,
             "type": 31
           },
@@ -968,6 +1012,57 @@
     ],
     "rarity": 6
   },
+  "100303111": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "running_style==2&course_distance>=2400&course_distance<=2500&phase_firstquarter_random==2&order_rate<=50&base_stamina>=1000",
+        "effects": [
+          {
+            "modifier": 5000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 18000,
+        "condition": "running_style==2&course_distance<2400&phase_firsthalf_random==2&order_rate<=50@running_style==2&course_distance>2500&phase_firsthalf_random==2&order_rate<=50@running_style==2&course_distance>=2400&course_distance<=2500&phase_firsthalf_random==2&order_rate<=50&base_stamina<1000",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "100303211": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "running_style==2&order_rate<=50&phase_laterhalf_random==1",
+        "effects": [
+          {
+            "modifier": 350.0,
+            "target": 1,
+            "type": 9
+          },
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "100311": {
     "alternatives": [
       {
@@ -1023,7 +1118,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&distance_diff_top>=5&order_rate<80",
+        "condition": "is_last_straight==1&distance_diff_top>=5&order_rate<80",
         "effects": [
           {
             "modifier": 3500.0,
@@ -1035,7 +1130,7 @@
       },
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&distance_diff_top>=5&order_rate>=80",
+        "condition": "is_last_straight==1&distance_diff_top>=5&order_rate>=80",
         "effects": [
           {
             "modifier": 4500.0,
@@ -1069,7 +1164,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&order<=5",
+        "condition": "is_last_straight==1&order<=5",
         "effects": [
           {
             "modifier": 3500.0,
@@ -1086,7 +1181,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 3500.0,
@@ -1108,7 +1203,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "temptation_count==0&order>=3&is_finalcorner==1&corner==0&order_rate_in80_continue==1&order_rate_out40_continue==1",
+        "condition": "temptation_count==0&order>=3&is_last_straight==1&order_rate_in80_continue==1&order_rate_out40_continue==1",
         "effects": [
           {
             "modifier": 4500.0,
@@ -1120,7 +1215,7 @@
       },
       {
         "baseDuration": 50000,
-        "condition": "temptation_count==0&order>=3&is_finalcorner==1&corner==0",
+        "condition": "temptation_count==0&order>=3&is_last_straight==1",
         "effects": [
           {
             "modifier": 3500.0,
@@ -1159,7 +1254,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&blocked_side_continuetime>=2",
+        "condition": "is_last_straight==1&blocked_side_continuetime>=2",
         "effects": [
           {
             "modifier": 3500.0,
@@ -1426,7 +1521,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&order_rate<=40&overtake_target_time>=1@is_finalcorner==1&corner==0&order_rate<=40&is_overtake==1",
+        "condition": "is_last_straight==1&order_rate<=40&overtake_target_time>=1@is_last_straight==1&order_rate<=40&is_overtake==1",
         "effects": [
           {
             "modifier": 3500.0,
@@ -1546,6 +1641,23 @@
     ],
     "rarity": 6
   },
+  "100502121": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "is_finalcorner_random==1",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "100502211": {
     "alternatives": [
       {
@@ -1618,6 +1730,23 @@
       }
     ],
     "rarity": 5
+  },
+  "100541": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "remain_distance<=150&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "order_rate>=45&distance_rate>=50&change_order_onetime<0"
+      }
+    ],
+    "rarity": 4
   },
   "100551": {
     "alternatives": [
@@ -1772,6 +1901,28 @@
     ],
     "rarity": 6
   },
+  "100601121": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "running_style==2&phase_random==1",
+        "effects": [
+          {
+            "modifier": 150.0,
+            "target": 1,
+            "type": 9
+          },
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "100601211": {
     "alternatives": [
       {
@@ -1861,6 +2012,23 @@
             "target": 1,
             "type": 9
           },
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 4
+  },
+  "100631": {
+    "alternatives": [
+      {
+        "baseDuration": 60000,
+        "condition": "is_lastspurt==1&phase==3&temptation_count==0",
+        "effects": [
           {
             "modifier": 2500.0,
             "target": 1,
@@ -2144,6 +2312,23 @@
     ],
     "rarity": 6
   },
+  "100702221": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "distance_type==4&phase_random==1&order_rate>=50",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "100703111": {
     "alternatives": [
       {
@@ -2221,7 +2406,7 @@
     "alternatives": [
       {
         "baseDuration": 40000,
-        "condition": "is_finalcorner==1&corner==0&bashin_diff_behind<=1",
+        "condition": "is_last_straight==1&bashin_diff_behind<=1",
         "effects": [
           {
             "modifier": 4500.0,
@@ -2435,7 +2620,7 @@
     "alternatives": [
       {
         "baseDuration": 24000,
-        "condition": "running_style==3&is_finalcorner==1&corner==0&order>=2&distance_diff_top<=10",
+        "condition": "running_style==3&is_last_straight==1&order>=2&distance_diff_top<=10",
         "effects": [
           {
             "modifier": 5500.0,
@@ -2498,7 +2683,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&track_id==10006&distance_type==3",
+        "condition": "is_last_straight==1&track_id==10006&distance_type==3",
         "effects": [
           {
             "modifier": 5500.0,
@@ -2510,7 +2695,7 @@
       },
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 3500.0,
@@ -2545,6 +2730,23 @@
     ],
     "rarity": 5
   },
+  "100861": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "remain_distance>=999&remain_distance<=1001&order_rate>=20&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
   "100871": {
     "alternatives": [
       {
@@ -2560,6 +2762,74 @@
             "modifier": 3000.0,
             "target": 1,
             "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
+  "100881": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "distance_type==3&remain_distance<=400",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "change_order_up_middle>=1&is_finalcorner==1&corner!=0&order_rate<=70&order_rate>=40"
+      },
+      {
+        "baseDuration": 50000,
+        "condition": "remain_distance<=400",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "is_finalcorner==1&corner!=0&order_rate<=70&order_rate>=40"
+      }
+    ],
+    "rarity": 5
+  },
+  "100891": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "distance_rate>=45&distance_rate<=55&order_rate>=20&order_rate<=50&course_distance>=2400",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 350.0,
+            "target": 1,
+            "type": 9
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 50000,
+        "condition": "distance_rate>=45&distance_rate<=55&order_rate>=20&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 150.0,
+            "target": 1,
+            "type": 9
           }
         ],
         "precondition": ""
@@ -2632,7 +2902,7 @@
     "alternatives": [
       {
         "baseDuration": 24000,
-        "condition": "running_style==1&is_finalcorner==1&corner==0&order==1&bashin_diff_behind<=1",
+        "condition": "running_style==1&is_last_straight==1&order==1&bashin_diff_behind<=1",
         "effects": [
           {
             "modifier": 5500.0,
@@ -2666,6 +2936,64 @@
       }
     ],
     "rarity": 3
+  },
+  "100911": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "remain_distance<=300",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "phase>=2&is_last_straight_onetime==1&order_rate>=30&order_rate<=70&temptation_count==0"
+      },
+      {
+        "baseDuration": 50000,
+        "condition": "remain_distance<=300",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "phase>=2&is_last_straight_onetime==1&order_rate>=30&order_rate<=70"
+      }
+    ],
+    "rarity": 5
+  },
+  "100931": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "distance_type==1&phase_firsthalf_random==2&order_rate<=50&order_rate>=20@distance_type==2&phase_firsthalf_random==2&order_rate<=50&order_rate>=20",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 50000,
+        "condition": "distance_type==3&phase_firsthalf_random==2&order_rate<=50&order_rate>=20@distance_type==4&phase_firsthalf_random==2&order_rate<=50&order_rate>=20",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
   },
   "100981": {
     "alternatives": [
@@ -2927,6 +3255,52 @@
     ],
     "rarity": 5
   },
+  "101071": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "phase>=2&is_last_straight==1&order==1",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
+  "101081": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "distance_rate>=50&distance_rate<=51&order_rate>=50",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "phase>=2&is_activate_other_skill_detail==1&is_finalcorner==1&corner!=0&is_overtake==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
   "101101111": {
     "alternatives": [
       {
@@ -3014,7 +3388,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&change_order_onetime<0&order>=3",
+        "condition": "is_last_straight==1&change_order_onetime<0&order>=3",
         "effects": [
           {
             "modifier": 2500.0,
@@ -3045,6 +3419,23 @@
           }
         ],
         "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "101201121": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "remain_distance<=201&remain_distance>=199&distance_type==3",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "is_finalcorner==1&change_order_onetime<0"
       }
     ],
     "rarity": 6
@@ -3294,7 +3685,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&hp_per>=30&order<=2",
+        "condition": "is_last_straight==1&hp_per>=30&order<=2",
         "effects": [
           {
             "modifier": 1500.0,
@@ -3356,6 +3747,28 @@
             "modifier": 750.0,
             "target": 1,
             "type": 9
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "101502121": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==4&phase==1&corner!=0",
+        "effects": [
+          {
+            "modifier": 150.0,
+            "target": 1,
+            "type": 9
+          },
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
           }
         ],
         "precondition": ""
@@ -3660,6 +4073,35 @@
     ],
     "rarity": 6
   },
+  "101901221": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "ground_type==1&phase_random==2&distance_type==3",
+        "effects": [
+          {
+            "modifier": 3000.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 40000,
+        "condition": "ground_type==2&phase_random==2&distance_type==3",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "101902111": {
     "alternatives": [
       {
@@ -3714,6 +4156,23 @@
             "modifier": 3500.0,
             "target": 1,
             "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "102001121": {
+    "alternatives": [
+      {
+        "baseDuration": 0,
+        "condition": "distance_type==3&phase_random==1",
+        "effects": [
+          {
+            "modifier": 750.0,
+            "target": 1,
+            "type": 9
           }
         ],
         "precondition": ""
@@ -3792,6 +4251,28 @@
             "modifier": 4500.0,
             "target": 1,
             "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "102101121": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "running_style==3&phase_random==1&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 350.0,
+            "target": 1,
+            "type": 9
           }
         ],
         "precondition": ""
@@ -4150,6 +4631,52 @@
     ],
     "rarity": 6
   },
+  "102502111": {
+    "alternatives": [
+      {
+        "baseDuration": 9000,
+        "condition": "running_style==4&is_lastspurt==1&corner==0",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "is_activate_other_skill_detail==1&is_last_straight==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "102502211": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==4&running_style==4&phase_firsthalf_random==2&lastspurt==2",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "102601111": {
     "alternatives": [
       {
@@ -4399,6 +4926,45 @@
             "modifier": 3000.0,
             "target": 1,
             "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "102902111": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "phase_random==1&running_style==2",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "102902211": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "all_corner_random==1",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
+          },
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
           }
         ],
         "precondition": ""
@@ -4772,6 +5338,28 @@
     ],
     "rarity": 6
   },
+  "103401221": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "distance_type==3&phase_random==1&order_rate>=50",
+        "effects": [
+          {
+            "modifier": 350.0,
+            "target": 1,
+            "type": 9
+          },
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "103402111": {
     "alternatives": [
       {
@@ -4876,7 +5464,7 @@
     "alternatives": [
       {
         "baseDuration": 40000,
-        "condition": "distance_type==3&is_lastspurt==1&corner==0&order_rate>=20&order_rate<=60",
+        "condition": "distance_type==3&is_last_straight==1&phase>=2&order_rate>=20&order_rate<=60",
         "effects": [
           {
             "modifier": 3500.0,
@@ -4893,7 +5481,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&order<=5",
+        "condition": "is_last_straight==1&order<=5",
         "effects": [
           {
             "modifier": 2500.0,
@@ -4950,6 +5538,45 @@
     ],
     "rarity": 6
   },
+  "103602111": {
+    "alternatives": [
+      {
+        "baseDuration": 0,
+        "condition": "distance_type==4&phase_random==1",
+        "effects": [
+          {
+            "modifier": -100.0,
+            "target": 9,
+            "type": 9
+          },
+          {
+            "modifier": 550.0,
+            "target": 1,
+            "type": 9
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "103602211": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "distance_type==4&is_finalcorner==1&corner!=0&lane_type==0",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "103701111": {
     "alternatives": [
       {
@@ -4999,6 +5626,23 @@
             "modifier": 3500.0,
             "target": 1,
             "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "103702121": {
+    "alternatives": [
+      {
+        "baseDuration": 0,
+        "condition": "distance_type==3&phase_random==1",
+        "effects": [
+          {
+            "modifier": 750.0,
+            "target": 1,
+            "type": 9
           }
         ],
         "precondition": ""
@@ -5089,6 +5733,23 @@
     ],
     "rarity": 6
   },
+  "103802121": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "distance_type==1&phase_laterhalf_random==0&order_rate<=50&accumulatetime>=5",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "103802211": {
     "alternatives": [
       {
@@ -5138,6 +5799,45 @@
       {
         "baseDuration": 30000,
         "condition": "running_style==3&is_finalcorner==1&corner!=0&is_behind_in==1&change_order_onetime<0",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 2000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "103902111": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "running_style==3&is_last_straight==1&order>=2&distance_diff_top<=10",
+        "effects": [
+          {
+            "modifier": 5500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "103902211": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "distance_type==2&down_slope_random==1@distance_type==3&down_slope_random==1",
         "effects": [
           {
             "modifier": 3500.0,
@@ -5416,6 +6116,50 @@
     ],
     "rarity": 6
   },
+  "104301221": {
+    "alternatives": [
+      {
+        "baseDuration": -1,
+        "condition": "ground_type==2&ground_condition>=3",
+        "effects": [
+          {
+            "modifier": 400000.0,
+            "target": 1,
+            "type": 1
+          },
+          {
+            "modifier": 400000.0,
+            "target": 1,
+            "type": 3
+          },
+          {
+            "modifier": 200000.0,
+            "target": 1,
+            "type": 32
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": -1,
+        "condition": "ground_type==2&ground_condition<=2",
+        "effects": [
+          {
+            "modifier": 400000.0,
+            "target": 1,
+            "type": 1
+          },
+          {
+            "modifier": 400000.0,
+            "target": 1,
+            "type": 3
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "104401111": {
     "alternatives": [
       {
@@ -5451,6 +6195,23 @@
           },
           {
             "modifier": 1500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "104401221": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "running_style==4&phase_random==2",
+        "effects": [
+          {
+            "modifier": 3500.0,
             "target": 1,
             "type": 22
           }
@@ -5572,6 +6333,23 @@
     ],
     "rarity": 6
   },
+  "104601121": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "phase_random==2",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "104601211": {
     "alternatives": [
       {
@@ -5643,6 +6421,28 @@
             "modifier": 750.0,
             "target": 1,
             "type": 9
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "104701121": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "running_style==2&phase_random==1&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 150.0,
+            "target": 1,
+            "type": 9
+          },
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
           }
         ],
         "precondition": ""
@@ -5955,6 +6755,23 @@
     ],
     "rarity": 6
   },
+  "105101121": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "straight_random==1",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "105101211": {
     "alternatives": [
       {
@@ -6223,6 +7040,62 @@
     ],
     "rarity": 6
   },
+  "105401111": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "running_style==3&phase_random==1&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "105401211": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==1&phase_random==2&order_rate>50",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 2000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "10541": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "remain_distance<=150&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "order_rate>=45&distance_rate>=50&change_order_onetime<0"
+      }
+    ],
+    "rarity": 3
+  },
   "105501111": {
     "alternatives": [
       {
@@ -6489,6 +7362,35 @@
     ],
     "rarity": 6
   },
+  "105802121": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "running_style==2&phase_firsthalf_random==2&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "is_activate_other_skill_detail==1&is_last_straight==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "105802211": {
     "alternatives": [
       {
@@ -6670,6 +7572,40 @@
             "modifier": 150.0,
             "target": 1,
             "type": 9
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "106003111": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "infront_near_lane_time>=3&accumulatetime>=10",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "106003211": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "distance_type==3&running_style==3&phase_firsthalf_random==2&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
           }
         ],
         "precondition": ""
@@ -6899,6 +7835,62 @@
     ],
     "rarity": 3
   },
+  "106301111": {
+    "alternatives": [
+      {
+        "baseDuration": 0,
+        "condition": "running_style==2&distance_rate>=50&distance_rate<=51@running_style==3&distance_rate>=50&distance_rate<=51",
+        "effects": [
+          {
+            "modifier": 750.0,
+            "target": 1,
+            "type": 9
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "106301211": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "running_style==2&distance_rate>=50&distance_rate<=51@running_style==3&distance_rate>=50&distance_rate<=51",
+        "effects": [
+          {
+            "modifier": 5500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": -200.0,
+            "target": 1,
+            "type": 9
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "10631": {
+    "alternatives": [
+      {
+        "baseDuration": 60000,
+        "condition": "is_lastspurt==1&phase==3&temptation_count==0",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 3
+  },
   "106401111": {
     "alternatives": [
       {
@@ -6926,6 +7918,62 @@
             "modifier": 3500.0,
             "target": 1,
             "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "106402111": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "distance_type==4&straight_random==1",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "106402211": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "distance_type==4&phase_random==1&track_id==10005&motivation==5&is_used_skill_id==202051",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 550.0,
+            "target": 1,
+            "type": 9
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 24000,
+        "condition": "distance_type==4&phase_random==1&track_id==10005&motivation<=4&is_used_skill_id==202051@distance_type==4&phase_random==1&track_id!=10005&is_used_skill_id==202051",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 350.0,
+            "target": 1,
+            "type": 9
           }
         ],
         "precondition": ""
@@ -7057,6 +8105,28 @@
     ],
     "rarity": 6
   },
+  "106701121": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "running_style==3&phase_laterhalf_random==0&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 150.0,
+            "target": 1,
+            "type": 9
+          },
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "106701211": {
     "alternatives": [
       {
@@ -7128,6 +8198,52 @@
     ],
     "rarity": 6
   },
+  "106703111": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "distance_type==3&phase_firsthalf_random==2&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "106703211": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "track_id==10201&distance_type==3&all_corner_random==1&motivation==5",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "track_id!=10201&distance_type==3&all_corner_random==1@track_id==10201&all_corner_random==1&motivation<=4&distance_type==3",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "106801111": {
     "alternatives": [
       {
@@ -7189,6 +8305,64 @@
             "modifier": 5000.0,
             "target": 1,
             "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "106803111": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==4&running_style==1&phase_firsthalf_random==2&lastspurt==2",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "is_activate_other_skill_detail==1&is_last_straight==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "106803211": {
+    "alternatives": [
+      {
+        "baseDuration": 9000,
+        "condition": "distance_type==4&running_style==1&is_lastspurt==1&corner==0&order<=3",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "is_activate_other_skill_detail==1&is_last_straight==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 22
           }
         ],
         "precondition": ""
@@ -7278,7 +8452,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "distance_type==3&is_lastspurt==1&corner==0&order_rate>=20&order_rate<=60",
+        "condition": "distance_type==3&phase>=2&is_last_straight==1&order_rate>=20&order_rate<=60",
         "effects": [
           {
             "modifier": 4500.0,
@@ -7334,7 +8508,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "distance_type==3&is_lastspurt==1&corner==0&order_rate>=20&order_rate<=60",
+        "condition": "distance_type==3&is_last_straight==1&phase>=2&order_rate>=20&order_rate<=60",
         "effects": [
           {
             "modifier": 4500.0,
@@ -7373,7 +8547,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "running_style==2&distance_type==3&corner==0&is_lastspurt==1",
+        "condition": "running_style==2&distance_type==3&is_last_straight==1&phase>=2",
         "effects": [
           {
             "modifier": 5500.0,
@@ -7430,6 +8604,23 @@
     ],
     "rarity": 6
   },
+  "107201221": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "phase>=2&is_finalcorner==1&is_overtake==1&distance_type==3",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "107401111": {
     "alternatives": [
       {
@@ -7462,6 +8653,64 @@
             "modifier": -1500.0,
             "target": 1,
             "type": 21
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "107402111": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "running_style==3&phase_random==1&base_stamina>=1200",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 40000,
+        "condition": "running_style==3&phase_random==1&base_stamina<1200",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "107402211": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "distance_type==4&phase==2&change_order_onetime<0&base_stamina>=1200",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 40000,
+        "condition": "distance_type==4&phase==2&change_order_onetime<0",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 22
           }
         ],
         "precondition": ""
@@ -7605,6 +8854,23 @@
     ],
     "rarity": 6
   },
+  "107801221": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "running_style==2&order>=3&distance_rate>=50",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "108301111": {
     "alternatives": [
       {
@@ -7659,6 +8925,50 @@
             "modifier": 150.0,
             "target": 1,
             "type": 9
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "108302111": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==3&phase==1&order_rate<=80&order_rate>=30&blocked_side_continuetime>=2",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 11,
+            "type": 27
+          },
+          {
+            "modifier": 3000.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 350.0,
+            "target": 1,
+            "type": 9
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "108302211": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "distance_type==3&running_style==3&phase_firsthalf_random==2&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
           }
         ],
         "precondition": ""
@@ -7754,6 +9064,40 @@
     ],
     "rarity": 6
   },
+  "108601111": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==2&corner_random==3&order_rate<=50@distance_type==3&corner_random==3&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "108601211": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "distance_type==2&phase_random==1@distance_type==3&phase_random==1",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "108701111": {
     "alternatives": [
       {
@@ -7786,6 +9130,220 @@
             "modifier": 2000.0,
             "target": 1,
             "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "108801111": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "running_style==3&phase_random==1&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "108801211": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "distance_type==3&course_distance>=2200&course_distance<=2400&phase_firstquarter_random==2&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 5000.0,
+            "target": 1,
+            "type": 31
+          },
+          {
+            "modifier": -200.0,
+            "target": 1,
+            "type": 9
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 18000,
+        "condition": "distance_type==3&course_distance<2200&phase_firsthalf_random==2&order_rate>=40@distance_type==3&course_distance>2400&phase_firsthalf_random==2&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "108901111": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==3&running_style==2&phase_laterhalf_random==1&order_rate<=50&course_distance==2400",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 3000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==3&running_style==2&phase_laterhalf_random==1&order_rate<=50&course_distance!=2400",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 3000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "108901211": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "is_lastspurt==1&phase_firsthalf_random==3",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "109101111": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "distance_type==2&down_slope_random==1@distance_type==3&down_slope_random==1",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 2000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "109101211": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "running_style==3&distance_rate_after_random==50&order_rate>=30&order_rate<=80",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 1000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "109301111": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "distance_type==1&running_style==2&is_finalcorner_random==1&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 18000,
+        "condition": "distance_type!=1&running_style==2&is_finalcorner_random==1&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "109301211": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "running_style==2&phase_firsthalf_random==2&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "is_activate_other_skill_detail==1&remain_distance<=201&remain_distance>=199",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
           }
         ],
         "precondition": ""
@@ -7984,7 +9542,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 4500.0,
@@ -8495,6 +10053,35 @@
     ],
     "rarity": 5
   },
+  "110251": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "distance_type==4&phase>=2&is_finalcorner==1",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": "distance_rate>=50&order_rate_out40_continue==1"
+      },
+      {
+        "baseDuration": 50000,
+        "condition": "phase>=2&is_finalcorner==1",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": "distance_rate>=50&order_rate_out40_continue==1"
+      }
+    ],
+    "rarity": 5
+  },
   "110261": {
     "alternatives": [
       {
@@ -8539,6 +10126,35 @@
       {
         "baseDuration": 40000,
         "condition": "distance_rate>=60&slope==2&phase==1&order>=2&distance_diff_top<=10&distance_type!=3",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
+  "110291": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "distance_rate>=45&distance_rate<=55&order_rate>=20&order_rate<=50&is_overtake==1&distance_type==2",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 40000,
+        "condition": "distance_rate>=45&distance_rate<=55&order_rate>=20&order_rate<=50&is_overtake==1",
         "effects": [
           {
             "modifier": 3500.0,
@@ -8655,7 +10271,7 @@
     "alternatives": [
       {
         "baseDuration": 60000,
-        "condition": "is_lastspurt==1&is_finalcorner==1&corner==0&order_rate>=40",
+        "condition": "is_lastspurt==1&is_last_straight==1&order_rate>=40",
         "effects": [
           {
             "modifier": 2500.0,
@@ -8673,11 +10289,40 @@
     ],
     "rarity": 5
   },
+  "110361": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "phase>=2&is_finalcorner_laterhalf==1&is_overtake==1@phase>=2&is_finalcorner==1&corner==0&is_overtake==1",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "phase==1&change_order_onetime>0&order_rate>=50&order_rate<=80"
+      },
+      {
+        "baseDuration": 50000,
+        "condition": "phase>=2&is_finalcorner_laterhalf==1&is_overtake==1@phase>=2&is_finalcorner==1&corner==0&is_overtake==1",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
   "110371": {
     "alternatives": [
       {
         "baseDuration": 60000,
-        "condition": "change_order_up_finalcorner_after>=2&is_finalcorner==1&corner==0",
+        "condition": "change_order_up_finalcorner_after>=2&is_last_straight==1",
         "effects": [
           {
             "modifier": 3500.0,
@@ -8708,6 +10353,23 @@
           }
         ],
         "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
+  "110391": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "slope==0@slope==2",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "phase>=1&slope==1&order_rate>=40&order_rate<=80"
       }
     ],
     "rarity": 5
@@ -8755,7 +10417,7 @@
     "alternatives": [
       {
         "baseDuration": 24000,
-        "condition": "running_style==1&is_finalcorner==1&corner==0&order==1&track_id==10006&distance_type==3",
+        "condition": "running_style==1&is_last_straight==1&order==1&track_id==10006&distance_type==3",
         "effects": [
           {
             "modifier": 5500.0,
@@ -8767,7 +10429,7 @@
       },
       {
         "baseDuration": 24000,
-        "condition": "running_style==1&is_finalcorner==1&corner==0&order==1",
+        "condition": "running_style==1&is_last_straight==1&order==1",
         "effects": [
           {
             "modifier": 4500.0,
@@ -8801,7 +10463,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&order<=4&bashin_diff_infront<=1",
+        "condition": "is_last_straight==1&order<=4&bashin_diff_infront<=1",
         "effects": [
           {
             "modifier": 2500.0,
@@ -8903,7 +10565,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "distance_type==3&is_lastspurt==1&corner==0&order_rate>=20&order_rate<=60",
+        "condition": "distance_type==3&phase>=2&is_last_straight==1&order_rate>=20&order_rate<=60",
         "effects": [
           {
             "modifier": 4500.0,
@@ -9078,7 +10740,7 @@
     "alternatives": [
       {
         "baseDuration": 60000,
-        "condition": "is_finalcorner==1&corner==0&order_rate>=40&order_rate<=70&popularity>=4",
+        "condition": "is_last_straight==1&order_rate>=40&order_rate<=70&popularity>=4",
         "effects": [
           {
             "modifier": 3500.0,
@@ -9090,7 +10752,7 @@
       },
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0&order_rate>=40&order_rate<=70&popularity<4",
+        "condition": "is_last_straight==1&order_rate>=40&order_rate<=70&popularity<4",
         "effects": [
           {
             "modifier": 3500.0,
@@ -9141,7 +10803,7 @@
     "alternatives": [
       {
         "baseDuration": 40000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 4000.0,
@@ -9176,6 +10838,40 @@
       {
         "baseDuration": 20000,
         "condition": "distance_rate>=50&corner!=0&order_rate>=40&order_rate<=80",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
+  "110641": {
+    "alternatives": [
+      {
+        "baseDuration": 70000,
+        "condition": "distance_rate>=40&corner==0&order==1&track_id==10005&is_used_skill_id==202051",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 1000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 70000,
+        "condition": "distance_rate>=40&corner==0&order==1",
         "effects": [
           {
             "modifier": 2500.0,
@@ -9249,11 +10945,45 @@
     ],
     "rarity": 5
   },
+  "110701111": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "running_style==1&phase_random==1&order==1",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "110701211": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "activate_count_middle>=3&order==1",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "110711": {
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "phase>=2&is_finalcorner==1&corner==0&order_rate>=20&order_rate<=40&bashin_diff_behind<=1",
+        "condition": "phase>=2&is_last_straight==1&order_rate>=20&order_rate<=40&bashin_diff_behind<=1",
         "effects": [
           {
             "modifier": 3500.0,
@@ -9272,6 +11002,115 @@
           }
         ],
         "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
+  "110741": {
+    "alternatives": [
+      {
+        "baseDuration": 12000,
+        "condition": "phase==1&order_rate>=40&order_rate<=80",
+        "effects": [
+          {
+            "modifier": 750.0,
+            "target": 1,
+            "type": 9
+          },
+          {
+            "modifier": -1500.0,
+            "target": 1,
+            "type": 21
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 80000,
+        "condition": "is_activate_other_skill_detail==1&base_stamina>=1200&phase>=2",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
+  "110801111": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "phase_corner_random==1",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "110801211": {
+    "alternatives": [
+      {
+        "baseDuration": 9000,
+        "condition": "distance_type==3&track_id!=10005&running_style==4&phase>=2&is_finalcorner==1&corner!=0&order_rate>=40@distance_type==3&track_id==10005&running_style==4&phase>=2&corner!=0&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "is_activate_other_skill_detail==1&is_last_straight==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "110831": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "is_last_straight==1&track_id==10005&distance_type==3",
+        "effects": [
+          {
+            "modifier": 5500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "distance_rate>=50&distance_rate<=51&order_rate>=40&order_rate<=80"
+      },
+      {
+        "baseDuration": 50000,
+        "condition": "is_last_straight==1",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "distance_rate>=50&distance_rate<=51&order_rate>=40&order_rate<=80"
       }
     ],
     "rarity": 5
@@ -9390,6 +11229,40 @@
     ],
     "rarity": 5
   },
+  "120031": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "phase>=2&is_finalcorner_laterhalf==1&course_distance>=2400&course_distance<=2500@phase>=2&is_finalcorner==1&corner==0&course_distance>=2400&course_distance<=2500",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": "distance_rate>=50&order_rate<=50&overtake_target_time>=2"
+      },
+      {
+        "baseDuration": 50000,
+        "condition": "phase>=2&is_finalcorner_laterhalf==1@phase>=2&is_finalcorner==1&corner==0",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "distance_rate>=50&order_rate<=50&overtake_target_time>=2"
+      }
+    ],
+    "rarity": 5
+  },
   "120071": {
     "alternatives": [
       {
@@ -9427,6 +11300,93 @@
         "effects": [
           {
             "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
+  "120601": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "phase>=2&is_finalcorner==1&order_rate>=40&distance_type==3",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 40000,
+        "condition": "phase>=2&is_finalcorner==1&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
+  "120671": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "phase_laterhalf_random==1&order_rate>=40&order_rate<=80&distance_type==3",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 50000,
+        "condition": "phase_laterhalf_random==1&order_rate>=40&order_rate<=80&distance_type!=3",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
+  },
+  "120681": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "phase<=1&change_order_onetime>0&accumulatetime>=5&order_rate<=50@phase<=1&blocked_side_continuetime>=2&accumulatetime>=5&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 60000,
+        "condition": "is_activate_other_skill_detail==1&order<=2&distance_rate>=50&distance_type==4",
+        "effects": [
+          {
+            "modifier": 2500.0,
             "target": 1,
             "type": 27
           }
@@ -9655,6 +11615,23 @@
       }
     ],
     "rarity": 1
+  },
+  "1400011": {
+    "alternatives": [
+      {
+        "baseDuration": 50000,
+        "condition": "is_lastspurt==1&phase==3",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 5
   },
   "200011": {
     "alternatives": [
@@ -10834,6 +12811,28 @@
       }
     ],
     "rarity": 1
+  },
+  "200204": {
+    "alternatives": [
+      {
+        "baseDuration": -1,
+        "condition": "season==4",
+        "effects": [
+          {
+            "modifier": 600000.0,
+            "target": 1,
+            "type": 1
+          },
+          {
+            "modifier": 600000.0,
+            "target": 1,
+            "type": 3
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
   },
   "200211": {
     "alternatives": [
@@ -13263,6 +15262,23 @@
     ],
     "rarity": 1
   },
+  "200973": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==1&all_corner_random==1",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
   "200981": {
     "alternatives": [
       {
@@ -15128,6 +17144,23 @@
     ],
     "rarity": 1
   },
+  "201463": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "running_style==4&all_corner_random==1",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
   "201471": {
     "alternatives": [
       {
@@ -15899,7 +17932,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "distance_type==3&is_lastspurt==1&corner==0&order_rate>=20&order_rate<=60",
+        "condition": "distance_type==3&is_last_straight==1&order_rate>=20&order_rate<=60&phase>=2",
         "effects": [
           {
             "modifier": 3500.0,
@@ -15916,7 +17949,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "distance_type==3&is_lastspurt==1&corner==0&order_rate>=20&order_rate<=60",
+        "condition": "distance_type==3&is_last_straight==1&order_rate>=20&order_rate<=60&phase>=2",
         "effects": [
           {
             "modifier": 1500.0,
@@ -17795,7 +19828,7 @@
     "alternatives": [
       {
         "baseDuration": 24000,
-        "condition": "running_style==3&is_finalcorner==1&corner==0&order>=2&distance_diff_top<=10",
+        "condition": "running_style==3&is_last_straight==1&order>=2&distance_diff_top<=10",
         "effects": [
           {
             "modifier": 4500.0,
@@ -17812,7 +19845,7 @@
     "alternatives": [
       {
         "baseDuration": 24000,
-        "condition": "running_style==3&is_finalcorner==1&corner==0&order>=2&distance_diff_top<=10",
+        "condition": "running_style==3&is_last_straight==1&order>=2&distance_diff_top<=10",
         "effects": [
           {
             "modifier": 2500.0,
@@ -17829,7 +19862,7 @@
     "alternatives": [
       {
         "baseDuration": 24000,
-        "condition": "running_style==1&is_finalcorner==1&corner==0&order==1&bashin_diff_behind<=1",
+        "condition": "running_style==1&is_last_straight==1&order==1&bashin_diff_behind<=1",
         "effects": [
           {
             "modifier": 4500.0,
@@ -17846,7 +19879,7 @@
     "alternatives": [
       {
         "baseDuration": 24000,
-        "condition": "running_style==1&is_finalcorner==1&corner==0&order==1&bashin_diff_behind<=1",
+        "condition": "running_style==1&is_last_straight==1&order==1&bashin_diff_behind<=1",
         "effects": [
           {
             "modifier": 2500.0,
@@ -18820,6 +20853,560 @@
     ],
     "rarity": 2
   },
+  "202741": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==2&corner_random==3&order_rate<=50@distance_type==3&corner_random==3&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
+  "202742": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==2&corner_random==3&order_rate<=50@distance_type==3&corner_random==3&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202751": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "distance_type==1&phase_laterhalf_random==1&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
+  "202752": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "distance_type==1&phase_laterhalf_random==1&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202761": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "running_style==2&phase_random==1&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
+  "202762": {
+    "alternatives": [
+      {
+        "baseDuration": 40000,
+        "condition": "running_style==2&phase_random==1&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202772": {
+    "alternatives": [
+      {
+        "baseDuration": 12000,
+        "condition": "running_style==2&distance_type==4&phase_firstquarter_random==2&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 2000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202792": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "phase_random==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202801": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "phase_laterhalf_random==0",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
+  "202802": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "phase_laterhalf_random==0",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202811": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==4&running_style==1&phase_firsthalf_random==2&lastspurt==2",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
+  "202812": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==4&running_style==1&phase_firsthalf_random==2&lastspurt==2",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202821": {
+    "alternatives": [
+      {
+        "baseDuration": 9000,
+        "condition": "distance_type==4&running_style==1&is_lastspurt==1&corner==0&order<=3",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
+  "202822": {
+    "alternatives": [
+      {
+        "baseDuration": 9000,
+        "condition": "distance_type==4&running_style==1&is_lastspurt==1&corner==0&order<=3",
+        "effects": [
+          {
+            "modifier": 2000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202831": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "ground_type==2&phase==1&is_activate_any_skill==1",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 24000,
+        "condition": "is_activate_other_skill_detail==1&phase>=2&is_activate_any_skill==1",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
+  "202832": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "ground_type==2&phase==1&is_activate_any_skill==1",
+        "effects": [
+          {
+            "modifier": 500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 24000,
+        "condition": "is_activate_other_skill_detail==1&phase>=2&is_activate_any_skill==1",
+        "effects": [
+          {
+            "modifier": 500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202842": {
+    "alternatives": [
+      {
+        "baseDuration": 0,
+        "condition": "ground_type==2&phase_random==1&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 150.0,
+            "target": 1,
+            "type": 9
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202851": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==4&running_style==4&phase_firsthalf_random==2&lastspurt==2",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
+  "202852": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==4&running_style==4&phase_firsthalf_random==2&lastspurt==2",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202861": {
+    "alternatives": [
+      {
+        "baseDuration": 15000,
+        "condition": "distance_type==1&phase==0",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
+  "202862": {
+    "alternatives": [
+      {
+        "baseDuration": 15000,
+        "condition": "distance_type==1&phase==0",
+        "effects": [
+          {
+            "modifier": 2000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202871": {
+    "alternatives": [
+      {
+        "baseDuration": 9000,
+        "condition": "distance_type==3&running_style==4&phase>=2&is_finalcorner==1&corner!=0&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 4000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
+  "202872": {
+    "alternatives": [
+      {
+        "baseDuration": 9000,
+        "condition": "distance_type==3&running_style==4&phase>=2&is_finalcorner==1&corner!=0&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 2000.0,
+            "target": 1,
+            "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202882": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "running_style==4&is_last_straight==1&order>=2&distance_diff_top<=10",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202892": {
+    "alternatives": [
+      {
+        "baseDuration": 0,
+        "condition": "running_style==4&phase_laterhalf_random==0&order_rate>=50",
+        "effects": [
+          {
+            "modifier": 150.0,
+            "target": 1,
+            "type": 9
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202902": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "running_style==4&phase_laterhalf_random==1&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202912": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "running_style==4&order_rate>=50&is_finalcorner_random==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": -350.0,
+            "target": 9,
+            "type": 21
+          },
+          {
+            "modifier": -350.0,
+            "target": 10,
+            "type": 21
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202922": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "running_style==4&phase_random==1",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": -200.0,
+            "target": 1,
+            "type": 9
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202932": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "running_style==4&distance_rate>=50&is_overtake==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "202942": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "distance_type==3&running_style==4&phase_random==1&order_rate>=50",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": -350.0,
+            "target": 9,
+            "type": 21
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
   "210011": {
     "alternatives": [
       {
@@ -19395,6 +21982,69 @@
     ],
     "rarity": 1
   },
+  "210301": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "distance_type==2&phase_random==1@distance_type==3&phase_random==1",
+        "effects": [
+          {
+            "modifier": 3500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 2
+  },
+  "210302": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "distance_type==2&phase_random==1@distance_type==3&phase_random==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "210311": {
+    "alternatives": [
+      {
+        "baseDuration": 12000,
+        "condition": "distance_type==2&distance_rate_after_random==50&base_guts>=1200@distance_type==3&distance_rate_after_random==50&base_guts>=1200",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 12000,
+        "condition": "distance_type==2&distance_rate_after_random==50&base_guts<1200@distance_type==3&distance_rate_after_random==50&base_guts<1200",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
   "300011": {
     "alternatives": [
       {
@@ -19484,7 +22134,7 @@
     "alternatives": [
       {
         "baseDuration": 50000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 3500.0,
@@ -19633,6 +22283,125 @@
     ],
     "rarity": 5
   },
+  "407011": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "distance_type==2&phase_laterhalf_random==0@distance_type==3&phase_laterhalf_random==0",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "407021": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "distance_type==2&phase==1&change_order_onetime<0@distance_type==3&phase==1&change_order_onetime<0",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "407031": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "distance_type==2&is_lastspurt==1&phase_firsthalf_random==3@distance_type==3&is_lastspurt==1&phase_firsthalf_random==3",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "407041": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "distance_type==2&phase_laterhalf_random==1&order_rate<=70",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "407051": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "distance_type==2&is_finalcorner_random==1&order_rate>=25",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "407061": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "distance_type==3&phase_random==1&order_rate<=70",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
+  "407071": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "distance_type==3&phase_random==1&order_rate>=25",
+        "effects": [
+          {
+            "modifier": 4500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 6
+  },
   "900011": {
     "alternatives": [
       {
@@ -19676,7 +22445,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 2500.0,
@@ -19799,7 +22568,7 @@
   "900101": {
     "alternatives": [
       {
-        "baseDuration": 24000,
+        "baseDuration": 30000,
         "condition": "is_finalcorner_laterhalf==1&corner!=0&order>=3&order_rate<=40",
         "effects": [
           {
@@ -19817,7 +22586,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0&change_order_onetime<0&order>=3",
+        "condition": "is_last_straight==1&change_order_onetime<0&order>=3",
         "effects": [
           {
             "modifier": 1500.0,
@@ -19834,7 +22603,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 1500.0,
@@ -19880,7 +22649,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0&hp_per>=30&order<=2",
+        "condition": "is_last_straight==1&hp_per>=30&order<=2",
         "effects": [
           {
             "modifier": 500.0,
@@ -19948,7 +22717,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&change_order_up_end_after>=3&corner==0",
+        "condition": "is_last_straight==1&change_order_up_end_after>=3",
         "effects": [
           {
             "modifier": 2500.0,
@@ -20133,7 +22902,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_badstart==0&order<=3&is_finalcorner==1&corner==0&order_rate_in20_continue==1",
+        "condition": "is_badstart==0&order<=3&is_last_straight==1&order_rate_in20_continue==1",
         "effects": [
           {
             "modifier": 2500.0,
@@ -20145,7 +22914,7 @@
       },
       {
         "baseDuration": 30000,
-        "condition": "is_badstart==0&order<=3&is_finalcorner==1&corner==0",
+        "condition": "is_badstart==0&order<=3&is_last_straight==1",
         "effects": [
           {
             "modifier": 1500.0,
@@ -20218,7 +22987,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 1500.0,
@@ -20286,7 +23055,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0&distance_diff_top>=5&order_rate<80",
+        "condition": "is_last_straight==1&distance_diff_top>=5&order_rate<80",
         "effects": [
           {
             "modifier": 1500.0,
@@ -20298,7 +23067,7 @@
       },
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0&distance_diff_top>=5&order_rate>=80",
+        "condition": "is_last_straight==1&distance_diff_top>=5&order_rate>=80",
         "effects": [
           {
             "modifier": 2500.0,
@@ -20332,7 +23101,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0&order<=5",
+        "condition": "is_last_straight==1&order<=5",
         "effects": [
           {
             "modifier": 1500.0,
@@ -20349,7 +23118,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 1500.0,
@@ -20371,7 +23140,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "temptation_count==0&order>=3&is_finalcorner==1&corner==0&order_rate_in80_continue==1&order_rate_out40_continue==1",
+        "condition": "temptation_count==0&order>=3&is_last_straight==1&order_rate_in80_continue==1&order_rate_out40_continue==1",
         "effects": [
           {
             "modifier": 2500.0,
@@ -20383,7 +23152,7 @@
       },
       {
         "baseDuration": 30000,
-        "condition": "temptation_count==0&order>=3&is_finalcorner==1&corner==0",
+        "condition": "temptation_count==0&order>=3&is_last_straight==1",
         "effects": [
           {
             "modifier": 1500.0,
@@ -20422,7 +23191,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0&blocked_side_continuetime>=2",
+        "condition": "is_last_straight==1&blocked_side_continuetime>=2",
         "effects": [
           {
             "modifier": 1500.0,
@@ -20621,7 +23390,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0&order_rate<=40&overtake_target_time>=1@is_finalcorner==1&corner==0&order_rate<=40&is_overtake==1",
+        "condition": "is_last_straight==1&order_rate<=40&overtake_target_time>=1@is_last_straight==1&order_rate<=40&is_overtake==1",
         "effects": [
           {
             "modifier": 1500.0,
@@ -20732,6 +23501,23 @@
           }
         ],
         "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "900541": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "remain_distance<=150&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "order_rate>=45&distance_rate>=50&change_order_onetime<0"
       }
     ],
     "rarity": 1
@@ -20900,6 +23686,23 @@
             "target": 1,
             "type": 9
           },
+          {
+            "modifier": 500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "900631": {
+    "alternatives": [
+      {
+        "baseDuration": 36000,
+        "condition": "is_lastspurt==1&phase==3&temptation_count==0",
+        "effects": [
           {
             "modifier": 500.0,
             "target": 1,
@@ -21109,7 +23912,7 @@
     "alternatives": [
       {
         "baseDuration": 24000,
-        "condition": "is_finalcorner==1&corner==0&bashin_diff_behind<=1",
+        "condition": "is_last_straight==1&bashin_diff_behind<=1",
         "effects": [
           {
             "modifier": 2500.0,
@@ -21274,7 +24077,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 1500.0,
@@ -21309,6 +24112,23 @@
     ],
     "rarity": 1
   },
+  "900861": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "remain_distance>=999&remain_distance<=1001&order_rate>=20&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
   "900871": {
     "alternatives": [
       {
@@ -21324,6 +24144,132 @@
             "modifier": 1000.0,
             "target": 1,
             "type": 31
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "900881": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==3&remain_distance<=400",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "change_order_up_middle>=1&is_finalcorner==1&corner!=0&order_rate<=70&order_rate>=40"
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "remain_distance<=400",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "is_finalcorner==1&corner!=0&order_rate<=70&order_rate>=40"
+      }
+    ],
+    "rarity": 1
+  },
+  "900891": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_rate>=45&distance_rate<=55&order_rate>=20&order_rate<=50&course_distance>=2400",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 50.0,
+            "target": 1,
+            "type": 9
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "distance_rate>=45&distance_rate<=55&order_rate>=20&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 35.0,
+            "target": 1,
+            "type": 9
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "900911": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "remain_distance<=300",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "phase>=2&is_last_straight_onetime==1&order_rate>=30&order_rate<=70&temptation_count==0"
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "remain_distance<=300",
+        "effects": [
+          {
+            "modifier": 500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "phase>=2&is_last_straight_onetime==1&order_rate>=30&order_rate<=70"
+      }
+    ],
+    "rarity": 1
+  },
+  "900931": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==1&phase_firsthalf_random==2&order_rate<=50&order_rate>=20@distance_type==2&phase_firsthalf_random==2&order_rate<=50&order_rate>=20",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==3&phase_firsthalf_random==2&order_rate<=50&order_rate>=20@distance_type==4&phase_firsthalf_random==2&order_rate<=50&order_rate>=20",
+        "effects": [
+          {
+            "modifier": 500.0,
+            "target": 1,
+            "type": 22
           }
         ],
         "precondition": ""
@@ -21496,6 +24442,52 @@
     ],
     "rarity": 1
   },
+  "901071": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "phase>=2&is_last_straight==1&order==1",
+        "effects": [
+          {
+            "modifier": 500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "901081": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_rate>=50&distance_rate<=51&order_rate>=50",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 18000,
+        "condition": "phase>=2&is_activate_other_skill_detail==1&is_finalcorner==1&corner!=0&is_overtake==1",
+        "effects": [
+          {
+            "modifier": 350.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
   "910011": {
     "alternatives": [
       {
@@ -21546,7 +24538,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 2500.0,
@@ -22045,6 +25037,35 @@
     ],
     "rarity": 1
   },
+  "910251": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "distance_type==4&phase>=2&is_finalcorner==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": "distance_rate>=50&order_rate_out40_continue==1"
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "phase>=2&is_finalcorner==1",
+        "effects": [
+          {
+            "modifier": 500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": "distance_rate>=50&order_rate_out40_continue==1"
+      }
+    ],
+    "rarity": 1
+  },
   "910261": {
     "alternatives": [
       {
@@ -22089,6 +25110,35 @@
       {
         "baseDuration": 24000,
         "condition": "distance_rate>=60&slope==2&phase==1&order>=2&distance_diff_top<=10&distance_type!=3",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "910291": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "distance_rate>=45&distance_rate<=55&order_rate>=20&order_rate<=50&is_overtake==1&distance_type==2",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 24000,
+        "condition": "distance_rate>=45&distance_rate<=55&order_rate>=20&order_rate<=50&is_overtake==1",
         "effects": [
           {
             "modifier": 1500.0,
@@ -22205,7 +25255,7 @@
     "alternatives": [
       {
         "baseDuration": 36000,
-        "condition": "is_lastspurt==1&is_finalcorner==1&corner==0&order_rate>=40",
+        "condition": "is_lastspurt==1&is_last_straight==1&order_rate>=40",
         "effects": [
           {
             "modifier": 500.0,
@@ -22223,11 +25273,40 @@
     ],
     "rarity": 1
   },
+  "910361": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "phase>=2&is_finalcorner_laterhalf==1&is_overtake==1@phase>=2&is_finalcorner==1&corner==0&is_overtake==1",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "phase==1&change_order_onetime>0&order_rate>=50&order_rate<=80"
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "phase>=2&is_finalcorner_laterhalf==1&is_overtake==1@phase>=2&is_finalcorner==1&corner==0&is_overtake==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
   "910371": {
     "alternatives": [
       {
         "baseDuration": 36000,
-        "condition": "change_order_up_finalcorner_after>=2&is_finalcorner==1&corner==0",
+        "condition": "change_order_up_finalcorner_after>=2&is_last_straight==1",
         "effects": [
           {
             "modifier": 1500.0,
@@ -22258,6 +25337,23 @@
           }
         ],
         "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "910391": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "slope==0@slope==2",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "phase>=1&slope==1&order_rate>=40&order_rate<=80"
       }
     ],
     "rarity": 1
@@ -22305,7 +25401,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0&order<=4&bashin_diff_infront<=1",
+        "condition": "is_last_straight==1&order<=4&bashin_diff_infront<=1",
         "effects": [
           {
             "modifier": 500.0,
@@ -22548,7 +25644,7 @@
     "alternatives": [
       {
         "baseDuration": 36000,
-        "condition": "is_finalcorner==1&corner==0&order_rate>=40&order_rate<=70&popularity>=4",
+        "condition": "is_last_straight==1&order_rate>=40&order_rate<=70&popularity>=4",
         "effects": [
           {
             "modifier": 1500.0,
@@ -22560,7 +25656,7 @@
       },
       {
         "baseDuration": 30000,
-        "condition": "is_finalcorner==1&corner==0&order_rate>=40&order_rate<=70&popularity<4",
+        "condition": "is_last_straight==1&order_rate>=40&order_rate<=70&popularity<4",
         "effects": [
           {
             "modifier": 1500.0,
@@ -22577,7 +25673,7 @@
     "alternatives": [
       {
         "baseDuration": 24000,
-        "condition": "is_finalcorner==1&corner==0",
+        "condition": "is_last_straight==1",
         "effects": [
           {
             "modifier": 2000.0,
@@ -22612,6 +25708,23 @@
       {
         "baseDuration": 12000,
         "condition": "distance_rate>=50&corner!=0&order_rate>=40&order_rate<=80",
+        "effects": [
+          {
+            "modifier": 500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "910641": {
+    "alternatives": [
+      {
+        "baseDuration": 42000,
+        "condition": "distance_rate>=40&corner==0&order==1",
         "effects": [
           {
             "modifier": 500.0,
@@ -22689,7 +25802,7 @@
     "alternatives": [
       {
         "baseDuration": 30000,
-        "condition": "phase>=2&is_finalcorner==1&corner==0&order_rate>=20&order_rate<=40&bashin_diff_behind<=1",
+        "condition": "phase>=2&is_last_straight==1&order_rate>=20&order_rate<=40&bashin_diff_behind<=1",
         "effects": [
           {
             "modifier": 1500.0,
@@ -22708,6 +25821,57 @@
           }
         ],
         "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "910741": {
+    "alternatives": [
+      {
+        "baseDuration": 12000,
+        "condition": "phase==1&order_rate>=40&order_rate<=80",
+        "effects": [
+          {
+            "modifier": 350.0,
+            "target": 1,
+            "type": 9
+          },
+          {
+            "modifier": -1500.0,
+            "target": 1,
+            "type": 21
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 48000,
+        "condition": "is_activate_other_skill_detail==1&base_stamina>=1200&phase>=2",
+        "effects": [
+          {
+            "modifier": 350.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "910831": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "is_last_straight==1",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "distance_rate>=50&distance_rate<=51&order_rate>=40&order_rate<=80"
       }
     ],
     "rarity": 1
@@ -22737,6 +25901,40 @@
           }
         ],
         "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "920031": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "phase>=2&is_finalcorner_laterhalf==1&course_distance>=2400&course_distance<=2500@phase>=2&is_finalcorner==1&corner==0&course_distance>=2400&course_distance<=2500",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          },
+          {
+            "modifier": 350.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": "distance_rate>=50&order_rate<=50&overtake_target_time>=2"
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "phase>=2&is_finalcorner_laterhalf==1@phase>=2&is_finalcorner==1&corner==0",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": "distance_rate>=50&order_rate<=50&overtake_target_time>=2"
       }
     ],
     "rarity": 1
@@ -22778,6 +25976,93 @@
         "effects": [
           {
             "modifier": 350.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "920601": {
+    "alternatives": [
+      {
+        "baseDuration": 24000,
+        "condition": "phase>=2&is_finalcorner==1&order_rate>=40&distance_type==3",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 22
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 24000,
+        "condition": "phase>=2&is_finalcorner==1&order_rate>=40",
+        "effects": [
+          {
+            "modifier": 2500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "920671": {
+    "alternatives": [
+      {
+        "baseDuration": 30000,
+        "condition": "phase_laterhalf_random==1&order_rate>=40&order_rate<=80&distance_type==3",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 30000,
+        "condition": "phase_laterhalf_random==1&order_rate>=40&order_rate<=80&distance_type!=3",
+        "effects": [
+          {
+            "modifier": 500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      }
+    ],
+    "rarity": 1
+  },
+  "920681": {
+    "alternatives": [
+      {
+        "baseDuration": 18000,
+        "condition": "phase<=1&change_order_onetime>0&accumulatetime>=5&order_rate<=50@phase<=1&blocked_side_continuetime>=2&accumulatetime>=5&order_rate<=50",
+        "effects": [
+          {
+            "modifier": 1500.0,
+            "target": 1,
+            "type": 27
+          }
+        ],
+        "precondition": ""
+      },
+      {
+        "baseDuration": 36000,
+        "condition": "is_activate_other_skill_detail==1&order<=2&distance_rate>=50&distance_type==4",
+        "effects": [
+          {
+            "modifier": 500.0,
             "target": 1,
             "type": 27
           }

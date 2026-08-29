@@ -1,55 +1,13 @@
 {
   "exchangeDetails": [
     {
-      "id": 3090011,
+      "id": 3110011,
       "order": 10,
       "reward": {
-        "image": "intel/item/item_icon_00193.png",
-        "name": "2★或以上新人出道招募第3期",
+        "image": "intel/item/item_icon_00220.png",
+        "name": "2★或以上新人出道招募第4期",
         "rewardType": 40,
-        "rewardValue": 193,
-        "amount": 1
-      },
-      "pay": {
-        "image": "intel/item/item_icon_00098.png",
-        "name": "好友积分",
-        "rewardType": 103,
-        "rewardValue": 98,
-        "amount": 5000
-      },
-      "limit": 1,
-      "totalRewardAmount": 1,
-      "additionalPieceAmount": 0
-    },
-    {
-      "id": 3090012,
-      "order": 20,
-      "reward": {
-        "image": "intel/item/item_icon_00194.png",
-        "name": "稀有或以上新人出道招募第3期",
-        "rewardType": 40,
-        "rewardValue": 194,
-        "amount": 1
-      },
-      "pay": {
-        "image": "intel/item/item_icon_00098.png",
-        "name": "好友积分",
-        "rewardType": 103,
-        "rewardValue": 98,
-        "amount": 5000
-      },
-      "limit": 1,
-      "totalRewardAmount": 1,
-      "additionalPieceAmount": 0
-    },
-    {
-      "id": 3090008,
-      "order": 40,
-      "reward": {
-        "image": "intel/item/item_icon_00111.png",
-        "name": "协助卡招募券",
-        "rewardType": 40,
-        "rewardValue": 111,
+        "rewardValue": 220,
         "amount": 1
       },
       "pay": {
@@ -64,8 +22,29 @@
       "additionalPieceAmount": 0
     },
     {
-      "id": 3090009,
-      "order": 60,
+      "id": 3110012,
+      "order": 20,
+      "reward": {
+        "image": "intel/item/item_icon_00221.png",
+        "name": "稀有或以上新人出道招募第4期",
+        "rewardType": 40,
+        "rewardValue": 221,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3110009,
+      "order": 81,
       "reward": {
         "image": "intel/item/item_icon_00032.png",
         "name": "能量饮料30",
@@ -85,8 +64,8 @@
       "additionalPieceAmount": 0
     },
     {
-      "id": 3090010,
-      "order": 70,
+      "id": 3110010,
+      "order": 91,
       "reward": {
         "image": "intel/item/item_icon_00095.png",
         "name": "闹钟",

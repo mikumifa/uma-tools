@@ -1,0 +1,67 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 2020,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_106002.png",
+        "name": "[RUN＆WIN]优秀素质碎片",
+        "rewardType": 102,
+        "rewardValue": 106002,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2021,
+      "order": 2,
+      "reward": {
+        "image": "intel/piece/piece_icon_100701.png",
+        "name": "[赤色纷争]黄金船碎片",
+        "rewardType": 102,
+        "rewardValue": 100701,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 2000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2022,
+      "order": 3,
+      "reward": {
+        "image": "intel/piece/piece_icon_102601.png",
+        "name": "[MB-19890425]美浦波旁碎片",
+        "rewardType": 102,
+        "rewardValue": 102601,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

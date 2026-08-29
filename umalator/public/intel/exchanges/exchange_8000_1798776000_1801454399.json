@@ -1,0 +1,46 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8039,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_106101.png",
+        "name": "[翠玉之王]帝王光辉碎片",
+        "rewardType": 102,
+        "rewardValue": 106101,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "训练员币",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8040,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_101101.png",
+        "name": "[穿岩绀蓝]草上飞碎片",
+        "rewardType": 102,
+        "rewardValue": 101101,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "训练员币",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

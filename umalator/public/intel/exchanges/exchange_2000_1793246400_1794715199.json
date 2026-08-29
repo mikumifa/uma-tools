@@ -1,0 +1,46 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 2028,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_100802.png",
+        "name": "[不会结冰的生命之水]伏特加碎片",
+        "rewardType": 102,
+        "rewardValue": 100802,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2029,
+      "order": 2,
+      "reward": {
+        "image": "intel/piece/piece_icon_100902.png",
+        "name": "[绯红的星月之夜]大和赤骥碎片",
+        "rewardType": 102,
+        "rewardValue": 100902,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

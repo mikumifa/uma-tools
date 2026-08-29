@@ -1,0 +1,46 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8033,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_104501.png",
+        "name": "[潺潺溪流]超级溪流碎片",
+        "rewardType": 102,
+        "rewardValue": 104501,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "训练员币",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8034,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_100701.png",
+        "name": "[赤色纷争]黄金船碎片",
+        "rewardType": 102,
+        "rewardValue": 100701,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "训练员币",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

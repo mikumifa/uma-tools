@@ -1,0 +1,46 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 2026,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_106702.png",
+        "name": "[当红之星·荣兴之翠]里见光钻碎片",
+        "rewardType": 102,
+        "rewardValue": 106702,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2027,
+      "order": 2,
+      "reward": {
+        "image": "intel/piece/piece_icon_106802.png",
+        "name": "[压轴主角·庆鹤之志]北部玄驹碎片",
+        "rewardType": 102,
+        "rewardValue": 106802,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

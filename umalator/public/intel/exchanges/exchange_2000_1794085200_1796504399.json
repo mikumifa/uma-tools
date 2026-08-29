@@ -1,0 +1,67 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 2023,
+      "order": 3,
+      "reward": {
+        "image": "intel/piece/piece_icon_101802.png",
+        "name": "[橡木王冠]气槽碎片",
+        "rewardType": 102,
+        "rewardValue": 101802,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2025,
+      "order": 4,
+      "reward": {
+        "image": "intel/piece/piece_icon_104102.png",
+        "name": "[赤热☆队长]樱花进王碎片",
+        "rewardType": 102,
+        "rewardValue": 104102,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2024,
+      "order": 5,
+      "reward": {
+        "image": "intel/piece/piece_icon_105602.png",
+        "name": "[吉兆秋风]待兼福来碎片",
+        "rewardType": 102,
+        "rewardValue": 105602,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

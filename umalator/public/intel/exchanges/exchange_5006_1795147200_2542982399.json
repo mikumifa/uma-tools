@@ -1,0 +1,2776 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 5006001,
+      "order": 1,
+      "reward": {
+        "image": "intel/chara/chr_icon_1001_100101_02.png",
+        "name": "[特别追梦者]特别周",
+        "rewardType": 50,
+        "rewardValue": 100101,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006002,
+      "order": 2,
+      "reward": {
+        "image": "intel/chara/chr_icon_1002_100201_02.png",
+        "name": "[无声无瑕]无声铃鹿",
+        "rewardType": 50,
+        "rewardValue": 100201,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006003,
+      "order": 3,
+      "reward": {
+        "image": "intel/chara/chr_icon_1003_100301_02.png",
+        "name": "[喜乐无边]东海帝王",
+        "rewardType": 50,
+        "rewardValue": 100301,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006004,
+      "order": 4,
+      "reward": {
+        "image": "intel/chara/chr_icon_1004_100401_02.png",
+        "name": "[绯红方程式]丸善斯基",
+        "rewardType": 50,
+        "rewardValue": 100401,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006005,
+      "order": 5,
+      "reward": {
+        "image": "intel/chara/chr_icon_1006_100601_02.png",
+        "name": "[星光跃动]小栗帽",
+        "rewardType": 50,
+        "rewardValue": 100601,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006006,
+      "order": 6,
+      "reward": {
+        "image": "intel/chara/chr_icon_1010_101001_02.png",
+        "name": "[狂野前线]大树快车",
+        "rewardType": 50,
+        "rewardValue": 101001,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006007,
+      "order": 7,
+      "reward": {
+        "image": "intel/chara/chr_icon_1013_101301_02.png",
+        "name": "[优雅曲线]目白麦昆",
+        "rewardType": 50,
+        "rewardValue": 101301,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006008,
+      "order": 8,
+      "reward": {
+        "image": "intel/chara/chr_icon_1017_101701_02.png",
+        "name": "[皇帝]鲁道夫象征",
+        "rewardType": 50,
+        "rewardValue": 101701,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006009,
+      "order": 9,
+      "reward": {
+        "image": "intel/chara/chr_icon_1030_103001_02.png",
+        "name": "[玫瑰之梦]米浴",
+        "rewardType": 50,
+        "rewardValue": 103001,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006010,
+      "order": 10,
+      "reward": {
+        "image": "intel/chara/chr_icon_1015_101501_02.png",
+        "name": "[O sole suo！]好歌剧",
+        "rewardType": 50,
+        "rewardValue": 101501,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006011,
+      "order": 11,
+      "reward": {
+        "image": "intel/chara/chr_icon_1026_102601_02.png",
+        "name": "[MB-19890425]美浦波旁",
+        "rewardType": 50,
+        "rewardValue": 102601,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006012,
+      "order": 12,
+      "reward": {
+        "image": "intel/chara/chr_icon_1023_102301_02.png",
+        "name": "[pf.胜利公式]琵琶晨光",
+        "rewardType": 50,
+        "rewardValue": 102301,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006013,
+      "order": 13,
+      "reward": {
+        "image": "intel/chara/chr_icon_1003_100302_02.png",
+        "name": "[飞跃地平线]东海帝王",
+        "rewardType": 50,
+        "rewardValue": 100302,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006014,
+      "order": 14,
+      "reward": {
+        "image": "intel/chara/chr_icon_1013_101302_02.png",
+        "name": "[天际尽头]目白麦昆",
+        "rewardType": 50,
+        "rewardValue": 101302,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006015,
+      "order": 15,
+      "reward": {
+        "image": "intel/chara/chr_icon_1038_103801_02.png",
+        "name": "[闪电少女]真机伶",
+        "rewardType": 50,
+        "rewardValue": 103801,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006016,
+      "order": 16,
+      "reward": {
+        "image": "intel/chara/chr_icon_1050_105001_02.png",
+        "name": "[Nevertheless]成田大进",
+        "rewardType": 50,
+        "rewardValue": 105001,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006017,
+      "order": 17,
+      "reward": {
+        "image": "intel/chara/chr_icon_1046_104601_02.png",
+        "name": "[绝对☆LOVE]醒目飞鹰",
+        "rewardType": 50,
+        "rewardValue": 104601,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006018,
+      "order": 18,
+      "reward": {
+        "image": "intel/chara/chr_icon_1016_101601_02.png",
+        "name": "[Maverick]成田白仁",
+        "rewardType": 50,
+        "rewardValue": 101601,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006019,
+      "order": 19,
+      "reward": {
+        "image": "intel/chara/chr_icon_1024_102426_02.png",
+        "name": "[阳光花束]重炮",
+        "rewardType": 50,
+        "rewardValue": 102402,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006020,
+      "order": 20,
+      "reward": {
+        "image": "intel/chara/chr_icon_1018_101826_02.png",
+        "name": "[橡木王冠]气槽",
+        "rewardType": 50,
+        "rewardValue": 101802,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006021,
+      "order": 21,
+      "reward": {
+        "image": "intel/chara/chr_icon_1020_102001_02.png",
+        "name": "[青云垂钓者]青云天空",
+        "rewardType": 50,
+        "rewardValue": 102001,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006022,
+      "order": 22,
+      "reward": {
+        "image": "intel/chara/chr_icon_1012_101201_02.png",
+        "name": "[亚马逊青金石]菱亚马逊",
+        "rewardType": 50,
+        "rewardValue": 101201,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006023,
+      "order": 23,
+      "reward": {
+        "image": "intel/chara/chr_icon_1014_101416_02.png",
+        "name": "[羽蛇武斗家]神鹰",
+        "rewardType": 50,
+        "rewardValue": 101402,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006024,
+      "order": 24,
+      "reward": {
+        "image": "intel/chara/chr_icon_1011_101116_02.png",
+        "name": "[圣翠治愈师]草上飞",
+        "rewardType": 50,
+        "rewardValue": 101102,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006025,
+      "order": 25,
+      "reward": {
+        "image": "intel/chara/chr_icon_1005_100501_02.png",
+        "name": "[流星歌剧]富士奇石",
+        "rewardType": 50,
+        "rewardValue": 100501,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006026,
+      "order": 26,
+      "reward": {
+        "image": "intel/chara/chr_icon_1040_104001_02.png",
+        "name": "[真我/1928]黄金城",
+        "rewardType": 50,
+        "rewardValue": 104001,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006027,
+      "order": 27,
+      "reward": {
+        "image": "intel/chara/chr_icon_1001_100130_02.png",
+        "name": "[雀跃♪维他命心拍]特别周",
+        "rewardType": 50,
+        "rewardValue": 100102,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006028,
+      "order": 28,
+      "reward": {
+        "image": "intel/chara/chr_icon_1004_100430_02.png",
+        "name": "[飞跃☆夏夜]丸善斯基",
+        "rewardType": 50,
+        "rewardValue": 100402,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006029,
+      "order": 29,
+      "reward": {
+        "image": "intel/chara/chr_icon_1058_105801_02.png",
+        "name": "[苍蓝/怒涛]名将怒涛",
+        "rewardType": 50,
+        "rewardValue": 105801,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006030,
+      "order": 30,
+      "reward": {
+        "image": "intel/chara/chr_icon_1037_103701_02.png",
+        "name": "[Meisterschaft]荣进闪耀",
+        "rewardType": 50,
+        "rewardValue": 103701,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006031,
+      "order": 31,
+      "reward": {
+        "image": "intel/chara/chr_icon_1056_105623_02.png",
+        "name": "[吉兆秋风]待兼福来",
+        "rewardType": 50,
+        "rewardValue": 105602,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006032,
+      "order": 32,
+      "reward": {
+        "image": "intel/chara/chr_icon_1028_102801_02.png",
+        "name": "[Buono☆时尚]菱曙",
+        "rewardType": 50,
+        "rewardValue": 102801,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006033,
+      "order": 33,
+      "reward": {
+        "image": "intel/chara/chr_icon_1019_101901_02.png",
+        "name": "[超级加急！全彩PP膜特殊加工]爱丽数码",
+        "rewardType": 50,
+        "rewardValue": 101901,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006034,
+      "order": 34,
+      "reward": {
+        "image": "intel/chara/chr_icon_1030_103040_02.png",
+        "name": "[Make up Vampire！]米浴",
+        "rewardType": 50,
+        "rewardValue": 103002,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006035,
+      "order": 35,
+      "reward": {
+        "image": "intel/chara/chr_icon_1045_104540_02.png",
+        "name": "[雪纺丝带木乃伊]超级溪流",
+        "rewardType": 50,
+        "rewardValue": 104502,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006036,
+      "order": 36,
+      "reward": {
+        "image": "intel/chara/chr_icon_1039_103901_02.png",
+        "name": "[粉红公主]川上公主",
+        "rewardType": 50,
+        "rewardValue": 103901,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006037,
+      "order": 37,
+      "reward": {
+        "image": "intel/chara/chr_icon_1025_102501_02.png",
+        "name": "[Creeping Black]曼城茶座",
+        "rewardType": 50,
+        "rewardValue": 102501,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006038,
+      "order": 38,
+      "reward": {
+        "image": "intel/chara/chr_icon_1017_101743_02.png",
+        "name": "[皓月下的神箭手]鲁道夫象征",
+        "rewardType": 50,
+        "rewardValue": 101702,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006039,
+      "order": 39,
+      "reward": {
+        "image": "intel/chara/chr_icon_1040_104043_02.png",
+        "name": "[秋樱舞娘]黄金城",
+        "rewardType": 50,
+        "rewardValue": 104002,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006040,
+      "order": 40,
+      "reward": {
+        "image": "intel/chara/chr_icon_1048_104801_02.png",
+        "name": "[潮流☆Joker]岛川乔丹",
+        "rewardType": 50,
+        "rewardValue": 104801,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006041,
+      "order": 41,
+      "reward": {
+        "image": "intel/chara/chr_icon_1059_105901_02.png",
+        "name": "[宛延曲线]目白多伯",
+        "rewardType": 50,
+        "rewardValue": 105901,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006042,
+      "order": 42,
+      "reward": {
+        "image": "intel/chara/chr_icon_1006_100646_02.png",
+        "name": "[奇迹的胜利之星]小栗帽",
+        "rewardType": 50,
+        "rewardValue": 100602,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006043,
+      "order": 43,
+      "reward": {
+        "image": "intel/chara/chr_icon_1023_102346_02.png",
+        "name": "[嫣红圣诞颂歌]琵琶晨光",
+        "rewardType": 50,
+        "rewardValue": 102302,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006044,
+      "order": 44,
+      "reward": {
+        "image": "intel/chara/chr_icon_1022_102201_02.png",
+        "name": "[Noble Seamair]美妙姿势",
+        "rewardType": 50,
+        "rewardValue": 102201,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006045,
+      "order": 45,
+      "reward": {
+        "image": "intel/chara/chr_icon_1021_102101_02.png",
+        "name": "[疾风迅雷]玉藻十字",
+        "rewardType": 50,
+        "rewardValue": 102101,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006046,
+      "order": 46,
+      "reward": {
+        "image": "intel/chara/chr_icon_1052_105210_02.png",
+        "name": "[明媚新春♪樱花绽放]春乌菈菈",
+        "rewardType": 50,
+        "rewardValue": 105202,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006047,
+      "order": 47,
+      "reward": {
+        "image": "intel/chara/chr_icon_1015_101510_02.png",
+        "name": "[新春初晴·宝蓝绚烂]好歌剧",
+        "rewardType": 50,
+        "rewardValue": 101502,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006048,
+      "order": 48,
+      "reward": {
+        "image": "intel/chara/chr_icon_1069_106901_02.png",
+        "name": "[举世无双·樱花耀夜]樱花千代王",
+        "rewardType": 50,
+        "rewardValue": 106901,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006049,
+      "order": 49,
+      "reward": {
+        "image": "intel/chara/chr_icon_1026_102613_02.png",
+        "name": "[CODE：淋面装饰]美浦波旁",
+        "rewardType": 50,
+        "rewardValue": 102602,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006050,
+      "order": 50,
+      "reward": {
+        "image": "intel/chara/chr_icon_1037_103713_02.png",
+        "name": "[精确无比·巧克力大师]荣进闪耀",
+        "rewardType": 50,
+        "rewardValue": 103702,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006051,
+      "order": 51,
+      "reward": {
+        "image": "intel/chara/chr_icon_1071_107101_02.png",
+        "name": "[墨绿柔线]目白雅丹",
+        "rewardType": 50,
+        "rewardValue": 107101,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006052,
+      "order": 52,
+      "reward": {
+        "image": "intel/chara/chr_icon_1033_103301_02.png",
+        "name": "[Starry Nocturne]爱慕织姬",
+        "rewardType": 50,
+        "rewardValue": 103301,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006053,
+      "order": 53,
+      "reward": {
+        "image": "intel/chara/chr_icon_1068_106801_02.png",
+        "name": "[锦绣·溢彩盛典]北部玄驹",
+        "rewardType": 50,
+        "rewardValue": 106801,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006054,
+      "order": 54,
+      "reward": {
+        "image": "intel/chara/chr_icon_1067_106701_02.png",
+        "name": "[Natural Brilliance]里见光钻",
+        "rewardType": 50,
+        "rewardValue": 106701,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006055,
+      "order": 55,
+      "reward": {
+        "image": "intel/chara/chr_icon_1074_107401_02.png",
+        "name": "[砺光韧线]目白光明",
+        "rewardType": 50,
+        "rewardValue": 107401,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006056,
+      "order": 56,
+      "reward": {
+        "image": "intel/chara/chr_icon_1020_102020_02.png",
+        "name": "[星夜猫咪舞会]青云天空",
+        "rewardType": 50,
+        "rewardValue": 102002,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006057,
+      "order": 57,
+      "reward": {
+        "image": "intel/chara/chr_icon_1005_100520_02.png",
+        "name": "[胜利之星]富士奇石",
+        "rewardType": 50,
+        "rewardValue": 100502,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006058,
+      "order": 58,
+      "reward": {
+        "image": "intel/chara/chr_icon_1051_105101_02.png",
+        "name": "[叠瓣花蕾]西野花",
+        "rewardType": 50,
+        "rewardValue": 105101,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006059,
+      "order": 59,
+      "reward": {
+        "image": "intel/chara/chr_icon_1072_107201_02.png",
+        "name": "[四白流星之袭]八重无敌",
+        "rewardType": 50,
+        "rewardValue": 107201,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006060,
+      "order": 60,
+      "reward": {
+        "image": "intel/chara/chr_icon_1060_106050_02.png",
+        "name": "[RUN＆WIN]优秀素质",
+        "rewardType": 50,
+        "rewardValue": 106002,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006061,
+      "order": 61,
+      "reward": {
+        "image": "intel/chara/chr_icon_1061_106150_02.png",
+        "name": "[洁白傲气的激励之服]帝王光辉",
+        "rewardType": 50,
+        "rewardValue": 106102,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006062,
+      "order": 62,
+      "reward": {
+        "image": "intel/chara/chr_icon_1031_103101_02.png",
+        "name": "[全时狂欢]艾尼风神",
+        "rewardType": 50,
+        "rewardValue": 103101,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006063,
+      "order": 63,
+      "reward": {
+        "image": "intel/chara/chr_icon_1064_106401_02.png",
+        "name": "[Line Breakthrough]目白善信",
+        "rewardType": 50,
+        "rewardValue": 106401,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006064,
+      "order": 64,
+      "reward": {
+        "image": "intel/chara/chr_icon_1038_103826_02.png",
+        "name": "[朔月挚爱]真机伶",
+        "rewardType": 50,
+        "rewardValue": 103802,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006065,
+      "order": 65,
+      "reward": {
+        "image": "intel/chara/chr_icon_1022_102226_02.png",
+        "name": "[Titania]美妙姿势",
+        "rewardType": 50,
+        "rewardValue": 102202,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006066,
+      "order": 66,
+      "reward": {
+        "image": "intel/chara/chr_icon_1034_103401_02.png",
+        "name": "[稻荷因缘江户紫]稻荷一",
+        "rewardType": 50,
+        "rewardValue": 103401,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006067,
+      "order": 67,
+      "reward": {
+        "image": "intel/chara/chr_icon_1044_104401_02.png",
+        "name": "[悬铃木魔女]东商变革",
+        "rewardType": 50,
+        "rewardValue": 104401,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006068,
+      "order": 68,
+      "reward": {
+        "image": "intel/chara/chr_icon_1010_101023_02.png",
+        "name": "[Bubblegum☆Memories]大树快车",
+        "rewardType": 50,
+        "rewardValue": 101002,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006069,
+      "order": 69,
+      "reward": {
+        "image": "intel/chara/chr_icon_1059_105923_02.png",
+        "name": "[假日宝石蓝]目白多伯",
+        "rewardType": 50,
+        "rewardValue": 105902,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006070,
+      "order": 70,
+      "reward": {
+        "image": "intel/chara/chr_icon_1036_103601_02.png",
+        "name": "[unsigned]空中神宫",
+        "rewardType": 50,
+        "rewardValue": 103601,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006071,
+      "order": 71,
+      "reward": {
+        "image": "intel/chara/chr_icon_1013_101330_02.png",
+        "name": "[涟漪佳人]目白麦昆",
+        "rewardType": 50,
+        "rewardValue": 101303,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006072,
+      "order": 72,
+      "reward": {
+        "image": "intel/chara/chr_icon_1007_100730_02.png",
+        "name": "[RUN！乱！发射！！]黄金船",
+        "rewardType": 50,
+        "rewardValue": 100702,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006073,
+      "order": 73,
+      "reward": {
+        "image": "intel/chara/chr_icon_1053_105301_02.png",
+        "name": "[黑铁的壮志]青竹回忆",
+        "rewardType": 50,
+        "rewardValue": 105301,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006074,
+      "order": 74,
+      "reward": {
+        "image": "intel/chara/chr_icon_1098_109801_02.png",
+        "name": "[阴阳八卦☆开运服]小林历奇",
+        "rewardType": 50,
+        "rewardValue": 109801,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006075,
+      "order": 75,
+      "reward": {
+        "image": "intel/chara/chr_icon_1046_104602_02.png",
+        "name": "[黄昏凯旋]醒目飞鹰",
+        "rewardType": 50,
+        "rewardValue": 104602,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006076,
+      "order": 76,
+      "reward": {
+        "image": "intel/chara/chr_icon_1035_103516_02.png",
+        "name": "[梦想传递员]胜利奖券",
+        "rewardType": 50,
+        "rewardValue": 103502,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006077,
+      "order": 77,
+      "reward": {
+        "image": "intel/chara/chr_icon_1050_105016_02.png",
+        "name": "[另类工程师]成田大进",
+        "rewardType": 50,
+        "rewardValue": 105002,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006078,
+      "order": 78,
+      "reward": {
+        "image": "intel/chara/chr_icon_1029_102901_02.png",
+        "name": "[可可爱爱的六出冰花]雪之美人",
+        "rewardType": 50,
+        "rewardValue": 102901,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006079,
+      "order": 79,
+      "reward": {
+        "image": "intel/chara/chr_icon_1042_104201_02.png",
+        "name": "[Rocket☆Star]采珠",
+        "rewardType": 50,
+        "rewardValue": 104201,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006080,
+      "order": 80,
+      "reward": {
+        "image": "intel/chara/chr_icon_1019_101940_02.png",
+        "name": "[爱丽♡僵尸]爱丽数码",
+        "rewardType": 50,
+        "rewardValue": 101902,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006081,
+      "order": 81,
+      "reward": {
+        "image": "intel/chara/chr_icon_1058_105840_02.png",
+        "name": "[Dot-o'-Lantern]名将怒涛",
+        "rewardType": 50,
+        "rewardValue": 105802,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006082,
+      "order": 82,
+      "reward": {
+        "image": "intel/chara/chr_icon_1087_108701_02.png",
+        "name": "[Flare]阿斯顿真弓",
+        "rewardType": 50,
+        "rewardValue": 108701,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006083,
+      "order": 83,
+      "reward": {
+        "image": "intel/chara/chr_icon_1078_107801_02.png",
+        "name": "[Fluttertail Spirit]山人西风",
+        "rewardType": 50,
+        "rewardValue": 107801,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006084,
+      "order": 84,
+      "reward": {
+        "image": "intel/chara/chr_icon_1021_102143_02.png",
+        "name": "[轰鸣雷神]玉藻十字",
+        "rewardType": 50,
+        "rewardValue": 102102,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006085,
+      "order": 85,
+      "reward": {
+        "image": "intel/chara/chr_icon_1034_103443_02.png",
+        "name": "[梦之金原]稻荷一",
+        "rewardType": 50,
+        "rewardValue": 103402,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006086,
+      "order": 86,
+      "reward": {
+        "image": "intel/chara/chr_icon_1049_104901_02.png",
+        "name": "[死中求生]中山庆典",
+        "rewardType": 50,
+        "rewardValue": 104901,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006087,
+      "order": 87,
+      "reward": {
+        "image": "intel/chara/chr_icon_1100_110001_02.png",
+        "name": "[Butterfly Sting]奇锐骏",
+        "rewardType": 50,
+        "rewardValue": 110001,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006088,
+      "order": 88,
+      "reward": {
+        "image": "intel/chara/chr_icon_1008_100846_02.png",
+        "name": "[不会结冰的生命之水]伏特加",
+        "rewardType": 50,
+        "rewardValue": 100802,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006089,
+      "order": 89,
+      "reward": {
+        "image": "intel/chara/chr_icon_1009_100946_02.png",
+        "name": "[绯红的星月之夜]大和赤骥",
+        "rewardType": 50,
+        "rewardValue": 100902,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006090,
+      "order": 90,
+      "reward": {
+        "image": "intel/chara/chr_icon_1047_104701_02.png",
+        "name": "[Heroic Author]荒漠英雄",
+        "rewardType": 50,
+        "rewardValue": 104701,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006091,
+      "order": 91,
+      "reward": {
+        "image": "intel/chara/chr_icon_1016_101602_02.png",
+        "name": "[饿狼]成田白仁",
+        "rewardType": 50,
+        "rewardValue": 101602,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006092,
+      "order": 92,
+      "reward": {
+        "image": "intel/chara/chr_icon_1068_106810_02.png",
+        "name": "[压轴主角·庆鹤之志]北部玄驹",
+        "rewardType": 50,
+        "rewardValue": 106802,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006093,
+      "order": 93,
+      "reward": {
+        "image": "intel/chara/chr_icon_1067_106710_02.png",
+        "name": "[当红之星·荣兴之翠]里见光钻",
+        "rewardType": 50,
+        "rewardValue": 106702,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006094,
+      "order": 94,
+      "reward": {
+        "image": "intel/chara/chr_icon_1099_109901_02.png",
+        "name": "[星辉之航]北幸樽前",
+        "rewardType": 50,
+        "rewardValue": 109901,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006095,
+      "order": 95,
+      "reward": {
+        "image": "intel/chara/chr_icon_1065_106501_02.png",
+        "name": "[Fun☆Fun☆嗨翻天]大拓太阳神",
+        "rewardType": 50,
+        "rewardValue": 106501,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006096,
+      "order": 96,
+      "reward": {
+        "image": "intel/chara/chr_icon_1031_103113_02.png",
+        "name": "[MELTY GIFT]艾尼风神",
+        "rewardType": 50,
+        "rewardValue": 103102,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006097,
+      "order": 97,
+      "reward": {
+        "image": "intel/chara/chr_icon_1027_102713_02.png",
+        "name": "[玛格丽特拿铁]目白莱恩",
+        "rewardType": 50,
+        "rewardValue": 102702,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006098,
+      "order": 98,
+      "reward": {
+        "image": "intel/chara/chr_icon_1043_104301_02.png",
+        "name": "[Wicked Punk]新光风",
+        "rewardType": 50,
+        "rewardValue": 104301,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006099,
+      "order": 99,
+      "reward": {
+        "image": "intel/chara/chr_icon_1057_105701_02.png",
+        "name": "[Clear Bliss]千明代表",
+        "rewardType": 50,
+        "rewardValue": 105701,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006100,
+      "order": 100,
+      "reward": {
+        "image": "intel/chara/chr_icon_1085_108501_02.png",
+        "name": "[华丽红玉]第一红宝",
+        "rewardType": 50,
+        "rewardValue": 108501,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006101,
+      "order": 101,
+      "reward": {
+        "image": "intel/chara/chr_icon_1083_108301_02.png",
+        "name": "[Onyx Soldier]克里斯象征",
+        "rewardType": 50,
+        "rewardValue": 108301,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006102,
+      "order": 102,
+      "reward": {
+        "image": "intel/chara/chr_icon_1071_107120_02.png",
+        "name": "[Neige Émeraude]目白雅丹",
+        "rewardType": 50,
+        "rewardValue": 107102,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006103,
+      "order": 103,
+      "reward": {
+        "image": "intel/chara/chr_icon_1069_106920_02.png",
+        "name": "[Fleur Enneigée]樱花千代王",
+        "rewardType": 50,
+        "rewardValue": 106902,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006104,
+      "order": 104,
+      "reward": {
+        "image": "intel/chara/chr_icon_1076_107601_02.png",
+        "name": "[Saisir le rêve]樱花桂冠",
+        "rewardType": 50,
+        "rewardValue": 107601,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006105,
+      "order": 105,
+      "reward": {
+        "image": "intel/chara/chr_icon_1105_110501_02.png",
+        "name": "[Universe-Naut]新宇宙",
+        "rewardType": 50,
+        "rewardValue": 110501,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006106,
+      "order": 106,
+      "reward": {
+        "image": "intel/chara/chr_icon_1062_106250_02.png",
+        "name": "[碧蓝湍流]待兼唐怀瑟",
+        "rewardType": 50,
+        "rewardValue": 106202,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006107,
+      "order": 107,
+      "reward": {
+        "image": "intel/chara/chr_icon_1041_104150_02.png",
+        "name": "[赤热☆队长]樱花进王",
+        "rewardType": 50,
+        "rewardValue": 104102,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006108,
+      "order": 108,
+      "reward": {
+        "image": "intel/chara/chr_icon_1106_110601_02.png",
+        "name": "[奇迹装点！]菱奇宝",
+        "rewardType": 50,
+        "rewardValue": 110601,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006109,
+      "order": 109,
+      "reward": {
+        "image": "intel/chara/chr_icon_1084_108401_02.png",
+        "name": "[雷霆加身]谷水琴蕾",
+        "rewardType": 50,
+        "rewardValue": 108401,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006110,
+      "order": 110,
+      "reward": {
+        "image": "intel/chara/chr_icon_1051_105126_02.png",
+        "name": "[Sweet Juneberry]西野花",
+        "rewardType": 50,
+        "rewardValue": 105102,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006111,
+      "order": 111,
+      "reward": {
+        "image": "intel/chara/chr_icon_1012_101226_02.png",
+        "name": "[Hungry Veil]菱亚马逊",
+        "rewardType": 50,
+        "rewardValue": 101202,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006112,
+      "order": 112,
+      "reward": {
+        "image": "intel/chara/chr_icon_1055_105501_02.png",
+        "name": "[☆闪亮★心动☆雀跃∞美丽∞]美丽周日",
+        "rewardType": 50,
+        "rewardValue": 105501,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006113,
+      "order": 113,
+      "reward": {
+        "image": "intel/chara/chr_icon_1053_105323_02.png",
+        "name": "[Ultra☆Marine]青竹回忆",
+        "rewardType": 50,
+        "rewardValue": 105302,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006114,
+      "order": 114,
+      "reward": {
+        "image": "intel/chara/chr_icon_1048_104823_02.png",
+        "name": "[Aurore☆Vacances]岛川乔丹",
+        "rewardType": 50,
+        "rewardValue": 104802,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006115,
+      "order": 115,
+      "reward": {
+        "image": "intel/chara/chr_icon_1104_110401_02.png",
+        "name": "[登龙之顶]葛城荣主",
+        "rewardType": 50,
+        "rewardValue": 110401,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006116,
+      "order": 116,
+      "reward": {
+        "image": "intel/chara/chr_icon_1070_107001_02.png",
+        "name": "[Féroce]天狼星象征",
+        "rewardType": 50,
+        "rewardValue": 107001,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006117,
+      "order": 117,
+      "reward": {
+        "image": "intel/chara/chr_icon_1032_103230_02.png",
+        "name": "[Lunatic Lab]爱丽速子",
+        "rewardType": 50,
+        "rewardValue": 103202,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006118,
+      "order": 118,
+      "reward": {
+        "image": "intel/chara/chr_icon_1002_100230_02.png",
+        "name": "[浪间翠玉]无声铃鹿",
+        "rewardType": 50,
+        "rewardValue": 100202,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006119,
+      "order": 119,
+      "reward": {
+        "image": "intel/chara/chr_icon_1077_107701_02.png",
+        "name": "[The Proud Road]成田路",
+        "rewardType": 50,
+        "rewardValue": 107701,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006120,
+      "order": 120,
+      "reward": {
+        "image": "intel/chara/chr_icon_1007_100702_02.png",
+        "name": "[La mode 564]黄金船",
+        "rewardType": 50,
+        "rewardValue": 100703,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006121,
+      "order": 121,
+      "reward": {
+        "image": "intel/chara/chr_icon_1067_106702_02.png",
+        "name": "[苍蓝骑士]里见光钻",
+        "rewardType": 50,
+        "rewardValue": 106703,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006122,
+      "order": 122,
+      "reward": {
+        "image": "intel/chara/chr_icon_1093_109301_02.png",
+        "name": "[Prism]喜嘉奇迹",
+        "rewardType": 50,
+        "rewardValue": 109301,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006123,
+      "order": 123,
+      "reward": {
+        "image": "intel/chara/chr_icon_1036_103640_02.png",
+        "name": "[Belphegor's Prime]空中神宫",
+        "rewardType": 50,
+        "rewardValue": 103602,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006124,
+      "order": 124,
+      "reward": {
+        "image": "intel/chara/chr_icon_1083_108340_02.png",
+        "name": "[Jetblack Automaton]克里斯象征",
+        "rewardType": 50,
+        "rewardValue": 108302,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006125,
+      "order": 125,
+      "reward": {
+        "image": "intel/chara/chr_icon_1086_108601_02.png",
+        "name": "[墨瑙魅线]目白拉莫娜",
+        "rewardType": 50,
+        "rewardValue": 108601,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006126,
+      "order": 126,
+      "reward": {
+        "image": "intel/chara/chr_icon_1039_103943_02.png",
+        "name": "[水干抚子]川上公主",
+        "rewardType": 50,
+        "rewardValue": 103902,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006127,
+      "order": 127,
+      "reward": {
+        "image": "intel/chara/chr_icon_1003_100343_02.png",
+        "name": "[紫云中的寻梦蝶]东海帝王",
+        "rewardType": 50,
+        "rewardValue": 100303,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006128,
+      "order": 128,
+      "reward": {
+        "image": "intel/chara/chr_icon_1107_110701_02.png",
+        "name": "[GLITTER！]跳舞城",
+        "rewardType": 50,
+        "rewardValue": 110701,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006129,
+      "order": 129,
+      "reward": {
+        "image": "intel/chara/chr_icon_1064_106446_02.png",
+        "name": "[赤诚的驯鹿小姐]目白善信",
+        "rewardType": 50,
+        "rewardValue": 106402,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006130,
+      "order": 130,
+      "reward": {
+        "image": "intel/chara/chr_icon_1074_107446_02.png",
+        "name": "[澄澈星空下的白雪洛丽塔]目白光明",
+        "rewardType": 50,
+        "rewardValue": 107402,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006131,
+      "order": 131,
+      "reward": {
+        "image": "intel/chara/chr_icon_1088_108801_02.png",
+        "name": "[黑翠千里行]里见皇冠",
+        "rewardType": 50,
+        "rewardValue": 108801,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5006132,
+      "order": 132,
+      "reward": {
+        "image": "intel/chara/chr_icon_1089_108901_02.png",
+        "name": "[Grand itinéraire]高尚骏逸",
+        "rewardType": 50,
+        "rewardValue": 108901,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00210.png",
+        "name": "动画第三季纪念 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 210,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    }
+  ]
+}

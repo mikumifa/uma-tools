@@ -1,0 +1,67 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 2017,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_100101.png",
+        "name": "[特别追梦者]特别周碎片",
+        "rewardType": 102,
+        "rewardValue": 100101,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2018,
+      "order": 2,
+      "reward": {
+        "image": "intel/piece/piece_icon_100302.png",
+        "name": "[飞跃地平线]东海帝王碎片",
+        "rewardType": 102,
+        "rewardValue": 100302,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2019,
+      "order": 3,
+      "reward": {
+        "image": "intel/piece/piece_icon_101302.png",
+        "name": "[天际尽头]目白麦昆碎片",
+        "rewardType": 102,
+        "rewardValue": 101302,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

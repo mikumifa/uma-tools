@@ -1,0 +1,46 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8037,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_104101.png",
+        "name": "[樱花，前进！]樱花进王碎片",
+        "rewardType": 102,
+        "rewardValue": 104101,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "训练员币",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8038,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_100801.png",
+        "name": "[极速狂飙]伏特加碎片",
+        "rewardType": 102,
+        "rewardValue": 100801,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "训练员币",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

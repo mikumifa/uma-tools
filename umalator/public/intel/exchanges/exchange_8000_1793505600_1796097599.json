@@ -1,0 +1,46 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8035,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_106601.png",
+        "name": "[狂奔！涡轮引擎]双涡轮碎片",
+        "rewardType": 102,
+        "rewardValue": 106601,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "训练员币",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8036,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_101401.png",
+        "name": "[小鹰☆Número 1]神鹰碎片",
+        "rewardType": 102,
+        "rewardValue": 101401,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "训练员币",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}
