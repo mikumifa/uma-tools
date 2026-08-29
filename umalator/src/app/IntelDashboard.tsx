@@ -3364,7 +3364,11 @@ export function IntelDashboard() {
   const exchanges = useMemo(
     () =>
       (data.exchanges || [])
-        .filter((exchange) => exchange.startTimestamp >= now)
+        .filter((exchange) =>
+          exchange.isVoucherExchange
+            ? exchange.endTimestamp >= now
+            : exchange.startTimestamp >= now,
+        )
         .sort(
           (a, b) =>
             Number(Boolean(b.isVoucherExchange)) -

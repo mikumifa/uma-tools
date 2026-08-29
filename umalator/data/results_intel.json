@@ -26982,6 +26982,34 @@
       "isVoucherExchange": false
     },
     {
+      "id": 2100000206,
+      "name": "助力新人训练员 宝石1500个 附赠3★兑换券",
+      "type": "兑换券兑换",
+      "start": "2026-09-20 12:00:00",
+      "end": "2050-01-01 11:59:59",
+      "startTimestamp": 1789876800,
+      "endTimestamp": 2524622399,
+      "image": "intel/item/item_icon_00206.png",
+      "drops": [],
+      "exchangeDetailPath": "intel/exchanges/exchange_beginner_trainer_206.json",
+      "exchangeDetailCount": 122,
+      "isVoucherExchange": true
+    },
+    {
+      "id": 2100000207,
+      "name": "助力新人训练员 宝石1500个 附赠超稀有兑换券",
+      "type": "兑换券兑换",
+      "start": "2026-09-20 12:00:00",
+      "end": "2050-01-01 11:59:59",
+      "startTimestamp": 1789876800,
+      "endTimestamp": 2524622399,
+      "image": "intel/item/item_icon_00207.png",
+      "drops": [],
+      "exchangeDetailPath": "intel/exchanges/exchange_beginner_trainer_207.json",
+      "exchangeDetailCount": 113,
+      "isVoucherExchange": true
+    },
+    {
       "id": 2165829016,
       "name": "训练员币兑换 · 追加",
       "type": "物品兑换",
@@ -27848,5 +27876,5 @@
       "isVoucherExchange": false
     }
   ],
-  "generatedAt": "2026-08-29 23:07:04"
+  "generatedAt": "2026-08-30 00:05:04"
 }

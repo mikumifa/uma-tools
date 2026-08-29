@@ -66,6 +66,10 @@ TEAM_BUILDING_EVENT_NAME = "目标！最强团队"
 TEAM_BUILDING_IMAGE = "intel/special/team_building_logo.png"
 ACTIVITY_EXCHANGE_PAY_ITEMS = {45, 58, 156, 159}
 VOUCHER_EXCHANGE_PAY_CATEGORIES = {41, 42, 179}
+BEGINNER_TRAINER_VOUCHERS = (
+    {"itemId": 206, "itemCategory": 176, "productTextIndex": 1035, "cardType": 1},
+    {"itemId": 207, "itemCategory": 177, "productTextIndex": 1036, "cardType": 2},
+)
 
 SEASON_LABELS = {0: "随机季节", 1: "春天", 2: "夏天", 3: "秋天", 4: "冬天"}
 WEATHER_LABELS = {0: "随机天气", 1: "晴天", 2: "多云天气", 3: "雨天", 4: "雪天"}
@@ -518,6 +522,74 @@ def write_exchange_detail_file(exchange_key: int | str, details: list[dict]) -> 
         encoding="utf-8",
     )
     return f"intel/exchanges/{path.name}"
+
+
+def item_data_time(value: str) -> int:
+    parsed = dt.datetime.strptime(value, "%Y/%m/%d %H:%M:%S")
+    return int(parsed.replace(tzinfo=SCHEDULE_TIMEZONE).timestamp())
+
+
+def build_beginner_trainer_voucher_schedules(cur: sqlite3.Cursor) -> list[dict]:
+    schedules = []
+    for config in BEGINNER_TRAINER_VOUCHERS:
+        item_id = int(config["itemId"])
+        item_category = int(config["itemCategory"])
+        card_type = int(config["cardType"])
+        item_row = cur.execute(
+            "SELECT start_date, end_date FROM item_data WHERE id = ? AND item_category = ?",
+            (item_id, item_category),
+        ).fetchone()
+        if not item_row:
+            continue
+        start = item_data_time(str(item_row[0]))
+        end = item_data_time(str(item_row[1]))
+        rows = cur.execute(
+            """
+            SELECT id, card_id, additional_piece_num
+            FROM exchange_ticket_detail
+            WHERE card_type = ?
+              AND start_date <= ?
+              AND end_date >= ?
+            ORDER BY start_date, id
+            """,
+            (card_type, start, start),
+        ).fetchall()
+        reward_category = 50 if card_type == 1 else 51
+        pay = reward_item_summary(cur, item_category, item_id, 1)
+        details = [
+            {
+                "id": int(row_id),
+                "order": index + 1,
+                "reward": reward_item_summary(cur, reward_category, int(card_id), 1),
+                "pay": pay,
+                "limit": 1,
+                "totalRewardAmount": 1,
+                "additionalPieceAmount": int(additional_piece_num or 0),
+            }
+            for index, (row_id, card_id, additional_piece_num) in enumerate(rows)
+        ]
+        if not details:
+            continue
+        product_name = text_value(cur, 49, int(config["productTextIndex"]))
+        ticket_name = reward_display_name(cur, item_category, item_id)
+        detail_key = f"beginner_trainer_{item_id}"
+        schedules.append(
+            {
+                "id": 2_100_000_000 + item_id,
+                "name": product_name or ticket_name,
+                "type": "兑换券兑换",
+                "start": ts_to_str(start),
+                "end": ts_to_str(end),
+                "startTimestamp": start,
+                "endTimestamp": end,
+                "image": reward_icon(cur, item_category, item_id),
+                "drops": [],
+                "exchangeDetailPath": write_exchange_detail_file(detail_key, details),
+                "exchangeDetailCount": len(details),
+                "isVoucherExchange": True,
+            }
+        )
+    return schedules
 
 
 def is_activity_exchange_shop(cur: sqlite3.Cursor, shop_id: int, name: str, description: str) -> bool:
@@ -2073,6 +2145,7 @@ def generate_exchange_data() -> list[dict]:
             )
             if schedule:
                 exchanges.append(schedule)
+    exchanges.extend(build_beginner_trainer_voucher_schedules(cur))
     conn.close()
     return sorted(exchanges, key=lambda item: (item["startTimestamp"], item["endTimestamp"], item["name"]))
 
