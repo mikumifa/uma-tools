@@ -10,6 +10,8 @@
     "update:data": "python scripts/update_data.py --build",
     "build": "vite build",
     "build:debug": "vite build --mode debug",
+    "preexport": "npm run build",
+    "export": "node scripts/export_intel.mjs",
     "preview": "vite preview"
   },
   "author": "pecan",
@@ -17,6 +19,7 @@
   "devDependencies": {
     "@preact/preset-vite": "^2.9.2",
     "autoprefixer": "^10.4.23",
+    "playwright-core": "^1.62.1",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.9.3",

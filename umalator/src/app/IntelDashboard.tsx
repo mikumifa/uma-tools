@@ -25,6 +25,9 @@ type GachaPool = {
   selectableCount?: number;
   selectionLimit?: number | null;
   stageCount?: number;
+  rangeStart?: string;
+  rangeEnd?: string;
+  cutoffCardId?: number;
   freeDraws?: Array<{
     drawType: number;
     label: string;
@@ -67,6 +70,7 @@ type ScheduleItem = {
     rewardValue?: number;
     amount?: number;
     countOnly?: boolean;
+    isPiece?: boolean;
   }>;
   exchangeDetails?: Array<{
     id: number;
@@ -307,11 +311,18 @@ function poolSummary(pool: GachaPool, max = 5) {
     const stages = pool.stageCount ? ` · ${pool.stageCount}阶段` : "";
     return `${pool.selectableCount}${unit}可选 · ${selection}${stages}`;
   }
+  const cutoffCard = pool.cards.find((card) => card.id === pool.cutoffCardId);
+  if (cutoffCard) return `截至到 ${cutoffCard.characterName}`;
   const names = Array.from(
     new Set(pool.cards.map((card) => card.characterName)),
   );
   const visible = names.slice(0, max).join(" / ");
   return names.length > max ? `${visible} +${names.length - max}` : visible;
+}
+
+function poolPreviewCards(pool: GachaPool) {
+  const cutoffCard = pool.cards.find((card) => card.id === pool.cutoffCardId);
+  return cutoffCard ? [cutoffCard] : pool.cards;
 }
 
 function poolKey(pool: GachaPool) {
@@ -535,8 +546,26 @@ async function loadExchangeDetails(path: string) {
   return (await response.json()) as Pick<ScheduleItem, "exchangeDetails">;
 }
 
-const EXPORT_WIDTH = 1280;
+const EXPORT_WIDTH = 1600;
 const EXPORT_PADDING = 36;
+const EXPORT_RIGHT = EXPORT_WIDTH - EXPORT_PADDING;
+const EXPORT_CONTENT_WIDTH = EXPORT_WIDTH - EXPORT_PADDING * 2;
+const EXPORT_GACHA_ROW_HEIGHT = 112;
+const EXPORT_EVENT_ROW_HEIGHT = 104;
+const EXPORT_GACHA_COLUMNS = 3;
+const EXPORT_GACHA_GAP = 16;
+const EXPORT_GACHA_TILE_WIDTH = Math.floor(
+  (EXPORT_CONTENT_WIDTH - EXPORT_GACHA_GAP * (EXPORT_GACHA_COLUMNS - 1)) /
+    EXPORT_GACHA_COLUMNS,
+);
+const EXPORT_GACHA_ICON_SIZE = 70;
+const EXPORT_GACHA_ICON_GAP = 8;
+const EXPORT_GACHA_TILE_PADDING = 16;
+const EXPORT_GACHA_ICON_COLUMNS = Math.floor(
+  (EXPORT_GACHA_TILE_WIDTH - EXPORT_GACHA_TILE_PADDING * 2 +
+    EXPORT_GACHA_ICON_GAP) /
+    (EXPORT_GACHA_ICON_SIZE + EXPORT_GACHA_ICON_GAP),
+);
 
 type ExportImageSource = {
   pools: GachaPool[];
@@ -546,18 +575,39 @@ type ExportImageSource = {
   generatedAt: string;
 };
 
+type ExportImageSection = "gacha" | "events" | "races";
+
 type LoadedImages = Map<string, HTMLImageElement>;
 
-function collectExportImages(source: ExportImageSource) {
+function scheduleExportImage(item: ScheduleItem) {
+  if (item.name === "指定赛事奖励追加碎片") {
+    const pieceDrop = item.drops?.find(
+      (drop) => drop.isPiece || drop.image?.includes("/piece/"),
+    );
+    if (pieceDrop?.image) return pieceDrop.image;
+  }
+  return item.image;
+}
+
+function collectExportImages(
+  source: ExportImageSource,
+  section: ExportImageSection,
+) {
   const paths = new Set<string>();
-  source.pools.forEach((pool) => {
-    const cover = poolCover(pool);
-    if (cover) paths.add(cover);
-    pool.cards.forEach((card) => card.image && paths.add(card.image));
-  });
-  [...source.events, ...source.races].forEach((item) => {
-    if (item.image) paths.add(item.image);
-    item.drops?.forEach((drop) => drop.image && paths.add(drop.image));
+  if (section === "gacha") {
+    source.pools.forEach((pool) => {
+      const cover = poolCover(pool);
+      if (cover) paths.add(cover);
+      exportPoolCards(pool).forEach(
+        (card) => card.image && paths.add(card.image),
+      );
+    });
+  }
+  const schedules =
+    section === "events" ? source.events : section === "races" ? source.races : [];
+  schedules.forEach((item) => {
+    const image = scheduleExportImage(item);
+    if (image) paths.add(image);
     item.details?.forEach((detail) => {
       const weather = weatherIcon(detail.weatherValue);
       const season = seasonIcon(detail.seasonValue);
@@ -668,6 +718,95 @@ function drawTextLines(
   return clipped.length * lineHeight;
 }
 
+function clippedText(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  maxWidth: number,
+) {
+  if (!text || maxWidth <= 0) return "";
+  if (ctx.measureText(text).width <= maxWidth) return text;
+  const chars = Array.from(text);
+  while (chars.length && ctx.measureText(`${chars.join("")}…`).width > maxWidth) {
+    chars.pop();
+  }
+  return chars.length ? `${chars.join("")}…` : "";
+}
+
+function drawClippedText(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  maxWidth: number,
+) {
+  const visibleText = clippedText(ctx, text, maxWidth);
+  if (visibleText) ctx.fillText(visibleText, x, y);
+  return visibleText;
+}
+
+function exportTimestampParts(value: string) {
+  return {
+    date: value.slice(5, 10).replace("-", "/"),
+    time: value.slice(11, 16),
+  };
+}
+
+function drawExportTimestamp(
+  ctx: CanvasRenderingContext2D,
+  value: string,
+  x: number,
+  y: number,
+  dateSize: number,
+  timeSize: number,
+  prefix = "",
+) {
+  const { date, time } = exportTimestampParts(value);
+  let cursorX = x;
+  ctx.save();
+  if (prefix) {
+    ctx.font = exportFont(timeSize, 800);
+    ctx.fillText(prefix, cursorX, y);
+    cursorX += ctx.measureText(prefix).width + 5;
+  }
+  ctx.font = exportFont(dateSize, 900);
+  ctx.fillText(date, cursorX, y);
+  cursorX += ctx.measureText(date).width + 8;
+  ctx.font = exportFont(timeSize, 800);
+  ctx.fillText(time, cursorX, y);
+  cursorX += ctx.measureText(time).width;
+  ctx.restore();
+  return cursorX - x;
+}
+
+function drawExportTimeRange(
+  ctx: CanvasRenderingContext2D,
+  start: string,
+  end: string,
+  x: number,
+  y: number,
+  dateSize: number,
+  timeSize: number,
+) {
+  let cursorX = x + drawExportTimestamp(ctx, start, x, y, dateSize, timeSize);
+  ctx.save();
+  ctx.font = exportFont(timeSize, 800);
+  const separator = "  –  ";
+  ctx.fillText(separator, cursorX, y);
+  cursorX += ctx.measureText(separator).width;
+  ctx.restore();
+  if (sameDay(start, end)) {
+    ctx.save();
+    ctx.font = exportFont(timeSize, 800);
+    const endTime = exportTimestampParts(end).time;
+    ctx.fillText(endTime, cursorX, y);
+    cursorX += ctx.measureText(endTime).width;
+    ctx.restore();
+  } else {
+    cursorX += drawExportTimestamp(ctx, end, cursorX, y, dateSize, timeSize);
+  }
+  return cursorX - x;
+}
+
 function drawImageFit(
   ctx: CanvasRenderingContext2D,
   image: HTMLImageElement | undefined,
@@ -699,45 +838,51 @@ function drawBadge(
   y: number,
   fill = "#e8f0ff",
   text = "#1f66d1",
+  maxWidth = Number.POSITIVE_INFINITY,
 ) {
+  if (maxWidth < 32) return 0;
   ctx.font = exportFont(18, 700);
-  const width = Math.ceil(ctx.measureText(label).width) + 24;
+  const visibleLabel = clippedText(ctx, label, maxWidth - 24);
+  if (!visibleLabel) return 0;
+  const width = Math.min(
+    maxWidth,
+    Math.ceil(ctx.measureText(visibleLabel).width) + 24,
+  );
   fillRounded(ctx, x, y, width, 30, 15, fill);
   ctx.fillStyle = text;
-  ctx.fillText(label, x + 12, y + 21);
+  ctx.fillText(visibleLabel, x + 12, y + 21);
   return width;
 }
 
-function drawSectionTitle(
-  ctx: CanvasRenderingContext2D,
-  title: string,
-  count: number,
-  y: number,
+function raceDetailExportHeight(
+  detail: NonNullable<ScheduleItem["details"]>[number],
 ) {
-  ctx.fillStyle = "#18202b";
-  ctx.font = exportFont(28, 800);
-  ctx.fillText(title, EXPORT_PADDING, y + 28);
-  ctx.font = exportFont(18, 600);
-  ctx.fillStyle = "#5f6b7a";
-  ctx.fillText(
-    `${count} 项`,
-    EXPORT_PADDING + ctx.measureText(title).width + 18,
-    y + 28,
+  return detail.conditionRates ? 78 : 54;
+}
+
+function raceExportHeight(race: ScheduleItem) {
+  const detailHeight = (race.details || []).reduce(
+    (height, detail) => height + raceDetailExportHeight(detail),
+    0,
   );
+  const milestones = race.milestones || [];
+  const milestoneHeight = milestones.length
+    ? 34 + Math.ceil(milestones.length / 2) * 46
+    : 0;
+  return 94 + detailHeight + milestoneHeight + 16;
 }
 
 function estimateExportHeight(source: ExportImageSource) {
   const raceHeight = source.races.reduce(
-    (height, race) =>
-      height + 132 + Math.max(0, (race.details?.length || 0) - 1) * 46,
+    (height, race) => height + raceExportHeight(race) + 14,
     0,
   );
   return (
     140 +
     54 +
-    Math.max(1, source.pools.length) * 126 +
+    Math.max(1, source.pools.length) * (EXPORT_GACHA_ROW_HEIGHT + 14) +
     54 +
-    Math.max(1, source.events.length) * 98 +
+    Math.max(1, source.events.length) * (EXPORT_EVENT_ROW_HEIGHT + 12) +
     54 +
     Math.max(1, raceHeight) +
     44
@@ -757,14 +902,18 @@ function drawGachaRow(
     ctx,
     EXPORT_PADDING,
     y,
-    EXPORT_WIDTH - EXPORT_PADDING * 2,
-    112,
+    EXPORT_CONTENT_WIDTH,
+    EXPORT_GACHA_ROW_HEIGHT,
     8,
     "#ffffff",
     "#d7dce5",
   );
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(EXPORT_PADDING, y, EXPORT_CONTENT_WIDTH, EXPORT_GACHA_ROW_HEIGHT);
+  ctx.clip();
   ctx.fillStyle = accent;
-  ctx.fillRect(EXPORT_PADDING, y, 6, 112);
+  ctx.fillRect(EXPORT_PADDING, y, 6, EXPORT_GACHA_ROW_HEIGHT);
   const cover = poolCover(pool);
   drawImageFit(
     ctx,
@@ -777,31 +926,52 @@ function drawGachaRow(
   );
 
   const textX = EXPORT_PADDING + 286;
+  const startX = EXPORT_RIGHT - 508;
   ctx.font = exportFont(19, 800);
   ctx.fillStyle = "#18202b";
-  ctx.fillText(pool.type, textX, y + 33);
-  if (active)
-    drawBadge(ctx, "进行中", textX + 88, y + 11, "#fee2e2", "#b42318");
+  const visibleType = drawClippedText(ctx, pool.type, textX, y + 33, 110);
+  let badgeX = textX + Math.ceil(ctx.measureText(visibleType).width) + 12;
+  if (active) {
+    badgeX +=
+      drawBadge(
+        ctx,
+        "进行中",
+        badgeX,
+        y + 11,
+        "#fee2e2",
+        "#b42318",
+        startX - badgeX - 10,
+      ) + 8;
+  }
   if (pool.freeDraws?.length) {
     drawBadge(
       ctx,
       freeDrawText(pool),
-      active ? textX + 158 : textX + 88,
+      badgeX,
       y + 11,
       "#fef3c7",
       "#92400e",
+      startX - badgeX - 10,
     );
   }
   ctx.font = exportFont(24, 800);
   ctx.fillStyle = "#18202b";
-  drawTextLines(ctx, poolSummary(pool, 8), textX, y + 65, 390, 28, 1);
+  drawTextLines(
+    ctx,
+    poolSummary(pool, 8),
+    textX,
+    y + 65,
+    startX - textX - 18,
+    28,
+    1,
+  );
   ctx.font = exportFont(16, 700);
   ctx.fillStyle = "#5f6b7a";
   ctx.fillText(pool.start, textX, y + 86);
   ctx.fillText(`至 ${pool.end}`, textX, y + 106);
 
-  const startX = EXPORT_WIDTH - EXPORT_PADDING - 508;
-  pool.cards.slice(0, 6).forEach((card, index) => {
+  const previewCards = poolPreviewCards(pool);
+  previewCards.slice(0, 6).forEach((card, index) => {
     const x = startX + index * 78;
     drawImageFit(
       ctx,
@@ -813,15 +983,14 @@ function drawGachaRow(
       "contain",
     );
   });
-  if (pool.cards.length > 6) {
+  if (!pool.cutoffCardId && pool.cards.length > 6) {
     ctx.font = exportFont(24, 800);
     ctx.fillStyle = "#5f6b7a";
-    ctx.fillText(
-      `+${pool.cards.length - 6}`,
-      EXPORT_WIDTH - EXPORT_PADDING - 34,
-      y + 64,
-    );
+    ctx.textAlign = "right";
+    ctx.fillText(`+${pool.cards.length - 6}`, EXPORT_RIGHT - 4, y + 64);
+    ctx.textAlign = "left";
   }
+  ctx.restore();
 }
 
 function drawEventRow(
@@ -832,19 +1001,24 @@ function drawEventRow(
   now: number,
 ) {
   const active = event.startTimestamp <= now && event.endTimestamp >= now;
+  const eventImage = scheduleExportImage(event);
   fillRounded(
     ctx,
     EXPORT_PADDING,
     y,
-    EXPORT_WIDTH - EXPORT_PADDING * 2,
-    86,
+    EXPORT_CONTENT_WIDTH,
+    EXPORT_EVENT_ROW_HEIGHT,
     8,
     "#ffffff",
     "#d7dce5",
   );
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(EXPORT_PADDING, y, EXPORT_CONTENT_WIDTH, EXPORT_EVENT_ROW_HEIGHT);
+  ctx.clip();
   drawImageFit(
     ctx,
-    event.image ? images.get(event.image) : undefined,
+    eventImage ? images.get(eventImage) : undefined,
     EXPORT_PADDING + 18,
     y + 10,
     74,
@@ -852,6 +1026,7 @@ function drawEventRow(
     "contain",
   );
   const textX = EXPORT_PADDING + 112;
+  const infoX = EXPORT_RIGHT - 360;
   const badgeWidth = drawBadge(
     ctx,
     scheduleTypeLabel(event.type),
@@ -859,6 +1034,7 @@ function drawEventRow(
     y + 11,
     "#eef2f7",
     "#18202b",
+    infoX - textX - 12,
   );
   if (active)
     drawBadge(
@@ -868,38 +1044,15 @@ function drawEventRow(
       y + 11,
       "#fee2e2",
       "#b42318",
+      infoX - (textX + badgeWidth + 10) - 12,
     );
   ctx.font = exportFont(24, 800);
   ctx.fillStyle = "#18202b";
-  drawTextLines(ctx, event.name, textX, y + 61, 560, 28, 1);
-  ctx.font = exportFont(22, 700);
+  drawTextLines(ctx, event.name, textX, y + 65, infoX - textX - 20, 28, 1);
   ctx.fillStyle = "#5f6b7a";
-  ctx.fillText(
-    dateLabel(event.start, event.end),
-    EXPORT_WIDTH - EXPORT_PADDING - 330,
-    y + 37,
-  );
-  mergedRewardDrops(event.drops).slice(0, 5).forEach((drop, index) => {
-    const x = EXPORT_WIDTH - EXPORT_PADDING - 330 + index * 54;
-    if (drop.image) {
-      drawImageFit(ctx, images.get(drop.image), x, y + 43, 38, 38, "contain");
-      const amount = rewardAmountLabel(drop);
-      if (amount) {
-        ctx.font = exportFont(12, 900);
-        const width = Math.ceil(ctx.measureText(amount).width) + 10;
-        fillRounded(ctx, x + 38 - width + 4, y + 66, width, 18, 9, "#172033");
-        ctx.fillStyle = "#ffffff";
-        ctx.fillText(amount, x + 38 - width + 9, y + 80);
-      }
-      return;
-    }
-    const label = drop.label || "奖励";
-    ctx.font = exportFont(15, 800);
-    const width = Math.max(48, Math.ceil(ctx.measureText(label).width) + 14);
-    fillRounded(ctx, x, y + 49, width, 26, 13, "#eef2f7", "#d7dce5");
-    ctx.fillStyle = "#475569";
-    ctx.fillText(label, x + 7, y + 68);
-  });
+  drawExportTimestamp(ctx, event.start, infoX, y + 37, 23, 17);
+  drawExportTimestamp(ctx, event.end, infoX, y + 68, 23, 17, "至");
+  ctx.restore();
 }
 
 function raceDetailText(detail: NonNullable<ScheduleItem["details"]>[number]) {
@@ -932,18 +1085,23 @@ function drawRaceRow(
   now: number,
 ) {
   const details = race.details || [];
-  const height = 118 + Math.max(0, details.length - 1) * 46;
+  const milestones = race.milestones || [];
+  const height = raceExportHeight(race);
   const active = race.startTimestamp <= now && race.endTimestamp >= now;
   fillRounded(
     ctx,
     EXPORT_PADDING,
     y,
-    EXPORT_WIDTH - EXPORT_PADDING * 2,
+    EXPORT_CONTENT_WIDTH,
     height,
     8,
     "#ffffff",
     "#d7dce5",
   );
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(EXPORT_PADDING, y, EXPORT_CONTENT_WIDTH, height);
+  ctx.clip();
   drawImageFit(
     ctx,
     race.image ? images.get(race.image) : undefined,
@@ -956,21 +1114,41 @@ function drawRaceRow(
   const textX = EXPORT_PADDING + 126;
   ctx.font = exportFont(25, 800);
   ctx.fillStyle = "#18202b";
-  ctx.fillText(race.name, textX, y + 34);
-  if (active)
+  const visibleRaceName = drawClippedText(
+    ctx,
+    race.name,
+    textX,
+    y + 34,
+    520,
+  );
+  if (active) {
+    const badgeX = textX + ctx.measureText(visibleRaceName).width + 14;
     drawBadge(
       ctx,
       "进行中",
-      textX + ctx.measureText(race.name).width + 14,
+      badgeX,
       y + 11,
       "#fee2e2",
       "#b42318",
+      EXPORT_RIGHT - badgeX,
     );
-  ctx.font = exportFont(21, 700);
+  }
   ctx.fillStyle = "#5f6b7a";
-  ctx.fillText(dateLabel(race.start, race.end), textX, y + 66);
-  details.slice(0, 4).forEach((detail, index) => {
-    const lineY = y + 100 + index * 42;
+  drawExportTimeRange(ctx, race.start, race.end, textX, y + 66, 22, 16);
+
+  let cursorY = y + 86;
+  details.forEach((detail) => {
+    const detailHeight = raceDetailExportHeight(detail);
+    fillRounded(
+      ctx,
+      textX - 8,
+      cursorY,
+      EXPORT_RIGHT - textX,
+      detailHeight - 6,
+      6,
+      "#f8fafc",
+      "#e5e9ef",
+    );
     const season = seasonIcon(detail.seasonValue);
     const weather = weatherIcon(detail.weatherValue);
     if (season)
@@ -978,7 +1156,7 @@ function drawRaceRow(
         ctx,
         images.get(season),
         textX,
-        lineY - 24,
+        cursorY + 10,
         48,
         24,
         "contain",
@@ -988,15 +1166,73 @@ function drawRaceRow(
         ctx,
         images.get(weather),
         textX + 54,
-        lineY - 28,
+        cursorY + 8,
         34,
         28,
         "contain",
       );
-    ctx.font = exportFont(20, 700);
+    ctx.font = exportFont(18, 700);
     ctx.fillStyle = "#18202b";
-    drawTextLines(ctx, raceDetailText(detail), textX + 102, lineY, 880, 24, 1);
+    drawTextLines(
+      ctx,
+      raceDetailText(detail),
+      textX + 102,
+      cursorY + 22,
+      EXPORT_RIGHT - textX - 118,
+      21,
+      detail.conditionRates ? 3 : 2,
+    );
+    cursorY += detailHeight;
   });
+
+  if (milestones.length) {
+    ctx.font = exportFont(18, 800);
+    ctx.fillStyle = "#18202b";
+    ctx.fillText("时间节点", textX, cursorY + 22);
+    cursorY += 34;
+    const columnGap = 14;
+    const columnWidth = (EXPORT_RIGHT - textX - columnGap) / 2;
+    milestones.forEach((milestone, index) => {
+      const column = index % 2;
+      const row = Math.floor(index / 2);
+      const x = textX + column * (columnWidth + columnGap);
+      const milestoneY = cursorY + row * 46;
+      fillRounded(
+        ctx,
+        x,
+        milestoneY,
+        columnWidth,
+        38,
+        6,
+        "#f8fafc",
+        "#e5e9ef",
+      );
+      ctx.font = exportFont(16, 800);
+      ctx.fillStyle = "#18202b";
+      const labelWidth = Math.min(
+        116,
+        Math.ceil(ctx.measureText(milestone.label).width) + 18,
+      );
+      drawClippedText(
+        ctx,
+        milestone.label,
+        x + 10,
+        milestoneY + 25,
+        labelWidth - 10,
+      );
+      ctx.fillStyle = "#5f6b7a";
+      drawExportTimeRange(
+        ctx,
+        milestone.start,
+        milestone.end,
+        x + labelWidth,
+        milestoneY + 25,
+        15,
+        11,
+      );
+    });
+  }
+  ctx.restore();
   return height;
 }
 
@@ -1020,64 +1256,345 @@ function drawEmptyExportRow(
   ctx.fillText(text, EXPORT_PADDING + 24, y + 46);
 }
 
-async function exportIntelImage(source: ExportImageSource) {
-  const images = await loadExportImages(collectExportImages(source));
+function exportPoolCards(pool: GachaPool) {
+  return pool.cards.slice(0, pool.cards.length <= 50 ? pool.cards.length : 50);
+}
+
+function exportFreeDrawText(pool: GachaPool) {
+  return (pool.freeDraws || [])
+    .map((draw) => `${draw.label} ×${freeDrawDayCount(draw)}`)
+    .join(" / ");
+}
+
+function gachaTileHeight(pool: GachaPool) {
+  const visibleCards = exportPoolCards(pool);
+  const rows = Math.ceil(visibleCards.length / EXPORT_GACHA_ICON_COLUMNS);
+  const iconsHeight = rows
+    ? rows * (EXPORT_GACHA_ICON_SIZE + EXPORT_GACHA_ICON_GAP) -
+      EXPORT_GACHA_ICON_GAP
+    : 0;
+  const remainderHeight = pool.cards.length > visibleCards.length ? 28 : 0;
+  return 343 + iconsHeight + remainderHeight;
+}
+
+function gachaExportGroups(pools: GachaPool[]) {
+  const groups = new Map<string, GachaPool[]>();
+  pools.forEach((pool) => {
+    const month = pool.start.slice(0, 7);
+    const group = groups.get(month) || [];
+    group.push(pool);
+    groups.set(month, group);
+  });
+  return Array.from(groups, ([month, items]) => ({ month, items }));
+}
+
+function scheduleExportGroups(items: ScheduleItem[]) {
+  const groups = new Map<string, ScheduleItem[]>();
+  items.forEach((item) => {
+    const month = item.start.slice(0, 7);
+    const group = groups.get(month) || [];
+    group.push(item);
+    groups.set(month, group);
+  });
+  return Array.from(groups, ([month, groupedItems]) => ({
+    month,
+    items: groupedItems,
+  }));
+}
+
+function exportMonthLabel(month: string) {
+  const monthNumber = month.split("-")[1];
+  return `${Number(monthNumber)}月`;
+}
+
+function drawExportMonthHeader(
+  ctx: CanvasRenderingContext2D,
+  month: string,
+  y: number,
+) {
+  ctx.font = exportFont(27, 900);
+  ctx.fillStyle = "#18202b";
+  ctx.fillText(exportMonthLabel(month), EXPORT_PADDING, y + 29);
+  ctx.strokeStyle = "#d7dce5";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(EXPORT_PADDING, y + 43);
+  ctx.lineTo(EXPORT_RIGHT, y + 43);
+  ctx.stroke();
+}
+
+function gachaGridHeight(pools: GachaPool[]) {
+  let height = 0;
+  const groups = gachaExportGroups(pools);
+  groups.forEach((group, groupIndex) => {
+    height += 48;
+    for (
+      let index = 0;
+      index < group.items.length;
+      index += EXPORT_GACHA_COLUMNS
+    ) {
+      const row = group.items.slice(index, index + EXPORT_GACHA_COLUMNS);
+      height += Math.max(...row.map(gachaTileHeight)) + EXPORT_GACHA_GAP;
+    }
+    height -= EXPORT_GACHA_GAP;
+    if (groupIndex < groups.length - 1) height += 24;
+  });
+  return Math.max(86, height);
+}
+
+function eventGridHeight(events: ScheduleItem[]) {
+  let height = 0;
+  const groups = scheduleExportGroups(events);
+  groups.forEach((group, groupIndex) => {
+    height += 48;
+    height += group.items.length * (EXPORT_EVENT_ROW_HEIGHT + 12) - 12;
+    if (groupIndex < groups.length - 1) height += 24;
+  });
+  return Math.max(86, height);
+}
+
+function raceGridHeight(races: ScheduleItem[]) {
+  let height = 0;
+  const groups = scheduleExportGroups(races);
+  groups.forEach((group, groupIndex) => {
+    height += 48;
+    height += group.items.reduce(
+      (groupHeight, race) => groupHeight + raceExportHeight(race) + 14,
+      0,
+    );
+    height -= 14;
+    if (groupIndex < groups.length - 1) height += 24;
+  });
+  return Math.max(86, height);
+}
+
+function drawGachaTile(
+  ctx: CanvasRenderingContext2D,
+  images: LoadedImages,
+  pool: GachaPool,
+  x: number,
+  y: number,
+  now: number,
+  alignedHeight?: number,
+) {
+  const height = alignedHeight || gachaTileHeight(pool);
+  const active = pool.startTimestamp <= now && pool.endTimestamp >= now;
+  const accent = poolKind(pool) === "character" ? "#db2777" : "#2563eb";
+  fillRounded(
+    ctx,
+    x,
+    y,
+    EXPORT_GACHA_TILE_WIDTH,
+    height,
+    10,
+    "#ffffff",
+    "#d7dce5",
+  );
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(x, y, EXPORT_GACHA_TILE_WIDTH, height);
+  ctx.clip();
+  ctx.fillStyle = accent;
+  ctx.fillRect(x, y, 6, height);
+
+  const innerX = x + EXPORT_GACHA_TILE_PADDING;
+  const innerRight = x + EXPORT_GACHA_TILE_WIDTH - EXPORT_GACHA_TILE_PADDING;
+  const cover = poolCover(pool);
+  drawImageFit(
+    ctx,
+    cover ? images.get(cover) : undefined,
+    innerX,
+    y + 14,
+    innerRight - innerX,
+    152,
+    "contain",
+  );
+
+  let badgeX = innerX;
+  if (active) {
+    badgeX +=
+      drawBadge(
+      ctx,
+      "进行中",
+      badgeX,
+      y + 176,
+      "#fee2e2",
+      "#b42318",
+      innerRight - badgeX,
+    ) + 8;
+  }
+  const freeDraw = exportFreeDrawText(pool);
+  if (freeDraw) {
+    drawBadge(
+      ctx,
+      freeDraw,
+      badgeX,
+      y + 176,
+      "#fef3c7",
+      "#92400e",
+      innerRight - badgeX,
+    );
+  }
+
+  ctx.font = exportFont(22, 800);
+  ctx.fillStyle = "#18202b";
+  drawClippedText(
+    ctx,
+    pool.name || poolSummary(pool, 8),
+    innerX,
+    y + 230,
+    innerRight - innerX,
+  );
+  ctx.font = exportFont(17, 700);
+  ctx.fillStyle = "#475569";
+  drawClippedText(
+    ctx,
+    poolSummary(pool, 8),
+    innerX,
+    y + 260,
+    innerRight - innerX,
+  );
+  ctx.fillStyle = "#5f6b7a";
+  drawExportTimestamp(ctx, pool.start, innerX, y + 289, 18, 14);
+  drawExportTimestamp(ctx, pool.end, innerX, y + 315, 18, 14, "至");
+
+  const visibleCards = exportPoolCards(pool);
+  const gridY = y + 331;
+  visibleCards.forEach((card, index) => {
+    const column = index % EXPORT_GACHA_ICON_COLUMNS;
+    const row = Math.floor(index / EXPORT_GACHA_ICON_COLUMNS);
+    const cardX =
+      innerX + column * (EXPORT_GACHA_ICON_SIZE + EXPORT_GACHA_ICON_GAP);
+    const cardY =
+      gridY + row * (EXPORT_GACHA_ICON_SIZE + EXPORT_GACHA_ICON_GAP);
+    drawImageFit(
+      ctx,
+      card.image ? images.get(card.image) : undefined,
+      cardX,
+      cardY,
+      EXPORT_GACHA_ICON_SIZE,
+      EXPORT_GACHA_ICON_SIZE,
+      "contain",
+    );
+  });
+  if (pool.cards.length > visibleCards.length) {
+    const rows = Math.ceil(visibleCards.length / EXPORT_GACHA_ICON_COLUMNS);
+    const footerY =
+      gridY + rows * (EXPORT_GACHA_ICON_SIZE + EXPORT_GACHA_ICON_GAP) + 10;
+    ctx.font = exportFont(16, 800);
+    ctx.fillStyle = "#5f6b7a";
+    ctx.fillText(
+      `另有 ${pool.cards.length - visibleCards.length} 项未展示`,
+      innerX,
+      footerY,
+    );
+  }
+  ctx.restore();
+  return height;
+}
+
+function drawExportHeader(
+  ctx: CanvasRenderingContext2D,
+  title: string,
+  generatedAt: string,
+) {
+  ctx.fillStyle = "#18202b";
+  ctx.font = exportFont(34, 900);
+  ctx.fillText(`闪耀优俊少女 ${title}一图流`, EXPORT_PADDING, 58);
+  ctx.font = exportFont(19, 700);
+  ctx.fillStyle = "#5f6b7a";
+  ctx.fillText(
+    `生成 ${generatedAt || new Date().toLocaleString()}`,
+    EXPORT_PADDING,
+    91,
+  );
+  ctx.textAlign = "right";
+  ctx.fillText("当前 / 未来", EXPORT_RIGHT, 91);
+  ctx.textAlign = "left";
+}
+
+function exportSectionHeight(
+  source: ExportImageSource,
+  section: ExportImageSection,
+) {
+  if (section === "gacha") return 190 + gachaGridHeight(source.pools) + 40;
+  if (section === "events") return 190 + eventGridHeight(source.events) + 40;
+  return 190 + raceGridHeight(source.races) + 40;
+}
+
+async function exportIntelImage(
+  source: ExportImageSource,
+  section: ExportImageSection,
+) {
+  const images = await loadExportImages(collectExportImages(source, section));
   const canvas = document.createElement("canvas");
   canvas.width = EXPORT_WIDTH;
-  canvas.height = estimateExportHeight(source);
+  canvas.height = exportSectionHeight(source, section);
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("Canvas is not available");
 
   ctx.fillStyle = "#f5f6f8";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "#18202b";
-  ctx.font = exportFont(34, 900);
-  ctx.fillText("闪耀优俊少女 情报一图流", EXPORT_PADDING, 58);
-  ctx.font = exportFont(19, 700);
-  ctx.fillStyle = "#5f6b7a";
-  ctx.fillText(
-    `生成 ${source.generatedAt || new Date().toLocaleString()}`,
-    EXPORT_PADDING,
-    91,
-  );
-  ctx.fillText("当前 / 未来", EXPORT_WIDTH - EXPORT_PADDING - 110, 91);
+  const title = section === "gacha" ? "卡池" : section === "events" ? "活动" : "大赛";
+  drawExportHeader(ctx, title, source.generatedAt);
+  let y = 174;
+  if (section === "gacha") {
+    if (source.pools.length) {
+      const groups = gachaExportGroups(source.pools);
+      groups.forEach((group, groupIndex) => {
+        drawExportMonthHeader(ctx, group.month, y);
+        y += 48;
 
-  let y = 126;
-  drawSectionTitle(ctx, "卡池", source.pools.length, y);
-  y += 48;
-  if (source.pools.length) {
-    source.pools.forEach((pool) => {
-      drawGachaRow(ctx, images, pool, y, source.now);
-      y += 126;
-    });
-  } else {
-    drawEmptyExportRow(ctx, y, "没有符合筛选的卡池");
-    y += 86;
-  }
-
-  y += 10;
-  drawSectionTitle(ctx, "活动", source.events.length, y);
-  y += 48;
-  if (source.events.length) {
-    source.events.forEach((event) => {
-      drawEventRow(ctx, images, event, y, source.now);
-      y += 98;
-    });
-  } else {
-    drawEmptyExportRow(ctx, y, "没有符合筛选的活动");
-    y += 86;
-  }
-
-  y += 10;
-  drawSectionTitle(ctx, "大赛", source.races.length, y);
-  y += 48;
-  if (source.races.length) {
-    source.races.forEach((race) => {
-      y += drawRaceRow(ctx, images, race, y, source.now) + 14;
+        for (
+          let index = 0;
+          index < group.items.length;
+          index += EXPORT_GACHA_COLUMNS
+        ) {
+          const row = group.items.slice(index, index + EXPORT_GACHA_COLUMNS);
+          const rowHeight = Math.max(...row.map(gachaTileHeight));
+          row.forEach((pool, column) => {
+            const x =
+              EXPORT_PADDING +
+              column * (EXPORT_GACHA_TILE_WIDTH + EXPORT_GACHA_GAP);
+            drawGachaTile(ctx, images, pool, x, y, source.now, rowHeight);
+          });
+          y += rowHeight + EXPORT_GACHA_GAP;
+        }
+        y -= EXPORT_GACHA_GAP;
+        if (groupIndex < groups.length - 1) y += 24;
+      });
+    } else {
+      drawEmptyExportRow(ctx, y, "没有符合筛选的卡池");
+    }
+  } else if (section === "events") {
+    if (source.events.length) {
+      const groups = scheduleExportGroups(source.events);
+      groups.forEach((group, groupIndex) => {
+        drawExportMonthHeader(ctx, group.month, y);
+        y += 48;
+        group.items.forEach((event) => {
+          drawEventRow(ctx, images, event, y, source.now);
+          y += EXPORT_EVENT_ROW_HEIGHT + 12;
+        });
+        y -= 12;
+        if (groupIndex < groups.length - 1) y += 24;
+      });
+    } else {
+      drawEmptyExportRow(ctx, y, "没有符合筛选的活动");
+    }
+  } else if (source.races.length) {
+    const groups = scheduleExportGroups(source.races);
+    groups.forEach((group, groupIndex) => {
+      drawExportMonthHeader(ctx, group.month, y);
+      y += 48;
+      group.items.forEach((race) => {
+        y += drawRaceRow(ctx, images, race, y, source.now) + 14;
+      });
+      y -= 14;
+      if (groupIndex < groups.length - 1) y += 24;
     });
   } else {
     drawEmptyExportRow(ctx, y, "暂无当前 / 未来大赛");
-    y += 86;
   }
 
   return new Promise<void>((resolve, reject) => {
@@ -1089,7 +1606,7 @@ async function exportIntelImage(source: ExportImageSource) {
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `uma-intel-${new Date().toISOString().slice(0, 10)}.png`;
+      link.download = `uma-intel-${section}-${new Date().toISOString().slice(0, 10)}.png`;
       link.click();
       URL.revokeObjectURL(url);
       resolve();
@@ -1097,7 +1614,667 @@ async function exportIntelImage(source: ExportImageSource) {
   });
 }
 
-function UpPreview({ cards }: { cards: GachaCard[] }) {
+const MOBILE_EXPORT_WIDTH = 1080;
+const MOBILE_EXPORT_MIN_HEIGHT = 1440;
+const MOBILE_EXPORT_MAX_HEIGHT = 1920;
+const MOBILE_EXPORT_CANVAS_HEIGHT = 2400;
+const MOBILE_EXPORT_PADDING = 48;
+const MOBILE_EXPORT_RIGHT = MOBILE_EXPORT_WIDTH - MOBILE_EXPORT_PADDING;
+const MOBILE_EXPORT_CONTENT_WIDTH =
+  MOBILE_EXPORT_WIDTH - MOBILE_EXPORT_PADDING * 2;
+const MOBILE_EXPORT_START_Y = 24;
+const MOBILE_EXPORT_BOTTOM = MOBILE_EXPORT_MAX_HEIGHT - 48;
+const MOBILE_GACHA_COLUMNS = 2;
+const MOBILE_GACHA_GAP = 16;
+const MOBILE_GACHA_TILE_WIDTH = Math.floor(
+  (MOBILE_EXPORT_CONTENT_WIDTH -
+    MOBILE_GACHA_GAP * (MOBILE_GACHA_COLUMNS - 1)) /
+    MOBILE_GACHA_COLUMNS,
+);
+const MOBILE_GACHA_ICON_SIZE = 62;
+const MOBILE_GACHA_ICON_GAP = 8;
+const MOBILE_GACHA_ICON_COLUMNS = 6;
+const MOBILE_EVENT_HEIGHT = 154;
+
+type MobileExportPage = {
+  canvas: HTMLCanvasElement;
+  ctx: CanvasRenderingContext2D;
+  contentBottom: number;
+};
+
+function createMobileExportPage(
+  _section: ExportImageSection,
+  _generatedAt: string,
+) {
+  const canvas = document.createElement("canvas");
+  canvas.width = MOBILE_EXPORT_WIDTH;
+  canvas.height = MOBILE_EXPORT_CANVAS_HEIGHT;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("Canvas is not available");
+  ctx.fillStyle = "#f5f6f8";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  return { canvas, ctx, contentBottom: 0 };
+}
+
+function drawMobileMonthHeader(
+  ctx: CanvasRenderingContext2D,
+  month: string,
+  y: number,
+) {
+  ctx.font = exportFont(30, 900);
+  ctx.fillStyle = "#18202b";
+  ctx.fillText(exportMonthLabel(month), MOBILE_EXPORT_PADDING, y + 34);
+  ctx.strokeStyle = "#cfd5df";
+  ctx.beginPath();
+  ctx.moveTo(MOBILE_EXPORT_PADDING, y + 50);
+  ctx.lineTo(MOBILE_EXPORT_RIGHT, y + 50);
+  ctx.stroke();
+  return 62;
+}
+
+function denseMobileGachaLayout(cardCount: number) {
+  const normalRows = Math.ceil(cardCount / MOBILE_GACHA_ICON_COLUMNS);
+  const lastCount = cardCount % MOBILE_GACHA_ICON_COLUMNS || MOBILE_GACHA_ICON_COLUMNS;
+  if (lastCount <= MOBILE_GACHA_ICON_COLUMNS - 2) {
+    return {
+      rows: normalRows,
+      lastRow: normalRows - 1,
+      lastRowStart: cardCount - lastCount,
+    };
+  }
+  const movedCount = lastCount - (MOBILE_GACHA_ICON_COLUMNS - 2);
+  return {
+    rows: normalRows + 1,
+    lastRow: normalRows,
+    lastRowStart: cardCount - movedCount,
+  };
+}
+
+function mobileGachaTitle(pool: GachaPool) {
+  return pool.name || poolSummary(pool, 10);
+}
+
+function mobileGachaTitleLineCount(pool: GachaPool) {
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return 1;
+  ctx.font = exportFont(26, 900);
+  const maxWidth = MOBILE_GACHA_TILE_WIDTH - 32;
+  let line = "";
+  let lines = 0;
+  Array.from(mobileGachaTitle(pool)).forEach((char) => {
+    const next = line + char;
+    if (ctx.measureText(next).width <= maxWidth || !line) {
+      line = next;
+    } else {
+      lines += 1;
+      line = char;
+    }
+  });
+  if (line) lines += 1;
+  return Math.max(1, lines);
+}
+
+function mobileGachaHeight(pool: GachaPool) {
+  const visibleCards = exportPoolCards(pool);
+  const compact = pool.cards.length <= 12;
+  const rows = compact
+    ? 1 + Math.ceil(Math.max(0, visibleCards.length - 4) / 6)
+    : denseMobileGachaLayout(visibleCards.length).rows;
+  const iconHeight = rows
+    ? rows * (MOBILE_GACHA_ICON_SIZE + MOBILE_GACHA_ICON_GAP) -
+      MOBILE_GACHA_ICON_GAP
+    : 0;
+  const titleExtra = (mobileGachaTitleLineCount(pool) - 1) * 30;
+  return 241 + titleExtra + Math.max(62, iconHeight);
+}
+
+function drawMobileGacha(
+  ctx: CanvasRenderingContext2D,
+  images: LoadedImages,
+  pool: GachaPool,
+  x: number,
+  y: number,
+  now: number,
+  alignedHeight?: number,
+) {
+  const width = MOBILE_GACHA_TILE_WIDTH;
+  const height = alignedHeight || mobileGachaHeight(pool);
+  const innerX = x + 16;
+  const innerRight = x + width - 16;
+  const active = pool.startTimestamp <= now && pool.endTimestamp >= now;
+  const accent = poolKind(pool) === "character" ? "#db2777" : "#2563eb";
+  const compact = pool.cards.length <= 12;
+  fillRounded(ctx, x, y, width, height, 12, "#ffffff", "#d7dce5");
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(x, y, width, height);
+  ctx.clip();
+  ctx.fillStyle = accent;
+  ctx.fillRect(x, y, 8, height);
+  const cover = poolCover(pool);
+  const freeDraw = exportFreeDrawText(pool);
+  drawImageFit(
+    ctx,
+    cover ? images.get(cover) : undefined,
+    innerX,
+    y + 14,
+    innerRight - innerX,
+    128,
+    "contain",
+  );
+  let badgeX = innerX;
+  if (active) {
+    badgeX +=
+      drawBadge(
+        ctx,
+        "进行中",
+        badgeX,
+        y + 112,
+        "#fee2e2",
+        "#b42318",
+        innerRight - badgeX,
+      ) + 10;
+  }
+  if (freeDraw) {
+    drawBadge(
+      ctx,
+      freeDraw,
+      badgeX,
+      y + 112,
+      "#fef3c7",
+      "#92400e",
+      innerRight - badgeX,
+    );
+  }
+  const titleLineCount = mobileGachaTitleLineCount(pool);
+  const titleExtra = (titleLineCount - 1) * 30;
+  ctx.font = exportFont(26, 900);
+  ctx.fillStyle = "#18202b";
+  drawTextLines(
+    ctx,
+    mobileGachaTitle(pool),
+    innerX,
+    y + 176,
+    innerRight - innerX,
+    30,
+    99,
+  );
+  ctx.font = exportFont(17, 700);
+  ctx.fillStyle = "#475569";
+  drawClippedText(
+    ctx,
+    poolSummary(pool, 8),
+    innerX,
+    y + 205 + titleExtra,
+    innerRight - innerX,
+  );
+  const gridX = innerX;
+  const gridY = y + 225 + titleExtra;
+  const gridColumns = MOBILE_GACHA_ICON_COLUMNS;
+
+  const visibleCards = exportPoolCards(pool);
+  const denseLayout = compact
+    ? null
+    : denseMobileGachaLayout(visibleCards.length);
+  visibleCards.forEach((card, index) => {
+    const compactFirstRow = compact && index < 4;
+    const compactLaterRow = compact && index >= 4;
+    const inReservedLastRow = Boolean(denseLayout && index >= denseLayout.lastRowStart);
+    const column = compactFirstRow
+      ? index + 2
+      : compactLaterRow
+        ? (index - 4) % gridColumns
+        : inReservedLastRow
+          ? index - (denseLayout?.lastRowStart || 0) + 2
+          : index % gridColumns;
+    const row = compactFirstRow
+      ? 0
+      : compactLaterRow
+        ? 1 + Math.floor((index - 4) / gridColumns)
+        : inReservedLastRow
+          ? denseLayout?.lastRow || 0
+          : Math.floor(index / gridColumns);
+    drawImageFit(
+      ctx,
+      card.image ? images.get(card.image) : undefined,
+      gridX + column * (MOBILE_GACHA_ICON_SIZE + MOBILE_GACHA_ICON_GAP),
+      gridY + row * (MOBILE_GACHA_ICON_SIZE + MOBILE_GACHA_ICON_GAP),
+      MOBILE_GACHA_ICON_SIZE,
+      MOBILE_GACHA_ICON_SIZE,
+      "contain",
+    );
+  });
+  if (compact && pool.cards.length > visibleCards.length) {
+    const rows = Math.ceil(visibleCards.length / gridColumns);
+    ctx.font = exportFont(15, 800);
+    ctx.fillStyle = "#5f6b7a";
+    ctx.fillText(
+      `另有 ${pool.cards.length - visibleCards.length} 项未展示`,
+      gridX,
+      gridY + rows * (MOBILE_GACHA_ICON_SIZE + MOBILE_GACHA_ICON_GAP) + 19,
+    );
+  }
+  ctx.fillStyle = "#5f6b7a";
+  if (compact) {
+    drawExportTimestamp(ctx, pool.start, innerX, gridY + 24, 22, 16);
+    drawExportTimestamp(ctx, pool.end, innerX, gridY + 52, 22, 16, "至");
+  } else {
+    const lastRowY =
+      gridY +
+      Math.max(0, denseLayout?.lastRow || 0) *
+        (MOBILE_GACHA_ICON_SIZE + MOBILE_GACHA_ICON_GAP);
+    drawExportTimestamp(ctx, pool.start, innerX, lastRowY + 24, 22, 16);
+    drawExportTimestamp(ctx, pool.end, innerX, lastRowY + 52, 22, 16, "至");
+    if (pool.cards.length > visibleCards.length) {
+      ctx.font = exportFont(14, 800);
+      ctx.fillStyle = "#5f6b7a";
+      drawClippedText(
+        ctx,
+        `另有 ${pool.cards.length - visibleCards.length} 项未展示`,
+        innerX + 4 * (MOBILE_GACHA_ICON_SIZE + MOBILE_GACHA_ICON_GAP),
+        lastRowY + 38,
+        2 * MOBILE_GACHA_ICON_SIZE + MOBILE_GACHA_ICON_GAP,
+      );
+    }
+  }
+  ctx.restore();
+  return height;
+}
+
+function drawMobileEvent(
+  ctx: CanvasRenderingContext2D,
+  images: LoadedImages,
+  event: ScheduleItem,
+  y: number,
+  now: number,
+) {
+  const x = MOBILE_EXPORT_PADDING;
+  const width = MOBILE_EXPORT_CONTENT_WIDTH;
+  const active = event.startTimestamp <= now && event.endTimestamp >= now;
+  const eventImage = scheduleExportImage(event);
+  fillRounded(ctx, x, y, width, MOBILE_EVENT_HEIGHT, 10, "#ffffff", "#d7dce5");
+  const textX = x + 22;
+  const imageX = x + width - 182;
+  if (eventImage) {
+    drawImageFit(
+      ctx,
+      images.get(eventImage),
+      imageX,
+      y + 16,
+      160,
+      122,
+      "contain",
+    );
+  }
+  const textRight = imageX - 18;
+  const badgeWidth = drawBadge(
+    ctx,
+    scheduleTypeLabel(event.type),
+    textX,
+    y + 12,
+    "#eef2f7",
+    "#18202b",
+    textRight - textX,
+  );
+  if (active) {
+    drawBadge(
+      ctx,
+      "进行中",
+      textX + badgeWidth + 10,
+      y + 12,
+      "#fee2e2",
+      "#b42318",
+      textRight - textX - badgeWidth - 10,
+    );
+  }
+  ctx.font = exportFont(25, 800);
+  ctx.fillStyle = "#18202b";
+  drawClippedText(ctx, event.name, textX, y + 70, textRight - textX);
+  ctx.fillStyle = "#5f6b7a";
+  drawExportTimestamp(ctx, event.start, textX, y + 106, 24, 18);
+  drawExportTimestamp(ctx, event.end, textX, y + 138, 24, 18, "至");
+  return MOBILE_EVENT_HEIGHT;
+}
+
+function mobileRaceHeight(race: ScheduleItem) {
+  const detailHeight = (race.details || []).reduce(
+    (height, detail) => height + (detail.conditionRates ? 90 : 66),
+    0,
+  );
+  const milestones = race.milestones || [];
+  const milestoneHeight = milestones.length
+    ? 38 + Math.ceil(milestones.length / 2) * 48
+    : 0;
+  return 122 + detailHeight + milestoneHeight;
+}
+
+function drawMobileRace(
+  ctx: CanvasRenderingContext2D,
+  images: LoadedImages,
+  race: ScheduleItem,
+  y: number,
+  now: number,
+) {
+  const x = MOBILE_EXPORT_PADDING;
+  const width = MOBILE_EXPORT_CONTENT_WIDTH;
+  const height = mobileRaceHeight(race);
+  const active = race.startTimestamp <= now && race.endTimestamp >= now;
+  fillRounded(ctx, x, y, width, height, 10, "#ffffff", "#d7dce5");
+  drawImageFit(
+    ctx,
+    race.image ? images.get(race.image) : undefined,
+    x + 20,
+    y + 18,
+    90,
+    72,
+    "contain",
+  );
+  const textX = x + 130;
+  ctx.font = exportFont(27, 900);
+  ctx.fillStyle = "#18202b";
+  const visibleName = drawClippedText(
+    ctx,
+    race.name,
+    textX,
+    y + 42,
+    MOBILE_EXPORT_RIGHT - textX - 18,
+  );
+  if (active) {
+    const badgeX = textX + ctx.measureText(visibleName).width + 14;
+    drawBadge(
+      ctx,
+      "进行中",
+      badgeX,
+      y + 16,
+      "#fee2e2",
+      "#b42318",
+      MOBILE_EXPORT_RIGHT - badgeX - 18,
+    );
+  }
+  ctx.fillStyle = "#5f6b7a";
+  drawExportTimeRange(ctx, race.start, race.end, textX, y + 78, 24, 18);
+  let cursorY = y + 104;
+  (race.details || []).forEach((detail) => {
+    const detailHeight = detail.conditionRates ? 90 : 66;
+    fillRounded(
+      ctx,
+      x + 18,
+      cursorY,
+      width - 36,
+      detailHeight - 8,
+      7,
+      "#f8fafc",
+      "#e5e9ef",
+    );
+    const season = seasonIcon(detail.seasonValue);
+    const weather = weatherIcon(detail.weatherValue);
+    if (season) drawImageFit(ctx, images.get(season), x + 30, cursorY + 15, 48, 24);
+    if (weather) drawImageFit(ctx, images.get(weather), x + 82, cursorY + 12, 34, 28);
+    ctx.font = exportFont(18, 700);
+    ctx.fillStyle = "#18202b";
+    drawTextLines(
+      ctx,
+      raceDetailText(detail),
+      x + 132,
+      cursorY + 25,
+      width - 166,
+      22,
+      detail.conditionRates ? 3 : 2,
+    );
+    cursorY += detailHeight;
+  });
+  const milestones = race.milestones || [];
+  if (milestones.length) {
+    ctx.font = exportFont(19, 900);
+    ctx.fillStyle = "#18202b";
+    ctx.fillText("时间节点", x + 20, cursorY + 26);
+    cursorY += 38;
+    const columnGap = 12;
+    const columnWidth = (width - 36 - columnGap) / 2;
+    milestones.forEach((milestone, index) => {
+      const column = index % 2;
+      const row = Math.floor(index / 2);
+      const milestoneX = x + 18 + column * (columnWidth + columnGap);
+      const milestoneY = cursorY + row * 48;
+      fillRounded(ctx, milestoneX, milestoneY, columnWidth, 40, 7, "#f8fafc", "#e5e9ef");
+      ctx.font = exportFont(16, 800);
+      ctx.fillStyle = "#18202b";
+      const labelWidth = Math.min(126, ctx.measureText(milestone.label).width + 20);
+      drawClippedText(
+        ctx,
+        milestone.label,
+        milestoneX + 10,
+        milestoneY + 26,
+        labelWidth - 10,
+      );
+      ctx.fillStyle = "#5f6b7a";
+      drawExportTimeRange(
+        ctx,
+        milestone.start,
+        milestone.end,
+        milestoneX + labelWidth,
+        milestoneY + 27,
+        16,
+        12,
+      );
+    });
+  }
+  return height;
+}
+
+type MobilePageEntry<T> = {
+  month: string;
+  item: T;
+  height: number;
+};
+
+function balanceMobilePages<T>(entries: MobilePageEntry<T>[], gap: number) {
+  const count = entries.length;
+  if (!count) return [];
+  const capacity = MOBILE_EXPORT_BOTTOM - MOBILE_EXPORT_START_Y;
+  const costs = Array.from({ length: count }, () =>
+    Array<number>(count).fill(Number.POSITIVE_INFINITY),
+  );
+  for (let start = 0; start < count; start += 1) {
+    let cost = 0;
+    let previousMonth = "";
+    for (let end = start; end < count; end += 1) {
+      const entry = entries[end];
+      if (end === start || entry.month !== previousMonth) cost += 62;
+      cost += entry.height + gap;
+      costs[start][end] = cost - gap;
+      previousMonth = entry.month;
+      if (costs[start][end] > capacity) break;
+    }
+  }
+
+  const minimumPages = Array<number>(count + 1).fill(Number.POSITIVE_INFINITY);
+  minimumPages[count] = 0;
+  for (let start = count - 1; start >= 0; start -= 1) {
+    for (let end = start; end < count; end += 1) {
+      if (costs[start][end] > capacity) break;
+      minimumPages[start] = Math.min(
+        minimumPages[start],
+        1 + minimumPages[end + 1],
+      );
+    }
+  }
+  const pageCount = minimumPages[0];
+  const scores = Array.from({ length: pageCount + 1 }, () =>
+    Array<number>(count + 1).fill(Number.POSITIVE_INFINITY),
+  );
+  const choices = Array.from({ length: pageCount + 1 }, () =>
+    Array<number>(count + 1).fill(-1),
+  );
+  scores[0][count] = 0;
+  for (let remainingPages = 1; remainingPages <= pageCount; remainingPages += 1) {
+    for (let start = count - 1; start >= 0; start -= 1) {
+      for (let end = start; end < count; end += 1) {
+        const cost = costs[start][end];
+        if (cost > capacity) break;
+        const tailScore = scores[remainingPages - 1][end + 1];
+        if (!Number.isFinite(tailScore)) continue;
+        const unused = capacity - cost;
+        const score = unused * unused + tailScore;
+        if (score < scores[remainingPages][start]) {
+          scores[remainingPages][start] = score;
+          choices[remainingPages][start] = end;
+        }
+      }
+    }
+  }
+
+  const pages: MobilePageEntry<T>[][] = [];
+  let start = 0;
+  let remainingPages = pageCount;
+  while (start < count && remainingPages > 0) {
+    const end = choices[remainingPages][start];
+    if (end < start) break;
+    pages.push(entries.slice(start, end + 1));
+    start = end + 1;
+    remainingPages -= 1;
+  }
+  return pages;
+}
+
+async function exportIntelMobileImages(
+  source: ExportImageSource,
+  section: ExportImageSection,
+) {
+  const images = await loadExportImages(collectExportImages(source, section));
+  const pages: MobileExportPage[] = [];
+  let page = createMobileExportPage(section, source.generatedAt);
+  pages.push(page);
+  let y = MOBILE_EXPORT_START_Y;
+  const newPage = () => {
+    page = createMobileExportPage(section, source.generatedAt);
+    pages.push(page);
+    y = MOBILE_EXPORT_START_Y;
+  };
+  const startMonth = (month: string, minimumItemHeight: number) => {
+    if (y + 62 + minimumItemHeight > MOBILE_EXPORT_BOTTOM && y > MOBILE_EXPORT_START_Y) {
+      newPage();
+    }
+    y += drawMobileMonthHeader(page.ctx, month, y);
+    page.contentBottom = Math.max(page.contentBottom, y);
+  };
+  const continueMonth = (month: string) => {
+    newPage();
+    y += drawMobileMonthHeader(page.ctx, month, y);
+    page.contentBottom = Math.max(page.contentBottom, y);
+  };
+
+  if (section === "gacha") {
+    gachaExportGroups(source.pools).forEach((group) => {
+      const firstHeight = group.items[0] ? mobileGachaHeight(group.items[0]) : 0;
+      startMonth(group.month, firstHeight);
+      let columnY = [y, y];
+      group.items.forEach((pool) => {
+        const height = mobileGachaHeight(pool);
+        let column = columnY[0] <= columnY[1] ? 0 : 1;
+        if (columnY[column] + height > MOBILE_EXPORT_BOTTOM) {
+          const otherColumn = column === 0 ? 1 : 0;
+          if (columnY[otherColumn] + height <= MOBILE_EXPORT_BOTTOM) {
+            column = otherColumn;
+          } else {
+            continueMonth(group.month);
+            columnY = [y, y];
+            column = 0;
+          }
+        }
+        const x =
+          MOBILE_EXPORT_PADDING +
+          column * (MOBILE_GACHA_TILE_WIDTH + MOBILE_GACHA_GAP);
+        drawMobileGacha(page.ctx, images, pool, x, columnY[column], source.now);
+        columnY[column] += height + 16;
+        page.contentBottom = Math.max(page.contentBottom, columnY[column] - 16);
+      });
+      y = Math.max(...columnY) + 18;
+    });
+  } else if (section === "events") {
+    const balancedPages = balanceMobilePages(
+      source.events.map((event) => ({
+        month: event.start.slice(0, 7),
+        item: event,
+        height: MOBILE_EVENT_HEIGHT,
+      })),
+      12,
+    );
+    balancedPages.forEach((entries, pageIndex) => {
+      if (pageIndex > 0) newPage();
+      let visibleMonth = "";
+      entries.forEach((entry) => {
+        if (entry.month !== visibleMonth) {
+          y += drawMobileMonthHeader(page.ctx, entry.month, y);
+          page.contentBottom = Math.max(page.contentBottom, y);
+          visibleMonth = entry.month;
+        }
+        y += drawMobileEvent(page.ctx, images, entry.item, y, source.now) + 12;
+        page.contentBottom = Math.max(page.contentBottom, y - 12);
+      });
+    });
+  } else {
+    const raceEntries = source.races.map((race) => ({
+        month: race.start.slice(0, 7),
+        item: race,
+        height: mobileRaceHeight(race),
+      }));
+    const racePages =
+      raceEntries.length > 3
+        ? [raceEntries.slice(0, 3), raceEntries.slice(3)]
+        : [raceEntries];
+    racePages.forEach((entries, pageIndex) => {
+      if (pageIndex > 0) newPage();
+      let visibleMonth = "";
+      entries.forEach((entry) => {
+        if (entry.month !== visibleMonth) {
+          y += drawMobileMonthHeader(page.ctx, entry.month, y);
+          page.contentBottom = Math.max(page.contentBottom, y);
+          visibleMonth = entry.month;
+        }
+        y += drawMobileRace(page.ctx, images, entry.item, y, source.now) + 16;
+        page.contentBottom = Math.max(page.contentBottom, y - 16);
+      });
+    });
+  }
+
+  const prefix = section === "gacha" ? "01-gacha" : section === "events" ? "02-events" : "03-races";
+  return pages.map(({ canvas, contentBottom }, index) => {
+    const outputHeight = Math.max(
+      MOBILE_EXPORT_MIN_HEIGHT,
+      Math.min(
+        section === "races"
+          ? MOBILE_EXPORT_CANVAS_HEIGHT
+          : MOBILE_EXPORT_MAX_HEIGHT,
+        Math.ceil(contentBottom + 48),
+      ),
+    );
+    const outputCanvas = document.createElement("canvas");
+    outputCanvas.width = MOBILE_EXPORT_WIDTH;
+    outputCanvas.height = outputHeight;
+    const outputCtx = outputCanvas.getContext("2d");
+    if (!outputCtx) throw new Error("Canvas is not available");
+    outputCtx.drawImage(
+      canvas,
+      0,
+      0,
+      MOBILE_EXPORT_WIDTH,
+      outputHeight,
+      0,
+      0,
+      MOBILE_EXPORT_WIDTH,
+      outputHeight,
+    );
+    return {
+      filename: `${prefix}-${String(index + 1).padStart(2, "0")}.png`,
+      dataUrl: outputCanvas.toDataURL("image/png"),
+    };
+  });
+}
+
+function UpPreview({ pool }: { pool: GachaPool }) {
+  const cards = poolPreviewCards(pool);
   const visibleCount = 7;
   return (
     <div class="intelUpPreview">
@@ -1106,7 +2283,7 @@ function UpPreview({ cards }: { cards: GachaCard[] }) {
           <CardImage card={card} />
         </div>
       ))}
-      {cards.length > visibleCount && (
+      {!pool.cutoffCardId && cards.length > visibleCount && (
         <em>+{cards.length - visibleCount}</em>
       )}
     </div>
@@ -1281,7 +2458,7 @@ function WeekPoolCard({
       <FreeDrawBadges pool={pool} />
       {!compact && (
         <div class="intelPoolBody">
-          <UpPreview cards={pool.cards} />
+          <UpPreview pool={pool} />
         </div>
       )}
     </button>
@@ -1816,7 +2993,7 @@ function GachaList({
               <PoolTimeRange pool={pool} />
               <FreeDrawBadges pool={pool} inline />
             </div>
-            <UpPreview cards={pool.cards} />
+            <UpPreview pool={pool} />
             {active && <span class="intelPoolStatus">进行中</span>}
           </button>
         );
@@ -2337,8 +3514,53 @@ export function IntelDashboard() {
     setSelectedKey(nextKey);
     setDetailKey(nextKey);
   };
+  const exportSource: ExportImageSource = {
+      pools: filteredPools.filter((pool) => pool.startTimestamp > now),
+      events: filteredEvents.filter((event) => event.startTimestamp > now),
+      races: races.filter((race) => race.startTimestamp > now),
+      now,
+      generatedAt: data.generatedAt,
+  };
+  const exportForAutomation = (section: ExportImageSection) =>
+    exportIntelImage(exportSource, section);
+  useEffect(() => {
+    const mobileWindow = window as typeof window & {
+      __exportIntelMobile?: (
+        section: ExportImageSection,
+      ) => Promise<Array<{ filename: string; dataUrl: string }>>;
+    };
+    const exporter = (section: ExportImageSection) =>
+      exportIntelMobileImages(exportSource, section);
+    mobileWindow.__exportIntelMobile = exporter;
+    return () => {
+      if (mobileWindow.__exportIntelMobile === exporter) {
+        delete mobileWindow.__exportIntelMobile;
+      }
+    };
+  }, [filteredPools, filteredEvents, races, now, data.generatedAt]);
   return (
     <main class="intelPage">
+      <button
+        id="intelExportGachaTrigger"
+        type="button"
+        hidden
+        aria-hidden="true"
+        onClick={() => exportForAutomation("gacha")}
+      />
+      <button
+        id="intelExportEventsTrigger"
+        type="button"
+        hidden
+        aria-hidden="true"
+        onClick={() => exportForAutomation("events")}
+      />
+      <button
+        id="intelExportRacesTrigger"
+        type="button"
+        hidden
+        aria-hidden="true"
+        onClick={() => exportForAutomation("races")}
+      />
       <div class="intelTopBar">
         <nav class="intelTabs" aria-label="情报分类">
           <button

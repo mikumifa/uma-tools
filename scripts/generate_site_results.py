@@ -1590,7 +1590,7 @@ def generate_gacha_data() -> list[dict]:
                 cd.chara_id,
                 scd.chara_id AS support_chara_id,
                 0 AS is_selectable,
-                NULL AS selection_text,
+                std.text AS selection_text,
                 0 AS stage_count,
                 ga.recommend_order AS display_order
             FROM gacha_available ga
@@ -1599,6 +1599,7 @@ def generate_gacha_data() -> list[dict]:
               ON ga.card_id = td.[index]
              AND td.category = CASE ga.card_type WHEN 1 THEN 4 WHEN 2 THEN 75 END
             LEFT JOIN text_data gtd ON gtd.category = 26 AND gtd.[index] = ga.gacha_id
+            LEFT JOIN text_data std ON std.category = 13 AND std.[index] = ga.gacha_id
             LEFT JOIN card_data cd ON ga.card_type = 1 AND cd.id = ga.card_id
             LEFT JOIN support_card_data scd ON ga.card_type = 2 AND scd.id = ga.card_id
             WHERE (
@@ -1660,6 +1661,21 @@ def generate_gacha_data() -> list[dict]:
         """,
         (SINCE_TS, PLACEHOLDER_END_TS, SINCE_TS, PLACEHOLDER_END_TS),
     ).fetchall()
+    character_release_dates = dict(
+        cur.execute(
+            """
+            SELECT ga.card_id, MIN(gd.start_date)
+            FROM gacha_available ga
+            JOIN gacha_data gd ON gd.id = ga.gacha_id
+            WHERE ga.card_type = 1
+              AND ga.is_pickup = 1
+            GROUP BY ga.card_id
+            """
+        ).fetchall()
+    )
+    support_release_dates = dict(
+        cur.execute("SELECT id, start_date FROM support_card_data").fetchall()
+    )
     conn.close()
 
     grouped: dict[tuple[int, str], dict] = {}
@@ -1670,6 +1686,10 @@ def generate_gacha_data() -> list[dict]:
         if is_selectable:
             pool_name = re.sub(r"\s*阶段1$", "", pool_name)
         selection_match = re.search(r"选择的(\d+)", selection_text or "")
+        range_match = re.search(
+            r"(\d{4}/\d{1,2}/\d{1,2})[～~](\d{4}/\d{1,2}/\d{1,2})登场",
+            selection_text or "",
+        )
         group = grouped.setdefault(
             key,
             {
@@ -1689,6 +1709,9 @@ def generate_gacha_data() -> list[dict]:
             group["selectableCount"] = group.get("selectableCount", 0) + 1
             group["selectionLimit"] = int(selection_match.group(1)) if selection_match else None
             group["stageCount"] = stage_count
+        if range_match:
+            group["rangeStart"] = range_match.group(1)
+            group["rangeEnd"] = range_match.group(2)
         if gacha_id in free_draws_by_gacha:
             group["freeDraws"] = free_draws_by_gacha[gacha_id]
 
@@ -1722,6 +1745,17 @@ def generate_gacha_data() -> list[dict]:
 
     for group in grouped.values():
         group["cards"].sort(key=lambda card: (-card["rarity"], -card["id"]))
+        if group.get("rangeEnd") and group["cards"]:
+            release_dates = (
+                character_release_dates
+                if group["type"] == "角色卡池"
+                else support_release_dates
+            )
+            cutoff_card = max(
+                group["cards"],
+                key=lambda card: (release_dates.get(card["id"], 0), card["id"]),
+            )
+            group["cutoffCardId"] = cutoff_card["id"]
 
     return sorted(grouped.values(), key=lambda item: (item["startTimestamp"], item["type"], item["id"]))
 

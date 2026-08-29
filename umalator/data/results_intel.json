@@ -1254,7 +1254,10 @@
           "rarity": 3,
           "image": "intel/support/support_card_s_30001.png"
         }
-      ]
+      ],
+      "rangeStart": "2023/8/30",
+      "rangeEnd": "2025/9/5",
+      "cutoffCardId": 30086
     },
     {
       "id": 50020,
@@ -1600,7 +1603,10 @@
           "rarity": 3,
           "image": "intel/support/support_card_s_30052.png"
         }
-      ]
+      ],
+      "rangeStart": "2025/9/16",
+      "rangeEnd": "2026/5/7",
+      "cutoffCardId": 30134
     },
     {
       "id": 30152,
@@ -2122,7 +2128,10 @@
           "rarity": 3,
           "image": "intel/chara/chr_icon_1001_100101_02.png"
         }
-      ]
+      ],
+      "rangeStart": "2023/8/30",
+      "rangeEnd": "2025/9/5",
+      "cutoffCardId": 106801
     },
     {
       "id": 50019,
@@ -2549,7 +2558,10 @@
           "rarity": 3,
           "image": "intel/chara/chr_icon_1005_100520_02.png"
         }
-      ]
+      ],
+      "rangeStart": "2025/9/16",
+      "rangeEnd": "2026/5/7",
+      "cutoffCardId": 105701
     },
     {
       "id": 30155,
@@ -3526,7 +3538,10 @@
           "rarity": 3,
           "image": "intel/support/support_card_s_30052.png"
         }
-      ]
+      ],
+      "rangeStart": "2025/8/4",
+      "rangeEnd": "2026/3/28",
+      "cutoffCardId": 30128
     },
     {
       "id": 50024,
@@ -3665,7 +3680,10 @@
           "rarity": 3,
           "image": "intel/support/support_card_s_30037.png"
         }
-      ]
+      ],
+      "rangeStart": "2026/4/1",
+      "rangeEnd": "2026/7/15",
+      "cutoffCardId": 30152
     },
     {
       "id": 30174,
@@ -4114,7 +4132,10 @@
           "rarity": 3,
           "image": "intel/chara/chr_icon_1005_100520_02.png"
         }
-      ]
+      ],
+      "rangeStart": "2025/8/4",
+      "rangeEnd": "2026/3/28",
+      "cutoffCardId": 106802
     },
     {
       "id": 50023,
@@ -4289,7 +4310,10 @@
           "rarity": 3,
           "image": "intel/chara/chr_icon_1012_101226_02.png"
         }
-      ]
+      ],
+      "rangeStart": "2026/4/1",
+      "rangeEnd": "2026/7/15",
+      "cutoffCardId": 105102
     },
     {
       "id": 30177,
@@ -9717,7 +9741,10 @@
           "rarity": 3,
           "image": "intel/support/support_card_s_30052.png"
         }
-      ]
+      ],
+      "rangeStart": "2025/8/4",
+      "rangeEnd": "2026/3/28",
+      "cutoffCardId": 30128
     },
     {
       "id": 50067,
@@ -10054,7 +10081,10 @@
           "rarity": 3,
           "image": "intel/support/support_card_s_30037.png"
         }
-      ]
+      ],
+      "rangeStart": "2026/4/1",
+      "rangeEnd": "2026/11/16",
+      "cutoffCardId": 30179
     },
     {
       "id": 50064,
@@ -10481,7 +10511,10 @@
           "rarity": 3,
           "image": "intel/chara/chr_icon_1005_100520_02.png"
         }
-      ]
+      ],
+      "rangeStart": "2025/8/4",
+      "rangeEnd": "2026/3/28",
+      "cutoffCardId": 106802
     },
     {
       "id": 50066,
@@ -10854,7 +10887,10 @@
           "rarity": 3,
           "image": "intel/chara/chr_icon_1002_100230_02.png"
         }
-      ]
+      ],
+      "rangeStart": "2026/4/1",
+      "rangeEnd": "2026/11/16",
+      "cutoffCardId": 106803
     },
     {
       "id": 50069,
@@ -27812,5 +27848,5 @@
       "isVoucherExchange": false
     }
   ],
-  "generatedAt": "2026-08-29 21:19:41"
+  "generatedAt": "2026-08-29 23:07:04"
 }
