@@ -51,7 +51,7 @@ type IntelData = {
 
 type IntelTab = "gacha" | "events" | "races" | "exchanges";
 type ViewMode = "calendar" | "list";
-type GachaKindFilter = "all" | "character" | "support";
+type GachaKindFilter = "all" | "character" | "support" | "paid" | "free";
 
 type ScheduleItem = {
   id: number;
@@ -418,8 +418,15 @@ function poolTypeClass(pool: GachaPool) {
   return pool.type.includes("角色") ? "characterPool" : "supportPool";
 }
 
-function poolKind(pool: GachaPool): Exclude<GachaKindFilter, "all"> {
+function poolKind(pool: GachaPool): "character" | "support" {
   return pool.type.includes("角色") ? "character" : "support";
+}
+
+function matchesGachaKind(pool: GachaPool, filter: GachaKindFilter) {
+  if (filter === "all") return true;
+  if (filter === "paid") return Boolean(pool.onlyOnce);
+  if (filter === "free") return Boolean(pool.freeDraws?.length);
+  return poolKind(pool) === filter;
 }
 
 function normalizedSearch(value: string) {
@@ -2894,6 +2901,8 @@ function GachaFilters({
         <option value="all">全部卡池</option>
         <option value="character">角色</option>
         <option value="support">支援卡</option>
+        <option value="paid">付费</option>
+        <option value="free">送抽</option>
       </select>
       <input
         value={query}
@@ -3393,9 +3402,7 @@ export function IntelDashboard() {
   const filteredPools = useMemo(() => {
     const query = normalizedSearch(gachaQuery);
     return pools.filter((pool) => {
-      if (gachaKindFilter !== "all" && poolKind(pool) !== gachaKindFilter) {
-        return false;
-      }
+      if (!matchesGachaKind(pool, gachaKindFilter)) return false;
       if (query && !poolSearchText(pool).includes(query)) return false;
       return true;
     });
