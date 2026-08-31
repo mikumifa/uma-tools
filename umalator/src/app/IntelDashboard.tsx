@@ -10,6 +10,7 @@ type GachaCard = {
   title: string;
   characterName: string;
   rarity: number;
+  singleDrawRate?: number | null;
   image?: string | null;
 };
 
@@ -323,6 +324,11 @@ function poolSummary(pool: GachaPool, max = 5) {
 function poolPreviewCards(pool: GachaPool) {
   const cutoffCard = pool.cards.find((card) => card.id === pool.cutoffCardId);
   return cutoffCard ? [cutoffCard] : pool.cards;
+}
+
+function singleDrawRateText(card: GachaCard) {
+  if (card.singleDrawRate == null) return "";
+  return `${card.singleDrawRate.toFixed(4).replace(/\.?0+$/, "")}%`;
 }
 
 function poolKey(pool: GachaPool) {
@@ -2546,6 +2552,11 @@ function DetailCard({ card }: { card: GachaCard }) {
         <strong>{card.characterName}</strong>
         {card.title && <span>{card.title}</span>}
         <small>{card.type === "support" ? "支援卡" : "角色"}</small>
+        {card.singleDrawRate != null && (
+          <small class="intelDetailRate">
+            普通单抽概率 {singleDrawRateText(card)}
+          </small>
+        )}
       </div>
     </div>
   );

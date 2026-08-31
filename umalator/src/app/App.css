@@ -1653,6 +1653,13 @@ a:hover {
   font-size: 12px;
 }
 
+.intelDetailCard .intelDetailRate {
+  margin-top: 4px;
+  color: var(--uma-text);
+  font-family: var(--uma-mono);
+  font-weight: 800;
+}
+
 .intelScheduleDetailPanel {
   width: min(920px, 100%);
 }

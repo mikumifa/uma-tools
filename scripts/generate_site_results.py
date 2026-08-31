@@ -1645,7 +1645,7 @@ def generate_gacha_data() -> list[dict]:
     rows = cur.execute(
         """
         SELECT
-            gacha_id, card_id, card_type, rarity, start_date, end_date,
+            gacha_id, card_id, card_type, rarity, odds, start_date, end_date,
             only_once_flag, card_name, gacha_name, chara_id,
             support_chara_id, is_selectable, selection_text, stage_count
         FROM (
@@ -1654,6 +1654,7 @@ def generate_gacha_data() -> list[dict]:
                 ga.card_id,
                 ga.card_type,
                 ga.rarity,
+                ga.odds,
                 gd.start_date,
                 gd.end_date,
                 gd.only_once_flag,
@@ -1695,6 +1696,7 @@ def generate_gacha_data() -> list[dict]:
                     WHEN 1 THEN cd.default_rarity
                     WHEN 2 THEN scd.rarity
                 END AS rarity,
+                NULL AS odds,
                 gd.start_date,
                 gd.end_date,
                 gd.only_once_flag,
@@ -1751,7 +1753,7 @@ def generate_gacha_data() -> list[dict]:
     conn.close()
 
     grouped: dict[tuple[int, str], dict] = {}
-    for gacha_id, card_id, card_type, rarity, start_ts, end_ts, only_once_flag, name, gacha_name, chara_id, support_chara_id, is_selectable, selection_text, stage_count in rows:
+    for gacha_id, card_id, card_type, rarity, odds, start_ts, end_ts, only_once_flag, name, gacha_name, chara_id, support_chara_id, is_selectable, selection_text, stage_count in rows:
         pool_type = "角色卡池" if card_type == 1 else "支援卡"
         key = (gacha_id, pool_type)
         pool_name = display_text(gacha_name or pool_type)
@@ -1811,6 +1813,7 @@ def generate_gacha_data() -> list[dict]:
                 "title": title,
                 "characterName": character_name,
                 "rarity": rarity,
+                "singleDrawRate": odds / 10_000 if odds is not None else None,
                 "image": image,
             }
         )
