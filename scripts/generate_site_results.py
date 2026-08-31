@@ -1805,18 +1805,18 @@ def generate_gacha_data() -> list[dict]:
                 support_src, f"intel/support/support_card_s_{card_id}.png"
             )
 
-        group["cards"].append(
-            {
-                "id": card_id,
-                "type": "character" if card_type == 1 else "support",
-                "name": name,
-                "title": title,
-                "characterName": character_name,
-                "rarity": rarity,
-                "singleDrawRate": odds / 10_000 if odds is not None else None,
-                "image": image,
-            }
-        )
+        card = {
+            "id": card_id,
+            "type": "character" if card_type == 1 else "support",
+            "name": name,
+            "title": title,
+            "characterName": character_name,
+            "rarity": rarity,
+            "image": image,
+        }
+        if odds is not None:
+            card["singleDrawRate"] = odds / 10_000
+        group["cards"].append(card)
 
     for group in grouped.values():
         group["cards"].sort(key=lambda card: (-card["rarity"], -card["id"]))
