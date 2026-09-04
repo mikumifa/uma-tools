@@ -27440,291 +27440,6 @@
   ],
   "exchanges": [
     {
-      "id": 4804265697,
-      "name": "训练员币兑换 · 追加",
-      "type": "物品兑换",
-      "start": "2026-09-01 12:00:00",
-      "end": "2026-10-01 11:59:59",
-      "startTimestamp": 1788235200,
-      "endTimestamp": 1790827199,
-      "image": "intel/item/item_icon_00134.png",
-      "drops": [
-        {
-          "image": "intel/piece/piece_icon_105601.png",
-          "name": "[运气高升☆祈福运来]待兼福来碎片",
-          "source": "兑换",
-          "label": "[运气高升☆祈福运来]待兼福来碎片 x50 · 兑换",
-          "rewardType": 102,
-          "rewardValue": 105601,
-          "amount": 50,
-          "isPiece": true
-        },
-        {
-          "image": "intel/piece/piece_icon_103501.png",
-          "name": "[Go To Winning！]胜利奖券碎片",
-          "source": "兑换",
-          "label": "[Go To Winning！]胜利奖券碎片 x50 · 兑换",
-          "rewardType": 102,
-          "rewardValue": 103501,
-          "amount": 50,
-          "isPiece": true
-        }
-      ],
-      "exchangeDetailPath": "intel/exchanges/exchange_8000_1788235200_1790827199.json",
-      "exchangeDetailCount": 2,
-      "isVoucherExchange": false
-    },
-    {
-      "id": 4611719191,
-      "name": "好友积分兑换 · 追加",
-      "type": "物品兑换",
-      "start": "2026-09-01 12:00:00",
-      "end": "2050-08-01 23:59:59",
-      "startTimestamp": 1788235200,
-      "endTimestamp": 2542982399,
-      "image": "intel/item/item_icon_00098.png",
-      "drops": [
-        {
-          "image": "intel/item/item_icon_00163.png",
-          "name": "稀有启发专业书",
-          "source": "兑换",
-          "label": "稀有启发专业书 x4 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 163,
-          "amount": 4,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00162.png",
-          "name": "稀有启发书",
-          "source": "兑换",
-          "label": "稀有启发书 x8 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 162,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00161.png",
-          "name": "启发专业书",
-          "source": "兑换",
-          "label": "启发专业书 x8 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 161,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00160.png",
-          "name": "启发书",
-          "source": "兑换",
-          "label": "启发书 x16 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 160,
-          "amount": 16,
-          "isPiece": false
-        }
-      ],
-      "exchangeDetailPath": "intel/exchanges/exchange_2000_1788235200_2542982399.json",
-      "exchangeDetailCount": 4,
-      "isVoucherExchange": false
-    },
-    {
-      "id": 3445108830,
-      "name": "彩虹徽章兑换 · 追加",
-      "type": "物品兑换",
-      "start": "2026-09-01 12:00:00",
-      "end": "2050-08-01 23:59:59",
-      "startTimestamp": 1788235200,
-      "endTimestamp": 2542982399,
-      "image": "intel/item/item_icon_00050.png",
-      "drops": [
-        {
-          "image": "intel/item/item_icon_00163.png",
-          "name": "稀有启发专业书",
-          "source": "兑换",
-          "label": "稀有启发专业书 x4 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 163,
-          "amount": 4,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00162.png",
-          "name": "稀有启发书",
-          "source": "兑换",
-          "label": "稀有启发书 x8 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 162,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00161.png",
-          "name": "启发专业书",
-          "source": "兑换",
-          "label": "启发专业书 x8 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 161,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00160.png",
-          "name": "启发书",
-          "source": "兑换",
-          "label": "启发书 x16 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 160,
-          "amount": 16,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00044.png",
-          "name": "梦想光辉",
-          "source": "兑换",
-          "label": "梦想光辉 x100 · 兑换",
-          "rewardType": 93,
-          "rewardValue": 44,
-          "amount": 100,
-          "isPiece": false
-        }
-      ],
-      "exchangeDetailPath": "intel/exchanges/exchange_7000_1788235200_2542982399.json",
-      "exchangeDetailCount": 5,
-      "isVoucherExchange": false
-    },
-    {
-      "id": 5444668042,
-      "name": "金徽章兑换 · 追加",
-      "type": "物品兑换",
-      "start": "2026-09-01 12:00:00",
-      "end": "2050-08-01 23:59:59",
-      "startTimestamp": 1788235200,
-      "endTimestamp": 2542982399,
-      "image": "intel/item/item_icon_00049.png",
-      "drops": [
-        {
-          "image": "intel/item/item_icon_00163.png",
-          "name": "稀有启发专业书",
-          "source": "兑换",
-          "label": "稀有启发专业书 x4 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 163,
-          "amount": 4,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00162.png",
-          "name": "稀有启发书",
-          "source": "兑换",
-          "label": "稀有启发书 x8 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 162,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00161.png",
-          "name": "启发专业书",
-          "source": "兑换",
-          "label": "启发专业书 x8 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 161,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00160.png",
-          "name": "启发书",
-          "source": "兑换",
-          "label": "启发书 x16 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 160,
-          "amount": 16,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00044.png",
-          "name": "梦想光辉",
-          "source": "兑换",
-          "label": "梦想光辉 x100 · 兑换",
-          "rewardType": 93,
-          "rewardValue": 44,
-          "amount": 100,
-          "isPiece": false
-        }
-      ],
-      "exchangeDetailPath": "intel/exchanges/exchange_7001_1788235200_2542982399.json",
-      "exchangeDetailCount": 5,
-      "isVoucherExchange": false
-    },
-    {
-      "id": 5149156279,
-      "name": "银徽章兑换 · 追加",
-      "type": "物品兑换",
-      "start": "2026-09-01 12:00:00",
-      "end": "2050-08-01 23:59:59",
-      "startTimestamp": 1788235200,
-      "endTimestamp": 2542982399,
-      "image": "intel/item/item_icon_00048.png",
-      "drops": [
-        {
-          "image": "intel/item/item_icon_00163.png",
-          "name": "稀有启发专业书",
-          "source": "兑换",
-          "label": "稀有启发专业书 x4 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 163,
-          "amount": 4,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00162.png",
-          "name": "稀有启发书",
-          "source": "兑换",
-          "label": "稀有启发书 x8 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 162,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00161.png",
-          "name": "启发专业书",
-          "source": "兑换",
-          "label": "启发专业书 x8 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 161,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00160.png",
-          "name": "启发书",
-          "source": "兑换",
-          "label": "启发书 x16 · 兑换",
-          "rewardType": 11,
-          "rewardValue": 160,
-          "amount": 16,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00044.png",
-          "name": "梦想光辉",
-          "source": "兑换",
-          "label": "梦想光辉 x100 · 兑换",
-          "rewardType": 93,
-          "rewardValue": 44,
-          "amount": 100,
-          "isPiece": false
-        }
-      ],
-      "exchangeDetailPath": "intel/exchanges/exchange_7002_1788235200_2542982399.json",
-      "exchangeDetailCount": 5,
-      "isVoucherExchange": false
-    },
-    {
       "id": 2021179188,
       "name": "2.5周年庆典 纪念 · 好友积分 · 追加",
       "type": "物品兑换",
@@ -27969,7 +27684,7 @@
     },
     {
       "id": 2165829016,
-      "name": "训练员币兑换 · 追加",
+      "name": "社团积分兑换 · 追加",
       "type": "物品兑换",
       "start": "2026-10-01 12:00:00",
       "end": "2026-11-01 11:59:59",
@@ -28084,7 +27799,7 @@
     },
     {
       "id": 3656498415,
-      "name": "训练员币兑换 · 追加",
+      "name": "社团积分兑换 · 追加",
       "type": "物品兑换",
       "start": "2026-11-01 12:00:00",
       "end": "2026-12-01 11:59:59",
@@ -28178,7 +27893,7 @@
     },
     {
       "id": 3443684000,
-      "name": "训练员币兑换 · 追加",
+      "name": "社团积分兑换 · 追加",
       "type": "物品兑换",
       "start": "2026-12-01 12:00:00",
       "end": "2027-01-01 11:59:59",
@@ -28725,7 +28440,7 @@
     },
     {
       "id": 2303662275,
-      "name": "训练员币兑换 · 追加",
+      "name": "社团积分兑换 · 追加",
       "type": "物品兑换",
       "start": "2027-01-01 12:00:00",
       "end": "2027-02-01 11:59:59",
@@ -28834,5 +28549,5 @@
       "isVoucherExchange": false
     }
   ],
-  "generatedAt": "2026-08-31 11:53:17"
+  "generatedAt": "2026-09-05 01:37:35"
 }

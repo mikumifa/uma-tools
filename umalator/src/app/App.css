@@ -1165,6 +1165,22 @@ a:hover {
   box-shadow: inset 0 0 0 2px rgba(15, 118, 110, 0.22);
 }
 
+.intelGachaListItem.characterPool.active {
+  border-color: #3b82f6 !important;
+  background: linear-gradient(100deg, #dbeafe 0%, #eff6ff 58%, #dbeafe 100%) !important;
+  box-shadow:
+    inset 0 0 0 2px rgb(37 99 235 / 28%),
+    0 3px 10px rgb(37 99 235 / 16%);
+}
+
+.intelGachaListItem.supportPool.active {
+  border-color: #10b981 !important;
+  background: linear-gradient(100deg, #d1fae5 0%, #ecfdf5 58%, #d1fae5 100%) !important;
+  box-shadow:
+    inset 0 0 0 2px rgb(5 150 105 / 28%),
+    0 3px 10px rgb(5 150 105 / 16%);
+}
+
 .intelGachaListItem > img {
   width: 100%;
   height: 84px;
@@ -1342,6 +1358,22 @@ a:hover {
 
 .intelWeekPool.active {
   box-shadow: inset 0 0 0 2px rgba(15, 118, 110, 0.22);
+}
+
+.intelWeekPool.characterPool.active {
+  border-color: #3b82f6 !important;
+  background: linear-gradient(100deg, #dbeafe 0%, #eff6ff 58%, #dbeafe 100%) !important;
+  box-shadow:
+    inset 0 0 0 2px rgb(37 99 235 / 28%),
+    0 3px 8px rgb(37 99 235 / 16%);
+}
+
+.intelWeekPool.supportPool.active {
+  border-color: #10b981 !important;
+  background: linear-gradient(100deg, #d1fae5 0%, #ecfdf5 58%, #d1fae5 100%) !important;
+  box-shadow:
+    inset 0 0 0 2px rgb(5 150 105 / 28%),
+    0 3px 8px rgb(5 150 105 / 16%);
 }
 
 .intelPoolStatus {

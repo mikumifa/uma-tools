@@ -12,7 +12,7 @@
       },
       "pay": {
         "image": "intel/item/item_icon_00134.png",
-        "name": "训练员币",
+        "name": "社团积分",
         "rewardType": 161,
         "rewardValue": 134,
         "amount": 600
@@ -33,7 +33,7 @@
       },
       "pay": {
         "image": "intel/item/item_icon_00134.png",
-        "name": "训练员币",
+        "name": "社团积分",
         "rewardType": 161,
         "rewardValue": 134,
         "amount": 600
