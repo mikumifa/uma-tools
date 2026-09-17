@@ -26224,8 +26224,71 @@
       "endTimestamp": 1780027199,
       "image": "intel/race/heroes_logo.png",
       "drops": [],
-      "details": [],
-      "milestones": []
+      "details": [
+        {
+          "label": "",
+          "raceName": "双鱼杯",
+          "courseId": 10504,
+          "track": "中山赛场",
+          "distance": 2000,
+          "ground": "草地",
+          "inout": "外圈",
+          "turn": "顺时针",
+          "season": "春天",
+          "weather": "晴天",
+          "condition": "良场地",
+          "seasonValue": 1,
+          "weatherValue": 1,
+          "conditionValue": 1,
+          "conditionRates": null,
+          "entryNum": 9,
+          "thumbnailId": 6003
+        }
+      ],
+      "milestones": [
+        {
+          "label": "报名",
+          "start": "2026-05-19 12:00:00",
+          "end": "2026-05-23 11:59:59",
+          "startTimestamp": 1779163200,
+          "endTimestamp": 1779508799
+        },
+        {
+          "label": "第1轮",
+          "start": "2026-05-23 12:00:00",
+          "end": "2026-05-25 11:59:59",
+          "startTimestamp": 1779508800,
+          "endTimestamp": 1779681599
+        },
+        {
+          "label": "第2轮",
+          "start": "2026-05-25 12:00:00",
+          "end": "2026-05-27 11:59:59",
+          "startTimestamp": 1779681600,
+          "endTimestamp": 1779854399
+        },
+        {
+          "label": "决赛准备",
+          "start": "2026-05-27 12:00:00",
+          "end": "2026-05-27 23:59:59",
+          "startTimestamp": 1779854400,
+          "endTimestamp": 1779897599
+        },
+        {
+          "label": "决赛",
+          "start": "2026-05-28 00:00:00",
+          "end": "2026-05-28 11:59:59",
+          "startTimestamp": 1779897600,
+          "endTimestamp": 1779940799
+        },
+        {
+          "label": "结果发表",
+          "start": "2026-05-28 12:00:00",
+          "end": "2026-05-29 11:59:59",
+          "startTimestamp": 1779940800,
+          "endTimestamp": 1780027199
+        }
+      ]
     },
     {
       "id": 3,
@@ -27440,176 +27503,6 @@
   ],
   "exchanges": [
     {
-      "id": 2021179188,
-      "name": "2.5周年庆典 纪念 · 好友积分 · 追加",
-      "type": "物品兑换",
-      "start": "2026-09-11 12:00:00",
-      "end": "2026-10-06 11:59:59",
-      "startTimestamp": 1789099200,
-      "endTimestamp": 1791259199,
-      "image": "intel/item/item_icon_00098.png",
-      "drops": [
-        {
-          "image": "intel/item/item_icon_00120.png",
-          "name": "外道抽选球",
-          "source": "兑换",
-          "label": "外道抽选球 x8 · 兑换",
-          "rewardType": 150,
-          "rewardValue": 120,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00119.png",
-          "name": "内道抽选球",
-          "source": "兑换",
-          "label": "内道抽选球 x8 · 兑换",
-          "rewardType": 150,
-          "rewardValue": 119,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00118.png",
-          "name": "雨天娃娃",
-          "source": "兑换",
-          "label": "雨天娃娃 x8 · 兑换",
-          "rewardType": 150,
-          "rewardValue": 118,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00117.png",
-          "name": "晴天娃娃",
-          "source": "兑换",
-          "label": "晴天娃娃 x8 · 兑换",
-          "rewardType": 150,
-          "rewardValue": 117,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00116.png",
-          "name": "干劲满溢甜点",
-          "source": "兑换",
-          "label": "干劲满溢甜点 x8 · 兑换",
-          "rewardType": 150,
-          "rewardValue": 116,
-          "amount": 8,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00034.png",
-          "name": "迷你胡萝卜果冻",
-          "source": "兑换",
-          "label": "迷你胡萝卜果冻 x10 · 兑换",
-          "rewardType": 21,
-          "rewardValue": 34,
-          "amount": 10,
-          "isPiece": false
-        }
-      ],
-      "exchangeDetailPath": "intel/exchanges/exchange_12008_1789099200_1791259199.json",
-      "exchangeDetailCount": 6,
-      "isVoucherExchange": false
-    },
-    {
-      "id": 4000941244,
-      "name": "2.5周年庆典 纪念 · 金币 · 追加",
-      "type": "物品兑换",
-      "start": "2026-09-11 12:00:00",
-      "end": "2026-10-06 11:59:59",
-      "startTimestamp": 1789099200,
-      "endTimestamp": 1791259199,
-      "image": "intel/item/item_icon_00059.png",
-      "drops": [
-        {
-          "image": "intel/item/item_icon_00120.png",
-          "name": "外道抽选球",
-          "source": "兑换",
-          "label": "外道抽选球 x15 · 兑换",
-          "rewardType": 150,
-          "rewardValue": 120,
-          "amount": 15,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00119.png",
-          "name": "内道抽选球",
-          "source": "兑换",
-          "label": "内道抽选球 x15 · 兑换",
-          "rewardType": 150,
-          "rewardValue": 119,
-          "amount": 15,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00118.png",
-          "name": "雨天娃娃",
-          "source": "兑换",
-          "label": "雨天娃娃 x15 · 兑换",
-          "rewardType": 150,
-          "rewardValue": 118,
-          "amount": 15,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00117.png",
-          "name": "晴天娃娃",
-          "source": "兑换",
-          "label": "晴天娃娃 x15 · 兑换",
-          "rewardType": 150,
-          "rewardValue": 117,
-          "amount": 15,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00116.png",
-          "name": "干劲满溢甜点",
-          "source": "兑换",
-          "label": "干劲满溢甜点 x15 · 兑换",
-          "rewardType": 150,
-          "rewardValue": 116,
-          "amount": 15,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00111.png",
-          "name": "协助卡招募券",
-          "source": "兑换",
-          "label": "协助卡招募券 x1 · 兑换",
-          "rewardType": 40,
-          "rewardValue": 111,
-          "amount": 1,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00041.png",
-          "name": "养成优俊少女招募券",
-          "source": "兑换",
-          "label": "养成优俊少女招募券 x1 · 兑换",
-          "rewardType": 40,
-          "rewardValue": 41,
-          "amount": 1,
-          "isPiece": false
-        },
-        {
-          "image": "intel/item/item_icon_00034.png",
-          "name": "迷你胡萝卜果冻",
-          "source": "兑换",
-          "label": "迷你胡萝卜果冻 x20 · 兑换",
-          "rewardType": 21,
-          "rewardValue": 34,
-          "amount": 20,
-          "isPiece": false
-        }
-      ],
-      "exchangeDetailPath": "intel/exchanges/exchange_12007_1789099200_1791259199.json",
-      "exchangeDetailCount": 8,
-      "isVoucherExchange": false
-    },
-    {
       "id": 3258141915,
       "name": "好友积分兑换 · 追加",
       "type": "物品兑换",
@@ -28549,5 +28442,5 @@
       "isVoucherExchange": false
     }
   ],
-  "generatedAt": "2026-09-05 01:37:35"
+  "generatedAt": "2026-09-17 19:40:05"
 }
