@@ -2180,6 +2180,280 @@ a:hover {
   font-weight: 700;
 }
 
+.intelPinnedHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 9px 12px;
+  border: 1px solid #f59e0b;
+  border-left: 4px solid #d97706;
+  border-radius: var(--uma-radius);
+  background: linear-gradient(90deg, #fffbeb 0%, #fef3c7 100%);
+  box-shadow: var(--uma-shadow);
+}
+
+.intelPinnedHeaderMain {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  min-width: 0;
+  flex: 1 1 320px;
+}
+
+.intelPinnedBadge {
+  flex: 0 0 auto;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #d97706;
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+.intelPinnedCat {
+  flex: 0 0 auto;
+  padding: 2px 7px;
+  border-radius: var(--uma-radius-sm);
+  background: rgba(180, 83, 9, 0.12);
+  color: #92400e;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.intelPinnedTitle {
+  min-width: 0;
+  max-width: 360px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #78350f;
+  font-size: 13.5px;
+}
+
+.intelPinnedRange {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  color: #92400e;
+  font-family: var(--uma-mono);
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.intelPinnedRangeCompact {
+  display: none;
+  color: #92400e;
+  font-family: var(--uma-mono);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.intelPinnedHeaderActions {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.intelPinnedActionBtn,
+.intelPinnedClearBtn {
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: var(--uma-radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.intelPinnedActionBtn {
+  border: 1px solid rgba(180, 83, 9, 0.32);
+  background: rgba(255, 255, 255, 0.85);
+  color: #92400e;
+}
+
+.intelPinnedActionBtn.selected {
+  border-color: #b45309;
+  background: #b45309;
+  color: #fff;
+}
+
+.intelPinnedClearBtn {
+  border: 1px solid rgba(185, 28, 28, 0.3);
+  background: #fff;
+  color: #b91c1c;
+}
+
+.intelPinBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 2px 7px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #475569;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+  z-index: 2;
+}
+
+.intelPinBtn:hover {
+  border-color: #d97706;
+  color: #b45309;
+  background: #fffbeb;
+}
+
+.intelPinBtn.pinned {
+  border-color: #d97706;
+  background: #f59e0b;
+  color: #fff;
+}
+
+.intelGachaListItem .intelPinBtn,
+.intelEventItem .intelPinBtn,
+.intelRaceItem .intelPinBtn {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+}
+
+.intelWeekPool .intelPinBtn {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  min-height: 20px;
+  padding: 1px 6px;
+  font-size: 10px;
+}
+
+.intelDetailHeader .intelPinBtn {
+  flex: 0 0 auto;
+  min-height: 30px;
+  padding: 4px 12px;
+  font-size: 12px;
+  margin-right: 34px;
+}
+
+.intelGachaListItem.pinned,
+.intelWeekPool.pinned,
+.intelEventItem.pinned,
+.intelEventTimelineItem.pinned,
+.intelRaceItem.pinned {
+  box-shadow: inset 0 0 0 3px #d97706, 0 0 0 2px #f59e0b, 0 4px 12px rgba(217, 119, 6, 0.28) !important;
+  border-color: #d97706 !important;
+  background-color: #fffbeb !important;
+}
+
+.intelGachaListItem.overlapsPin,
+.intelWeekPool.overlapsPin,
+.intelEventItem.overlapsPin,
+.intelRaceItem.overlapsPin {
+  border-color: #f59e0b !important;
+  box-shadow: inset 0 0 0 2px #f59e0b, 0 0 0 1px rgba(245, 158, 11, 0.45) !important;
+  background-image: linear-gradient(90deg, rgba(254, 243, 199, 0.55) 0%, rgba(255, 251, 235, 0.2) 100%);
+}
+
+.intelEventTimelineItem.overlapsPin .intelEventTimelineBar {
+  outline: 2px solid #f59e0b;
+  outline-offset: -1px;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.28);
+}
+
+.intelPinMarker {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 8px 12px;
+  border: 2px solid #d97706;
+  border-left: 6px solid #b45309;
+  border-radius: var(--uma-radius);
+  background: linear-gradient(90deg, #fef3c7 0%, #fde68a 100%);
+  color: #78350f;
+  font-size: 12.5px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.22);
+}
+
+.intelPinMarker.end {
+  border-color: #d97706;
+  border-left-color: #d97706;
+  background: linear-gradient(90deg, #fffbeb 0%, #fef3c7 100%);
+}
+
+.intelPinMarkerTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: #d97706;
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.intelPinMarker.end .intelPinMarkerTag {
+  background: #b45309;
+}
+
+.intelPinMarkerDate {
+  font-family: var(--uma-mono);
+  font-weight: 800;
+  color: #92400e;
+}
+
+.intelPinMarkerTitle {
+  min-width: 0;
+  flex: 1 1 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #78350f;
+}
+
+.intelDayCell.pinRange {
+  background: #fef3c7;
+  color: #92400e;
+  box-shadow: inset 0 3px 0 #f59e0b;
+}
+
+.intelPinnedWeekBar {
+  margin-left: var(--segment-start-inset, 0);
+  margin-right: var(--segment-end-inset, 0);
+  padding: 2px 8px;
+  border: 1px solid #f59e0b;
+  border-left: 4px solid #d97706;
+  border-radius: var(--uma-radius-sm);
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 11px;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.intelEventTimelineItem.pinnedTimelineRef {
+  border-left-color: #d97706;
+  background: #fffbeb;
+}
+
+.intelEventTimelineBar.pinnedRefBar {
+  border-left-color: #d97706;
+  background: #fde68a;
+  color: #78350f;
+}
+
 #topPane {
   display: grid;
   grid-template-columns: minmax(320px, var(--sidebar-width, 380px)) minmax(0, 1fr);

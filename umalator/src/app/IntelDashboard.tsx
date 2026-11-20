@@ -76,6 +76,26 @@ type ViewMode = "calendar" | "list";
 type GachaKindFilter = "all" | "character" | "support" | "paid" | "free";
 type ForecastTimeBasis = "estimated" | "jp";
 
+type PinnedRef = {
+  id: string;
+  tab: IntelTab;
+  categoryLabel: string;
+  title: string;
+};
+
+type PinnedScheduleItem = PinnedRef & {
+  start: string;
+  end: string;
+  startTimestamp: number;
+  endTimestamp: number;
+  jpStart?: string;
+  jpEnd?: string;
+  secondaryRefLabel?: string;
+  primaryTimePrefix?: string;
+  pool?: GachaPool;
+  scheduleItem?: ScheduleItem;
+};
+
 type ScheduleItem = {
   id: number;
   name: string;
@@ -369,6 +389,175 @@ function scheduleDateLabel(item: ScheduleItem, isForecast = false) {
     item.end,
     isForecast,
     isForecast ? item.primaryTimePrefix : undefined,
+  );
+}
+
+function rangesOverlap(
+  aStart: number,
+  aEnd: number,
+  bStart: number,
+  bEnd: number,
+) {
+  return aStart <= bEnd && aEnd >= bStart;
+}
+
+function readStoredPin(storageKey: string): PinnedRef | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(storageKey);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as PinnedRef;
+    if (parsed && typeof parsed.id === "string" && parsed.tab) {
+      return parsed;
+    }
+  } catch {
+    // ignore storage errors
+  }
+  return null;
+}
+
+function writeStoredPin(storageKey: string, value: PinnedRef | null) {
+  if (typeof window === "undefined") return;
+  try {
+    if (value) {
+      window.localStorage.setItem(storageKey, JSON.stringify(value));
+    } else {
+      window.localStorage.removeItem(storageKey);
+    }
+  } catch {
+    // ignore storage errors
+  }
+}
+
+function PinToggle({
+  pinned,
+  onToggle,
+  compact = false,
+}: {
+  pinned: boolean;
+  onToggle: () => void;
+  compact?: boolean;
+}) {
+  const handleTrigger = (event: Event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    onToggle();
+  };
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleTrigger(event);
+    }
+  };
+  return (
+    <span
+      role="button"
+      tabIndex={0}
+      class={`intelPinBtn ${pinned ? "pinned" : ""} ${compact ? "compact" : ""}`}
+      title={pinned ? "取消Pin" : "Pin此项以对比时间范围"}
+      aria-pressed={pinned}
+      onClick={handleTrigger}
+      onKeyDown={handleKeyDown}
+    >
+      {pinned ? "📌 已Pin" : "📌"}
+    </span>
+  );
+}
+
+function PinnedHeaderBar({
+  pinned,
+  isForecast,
+  onLocate,
+  onClear,
+}: {
+  pinned: PinnedScheduleItem;
+  isForecast: boolean;
+  onLocate: () => void;
+  onClear: () => void;
+}) {
+  const rangeText = dateLabel(
+    pinned.start,
+    pinned.end,
+    isForecast,
+    isForecast ? pinned.primaryTimePrefix : undefined,
+  );
+  const refText = isForecast
+    ? (pinned.secondaryRefLabel ??
+        refRangeText(pinned.jpStart, pinned.jpEnd, "日服"))
+    : "";
+  return (
+    <section class="intelPinnedHeader" aria-label="已Pin日程">
+      <div class="intelPinnedHeaderMain">
+        <span class="intelPinnedBadge">📌 已Pin</span>
+        <span class="intelPinnedCat">{pinned.categoryLabel}</span>
+        <strong class="intelPinnedTitle" title={pinned.title}>
+          {pinned.title}
+        </strong>
+        <time class="intelPinnedRange">
+          <span>开始 {pinned.start.slice(0, 16)}</span>
+          <span>结束 {isPermanentEnd(pinned.end) ? "长期有效" : pinned.end.slice(0, 16)}</span>
+          {refText && <small class="intelJpRefTime">({refText})</small>}
+        </time>
+        <span class="intelPinnedRangeCompact">{rangeText}</span>
+      </div>
+      <div class="intelPinnedHeaderActions">
+        <button
+          type="button"
+          class="intelPinnedActionBtn"
+          onClick={onLocate}
+          title="定位到当前页面中的Pin标记位置"
+        >
+          定位
+        </button>
+        <button
+          type="button"
+          class="intelPinnedClearBtn"
+          onClick={onClear}
+          title="取消Pin"
+        >
+          取消Pin ×
+        </button>
+      </div>
+    </section>
+  );
+}
+
+function PinTimeMarker({
+  kind,
+  pinned,
+  isForecast = false,
+}: {
+  kind: "start" | "end";
+  pinned: PinnedScheduleItem;
+  isForecast?: boolean;
+}) {
+  const timeStr =
+    kind === "start"
+      ? pinned.start.slice(0, 16)
+      : isPermanentEnd(pinned.end)
+        ? "长期有效"
+        : pinned.end.slice(0, 16);
+  const jpTimeStr =
+    isForecast && kind === "start" && pinned.jpStart
+      ? pinned.jpStart.slice(0, 10)
+      : isForecast && kind === "end" && pinned.jpEnd
+        ? isPermanentEnd(pinned.jpEnd)
+          ? "长期"
+          : pinned.jpEnd.slice(0, 10)
+        : "";
+  return (
+    <div
+      class={`intelPinMarker ${kind}`}
+      data-pin-marker={kind}
+      role="status"
+      aria-label={`Pin${kind === "start" ? "开始" : "结束"} ${timeStr}`}
+    >
+      <span class="intelPinMarkerTag">
+        📌 Pin{kind === "start" ? "开始" : "结束"}
+      </span>
+      <time>{timeStr}</time>
+      {jpTimeStr && <small class="intelJpRefTime">({jpTimeStr})</small>}
+      <strong title={pinned.title}>{pinned.title}</strong>
+    </div>
   );
 }
 
@@ -2656,6 +2845,9 @@ function WeekPoolCard({
   onSelect,
   hideMissingImages = false,
   isForecast = false,
+  pinnedId,
+  pinnedItem,
+  onTogglePin,
 }: {
   segment: WeekPoolSegment;
   selected: boolean;
@@ -2663,6 +2855,9 @@ function WeekPoolCard({
   onSelect: (pool: GachaPool) => void;
   hideMissingImages?: boolean;
   isForecast?: boolean;
+  pinnedId?: string;
+  pinnedItem?: PinnedScheduleItem | null;
+  onTogglePin?: (pool: GachaPool) => void;
 }) {
   const pool = segment.pool;
   const active = pool.startTimestamp <= now && pool.endTimestamp >= now;
@@ -2672,11 +2867,22 @@ function WeekPoolCard({
   const hasPreviewImages = poolPreviewCards(pool)
     .slice(0, 7)
     .some((card) => Boolean(card.image));
+  const isPinned = pinnedId === `gacha:${poolKey(pool)}`;
+  const overlapsPin = Boolean(
+    pinnedItem &&
+      !isPinned &&
+      rangesOverlap(
+        pool.startTimestamp,
+        pool.endTimestamp,
+        pinnedItem.startTimestamp,
+        pinnedItem.endTimestamp,
+      ),
+  );
 
   return (
     <button
       type="button"
-      class={`intelWeekPool ${poolTypeClass(pool)} ${!cover ? "noCover" : ""} ${compact ? "compact" : ""} ${selected ? "selected" : ""} ${active ? "active" : ""} ${upcoming ? "upcoming" : ""}`}
+      class={`intelWeekPool ${poolTypeClass(pool)} ${!cover ? "noCover" : ""} ${compact ? "compact" : ""} ${selected ? "selected" : ""} ${active ? "active" : ""} ${upcoming ? "upcoming" : ""} ${isPinned ? "pinned" : ""} ${overlapsPin ? "overlapsPin" : ""}`}
       onClick={() => onSelect(pool)}
       style={{
         gridColumn: `${segment.columnStart} / ${segment.columnEnd}`,
@@ -2703,6 +2909,13 @@ function WeekPoolCard({
           <PoolTimeRange pool={pool} isForecast={isForecast} />
         </div>
       )}
+      {onTogglePin && (
+        <PinToggle
+          pinned={isPinned}
+          compact
+          onToggle={() => onTogglePin(pool)}
+        />
+      )}
       {active && <span class="intelPoolStatus">进行中</span>}
       <FreeDrawBadges pool={pool} />
       {!compact && (!hideMissingImages || hasPreviewImages) && (
@@ -2722,6 +2935,8 @@ function MonthCalendar({
   onSelect,
   hideMissingImages = false,
   isForecast = false,
+  pinnedItem,
+  onTogglePin,
 }: {
   month: string;
   pools: GachaPool[];
@@ -2730,6 +2945,8 @@ function MonthCalendar({
   onSelect: (pool: GachaPool) => void;
   hideMissingImages?: boolean;
   isForecast?: boolean;
+  pinnedItem?: PinnedScheduleItem | null;
+  onTogglePin?: (pool: GachaPool) => void;
 }) {
   const rows = weekRows(month);
   const weekdays = ["一", "二", "三", "四", "五", "六", "日"];
@@ -2745,14 +2962,60 @@ function MonthCalendar({
         {rows.map((days, rowIndex) => {
           const weekPools = poolsForWeek(days, pools);
           const tracks = packWeekTracks(days, weekPools);
+          const weekStart = days[0].start;
+          const weekEnd = days[days.length - 1].end;
+          let pinSpan: {
+            columnStart: number;
+            columnEnd: number;
+            startInset: number;
+            endInset: number;
+          } | null = null;
+          if (
+            pinnedItem &&
+            pinnedItem.startTimestamp < weekEnd &&
+            pinnedItem.endTimestamp >= weekStart
+          ) {
+            const visibleStart = Math.max(pinnedItem.startTimestamp, weekStart);
+            const visibleEnd = Math.min(pinnedItem.endTimestamp, weekEnd);
+            const startIndex = days.findIndex(
+              (day) => visibleStart < day.end && visibleEnd >= day.start,
+            );
+            let endIndex = -1;
+            for (let i = days.length - 1; i >= 0; i -= 1) {
+              if (visibleStart < days[i].end && visibleEnd >= days[i].start) {
+                endIndex = i;
+                break;
+              }
+            }
+            if (startIndex >= 0 && endIndex >= 0) {
+              const spanDays = endIndex - startIndex + 1;
+              pinSpan = {
+                columnStart: startIndex + 1,
+                columnEnd: endIndex + 2,
+                startInset:
+                  (clamp01((visibleStart - days[startIndex].start) / 86400) /
+                    spanDays) *
+                  100,
+                endInset:
+                  (clamp01((days[endIndex].end - visibleEnd) / 86400) /
+                    spanDays) *
+                  100,
+              };
+            }
+          }
           return (
             <div class="intelCalendarWeek" key={`${month}-${rowIndex}`}>
               <div class="intelWeekDays">
                 {days.map((day, index) => {
                   const today = day.start <= now && now < day.end;
+                  const inPin = Boolean(
+                    pinnedItem &&
+                      day.start <= pinnedItem.endTimestamp &&
+                      day.end > pinnedItem.startTimestamp,
+                  );
                   return (
                     <div
-                      class={`intelDayCell ${!day.inMonth ? "outside" : ""} ${today ? "today" : ""}`}
+                      class={`intelDayCell ${!day.inMonth ? "outside" : ""} ${today ? "today" : ""} ${inPin ? "pinRange" : ""}`}
                       key={`${month}-${rowIndex}-${index}`}
                     >
                       <span>{day.day}</span>
@@ -2761,6 +3024,26 @@ function MonthCalendar({
                 })}
               </div>
               <div class="intelWeekPools">
+                {pinSpan && pinnedItem && (
+                  <div class="intelWeekTrack">
+                    <div
+                      class="intelPinnedWeekBar"
+                      style={{
+                        gridColumn: `${pinSpan.columnStart} / ${pinSpan.columnEnd}`,
+                        "--segment-start-inset": `${pinSpan.startInset}%`,
+                        "--segment-end-inset": `${pinSpan.endInset}%`,
+                      }}
+                      title={`${pinnedItem.title} (${pinnedItem.start.slice(5, 16)} ~ ${isPermanentEnd(pinnedItem.end) ? "长期有效" : pinnedItem.end.slice(5, 16)})`}
+                    >
+                      <span>
+                        📌 {pinnedItem.title} · {pinnedItem.start.slice(5, 16)} ~{" "}
+                        {isPermanentEnd(pinnedItem.end)
+                          ? "长期"
+                          : pinnedItem.end.slice(5, 16)}
+                      </span>
+                    </div>
+                  </div>
+                )}
                 {tracks.map((track, trackIndex) => (
                   <div
                     class="intelWeekTrack"
@@ -2777,6 +3060,9 @@ function MonthCalendar({
                         onSelect={onSelect}
                         hideMissingImages={hideMissingImages}
                         isForecast={isForecast}
+                        pinnedId={pinnedItem?.id}
+                        pinnedItem={pinnedItem}
+                        onTogglePin={onTogglePin}
                         key={`${month}-${rowIndex}-${trackIndex}-${poolKey(segment.pool)}`}
                       />
                     ))}
@@ -2830,11 +3116,15 @@ function GachaDetail({
   onClose,
   hideMissingImages = false,
   isForecast = false,
+  isPinned = false,
+  onTogglePin,
 }: {
   pool: GachaPool;
   onClose: () => void;
   hideMissingImages?: boolean;
   isForecast?: boolean;
+  isPinned?: boolean;
+  onTogglePin?: () => void;
 }) {
   return (
     <div
@@ -2862,6 +3152,9 @@ function GachaDetail({
             <h2>{poolSummary(pool, 6)}</h2>
             <PoolTimeRange pool={pool} isForecast={isForecast} />
           </div>
+          {onTogglePin && (
+            <PinToggle pinned={isPinned} onToggle={onTogglePin} />
+          )}
         </div>
         <FreeDrawSchedule pool={pool} />
         {pool.bannerImage && (
@@ -2977,6 +3270,8 @@ function ScheduleDetail({
   onClose,
   hideMissingImages = false,
   isForecast = false,
+  isPinned = false,
+  onTogglePin,
 }: {
   item: ScheduleItem;
   title: string;
@@ -2986,6 +3281,8 @@ function ScheduleDetail({
   onClose: () => void;
   hideMissingImages?: boolean;
   isForecast?: boolean;
+  isPinned?: boolean;
+  onTogglePin?: () => void;
 }) {
   const details = exchangeDetails || item.exchangeDetails || [];
   const hasExchangeDetails = Boolean(details.length);
@@ -3048,6 +3345,9 @@ function ScheduleDetail({
             <p>{scheduleDateLabel(item, isForecast)}</p>
             {jpRef && <p class="intelJpRefTime">{jpRef}</p>}
           </div>
+          {onTogglePin && (
+            <PinToggle pinned={isPinned} onToggle={onTogglePin} />
+          )}
         </div>
         {item.image && (
           <img
@@ -3290,47 +3590,114 @@ function GachaList({
   onSelect,
   hideMissingImages = false,
   isForecast = false,
+  pinnedId,
+  pinnedItem,
+  onTogglePin,
 }: {
   pools: GachaPool[];
   now: number;
   onSelect: (pool: GachaPool) => void;
   hideMissingImages?: boolean;
   isForecast?: boolean;
+  pinnedId?: string;
+  pinnedItem?: PinnedScheduleItem | null;
+  onTogglePin?: (pool: GachaPool) => void;
 }) {
+  const showEndMarker = Boolean(
+    pinnedItem && !isPermanentEnd(pinnedItem.end),
+  );
+  let startInserted = false;
+  let endInserted = false;
+
   return (
     <div class="intelGachaList">
       {pools.map((pool) => {
+        const markers: Array<"start" | "end"> = [];
+        if (pinnedItem) {
+          if (!startInserted && pool.startTimestamp >= pinnedItem.startTimestamp) {
+            markers.push("start");
+            startInserted = true;
+          }
+          if (
+            showEndMarker &&
+            !endInserted &&
+            pool.startTimestamp > pinnedItem.endTimestamp
+          ) {
+            markers.push("end");
+            endInserted = true;
+          }
+        }
         const active = pool.startTimestamp <= now && pool.endTimestamp >= now;
         const upcoming = pool.startTimestamp > now;
         const cover = poolCover(pool, hideMissingImages);
+        const isPinned = pinnedId === `gacha:${poolKey(pool)}`;
+        const overlapsPin = Boolean(
+          pinnedItem &&
+            !isPinned &&
+            rangesOverlap(
+              pool.startTimestamp,
+              pool.endTimestamp,
+              pinnedItem.startTimestamp,
+              pinnedItem.endTimestamp,
+            ),
+        );
         return (
-          <button
-            type="button"
-            class={`intelGachaListItem ${poolTypeClass(pool)} ${!cover ? "noCover" : ""} ${active ? "active" : ""} ${upcoming ? "upcoming" : ""}`}
-            aria-label={`${pool.start} 至 ${pool.end} ${poolSummary(pool, 8)}`}
-            onClick={() => onSelect(pool)}
-            key={poolKey(pool)}
-          >
-            {cover && (
-              <img
-                src={assetUrl(cover)}
-                alt={`${pool.type}封面`}
-                loading="lazy"
-                referrerPolicy="no-referrer"
-                onError={hideBrokenImage}
+          <Fragment key={poolKey(pool)}>
+            {markers.map((kind) => (
+              <PinTimeMarker
+                kind={kind}
+                pinned={pinnedItem!}
+                isForecast={isForecast}
+                key={`pin-${kind}`}
               />
-            )}
-            <div class="intelGachaListMeta">
-              <strong>{pool.name || pool.type}</strong>
-              <span>{poolSummary(pool, 12)}</span>
-              <PoolTimeRange pool={pool} isForecast={isForecast} />
-              <FreeDrawBadges pool={pool} inline />
-            </div>
-            <UpPreview pool={pool} hideMissingImages={hideMissingImages} />
-            {active && <span class="intelPoolStatus">进行中</span>}
-          </button>
+            ))}
+            <button
+              type="button"
+              class={`intelGachaListItem ${poolTypeClass(pool)} ${!cover ? "noCover" : ""} ${active ? "active" : ""} ${upcoming ? "upcoming" : ""} ${isPinned ? "pinned" : ""} ${overlapsPin ? "overlapsPin" : ""}`}
+              aria-label={`${pool.start} 至 ${pool.end} ${poolSummary(pool, 8)}`}
+              onClick={() => onSelect(pool)}
+            >
+              {cover && (
+                <img
+                  src={assetUrl(cover)}
+                  alt={`${pool.type}封面`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  onError={hideBrokenImage}
+                />
+              )}
+              <div class="intelGachaListMeta">
+                <strong>{pool.name || pool.type}</strong>
+                <span>{poolSummary(pool, 12)}</span>
+                <PoolTimeRange pool={pool} isForecast={isForecast} />
+                <FreeDrawBadges pool={pool} inline />
+              </div>
+              <UpPreview pool={pool} hideMissingImages={hideMissingImages} />
+              {onTogglePin && (
+                <PinToggle
+                  pinned={isPinned}
+                  onToggle={() => onTogglePin(pool)}
+                />
+              )}
+              {active && <span class="intelPoolStatus">进行中</span>}
+            </button>
+          </Fragment>
         );
       })}
+      {pinnedItem && !startInserted && (
+        <PinTimeMarker
+          kind="start"
+          pinned={pinnedItem}
+          isForecast={isForecast}
+        />
+      )}
+      {pinnedItem && showEndMarker && !endInserted && (
+        <PinTimeMarker
+          kind="end"
+          pinned={pinnedItem}
+          isForecast={isForecast}
+        />
+      )}
     </div>
   );
 }
@@ -3387,63 +3754,137 @@ function EventsSchedule({
   now,
   onSelect,
   isForecast = false,
+  pinPrefix = "events",
+  pinnedId,
+  pinnedItem,
+  onTogglePin,
 }: {
   events: ScheduleItem[];
   now: number;
   onSelect?: (event: ScheduleItem) => void;
   isForecast?: boolean;
+  pinPrefix?: "events" | "exchanges";
+  pinnedId?: string;
+  pinnedItem?: PinnedScheduleItem | null;
+  onTogglePin?: (item: ScheduleItem) => void;
 }) {
   const groups = eventMonthGroups(events);
-  const months = Object.keys(groups).sort();
+  const startMonth = pinnedItem ? monthLabel(pinnedItem.start) : "";
+  const endMonth =
+    pinnedItem && !isPermanentEnd(pinnedItem.end)
+      ? monthLabel(pinnedItem.end)
+      : "";
+  const monthSet = new Set(Object.keys(groups));
+  if (startMonth) monthSet.add(startMonth);
+  if (endMonth) monthSet.add(endMonth);
+  const months = Array.from(monthSet).sort();
+
   return (
     <div class="intelEventMonths">
-      {months.map((month) => (
-        <section class="intelEventMonth" key={month}>
-          <h3>{month}</h3>
-          <div class="intelEventList">
-            {groups[month].map((event) => {
-              const active =
-                event.startTimestamp <= now && event.endTimestamp >= now;
-              const jpRef = isForecast
-                ? (event.secondaryRefLabel ??
-                    refRangeText(event.jpStart, event.jpEnd, "日服"))
-                : "";
-              return (
-                <article
-                  class={`intelEventItem ${event.image ? "hasImage" : ""} ${scheduleImageClass(event.image)} ${scheduleTypeClass(event.type)} ${active ? "active" : ""}`}
-                  role={onSelect ? "button" : undefined}
-                  tabIndex={onSelect ? 0 : undefined}
-                  onClick={() => onSelect?.(event)}
-                  onKeyDown={
-                    onSelect
-                      ? scheduleKeyHandler(() => onSelect(event))
-                      : undefined
-                  }
-                  key={event.id}
-                >
-                  {event.image && (
-                    <img
-                      class={scheduleImageClass(event.image)}
-                      src={assetUrl(event.image)}
-                      alt=""
-                      loading="lazy"
-                      referrerPolicy="no-referrer"
-                      onError={hideBrokenImage}
-                    />
-                  )}
-                  <strong>{event.name}</strong>
-                  <time>
-                    {scheduleDateLabel(event, isForecast)}
-                    {jpRef && <small class="intelJpRefTime"> · {jpRef}</small>}
-                  </time>
-                  <DropIcons drops={event.drops} />
-                  {active && <span>进行中</span>}
-                </article>
-              );
-            })}
-          </div>
-        </section>
-      ))}
+      {months.map((month) => {
+        const monthEvents = groups[month] || [];
+        const hasStart = Boolean(pinnedItem && startMonth === month);
+        const hasEnd = Boolean(pinnedItem && endMonth === month);
+        let startInserted = false;
+        let endInserted = false;
+        return (
+          <section class="intelEventMonth" key={month}>
+            <h3>{month}</h3>
+            <div class="intelEventList">
+              {monthEvents.map((event) => {
+                const markers: Array<"start" | "end"> = [];
+                if (hasStart && pinnedItem && !startInserted && event.startTimestamp >= pinnedItem.startTimestamp) {
+                  markers.push("start");
+                  startInserted = true;
+                }
+                if (hasEnd && pinnedItem && !endInserted && event.startTimestamp > pinnedItem.endTimestamp) {
+                  markers.push("end");
+                  endInserted = true;
+                }
+                const active =
+                  event.startTimestamp <= now && event.endTimestamp >= now;
+                const jpRef = isForecast
+                  ? (event.secondaryRefLabel ??
+                      refRangeText(event.jpStart, event.jpEnd, "日服"))
+                  : "";
+                const isPinned =
+                  pinnedId === `${pinPrefix}:${scheduleDetailKey(event)}`;
+                const overlapsPin = Boolean(
+                  pinnedItem &&
+                    !isPinned &&
+                    rangesOverlap(
+                      event.startTimestamp,
+                      event.endTimestamp,
+                      pinnedItem.startTimestamp,
+                      pinnedItem.endTimestamp,
+                    ),
+                );
+                return (
+                  <Fragment key={event.id}>
+                    {markers.map((kind) => (
+                      <PinTimeMarker
+                        kind={kind}
+                        pinned={pinnedItem!}
+                        isForecast={isForecast}
+                        key={`pin-${month}-${kind}`}
+                      />
+                    ))}
+                    <article
+                      class={`intelEventItem ${event.image ? "hasImage" : ""} ${scheduleImageClass(event.image)} ${scheduleTypeClass(event.type)} ${active ? "active" : ""} ${isPinned ? "pinned" : ""} ${overlapsPin ? "overlapsPin" : ""}`}
+                      role={onSelect ? "button" : undefined}
+                      tabIndex={onSelect ? 0 : undefined}
+                      onClick={() => onSelect?.(event)}
+                      onKeyDown={
+                        onSelect
+                          ? scheduleKeyHandler(() => onSelect(event))
+                          : undefined
+                      }
+                    >
+                      {event.image && (
+                        <img
+                          class={scheduleImageClass(event.image)}
+                          src={assetUrl(event.image)}
+                          alt=""
+                          loading="lazy"
+                          referrerPolicy="no-referrer"
+                          onError={hideBrokenImage}
+                        />
+                      )}
+                      <strong>{event.name}</strong>
+                      <time>
+                        {scheduleDateLabel(event, isForecast)}
+                        {jpRef && <small class="intelJpRefTime"> · {jpRef}</small>}
+                      </time>
+                      <DropIcons drops={event.drops} />
+                      {onTogglePin && (
+                        <PinToggle
+                          pinned={isPinned}
+                          onToggle={() => onTogglePin(event)}
+                        />
+                      )}
+                      {active && <span>进行中</span>}
+                    </article>
+                  </Fragment>
+                );
+              })}
+              {hasStart && pinnedItem && !startInserted && (
+                <PinTimeMarker
+                  kind="start"
+                  pinned={pinnedItem}
+                  isForecast={isForecast}
+                />
+              )}
+              {hasEnd && pinnedItem && !endInserted && (
+                <PinTimeMarker
+                  kind="end"
+                  pinned={pinnedItem}
+                  isForecast={isForecast}
+                />
+              )}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }
@@ -3453,11 +3894,17 @@ function EventCalendar({
   now,
   month,
   onSelect,
+  pinPrefix = "events",
+  pinnedItem,
+  onTogglePin,
 }: {
   events: ScheduleItem[];
   now: number;
   month?: string;
   onSelect?: (event: ScheduleItem) => void;
+  pinPrefix?: "events" | "exchanges";
+  pinnedItem?: PinnedScheduleItem | null;
+  onTogglePin?: (item: ScheduleItem) => void;
 }) {
   const months = month
     ? [month]
@@ -3476,6 +3923,33 @@ function EventCalendar({
             event.endTimestamp >= monthStartTime,
         );
         const tickStep = days > 30 ? 5 : 4;
+        const pinInMonth = Boolean(
+          pinnedItem &&
+            pinnedItem.startTimestamp < monthEndTime &&
+            pinnedItem.endTimestamp >= monthStartTime,
+        );
+        const pinStartDay =
+          pinInMonth && pinnedItem
+            ? Math.max(
+                1,
+                Math.floor(
+                  (Math.max(pinnedItem.startTimestamp, monthStartTime) -
+                    monthStartTime) /
+                    86400,
+                ) + 1,
+              )
+            : 1;
+        const pinEndDay =
+          pinInMonth && pinnedItem
+            ? Math.min(
+                days,
+                Math.ceil(
+                  (Math.min(pinnedItem.endTimestamp, monthEndTime) -
+                    monthStartTime) /
+                    86400,
+                ),
+              )
+            : 1;
 
         return (
           <section class="intelEventTimelineMonth" key={month}>
@@ -3500,9 +3974,51 @@ function EventCalendar({
               </div>
             </div>
             <div class="intelEventTimelineRows">
+              {pinInMonth && pinnedItem && (
+                <div class="intelEventTimelineItem pinnedTimelineRef">
+                  <div class="intelEventTimelineLabel">
+                    <span>📌 已Pin参考</span>
+                    <strong>{pinnedItem.title}</strong>
+                  </div>
+                  <div
+                    class="intelEventTimelineGrid"
+                    style={{
+                      gridTemplateColumns: `repeat(${days}, minmax(14px, 1fr))`,
+                      "--intel-days": days,
+                    }}
+                  >
+                    <div
+                      class="intelEventTimelineBar pinnedRefBar"
+                      style={{
+                        gridColumn: `${pinStartDay} / ${pinEndDay + 1}`,
+                      }}
+                    >
+                      <time>
+                        {dateLabelLines(pinnedItem.start, pinnedItem.end).map(
+                          (line) => (
+                            <span key={line}>{line}</span>
+                          ),
+                        )}
+                      </time>
+                    </div>
+                  </div>
+                </div>
+              )}
               {monthEvents.map((event) => {
                 const active =
                   event.startTimestamp <= now && event.endTimestamp >= now;
+                const isPinned =
+                  pinnedItem?.id === `${pinPrefix}:${scheduleDetailKey(event)}`;
+                const overlapsPin = Boolean(
+                  pinnedItem &&
+                    !isPinned &&
+                    rangesOverlap(
+                      event.startTimestamp,
+                      event.endTimestamp,
+                      pinnedItem.startTimestamp,
+                      pinnedItem.endTimestamp,
+                    ),
+                );
                 const startDay = Math.max(
                   1,
                   Math.floor(
@@ -3521,7 +4037,7 @@ function EventCalendar({
                 );
                 return (
                   <article
-                    class={`intelEventTimelineItem ${event.image ? "hasImage" : ""} ${scheduleImageClass(event.image)} ${scheduleTypeClass(event.type)} ${active ? "active" : ""}`}
+                    class={`intelEventTimelineItem ${event.image ? "hasImage" : ""} ${scheduleImageClass(event.image)} ${scheduleTypeClass(event.type)} ${active ? "active" : ""} ${isPinned ? "pinned" : ""} ${overlapsPin ? "overlapsPin" : ""}`}
                     role={onSelect ? "button" : undefined}
                     tabIndex={onSelect ? 0 : undefined}
                     onClick={() => onSelect?.(event)}
@@ -3545,6 +4061,13 @@ function EventCalendar({
                       )}
                       <span>{scheduleTypeLabel(event.type)}</span>
                       <strong>{event.name}</strong>
+                      {onTogglePin && (
+                        <PinToggle
+                          pinned={isPinned}
+                          compact
+                          onToggle={() => onTogglePin(event)}
+                        />
+                      )}
                     </div>
                     <div
                       class="intelEventTimelineGrid"
@@ -3641,47 +4164,114 @@ function RaceSchedule({
   now,
   onSelect,
   isForecast = false,
+  pinnedId,
+  pinnedItem,
+  onTogglePin,
 }: {
   races: ScheduleItem[];
   now: number;
   onSelect: (race: ScheduleItem) => void;
   isForecast?: boolean;
+  pinnedId?: string;
+  pinnedItem?: PinnedScheduleItem | null;
+  onTogglePin?: (race: ScheduleItem) => void;
 }) {
+  const showEndMarker = Boolean(
+    pinnedItem && !isPermanentEnd(pinnedItem.end),
+  );
+  let startInserted = false;
+  let endInserted = false;
+
   return (
     <div class="intelRaceList">
       {races.map((race) => {
+        const markers: Array<"start" | "end"> = [];
+        if (pinnedItem) {
+          if (!startInserted && race.startTimestamp >= pinnedItem.startTimestamp) {
+            markers.push("start");
+            startInserted = true;
+          }
+          if (
+            showEndMarker &&
+            !endInserted &&
+            race.startTimestamp > pinnedItem.endTimestamp
+          ) {
+            markers.push("end");
+            endInserted = true;
+          }
+        }
         const active = race.startTimestamp <= now && race.endTimestamp >= now;
         const jpRef = isForecast
           ? (race.secondaryRefLabel ??
               refRangeText(race.jpStart, race.jpEnd, "日服"))
           : "";
+        const isPinned = pinnedId === `races:${scheduleDetailKey(race)}`;
+        const overlapsPin = Boolean(
+          pinnedItem &&
+            !isPinned &&
+            rangesOverlap(
+              race.startTimestamp,
+              race.endTimestamp,
+              pinnedItem.startTimestamp,
+              pinnedItem.endTimestamp,
+            ),
+        );
         return (
-          <article
-            class={`intelRaceItem ${!race.image ? "noImage" : ""} ${active ? "active" : ""}`}
-            key={race.id}
-            onClick={() => onSelect(race)}
-          >
-            {race.image && (
-              <img
-                src={assetUrl(race.image)}
-                alt=""
-                loading="lazy"
-                referrerPolicy="no-referrer"
-                onError={hideBrokenImage}
+          <Fragment key={race.id}>
+            {markers.map((kind) => (
+              <PinTimeMarker
+                kind={kind}
+                pinned={pinnedItem!}
+                isForecast={isForecast}
+                key={`pin-${kind}`}
               />
-            )}
-            <div>
-              <strong>{race.name}</strong>
-              <time>
-                {scheduleDateLabel(race, isForecast)}
-                {jpRef && <small class="intelJpRefTime"> · {jpRef}</small>}
-              </time>
-              <RaceDetails details={race.details} />
-            </div>
-            {active && <span>进行中</span>}
-          </article>
+            ))}
+            <article
+              class={`intelRaceItem ${!race.image ? "noImage" : ""} ${active ? "active" : ""} ${isPinned ? "pinned" : ""} ${overlapsPin ? "overlapsPin" : ""}`}
+              onClick={() => onSelect(race)}
+            >
+              {race.image && (
+                <img
+                  src={assetUrl(race.image)}
+                  alt=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  onError={hideBrokenImage}
+                />
+              )}
+              <div>
+                <strong>{race.name}</strong>
+                <time>
+                  {scheduleDateLabel(race, isForecast)}
+                  {jpRef && <small class="intelJpRefTime"> · {jpRef}</small>}
+                </time>
+                <RaceDetails details={race.details} />
+              </div>
+              {onTogglePin && (
+                <PinToggle
+                  pinned={isPinned}
+                  onToggle={() => onTogglePin(race)}
+                />
+              )}
+              {active && <span>进行中</span>}
+            </article>
+          </Fragment>
         );
       })}
+      {pinnedItem && !startInserted && (
+        <PinTimeMarker
+          kind="start"
+          pinned={pinnedItem}
+          isForecast={isForecast}
+        />
+      )}
+      {pinnedItem && showEndMarker && !endInserted && (
+        <PinTimeMarker
+          kind="end"
+          pinned={pinnedItem}
+          isForecast={isForecast}
+        />
+      )}
     </div>
   );
 }
@@ -3696,8 +4286,8 @@ function ScheduleDashboardView({
   const isForecast = mode === "forecast";
   const hideMissingImages = isForecast;
   const wallNow = currentTimestamp();
-  const [timeBasis, setTimeBasis] = useState<ForecastTimeBasis>("estimated");
-  const now = isForecast && timeBasis === "jp" ? 0 : wallNow;
+  const timeBasis: ForecastTimeBasis = "jp";
+  const now = isForecast ? 0 : wallNow;
   const [activeTab, setActiveTab] = useState<IntelTab>("gacha");
   const [gachaView, setGachaView] = useState<ViewMode>("list");
   const [eventView, setEventView] = useState<ViewMode>("list");
@@ -3708,6 +4298,10 @@ function ScheduleDashboardView({
   const [eventTypeFilter, setEventTypeFilter] = useState("all");
   const [eventQuery, setEventQuery] = useState("");
   const [exchangeQuery, setExchangeQuery] = useState("");
+  const pinStorageKey = `uma-intel-pin:${mode}`;
+  const [pinnedRef, setPinnedRef] = useState<PinnedRef | null>(() =>
+    readStoredPin(pinStorageKey),
+  );
   const pools = useMemo(
     () =>
       sourceData.gachaPools
@@ -3773,6 +4367,84 @@ function ScheduleDashboardView({
         ),
     [sourceData.exchanges, isForecast, timeBasis, wallNow],
   );
+  const pinnedItem = useMemo<PinnedScheduleItem | null>(() => {
+    if (!pinnedRef) return null;
+    if (pinnedRef.tab === "gacha") {
+      const found = pools.find((p) => `gacha:${poolKey(p)}` === pinnedRef.id);
+      if (!found) return null;
+      return {
+        ...pinnedRef,
+        title: `${found.name || found.type} · ${poolSummary(found, 4)}`,
+        start: found.start,
+        end: found.end,
+        startTimestamp: found.startTimestamp,
+        endTimestamp: found.endTimestamp,
+        jpStart: found.jpStart,
+        jpEnd: found.jpEnd,
+        secondaryRefLabel: found.secondaryRefLabel,
+        primaryTimePrefix: found.primaryTimePrefix,
+        pool: found,
+      };
+    }
+    const list =
+      pinnedRef.tab === "events"
+        ? events
+        : pinnedRef.tab === "races"
+          ? races
+          : exchanges;
+    const found = list.find(
+      (item) => `${pinnedRef.tab}:${scheduleDetailKey(item)}` === pinnedRef.id,
+    );
+    if (!found) return null;
+    return {
+      ...pinnedRef,
+      title: found.name,
+      start: found.start,
+      end: found.end,
+      startTimestamp: found.startTimestamp,
+      endTimestamp: found.endTimestamp,
+      jpStart: found.jpStart,
+      jpEnd: found.jpEnd,
+      secondaryRefLabel: found.secondaryRefLabel,
+      primaryTimePrefix: found.primaryTimePrefix,
+      scheduleItem: found,
+    };
+  }, [pinnedRef, pools, events, races, exchanges]);
+
+  const updatePin = (next: PinnedRef | null) => {
+    setPinnedRef(next);
+    writeStoredPin(pinStorageKey, next);
+  };
+  const togglePinPool = (pool: GachaPool) => {
+    const id = `gacha:${poolKey(pool)}`;
+    if (pinnedRef?.id === id) {
+      updatePin(null);
+      return;
+    }
+    updatePin({
+      id,
+      tab: "gacha",
+      categoryLabel: pool.type,
+      title: `${pool.name || pool.type} · ${poolSummary(pool, 4)}`,
+    });
+  };
+  const togglePinSchedule = (
+    tab: "events" | "races" | "exchanges",
+    item: ScheduleItem,
+  ) => {
+    const id = `${tab}:${scheduleDetailKey(item)}`;
+    if (pinnedRef?.id === id) {
+      updatePin(null);
+      return;
+    }
+    updatePin({
+      id,
+      tab,
+      categoryLabel: scheduleTypeLabel(item.type),
+      title: item.name,
+    });
+  };
+
   const filteredPools = useMemo(() => {
     const query = normalizedSearch(gachaQuery);
     return pools.filter((pool) => {
@@ -3795,6 +4467,7 @@ function ScheduleDashboardView({
       return true;
     });
   }, [events, eventTypeFilter, eventQuery]);
+  const filteredRaces = races;
   const filteredExchanges = useMemo(() => {
     const query = normalizedSearch(exchangeQuery);
     return exchanges.filter((exchange) => {
@@ -3901,6 +4574,32 @@ function ScheduleDashboardView({
     setSelectedKey(nextKey);
     setDetailKey(nextKey);
   };
+  const locatePinnedItem = () => {
+    if (!pinnedItem) return;
+    const startMonth = monthLabel(pinnedItem.start);
+    const endMonth = monthLabel(pinnedItem.end);
+    const pickTargetMonth = (available: string[]) => {
+      if (!available.length) return startMonth;
+      if (available.includes(startMonth)) return startMonth;
+      if (available.includes(endMonth)) return endMonth;
+      return startMonth < available[0]
+        ? available[0]
+        : available[available.length - 1];
+    };
+    if (activeTab === "gacha" && gachaView === "calendar") {
+      setSelectedMonth(pickTargetMonth(months));
+    } else if (activeTab === "events" && eventView === "calendar") {
+      setSelectedEventMonth(pickTargetMonth(eventMonths));
+    } else if (activeTab === "exchanges" && exchangeView === "calendar") {
+      setSelectedExchangeMonth(pickTargetMonth(exchangeMonths));
+    }
+    window.setTimeout(() => {
+      const target = document.querySelector<HTMLElement>(
+        '[data-pin-marker="start"], .intelPinnedWeekBar, .intelEventTimelineItem.pinnedTimelineRef, .intelDayCell.pinRange, [data-pin-marker="end"]',
+      );
+      target?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 40);
+  };
   const exportSource: ExportImageSource = {
     pools: filteredPools.filter((pool) => pool.startTimestamp > now),
     events: filteredEvents.filter((event) => event.startTimestamp > now),
@@ -3926,7 +4625,6 @@ function ScheduleDashboardView({
       }
     };
   }, [isForecast, filteredPools, filteredEvents, races, now, sourceData.generatedAt]);
-  const meta = sourceData.forecastMeta;
   return (
     <main class={`intelPage ${isForecast ? "forecastPage" : ""}`}>
       {!isForecast && (
@@ -3953,18 +4651,6 @@ function ScheduleDashboardView({
             onClick={() => exportForAutomation("races")}
           />
         </>
-      )}
-      {isForecast && (
-        <section class="intelForecastBanner" aria-label="日服前瞻说明">
-          <div>
-            <strong>日服千里眼排期估算</strong>
-            <p>
-              仅展示国服当前解包终点（{meta?.anchorCnDate || "2026-12-23"}，对应日服{" "}
-              {meta?.anchorJpDate || "2024-02-24"}）之后的未来内容。按国服近期实际排期节奏（约{" "}
-              {meta?.speedupFactor || 1.61}x 倍速，间隔系数 {meta?.paceRatio || 0.6228}，单期持续时长保持 1:1）推算，实际时间以国服官方公告为准。
-            </p>
-          </div>
-        </section>
       )}
       <div class="intelTopBar">
         <nav class="intelTabs" aria-label={isForecast ? "前瞻分类" : "情报分类"}>
@@ -4003,29 +4689,16 @@ function ScheduleDashboardView({
             兑换
           </button>
         </nav>
-        {isForecast && (
-          <div
-            class="intelViewToggle intelTimeBasisToggle"
-            role="group"
-            aria-label="时间显示切换"
-          >
-            <button
-              type="button"
-              class={timeBasis === "estimated" ? "selected" : ""}
-              onClick={() => setTimeBasis("estimated")}
-            >
-              预测时间
-            </button>
-            <button
-              type="button"
-              class={timeBasis === "jp" ? "selected" : ""}
-              onClick={() => setTimeBasis("jp")}
-            >
-              日服时间
-            </button>
-          </div>
-        )}
       </div>
+
+      {pinnedItem && (
+        <PinnedHeaderBar
+          pinned={pinnedItem}
+          isForecast={isForecast}
+          onLocate={locatePinnedItem}
+          onClear={() => updatePin(null)}
+        />
+      )}
 
       {activeTab === "gacha" && (
         <section class="intelCalendarPanel">
@@ -4085,6 +4758,8 @@ function ScheduleDashboardView({
                   onSelect={openPoolDetail}
                   hideMissingImages={hideMissingImages}
                   isForecast={isForecast}
+                  pinnedItem={pinnedItem}
+                  onTogglePin={togglePinPool}
                   key={visibleMonth}
                 />
               ) : (
@@ -4098,6 +4773,9 @@ function ScheduleDashboardView({
               onSelect={openPoolDetail}
               hideMissingImages={hideMissingImages}
               isForecast={isForecast}
+              pinnedId={pinnedItem?.id}
+              pinnedItem={pinnedItem}
+              onTogglePin={togglePinPool}
             />
           )}
         </section>
@@ -4163,6 +4841,10 @@ function ScheduleDashboardView({
                 events={filteredEvents}
                 now={now}
                 isForecast={isForecast}
+                pinPrefix="events"
+                pinnedId={pinnedItem?.id}
+                pinnedItem={pinnedItem}
+                onTogglePin={(event) => togglePinSchedule("events", event)}
                 onSelect={(event) =>
                   setEventDetailKey(scheduleDetailKey(event))
                 }
@@ -4175,6 +4857,9 @@ function ScheduleDashboardView({
               events={filteredEvents}
               now={now}
               month={visibleEventMonth}
+              pinPrefix="events"
+              pinnedItem={pinnedItem}
+              onTogglePin={(event) => togglePinSchedule("events", event)}
               onSelect={(event) => setEventDetailKey(scheduleDetailKey(event))}
             />
           ) : (
@@ -4185,11 +4870,14 @@ function ScheduleDashboardView({
 
       {activeTab === "races" && (
         <section class="intelCalendarPanel">
-          {races.length ? (
+          {filteredRaces.length ? (
             <RaceSchedule
-              races={races}
+              races={filteredRaces}
               now={now}
               isForecast={isForecast}
+              pinnedId={pinnedItem?.id}
+              pinnedItem={pinnedItem}
+              onTogglePin={(race) => togglePinSchedule("races", race)}
               onSelect={(race) => setRaceDetailKey(scheduleDetailKey(race))}
             />
           ) : (
@@ -4265,6 +4953,12 @@ function ScheduleDashboardView({
                 events={filteredExchanges}
                 now={now}
                 isForecast={isForecast}
+                pinPrefix="exchanges"
+                pinnedId={pinnedItem?.id}
+                pinnedItem={pinnedItem}
+                onTogglePin={(exchange) =>
+                  togglePinSchedule("exchanges", exchange)
+                }
                 onSelect={(exchange) =>
                   setExchangeDetailKey(scheduleDetailKey(exchange))
                 }
@@ -4277,6 +4971,11 @@ function ScheduleDashboardView({
               events={filteredExchanges}
               now={now}
               month={visibleExchangeMonth}
+              pinPrefix="exchanges"
+              pinnedItem={pinnedItem}
+              onTogglePin={(exchange) =>
+                togglePinSchedule("exchanges", exchange)
+              }
               onSelect={(exchange) =>
                 setExchangeDetailKey(scheduleDetailKey(exchange))
               }
@@ -4292,6 +4991,8 @@ function ScheduleDashboardView({
           pool={detailPool}
           hideMissingImages={hideMissingImages}
           isForecast={isForecast}
+          isPinned={pinnedItem?.id === `gacha:${poolKey(detailPool)}`}
+          onTogglePin={() => togglePinPool(detailPool)}
           onClose={() => setDetailKey("")}
         />
       )}
@@ -4301,6 +5002,8 @@ function ScheduleDashboardView({
           title="活动"
           hideMissingImages={hideMissingImages}
           isForecast={isForecast}
+          isPinned={pinnedItem?.id === `events:${scheduleDetailKey(detailEvent)}`}
+          onTogglePin={() => togglePinSchedule("events", detailEvent)}
           onClose={() => setEventDetailKey("")}
         />
       )}
@@ -4310,6 +5013,8 @@ function ScheduleDashboardView({
           title="大赛"
           hideMissingImages={hideMissingImages}
           isForecast={isForecast}
+          isPinned={pinnedItem?.id === `races:${scheduleDetailKey(detailRace)}`}
+          onTogglePin={() => togglePinSchedule("races", detailRace)}
           onClose={() => setRaceDetailKey("")}
         />
       )}
@@ -4319,6 +5024,10 @@ function ScheduleDashboardView({
           title="兑换"
           hideMissingImages={hideMissingImages}
           isForecast={isForecast}
+          isPinned={
+            pinnedItem?.id === `exchanges:${scheduleDetailKey(detailExchange)}`
+          }
+          onTogglePin={() => togglePinSchedule("exchanges", detailExchange)}
           exchangeDetails={
             detailExchangePath
               ? cachedExchangeDetails
