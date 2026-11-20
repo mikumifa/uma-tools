@@ -1911,7 +1911,7 @@ function TrainedUmaSettingModal({
   const renderMemberEditor = (member: TrainedLineageMember, index: number) => {
     const allowedCurrentIds = new Set(memberIds);
     const memberExclude = [
-      ...exclude.filter((id) => !allowedCurrentIds.has(id)),
+      ...(index === 0 ? exclude.filter((id) => !allowedCurrentIds.has(id)) : []),
       ...members
         .filter((_, memberIndex) => memberIndex !== index)
         .map((item) => item.umaId)
@@ -3417,13 +3417,14 @@ export function SuccessionPlanner() {
     calculationInputKey === currentCalculationInputKey;
   const selectedLineageIds = Object.values(lineage).filter(Boolean);
   const excludedIdsForSlot = (slot: LineageSlot) => {
-    const isParent = slot === "father" || slot === "mother";
-    const sameBranchGrandparents = slot.startsWith("paternal")
-      ? [lineage.paternalA, lineage.paternalB]
-      : [lineage.maternalA, lineage.maternalB];
-    const ids = isParent
-      ? [targetId, ...selectedLineageIds]
-      : [targetId, lineage.father, lineage.mother, ...sameBranchGrandparents];
+    const ids =
+      slot === "father"
+        ? [targetId, lineage.mother, lineage.paternalA, lineage.paternalB]
+        : slot === "mother"
+          ? [targetId, lineage.father, lineage.maternalA, lineage.maternalB]
+          : slot.startsWith("paternal")
+            ? [lineage.father, lineage.paternalA, lineage.paternalB]
+            : [lineage.mother, lineage.maternalA, lineage.maternalB];
     return [...new Set(ids.filter((id) => id && id !== lineage[slot]))];
   };
   const selectedRoutes = {
@@ -3867,7 +3868,12 @@ export function SuccessionPlanner() {
       const assignment = effectiveAssignmentForSlot(slot);
       return data.umas
         .filter((candidate) => {
-          if (candidate.id === targetId) return false;
+          if (
+            (slot === "father" || slot === "mother") &&
+            candidate.id === targetId
+          ) {
+            return false;
+          }
           const fixedCandidate =
             lineage[slot] === candidate.id ||
             Boolean(allowedFixedUmas?.some((uma) => uma.id === candidate.id));
@@ -5590,13 +5596,19 @@ export function SuccessionPlanner() {
     };
   };
   const trainedModalExcludedIds = (slot: LineageSlot) => {
-    const replacedSlots = new Set([slot, ...(SLOT_UPSTREAM_SLOTS[slot] || [])]);
-    return [
-      targetId,
-      ...TARGET_FACTOR_SLOTS.filter((item) => !replacedSlots.has(item)).map(
-        (item) => lineage[item],
-      ),
-    ].filter(Boolean);
+    const ids =
+      slot === "father"
+        ? [targetId, lineage.mother]
+        : slot === "mother"
+          ? [targetId, lineage.father]
+          : slot === "paternalA"
+            ? [lineage.father, lineage.paternalB]
+            : slot === "paternalB"
+              ? [lineage.father, lineage.paternalA]
+              : slot === "maternalA"
+                ? [lineage.mother, lineage.maternalB]
+                : [lineage.mother, lineage.maternalA];
+    return [...new Set(ids.filter(Boolean))];
   };
 
   return (
@@ -5609,7 +5621,7 @@ export function SuccessionPlanner() {
                 label="养成马娘"
                 value={targetId}
                 required
-                exclude={selectedLineageIds}
+                exclude={[lineage.father, lineage.mother].filter(Boolean)}
                 onChange={updateTarget}
               />
             </div>
