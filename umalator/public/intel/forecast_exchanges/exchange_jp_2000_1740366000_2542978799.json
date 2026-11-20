@@ -1,0 +1,151 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 2321,
+      "order": 21,
+      "reward": {
+        "image": "https://gametora.com/images/umamusume/supports/support_card_s_30062.png",
+        "name": "[WINNING DREAM]无声铃鹿",
+        "rewardType": 51,
+        "rewardValue": 30062,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 2000
+      },
+      "limit": 5,
+      "totalRewardAmount": 5,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2322,
+      "order": 22,
+      "reward": {
+        "image": "https://gametora.com/images/umamusume/supports/support_card_s_30088.png",
+        "name": "[SPECIAL DREAMERS！！]里见光钻",
+        "rewardType": 51,
+        "rewardValue": 30088,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 2000
+      },
+      "limit": 5,
+      "totalRewardAmount": 5,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2323,
+      "order": 23,
+      "reward": {
+        "image": "https://gametora.com/images/umamusume/supports/support_card_s_30121.png",
+        "name": "[U & Me]美浦波旁",
+        "rewardType": 51,
+        "rewardValue": 30121,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 2000
+      },
+      "limit": 5,
+      "totalRewardAmount": 5,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2324,
+      "order": 24,
+      "reward": {
+        "image": "intel/support/support_card_s_30136.png",
+        "name": "[Unyielding resolve]克里斯象征",
+        "rewardType": 51,
+        "rewardValue": 30136,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 2000
+      },
+      "limit": 5,
+      "totalRewardAmount": 5,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2325,
+      "order": 25,
+      "reward": {
+        "image": "intel/support/support_card_s_30162.png",
+        "name": "[Precious☆Moments]爱慕织姬",
+        "rewardType": 51,
+        "rewardValue": 30162,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 2000
+      },
+      "limit": 5,
+      "totalRewardAmount": 5,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2326,
+      "order": 26,
+      "reward": {
+        "image": "intel/support/support_card_s_30186.png",
+        "name": "[Balliamo?]贵妇人",
+        "rewardType": 51,
+        "rewardValue": 30186,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 2000
+      },
+      "limit": 5,
+      "totalRewardAmount": 5,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2327,
+      "order": 27,
+      "reward": {
+        "image": "https://gametora.com/images/umamusume/supports/support_card_s_30216.png",
+        "name": "[致我學堂，滿懷愛意]迷人景致",
+        "rewardType": 51,
+        "rewardValue": 30216,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 2000
+      },
+      "limit": 5,
+      "totalRewardAmount": 5,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

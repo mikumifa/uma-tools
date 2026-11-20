@@ -1,0 +1,25 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8513,
+      "order": 309,
+      "reward": {
+        "image": "intel/item/item_icon_00095.png",
+        "name": "闹钟",
+        "rewardType": 34,
+        "rewardValue": 95,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 100
+      },
+      "limit": 250,
+      "totalRewardAmount": 250,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

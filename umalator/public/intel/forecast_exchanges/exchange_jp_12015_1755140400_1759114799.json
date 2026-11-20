@@ -1,0 +1,151 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 3160002,
+      "order": 16,
+      "reward": {
+        "image": "intel/item/item_icon_00095.png",
+        "name": "闹钟",
+        "rewardType": 34,
+        "rewardValue": 95,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 1000
+      },
+      "limit": 50,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160003,
+      "order": 18,
+      "reward": {
+        "image": "intel/item/item_icon_00116.png",
+        "name": "干劲满溢甜点",
+        "rewardType": 150,
+        "rewardValue": 116,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 2500
+      },
+      "limit": 30,
+      "totalRewardAmount": 30,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160001,
+      "order": 19,
+      "reward": {
+        "image": "intel/item/item_icon_00034.png",
+        "name": "迷你胡萝卜果冻",
+        "rewardType": 21,
+        "rewardValue": 34,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 5000
+      },
+      "limit": 20,
+      "totalRewardAmount": 20,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160004,
+      "order": 21,
+      "reward": {
+        "image": "intel/item/item_icon_00117.png",
+        "name": "晴天娃娃",
+        "rewardType": 150,
+        "rewardValue": 117,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 2500
+      },
+      "limit": 15,
+      "totalRewardAmount": 15,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160005,
+      "order": 22,
+      "reward": {
+        "image": "intel/item/item_icon_00118.png",
+        "name": "雨天娃娃",
+        "rewardType": 150,
+        "rewardValue": 118,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 2500
+      },
+      "limit": 15,
+      "totalRewardAmount": 15,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160006,
+      "order": 23,
+      "reward": {
+        "image": "intel/item/item_icon_00119.png",
+        "name": "内道抽选球",
+        "rewardType": 150,
+        "rewardValue": 119,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 2500
+      },
+      "limit": 15,
+      "totalRewardAmount": 15,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160007,
+      "order": 24,
+      "reward": {
+        "image": "intel/item/item_icon_00120.png",
+        "name": "外道抽选球",
+        "rewardType": 150,
+        "rewardValue": 120,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 2500
+      },
+      "limit": 15,
+      "totalRewardAmount": 15,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

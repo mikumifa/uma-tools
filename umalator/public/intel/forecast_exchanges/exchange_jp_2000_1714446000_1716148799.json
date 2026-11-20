@@ -1,13 +1,13 @@
 {
   "exchangeDetails": [
     {
-      "id": 2017,
+      "id": 2030,
       "order": 1,
       "reward": {
-        "image": "intel/piece/piece_icon_100101.png",
-        "name": "[特别追梦者]特别周碎片",
+        "image": "intel/piece/piece_icon_101201.png",
+        "name": "[亚马逊青金石]菱亚马逊碎片",
         "rewardType": 102,
-        "rewardValue": 100101,
+        "rewardValue": 101201,
         "amount": 5
       },
       "pay": {
@@ -22,13 +22,13 @@
       "additionalPieceAmount": 0
     },
     {
-      "id": 2018,
+      "id": 2031,
       "order": 2,
       "reward": {
-        "image": "intel/piece/piece_icon_100302.png",
-        "name": "[飞跃地平线]东海帝王碎片",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/7c/me6eusmfnphdlc051uq60fxuss75gqi.png/200px-Chr_icon_1069_106901_01.png",
+        "name": "[举世无双·樱花耀夜]樱花千代王碎片",
         "rewardType": 102,
-        "rewardValue": 100302,
+        "rewardValue": 106901,
         "amount": 5
       },
       "pay": {
@@ -43,13 +43,13 @@
       "additionalPieceAmount": 0
     },
     {
-      "id": 2019,
+      "id": 2032,
       "order": 3,
       "reward": {
-        "image": "intel/piece/piece_icon_101302.png",
-        "name": "[天际尽头]目白麦昆碎片",
+        "image": "intel/piece/piece_icon_110401.png",
+        "name": "[登龙之顶]葛城荣主碎片",
         "rewardType": 102,
-        "rewardValue": 101302,
+        "rewardValue": 110401,
         "amount": 5
       },
       "pay": {

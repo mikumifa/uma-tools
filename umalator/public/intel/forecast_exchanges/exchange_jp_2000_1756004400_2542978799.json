@@ -1,0 +1,25 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 2342,
+      "order": 28,
+      "reward": {
+        "image": "https://gametora.com/images/umamusume/supports/support_card_s_30243.png",
+        "name": "[NEW TALES AWAIT]放聲歡呼",
+        "rewardType": 51,
+        "rewardValue": 30243,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 2000
+      },
+      "limit": 5,
+      "totalRewardAmount": 5,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

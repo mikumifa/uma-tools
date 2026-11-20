@@ -1,0 +1,235 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8456,
+      "order": 2,
+      "reward": {
+        "image": "intel/item/item_icon_00149.png",
+        "name": "彩虹结晶片",
+        "rewardType": 164,
+        "rewardValue": 149,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 8000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8457,
+      "order": 3,
+      "reward": {
+        "image": "intel/item/item_icon_00150.png",
+        "name": "金结晶片",
+        "rewardType": 164,
+        "rewardValue": 150,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 2000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8460,
+      "order": 302,
+      "reward": {
+        "image": "intel/item/item_icon_00115.png",
+        "name": "女神像",
+        "rewardType": 97,
+        "rewardValue": 115,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 100
+      },
+      "limit": 100,
+      "totalRewardAmount": 100,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8461,
+      "order": 303,
+      "reward": {
+        "image": "intel/item/item_icon_00044.png",
+        "name": "梦想光辉",
+        "rewardType": 93,
+        "rewardValue": 44,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 100
+      },
+      "limit": 100,
+      "totalRewardAmount": 100,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8462,
+      "order": 304,
+      "reward": {
+        "image": "intel/item/item_icon_00163.png",
+        "name": "稀有启发专业书",
+        "rewardType": 11,
+        "rewardValue": 163,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 1200
+      },
+      "limit": 8,
+      "totalRewardAmount": 8,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8463,
+      "order": 305,
+      "reward": {
+        "image": "intel/item/item_icon_00162.png",
+        "name": "稀有启发书",
+        "rewardType": 11,
+        "rewardValue": 162,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 800
+      },
+      "limit": 16,
+      "totalRewardAmount": 16,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8464,
+      "order": 306,
+      "reward": {
+        "image": "intel/item/item_icon_00161.png",
+        "name": "启发专业书",
+        "rewardType": 11,
+        "rewardValue": 161,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 400
+      },
+      "limit": 8,
+      "totalRewardAmount": 8,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8465,
+      "order": 307,
+      "reward": {
+        "image": "intel/item/item_icon_00160.png",
+        "name": "启发书",
+        "rewardType": 11,
+        "rewardValue": 160,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 200
+      },
+      "limit": 16,
+      "totalRewardAmount": 16,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8466,
+      "order": 308,
+      "reward": {
+        "image": "intel/item/item_icon_00032.png",
+        "name": "能量饮料30",
+        "rewardType": 20,
+        "rewardValue": 32,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 100
+      },
+      "limit": 10,
+      "totalRewardAmount": 10,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8467,
+      "order": 309,
+      "reward": {
+        "image": "intel/item/item_icon_00034.png",
+        "name": "迷你胡萝卜果冻",
+        "rewardType": 21,
+        "rewardValue": 34,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 100
+      },
+      "limit": 10,
+      "totalRewardAmount": 10,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8468,
+      "order": 310,
+      "reward": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 250
+      },
+      "limit": 50,
+      "totalRewardAmount": 750000,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

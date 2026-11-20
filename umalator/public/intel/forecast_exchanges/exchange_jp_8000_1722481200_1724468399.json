@@ -1,0 +1,172 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8049,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_105601.png",
+        "name": "[运气高升☆祈福运来]待兼福来碎片",
+        "rewardType": 102,
+        "rewardValue": 105601,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8050,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_104501.png",
+        "name": "[潺潺溪流]超级溪流碎片",
+        "rewardType": 102,
+        "rewardValue": 104501,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8309,
+      "order": 250,
+      "reward": {
+        "image": "intel/item/item_icon_00001.png",
+        "name": "短距离跑鞋",
+        "rewardType": 11,
+        "rewardValue": 1,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 50
+      },
+      "limit": 120,
+      "totalRewardAmount": 120,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8310,
+      "order": 251,
+      "reward": {
+        "image": "intel/item/item_icon_00004.png",
+        "name": "英里跑鞋",
+        "rewardType": 11,
+        "rewardValue": 4,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 50
+      },
+      "limit": 120,
+      "totalRewardAmount": 120,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8311,
+      "order": 252,
+      "reward": {
+        "image": "intel/item/item_icon_00007.png",
+        "name": "中距离跑鞋",
+        "rewardType": 11,
+        "rewardValue": 7,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 50
+      },
+      "limit": 120,
+      "totalRewardAmount": 120,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8312,
+      "order": 253,
+      "reward": {
+        "image": "intel/item/item_icon_00010.png",
+        "name": "长距离跑鞋",
+        "rewardType": 11,
+        "rewardValue": 10,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 50
+      },
+      "limit": 120,
+      "totalRewardAmount": 120,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8313,
+      "order": 254,
+      "reward": {
+        "image": "intel/item/item_icon_00013.png",
+        "name": "泥地跑鞋",
+        "rewardType": 11,
+        "rewardValue": 13,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 50
+      },
+      "limit": 120,
+      "totalRewardAmount": 120,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8319,
+      "order": 308,
+      "reward": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 1500
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 50
+      },
+      "limit": 30,
+      "totalRewardAmount": 45000,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

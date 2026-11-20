@@ -2241,6 +2241,9 @@ def main() -> None:
     data["generatedAt"] = dt.datetime.now(SCHEDULE_TIMEZONE).strftime("%Y-%m-%d %H:%M:%S")
     OUTPUT_JSON.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Generated {OUTPUT_JSON.relative_to(ROOT)}")
+    from generate_jp_forecast import generate_jp_forecast
+
+    generate_jp_forecast()
 
 
 if __name__ == "__main__":

@@ -1,0 +1,46 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8041,
+      "order": 1,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/9/90/dy0adbddbeplz74mqo2p9fn9qcv9x98.png/200px-Chr_icon_1052_105201_01.png",
+        "name": "[乌菈菈一等奖♪]春乌菈菈碎片",
+        "rewardType": 102,
+        "rewardValue": 105201,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8042,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_100901.png",
+        "name": "[蔚蓝顶点]大和赤骥碎片",
+        "rewardType": 102,
+        "rewardValue": 100901,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 600
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

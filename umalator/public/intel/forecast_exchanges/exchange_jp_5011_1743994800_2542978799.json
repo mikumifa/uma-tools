@@ -1,0 +1,424 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 5011001,
+      "order": 1,
+      "reward": {
+        "image": "intel/chara/chr_icon_1004_100401_02.png",
+        "name": "[绯红方程式]丸善斯基",
+        "rewardType": 50,
+        "rewardValue": 100401,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011002,
+      "order": 2,
+      "reward": {
+        "image": "intel/chara/chr_icon_1006_100601_02.png",
+        "name": "[星光跃动]小栗帽",
+        "rewardType": 50,
+        "rewardValue": 100601,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011003,
+      "order": 3,
+      "reward": {
+        "image": "intel/chara/chr_icon_1017_101701_02.png",
+        "name": "[皇帝]鲁道夫象征",
+        "rewardType": 50,
+        "rewardValue": 101701,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011004,
+      "order": 4,
+      "reward": {
+        "image": "intel/chara/chr_icon_1040_104001_02.png",
+        "name": "[真我/1928]黄金城",
+        "rewardType": 50,
+        "rewardValue": 104001,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011005,
+      "order": 5,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/1/13/rou9qz3ci4nqnoj5f5ifsau9idiquc5.png/200px-Chr_icon_1004_100402_01.png",
+        "name": "[飞跃☆夏夜]丸善斯基",
+        "rewardType": 50,
+        "rewardValue": 100402,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011006,
+      "order": 6,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/e7/k7fviw2onzw853hyyvlmjgfccigln30.png/200px-Chr_icon_1045_104502_01.png",
+        "name": "[雪纺丝带木乃伊]超级溪流",
+        "rewardType": 50,
+        "rewardValue": 104502,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011007,
+      "order": 7,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/ee/8oxqo9sxp1dpxdxz2poccn7it6y6aac.png/200px-Chr_icon_1017_101702_01.png",
+        "name": "[皓月下的神箭手]鲁道夫象征",
+        "rewardType": 50,
+        "rewardValue": 101702,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011008,
+      "order": 8,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/9/91/js8lzrj2ft98xyuyhlxv0lytq12oeoa.png/200px-Chr_icon_1040_104002_01.png",
+        "name": "[秋樱舞娘]黄金城",
+        "rewardType": 50,
+        "rewardValue": 104002,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011009,
+      "order": 9,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/7c/18qc5rbch53wvn75t47e1ifnsenueat.png/200px-Chr_icon_1006_100602_01.png",
+        "name": "[奇迹的胜利之星]小栗帽",
+        "rewardType": 50,
+        "rewardValue": 100602,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011010,
+      "order": 10,
+      "reward": {
+        "image": "intel/chara/chr_icon_1021_102101_02.png",
+        "name": "[疾风迅雷]玉藻十字",
+        "rewardType": 50,
+        "rewardValue": 102101,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011011,
+      "order": 11,
+      "reward": {
+        "image": "intel/chara/chr_icon_1069_106901_02.png",
+        "name": "[举世无双·樱花耀夜]樱花千代王",
+        "rewardType": 50,
+        "rewardValue": 106901,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011012,
+      "order": 12,
+      "reward": {
+        "image": "intel/chara/chr_icon_1071_107101_02.png",
+        "name": "[墨绿柔线]目白雅丹",
+        "rewardType": 50,
+        "rewardValue": 107101,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011013,
+      "order": 13,
+      "reward": {
+        "image": "intel/chara/chr_icon_1072_107201_02.png",
+        "name": "[四白流星之袭]八重无敌",
+        "rewardType": 50,
+        "rewardValue": 107201,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011014,
+      "order": 14,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/da/fg5z8jqwrp9175q2kczoi6pzmuroe3y.png/200px-Chr_icon_1021_102102_01.png",
+        "name": "[轰鸣雷神]玉藻十字",
+        "rewardType": 50,
+        "rewardValue": 102102,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011015,
+      "order": 15,
+      "reward": {
+        "image": "intel/chara/chr_icon_1057_105701_02.png",
+        "name": "[Clear Bliss]千明代表",
+        "rewardType": 50,
+        "rewardValue": 105701,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011016,
+      "order": 16,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/76/jsqweqp5e2ypvxzq75pq5h30henbv3g.png/200px-Chr_icon_1071_107102_01.png",
+        "name": "[Neige Émeraude]目白雅丹",
+        "rewardType": 50,
+        "rewardValue": 107102,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011017,
+      "order": 17,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a6/c77szuscnoany23c130hibmvxxr2kfa.png/200px-Chr_icon_1069_106902_01.png",
+        "name": "[Fleur Enneigée]樱花千代王",
+        "rewardType": 50,
+        "rewardValue": 106902,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011018,
+      "order": 18,
+      "reward": {
+        "image": "intel/chara/chr_icon_1070_107001_02.png",
+        "name": "[Féroce]天狼星象征",
+        "rewardType": 50,
+        "rewardValue": 107001,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011019,
+      "order": 19,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/1/1f/a992nd4cw4lwryieg6fhm9lngek2c6a.png/200px-Chr_icon_1045_104503_01.png",
+        "name": "[慈雨華影]超级溪流",
+        "rewardType": 50,
+        "rewardValue": 104503,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5011020,
+      "order": 20,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/78/7isrcdqh8e8gs6yqghzmkydq01io3o3.png/200px-Chr_icon_1072_107202_01.png",
+        "name": "[黑將Zen]八重无敌",
+        "rewardType": 50,
+        "rewardValue": 107202,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "动画《芦毛灰姑娘》3★兑换券 第1期",
+        "rewardType": 41,
+        "rewardValue": 278,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8509,
+      "order": 1,
+      "reward": {
+        "image": null,
+        "name": "3★新人出道招募第5期",
+        "rewardType": 40,
+        "rewardValue": 234,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8510,
+      "order": 300,
+      "reward": {
+        "image": null,
+        "name": "2★或以上新人出道招募第5期",
+        "rewardType": 40,
+        "rewardValue": 236,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 1200
+      },
+      "limit": 2,
+      "totalRewardAmount": 2,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8511,
+      "order": 301,
+      "reward": {
+        "image": null,
+        "name": "稀有或以上新人出道招募第5期",
+        "rewardType": 40,
+        "rewardValue": 237,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 1200
+      },
+      "limit": 2,
+      "totalRewardAmount": 2,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

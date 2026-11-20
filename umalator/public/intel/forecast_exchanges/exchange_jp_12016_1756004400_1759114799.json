@@ -1,0 +1,109 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 3170012,
+      "order": 1,
+      "reward": {
+        "image": null,
+        "name": "2★或以上新人出道招募第5期",
+        "rewardType": 40,
+        "rewardValue": 236,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3170013,
+      "order": 2,
+      "reward": {
+        "image": null,
+        "name": "稀有或以上新人出道招募第5期",
+        "rewardType": 40,
+        "rewardValue": 237,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3170010,
+      "order": 9,
+      "reward": {
+        "image": "intel/item/item_icon_00032.png",
+        "name": "能量饮料30",
+        "rewardType": 20,
+        "rewardValue": 32,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 500
+      },
+      "limit": 10,
+      "totalRewardAmount": 10,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3170014,
+      "order": 11,
+      "reward": {
+        "image": null,
+        "name": "收藏室钥匙",
+        "rewardType": 172,
+        "rewardValue": 190,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 250
+      },
+      "limit": 40,
+      "totalRewardAmount": 40,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3170011,
+      "order": 13,
+      "reward": {
+        "image": "intel/item/item_icon_00095.png",
+        "name": "闹钟",
+        "rewardType": 34,
+        "rewardValue": 95,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 100
+      },
+      "limit": 25,
+      "totalRewardAmount": 25,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

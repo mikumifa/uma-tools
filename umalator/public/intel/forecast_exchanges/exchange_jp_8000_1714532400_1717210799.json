@@ -1,13 +1,13 @@
 {
   "exchangeDetails": [
     {
-      "id": 8035,
+      "id": 8043,
       "order": 1,
       "reward": {
-        "image": "intel/piece/piece_icon_106601.png",
-        "name": "[狂奔！涡轮引擎]双涡轮碎片",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/2/2f/abf6v7frvljsrokp9vto07wkgbrti4a.png/200px-Chr_icon_1032_103201_01.png",
+        "name": "[tach-nology]爱丽速子碎片",
         "rewardType": 102,
-        "rewardValue": 106601,
+        "rewardValue": 103201,
         "amount": 5
       },
       "pay": {
@@ -22,13 +22,13 @@
       "additionalPieceAmount": 0
     },
     {
-      "id": 8036,
+      "id": 8044,
       "order": 1,
       "reward": {
-        "image": "intel/piece/piece_icon_101401.png",
-        "name": "[小鹰☆Número 1]神鹰碎片",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/9/91/badq9lg7b8omkw3si7yc9udxeel83xu.png/200px-Chr_icon_1024_102401_01.png",
+        "name": "[竞争☆领域]重炮碎片",
         "rewardType": 102,
-        "rewardValue": 101401,
+        "rewardValue": 102401,
         "amount": 5
       },
       "pay": {

@@ -1,12 +1,14 @@
-import { h } from "preact";
+import { Fragment, h } from "preact";
 import { useEffect, useMemo, useState } from "preact/hooks";
 
 import intelData from "@data/results_intel.json";
+import forecastJson from "@data/results_forecast.json";
 
 type GachaCard = {
   id: number;
   type: "character" | "support";
   name: string;
+  jpName?: string;
   title: string;
   characterName: string;
   rarity: number;
@@ -22,6 +24,12 @@ type GachaPool = {
   end: string;
   startTimestamp: number;
   endTimestamp: number;
+  jpStart?: string;
+  jpEnd?: string;
+  jpStartTimestamp?: number;
+  jpEndTimestamp?: number;
+  secondaryRefLabel?: string;
+  primaryTimePrefix?: string;
   onlyOnce?: boolean;
   selectableCount?: number;
   selectionLimit?: number | null;
@@ -36,12 +44,26 @@ type GachaPool = {
     end: string;
     startTimestamp: number;
     endTimestamp: number;
+    jpStart?: string;
+    jpEnd?: string;
+    jpStartTimestamp?: number;
+    jpEndTimestamp?: number;
   }>;
   bannerImage?: string | null;
   cards: GachaCard[];
 };
 
+type ForecastMeta = {
+  anchorGachaId: number;
+  anchorCnDate: string;
+  anchorJpDate: string;
+  paceRatio: number;
+  speedupFactor: number;
+  sampleCount: number;
+};
+
 type IntelData = {
+  forecastMeta?: ForecastMeta | null;
   gachaPools: GachaPool[];
   events: ScheduleItem[];
   races?: ScheduleItem[];
@@ -52,6 +74,7 @@ type IntelData = {
 type IntelTab = "gacha" | "events" | "races" | "exchanges";
 type ViewMode = "calendar" | "list";
 type GachaKindFilter = "all" | "character" | "support" | "paid" | "free";
+type ForecastTimeBasis = "estimated" | "jp";
 
 type ScheduleItem = {
   id: number;
@@ -61,6 +84,12 @@ type ScheduleItem = {
   end: string;
   startTimestamp: number;
   endTimestamp: number;
+  jpStart?: string;
+  jpEnd?: string;
+  jpStartTimestamp?: number;
+  jpEndTimestamp?: number;
+  secondaryRefLabel?: string;
+  primaryTimePrefix?: string;
   image?: string | null;
   drops?: Array<{
     image?: string | null;
@@ -88,6 +117,7 @@ type ScheduleItem = {
   details?: Array<{
     label?: string;
     raceName?: string;
+    jpRaceName?: string;
     track?: string;
     distance?: number;
     ground?: string;
@@ -112,6 +142,10 @@ type ScheduleItem = {
     end: string;
     startTimestamp: number;
     endTimestamp: number;
+    jpStart?: string;
+    jpEnd?: string;
+    jpStartTimestamp?: number;
+    jpEndTimestamp?: number;
   }>;
 };
 
@@ -126,30 +160,47 @@ type ScheduleReward = {
 };
 
 const data = intelData as IntelData;
+const forecastData = forecastJson as IntelData;
 
 function appBasePath() {
   if (typeof window === "undefined") return import.meta.env.BASE_URL;
   const basePath = new URL(import.meta.env.BASE_URL, window.location.href)
     .pathname;
-  return window.location.pathname.replace(/\/+$/, "").endsWith("/intel")
-    ? `${basePath.replace(/intel\/?$/, "")}`
-    : basePath;
+  const currentPath = window.location.pathname.replace(/\/+$/, "");
+  if (currentPath.endsWith("/intel")) {
+    return `${basePath.replace(/intel\/?$/, "")}`;
+  }
+  if (currentPath.endsWith("/forecast")) {
+    return `${basePath.replace(/forecast\/?$/, "")}`;
+  }
+  return basePath;
 }
 
 function assetUrl(path?: string | null) {
   if (!path) return "";
+  if (/^https?:\/\//i.test(path)) return path;
   return `${appBasePath()}${path}`;
+}
+
+function hideBrokenImage(event: Event) {
+  const target = event.currentTarget as HTMLImageElement | null;
+  if (target) {
+    target.style.display = "none";
+    target.parentElement?.classList.add("imageLoadHidden");
+  }
 }
 
 function scheduleImageClass(path?: string | null) {
   if (!path) return "";
   if (path.includes("/mission/")) return "missionImage";
-  if (path.includes("/story/")) return "storyImage";
+  if (path.includes("/story/") || path.includes("/story_events/")) {
+    return "storyImage";
+  }
   if (path.includes("/legend/")) return "legendImage";
   if (path.includes("/factor_research/")) return "factorResearchImage";
   if (path.includes("/campaign/")) return "campaignImage";
   if (path.includes("/special/")) return "specialImage";
-  if (path.includes("/piece/")) return "pieceImage";
+  if (path.includes("/piece/") || path.includes("Chr_icon_")) return "pieceImage";
   if (path.includes("/race/")) return "raceImage";
   return "itemImage";
 }
@@ -186,14 +237,103 @@ function sameYear(a: string, b: string) {
   return a.slice(0, 4) === b.slice(0, 4);
 }
 
-function dateLabel(start: string, end: string) {
+function isPermanentEnd(value?: string) {
+  return Boolean(value && value >= "2040-01-01");
+}
+
+function refRangeText(refStart?: string, refEnd?: string, label = "日服") {
+  if (!refStart) return "";
+  const startDay = refStart.slice(0, 10);
+  if (!refEnd || isPermanentEnd(refEnd)) return `${label} ${startDay} 起`;
+  const endDay = refEnd.slice(0, 10);
+  return startDay === endDay
+    ? `${label} ${startDay}`
+    : `${label} ${startDay} ~ ${endDay}`;
+}
+
+function projectPoolForBasis(
+  pool: GachaPool,
+  basis: ForecastTimeBasis,
+): GachaPool {
+  if (basis === "jp" && pool.jpStart && pool.jpEnd) {
+    return {
+      ...pool,
+      start: pool.jpStart,
+      end: pool.jpEnd,
+      startTimestamp: pool.jpStartTimestamp ?? pool.startTimestamp,
+      endTimestamp: pool.jpEndTimestamp ?? pool.endTimestamp,
+      primaryTimePrefix: "日服 ",
+      secondaryRefLabel: refRangeText(pool.start, pool.end, "预计国服"),
+      freeDraws: pool.freeDraws?.map((draw) => ({
+        ...draw,
+        start: draw.jpStart || draw.start,
+        end: draw.jpEnd || draw.end,
+        startTimestamp: draw.jpStartTimestamp ?? draw.startTimestamp,
+        endTimestamp: draw.jpEndTimestamp ?? draw.endTimestamp,
+      })),
+    };
+  }
+  return {
+    ...pool,
+    primaryTimePrefix: "预计 ",
+    secondaryRefLabel: refRangeText(pool.jpStart, pool.jpEnd, "日服"),
+  };
+}
+
+function projectScheduleItemForBasis(
+  item: ScheduleItem,
+  basis: ForecastTimeBasis,
+): ScheduleItem {
+  if (basis === "jp" && item.jpStart && item.jpEnd) {
+    return {
+      ...item,
+      start: item.jpStart,
+      end: item.jpEnd,
+      startTimestamp: item.jpStartTimestamp ?? item.startTimestamp,
+      endTimestamp: item.jpEndTimestamp ?? item.endTimestamp,
+      primaryTimePrefix: "日服 ",
+      secondaryRefLabel: refRangeText(item.start, item.end, "预计国服"),
+      details: item.details?.map((detail) => ({
+        ...detail,
+        raceName: detail.jpRaceName || detail.raceName,
+      })),
+      milestones: item.milestones?.map((milestone) => ({
+        ...milestone,
+        start: milestone.jpStart || milestone.start,
+        end: milestone.jpEnd || milestone.end,
+        startTimestamp: milestone.jpStartTimestamp ?? milestone.startTimestamp,
+        endTimestamp: milestone.jpEndTimestamp ?? milestone.endTimestamp,
+      })),
+    };
+  }
+  return {
+    ...item,
+    primaryTimePrefix: "预计 ",
+    secondaryRefLabel: refRangeText(item.jpStart, item.jpEnd, "日服"),
+  };
+}
+
+function dateLabel(
+  start: string,
+  end: string,
+  isForecast = false,
+  customPrefix?: string,
+) {
+  const prefix = customPrefix ?? (isForecast ? "预计 " : "");
+  if (isPermanentEnd(end)) {
+    return `${prefix}${yearDate(start)} - 长期有效`;
+  }
   const format = sameYear(start, end) ? fullDate : yearDate;
-  return sameDay(start, end)
+  const body = sameDay(start, end)
     ? `${format(start)} - ${end.slice(11, 16)}`
     : `${format(start)} - ${format(end)}`;
+  return `${prefix}${body}`;
 }
 
 function dateLabelLines(start: string, end: string) {
+  if (isPermanentEnd(end)) {
+    return [yearDate(start), "长期有效"];
+  }
   const format = sameYear(start, end) ? fullDate : yearDate;
   return [format(start), format(end)];
 }
@@ -201,20 +341,35 @@ function dateLabelLines(start: string, end: string) {
 function PoolTimeRange({
   pool,
   className = "",
+  isForecast = false,
 }: {
   pool: GachaPool;
   className?: string;
+  isForecast?: boolean;
 }) {
+  const prefix = isForecast ? (pool.primaryTimePrefix ?? "预计 ") : "";
+  const refText = isForecast
+    ? (pool.secondaryRefLabel ?? refRangeText(pool.jpStart, pool.jpEnd, "日服"))
+    : "";
   return (
     <time class={`intelPoolTime ${className}`.trim()}>
-      <span>{pool.start}</span>
-      <span>至 {pool.end}</span>
+      <span>
+        {prefix}
+        {pool.start}
+      </span>
+      <span>至 {isPermanentEnd(pool.end) ? "长期有效" : pool.end}</span>
+      {refText && <small class="intelJpRefTime">{refText}</small>}
     </time>
   );
 }
 
-function scheduleDateLabel(item: ScheduleItem) {
-  return dateLabel(item.start, item.end);
+function scheduleDateLabel(item: ScheduleItem, isForecast = false) {
+  return dateLabel(
+    item.start,
+    item.end,
+    isForecast,
+    isForecast ? item.primaryTimePrefix : undefined,
+  );
 }
 
 function monthLabel(value: string) {
@@ -270,12 +425,24 @@ function weekdayOffset(month: string) {
 function monthsBetween(start: string, end: string) {
   const months = [];
   let cursor = monthLabel(start);
-  const finalMonth = monthLabel(end);
+  const cappedEnd = isPermanentEnd(end) ? start : end;
+  const finalMonth = monthLabel(cappedEnd);
   while (cursor <= finalMonth) {
     months.push(cursor);
     cursor = nextMonth(cursor);
   }
   return months;
+}
+
+function scheduleMonths(items: Array<{ start: string; end: string }>) {
+  if (!items.length) return [];
+  const startMonth = items[0].start;
+  let maxEnd = items[0].start;
+  items.forEach((item) => {
+    const candidate = isPermanentEnd(item.end) ? item.start : item.end;
+    if (candidate > maxEnd) maxEnd = candidate;
+  });
+  return monthsBetween(startMonth, maxEnd);
 }
 
 function timestampMonth(ts: number) {
@@ -298,6 +465,8 @@ function CardImage({ card }: { card: GachaCard }) {
       src={assetUrl(card.image)}
       alt={card.name}
       loading="lazy"
+      referrerPolicy="no-referrer"
+      onError={hideBrokenImage}
       class={card.type === "support" ? "supportImage" : "characterImage"}
     />
   );
@@ -408,7 +577,19 @@ function FreeDrawSchedule({ pool }: { pool: GachaPool }) {
   );
 }
 
-function poolCover(pool: GachaPool) {
+function cardRarityLabel(card: GachaCard) {
+  if (card.type === "support") {
+    if (card.rarity >= 3) return "SSR";
+    if (card.rarity === 2) return "SR";
+    return "R";
+  }
+  return `★${card.rarity || 3}`;
+}
+
+function poolCover(pool: GachaPool, hideMissingImages = false) {
+  if (hideMissingImages) {
+    return pool.bannerImage || null;
+  }
   return (
     pool.bannerImage || pool.cards.find((card) => card.image)?.image || null
   );
@@ -440,6 +621,7 @@ function poolSearchText(pool: GachaPool) {
     freeDrawText(pool),
     ...pool.cards.flatMap((card) => [
       card.name,
+      card.jpName || "",
       card.title,
       card.characterName,
     ]),
@@ -453,7 +635,7 @@ function eventSearchText(event: ScheduleItem) {
     event.name,
     event.type,
     scheduleTypeLabel(event.type),
-    ...(event.drops || []).map((drop) => drop.label || ""),
+    ...(event.drops || []).flatMap((drop) => [drop.name || "", drop.label || ""]),
   ]
     .join(" ")
     .toLocaleLowerCase();
@@ -2286,9 +2468,48 @@ async function exportIntelMobileImages(
   });
 }
 
-function UpPreview({ pool }: { pool: GachaPool }) {
+function UpPreview({
+  pool,
+  hideMissingImages = false,
+}: {
+  pool: GachaPool;
+  hideMissingImages?: boolean;
+}) {
   const cards = poolPreviewCards(pool);
   const visibleCount = 7;
+  if (hideMissingImages) {
+    if (pool.cutoffCardId && !cards[0]?.image) {
+      return null;
+    }
+    const hasAnyImage = cards.slice(0, visibleCount).some((card) => Boolean(card.image));
+    return (
+      <div class={`intelUpPreview ${!hasAnyImage ? "textOnly" : "mixedMode"}`}>
+        {cards.slice(0, visibleCount).map((card) =>
+          card.image ? (
+            <div
+              class="intelUpMini"
+              title={card.jpName ? `${card.name} (${card.jpName})` : card.name}
+              key={card.id}
+            >
+              <CardImage card={card} />
+            </div>
+          ) : (
+            <span
+              class={`intelUpTextPill ${card.type === "support" ? "support" : "character"}`}
+              title={card.jpName ? `${card.name} (${card.jpName})` : card.name}
+              key={card.id}
+            >
+              <b>{cardRarityLabel(card)}</b>
+              <span>{card.name}</span>
+            </span>
+          ),
+        )}
+        {!pool.cutoffCardId && cards.length > visibleCount && (
+          <em class="intelUpMoreText">+{cards.length - visibleCount}</em>
+        )}
+      </div>
+    );
+  }
   return (
     <div class="intelUpPreview">
       {cards.slice(0, visibleCount).map((card) => (
@@ -2433,22 +2654,29 @@ function WeekPoolCard({
   selected,
   now,
   onSelect,
+  hideMissingImages = false,
+  isForecast = false,
 }: {
   segment: WeekPoolSegment;
   selected: boolean;
   now: number;
   onSelect: (pool: GachaPool) => void;
+  hideMissingImages?: boolean;
+  isForecast?: boolean;
 }) {
   const pool = segment.pool;
   const active = pool.startTimestamp <= now && pool.endTimestamp >= now;
   const upcoming = pool.startTimestamp > now;
-  const cover = poolCover(pool);
+  const cover = poolCover(pool, hideMissingImages);
   const compact = segment.columnEnd - segment.columnStart <= 2;
+  const hasPreviewImages = poolPreviewCards(pool)
+    .slice(0, 7)
+    .some((card) => Boolean(card.image));
 
   return (
     <button
       type="button"
-      class={`intelWeekPool ${poolTypeClass(pool)} ${compact ? "compact" : ""} ${selected ? "selected" : ""} ${active ? "active" : ""} ${upcoming ? "upcoming" : ""}`}
+      class={`intelWeekPool ${poolTypeClass(pool)} ${!cover ? "noCover" : ""} ${compact ? "compact" : ""} ${selected ? "selected" : ""} ${active ? "active" : ""} ${upcoming ? "upcoming" : ""}`}
       onClick={() => onSelect(pool)}
       style={{
         gridColumn: `${segment.columnStart} / ${segment.columnEnd}`,
@@ -2456,22 +2684,30 @@ function WeekPoolCard({
         "--segment-end-inset": `${segment.endInset}%`,
       }}
     >
-      {cover && (
+      {cover ? (
         <div class="intelCoverBlock">
           <img
             class="intelPoolCover"
             src={assetUrl(cover)}
             alt={`${pool.type}封面`}
             loading="lazy"
+            referrerPolicy="no-referrer"
+            onError={hideBrokenImage}
           />
-          <PoolTimeRange pool={pool} />
+          <PoolTimeRange pool={pool} isForecast={isForecast} />
+        </div>
+      ) : (
+        <div class="intelCoverBlock noCoverText">
+          <strong>{pool.name || pool.type}</strong>
+          <span>{poolSummary(pool, compact ? 2 : 5)}</span>
+          <PoolTimeRange pool={pool} isForecast={isForecast} />
         </div>
       )}
       {active && <span class="intelPoolStatus">进行中</span>}
       <FreeDrawBadges pool={pool} />
-      {!compact && (
+      {!compact && (!hideMissingImages || hasPreviewImages) && (
         <div class="intelPoolBody">
-          <UpPreview pool={pool} />
+          <UpPreview pool={pool} hideMissingImages={hideMissingImages} />
         </div>
       )}
     </button>
@@ -2484,12 +2720,16 @@ function MonthCalendar({
   selectedPool,
   now,
   onSelect,
+  hideMissingImages = false,
+  isForecast = false,
 }: {
   month: string;
   pools: GachaPool[];
   selectedPool?: GachaPool;
   now: number;
   onSelect: (pool: GachaPool) => void;
+  hideMissingImages?: boolean;
+  isForecast?: boolean;
 }) {
   const rows = weekRows(month);
   const weekdays = ["一", "二", "三", "四", "五", "六", "日"];
@@ -2535,6 +2775,8 @@ function MonthCalendar({
                         }
                         now={now}
                         onSelect={onSelect}
+                        hideMissingImages={hideMissingImages}
+                        isForecast={isForecast}
                         key={`${month}-${rowIndex}-${trackIndex}-${poolKey(segment.pool)}`}
                       />
                     ))}
@@ -2549,16 +2791,30 @@ function MonthCalendar({
   );
 }
 
-function DetailCard({ card }: { card: GachaCard }) {
+function DetailCard({
+  card,
+  hideMissingImages = false,
+}: {
+  card: GachaCard;
+  hideMissingImages?: boolean;
+}) {
+  const showImage = Boolean(card.image) || !hideMissingImages;
   return (
-    <div class="intelDetailCard">
-      <div class="intelDetailImage">
-        <CardImage card={card} />
-      </div>
+    <div class={`intelDetailCard ${!showImage ? "noImage" : ""}`}>
+      {showImage && (
+        <div class="intelDetailImage">
+          <CardImage card={card} />
+        </div>
+      )}
       <div>
         <strong>{card.characterName}</strong>
         {card.title && <span>{card.title}</span>}
-        <small>{card.type === "support" ? "支援卡" : "角色"}</small>
+        {card.jpName && card.jpName !== card.name && (
+          <small class="intelJpCardName">{card.jpName}</small>
+        )}
+        <small>
+          {cardRarityLabel(card)} · {card.type === "support" ? "支援卡" : "角色"}
+        </small>
         {card.singleDrawRate != null && (
           <small class="intelDetailRate">
             普通单抽概率 {singleDrawRateText(card)}
@@ -2572,9 +2828,13 @@ function DetailCard({ card }: { card: GachaCard }) {
 function GachaDetail({
   pool,
   onClose,
+  hideMissingImages = false,
+  isForecast = false,
 }: {
   pool: GachaPool;
   onClose: () => void;
+  hideMissingImages?: boolean;
+  isForecast?: boolean;
 }) {
   return (
     <div
@@ -2598,9 +2858,9 @@ function GachaDetail({
         </button>
         <div class="intelDetailHeader">
           <div>
-            <span>{pool.type}</span>
+            <span>{pool.name || pool.type}</span>
             <h2>{poolSummary(pool, 6)}</h2>
-            <PoolTimeRange pool={pool} />
+            <PoolTimeRange pool={pool} isForecast={isForecast} />
           </div>
         </div>
         <FreeDrawSchedule pool={pool} />
@@ -2609,12 +2869,18 @@ function GachaDetail({
             src={assetUrl(pool.bannerImage)}
             alt={`${pool.type}封面`}
             loading="lazy"
+            referrerPolicy="no-referrer"
+            onError={hideBrokenImage}
             class="intelDetailBanner"
           />
         )}
         <div class="intelDetailGrid">
           {pool.cards.map((card) => (
-            <DetailCard card={card} key={`${pool.id}-${card.id}`} />
+            <DetailCard
+              card={card}
+              hideMissingImages={hideMissingImages}
+              key={`${pool.id}-${card.id}`}
+            />
           ))}
         </div>
       </section>
@@ -2626,10 +2892,12 @@ function DetailRewardIcon({
   reward,
   label,
   showAmount = true,
+  hideMissingImages = false,
 }: {
   reward?: ScheduleReward | null;
   label?: string;
   showAmount?: boolean;
+  hideMissingImages?: boolean;
 }) {
   if (!reward) return null;
   const title = label || reward.name || "奖励";
@@ -2640,10 +2908,19 @@ function DetailRewardIcon({
       </span>
     );
   }
+  if (hideMissingImages && !reward.image) {
+    return null;
+  }
   return (
     <span class="intelDetailRewardIcon" title={title}>
       {reward.image ? (
-        <img src={assetUrl(reward.image)} alt={title} loading="lazy" />
+        <img
+          src={assetUrl(reward.image)}
+          alt={title}
+          loading="lazy"
+          referrerPolicy="no-referrer"
+          onError={hideBrokenImage}
+        />
       ) : (
         <span>{(reward.name || title).slice(0, 2)}</span>
       )}
@@ -2654,20 +2931,34 @@ function DetailRewardIcon({
   );
 }
 
-function DetailRewardToken({ reward }: { reward: ScheduleReward }) {
+function DetailRewardToken({
+  reward,
+  hideMissingImages = false,
+}: {
+  reward: ScheduleReward;
+  hideMissingImages?: boolean;
+}) {
   const amount = rewardInlineAmountLabel(reward);
   if (reward.countOnly) {
-    return <DetailRewardIcon reward={reward} showAmount={false} />;
+    return (
+      <DetailRewardIcon
+        reward={reward}
+        showAmount={false}
+        hideMissingImages={hideMissingImages}
+      />
+    );
   }
+  const noIcon = hideMissingImages && !reward.image;
   return (
     <span
-      class="intelDetailRewardToken"
+      class={`intelDetailRewardToken ${noIcon ? "noIcon" : ""}`}
       title={reward.name || reward.label || "奖励"}
     >
       <DetailRewardIcon
         reward={reward}
         label={reward.name || reward.label}
         showAmount={false}
+        hideMissingImages={hideMissingImages}
       />
       <span>
         <strong>{reward.name || reward.label || "奖励"}</strong>
@@ -2684,6 +2975,8 @@ function ScheduleDetail({
   exchangeLoading,
   exchangeError,
   onClose,
+  hideMissingImages = false,
+  isForecast = false,
 }: {
   item: ScheduleItem;
   title: string;
@@ -2691,6 +2984,8 @@ function ScheduleDetail({
   exchangeLoading?: boolean;
   exchangeError?: string;
   onClose: () => void;
+  hideMissingImages?: boolean;
+  isForecast?: boolean;
 }) {
   const details = exchangeDetails || item.exchangeDetails || [];
   const hasExchangeDetails = Boolean(details.length);
@@ -2723,6 +3018,9 @@ function ScheduleDetail({
       ]
     : [];
   const milestones = item.milestones || [];
+  const jpRef = isForecast
+    ? (item.secondaryRefLabel ?? refRangeText(item.jpStart, item.jpEnd, "日服"))
+    : "";
   return (
     <div
       class="intelModalOverlay"
@@ -2747,7 +3045,8 @@ function ScheduleDetail({
           <div>
             <span>{scheduleTypeLabel(item.type)}</span>
             <h2>{item.name}</h2>
-            <p>{dateLabel(item.start, item.end)}</p>
+            <p>{scheduleDateLabel(item, isForecast)}</p>
+            {jpRef && <p class="intelJpRefTime">{jpRef}</p>}
           </div>
         </div>
         {item.image && (
@@ -2755,6 +3054,8 @@ function ScheduleDetail({
             src={assetUrl(item.image)}
             alt=""
             loading="lazy"
+            referrerPolicy="no-referrer"
+            onError={hideBrokenImage}
             class={`intelDetailBanner ${scheduleImageClass(item.image)}`}
           />
         )}
@@ -2772,6 +3073,7 @@ function ScheduleDetail({
                     {group.drops.map((drop, index) => (
                       <DetailRewardToken
                         reward={drop}
+                        hideMissingImages={hideMissingImages}
                         key={`${drop.image}-${drop.label}-${index}`}
                       />
                     ))}
@@ -2817,6 +3119,7 @@ function ScheduleDetail({
                       <DetailRewardIcon
                         reward={detail.reward}
                         showAmount={false}
+                        hideMissingImages={hideMissingImages}
                       />
                       <div>
                         <strong>{detail.reward.name || "兑换奖励"}</strong>
@@ -2828,7 +3131,11 @@ function ScheduleDetail({
                       <DetailRewardIcon
                         reward={detail.pay}
                         showAmount={false}
+                        hideMissingImages={hideMissingImages}
                       />
+                      {hideMissingImages && !detail.pay.image && detail.pay.name && (
+                        <span class="intelExchangePayName">{detail.pay.name}</span>
+                      )}
                       <strong>{detailAmountLabel(detail.pay)}</strong>
                     </div>
                     <div class="intelExchangeLimitSide">
@@ -2981,21 +3288,25 @@ function GachaList({
   pools,
   now,
   onSelect,
+  hideMissingImages = false,
+  isForecast = false,
 }: {
   pools: GachaPool[];
   now: number;
   onSelect: (pool: GachaPool) => void;
+  hideMissingImages?: boolean;
+  isForecast?: boolean;
 }) {
   return (
     <div class="intelGachaList">
       {pools.map((pool) => {
         const active = pool.startTimestamp <= now && pool.endTimestamp >= now;
         const upcoming = pool.startTimestamp > now;
-        const cover = poolCover(pool);
+        const cover = poolCover(pool, hideMissingImages);
         return (
           <button
             type="button"
-            class={`intelGachaListItem ${poolTypeClass(pool)} ${active ? "active" : ""} ${upcoming ? "upcoming" : ""}`}
+            class={`intelGachaListItem ${poolTypeClass(pool)} ${!cover ? "noCover" : ""} ${active ? "active" : ""} ${upcoming ? "upcoming" : ""}`}
             aria-label={`${pool.start} 至 ${pool.end} ${poolSummary(pool, 8)}`}
             onClick={() => onSelect(pool)}
             key={poolKey(pool)}
@@ -3005,15 +3316,17 @@ function GachaList({
                 src={assetUrl(cover)}
                 alt={`${pool.type}封面`}
                 loading="lazy"
+                referrerPolicy="no-referrer"
+                onError={hideBrokenImage}
               />
             )}
             <div class="intelGachaListMeta">
               <strong>{pool.name || pool.type}</strong>
               <span>{poolSummary(pool, 12)}</span>
-              <PoolTimeRange pool={pool} />
+              <PoolTimeRange pool={pool} isForecast={isForecast} />
               <FreeDrawBadges pool={pool} inline />
             </div>
-            <UpPreview pool={pool} />
+            <UpPreview pool={pool} hideMissingImages={hideMissingImages} />
             {active && <span class="intelPoolStatus">进行中</span>}
           </button>
         );
@@ -3047,6 +3360,8 @@ function DropIcons({ drops }: { drops?: ScheduleItem["drops"] }) {
               src={assetUrl(drop.image)}
               alt={drop.label || "掉落"}
               loading="lazy"
+              referrerPolicy="no-referrer"
+              onError={hideBrokenImage}
             />
             {rewardAmountLabel(drop) && <em>{rewardAmountLabel(drop)}</em>}
           </span>
@@ -3057,6 +3372,9 @@ function DropIcons({ drops }: { drops?: ScheduleItem["drops"] }) {
             key={`${drop.label}-${index}`}
           >
             {drop.label || "奖励"}
+            {!drop.countOnly && rewardAmountLabel(drop)
+              ? ` ${rewardAmountLabel(drop)}`
+              : ""}
           </span>
         ),
       )}
@@ -3068,10 +3386,12 @@ function EventsSchedule({
   events,
   now,
   onSelect,
+  isForecast = false,
 }: {
   events: ScheduleItem[];
   now: number;
   onSelect?: (event: ScheduleItem) => void;
+  isForecast?: boolean;
 }) {
   const groups = eventMonthGroups(events);
   const months = Object.keys(groups).sort();
@@ -3084,6 +3404,10 @@ function EventsSchedule({
             {groups[month].map((event) => {
               const active =
                 event.startTimestamp <= now && event.endTimestamp >= now;
+              const jpRef = isForecast
+                ? (event.secondaryRefLabel ??
+                    refRangeText(event.jpStart, event.jpEnd, "日服"))
+                : "";
               return (
                 <article
                   class={`intelEventItem ${event.image ? "hasImage" : ""} ${scheduleImageClass(event.image)} ${scheduleTypeClass(event.type)} ${active ? "active" : ""}`}
@@ -3103,10 +3427,15 @@ function EventsSchedule({
                       src={assetUrl(event.image)}
                       alt=""
                       loading="lazy"
+                      referrerPolicy="no-referrer"
+                      onError={hideBrokenImage}
                     />
                   )}
                   <strong>{event.name}</strong>
-                  <time>{scheduleDateLabel(event)}</time>
+                  <time>
+                    {scheduleDateLabel(event, isForecast)}
+                    {jpRef && <small class="intelJpRefTime"> · {jpRef}</small>}
+                  </time>
                   <DropIcons drops={event.drops} />
                   {active && <span>进行中</span>}
                 </article>
@@ -3210,6 +3539,8 @@ function EventCalendar({
                           src={assetUrl(event.image)}
                           alt=""
                           loading="lazy"
+                          referrerPolicy="no-referrer"
+                          onError={hideBrokenImage}
                         />
                       )}
                       <span>{scheduleTypeLabel(event.type)}</span>
@@ -3309,27 +3640,42 @@ function RaceSchedule({
   races,
   now,
   onSelect,
+  isForecast = false,
 }: {
   races: ScheduleItem[];
   now: number;
   onSelect: (race: ScheduleItem) => void;
+  isForecast?: boolean;
 }) {
   return (
     <div class="intelRaceList">
       {races.map((race) => {
         const active = race.startTimestamp <= now && race.endTimestamp >= now;
+        const jpRef = isForecast
+          ? (race.secondaryRefLabel ??
+              refRangeText(race.jpStart, race.jpEnd, "日服"))
+          : "";
         return (
           <article
-            class={`intelRaceItem ${active ? "active" : ""}`}
+            class={`intelRaceItem ${!race.image ? "noImage" : ""} ${active ? "active" : ""}`}
             key={race.id}
             onClick={() => onSelect(race)}
           >
             {race.image && (
-              <img src={assetUrl(race.image)} alt="" loading="lazy" />
+              <img
+                src={assetUrl(race.image)}
+                alt=""
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                onError={hideBrokenImage}
+              />
             )}
             <div>
               <strong>{race.name}</strong>
-              <time>{dateLabel(race.start, race.end)}</time>
+              <time>
+                {scheduleDateLabel(race, isForecast)}
+                {jpRef && <small class="intelJpRefTime"> · {jpRef}</small>}
+              </time>
               <RaceDetails details={race.details} />
             </div>
             {active && <span>进行中</span>}
@@ -3340,8 +3686,18 @@ function RaceSchedule({
   );
 }
 
-export function IntelDashboard() {
-  const now = currentTimestamp();
+function ScheduleDashboardView({
+  sourceData,
+  mode = "intel",
+}: {
+  sourceData: IntelData;
+  mode?: "intel" | "forecast";
+}) {
+  const isForecast = mode === "forecast";
+  const hideMissingImages = isForecast;
+  const wallNow = currentTimestamp();
+  const [timeBasis, setTimeBasis] = useState<ForecastTimeBasis>("estimated");
+  const now = isForecast && timeBasis === "jp" ? 0 : wallNow;
   const [activeTab, setActiveTab] = useState<IntelTab>("gacha");
   const [gachaView, setGachaView] = useState<ViewMode>("list");
   const [eventView, setEventView] = useState<ViewMode>("list");
@@ -3354,50 +3710,68 @@ export function IntelDashboard() {
   const [exchangeQuery, setExchangeQuery] = useState("");
   const pools = useMemo(
     () =>
-      data.gachaPools
-        .filter((pool) => pool.endTimestamp >= now)
+      sourceData.gachaPools
+        .filter((pool) => pool.endTimestamp >= wallNow)
+        .map((pool) =>
+          isForecast ? projectPoolForBasis(pool, timeBasis) : pool,
+        )
         .sort((a, b) => a.startTimestamp - b.startTimestamp || a.id - b.id),
-    [now],
+    [sourceData.gachaPools, isForecast, timeBasis, wallNow],
   );
   const events = useMemo(
     () =>
-      (data.events || [])
-        .filter((event) => event.endTimestamp >= now)
-        .sort(
-          (a, b) =>
-            a.startTimestamp - b.startTimestamp ||
-            a.endTimestamp - b.endTimestamp,
-        ),
-    [now],
-  );
-  const races = useMemo(
-    () =>
-      (data.races || [])
-        .filter((race) => race.endTimestamp >= now)
-        .sort(
-          (a, b) =>
-            a.startTimestamp - b.startTimestamp ||
-            a.endTimestamp - b.endTimestamp,
-        ),
-    [now],
-  );
-  const exchanges = useMemo(
-    () =>
-      (data.exchanges || [])
-        .filter((exchange) =>
-          exchange.isVoucherExchange
-            ? exchange.endTimestamp >= now
-            : exchange.startTimestamp >= now,
+      (sourceData.events || [])
+        .filter((event) => event.endTimestamp >= wallNow)
+        .map((event) =>
+          isForecast ? projectScheduleItemForBasis(event, timeBasis) : event,
         )
         .sort(
           (a, b) =>
-            Number(Boolean(b.isVoucherExchange)) -
-              Number(Boolean(a.isVoucherExchange)) ||
+            a.startTimestamp - b.startTimestamp ||
+            a.endTimestamp - b.endTimestamp,
+        ),
+    [sourceData.events, isForecast, timeBasis, wallNow],
+  );
+  const races = useMemo(
+    () =>
+      (sourceData.races || [])
+        .filter((race) => race.endTimestamp >= wallNow)
+        .map((race) =>
+          isForecast ? projectScheduleItemForBasis(race, timeBasis) : race,
+        )
+        .sort(
+          (a, b) =>
+            a.startTimestamp - b.startTimestamp ||
+            a.endTimestamp - b.endTimestamp,
+        ),
+    [sourceData.races, isForecast, timeBasis, wallNow],
+  );
+  const exchanges = useMemo(
+    () =>
+      (sourceData.exchanges || [])
+        .filter((exchange) =>
+          isForecast
+            ? exchange.endTimestamp >= wallNow
+            : exchange.isVoucherExchange
+              ? exchange.endTimestamp >= wallNow
+              : exchange.startTimestamp >= wallNow,
+        )
+        .map((exchange) =>
+          isForecast
+            ? projectScheduleItemForBasis(exchange, timeBasis)
+            : exchange,
+        )
+        .sort(
+          (a, b) =>
+            (isForecast
+              ? 0
+              : Number(Boolean(b.isVoucherExchange)) -
+                Number(Boolean(a.isVoucherExchange))) ||
             a.startTimestamp - b.startTimestamp ||
             a.endTimestamp - b.endTimestamp ||
             a.name.localeCompare(b.name),
         ),
-    [now],
+    [sourceData.exchanges, isForecast, timeBasis, wallNow],
   );
   const filteredPools = useMemo(() => {
     const query = normalizedSearch(gachaQuery);
@@ -3491,24 +3865,15 @@ export function IntelDashboard() {
       cancelled = true;
     };
   }, [detailExchangePath, cachedExchangeDetails]);
-  const months = filteredPools.length
-    ? monthsBetween(
-        filteredPools[0].start,
-        filteredPools[filteredPools.length - 1].end,
-      )
-    : [];
-  const eventMonths = filteredEvents.length
-    ? monthsBetween(
-        filteredEvents[0].start,
-        filteredEvents[filteredEvents.length - 1].end,
-      )
-    : [];
-  const exchangeMonths = filteredExchanges.length
-    ? monthsBetween(
-        filteredExchanges[0].start,
-        filteredExchanges[filteredExchanges.length - 1].end,
-      )
-    : [];
+  const months = useMemo(() => scheduleMonths(filteredPools), [filteredPools]);
+  const eventMonths = useMemo(
+    () => scheduleMonths(filteredEvents),
+    [filteredEvents],
+  );
+  const exchangeMonths = useMemo(
+    () => scheduleMonths(filteredExchanges),
+    [filteredExchanges],
+  );
   const currentMonth = timestampMonth(now);
   const [selectedMonth, setSelectedMonth] = useState(() => {
     if (months.includes(currentMonth)) return currentMonth;
@@ -3537,15 +3902,16 @@ export function IntelDashboard() {
     setDetailKey(nextKey);
   };
   const exportSource: ExportImageSource = {
-      pools: filteredPools.filter((pool) => pool.startTimestamp > now),
-      events: filteredEvents.filter((event) => event.startTimestamp > now),
-      races: races.filter((race) => race.startTimestamp > now),
-      now,
-      generatedAt: data.generatedAt,
+    pools: filteredPools.filter((pool) => pool.startTimestamp > now),
+    events: filteredEvents.filter((event) => event.startTimestamp > now),
+    races: races.filter((race) => race.startTimestamp > now),
+    now,
+    generatedAt: sourceData.generatedAt,
   };
   const exportForAutomation = (section: ExportImageSection) =>
     exportIntelImage(exportSource, section);
   useEffect(() => {
+    if (isForecast) return;
     const mobileWindow = window as typeof window & {
       __exportIntelMobile?: (
         section: ExportImageSection,
@@ -3559,32 +3925,49 @@ export function IntelDashboard() {
         delete mobileWindow.__exportIntelMobile;
       }
     };
-  }, [filteredPools, filteredEvents, races, now, data.generatedAt]);
+  }, [isForecast, filteredPools, filteredEvents, races, now, sourceData.generatedAt]);
+  const meta = sourceData.forecastMeta;
   return (
-    <main class="intelPage">
-      <button
-        id="intelExportGachaTrigger"
-        type="button"
-        hidden
-        aria-hidden="true"
-        onClick={() => exportForAutomation("gacha")}
-      />
-      <button
-        id="intelExportEventsTrigger"
-        type="button"
-        hidden
-        aria-hidden="true"
-        onClick={() => exportForAutomation("events")}
-      />
-      <button
-        id="intelExportRacesTrigger"
-        type="button"
-        hidden
-        aria-hidden="true"
-        onClick={() => exportForAutomation("races")}
-      />
+    <main class={`intelPage ${isForecast ? "forecastPage" : ""}`}>
+      {!isForecast && (
+        <>
+          <button
+            id="intelExportGachaTrigger"
+            type="button"
+            hidden
+            aria-hidden="true"
+            onClick={() => exportForAutomation("gacha")}
+          />
+          <button
+            id="intelExportEventsTrigger"
+            type="button"
+            hidden
+            aria-hidden="true"
+            onClick={() => exportForAutomation("events")}
+          />
+          <button
+            id="intelExportRacesTrigger"
+            type="button"
+            hidden
+            aria-hidden="true"
+            onClick={() => exportForAutomation("races")}
+          />
+        </>
+      )}
+      {isForecast && (
+        <section class="intelForecastBanner" aria-label="日服前瞻说明">
+          <div>
+            <strong>日服千里眼排期估算</strong>
+            <p>
+              仅展示国服当前解包终点（{meta?.anchorCnDate || "2026-12-23"}，对应日服{" "}
+              {meta?.anchorJpDate || "2024-02-24"}）之后的未来内容。按国服近期实际排期节奏（约{" "}
+              {meta?.speedupFactor || 1.61}x 倍速，间隔系数 {meta?.paceRatio || 0.6228}，单期持续时长保持 1:1）推算，实际时间以国服官方公告为准。
+            </p>
+          </div>
+        </section>
+      )}
       <div class="intelTopBar">
-        <nav class="intelTabs" aria-label="情报分类">
+        <nav class="intelTabs" aria-label={isForecast ? "前瞻分类" : "情报分类"}>
           <button
             type="button"
             class={activeTab === "gacha" ? "selected" : ""}
@@ -3620,6 +4003,28 @@ export function IntelDashboard() {
             兑换
           </button>
         </nav>
+        {isForecast && (
+          <div
+            class="intelViewToggle intelTimeBasisToggle"
+            role="group"
+            aria-label="时间显示切换"
+          >
+            <button
+              type="button"
+              class={timeBasis === "estimated" ? "selected" : ""}
+              onClick={() => setTimeBasis("estimated")}
+            >
+              预测时间
+            </button>
+            <button
+              type="button"
+              class={timeBasis === "jp" ? "selected" : ""}
+              onClick={() => setTimeBasis("jp")}
+            >
+              日服时间
+            </button>
+          </div>
+        )}
       </div>
 
       {activeTab === "gacha" && (
@@ -3678,6 +4083,8 @@ export function IntelDashboard() {
                   selectedPool={selectedPool}
                   now={now}
                   onSelect={openPoolDetail}
+                  hideMissingImages={hideMissingImages}
+                  isForecast={isForecast}
                   key={visibleMonth}
                 />
               ) : (
@@ -3689,6 +4096,8 @@ export function IntelDashboard() {
               pools={filteredPools}
               now={now}
               onSelect={openPoolDetail}
+              hideMissingImages={hideMissingImages}
+              isForecast={isForecast}
             />
           )}
         </section>
@@ -3753,6 +4162,7 @@ export function IntelDashboard() {
               <EventsSchedule
                 events={filteredEvents}
                 now={now}
+                isForecast={isForecast}
                 onSelect={(event) =>
                   setEventDetailKey(scheduleDetailKey(event))
                 }
@@ -3779,6 +4189,7 @@ export function IntelDashboard() {
             <RaceSchedule
               races={races}
               now={now}
+              isForecast={isForecast}
               onSelect={(race) => setRaceDetailKey(scheduleDetailKey(race))}
             />
           ) : (
@@ -3853,6 +4264,7 @@ export function IntelDashboard() {
               <EventsSchedule
                 events={filteredExchanges}
                 now={now}
+                isForecast={isForecast}
                 onSelect={(exchange) =>
                   setExchangeDetailKey(scheduleDetailKey(exchange))
                 }
@@ -3876,12 +4288,19 @@ export function IntelDashboard() {
       )}
 
       {detailPool && (
-        <GachaDetail pool={detailPool} onClose={() => setDetailKey("")} />
+        <GachaDetail
+          pool={detailPool}
+          hideMissingImages={hideMissingImages}
+          isForecast={isForecast}
+          onClose={() => setDetailKey("")}
+        />
       )}
       {detailEvent && (
         <ScheduleDetail
           item={detailEvent}
           title="活动"
+          hideMissingImages={hideMissingImages}
+          isForecast={isForecast}
           onClose={() => setEventDetailKey("")}
         />
       )}
@@ -3889,6 +4308,8 @@ export function IntelDashboard() {
         <ScheduleDetail
           item={detailRace}
           title="大赛"
+          hideMissingImages={hideMissingImages}
+          isForecast={isForecast}
           onClose={() => setRaceDetailKey("")}
         />
       )}
@@ -3896,6 +4317,8 @@ export function IntelDashboard() {
         <ScheduleDetail
           item={detailExchange}
           title="兑换"
+          hideMissingImages={hideMissingImages}
+          isForecast={isForecast}
           exchangeDetails={
             detailExchangePath
               ? cachedExchangeDetails
@@ -3908,4 +4331,12 @@ export function IntelDashboard() {
       )}
     </main>
   );
+}
+
+export function IntelDashboard() {
+  return <ScheduleDashboardView sourceData={data} mode="intel" />;
+}
+
+export function ForecastDashboard() {
+  return <ScheduleDashboardView sourceData={forecastData} mode="forecast" />;
 }

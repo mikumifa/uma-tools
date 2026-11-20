@@ -64,6 +64,22 @@ const successionHtml = `<!doctype html>
 </html>
 `;
 
+const forecastHtml = `<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>赛马娘日服前瞻</title>
+		<link rel="icon" type="image/png" href="../favicon.ico">
+		<script type="module" crossorigin src="../bundle.js"></script>
+		<link rel="stylesheet" crossorigin href="../bundle.css">
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
+</html>
+`;
+
 function intelRouteHtml() {
   return {
     name: "intel-route-html",
@@ -91,6 +107,18 @@ function successionRouteHtml() {
   };
 }
 
+function forecastRouteHtml() {
+  return {
+    name: "forecast-route-html",
+    writeBundle(options) {
+      if (!options.dir) return;
+      const forecastDir = path.resolve(options.dir, "forecast");
+      fs.mkdirSync(forecastDir, { recursive: true });
+      fs.writeFileSync(path.join(forecastDir, "index.html"), forecastHtml);
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => {
   const debug = mode === "debug";
   return {
@@ -101,6 +129,7 @@ export default defineConfig(({ mode }) => {
       legacyCnRedirect(),
       intelRouteHtml(),
       successionRouteHtml(),
+      forecastRouteHtml(),
     ],
     define: {
       CC_DEBUG: JSON.stringify(debug),

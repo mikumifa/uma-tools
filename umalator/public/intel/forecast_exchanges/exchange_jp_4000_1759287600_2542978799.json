@@ -1,0 +1,235 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 4411,
+      "order": 301,
+      "reward": {
+        "image": "intel/item/item_icon_00095.png",
+        "name": "闹钟",
+        "rewardType": 34,
+        "rewardValue": 95,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00057.png",
+        "name": "四叶草",
+        "rewardType": 99,
+        "rewardValue": 57,
+        "amount": 30
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 4412,
+      "order": 401,
+      "reward": {
+        "image": "intel/item/item_icon_00116.png",
+        "name": "干劲满溢甜点",
+        "rewardType": 150,
+        "rewardValue": 116,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00057.png",
+        "name": "四叶草",
+        "rewardType": 99,
+        "rewardValue": 57,
+        "amount": 20
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 4413,
+      "order": 402,
+      "reward": {
+        "image": "intel/item/item_icon_00117.png",
+        "name": "晴天娃娃",
+        "rewardType": 150,
+        "rewardValue": 117,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00057.png",
+        "name": "四叶草",
+        "rewardType": 99,
+        "rewardValue": 57,
+        "amount": 20
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 4414,
+      "order": 403,
+      "reward": {
+        "image": "intel/item/item_icon_00118.png",
+        "name": "雨天娃娃",
+        "rewardType": 150,
+        "rewardValue": 118,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00057.png",
+        "name": "四叶草",
+        "rewardType": 99,
+        "rewardValue": 57,
+        "amount": 20
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 4415,
+      "order": 404,
+      "reward": {
+        "image": "intel/item/item_icon_00119.png",
+        "name": "内道抽选球",
+        "rewardType": 150,
+        "rewardValue": 119,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00057.png",
+        "name": "四叶草",
+        "rewardType": 99,
+        "rewardValue": 57,
+        "amount": 20
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 4416,
+      "order": 405,
+      "reward": {
+        "image": "intel/item/item_icon_00120.png",
+        "name": "外道抽选球",
+        "rewardType": 150,
+        "rewardValue": 120,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00057.png",
+        "name": "四叶草",
+        "rewardType": 99,
+        "rewardValue": 57,
+        "amount": 20
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 4560,
+      "order": 550,
+      "reward": {
+        "image": "intel/item/item_icon_00001.png",
+        "name": "短距离跑鞋",
+        "rewardType": 11,
+        "rewardValue": 1,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00057.png",
+        "name": "四叶草",
+        "rewardType": 99,
+        "rewardValue": 57,
+        "amount": 4
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 4561,
+      "order": 551,
+      "reward": {
+        "image": "intel/item/item_icon_00004.png",
+        "name": "英里跑鞋",
+        "rewardType": 11,
+        "rewardValue": 4,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00057.png",
+        "name": "四叶草",
+        "rewardType": 99,
+        "rewardValue": 57,
+        "amount": 4
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 4562,
+      "order": 552,
+      "reward": {
+        "image": "intel/item/item_icon_00007.png",
+        "name": "中距离跑鞋",
+        "rewardType": 11,
+        "rewardValue": 7,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00057.png",
+        "name": "四叶草",
+        "rewardType": 99,
+        "rewardValue": 57,
+        "amount": 4
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 4563,
+      "order": 553,
+      "reward": {
+        "image": "intel/item/item_icon_00010.png",
+        "name": "长距离跑鞋",
+        "rewardType": 11,
+        "rewardValue": 10,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00057.png",
+        "name": "四叶草",
+        "rewardType": 99,
+        "rewardValue": 57,
+        "amount": 4
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 4564,
+      "order": 554,
+      "reward": {
+        "image": "intel/item/item_icon_00013.png",
+        "name": "泥地跑鞋",
+        "rewardType": 11,
+        "rewardValue": 13,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00057.png",
+        "name": "四叶草",
+        "rewardType": 99,
+        "rewardValue": 57,
+        "amount": 4
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

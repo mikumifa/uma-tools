@@ -1,0 +1,25 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8210,
+      "order": 208,
+      "reward": {
+        "image": "https://gametora.com/images/umamusume/supports/support_card_s_30194.png",
+        "name": "[后冠所描繪出的能量線]莱茵力量",
+        "rewardType": 51,
+        "rewardValue": 30194,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 100
+      },
+      "limit": 4,
+      "totalRewardAmount": 4,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

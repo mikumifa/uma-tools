@@ -1,0 +1,25 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8469,
+      "order": 311,
+      "reward": {
+        "image": "intel/item/item_icon_00110.png",
+        "name": "协助积分",
+        "rewardType": 30,
+        "rewardValue": 110,
+        "amount": 2500
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 250
+      },
+      "limit": 50,
+      "totalRewardAmount": 125000,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

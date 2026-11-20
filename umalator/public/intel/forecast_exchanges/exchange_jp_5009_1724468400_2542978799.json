@@ -1,0 +1,3259 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 5009001,
+      "order": 1,
+      "reward": {
+        "image": "intel/chara/chr_icon_1001_100101_02.png",
+        "name": "[特别追梦者]特别周",
+        "rewardType": 50,
+        "rewardValue": 100101,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009002,
+      "order": 2,
+      "reward": {
+        "image": "intel/chara/chr_icon_1002_100201_02.png",
+        "name": "[无声无瑕]无声铃鹿",
+        "rewardType": 50,
+        "rewardValue": 100201,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009003,
+      "order": 3,
+      "reward": {
+        "image": "intel/chara/chr_icon_1003_100301_02.png",
+        "name": "[喜乐无边]东海帝王",
+        "rewardType": 50,
+        "rewardValue": 100301,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009004,
+      "order": 4,
+      "reward": {
+        "image": "intel/chara/chr_icon_1004_100401_02.png",
+        "name": "[绯红方程式]丸善斯基",
+        "rewardType": 50,
+        "rewardValue": 100401,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009005,
+      "order": 5,
+      "reward": {
+        "image": "intel/chara/chr_icon_1006_100601_02.png",
+        "name": "[星光跃动]小栗帽",
+        "rewardType": 50,
+        "rewardValue": 100601,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009006,
+      "order": 6,
+      "reward": {
+        "image": "intel/chara/chr_icon_1010_101001_02.png",
+        "name": "[狂野前线]大树快车",
+        "rewardType": 50,
+        "rewardValue": 101001,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009007,
+      "order": 7,
+      "reward": {
+        "image": "intel/chara/chr_icon_1013_101301_02.png",
+        "name": "[优雅曲线]目白麦昆",
+        "rewardType": 50,
+        "rewardValue": 101301,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009008,
+      "order": 8,
+      "reward": {
+        "image": "intel/chara/chr_icon_1017_101701_02.png",
+        "name": "[皇帝]鲁道夫象征",
+        "rewardType": 50,
+        "rewardValue": 101701,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009009,
+      "order": 9,
+      "reward": {
+        "image": "intel/chara/chr_icon_1030_103001_02.png",
+        "name": "[玫瑰之梦]米浴",
+        "rewardType": 50,
+        "rewardValue": 103001,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009010,
+      "order": 10,
+      "reward": {
+        "image": "intel/chara/chr_icon_1015_101501_02.png",
+        "name": "[O sole suo！]好歌剧",
+        "rewardType": 50,
+        "rewardValue": 101501,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009011,
+      "order": 11,
+      "reward": {
+        "image": "intel/chara/chr_icon_1026_102601_02.png",
+        "name": "[MB-19890425]美浦波旁",
+        "rewardType": 50,
+        "rewardValue": 102601,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009012,
+      "order": 12,
+      "reward": {
+        "image": "intel/chara/chr_icon_1023_102301_02.png",
+        "name": "[pf.胜利公式]琵琶晨光",
+        "rewardType": 50,
+        "rewardValue": 102301,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009013,
+      "order": 13,
+      "reward": {
+        "image": "intel/chara/chr_icon_1003_100302_02.png",
+        "name": "[飞跃地平线]东海帝王",
+        "rewardType": 50,
+        "rewardValue": 100302,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009014,
+      "order": 14,
+      "reward": {
+        "image": "intel/chara/chr_icon_1013_101302_02.png",
+        "name": "[天际尽头]目白麦昆",
+        "rewardType": 50,
+        "rewardValue": 101302,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009015,
+      "order": 15,
+      "reward": {
+        "image": "intel/chara/chr_icon_1038_103801_02.png",
+        "name": "[闪电少女]真机伶",
+        "rewardType": 50,
+        "rewardValue": 103801,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009016,
+      "order": 16,
+      "reward": {
+        "image": "intel/chara/chr_icon_1050_105001_02.png",
+        "name": "[Nevertheless]成田大进",
+        "rewardType": 50,
+        "rewardValue": 105001,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009017,
+      "order": 17,
+      "reward": {
+        "image": "intel/chara/chr_icon_1046_104601_02.png",
+        "name": "[绝对☆LOVE]醒目飞鹰",
+        "rewardType": 50,
+        "rewardValue": 104601,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009018,
+      "order": 18,
+      "reward": {
+        "image": "intel/chara/chr_icon_1016_101601_02.png",
+        "name": "[Maverick]成田白仁",
+        "rewardType": 50,
+        "rewardValue": 101601,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009019,
+      "order": 19,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/b/bc/0la67lzig3bhn9t2m12wqu3uvvv2tc8.png/200px-Chr_icon_1024_102402_01.png",
+        "name": "[阳光花束]重炮",
+        "rewardType": 50,
+        "rewardValue": 102402,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009020,
+      "order": 20,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/7c/ixhakpniqruc1rup8knqv347q5ldiem.png/200px-Chr_icon_1018_101802_01.png",
+        "name": "[橡木王冠]气槽",
+        "rewardType": 50,
+        "rewardValue": 101802,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009021,
+      "order": 21,
+      "reward": {
+        "image": "intel/chara/chr_icon_1020_102001_02.png",
+        "name": "[青云垂钓者]青云天空",
+        "rewardType": 50,
+        "rewardValue": 102001,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009022,
+      "order": 22,
+      "reward": {
+        "image": "intel/chara/chr_icon_1012_101201_02.png",
+        "name": "[亚马逊青金石]菱亚马逊",
+        "rewardType": 50,
+        "rewardValue": 101201,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009023,
+      "order": 23,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/b/b0/fkzhw3opf4gyebp9q74qzywkkz89hro.png/200px-Chr_icon_1014_101402_01.png",
+        "name": "[羽蛇武斗家]神鹰",
+        "rewardType": 50,
+        "rewardValue": 101402,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009024,
+      "order": 24,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/d9/29w6hgblitwriahe4uwh116j6p9ht7d.png/200px-Chr_icon_1011_101102_01.png",
+        "name": "[圣翠治愈师]草上飞",
+        "rewardType": 50,
+        "rewardValue": 101102,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009025,
+      "order": 25,
+      "reward": {
+        "image": "intel/chara/chr_icon_1005_100501_02.png",
+        "name": "[流星歌剧]富士奇石",
+        "rewardType": 50,
+        "rewardValue": 100501,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009026,
+      "order": 26,
+      "reward": {
+        "image": "intel/chara/chr_icon_1040_104001_02.png",
+        "name": "[真我/1928]黄金城",
+        "rewardType": 50,
+        "rewardValue": 104001,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009027,
+      "order": 27,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/43/nvacdylxdyc7napxc2rxgtk2mp9x1q7.png/200px-Chr_icon_1001_100102_01.png",
+        "name": "[雀跃♪维他命心拍]特别周",
+        "rewardType": 50,
+        "rewardValue": 100102,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009028,
+      "order": 28,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/1/13/rou9qz3ci4nqnoj5f5ifsau9idiquc5.png/200px-Chr_icon_1004_100402_01.png",
+        "name": "[飞跃☆夏夜]丸善斯基",
+        "rewardType": 50,
+        "rewardValue": 100402,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009029,
+      "order": 29,
+      "reward": {
+        "image": "intel/chara/chr_icon_1058_105801_02.png",
+        "name": "[苍蓝/怒涛]名将怒涛",
+        "rewardType": 50,
+        "rewardValue": 105801,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009030,
+      "order": 30,
+      "reward": {
+        "image": "intel/chara/chr_icon_1037_103701_02.png",
+        "name": "[Meisterschaft]荣进闪耀",
+        "rewardType": 50,
+        "rewardValue": 103701,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009031,
+      "order": 31,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/ef/fj3tnjuvsof4dldainvp4vqnm6ualyf.png/200px-Chr_icon_1056_105602_01.png",
+        "name": "[吉兆秋风]待兼福来",
+        "rewardType": 50,
+        "rewardValue": 105602,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009032,
+      "order": 32,
+      "reward": {
+        "image": "intel/chara/chr_icon_1028_102801_02.png",
+        "name": "[Buono☆时尚]菱曙",
+        "rewardType": 50,
+        "rewardValue": 102801,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009033,
+      "order": 33,
+      "reward": {
+        "image": "intel/chara/chr_icon_1019_101901_02.png",
+        "name": "[超级加急！全彩PP膜特殊加工]爱丽数码",
+        "rewardType": 50,
+        "rewardValue": 101901,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009034,
+      "order": 34,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/46/4shyrsmzi8qga6kqvp8rwads0vrjba6.png/200px-Chr_icon_1030_103002_01.png",
+        "name": "[Make up Vampire！]米浴",
+        "rewardType": 50,
+        "rewardValue": 103002,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009035,
+      "order": 35,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/e7/k7fviw2onzw853hyyvlmjgfccigln30.png/200px-Chr_icon_1045_104502_01.png",
+        "name": "[雪纺丝带木乃伊]超级溪流",
+        "rewardType": 50,
+        "rewardValue": 104502,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009036,
+      "order": 36,
+      "reward": {
+        "image": "intel/chara/chr_icon_1039_103901_02.png",
+        "name": "[粉红公主]川上公主",
+        "rewardType": 50,
+        "rewardValue": 103901,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009037,
+      "order": 37,
+      "reward": {
+        "image": "intel/chara/chr_icon_1025_102501_02.png",
+        "name": "[Creeping Black]曼城茶座",
+        "rewardType": 50,
+        "rewardValue": 102501,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009038,
+      "order": 38,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/ee/8oxqo9sxp1dpxdxz2poccn7it6y6aac.png/200px-Chr_icon_1017_101702_01.png",
+        "name": "[皓月下的神箭手]鲁道夫象征",
+        "rewardType": 50,
+        "rewardValue": 101702,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009039,
+      "order": 39,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/9/91/js8lzrj2ft98xyuyhlxv0lytq12oeoa.png/200px-Chr_icon_1040_104002_01.png",
+        "name": "[秋樱舞娘]黄金城",
+        "rewardType": 50,
+        "rewardValue": 104002,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009040,
+      "order": 40,
+      "reward": {
+        "image": "intel/chara/chr_icon_1048_104801_02.png",
+        "name": "[潮流☆Joker]岛川乔丹",
+        "rewardType": 50,
+        "rewardValue": 104801,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009041,
+      "order": 41,
+      "reward": {
+        "image": "intel/chara/chr_icon_1059_105901_02.png",
+        "name": "[宛延曲线]目白多伯",
+        "rewardType": 50,
+        "rewardValue": 105901,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009042,
+      "order": 42,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/7c/18qc5rbch53wvn75t47e1ifnsenueat.png/200px-Chr_icon_1006_100602_01.png",
+        "name": "[奇迹的胜利之星]小栗帽",
+        "rewardType": 50,
+        "rewardValue": 100602,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009043,
+      "order": 43,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/8f/rbxeu278ccawjlt64k08475kgknaav8.png/200px-Chr_icon_1023_102302_01.png",
+        "name": "[嫣红圣诞颂歌]琵琶晨光",
+        "rewardType": 50,
+        "rewardValue": 102302,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009044,
+      "order": 44,
+      "reward": {
+        "image": "intel/chara/chr_icon_1022_102201_02.png",
+        "name": "[Noble Seamair]美妙姿势",
+        "rewardType": 50,
+        "rewardValue": 102201,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009045,
+      "order": 45,
+      "reward": {
+        "image": "intel/chara/chr_icon_1021_102101_02.png",
+        "name": "[疾风迅雷]玉藻十字",
+        "rewardType": 50,
+        "rewardValue": 102101,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009046,
+      "order": 46,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a0/ly2fkwp8itixuo0bihghmoc24l7x26n.png/200px-Chr_icon_1052_105202_01.png",
+        "name": "[明媚新春♪樱花绽放]春乌菈菈",
+        "rewardType": 50,
+        "rewardValue": 105202,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009047,
+      "order": 47,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/5/5c/351k902rorfp8d8poxobgj1ew2mlrkx.png/200px-Chr_icon_1015_101502_01.png",
+        "name": "[新春初晴·宝蓝绚烂]好歌剧",
+        "rewardType": 50,
+        "rewardValue": 101502,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009048,
+      "order": 48,
+      "reward": {
+        "image": "intel/chara/chr_icon_1069_106901_02.png",
+        "name": "[举世无双·樱花耀夜]樱花千代王",
+        "rewardType": 50,
+        "rewardValue": 106901,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009049,
+      "order": 49,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/9/9f/5rbb1vlcqj6gjelxvuo8roln7y49csw.png/200px-Chr_icon_1026_102602_01.png",
+        "name": "[CODE：淋面装饰]美浦波旁",
+        "rewardType": 50,
+        "rewardValue": 102602,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009050,
+      "order": 50,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/01/j4r8lbtr2e24kfw00jjm7s9jojc0eof.png/200px-Chr_icon_1037_103702_01.png",
+        "name": "[精确无比·巧克力大师]荣进闪耀",
+        "rewardType": 50,
+        "rewardValue": 103702,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009051,
+      "order": 51,
+      "reward": {
+        "image": "intel/chara/chr_icon_1071_107101_02.png",
+        "name": "[墨绿柔线]目白雅丹",
+        "rewardType": 50,
+        "rewardValue": 107101,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009052,
+      "order": 52,
+      "reward": {
+        "image": "intel/chara/chr_icon_1033_103301_02.png",
+        "name": "[Starry Nocturne]爱慕织姬",
+        "rewardType": 50,
+        "rewardValue": 103301,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009053,
+      "order": 53,
+      "reward": {
+        "image": "intel/chara/chr_icon_1068_106801_02.png",
+        "name": "[锦绣·溢彩盛典]北部玄驹",
+        "rewardType": 50,
+        "rewardValue": 106801,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009054,
+      "order": 54,
+      "reward": {
+        "image": "intel/chara/chr_icon_1067_106701_02.png",
+        "name": "[Natural Brilliance]里见光钻",
+        "rewardType": 50,
+        "rewardValue": 106701,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009055,
+      "order": 55,
+      "reward": {
+        "image": "intel/chara/chr_icon_1074_107401_02.png",
+        "name": "[砺光韧线]目白光明",
+        "rewardType": 50,
+        "rewardValue": 107401,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009056,
+      "order": 56,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/1/1e/py8tiyvozrevnuuvv01x4b44p6rr51l.png/200px-Chr_icon_1020_102002_01.png",
+        "name": "[星夜猫咪舞会]青云天空",
+        "rewardType": 50,
+        "rewardValue": 102002,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009057,
+      "order": 57,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/05/ijm1sjbstsh1p5qzng4a9cfd3t67eet.png/200px-Chr_icon_1005_100502_01.png",
+        "name": "[胜利之星]富士奇石",
+        "rewardType": 50,
+        "rewardValue": 100502,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009058,
+      "order": 58,
+      "reward": {
+        "image": "intel/chara/chr_icon_1051_105101_02.png",
+        "name": "[叠瓣花蕾]西野花",
+        "rewardType": 50,
+        "rewardValue": 105101,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009059,
+      "order": 59,
+      "reward": {
+        "image": "intel/chara/chr_icon_1072_107201_02.png",
+        "name": "[四白流星之袭]八重无敌",
+        "rewardType": 50,
+        "rewardValue": 107201,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009060,
+      "order": 60,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/7f/2wf86mq9bwsgf94dm6ur8bnuwdoq6oa.png/200px-Chr_icon_1060_106002_01.png",
+        "name": "[RUN＆WIN]优秀素质",
+        "rewardType": 50,
+        "rewardValue": 106002,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009061,
+      "order": 61,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/77/6fpzxzbvb6p0389vb4fvx1o22nuoygw.png/200px-Chr_icon_1061_106102_01.png",
+        "name": "[洁白傲气的激励之服]帝王光辉",
+        "rewardType": 50,
+        "rewardValue": 106102,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009062,
+      "order": 62,
+      "reward": {
+        "image": "intel/chara/chr_icon_1031_103101_02.png",
+        "name": "[全时狂欢]艾尼风神",
+        "rewardType": 50,
+        "rewardValue": 103101,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009063,
+      "order": 63,
+      "reward": {
+        "image": "intel/chara/chr_icon_1064_106401_02.png",
+        "name": "[Line Breakthrough]目白善信",
+        "rewardType": 50,
+        "rewardValue": 106401,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009064,
+      "order": 64,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/d0/9tuykeadkuvzyfe1rdbuv7sus26knwo.png/200px-Chr_icon_1038_103802_01.png",
+        "name": "[朔月挚爱]真机伶",
+        "rewardType": 50,
+        "rewardValue": 103802,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009065,
+      "order": 65,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/02/fsgq45i7hnd0yf5yzce13mk8p7ih7ju.png/200px-Chr_icon_1022_102202_01.png",
+        "name": "[Titania]美妙姿势",
+        "rewardType": 50,
+        "rewardValue": 102202,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009066,
+      "order": 66,
+      "reward": {
+        "image": "intel/chara/chr_icon_1034_103401_02.png",
+        "name": "[稻荷因缘江户紫]稻荷一",
+        "rewardType": 50,
+        "rewardValue": 103401,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009067,
+      "order": 67,
+      "reward": {
+        "image": "intel/chara/chr_icon_1044_104401_02.png",
+        "name": "[悬铃木魔女]东商变革",
+        "rewardType": 50,
+        "rewardValue": 104401,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009068,
+      "order": 68,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a9/gc0y9qjub4ga27tv35r7516plp2l82z.png/200px-Chr_icon_1010_101002_01.png",
+        "name": "[Bubblegum☆Memories]大树快车",
+        "rewardType": 50,
+        "rewardValue": 101002,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009069,
+      "order": 69,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/3/3b/2y7pxahbv3imoo5pgpt0zczo8mdh5gi.png/200px-Chr_icon_1059_105902_01.png",
+        "name": "[假日宝石蓝]目白多伯",
+        "rewardType": 50,
+        "rewardValue": 105902,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009070,
+      "order": 70,
+      "reward": {
+        "image": "intel/chara/chr_icon_1036_103601_02.png",
+        "name": "[unsigned]空中神宫",
+        "rewardType": 50,
+        "rewardValue": 103601,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009071,
+      "order": 71,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a3/j7at2d5pl26c8zsufmf3riycwdq3p2m.png/200px-Chr_icon_1013_101303_01.png",
+        "name": "[涟漪佳人]目白麦昆",
+        "rewardType": 50,
+        "rewardValue": 101303,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009072,
+      "order": 72,
+      "reward": {
+        "image": "intel/chara/chr_icon_1007_100702_02.png",
+        "name": "[RUN！乱！发射！！]黄金船",
+        "rewardType": 50,
+        "rewardValue": 100702,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009073,
+      "order": 73,
+      "reward": {
+        "image": "intel/chara/chr_icon_1053_105301_02.png",
+        "name": "[黑铁的壮志]青竹回忆",
+        "rewardType": 50,
+        "rewardValue": 105301,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009074,
+      "order": 74,
+      "reward": {
+        "image": "intel/chara/chr_icon_1098_109801_02.png",
+        "name": "[阴阳八卦☆开运服]小林历奇",
+        "rewardType": 50,
+        "rewardValue": 109801,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009075,
+      "order": 75,
+      "reward": {
+        "image": "intel/chara/chr_icon_1046_104602_02.png",
+        "name": "[黄昏凯旋]醒目飞鹰",
+        "rewardType": 50,
+        "rewardValue": 104602,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009076,
+      "order": 76,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/9/9f/25jlpir74nf08surdjmfeoe6081shgu.png/200px-Chr_icon_1035_103502_01.png",
+        "name": "[梦想传递员]胜利奖券",
+        "rewardType": 50,
+        "rewardValue": 103502,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009077,
+      "order": 77,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/0b/hke9udzvm2c7rr5jg7s8jry9nxm93ob.png/200px-Chr_icon_1050_105002_01.png",
+        "name": "[另类工程师]成田大进",
+        "rewardType": 50,
+        "rewardValue": 105002,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009078,
+      "order": 78,
+      "reward": {
+        "image": "intel/chara/chr_icon_1029_102901_02.png",
+        "name": "[可可爱爱的六出冰花]雪之美人",
+        "rewardType": 50,
+        "rewardValue": 102901,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009079,
+      "order": 79,
+      "reward": {
+        "image": "intel/chara/chr_icon_1042_104201_02.png",
+        "name": "[Rocket☆Star]采珠",
+        "rewardType": 50,
+        "rewardValue": 104201,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009080,
+      "order": 80,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/4d/i5xqu69cwrpmiaz7xib4oh7r5nv6uip.png/200px-Chr_icon_1019_101902_01.png",
+        "name": "[爱丽♡僵尸]爱丽数码",
+        "rewardType": 50,
+        "rewardValue": 101902,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009081,
+      "order": 81,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/88/gxdk99ezpc7cv1pf1b4nkfkqfigk8z3.png/200px-Chr_icon_1058_105802_01.png",
+        "name": "[Dot-o'-Lantern]名将怒涛",
+        "rewardType": 50,
+        "rewardValue": 105802,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009082,
+      "order": 82,
+      "reward": {
+        "image": "intel/chara/chr_icon_1087_108701_02.png",
+        "name": "[Flare]阿斯顿真弓",
+        "rewardType": 50,
+        "rewardValue": 108701,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009083,
+      "order": 83,
+      "reward": {
+        "image": "intel/chara/chr_icon_1078_107801_02.png",
+        "name": "[Fluttertail Spirit]山人西风",
+        "rewardType": 50,
+        "rewardValue": 107801,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009084,
+      "order": 84,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/da/fg5z8jqwrp9175q2kczoi6pzmuroe3y.png/200px-Chr_icon_1021_102102_01.png",
+        "name": "[轰鸣雷神]玉藻十字",
+        "rewardType": 50,
+        "rewardValue": 102102,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009085,
+      "order": 85,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/b/b8/nbkj7mb4zw2hn1lbluwhlgdsmdxgld0.png/200px-Chr_icon_1034_103402_01.png",
+        "name": "[梦之金原]稻荷一",
+        "rewardType": 50,
+        "rewardValue": 103402,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009086,
+      "order": 86,
+      "reward": {
+        "image": "intel/chara/chr_icon_1049_104901_02.png",
+        "name": "[死中求生]中山庆典",
+        "rewardType": 50,
+        "rewardValue": 104901,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009087,
+      "order": 87,
+      "reward": {
+        "image": "intel/chara/chr_icon_1100_110001_02.png",
+        "name": "[Butterfly Sting]奇锐骏",
+        "rewardType": 50,
+        "rewardValue": 110001,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009088,
+      "order": 88,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/ed/4bvoel9kj19lwvhuiuz9uiqohdzptw7.png/200px-Chr_icon_1008_100802_01.png",
+        "name": "[不会结冰的生命之水]伏特加",
+        "rewardType": 50,
+        "rewardValue": 100802,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009089,
+      "order": 89,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/45/1za635wf2t0t9mfskwdyqfg54gtbvhy.png/200px-Chr_icon_1009_100902_01.png",
+        "name": "[绯红的星月之夜]大和赤骥",
+        "rewardType": 50,
+        "rewardValue": 100902,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009090,
+      "order": 90,
+      "reward": {
+        "image": "intel/chara/chr_icon_1047_104701_02.png",
+        "name": "[Heroic Author]荒漠英雄",
+        "rewardType": 50,
+        "rewardValue": 104701,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009091,
+      "order": 91,
+      "reward": {
+        "image": "intel/chara/chr_icon_1016_101602_02.png",
+        "name": "[饿狼]成田白仁",
+        "rewardType": 50,
+        "rewardValue": 101602,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009092,
+      "order": 92,
+      "reward": {
+        "image": "intel/chara/chr_icon_1068_106802_02.png",
+        "name": "[压轴主角·庆鹤之志]北部玄驹",
+        "rewardType": 50,
+        "rewardValue": 106802,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009093,
+      "order": 93,
+      "reward": {
+        "image": "intel/chara/chr_icon_1067_106702_02.png",
+        "name": "[当红之星·荣兴之翠]里见光钻",
+        "rewardType": 50,
+        "rewardValue": 106702,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009094,
+      "order": 94,
+      "reward": {
+        "image": "intel/chara/chr_icon_1099_109901_02.png",
+        "name": "[星辉之航]北幸樽前",
+        "rewardType": 50,
+        "rewardValue": 109901,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009095,
+      "order": 95,
+      "reward": {
+        "image": "intel/chara/chr_icon_1065_106501_02.png",
+        "name": "[Fun☆Fun☆嗨翻天]大拓太阳神",
+        "rewardType": 50,
+        "rewardValue": 106501,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009096,
+      "order": 96,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/1/10/9um9hp2dz22u3g485myyfbswhcfjtwn.png/200px-Chr_icon_1031_103102_01.png",
+        "name": "[MELTY GIFT]艾尼风神",
+        "rewardType": 50,
+        "rewardValue": 103102,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009097,
+      "order": 97,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a5/qs71kbidjlfv5uzqth9mpbxy7arfo49.png/200px-Chr_icon_1027_102702_01.png",
+        "name": "[玛格丽特拿铁]目白莱恩",
+        "rewardType": 50,
+        "rewardValue": 102702,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009098,
+      "order": 98,
+      "reward": {
+        "image": "intel/chara/chr_icon_1043_104301_02.png",
+        "name": "[Wicked Punk]新光风",
+        "rewardType": 50,
+        "rewardValue": 104301,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009099,
+      "order": 99,
+      "reward": {
+        "image": "intel/chara/chr_icon_1057_105701_02.png",
+        "name": "[Clear Bliss]千明代表",
+        "rewardType": 50,
+        "rewardValue": 105701,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009100,
+      "order": 100,
+      "reward": {
+        "image": "intel/chara/chr_icon_1085_108501_02.png",
+        "name": "[华丽红玉]第一红宝",
+        "rewardType": 50,
+        "rewardValue": 108501,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009101,
+      "order": 101,
+      "reward": {
+        "image": "intel/chara/chr_icon_1083_108301_02.png",
+        "name": "[Onyx Soldier]克里斯象征",
+        "rewardType": 50,
+        "rewardValue": 108301,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009102,
+      "order": 102,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/76/jsqweqp5e2ypvxzq75pq5h30henbv3g.png/200px-Chr_icon_1071_107102_01.png",
+        "name": "[Neige Émeraude]目白雅丹",
+        "rewardType": 50,
+        "rewardValue": 107102,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009103,
+      "order": 103,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a6/c77szuscnoany23c130hibmvxxr2kfa.png/200px-Chr_icon_1069_106902_01.png",
+        "name": "[Fleur Enneigée]樱花千代王",
+        "rewardType": 50,
+        "rewardValue": 106902,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009104,
+      "order": 104,
+      "reward": {
+        "image": "intel/chara/chr_icon_1076_107601_02.png",
+        "name": "[Saisir le rêve]樱花桂冠",
+        "rewardType": 50,
+        "rewardValue": 107601,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009105,
+      "order": 105,
+      "reward": {
+        "image": "intel/chara/chr_icon_1105_110501_02.png",
+        "name": "[Universe-Naut]新宇宙",
+        "rewardType": 50,
+        "rewardValue": 110501,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009106,
+      "order": 106,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/c/cf/dksnlbskkfdaqcfauo30qyjpadrj4rk.png/200px-Chr_icon_1062_106202_01.png",
+        "name": "[碧蓝湍流]待兼唐怀瑟",
+        "rewardType": 50,
+        "rewardValue": 106202,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009107,
+      "order": 107,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/e7/czfevdx8ixxs0zr0o01caqr4h2xqlko.png/200px-Chr_icon_1041_104102_01.png",
+        "name": "[赤热☆队长]樱花进王",
+        "rewardType": 50,
+        "rewardValue": 104102,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009108,
+      "order": 108,
+      "reward": {
+        "image": "intel/chara/chr_icon_1106_110601_02.png",
+        "name": "[奇迹装点！]菱奇宝",
+        "rewardType": 50,
+        "rewardValue": 110601,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009109,
+      "order": 109,
+      "reward": {
+        "image": "intel/chara/chr_icon_1084_108401_02.png",
+        "name": "[雷霆加身]谷水琴蕾",
+        "rewardType": 50,
+        "rewardValue": 108401,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009110,
+      "order": 110,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/db/6jq3y20r65f3bvtiomcokgsta0vvfv8.png/200px-Chr_icon_1051_105102_01.png",
+        "name": "[Sweet Juneberry]西野花",
+        "rewardType": 50,
+        "rewardValue": 105102,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009111,
+      "order": 111,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/3/3a/ry6xq6la17ftldumbe6evr917tzwigc.png/200px-Chr_icon_1012_101202_01.png",
+        "name": "[Hungry Veil]菱亚马逊",
+        "rewardType": 50,
+        "rewardValue": 101202,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009112,
+      "order": 112,
+      "reward": {
+        "image": "intel/chara/chr_icon_1055_105501_02.png",
+        "name": "[☆闪亮★心动☆雀跃∞美丽∞]美丽周日",
+        "rewardType": 50,
+        "rewardValue": 105501,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009113,
+      "order": 113,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/dc/1y67rf81083gpscfe0s876bx8vhpckt.png/200px-Chr_icon_1053_105302_01.png",
+        "name": "[Ultra☆Marine]青竹回忆",
+        "rewardType": 50,
+        "rewardValue": 105302,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009114,
+      "order": 114,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/6/6b/1cj6qe2zy8pxyxibkv3gz9xpj4f5g1u.png/200px-Chr_icon_1048_104802_01.png",
+        "name": "[Aurore☆Vacances]岛川乔丹",
+        "rewardType": 50,
+        "rewardValue": 104802,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009115,
+      "order": 115,
+      "reward": {
+        "image": "intel/chara/chr_icon_1104_110401_02.png",
+        "name": "[登龙之顶]葛城荣主",
+        "rewardType": 50,
+        "rewardValue": 110401,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009116,
+      "order": 116,
+      "reward": {
+        "image": "intel/chara/chr_icon_1070_107001_02.png",
+        "name": "[Féroce]天狼星象征",
+        "rewardType": 50,
+        "rewardValue": 107001,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009117,
+      "order": 117,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/6/6a/o5ab8v294zknryej3bowpmuzahdpp04.png/200px-Chr_icon_1032_103202_01.png",
+        "name": "[Lunatic Lab]爱丽速子",
+        "rewardType": 50,
+        "rewardValue": 103202,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009118,
+      "order": 118,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/2/27/3l4heljhkc1a6dix33czzsbndpr6jt2.png/200px-Chr_icon_1002_100202_01.png",
+        "name": "[浪间翠玉]无声铃鹿",
+        "rewardType": 50,
+        "rewardValue": 100202,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009119,
+      "order": 119,
+      "reward": {
+        "image": "intel/chara/chr_icon_1077_107701_02.png",
+        "name": "[The Proud Road]成田路",
+        "rewardType": 50,
+        "rewardValue": 107701,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009120,
+      "order": 120,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/d9/jgddk82tybgvdlrru0dhcsck4tg25pw.png/200px-Chr_icon_1007_100703_01.png",
+        "name": "[La mode 564]黄金船",
+        "rewardType": 50,
+        "rewardValue": 100703,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009121,
+      "order": 121,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/8f/rxhi1kiixy7qlhy8j9zml6yhzzu284w.png/200px-Chr_icon_1067_106703_01.png",
+        "name": "[苍蓝骑士]里见光钻",
+        "rewardType": 50,
+        "rewardValue": 106703,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009122,
+      "order": 122,
+      "reward": {
+        "image": "intel/chara/chr_icon_1093_109301_02.png",
+        "name": "[Prism]喜嘉奇迹",
+        "rewardType": 50,
+        "rewardValue": 109301,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009123,
+      "order": 123,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/4c/hsdpt9u6aukc9n3yndw7svpftadbdbp.png/200px-Chr_icon_1036_103602_01.png",
+        "name": "[Belphegor's Prime]空中神宫",
+        "rewardType": 50,
+        "rewardValue": 103602,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009124,
+      "order": 124,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/82/iy2sc1613b2fxxditqwcj1qmwwyis7z.png/200px-Chr_icon_1083_108302_01.png",
+        "name": "[Jetblack Automaton]克里斯象征",
+        "rewardType": 50,
+        "rewardValue": 108302,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009125,
+      "order": 125,
+      "reward": {
+        "image": "intel/chara/chr_icon_1086_108601_02.png",
+        "name": "[墨瑙魅线]目白拉莫娜",
+        "rewardType": 50,
+        "rewardValue": 108601,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009126,
+      "order": 126,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/2/2a/ka9h3wphhiz9rzixozlnub24rcyue0q.png/200px-Chr_icon_1039_103902_01.png",
+        "name": "[水干抚子]川上公主",
+        "rewardType": 50,
+        "rewardValue": 103902,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009127,
+      "order": 127,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/6/6b/31pknnq1ju5m78oah12pszej3csmj1n.png/200px-Chr_icon_1003_100303_01.png",
+        "name": "[紫云中的寻梦蝶]东海帝王",
+        "rewardType": 50,
+        "rewardValue": 100303,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009128,
+      "order": 128,
+      "reward": {
+        "image": "intel/chara/chr_icon_1107_110701_02.png",
+        "name": "[GLITTER！]跳舞城",
+        "rewardType": 50,
+        "rewardValue": 110701,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009129,
+      "order": 129,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/6/6c/gl3qzffuhn7btbqle3gzlti1elwgq5u.png/200px-Chr_icon_1064_106402_01.png",
+        "name": "[赤诚的驯鹿小姐]目白善信",
+        "rewardType": 50,
+        "rewardValue": 106402,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009130,
+      "order": 130,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a0/6g56wnn13iacmox97y4kfnnw8oauxud.png/200px-Chr_icon_1074_107402_01.png",
+        "name": "[澄澈星空下的白雪洛丽塔]目白光明",
+        "rewardType": 50,
+        "rewardValue": 107402,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009131,
+      "order": 131,
+      "reward": {
+        "image": "intel/chara/chr_icon_1088_108801_02.png",
+        "name": "[黑翠千里行]里见皇冠",
+        "rewardType": 50,
+        "rewardValue": 108801,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009132,
+      "order": 132,
+      "reward": {
+        "image": "intel/chara/chr_icon_1089_108901_02.png",
+        "name": "[Grand itinéraire]高尚骏逸",
+        "rewardType": 50,
+        "rewardValue": 108901,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009133,
+      "order": 133,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/8e/tttad8zhjkws9pnzxzq1r9j22lafngp.png/200px-Chr_icon_1068_106803_01.png",
+        "name": "[满愿终舞花]北部玄驹",
+        "rewardType": 50,
+        "rewardValue": 106803,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009134,
+      "order": 134,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/83/qgy211zj1owy48pokp2w4yqboqlrl9r.png/200px-Chr_icon_1060_106003_01.png",
+        "name": "[重叠交织的心意]优秀素质",
+        "rewardType": 50,
+        "rewardValue": 106003,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009135,
+      "order": 135,
+      "reward": {
+        "image": "intel/chara/chr_icon_1091_109101_02.png",
+        "name": "[Voyage étincelant]维普露斯",
+        "rewardType": 50,
+        "rewardValue": 109101,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009136,
+      "order": 136,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/49/6ue51n8y49o764mcewue77x6ikqdhdd.png/200px-Chr_icon_1029_102902_01.png",
+        "name": "[茶点雪女]雪之美人",
+        "rewardType": 50,
+        "rewardValue": 102902,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009137,
+      "order": 137,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/0b/p1s6ng0zblqp7too8tfksx5fdfpzmsx.png/200px-Chr_icon_1025_102502_01.png",
+        "name": "[柳绿小夜]曼城茶座",
+        "rewardType": 50,
+        "rewardValue": 102502,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009138,
+      "order": 138,
+      "reward": {
+        "image": "intel/chara/chr_icon_1108_110801_02.png",
+        "name": "[Red in Black]鸣声雷动",
+        "rewardType": 50,
+        "rewardValue": 110801,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009139,
+      "order": 139,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/8e/r40ujyf20ediri7o5yxqk9bmz0j6sk9.png/200px-Chr_icon_1080_108001_01.png",
+        "name": "[興奮不已GIZMO]創升",
+        "rewardType": 50,
+        "rewardValue": 108001,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009140,
+      "order": 140,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/3/3a/83q4gk6uw2f80if4rea7mcmf98eb8dl.png/200px-Chr_icon_1109_110901_01.png",
+        "name": "[Dream Successor]莱茵力量",
+        "rewardType": 50,
+        "rewardValue": 110901,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009141,
+      "order": 141,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/3/3a/3kzlebtemjx3iwo5v177du1g9elwr8b.png/200px-Chr_icon_1085_108502_01.png",
+        "name": "[Flowing Blue]第一红宝",
+        "rewardType": 50,
+        "rewardValue": 108502,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009142,
+      "order": 142,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/b/b7/e53viac10irmjqg5vh7vr11jv9jqbf3.png/200px-Chr_icon_1065_106502_01.png",
+        "name": "[Joyful Jamboree!]大拓太阳神",
+        "rewardType": 50,
+        "rewardValue": 106502,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009143,
+      "order": 143,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/c/ca/r6r8x063o3kbz6qf85cx66ob8nrmgl2.png/200px-Chr_icon_1035_103503_01.png",
+        "name": "[Glorious Coat]胜利奖券",
+        "rewardType": 50,
+        "rewardValue": 103503,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009144,
+      "order": 144,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/70/sfnc8294bsdwdp3pvf9acg9zi6w9t0g.png/200px-Chr_icon_1102_110201_01.png",
+        "name": "[地球的節奏]万籁争鸣",
+        "rewardType": 50,
+        "rewardValue": 110201,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009145,
+      "order": 145,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/1/1f/a992nd4cw4lwryieg6fhm9lngek2c6a.png/200px-Chr_icon_1045_104503_01.png",
+        "name": "[慈雨華影]超级溪流",
+        "rewardType": 50,
+        "rewardValue": 104503,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009146,
+      "order": 146,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/78/7isrcdqh8e8gs6yqghzmkydq01io3o3.png/200px-Chr_icon_1072_107202_01.png",
+        "name": "[黑將Zen]八重无敌",
+        "rewardType": 50,
+        "rewardValue": 107202,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009147,
+      "order": 147,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/07/egm8c5rn0m4b09vlq76i4j9nocnqpvu.png/200px-Chr_icon_1032_103203_01.png",
+        "name": "[Σ Experiment]爱丽速子",
+        "rewardType": 50,
+        "rewardValue": 103203,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009148,
+      "order": 148,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/8c/tsm252lcnqrqifhrhhwpeywllubktxv.png/200px-Chr_icon_1082_108201_01.png",
+        "name": "[Looking Fly!]北方飞翔",
+        "rewardType": 50,
+        "rewardValue": 108201,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009149,
+      "order": 149,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/78/rpg215rzi22iqjib0lcr8423cbya16z.png/200px-Chr_icon_1061_106103_01.png",
+        "name": "[Evergreen Identity]帝王光辉",
+        "rewardType": 50,
+        "rewardValue": 106103,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009150,
+      "order": 150,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/08/pme3vi6awqf5pckwaqk5o91n0ew998q.png/200px-Chr_icon_1044_104402_01.png",
+        "name": "[實現憧憬的符文]东商变革",
+        "rewardType": 50,
+        "rewardValue": 104402,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009151,
+      "order": 151,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/3/31/f9w8jn4edx00c43oq87yl4r3m7tv51d.png/200px-Chr_icon_1119_111901_01.png",
+        "name": "[夢之所歸]夢之旅",
+        "rewardType": 50,
+        "rewardValue": 111901,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009152,
+      "order": 152,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/2/2f/ctsbo9a1p71705wq2cvj4571hhjgkib.png/200px-Chr_icon_1030_103003_01.png",
+        "name": "[Yummy Dreamy Fairy]米浴",
+        "rewardType": 50,
+        "rewardValue": 103003,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009153,
+      "order": 153,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a2/18xyv70l1dm0jkw2jep8wf5puycmt62.png/200px-Chr_icon_1120_112001_01.png",
+        "name": "[一心求真]浮岩光王",
+        "rewardType": 50,
+        "rewardValue": 112001,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009154,
+      "order": 154,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/3/37/lqzmcsfhq3vbrl63g2ga328q4s1ek6c.png/200px-Chr_icon_1037_103703_01.png",
+        "name": "[Reines Plätschern]荣进闪耀",
+        "rewardType": 50,
+        "rewardValue": 103703,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5009155,
+      "order": 155,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/5/54/b110pcg38quvuqj02a6sv7oizjgmriy.png/200px-Chr_icon_1099_109902_01.png",
+        "name": "[粉藍海洋．地方偶像]北幸樽前",
+        "rewardType": 50,
+        "rewardValue": 109902,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "3.5周年庆典 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 254,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    }
+  ]
+}

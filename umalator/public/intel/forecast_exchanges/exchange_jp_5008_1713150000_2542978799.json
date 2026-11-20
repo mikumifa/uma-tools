@@ -1,7 +1,7 @@
 {
   "exchangeDetails": [
     {
-      "id": 5006001,
+      "id": 5008001,
       "order": 1,
       "reward": {
         "image": "intel/chara/chr_icon_1001_100101_02.png",
@@ -11,10 +11,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -22,7 +22,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006002,
+      "id": 5008002,
       "order": 2,
       "reward": {
         "image": "intel/chara/chr_icon_1002_100201_02.png",
@@ -32,10 +32,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -43,7 +43,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006003,
+      "id": 5008003,
       "order": 3,
       "reward": {
         "image": "intel/chara/chr_icon_1003_100301_02.png",
@@ -53,10 +53,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -64,7 +64,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006004,
+      "id": 5008004,
       "order": 4,
       "reward": {
         "image": "intel/chara/chr_icon_1004_100401_02.png",
@@ -74,10 +74,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -85,7 +85,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006005,
+      "id": 5008005,
       "order": 5,
       "reward": {
         "image": "intel/chara/chr_icon_1006_100601_02.png",
@@ -95,10 +95,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -106,7 +106,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006006,
+      "id": 5008006,
       "order": 6,
       "reward": {
         "image": "intel/chara/chr_icon_1010_101001_02.png",
@@ -116,10 +116,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -127,7 +127,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006007,
+      "id": 5008007,
       "order": 7,
       "reward": {
         "image": "intel/chara/chr_icon_1013_101301_02.png",
@@ -137,10 +137,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -148,7 +148,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006008,
+      "id": 5008008,
       "order": 8,
       "reward": {
         "image": "intel/chara/chr_icon_1017_101701_02.png",
@@ -158,10 +158,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -169,7 +169,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006009,
+      "id": 5008009,
       "order": 9,
       "reward": {
         "image": "intel/chara/chr_icon_1030_103001_02.png",
@@ -179,10 +179,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -190,7 +190,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006010,
+      "id": 5008010,
       "order": 10,
       "reward": {
         "image": "intel/chara/chr_icon_1015_101501_02.png",
@@ -200,10 +200,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -211,7 +211,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006011,
+      "id": 5008011,
       "order": 11,
       "reward": {
         "image": "intel/chara/chr_icon_1026_102601_02.png",
@@ -221,10 +221,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -232,7 +232,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006012,
+      "id": 5008012,
       "order": 12,
       "reward": {
         "image": "intel/chara/chr_icon_1023_102301_02.png",
@@ -242,10 +242,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -253,7 +253,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006013,
+      "id": 5008013,
       "order": 13,
       "reward": {
         "image": "intel/chara/chr_icon_1003_100302_02.png",
@@ -263,10 +263,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -274,7 +274,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006014,
+      "id": 5008014,
       "order": 14,
       "reward": {
         "image": "intel/chara/chr_icon_1013_101302_02.png",
@@ -284,10 +284,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -295,7 +295,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006015,
+      "id": 5008015,
       "order": 15,
       "reward": {
         "image": "intel/chara/chr_icon_1038_103801_02.png",
@@ -305,10 +305,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -316,7 +316,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006016,
+      "id": 5008016,
       "order": 16,
       "reward": {
         "image": "intel/chara/chr_icon_1050_105001_02.png",
@@ -326,10 +326,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -337,7 +337,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006017,
+      "id": 5008017,
       "order": 17,
       "reward": {
         "image": "intel/chara/chr_icon_1046_104601_02.png",
@@ -347,10 +347,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -358,7 +358,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006018,
+      "id": 5008018,
       "order": 18,
       "reward": {
         "image": "intel/chara/chr_icon_1016_101601_02.png",
@@ -368,10 +368,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -379,20 +379,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006019,
+      "id": 5008019,
       "order": 19,
       "reward": {
-        "image": "intel/chara/chr_icon_1024_102426_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/b/bc/0la67lzig3bhn9t2m12wqu3uvvv2tc8.png/200px-Chr_icon_1024_102402_01.png",
         "name": "[阳光花束]重炮",
         "rewardType": 50,
         "rewardValue": 102402,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -400,20 +400,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006020,
+      "id": 5008020,
       "order": 20,
       "reward": {
-        "image": "intel/chara/chr_icon_1018_101826_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/7c/ixhakpniqruc1rup8knqv347q5ldiem.png/200px-Chr_icon_1018_101802_01.png",
         "name": "[橡木王冠]气槽",
         "rewardType": 50,
         "rewardValue": 101802,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -421,7 +421,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006021,
+      "id": 5008021,
       "order": 21,
       "reward": {
         "image": "intel/chara/chr_icon_1020_102001_02.png",
@@ -431,10 +431,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -442,7 +442,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006022,
+      "id": 5008022,
       "order": 22,
       "reward": {
         "image": "intel/chara/chr_icon_1012_101201_02.png",
@@ -452,10 +452,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -463,20 +463,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006023,
+      "id": 5008023,
       "order": 23,
       "reward": {
-        "image": "intel/chara/chr_icon_1014_101416_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/b/b0/fkzhw3opf4gyebp9q74qzywkkz89hro.png/200px-Chr_icon_1014_101402_01.png",
         "name": "[羽蛇武斗家]神鹰",
         "rewardType": 50,
         "rewardValue": 101402,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -484,20 +484,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006024,
+      "id": 5008024,
       "order": 24,
       "reward": {
-        "image": "intel/chara/chr_icon_1011_101116_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/d9/29w6hgblitwriahe4uwh116j6p9ht7d.png/200px-Chr_icon_1011_101102_01.png",
         "name": "[圣翠治愈师]草上飞",
         "rewardType": 50,
         "rewardValue": 101102,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -505,7 +505,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006025,
+      "id": 5008025,
       "order": 25,
       "reward": {
         "image": "intel/chara/chr_icon_1005_100501_02.png",
@@ -515,10 +515,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -526,7 +526,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006026,
+      "id": 5008026,
       "order": 26,
       "reward": {
         "image": "intel/chara/chr_icon_1040_104001_02.png",
@@ -536,10 +536,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -547,20 +547,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006027,
+      "id": 5008027,
       "order": 27,
       "reward": {
-        "image": "intel/chara/chr_icon_1001_100130_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/43/nvacdylxdyc7napxc2rxgtk2mp9x1q7.png/200px-Chr_icon_1001_100102_01.png",
         "name": "[雀跃♪维他命心拍]特别周",
         "rewardType": 50,
         "rewardValue": 100102,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -568,20 +568,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006028,
+      "id": 5008028,
       "order": 28,
       "reward": {
-        "image": "intel/chara/chr_icon_1004_100430_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/1/13/rou9qz3ci4nqnoj5f5ifsau9idiquc5.png/200px-Chr_icon_1004_100402_01.png",
         "name": "[飞跃☆夏夜]丸善斯基",
         "rewardType": 50,
         "rewardValue": 100402,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -589,7 +589,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006029,
+      "id": 5008029,
       "order": 29,
       "reward": {
         "image": "intel/chara/chr_icon_1058_105801_02.png",
@@ -599,10 +599,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -610,7 +610,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006030,
+      "id": 5008030,
       "order": 30,
       "reward": {
         "image": "intel/chara/chr_icon_1037_103701_02.png",
@@ -620,10 +620,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -631,20 +631,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006031,
+      "id": 5008031,
       "order": 31,
       "reward": {
-        "image": "intel/chara/chr_icon_1056_105623_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/ef/fj3tnjuvsof4dldainvp4vqnm6ualyf.png/200px-Chr_icon_1056_105602_01.png",
         "name": "[吉兆秋风]待兼福来",
         "rewardType": 50,
         "rewardValue": 105602,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -652,7 +652,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006032,
+      "id": 5008032,
       "order": 32,
       "reward": {
         "image": "intel/chara/chr_icon_1028_102801_02.png",
@@ -662,10 +662,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -673,7 +673,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006033,
+      "id": 5008033,
       "order": 33,
       "reward": {
         "image": "intel/chara/chr_icon_1019_101901_02.png",
@@ -683,10 +683,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -694,20 +694,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006034,
+      "id": 5008034,
       "order": 34,
       "reward": {
-        "image": "intel/chara/chr_icon_1030_103040_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/46/4shyrsmzi8qga6kqvp8rwads0vrjba6.png/200px-Chr_icon_1030_103002_01.png",
         "name": "[Make up Vampire！]米浴",
         "rewardType": 50,
         "rewardValue": 103002,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -715,20 +715,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006035,
+      "id": 5008035,
       "order": 35,
       "reward": {
-        "image": "intel/chara/chr_icon_1045_104540_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/e7/k7fviw2onzw853hyyvlmjgfccigln30.png/200px-Chr_icon_1045_104502_01.png",
         "name": "[雪纺丝带木乃伊]超级溪流",
         "rewardType": 50,
         "rewardValue": 104502,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -736,7 +736,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006036,
+      "id": 5008036,
       "order": 36,
       "reward": {
         "image": "intel/chara/chr_icon_1039_103901_02.png",
@@ -746,10 +746,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -757,7 +757,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006037,
+      "id": 5008037,
       "order": 37,
       "reward": {
         "image": "intel/chara/chr_icon_1025_102501_02.png",
@@ -767,10 +767,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -778,20 +778,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006038,
+      "id": 5008038,
       "order": 38,
       "reward": {
-        "image": "intel/chara/chr_icon_1017_101743_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/ee/8oxqo9sxp1dpxdxz2poccn7it6y6aac.png/200px-Chr_icon_1017_101702_01.png",
         "name": "[皓月下的神箭手]鲁道夫象征",
         "rewardType": 50,
         "rewardValue": 101702,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -799,20 +799,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006039,
+      "id": 5008039,
       "order": 39,
       "reward": {
-        "image": "intel/chara/chr_icon_1040_104043_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/9/91/js8lzrj2ft98xyuyhlxv0lytq12oeoa.png/200px-Chr_icon_1040_104002_01.png",
         "name": "[秋樱舞娘]黄金城",
         "rewardType": 50,
         "rewardValue": 104002,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -820,7 +820,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006040,
+      "id": 5008040,
       "order": 40,
       "reward": {
         "image": "intel/chara/chr_icon_1048_104801_02.png",
@@ -830,10 +830,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -841,7 +841,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006041,
+      "id": 5008041,
       "order": 41,
       "reward": {
         "image": "intel/chara/chr_icon_1059_105901_02.png",
@@ -851,10 +851,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -862,20 +862,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006042,
+      "id": 5008042,
       "order": 42,
       "reward": {
-        "image": "intel/chara/chr_icon_1006_100646_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/7c/18qc5rbch53wvn75t47e1ifnsenueat.png/200px-Chr_icon_1006_100602_01.png",
         "name": "[奇迹的胜利之星]小栗帽",
         "rewardType": 50,
         "rewardValue": 100602,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -883,20 +883,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006043,
+      "id": 5008043,
       "order": 43,
       "reward": {
-        "image": "intel/chara/chr_icon_1023_102346_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/8f/rbxeu278ccawjlt64k08475kgknaav8.png/200px-Chr_icon_1023_102302_01.png",
         "name": "[嫣红圣诞颂歌]琵琶晨光",
         "rewardType": 50,
         "rewardValue": 102302,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -904,7 +904,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006044,
+      "id": 5008044,
       "order": 44,
       "reward": {
         "image": "intel/chara/chr_icon_1022_102201_02.png",
@@ -914,10 +914,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -925,7 +925,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006045,
+      "id": 5008045,
       "order": 45,
       "reward": {
         "image": "intel/chara/chr_icon_1021_102101_02.png",
@@ -935,10 +935,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -946,20 +946,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006046,
+      "id": 5008046,
       "order": 46,
       "reward": {
-        "image": "intel/chara/chr_icon_1052_105210_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a0/ly2fkwp8itixuo0bihghmoc24l7x26n.png/200px-Chr_icon_1052_105202_01.png",
         "name": "[明媚新春♪樱花绽放]春乌菈菈",
         "rewardType": 50,
         "rewardValue": 105202,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -967,20 +967,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006047,
+      "id": 5008047,
       "order": 47,
       "reward": {
-        "image": "intel/chara/chr_icon_1015_101510_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/5/5c/351k902rorfp8d8poxobgj1ew2mlrkx.png/200px-Chr_icon_1015_101502_01.png",
         "name": "[新春初晴·宝蓝绚烂]好歌剧",
         "rewardType": 50,
         "rewardValue": 101502,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -988,7 +988,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006048,
+      "id": 5008048,
       "order": 48,
       "reward": {
         "image": "intel/chara/chr_icon_1069_106901_02.png",
@@ -998,10 +998,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1009,20 +1009,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006049,
+      "id": 5008049,
       "order": 49,
       "reward": {
-        "image": "intel/chara/chr_icon_1026_102613_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/9/9f/5rbb1vlcqj6gjelxvuo8roln7y49csw.png/200px-Chr_icon_1026_102602_01.png",
         "name": "[CODE：淋面装饰]美浦波旁",
         "rewardType": 50,
         "rewardValue": 102602,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1030,20 +1030,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006050,
+      "id": 5008050,
       "order": 50,
       "reward": {
-        "image": "intel/chara/chr_icon_1037_103713_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/01/j4r8lbtr2e24kfw00jjm7s9jojc0eof.png/200px-Chr_icon_1037_103702_01.png",
         "name": "[精确无比·巧克力大师]荣进闪耀",
         "rewardType": 50,
         "rewardValue": 103702,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1051,7 +1051,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006051,
+      "id": 5008051,
       "order": 51,
       "reward": {
         "image": "intel/chara/chr_icon_1071_107101_02.png",
@@ -1061,10 +1061,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1072,7 +1072,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006052,
+      "id": 5008052,
       "order": 52,
       "reward": {
         "image": "intel/chara/chr_icon_1033_103301_02.png",
@@ -1082,10 +1082,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1093,7 +1093,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006053,
+      "id": 5008053,
       "order": 53,
       "reward": {
         "image": "intel/chara/chr_icon_1068_106801_02.png",
@@ -1103,10 +1103,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1114,7 +1114,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006054,
+      "id": 5008054,
       "order": 54,
       "reward": {
         "image": "intel/chara/chr_icon_1067_106701_02.png",
@@ -1124,10 +1124,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1135,7 +1135,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006055,
+      "id": 5008055,
       "order": 55,
       "reward": {
         "image": "intel/chara/chr_icon_1074_107401_02.png",
@@ -1145,10 +1145,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1156,20 +1156,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006056,
+      "id": 5008056,
       "order": 56,
       "reward": {
-        "image": "intel/chara/chr_icon_1020_102020_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/1/1e/py8tiyvozrevnuuvv01x4b44p6rr51l.png/200px-Chr_icon_1020_102002_01.png",
         "name": "[星夜猫咪舞会]青云天空",
         "rewardType": 50,
         "rewardValue": 102002,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1177,20 +1177,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006057,
+      "id": 5008057,
       "order": 57,
       "reward": {
-        "image": "intel/chara/chr_icon_1005_100520_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/05/ijm1sjbstsh1p5qzng4a9cfd3t67eet.png/200px-Chr_icon_1005_100502_01.png",
         "name": "[胜利之星]富士奇石",
         "rewardType": 50,
         "rewardValue": 100502,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1198,7 +1198,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006058,
+      "id": 5008058,
       "order": 58,
       "reward": {
         "image": "intel/chara/chr_icon_1051_105101_02.png",
@@ -1208,10 +1208,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1219,7 +1219,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006059,
+      "id": 5008059,
       "order": 59,
       "reward": {
         "image": "intel/chara/chr_icon_1072_107201_02.png",
@@ -1229,10 +1229,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1240,20 +1240,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006060,
+      "id": 5008060,
       "order": 60,
       "reward": {
-        "image": "intel/chara/chr_icon_1060_106050_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/7f/2wf86mq9bwsgf94dm6ur8bnuwdoq6oa.png/200px-Chr_icon_1060_106002_01.png",
         "name": "[RUN＆WIN]优秀素质",
         "rewardType": 50,
         "rewardValue": 106002,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1261,20 +1261,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006061,
+      "id": 5008061,
       "order": 61,
       "reward": {
-        "image": "intel/chara/chr_icon_1061_106150_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/77/6fpzxzbvb6p0389vb4fvx1o22nuoygw.png/200px-Chr_icon_1061_106102_01.png",
         "name": "[洁白傲气的激励之服]帝王光辉",
         "rewardType": 50,
         "rewardValue": 106102,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1282,7 +1282,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006062,
+      "id": 5008062,
       "order": 62,
       "reward": {
         "image": "intel/chara/chr_icon_1031_103101_02.png",
@@ -1292,10 +1292,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1303,7 +1303,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006063,
+      "id": 5008063,
       "order": 63,
       "reward": {
         "image": "intel/chara/chr_icon_1064_106401_02.png",
@@ -1313,10 +1313,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1324,20 +1324,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006064,
+      "id": 5008064,
       "order": 64,
       "reward": {
-        "image": "intel/chara/chr_icon_1038_103826_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/d0/9tuykeadkuvzyfe1rdbuv7sus26knwo.png/200px-Chr_icon_1038_103802_01.png",
         "name": "[朔月挚爱]真机伶",
         "rewardType": 50,
         "rewardValue": 103802,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1345,20 +1345,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006065,
+      "id": 5008065,
       "order": 65,
       "reward": {
-        "image": "intel/chara/chr_icon_1022_102226_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/02/fsgq45i7hnd0yf5yzce13mk8p7ih7ju.png/200px-Chr_icon_1022_102202_01.png",
         "name": "[Titania]美妙姿势",
         "rewardType": 50,
         "rewardValue": 102202,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1366,7 +1366,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006066,
+      "id": 5008066,
       "order": 66,
       "reward": {
         "image": "intel/chara/chr_icon_1034_103401_02.png",
@@ -1376,10 +1376,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1387,7 +1387,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006067,
+      "id": 5008067,
       "order": 67,
       "reward": {
         "image": "intel/chara/chr_icon_1044_104401_02.png",
@@ -1397,10 +1397,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1408,20 +1408,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006068,
+      "id": 5008068,
       "order": 68,
       "reward": {
-        "image": "intel/chara/chr_icon_1010_101023_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a9/gc0y9qjub4ga27tv35r7516plp2l82z.png/200px-Chr_icon_1010_101002_01.png",
         "name": "[Bubblegum☆Memories]大树快车",
         "rewardType": 50,
         "rewardValue": 101002,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1429,20 +1429,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006069,
+      "id": 5008069,
       "order": 69,
       "reward": {
-        "image": "intel/chara/chr_icon_1059_105923_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/3/3b/2y7pxahbv3imoo5pgpt0zczo8mdh5gi.png/200px-Chr_icon_1059_105902_01.png",
         "name": "[假日宝石蓝]目白多伯",
         "rewardType": 50,
         "rewardValue": 105902,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1450,7 +1450,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006070,
+      "id": 5008070,
       "order": 70,
       "reward": {
         "image": "intel/chara/chr_icon_1036_103601_02.png",
@@ -1460,10 +1460,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1471,20 +1471,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006071,
+      "id": 5008071,
       "order": 71,
       "reward": {
-        "image": "intel/chara/chr_icon_1013_101330_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a3/j7at2d5pl26c8zsufmf3riycwdq3p2m.png/200px-Chr_icon_1013_101303_01.png",
         "name": "[涟漪佳人]目白麦昆",
         "rewardType": 50,
         "rewardValue": 101303,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1492,20 +1492,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006072,
+      "id": 5008072,
       "order": 72,
       "reward": {
-        "image": "intel/chara/chr_icon_1007_100730_02.png",
+        "image": "intel/chara/chr_icon_1007_100702_02.png",
         "name": "[RUN！乱！发射！！]黄金船",
         "rewardType": 50,
         "rewardValue": 100702,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1513,7 +1513,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006073,
+      "id": 5008073,
       "order": 73,
       "reward": {
         "image": "intel/chara/chr_icon_1053_105301_02.png",
@@ -1523,10 +1523,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1534,7 +1534,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006074,
+      "id": 5008074,
       "order": 74,
       "reward": {
         "image": "intel/chara/chr_icon_1098_109801_02.png",
@@ -1544,10 +1544,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1555,7 +1555,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006075,
+      "id": 5008075,
       "order": 75,
       "reward": {
         "image": "intel/chara/chr_icon_1046_104602_02.png",
@@ -1565,10 +1565,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1576,20 +1576,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006076,
+      "id": 5008076,
       "order": 76,
       "reward": {
-        "image": "intel/chara/chr_icon_1035_103516_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/9/9f/25jlpir74nf08surdjmfeoe6081shgu.png/200px-Chr_icon_1035_103502_01.png",
         "name": "[梦想传递员]胜利奖券",
         "rewardType": 50,
         "rewardValue": 103502,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1597,20 +1597,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006077,
+      "id": 5008077,
       "order": 77,
       "reward": {
-        "image": "intel/chara/chr_icon_1050_105016_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/0b/hke9udzvm2c7rr5jg7s8jry9nxm93ob.png/200px-Chr_icon_1050_105002_01.png",
         "name": "[另类工程师]成田大进",
         "rewardType": 50,
         "rewardValue": 105002,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1618,7 +1618,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006078,
+      "id": 5008078,
       "order": 78,
       "reward": {
         "image": "intel/chara/chr_icon_1029_102901_02.png",
@@ -1628,10 +1628,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1639,7 +1639,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006079,
+      "id": 5008079,
       "order": 79,
       "reward": {
         "image": "intel/chara/chr_icon_1042_104201_02.png",
@@ -1649,10 +1649,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1660,20 +1660,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006080,
+      "id": 5008080,
       "order": 80,
       "reward": {
-        "image": "intel/chara/chr_icon_1019_101940_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/4d/i5xqu69cwrpmiaz7xib4oh7r5nv6uip.png/200px-Chr_icon_1019_101902_01.png",
         "name": "[爱丽♡僵尸]爱丽数码",
         "rewardType": 50,
         "rewardValue": 101902,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1681,20 +1681,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006081,
+      "id": 5008081,
       "order": 81,
       "reward": {
-        "image": "intel/chara/chr_icon_1058_105840_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/88/gxdk99ezpc7cv1pf1b4nkfkqfigk8z3.png/200px-Chr_icon_1058_105802_01.png",
         "name": "[Dot-o'-Lantern]名将怒涛",
         "rewardType": 50,
         "rewardValue": 105802,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1702,7 +1702,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006082,
+      "id": 5008082,
       "order": 82,
       "reward": {
         "image": "intel/chara/chr_icon_1087_108701_02.png",
@@ -1712,10 +1712,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1723,7 +1723,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006083,
+      "id": 5008083,
       "order": 83,
       "reward": {
         "image": "intel/chara/chr_icon_1078_107801_02.png",
@@ -1733,10 +1733,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1744,20 +1744,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006084,
+      "id": 5008084,
       "order": 84,
       "reward": {
-        "image": "intel/chara/chr_icon_1021_102143_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/da/fg5z8jqwrp9175q2kczoi6pzmuroe3y.png/200px-Chr_icon_1021_102102_01.png",
         "name": "[轰鸣雷神]玉藻十字",
         "rewardType": 50,
         "rewardValue": 102102,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1765,20 +1765,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006085,
+      "id": 5008085,
       "order": 85,
       "reward": {
-        "image": "intel/chara/chr_icon_1034_103443_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/b/b8/nbkj7mb4zw2hn1lbluwhlgdsmdxgld0.png/200px-Chr_icon_1034_103402_01.png",
         "name": "[梦之金原]稻荷一",
         "rewardType": 50,
         "rewardValue": 103402,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1786,7 +1786,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006086,
+      "id": 5008086,
       "order": 86,
       "reward": {
         "image": "intel/chara/chr_icon_1049_104901_02.png",
@@ -1796,10 +1796,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1807,7 +1807,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006087,
+      "id": 5008087,
       "order": 87,
       "reward": {
         "image": "intel/chara/chr_icon_1100_110001_02.png",
@@ -1817,10 +1817,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1828,20 +1828,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006088,
+      "id": 5008088,
       "order": 88,
       "reward": {
-        "image": "intel/chara/chr_icon_1008_100846_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/ed/4bvoel9kj19lwvhuiuz9uiqohdzptw7.png/200px-Chr_icon_1008_100802_01.png",
         "name": "[不会结冰的生命之水]伏特加",
         "rewardType": 50,
         "rewardValue": 100802,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1849,20 +1849,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006089,
+      "id": 5008089,
       "order": 89,
       "reward": {
-        "image": "intel/chara/chr_icon_1009_100946_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/45/1za635wf2t0t9mfskwdyqfg54gtbvhy.png/200px-Chr_icon_1009_100902_01.png",
         "name": "[绯红的星月之夜]大和赤骥",
         "rewardType": 50,
         "rewardValue": 100902,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1870,7 +1870,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006090,
+      "id": 5008090,
       "order": 90,
       "reward": {
         "image": "intel/chara/chr_icon_1047_104701_02.png",
@@ -1880,10 +1880,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1891,7 +1891,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006091,
+      "id": 5008091,
       "order": 91,
       "reward": {
         "image": "intel/chara/chr_icon_1016_101602_02.png",
@@ -1901,10 +1901,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1912,20 +1912,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006092,
+      "id": 5008092,
       "order": 92,
       "reward": {
-        "image": "intel/chara/chr_icon_1068_106810_02.png",
+        "image": "intel/chara/chr_icon_1068_106802_02.png",
         "name": "[压轴主角·庆鹤之志]北部玄驹",
         "rewardType": 50,
         "rewardValue": 106802,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1933,20 +1933,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006093,
+      "id": 5008093,
       "order": 93,
       "reward": {
-        "image": "intel/chara/chr_icon_1067_106710_02.png",
+        "image": "intel/chara/chr_icon_1067_106702_02.png",
         "name": "[当红之星·荣兴之翠]里见光钻",
         "rewardType": 50,
         "rewardValue": 106702,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1954,7 +1954,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006094,
+      "id": 5008094,
       "order": 94,
       "reward": {
         "image": "intel/chara/chr_icon_1099_109901_02.png",
@@ -1964,10 +1964,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1975,7 +1975,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006095,
+      "id": 5008095,
       "order": 95,
       "reward": {
         "image": "intel/chara/chr_icon_1065_106501_02.png",
@@ -1985,10 +1985,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -1996,20 +1996,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006096,
+      "id": 5008096,
       "order": 96,
       "reward": {
-        "image": "intel/chara/chr_icon_1031_103113_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/1/10/9um9hp2dz22u3g485myyfbswhcfjtwn.png/200px-Chr_icon_1031_103102_01.png",
         "name": "[MELTY GIFT]艾尼风神",
         "rewardType": 50,
         "rewardValue": 103102,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2017,20 +2017,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006097,
+      "id": 5008097,
       "order": 97,
       "reward": {
-        "image": "intel/chara/chr_icon_1027_102713_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a5/qs71kbidjlfv5uzqth9mpbxy7arfo49.png/200px-Chr_icon_1027_102702_01.png",
         "name": "[玛格丽特拿铁]目白莱恩",
         "rewardType": 50,
         "rewardValue": 102702,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2038,7 +2038,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006098,
+      "id": 5008098,
       "order": 98,
       "reward": {
         "image": "intel/chara/chr_icon_1043_104301_02.png",
@@ -2048,10 +2048,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2059,7 +2059,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006099,
+      "id": 5008099,
       "order": 99,
       "reward": {
         "image": "intel/chara/chr_icon_1057_105701_02.png",
@@ -2069,10 +2069,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2080,7 +2080,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006100,
+      "id": 5008100,
       "order": 100,
       "reward": {
         "image": "intel/chara/chr_icon_1085_108501_02.png",
@@ -2090,10 +2090,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2101,7 +2101,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006101,
+      "id": 5008101,
       "order": 101,
       "reward": {
         "image": "intel/chara/chr_icon_1083_108301_02.png",
@@ -2111,10 +2111,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2122,20 +2122,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006102,
+      "id": 5008102,
       "order": 102,
       "reward": {
-        "image": "intel/chara/chr_icon_1071_107120_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/76/jsqweqp5e2ypvxzq75pq5h30henbv3g.png/200px-Chr_icon_1071_107102_01.png",
         "name": "[Neige Émeraude]目白雅丹",
         "rewardType": 50,
         "rewardValue": 107102,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2143,20 +2143,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006103,
+      "id": 5008103,
       "order": 103,
       "reward": {
-        "image": "intel/chara/chr_icon_1069_106920_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a6/c77szuscnoany23c130hibmvxxr2kfa.png/200px-Chr_icon_1069_106902_01.png",
         "name": "[Fleur Enneigée]樱花千代王",
         "rewardType": 50,
         "rewardValue": 106902,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2164,7 +2164,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006104,
+      "id": 5008104,
       "order": 104,
       "reward": {
         "image": "intel/chara/chr_icon_1076_107601_02.png",
@@ -2174,10 +2174,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2185,7 +2185,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006105,
+      "id": 5008105,
       "order": 105,
       "reward": {
         "image": "intel/chara/chr_icon_1105_110501_02.png",
@@ -2195,10 +2195,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2206,20 +2206,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006106,
+      "id": 5008106,
       "order": 106,
       "reward": {
-        "image": "intel/chara/chr_icon_1062_106250_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/c/cf/dksnlbskkfdaqcfauo30qyjpadrj4rk.png/200px-Chr_icon_1062_106202_01.png",
         "name": "[碧蓝湍流]待兼唐怀瑟",
         "rewardType": 50,
         "rewardValue": 106202,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2227,20 +2227,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006107,
+      "id": 5008107,
       "order": 107,
       "reward": {
-        "image": "intel/chara/chr_icon_1041_104150_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/e7/czfevdx8ixxs0zr0o01caqr4h2xqlko.png/200px-Chr_icon_1041_104102_01.png",
         "name": "[赤热☆队长]樱花进王",
         "rewardType": 50,
         "rewardValue": 104102,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2248,7 +2248,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006108,
+      "id": 5008108,
       "order": 108,
       "reward": {
         "image": "intel/chara/chr_icon_1106_110601_02.png",
@@ -2258,10 +2258,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2269,7 +2269,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006109,
+      "id": 5008109,
       "order": 109,
       "reward": {
         "image": "intel/chara/chr_icon_1084_108401_02.png",
@@ -2279,10 +2279,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2290,20 +2290,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006110,
+      "id": 5008110,
       "order": 110,
       "reward": {
-        "image": "intel/chara/chr_icon_1051_105126_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/db/6jq3y20r65f3bvtiomcokgsta0vvfv8.png/200px-Chr_icon_1051_105102_01.png",
         "name": "[Sweet Juneberry]西野花",
         "rewardType": 50,
         "rewardValue": 105102,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2311,20 +2311,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006111,
+      "id": 5008111,
       "order": 111,
       "reward": {
-        "image": "intel/chara/chr_icon_1012_101226_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/3/3a/ry6xq6la17ftldumbe6evr917tzwigc.png/200px-Chr_icon_1012_101202_01.png",
         "name": "[Hungry Veil]菱亚马逊",
         "rewardType": 50,
         "rewardValue": 101202,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2332,7 +2332,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006112,
+      "id": 5008112,
       "order": 112,
       "reward": {
         "image": "intel/chara/chr_icon_1055_105501_02.png",
@@ -2342,10 +2342,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2353,20 +2353,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006113,
+      "id": 5008113,
       "order": 113,
       "reward": {
-        "image": "intel/chara/chr_icon_1053_105323_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/dc/1y67rf81083gpscfe0s876bx8vhpckt.png/200px-Chr_icon_1053_105302_01.png",
         "name": "[Ultra☆Marine]青竹回忆",
         "rewardType": 50,
         "rewardValue": 105302,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2374,20 +2374,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006114,
+      "id": 5008114,
       "order": 114,
       "reward": {
-        "image": "intel/chara/chr_icon_1048_104823_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/6/6b/1cj6qe2zy8pxyxibkv3gz9xpj4f5g1u.png/200px-Chr_icon_1048_104802_01.png",
         "name": "[Aurore☆Vacances]岛川乔丹",
         "rewardType": 50,
         "rewardValue": 104802,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2395,7 +2395,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006115,
+      "id": 5008115,
       "order": 115,
       "reward": {
         "image": "intel/chara/chr_icon_1104_110401_02.png",
@@ -2405,10 +2405,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2416,7 +2416,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006116,
+      "id": 5008116,
       "order": 116,
       "reward": {
         "image": "intel/chara/chr_icon_1070_107001_02.png",
@@ -2426,10 +2426,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2437,20 +2437,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006117,
+      "id": 5008117,
       "order": 117,
       "reward": {
-        "image": "intel/chara/chr_icon_1032_103230_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/6/6a/o5ab8v294zknryej3bowpmuzahdpp04.png/200px-Chr_icon_1032_103202_01.png",
         "name": "[Lunatic Lab]爱丽速子",
         "rewardType": 50,
         "rewardValue": 103202,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2458,20 +2458,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006118,
+      "id": 5008118,
       "order": 118,
       "reward": {
-        "image": "intel/chara/chr_icon_1002_100230_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/2/27/3l4heljhkc1a6dix33czzsbndpr6jt2.png/200px-Chr_icon_1002_100202_01.png",
         "name": "[浪间翠玉]无声铃鹿",
         "rewardType": 50,
         "rewardValue": 100202,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2479,7 +2479,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006119,
+      "id": 5008119,
       "order": 119,
       "reward": {
         "image": "intel/chara/chr_icon_1077_107701_02.png",
@@ -2489,10 +2489,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2500,20 +2500,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006120,
+      "id": 5008120,
       "order": 120,
       "reward": {
-        "image": "intel/chara/chr_icon_1007_100702_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/d9/jgddk82tybgvdlrru0dhcsck4tg25pw.png/200px-Chr_icon_1007_100703_01.png",
         "name": "[La mode 564]黄金船",
         "rewardType": 50,
         "rewardValue": 100703,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2521,20 +2521,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006121,
+      "id": 5008121,
       "order": 121,
       "reward": {
-        "image": "intel/chara/chr_icon_1067_106702_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/8f/rxhi1kiixy7qlhy8j9zml6yhzzu284w.png/200px-Chr_icon_1067_106703_01.png",
         "name": "[苍蓝骑士]里见光钻",
         "rewardType": 50,
         "rewardValue": 106703,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2542,7 +2542,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006122,
+      "id": 5008122,
       "order": 122,
       "reward": {
         "image": "intel/chara/chr_icon_1093_109301_02.png",
@@ -2552,10 +2552,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2563,20 +2563,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006123,
+      "id": 5008123,
       "order": 123,
       "reward": {
-        "image": "intel/chara/chr_icon_1036_103640_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/4c/hsdpt9u6aukc9n3yndw7svpftadbdbp.png/200px-Chr_icon_1036_103602_01.png",
         "name": "[Belphegor's Prime]空中神宫",
         "rewardType": 50,
         "rewardValue": 103602,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2584,20 +2584,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006124,
+      "id": 5008124,
       "order": 124,
       "reward": {
-        "image": "intel/chara/chr_icon_1083_108340_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/82/iy2sc1613b2fxxditqwcj1qmwwyis7z.png/200px-Chr_icon_1083_108302_01.png",
         "name": "[Jetblack Automaton]克里斯象征",
         "rewardType": 50,
         "rewardValue": 108302,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2605,7 +2605,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006125,
+      "id": 5008125,
       "order": 125,
       "reward": {
         "image": "intel/chara/chr_icon_1086_108601_02.png",
@@ -2615,10 +2615,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2626,20 +2626,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006126,
+      "id": 5008126,
       "order": 126,
       "reward": {
-        "image": "intel/chara/chr_icon_1039_103943_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/2/2a/ka9h3wphhiz9rzixozlnub24rcyue0q.png/200px-Chr_icon_1039_103902_01.png",
         "name": "[水干抚子]川上公主",
         "rewardType": 50,
         "rewardValue": 103902,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2647,20 +2647,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006127,
+      "id": 5008127,
       "order": 127,
       "reward": {
-        "image": "intel/chara/chr_icon_1003_100343_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/6/6b/31pknnq1ju5m78oah12pszej3csmj1n.png/200px-Chr_icon_1003_100303_01.png",
         "name": "[紫云中的寻梦蝶]东海帝王",
         "rewardType": 50,
         "rewardValue": 100303,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2668,7 +2668,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006128,
+      "id": 5008128,
       "order": 128,
       "reward": {
         "image": "intel/chara/chr_icon_1107_110701_02.png",
@@ -2678,10 +2678,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2689,20 +2689,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006129,
+      "id": 5008129,
       "order": 129,
       "reward": {
-        "image": "intel/chara/chr_icon_1064_106446_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/6/6c/gl3qzffuhn7btbqle3gzlti1elwgq5u.png/200px-Chr_icon_1064_106402_01.png",
         "name": "[赤诚的驯鹿小姐]目白善信",
         "rewardType": 50,
         "rewardValue": 106402,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2710,20 +2710,20 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006130,
+      "id": 5008130,
       "order": 130,
       "reward": {
-        "image": "intel/chara/chr_icon_1074_107446_02.png",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a0/6g56wnn13iacmox97y4kfnnw8oauxud.png/200px-Chr_icon_1074_107402_01.png",
         "name": "[澄澈星空下的白雪洛丽塔]目白光明",
         "rewardType": 50,
         "rewardValue": 107402,
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2731,7 +2731,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006131,
+      "id": 5008131,
       "order": 131,
       "reward": {
         "image": "intel/chara/chr_icon_1088_108801_02.png",
@@ -2741,10 +2741,10 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,
@@ -2752,7 +2752,7 @@
       "additionalPieceAmount": 60
     },
     {
-      "id": 5006132,
+      "id": 5008132,
       "order": 132,
       "reward": {
         "image": "intel/chara/chr_icon_1089_108901_02.png",
@@ -2762,10 +2762,241 @@
         "amount": 1
       },
       "pay": {
-        "image": "intel/item/item_icon_00210.png",
-        "name": "动画第三季纪念 3★兑换券",
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
         "rewardType": 41,
-        "rewardValue": 210,
+        "rewardValue": 216,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5008133,
+      "order": 133,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/8e/tttad8zhjkws9pnzxzq1r9j22lafngp.png/200px-Chr_icon_1068_106803_01.png",
+        "name": "[满愿终舞花]北部玄驹",
+        "rewardType": 50,
+        "rewardValue": 106803,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 216,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5008134,
+      "order": 134,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/83/qgy211zj1owy48pokp2w4yqboqlrl9r.png/200px-Chr_icon_1060_106003_01.png",
+        "name": "[重叠交织的心意]优秀素质",
+        "rewardType": 50,
+        "rewardValue": 106003,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 216,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5008135,
+      "order": 135,
+      "reward": {
+        "image": "intel/chara/chr_icon_1091_109101_02.png",
+        "name": "[Voyage étincelant]维普露斯",
+        "rewardType": 50,
+        "rewardValue": 109101,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 216,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5008136,
+      "order": 136,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/49/6ue51n8y49o764mcewue77x6ikqdhdd.png/200px-Chr_icon_1029_102902_01.png",
+        "name": "[茶点雪女]雪之美人",
+        "rewardType": 50,
+        "rewardValue": 102902,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 216,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5008137,
+      "order": 137,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/0b/p1s6ng0zblqp7too8tfksx5fdfpzmsx.png/200px-Chr_icon_1025_102502_01.png",
+        "name": "[柳绿小夜]曼城茶座",
+        "rewardType": 50,
+        "rewardValue": 102502,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 216,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5008138,
+      "order": 138,
+      "reward": {
+        "image": "intel/chara/chr_icon_1108_110801_02.png",
+        "name": "[Red in Black]鸣声雷动",
+        "rewardType": 50,
+        "rewardValue": 110801,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 216,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5008139,
+      "order": 139,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/8e/r40ujyf20ediri7o5yxqk9bmz0j6sk9.png/200px-Chr_icon_1080_108001_01.png",
+        "name": "[興奮不已GIZMO]創升",
+        "rewardType": 50,
+        "rewardValue": 108001,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 216,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5008140,
+      "order": 140,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/3/3a/83q4gk6uw2f80if4rea7mcmf98eb8dl.png/200px-Chr_icon_1109_110901_01.png",
+        "name": "[Dream Successor]莱茵力量",
+        "rewardType": 50,
+        "rewardValue": 110901,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 216,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5008141,
+      "order": 141,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/3/3a/3kzlebtemjx3iwo5v177du1g9elwr8b.png/200px-Chr_icon_1085_108502_01.png",
+        "name": "[Flowing Blue]第一红宝",
+        "rewardType": 50,
+        "rewardValue": 108502,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 216,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5008142,
+      "order": 142,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/b/b7/e53viac10irmjqg5vh7vr11jv9jqbf3.png/200px-Chr_icon_1065_106502_01.png",
+        "name": "[Joyful Jamboree!]大拓太阳神",
+        "rewardType": 50,
+        "rewardValue": 106502,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 216,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 60
+    },
+    {
+      "id": 5008143,
+      "order": 143,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/c/ca/r6r8x063o3kbz6qf85cx66ob8nrmgl2.png/200px-Chr_icon_1035_103503_01.png",
+        "name": "[Glorious Coat]胜利奖券",
+        "rewardType": 50,
+        "rewardValue": 103503,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "《优俊箱3》 3★兑换券",
+        "rewardType": 41,
+        "rewardValue": 216,
         "amount": 1
       },
       "limit": 0,

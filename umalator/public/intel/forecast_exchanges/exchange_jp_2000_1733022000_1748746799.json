@@ -1,0 +1,25 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 2320,
+      "order": 50,
+      "reward": {
+        "image": null,
+        "name": "收藏室钥匙",
+        "rewardType": 172,
+        "rewardValue": 190,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 500
+      },
+      "limit": 40,
+      "totalRewardAmount": 40,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

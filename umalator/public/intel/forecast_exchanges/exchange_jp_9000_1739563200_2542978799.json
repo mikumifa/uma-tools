@@ -1,0 +1,466 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 10176,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/9/99/7vsznkrjztnz9shpdqspisf3cg5zxl7.png/200px-Chr_icon_1047_104702_01.png",
+        "name": "[Inlaid Stories]荒漠英雄碎片",
+        "rewardType": 102,
+        "rewardValue": 104702,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10177,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/5/58/klv5q3ywq6sxvd6sz3t4wtd9wc8gh2v.png/200px-Chr_icon_1105_110502_01.png",
+        "name": "[Like “ZEER”]新宇宙碎片",
+        "rewardType": 102,
+        "rewardValue": 110502,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10178,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/7d/gkdxe2ntoq8imgriipz6xqnkqzkmf16.png/200px-Chr_icon_1121_112101_01.png",
+        "name": "[Chevalier fidèle]杜蘭達爾碎片",
+        "rewardType": 102,
+        "rewardValue": 112101,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10179,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/a/a1/aqslzl1qhy4ua1hf4hlbues3poy37tu.png/200px-Chr_icon_1042_104202_01.png",
+        "name": "[Be♪Witched]采珠碎片",
+        "rewardType": 102,
+        "rewardValue": 104202,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10180,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/6/62/jl2l36cc2lqhta4r436m61u95mzy2x3.png/200px-Chr_icon_1111_111101_01.png",
+        "name": "[Inherited Hope]空中弥赛亚碎片",
+        "rewardType": 102,
+        "rewardValue": 111101,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10181,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/c/c1/5ohii95mub0uovfhzm9nvajb6n4u0to.png/200px-Chr_icon_1077_107702_01.png",
+        "name": "[Celestial Road]成田路碎片",
+        "rewardType": 102,
+        "rewardValue": 107702,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10182,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/ef/q9jm1ias97sbmpkp3m3p1m44xr8znna.png/200px-Chr_icon_1057_105702_01.png",
+        "name": "[絢爛花道歌舞之人]千明代表碎片",
+        "rewardType": 102,
+        "rewardValue": 105702,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10183,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/f/fc/rrnjqt6i0q1799zd0ik2my0x9zi759m.png/200px-Chr_icon_1104_110402_01.png",
+        "name": "[雅號．墨龍]葛城荣主碎片",
+        "rewardType": 102,
+        "rewardValue": 110402,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10184,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/8/82/qmgzyzgodjjkmappurdursp6ww5dcx3.png/200px-Chr_icon_1004_100403_01.png",
+        "name": "[祈福祝賀的神速天女]丸善斯基碎片",
+        "rewardType": 102,
+        "rewardValue": 100403,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10185,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/e6/9831o3hy7w5ykhul407ksetktxfn92c.png/200px-Chr_icon_1079_107901_01.png",
+        "name": "[衣錦還鄉的瑞星]狂熱激昂碎片",
+        "rewardType": 102,
+        "rewardValue": 107901,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10186,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/4d/htie6l5f7rjdje60mzhhmasm3891acg.png/200px-Chr_icon_1078_107802_01.png",
+        "name": "[Sugary Wind]山人西风碎片",
+        "rewardType": 102,
+        "rewardValue": 107802,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10187,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/e7/eoiwfwqduvakap66kqr5vampejutuwq.png/200px-Chr_icon_1116_111601_01.png",
+        "name": "[Regina dei fiori]贵妇人碎片",
+        "rewardType": 102,
+        "rewardValue": 111601,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10188,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/1/19/7fztctailu964ku6e6h3gu939cz0uye.png/200px-Chr_icon_1110_111001_01.png",
+        "name": "[Future Weaver]西萨里奥碎片",
+        "rewardType": 102,
+        "rewardValue": 111001,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10189,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/4/47/bq2kgvc4f92pofggkn5gdzanrhb1z77.png/200px-Chr_icon_1024_102403_01.png",
+        "name": "[搖滾☆MewMeow]重炮碎片",
+        "rewardType": 102,
+        "rewardValue": 102403,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10190,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/02/t9i0kce42jyzxivxokkaij2jzox23hp.png/200px-Chr_icon_1124_112401_01.png",
+        "name": "[POPPING!]泡泡糖小子碎片",
+        "rewardType": 102,
+        "rewardValue": 112401,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10191,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/5/57/62a78lqj8yl4yyj4z5io6ujikozp919.png/200px-Chr_icon_1023_102303_01.png",
+        "name": "[Engineered Victory]琵琶晨光碎片",
+        "rewardType": 102,
+        "rewardValue": 102303,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10192,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/f/f5/q75005t5jznykqui9yga84fa13q4apc.png/200px-Chr_icon_1050_105003_01.png",
+        "name": "[迷光追越]成田大进碎片",
+        "rewardType": 102,
+        "rewardValue": 105003,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10193,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/0/08/js9oa2jznuebhrw5dj9p3a3h3l6xna0.png/200px-Chr_icon_1033_103302_01.png",
+        "name": "[Glacialis Vega]爱慕织姬碎片",
+        "rewardType": 102,
+        "rewardValue": 103302,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10194,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/d/d4/0smdzkoa2w627zust8z0jjh3mjmm44q.png/200px-Chr_icon_1117_111701_01.png",
+        "name": "[戲夢芭蕾裙]凯旋芭蕾碎片",
+        "rewardType": 102,
+        "rewardValue": 111701,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10195,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/7/71/l9biuvg1v8ibodbw9uzzdbs0iqejnaz.png/200px-Chr_icon_1011_101103_01.png",
+        "name": "[蒼炎之譽]草上飞碎片",
+        "rewardType": 102,
+        "rewardValue": 101103,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10196,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/f/f2/f7714v1kwwwqbru2mxnlxuc95x22jt7.png/200px-Chr_icon_1087_108702_01.png",
+        "name": "[不融的砂糖點心]阿斯顿真弓碎片",
+        "rewardType": 102,
+        "rewardValue": 108702,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 10197,
+      "order": 0,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/e7/865v9jxrrk2mxw4yhoqx6rj5kw4ct80.png/200px-Chr_icon_1073_107301_01.png",
+        "name": "[志向、遠大、堅強！]鹤丸强志碎片",
+        "rewardType": 102,
+        "rewardValue": 107301,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 10000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

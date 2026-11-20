@@ -1,0 +1,25 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 16000001,
+      "order": 1,
+      "reward": {
+        "image": "https://gametora.com/images/umamusume/supports/support_card_s_-1.png",
+        "name": "-1",
+        "rewardType": 51,
+        "rewardValue": -1,
+        "amount": 1
+      },
+      "pay": {
+        "image": null,
+        "name": "彩虹解锁结晶",
+        "rewardType": 164,
+        "rewardValue": 144,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

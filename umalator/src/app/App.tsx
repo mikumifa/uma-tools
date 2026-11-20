@@ -31,7 +31,7 @@ import { HorseDef, horseDefTabs } from "@components/HorseDef";
 import { TRACKNAMES_cn } from "@shared/trackNames";
 
 import { getActivateableSkills, getNullRow, BasinnChart } from "./BasinnChart";
-import { IntelDashboard } from "./IntelDashboard";
+import { ForecastDashboard, IntelDashboard } from "./IntelDashboard";
 import { SuccessionPlanner } from "./SuccessionPlanner";
 
 import { initTelemetry, postEvent } from "./telemetry";
@@ -608,13 +608,13 @@ const enum Mode {
   Chart,
 }
 
-type AppPage = "simulator" | "succession" | "intel";
+type AppPage = "simulator" | "succession" | "intel" | "forecast";
 
 function appBasePath() {
   const basePath = new URL(import.meta.env.BASE_URL, window.location.href)
     .pathname;
   const currentPath = window.location.pathname.replace(/\/+$/, "");
-  const pageSuffix = currentPath.match(/\/(intel|succession)$/)?.[1];
+  const pageSuffix = currentPath.match(/\/(intel|succession|forecast)$/)?.[1];
   return pageSuffix
     ? `${basePath.replace(new RegExp(`${pageSuffix}\\/?$`), "")}`
     : basePath;
@@ -624,6 +624,9 @@ function pathForPage(page: AppPage) {
   const basePath = appBasePath();
   if (page === "intel") {
     return `${basePath.replace(/\/$/, "")}/intel/`;
+  }
+  if (page === "forecast") {
+    return `${basePath.replace(/\/$/, "")}/forecast/`;
   }
   if (page === "succession") {
     return `${basePath.replace(/\/$/, "")}/succession/`;
@@ -635,6 +638,7 @@ function initialAppPage(): AppPage {
   if (typeof window === "undefined") return "simulator";
   const currentPath = window.location.pathname.replace(/\/+$/, "");
   if (currentPath.endsWith("/intel")) return "intel";
+  if (currentPath.endsWith("/forecast")) return "forecast";
   if (currentPath.endsWith("/succession")) return "succession";
   return "simulator";
 }
@@ -679,6 +683,13 @@ function AppNav({
           onClick={() => setActivePage("intel")}
         >
           情报汇总
+        </button>
+        <button
+          type="button"
+          class={activePage === "forecast" ? "selected" : ""}
+          onClick={() => setActivePage("forecast")}
+        >
+          日服前瞻
         </button>
       </nav>
     </header>
@@ -1644,6 +1655,8 @@ function App() {
         <AppNav activePage={activePage} setActivePage={setActivePage} />
         {activePage === "intel" ? (
           <IntelDashboard />
+        ) : activePage === "forecast" ? (
+          <ForecastDashboard />
         ) : activePage === "succession" ? (
           <SuccessionPlanner />
         ) : (

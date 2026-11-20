@@ -1,13 +1,13 @@
 {
   "exchangeDetails": [
     {
-      "id": 2028,
+      "id": 2033,
       "order": 1,
       "reward": {
-        "image": "intel/piece/piece_icon_100802.png",
-        "name": "[不会结冰的生命之水]伏特加碎片",
+        "image": "intel/piece/piece_icon_106402.png",
+        "name": "[赤诚的驯鹿小姐]目白善信碎片",
         "rewardType": 102,
-        "rewardValue": 100802,
+        "rewardValue": 106402,
         "amount": 5
       },
       "pay": {
@@ -22,13 +22,13 @@
       "additionalPieceAmount": 0
     },
     {
-      "id": 2029,
+      "id": 2034,
       "order": 2,
       "reward": {
-        "image": "intel/piece/piece_icon_100902.png",
-        "name": "[绯红的星月之夜]大和赤骥碎片",
+        "image": "intel/piece/piece_icon_107402.png",
+        "name": "[澄澈星空下的白雪洛丽塔]目白光明碎片",
         "rewardType": 102,
-        "rewardValue": 100902,
+        "rewardValue": 107402,
         "amount": 5
       },
       "pay": {

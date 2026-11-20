@@ -1,0 +1,109 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 8250,
+      "order": 250,
+      "reward": {
+        "image": "intel/item/item_icon_00001.png",
+        "name": "短距离跑鞋",
+        "rewardType": 11,
+        "rewardValue": 1,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 50
+      },
+      "limit": 120,
+      "totalRewardAmount": 120,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8251,
+      "order": 251,
+      "reward": {
+        "image": "intel/item/item_icon_00004.png",
+        "name": "英里跑鞋",
+        "rewardType": 11,
+        "rewardValue": 4,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 50
+      },
+      "limit": 120,
+      "totalRewardAmount": 120,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8252,
+      "order": 252,
+      "reward": {
+        "image": "intel/item/item_icon_00007.png",
+        "name": "中距离跑鞋",
+        "rewardType": 11,
+        "rewardValue": 7,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 50
+      },
+      "limit": 120,
+      "totalRewardAmount": 120,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8253,
+      "order": 253,
+      "reward": {
+        "image": "intel/item/item_icon_00010.png",
+        "name": "长距离跑鞋",
+        "rewardType": 11,
+        "rewardValue": 10,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 50
+      },
+      "limit": 120,
+      "totalRewardAmount": 120,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 8254,
+      "order": 254,
+      "reward": {
+        "image": "intel/item/item_icon_00013.png",
+        "name": "泥地跑鞋",
+        "rewardType": 11,
+        "rewardValue": 13,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00134.png",
+        "name": "社团积分",
+        "rewardType": 161,
+        "rewardValue": 134,
+        "amount": 50
+      },
+      "limit": 120,
+      "totalRewardAmount": 120,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

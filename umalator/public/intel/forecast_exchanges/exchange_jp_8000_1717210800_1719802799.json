@@ -1,13 +1,13 @@
 {
   "exchangeDetails": [
     {
-      "id": 8033,
+      "id": 8045,
       "order": 1,
       "reward": {
-        "image": "intel/piece/piece_icon_104501.png",
-        "name": "[潺潺溪流]超级溪流碎片",
+        "image": "intel/piece/piece_icon_102701.png",
+        "name": "[一往无前]目白莱恩碎片",
         "rewardType": 102,
-        "rewardValue": 104501,
+        "rewardValue": 102701,
         "amount": 5
       },
       "pay": {
@@ -22,13 +22,13 @@
       "additionalPieceAmount": 0
     },
     {
-      "id": 8034,
+      "id": 8046,
       "order": 1,
       "reward": {
-        "image": "intel/piece/piece_icon_100701.png",
-        "name": "[赤色纷争]黄金船碎片",
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/ef/201e08salbfb5hjb2f3stglhdtmdtb7.png/200px-Chr_icon_1018_101801_01.png",
+        "name": "[女帝之路]气槽碎片",
         "rewardType": 102,
-        "rewardValue": 100701,
+        "rewardValue": 101801,
         "amount": 5
       },
       "pay": {

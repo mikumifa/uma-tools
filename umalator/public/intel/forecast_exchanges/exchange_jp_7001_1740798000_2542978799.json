@@ -1,0 +1,25 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 71206,
+      "order": 201,
+      "reward": {
+        "image": null,
+        "name": "稀有或以上新人出道招募第5期",
+        "rewardType": 40,
+        "rewardValue": 237,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00049.png",
+        "name": "金徽章",
+        "rewardType": 160,
+        "rewardValue": 49,
+        "amount": 10
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

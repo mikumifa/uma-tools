@@ -1,0 +1,25 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 71257,
+      "order": 254,
+      "reward": {
+        "image": "intel/item/item_icon_00095.png",
+        "name": "闹钟",
+        "rewardType": 34,
+        "rewardValue": 95,
+        "amount": 2
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00049.png",
+        "name": "金徽章",
+        "rewardType": 160,
+        "rewardValue": 49,
+        "amount": 5
+      },
+      "limit": 25,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

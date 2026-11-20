@@ -1,0 +1,46 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 1003000,
+      "order": 0,
+      "reward": {
+        "image": null,
+        "name": "限定セールオープン上限アップ",
+        "rewardType": 98,
+        "rewardValue": 296,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 5000000
+      },
+      "limit": 3,
+      "totalRewardAmount": 3,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 1003001,
+      "order": 1,
+      "reward": {
+        "image": null,
+        "name": "金の延べ棒",
+        "rewardType": 190,
+        "rewardValue": 287,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 10000000
+      },
+      "limit": 0,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

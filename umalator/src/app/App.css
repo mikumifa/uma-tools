@@ -1984,6 +1984,202 @@ a:hover {
   text-align: right;
 }
 
+.intelForecastBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid #bfdbfe;
+  border-left: 4px solid #2563eb;
+  border-radius: var(--uma-radius);
+  background: linear-gradient(90deg, #eff6ff 0%, #f8fafc 100%);
+  box-shadow: var(--uma-shadow);
+}
+
+.intelForecastBanner strong {
+  display: block;
+  color: #1e3a8a;
+  font-size: 14px;
+}
+
+.intelForecastBanner p {
+  margin: 3px 0 0;
+  color: #475569;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.intelTimeBasisToggle {
+  flex: 0 0 auto;
+  min-height: 34px;
+}
+
+.intelTimeBasisToggle button {
+  min-width: 76px;
+  min-height: 34px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.intelGachaListItem.imageLoadHidden {
+  grid-template-columns: minmax(260px, 0.9fr) minmax(260px, 1.1fr);
+  padding: 8px 12px;
+}
+
+.intelDetailImage.imageLoadHidden,
+.intelDropIcon.imageLoadHidden,
+.intelDetailRewardIcon.imageLoadHidden {
+  display: none;
+}
+
+.intelJpRefTime {
+  color: #64748b !important;
+  font-family: var(--uma-mono);
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+.intelPoolTime .intelJpRefTime {
+  margin-top: 1px;
+  display: block;
+}
+
+.intelJpCardName {
+  color: #64748b !important;
+  font-size: 11.5px !important;
+}
+
+.intelGachaListItem.noCover {
+  grid-template-columns: minmax(260px, 0.9fr) minmax(260px, 1.1fr);
+  padding: 8px 12px;
+  min-height: 82px;
+}
+
+.intelGachaListItem.noCover:not(:has(.intelUpPreview)) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.intelUpPreview.textOnly,
+.intelUpPreview.mixedMode {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.intelUpTextPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 100%;
+  min-height: 28px;
+  padding: 3px 9px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--uma-text);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.intelUpTextPill.character {
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.intelUpTextPill.support {
+  border-color: rgba(15, 118, 110, 0.32);
+}
+
+.intelUpTextPill b {
+  flex: 0 0 auto;
+  padding: 1px 5px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: #334155;
+  font-family: var(--uma-mono);
+  font-size: 10.5px;
+  font-weight: 800;
+}
+
+.intelUpTextPill.character b {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.intelUpTextPill.support b {
+  background: #ccfbf1;
+  color: #0f766e;
+}
+
+.intelUpTextPill > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.intelUpPreview .intelUpMoreText {
+  width: auto;
+  height: auto;
+  flex: 0 0 auto;
+  padding: 2px 6px;
+  font-size: 13px;
+}
+
+.intelWeekPool.noCover {
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  padding: 6px 8px;
+  min-height: 76px;
+}
+
+.intelWeekPool.noCover:has(.intelPoolBody) {
+  grid-template-columns: minmax(170px, 260px) minmax(0, 1fr);
+}
+
+.intelWeekPool.noCover.compact {
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 68px;
+}
+
+.intelCoverBlock.noCoverText {
+  gap: 2px;
+}
+
+.intelDetailCard.noImage {
+  grid-template-columns: minmax(0, 1fr);
+  padding: 9px 11px;
+}
+
+.intelDetailRewardToken.noIcon {
+  grid-template-columns: minmax(0, 1fr);
+  width: auto;
+  max-width: 100%;
+  min-height: 34px;
+  padding: 4px 10px;
+}
+
+.intelRaceItem.noImage {
+  grid-template-columns: minmax(0, 1fr);
+  padding: 8px 12px;
+}
+
+.intelExchangeRewardSide:not(:has(> .intelDetailRewardIcon)) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.intelExchangePaySide:not(:has(> .intelDetailRewardIcon)) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.intelExchangePayName {
+  color: var(--uma-text) !important;
+  font-weight: 700;
+}
+
 #topPane {
   display: grid;
   grid-template-columns: minmax(320px, var(--sidebar-width, 380px)) minmax(0, 1fr);
@@ -3053,6 +3249,16 @@ a:hover {
     min-height: 84px;
   }
 
+  .intelGachaListItem.noCover,
+  .intelGachaListItem.imageLoadHidden {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .intelGachaListItem.noCover .intelUpPreview,
+  .intelGachaListItem.imageLoadHidden .intelUpPreview {
+    grid-column: 1;
+  }
+
   .intelGachaListItem > img {
     grid-row: 1 / span 2;
     height: 74px;
@@ -3283,6 +3489,18 @@ a:hover {
     grid-template-columns: 116px minmax(0, 1fr);
     gap: 6px;
     min-height: 78px;
+  }
+
+  .intelGachaListItem.noCover {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .intelDetailCard.noImage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .intelRaceItem.noImage {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .intelGachaListItem > img {

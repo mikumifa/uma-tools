@@ -1,0 +1,25 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 1001000,
+      "order": 0,
+      "reward": {
+        "image": "intel/item/item_icon_00110.png",
+        "name": "协助积分",
+        "rewardType": 30,
+        "rewardValue": 110,
+        "amount": 500
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 1500
+      },
+      "limit": 0,
+      "totalRewardAmount": 500,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

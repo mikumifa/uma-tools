@@ -1,0 +1,109 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 70360,
+      "order": 350,
+      "reward": {
+        "image": "intel/item/item_icon_00001.png",
+        "name": "短距离跑鞋",
+        "rewardType": 11,
+        "rewardValue": 1,
+        "amount": 50
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00050.png",
+        "name": "彩虹徽章",
+        "rewardType": 160,
+        "rewardValue": 50,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 70361,
+      "order": 351,
+      "reward": {
+        "image": "intel/item/item_icon_00004.png",
+        "name": "英里跑鞋",
+        "rewardType": 11,
+        "rewardValue": 4,
+        "amount": 50
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00050.png",
+        "name": "彩虹徽章",
+        "rewardType": 160,
+        "rewardValue": 50,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 70362,
+      "order": 352,
+      "reward": {
+        "image": "intel/item/item_icon_00007.png",
+        "name": "中距离跑鞋",
+        "rewardType": 11,
+        "rewardValue": 7,
+        "amount": 50
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00050.png",
+        "name": "彩虹徽章",
+        "rewardType": 160,
+        "rewardValue": 50,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 70363,
+      "order": 353,
+      "reward": {
+        "image": "intel/item/item_icon_00010.png",
+        "name": "长距离跑鞋",
+        "rewardType": 11,
+        "rewardValue": 10,
+        "amount": 50
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00050.png",
+        "name": "彩虹徽章",
+        "rewardType": 160,
+        "rewardValue": 50,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 70364,
+      "order": 354,
+      "reward": {
+        "image": "intel/item/item_icon_00013.png",
+        "name": "泥地跑鞋",
+        "rewardType": 11,
+        "rewardValue": 13,
+        "amount": 50
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00050.png",
+        "name": "彩虹徽章",
+        "rewardType": 160,
+        "rewardValue": 50,
+        "amount": 1
+      },
+      "limit": 0,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

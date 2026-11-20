@@ -1,0 +1,172 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 3140014,
+      "order": 1,
+      "reward": {
+        "image": "intel/item/item_icon_00149.png",
+        "name": "彩虹结晶片",
+        "rewardType": 164,
+        "rewardValue": 149,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 400000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3140015,
+      "order": 2,
+      "reward": {
+        "image": "intel/item/item_icon_00150.png",
+        "name": "金结晶片",
+        "rewardType": 164,
+        "rewardValue": 150,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 100000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3140012,
+      "order": 3,
+      "reward": {
+        "image": null,
+        "name": "2★或以上新人出道招募第5期",
+        "rewardType": 40,
+        "rewardValue": 236,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 100000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3140013,
+      "order": 4,
+      "reward": {
+        "image": null,
+        "name": "稀有或以上新人出道招募第5期",
+        "rewardType": 40,
+        "rewardValue": 237,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 100000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3140010,
+      "order": 20,
+      "reward": {
+        "image": "intel/item/item_icon_00041.png",
+        "name": "养成优俊少女招募券",
+        "rewardType": 40,
+        "rewardValue": 41,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 100000
+      },
+      "limit": 2,
+      "totalRewardAmount": 2,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3140011,
+      "order": 22,
+      "reward": {
+        "image": "intel/item/item_icon_00111.png",
+        "name": "协助卡招募券",
+        "rewardType": 40,
+        "rewardValue": 111,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 100000
+      },
+      "limit": 2,
+      "totalRewardAmount": 2,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3140008,
+      "order": 40,
+      "reward": {
+        "image": "intel/item/item_icon_00032.png",
+        "name": "能量饮料30",
+        "rewardType": 20,
+        "rewardValue": 32,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 5000
+      },
+      "limit": 15,
+      "totalRewardAmount": 15,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3140009,
+      "order": 51,
+      "reward": {
+        "image": "intel/item/item_icon_00095.png",
+        "name": "闹钟",
+        "rewardType": 34,
+        "rewardValue": 95,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 1000
+      },
+      "limit": 15,
+      "totalRewardAmount": 15,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

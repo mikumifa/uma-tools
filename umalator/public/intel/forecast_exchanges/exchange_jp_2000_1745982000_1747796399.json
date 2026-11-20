@@ -1,0 +1,172 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 2035,
+      "order": 1,
+      "reward": {
+        "image": "intel/piece/piece_icon_100601.png",
+        "name": "[星光跃动]小栗帽碎片",
+        "rewardType": 102,
+        "rewardValue": 100601,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2036,
+      "order": 2,
+      "reward": {
+        "image": "intel/piece/piece_icon_100701.png",
+        "name": "[赤色纷争]黄金船碎片",
+        "rewardType": 102,
+        "rewardValue": 100701,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 2000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2037,
+      "order": 3,
+      "reward": {
+        "image": "https://patchwiki.biligame.com/images/umamusume/thumb/e/ea/6ych9zrm8w3gloe7fbnoerfgtgwfd9r.png/200px-Chr_icon_1013_101301_01.png",
+        "name": "[优雅曲线]目白麦昆碎片",
+        "rewardType": 102,
+        "rewardValue": 101301,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2038,
+      "order": 4,
+      "reward": {
+        "image": "intel/piece/piece_icon_102001.png",
+        "name": "[青云垂钓者]青云天空碎片",
+        "rewardType": 102,
+        "rewardValue": 102001,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2039,
+      "order": 5,
+      "reward": {
+        "image": "intel/piece/piece_icon_102101.png",
+        "name": "[疾风迅雷]玉藻十字碎片",
+        "rewardType": 102,
+        "rewardValue": 102101,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2040,
+      "order": 6,
+      "reward": {
+        "image": "intel/piece/piece_icon_102301.png",
+        "name": "[pf.胜利公式]琵琶晨光碎片",
+        "rewardType": 102,
+        "rewardValue": 102301,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2041,
+      "order": 7,
+      "reward": {
+        "image": "intel/piece/piece_icon_103801.png",
+        "name": "[闪电少女]真机伶碎片",
+        "rewardType": 102,
+        "rewardValue": 103801,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 2042,
+      "order": 8,
+      "reward": {
+        "image": "intel/piece/piece_icon_110601.png",
+        "name": "[奇迹装点！]菱奇宝碎片",
+        "rewardType": 102,
+        "rewardValue": 110601,
+        "amount": 5
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00098.png",
+        "name": "好友积分",
+        "rewardType": 103,
+        "rewardValue": 98,
+        "amount": 3000
+      },
+      "limit": 10,
+      "totalRewardAmount": 50,
+      "additionalPieceAmount": 0
+    }
+  ]
+}

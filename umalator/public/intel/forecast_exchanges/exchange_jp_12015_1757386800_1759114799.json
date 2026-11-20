@@ -1,0 +1,193 @@
+{
+  "exchangeDetails": [
+    {
+      "id": 3160018,
+      "order": 5,
+      "reward": {
+        "image": "intel/item/item_icon_00044.png",
+        "name": "梦想光辉",
+        "rewardType": 93,
+        "rewardValue": 44,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 500
+      },
+      "limit": 120,
+      "totalRewardAmount": 120,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160023,
+      "order": 7,
+      "reward": {
+        "image": "intel/item/item_icon_00041.png",
+        "name": "养成优俊少女招募券",
+        "rewardType": 40,
+        "rewardValue": 41,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 100000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160024,
+      "order": 9,
+      "reward": {
+        "image": "intel/item/item_icon_00111.png",
+        "name": "协助卡招募券",
+        "rewardType": 40,
+        "rewardValue": 111,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 100000
+      },
+      "limit": 1,
+      "totalRewardAmount": 1,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160019,
+      "order": 10,
+      "reward": {
+        "image": "intel/item/item_icon_00160.png",
+        "name": "启发书",
+        "rewardType": 11,
+        "rewardValue": 160,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 2500
+      },
+      "limit": 12,
+      "totalRewardAmount": 12,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160020,
+      "order": 11,
+      "reward": {
+        "image": "intel/item/item_icon_00161.png",
+        "name": "启发专业书",
+        "rewardType": 11,
+        "rewardValue": 161,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 5000
+      },
+      "limit": 6,
+      "totalRewardAmount": 6,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160021,
+      "order": 12,
+      "reward": {
+        "image": "intel/item/item_icon_00162.png",
+        "name": "稀有启发书",
+        "rewardType": 11,
+        "rewardValue": 162,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 10000
+      },
+      "limit": 6,
+      "totalRewardAmount": 6,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160022,
+      "order": 13,
+      "reward": {
+        "image": "intel/item/item_icon_00163.png",
+        "name": "稀有启发专业书",
+        "rewardType": 11,
+        "rewardValue": 163,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 15000
+      },
+      "limit": 3,
+      "totalRewardAmount": 3,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160016,
+      "order": 15,
+      "reward": {
+        "image": "intel/item/item_icon_00032.png",
+        "name": "能量饮料30",
+        "rewardType": 20,
+        "rewardValue": 32,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 5000
+      },
+      "limit": 15,
+      "totalRewardAmount": 15,
+      "additionalPieceAmount": 0
+    },
+    {
+      "id": 3160017,
+      "order": 20,
+      "reward": {
+        "image": "intel/item/item_icon_00034.png",
+        "name": "迷你胡萝卜果冻",
+        "rewardType": 21,
+        "rewardValue": 34,
+        "amount": 1
+      },
+      "pay": {
+        "image": "intel/item/item_icon_00059.png",
+        "name": "金币",
+        "rewardType": 91,
+        "rewardValue": 59,
+        "amount": 5000
+      },
+      "limit": 20,
+      "totalRewardAmount": 20,
+      "additionalPieceAmount": 0
+    }
+  ]
+}
